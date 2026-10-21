@@ -704,7 +704,7 @@ static void Ini_SmartCheckStep_2E(void)
 	SmartCheckStepNoSet(Z_SmartCheckStepNum_2E);
 }
 
-/// @brief    �˻��� ���� ����
+/// @brief    검사모드 스텝 설정
 /// @param    void
 /// @return   void
 static void SmartCheckStepNoSet(U8 data)

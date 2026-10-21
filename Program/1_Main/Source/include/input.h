@@ -1,7 +1,7 @@
 /// @file   input.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ?…? ¥ ì²˜ë¦¬ file
+/// @brief  ?ì—¯?ì ° ï§£ì„â” file
 
 #ifdef INPUT_C
 	#define 	EXTERN
@@ -13,26 +13,26 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_INPUT()		{	/*	1ms ????´ë¨? ê°ì‚°			*/	\
+#define	TDEC_1ms_INPUT()		{	/*	1ms ????ì” ç™’? åª›ë¨¯ê¶›			*/	\
 								}
-#define	TDEC_10ms_INPUT()		{	/*	10ms ????´ë¨? ê°ì‚°		*/	\
+#define	TDEC_10ms_INPUT()		{	/*	10ms ????ì” ç™’? åª›ë¨¯ê¶›		*/	\
 								}
-#define	TDEC_100ms_INPUT()		{	/*	100ms ????´ë¨? ê°ì‚°		*/	\
+#define	TDEC_100ms_INPUT()		{	/*	100ms ????ì” ç™’? åª›ë¨¯ê¶›		*/	\
 									TDEC(gu8_Timer_InputMicroSW_ForcedFaucetUp);	\
 									TDEC(gu8_Timer_FaucetTip_Reed_Undetected);	\
 									TDEC(gu8_Timer_FaucetTip_Reed_Detected);	\
 									TDEC(gu8_Timer_MicroSW_Release_Check);	\
 								}
-#define	TDEC_1s_INPUT()			{	/*	1s ????´ë¨? ê°ì‚°			*/	\
+#define	TDEC_1s_INPUT()			{	/*	1s ????ì” ç™’? åª›ë¨¯ê¶›			*/	\
 									TDEC(gu16_Timer_MicroSW_LongDetection);	\
 								}
-#define	TDEC_10s_INPUT()		{	/*	10s ????´ë¨? ê°ì‚°			*/	\
+#define	TDEC_10s_INPUT()		{	/*	10s ????ì” ç™’? åª›ë¨¯ê¶›			*/	\
 								}
-#define	TDEC_1min_INPUT()		{	/*	1min ????´ë¨? ê°ì‚°		*/	\
+#define	TDEC_1min_INPUT()		{	/*	1min ????ì” ç™’? åª›ë¨¯ê¶›		*/	\
 								}
-#define	TDEC_10min_INPUT()		{	/*	10min ????´ë¨? ê°ì‚°		*/	\
+#define	TDEC_10min_INPUT()		{	/*	10min ????ì” ç™’? åª›ë¨¯ê¶›		*/	\
 								}
-#define	TDEC_1h_INPUT()			{	/*	1h ????´ë¨? ê°ì‚°			*/	\
+#define	TDEC_1h_INPUT()			{	/*	1h ????ì” ç™’? åª›ë¨¯ê¶›			*/	\
 								}
 
 
@@ -49,7 +49,7 @@ EXTERN ITTI3 gu8_DigitalInput;
 	#define INPUT_REED_SW_COVER			(gu8_DigitalInput.Level.Bit.b0)
 	#define INPUT_REED_SW_FILTER		(gu8_DigitalInput.Level.Bit.b1)
 	#define INPUT_REED_SW_FAUCET		(gu8_DigitalInput.Level.Bit.b2)
-	#define INPUT_MODEL_NATIONAL		(gu8_DigitalInput.Level.Bit.b3)			//	?„?‹œ...
+	#define INPUT_MODEL_NATIONAL		(gu8_DigitalInput.Level.Bit.b3)			//	?ì—«?ë–†...
 	#define INPUT_MICRO_SW_FAUCET		(gu8_DigitalInput.Level.Bit.b4)
 	#define INPUT_REED_SW_FAUCET_UP		(gu8_DigitalInput.Level.Bit.b5)
 	#define INPUT_REED_SW_FAUCET_DOWN   (gu8_DigitalInput.Level.Bit.b6)
@@ -63,25 +63,25 @@ EXTERN U8 gu8_Timer_InputMicroSW_ForcedFaucetUp;
 EXTERN U8 gu8_F_InputMicroSW_ForcedFaucetUp;
 EXTERN U8 gu8_F_FirstInputMicroSW_ForcedFaucetUp;		//@001
 
-// ?Œ ë¦¬ë“œ?Š¤?œ„ì¹? ë¯¸ê°ì§? ê´?? ¨ ë³??ˆ˜
-EXTERN U8 gu8_Timer_FaucetTip_Reed_Undetected;  // ?Œ ë¦¬ë“œ?Š¤?œ„ì¹? ë¯¸ê°ì§? ?™•?¸ ????´ë¨? (1ì´? = 10 * 100ms)
-EXTERN U8 gu8_F_FaucetTip_Reed_Undetected;  // ?Œ ë¦¬ë“œ?Š¤?œ„ì¹? ë¯¸ê°ì§? ?”Œ?˜ê·?
+// ?ë˜» ç”±Ñ‰ë±¶?ë’ª?ìç§»? èª˜ë©¸ì»§ï§? æ„¿??ì ´ è¹‚??ë‹”
+EXTERN U8 gu8_Timer_FaucetTip_Reed_Undetected;  // ?ë˜» ç”±Ñ‰ë±¶?ë’ª?ìç§»? èª˜ë©¸ì»§ï§? ?ì†—?ì”¤ ????ì” ç™’? (1ç¥? = 10 * 100ms)
+EXTERN U8 gu8_F_FaucetTip_Reed_Undetected;  // ?ë˜» ç”±Ñ‰ë±¶?ë’ª?ìç§»? èª˜ë©¸ì»§ï§? ?ëµ†?ì˜’æ´¹?
 
-// ?Œ ë¦¬ë“œ?Š¤?œ„ì¹? ê°ì?? ê´?? ¨ ë³??ˆ˜
-EXTERN U8 gu8_Timer_FaucetTip_Reed_Detected;  // ?Œ ë¦¬ë“œ?Š¤?œ„ì¹? ê°ì?? ?™•?¸ ????´ë¨? (2ì´? = 20 * 100ms)
-EXTERN U8 gu8_F_FaucetTip_Reed_Detected;  // ?Œ ë¦¬ë“œ?Š¤?œ„ì¹? ê°ì?? ?”Œ?˜ê·?
+// ?ë˜» ç”±Ñ‰ë±¶?ë’ª?ìç§»? åª›ë¨¯?? æ„¿??ì ´ è¹‚??ë‹”
+EXTERN U8 gu8_Timer_FaucetTip_Reed_Detected;  // ?ë˜» ç”±Ñ‰ë±¶?ë’ª?ìç§»? åª›ë¨¯?? ?ì†—?ì”¤ ????ì” ç™’? (2ç¥? = 20 * 100ms)
+EXTERN U8 gu8_F_FaucetTip_Reed_Detected;  // ?ë˜» ç”±Ñ‰ë±¶?ë’ª?ìç§»? åª›ë¨¯?? ?ëµ†?ì˜’æ´¹?
 
-// ?ŒŒ?š°?…‹ ê°ì?? ?ƒ?ƒœ ì¶”ì  ë³??ˆ˜ (ê°ì?? -> ë¯¸ê°ì§? -> ê°ì?? ?Œ¨?„´ ê°ì???š©)
-EXTERN U8 gu8_F_Faucet_Detected_Before;  // ?´? „ ?ŒŒ?š°?…‹ ê°ì?? ?ƒ?ƒœ
-EXTERN U8 gu8_F_Faucet_Was_Undetected;  // ?ŒŒ?š°?…‹?´ ë¯¸ê°ì§? ?ƒ?ƒœ????Š”ì§? ?”Œ?˜ê·?
+// ?ë™†?ìŠ¦?ë€‘ åª›ë¨¯?? ?ê¸½?ê¹­ ç•°ë¶¿ìŸ» è¹‚??ë‹” (åª›ë¨¯?? -> èª˜ë©¸ì»§ï§? -> åª›ë¨¯?? ?ë™£?ê½© åª›ë¨¯???ìŠœ)
+EXTERN U8 gu8_F_Faucet_Detected_Before;  // ?ì” ?ìŸ¾ ?ë™†?ìŠ¦?ë€‘ åª›ë¨¯?? ?ê¸½?ê¹­
+EXTERN U8 gu8_F_Faucet_Was_Undetected;  // ?ë™†?ìŠ¦?ë€‘?ì”  èª˜ë©¸ì»§ï§? ?ê¸½?ê¹­????ë’—ï§? ?ëµ†?ì˜’æ´¹?
 
-// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ 10ºĞ Áö¼Ó °¨Áö °ü·Ã º¯¼ö
-EXTERN U16 gu16_Timer_MicroSW_LongDetection;        // 10ºĞ = 60000 (1ÃÊ ´ÜÀ§)
-EXTERN U8 gu8_F_MicroSW_LongDetection_1h;        // 10ºĞ Áö¼Ó °¨Áö ÇÃ·¡±×
-EXTERN U8 gu8_Timer_MicroSW_Release_Check;          // 2ÃÊ ÇØÁ¦ È®ÀÎ Å¸ÀÌ¸Ó (100ms ´ÜÀ§)
+// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ 10ë¶„ ì§€ì† ê°ì§€ ê´€ë ¨ ë³€ìˆ˜
+EXTERN U16 gu16_Timer_MicroSW_LongDetection;        // 10ë¶„ = 60000 (1ì´ˆ ë‹¨ìœ„)
+EXTERN U8 gu8_F_MicroSW_LongDetection_1h;        // 10ë¶„ ì§€ì† ê°ì§€ í”Œë˜ê·¸
+EXTERN U8 gu8_Timer_MicroSW_Release_Check;          // 2ì´ˆ í•´ì œ í™•ì¸ íƒ€ì´ë¨¸ (100ms ë‹¨ìœ„)
 
 
-//	TEST ì½”ë“œ
+//	TEST è‚„ë¶¾ë±¶
 EXTERN U8 gu8_F_Test_Input_ForcedControl;
 EXTERN U8 INPUT_REED_SW_COVER_Test;
 EXTERN U8 INPUT_REED_SW_FILTER_Test;

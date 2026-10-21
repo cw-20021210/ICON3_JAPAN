@@ -19,269 +19,269 @@ U16 GetWifiFuncEventListSize ( void );
 
 typedef enum
 {
-    WIFI_FUNC_0001_POWER_SEL = 0x0001,	//	Àü¿ø ¼³Á¤
-    WIFI_FUNC_0002_COLD_SEL,    		//	³Ã¼ö ¼³Á¤ (¡Û)
-    WIFI_FUNC_0003_HOT_LOCK_SEL,		//	¿Â¼ö Àá±Ý ¼³Á¤ (¡Û)
-    WIFI_FUNC_0004_SAVE_SEL,    		//	ÀýÀü ¼³Á¤
-    WIFI_FUNC_0005_LOCK_SEL,    		//	Àá±Ý ¼³Á¤ (¡Û)
-    WIFI_FUNC_0006_MUTE_SEL,    		//	¹«À½ ¼³Á¤ (¡Û)
-    WIFI_FUNC_0007_STERILIZE_SEL,   	//	»ì±Õ ¼³Á¤ »óÅÂ
-    WIFI_FUNC_0008_ICE_SEL,     		//	Á¦ºù ¼³Á¤
-    WIFI_FUNC_0009_HOT_TEMP,    		//	¿Â¼ö ¿Âµµ Ç¥½Ã
-    WIFI_FUNC_000A_COLD_TEMP,   		//	³Ã¼ö ¿Âµµ Ç¥½Ã È®ÀÎ
-    WIFI_FUNC_000B_WATER_SEL,   		//	¹° ¼±ÅÃ (¡Û)
-    WIFI_FUNC_000C_USER_SEL,    		//	»ç¿ëÀÚ
-    WIFI_FUNC_000D_WATER_OUTQUANTITY,	//	ÃßÃâ ¹°·® (¡Û)
-    WIFI_FUNC_000E_TIME_YEAR,       	//	ÇöÀç ½Ã°£ - ³â
-    WIFI_FUNC_000F_TIME_MONTHDAY,   	//	ÇöÀç ½Ã°£ - ¿ùÀÏ
-    WIFI_FUNC_0010_TIME_MINSEC,     	//	ÇöÀç ½Ã°£ - ½ÃºÐ
-    WIFI_FUNC_0011_STERILIZE_CYCLE, 	//	»ì±Õ ÁÖ±â
-    WIFI_FUNC_0012_STERILIZE_MODE,  	//	»ì±Õ ÁÖ±â ¸ðµå
-    WIFI_FUNC_0013_STERILIZE_TIME,  	//	»ì±Õ ½Ã°£¼³Á¤-½ÃºÐ
-    WIFI_FUNC_0014_STERILIZE_STATUS, 	//	»ì±Õ µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_0015_TDS_IN,  			//	ÀÔ¼ö TDS
-    WIFI_FUNC_0016_TDS_OUT, 			//	Ãâ¼ö TDS
-    WIFI_FUNC_0017_WATER_PRESSURE,  	//	Æó¼ö¾Ð
-    WIFI_FUNC_0018_TDS_INTEMP,  		//	TDS ÀÔ¼ö ¿Âµµ
-    WIFI_FUNC_0019_TDS_OUTTEMP, 		//	TDS Ãâ¼ö ¿Âµµ
-    WIFI_FUNC_001A_HOT_INTEMP,  		//	¼ø°£ ¿Â¼ö ¿ø¼ö ¿Âµµ (¡Û)
-    WIFI_FUNC_001B_HOT_MEANTEMP,		//	¼ø°£ ¿Â¼ö Æò±Õ ¿Âµµ (¡Û)
-    WIFI_FUNC_001C_HOT_SELTEMP, 		//	¿Â¼ö ¼³Á¤ ¿Âµµ (¡Û)
-    WIFI_FUNC_001D_WATER_INQUANTITY,	//	ÀÔ¼ö À¯·®
-    WIFI_FUNC_001E_AUTODRAIN_SEL,   	//	ÀÚµ¿ ¹è¼ö ¼³Á¤
-    WIFI_FUNC_001F_DRAIN_STATUS,     	//	¹è¼ö µ¿ÀÛ
-    WIFI_FUNC_0020_WATER_REQUANTITY,	//	Àç Á¤¼ö À¯·®
-    WIFI_FUNC_0021_HEART_TIME1, 		//	ÇÏÆ® ¼­ºñ½º½Ã°£ 1
-    WIFI_FUNC_0022_HEART_TIME2, 		//	ÇÏÆ® ¼­ºñ½º½Ã°£ 2
-    WIFI_FUNC_0023_HEART_TIME3, 		//	ÇÏÆ® ¼­ºñ½º½Ã°£ 3
-    WIFI_FUNC_0024_HEART_TIME4, 		//	ÇÏÆ® ¼­ºñ½º½Ã°£ 4 (¡Û)
-    WIFI_FUNC_0025_FILTER_NOTICE1,  	//	ÇÊÅÍ1 ±³È¯¾Ë¸²
-    WIFI_FUNC_0026_FILTER_NOTICE2,		//	ÇÊÅÍ2 ±³È¯¾Ë¸²
-    WIFI_FUNC_0027_FILTER_NOTICE3,		//	ÇÊÅÍ3 ±³È¯¾Ë¸²
-    WIFI_FUNC_0028_FILTER_NOTICE4,		//	ÇÊÅÍ4 ±³È¯¾Ë¸²
-    WIFI_FUNC_0029_SERVICE_TIME,    	//	¼­ºñ½º °æ°úÀÏ
-    WIFI_FUNC_002A_REMOVE_STATE,    	//	Á¦°ÅÀ² »óÅÂ
-    WIFI_FUNC_002B_SAVE_DETECT,     	//	ÀýÀü ÁøÀÔ¡¿
-    WIFI_FUNC_002C_SILVER_CARE,     	//	½Ç¹ö ÄÉ¾î (¡Û)
-    WIFI_FUNC_002D_DRAIN_QUANTITY,  	//	¹è¼ö ¹°·®
-    WIFI_FUNC_002E_STERILIZE_QUANTITY,  //	»ì±Õ ¹°·®
-    WIFI_FUNC_002F_SPARKLING_SEL,   	//	Åº»ê¼ö ¼±ÅÃ
-    WIFI_FUNC_0030_ICE_MAKETIME,    	//	¾óÀ½ ÃßÃâ ½Ã°£
-    WIFI_FUNC_0031_VOICE_SEL,   		//	À½¼º ¾È³» ¼³Á¤
-    WIFI_FUNC_0032_ICELOCK_SEL, 		//	¾óÀ½ Àá±Ý ¼³Á¤
-    WIFI_FUNC_0033_VOICE_VOL_SEL,    	//	À½¼º º¼·ý ¼³Á¤
-    WIFI_FUNC_0034_LIGHT_SEL,   		//	¶óÀÌÆ® ¼³Á¤
-    WIFI_FUNC_0035_COVER1_OPEN, 		//	Ä¿¹ö1 ¿­¸² (¡Û)
-    WIFI_FUNC_0036_COVER2_OPEN, 		//	Ä¿¹ö2 ¿­¸²
-    WIFI_FUNC_0037_SLEEP_SEL,  			//	½½¸³ ¼³Á¤ (¡Û)
-    WIFI_FUNC_0038_MASH_CLEAN,  		//	¸Þ½¬ ÇÊÅÍ ¼¼Ã´ ¾Ë¸²
-    WIFI_FUNC_0039_HOT_SEL,     		//	¿Â¼ö ¼³Á¤
-    WIFI_FUNC_003A_FREEZE_BURST,		//	µ¿ÆÄ ¹æÁö ¾Ë¸²
-    WIFI_FUNC_003B_HOT_TEMP_SEL,    	//	¸ÂÃã ¿Âµµ »ç¿ë ¿©ºÎ
-    WIFI_FUNC_003C_COLD_STRENGTH_SEL,   //	³Ã¼ö »ó¼¼ ¼³Á¤
-    WIFI_FUNC_003D_HEIGHT_SEL,          // 	°íµµ ¼³Á¤
-    WIFI_FUNC_003E_WATER_COURSE_STATUS, // 	À¯·Î ¸ðµâ ÀåÂø »óÅÂ (¡Û)
-    WIFI_FUNC_003F_WATER_COURSE_RESET,  // 	À¯·Î ¸ðµâ ¸®¼Â (¡Û)
-    WIFI_FUNC_0040_SMART_CHECK_RQST,    // 	½º¸¶Æ® Áø´Ü ¸ðµå ¼³Á¤ (¡Û)
-    WIFI_FUNC_0041_SMART_CHECK_STATUS,  //	½º¸¶Æ® Áø´Ü »óÅÂ (¡Û)
-    WIFI_FUNC_0042_SMART_CHECK_PROGRESS,//	½º¸¶Æ® Áø´Ü ÁøÇà·ü (¡Û)
-    WIFI_FUNC_0043_FILTER_STATUS1,      //	ÇÊÅÍ1 ÀåÂø »óÅÂ (¡Û)
-    WIFI_FUNC_0044_FILTER_STATUS2,		//	ÇÊÅÍ2 ÀåÂø »óÅÂ
-    WIFI_FUNC_0045_FILTER_STATUS3,		//	ÇÊÅÍ3 ÀåÂø »óÅÂ
-    WIFI_FUNC_0046_FILTER_STATUS4,		//	ÇÊÅÍ4 ÀåÂø »óÅÂ
-    WIFI_FUNC_0047_WATER_QUANTITY_SEL,  // 	¸ÂÃã ÃßÃâ·®
-    WIFI_FUNC_0048_HOT_TEMP_SEL,		//	¸ÂÃã ¿Â¼ö ¿Âµµ ¼³Á¤
-    WIFI_FUNC_0049_OUT_BUTTON_LIGHT,	//	ÃßÃâµî (¡Û)
-    WIFI_FUNC_004A_WELCOME_LIGHT,		//	À£ÄÄ ¶óÀÌÆ®
-    WIFI_FUNC_004B_HIDDEN_LCD_SEL,		//	È÷µç È­¸é ¼³Á¤
-    WIFI_FUNC_004C_FAUCET_MOVE_SEL,		//	ÆÄ¿ì¼Â ¹«ºù ¼³Á¤
-    WIFI_FUNC_004D_FAUCET_MOVE_STATUS,	//	ÆÄ¿ì¼Â ¹«ºù »óÅÂ
-    WIFI_FUNC_004E_CUP_SENSING_SEL,		//	ÄÅ ¼¾½Ì ¼³Á¤
-    WIFI_FUNC_004F_SOUND_VOL_SEL,		//	È¿°úÀ½ º¼·ý ¼³Á¤
-    WIFI_FUNC_0050_UV_STERILIZE_STATUS,	//	UV »ì±Õ µ¿ÀÛ »óÅÂ - ÃßÃâ
-    WIFI_FUNC_0051_QUANTITY_USE_SEL,	//	¸ÂÃã ÃßÃâ·® »ç¿ë ¿©ºÎ
-    WIFI_FUNC_0052_VOICE_MODE_SEL,		//	À½¼º ¸ðµå
-    WIFI_FUNC_0053_FILTER_RESET1,		//	ÇÊÅÍ1 ¸®¼Â (¡Û)
-    WIFI_FUNC_0054_FILTER_RESET2,		//	ÇÊÅÍ2 ¸®¼Â
-    WIFI_FUNC_0055_FILTER_RESET3,		//	ÇÊÅÍ3 ¸®¼Â
-    WIFI_FUNC_0056_FILTER_RESET4,		//	ÇÊÅÍ4 ¸®¼Â
-    WIFI_FUNC_0057_CUP_SENSING_SENSITIVITY,		//	ÄÅ ¼¾½Ì ¹Î°¨µµ ¼³Á¤
-    WIFI_FUNC_0058_ICE_SIZE_SEL,				//	¾ÆÀÌ½º »çÀÌÁî
-    WIFI_FUNC_0059_ICE_ONOFF_SEL,				//	¾óÀ½ On/Off
-    WIFI_FUNC_005A_UV_ICE_TANK_STATUS,			//	¾óÀ½ ÅÊÅ© »ì±Õ µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_005B_UV_ICE_TRAY_STATUS,			//	¾óÀ½ Æ®·¹ÀÌ »ì±Õ µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_005C_SMART_CHECK_RESULT,			//	½º¸¶Æ® Áø´Ü °á°ú »óÅÂ (¡Û)
-    WIFI_FUNC_005D_UV_ICE_FAUCET_STATUS,		//	¾óÀ½ ÆÄ¿ì¼Â »ì±Õ µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_005E_SLEEP_MODE_SEL,				//	ÃëÄ§¸ðµå ¼³Á¤
-    WIFI_FUNC_005F_SLEEP_START_HOUR,			//	ÃëÄ§¸ðµå ½ÃÀÛ ½Ã°£
-    WIFI_FUNC_0060_SLEEP_START_MIN,				//	ÃëÄ§¸ðµå ½ÃÀÛ ºÐ
-    WIFI_FUNC_0061_SLEEP_END_HOUR,				//	ÃëÄ§¸ðµå Á¾·á ½Ã°£
-    WIFI_FUNC_0062_SLEEP_END_MIN,				//	ÃëÄ§¸ðµå Á¾·á ºÐ
-    WIFI_FUNC_0063_DEFAULT_QUANTITY_ML_SEL,		//	±âº» ¿ë·® ¼³Á¤
-    WIFI_FUNC_0064_STERILIZE_EXPECTED_TIME,		//	EW »ì±Õ ¼Ò¿ä ¿¹Á¤ ½Ã°£
-    WIFI_FUNC_0065_DEFAULT_TEMP_SEL,			//	±âº» ¿Â¼ö ¿Âµµ ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0066_DEFAULT_QUANTITY_SEL,		//	±âº» ÃßÃâ ¹°·® ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0067_WATER_QUANTITY_USE_SEL0,		//	4oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0068_WATER_QUANTITY_USE_SEL1,		//	6oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0069_WATER_QUANTITY_USE_SEL2, 	//	8oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_006A_WATER_QUANTITY_USE_SEL3, 	//	10oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_006B_WATER_QUANTITY_USE_SEL4, 	//	12oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_006C_WATER_QUANTITY_USE_SEL5, 	//	14oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_006D_WATER_QUANTITY_USE_SEL6, 	//	16oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_006E_WATER_QUANTITY_USE_SEL7, 	//	20oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_006F_WATER_QUANTITY_USE_SEL8, 	//	32oz ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0070_WATER_QUANTITY_USE_SEL9,		//	¿¬¼Ó ¹°·® »ç¿ë ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0071_WATER_QUANTITY_USE_SEL10,	//	reserve2 ¹°·® »ç¿ë ¼³Á¤ »óÅÂ
-    WIFI_FUNC_0072_WATER_QUANTITY_SORT_SEL,		//	¹°·® Á¤·Ä ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0073_WATER_TEMP_SORT_SEL,			//	¿Â¼ö ¿Âµµ Á¤·Ä ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0074_UNUSE_POWER_SAVING_SEL,		//	¹Ì»ç¿ë ÀýÀü ¼³Á¤
-    WIFI_FUNC_0075_TEMP_UNIT_SEL,				//	¿Âµµ ´ÜÀ§ Ç¥½Ã ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0076_WATER_QUANTITY_UNIT_SEL,		//	ÃßÃâ ¹°·® ´ÜÀ§ Ç¥½Ã ¼³Á¤ »óÅÂ (¡Û)
-    WIFI_FUNC_0077_HOT_TARGET_TEMP_TIME,        // 	¿Â¼ö ¸ñÇ¥ ¿Âµµ µµ´Þ ½Ã°£
-    WIFI_FUNC_0078_COLD_TARGET_TEMP_TIME,       // 	³Ã¼ö ¸ñÇ¥ ¿Âµµ µµ´Þ ½Ã°£
-    WIFI_FUNC_0079_MIXED_WATER_AVE_TEMP,		//	È¥ÇÕ ÃßÃâ Æò±Õ ¿Âµµ
-    WIFI_FUNC_007A_MIXED_WATER_MIN_TEMP,		//	È¥ÇÕ ÃßÃâ ÃÖ¼Ò ¿Âµµ
-    WIFI_FUNC_007B_MIXED_WATER_MAX_TEMP,		//	È¥ÇÕ ÃßÃâ ÃÖ´ë ¿Âµµ
-    WIFI_FUNC_007C_COLDTANK_LOW_WATERLEVEL,		//	³Ã¼ö ÅÊÅ© Àú¼öÀ§ »óÅÂ
-    WIFI_FUNC_007D_COLDTANK_HIGH_WATERLEVEL,	//	³Ã¼ö ÅÊÅ© ¸¸¼öÀ§ »óÅÂ
-    WIFI_FUNC_007E_HIGH_TEMP_STL_SEL,			//	°í¿Â¼ö »ì±Õ ¼³Á¤
-    // WIFI_FUNC_007F_HIGH_TEMP_STL_STATUS,		//	°í¿Â¼ö »ì±Õ »óÅÂ
-    WIFI_FUNC_007F_DEFAULT_TEMP_SET,            //  ±âº»¿Â¼ö¿Âµµ¼³Á¤(¿Âµµ°ª)
+    WIFI_FUNC_0001_POWER_SEL = 0x0001,	//	ì „ì› ì„¤ì •
+    WIFI_FUNC_0002_COLD_SEL,    		//	ëƒ‰ìˆ˜ ì„¤ì • (â—‹)
+    WIFI_FUNC_0003_HOT_LOCK_SEL,		//	ì˜¨ìˆ˜ ìž ê¸ˆ ì„¤ì • (â—‹)
+    WIFI_FUNC_0004_SAVE_SEL,    		//	ì ˆì „ ì„¤ì •
+    WIFI_FUNC_0005_LOCK_SEL,    		//	ìž ê¸ˆ ì„¤ì • (â—‹)
+    WIFI_FUNC_0006_MUTE_SEL,    		//	ë¬´ìŒ ì„¤ì • (â—‹)
+    WIFI_FUNC_0007_STERILIZE_SEL,   	//	ì‚´ê·  ì„¤ì • ìƒíƒœ
+    WIFI_FUNC_0008_ICE_SEL,     		//	ì œë¹™ ì„¤ì •
+    WIFI_FUNC_0009_HOT_TEMP,    		//	ì˜¨ìˆ˜ ì˜¨ë„ í‘œì‹œ
+    WIFI_FUNC_000A_COLD_TEMP,   		//	ëƒ‰ìˆ˜ ì˜¨ë„ í‘œì‹œ í™•ì¸
+    WIFI_FUNC_000B_WATER_SEL,   		//	ë¬¼ ì„ íƒ (â—‹)
+    WIFI_FUNC_000C_USER_SEL,    		//	ì‚¬ìš©ìž
+    WIFI_FUNC_000D_WATER_OUTQUANTITY,	//	ì¶”ì¶œ ë¬¼ëŸ‰ (â—‹)
+    WIFI_FUNC_000E_TIME_YEAR,       	//	í˜„ìž¬ ì‹œê°„ - ë…„
+    WIFI_FUNC_000F_TIME_MONTHDAY,   	//	í˜„ìž¬ ì‹œê°„ - ì›”ì¼
+    WIFI_FUNC_0010_TIME_MINSEC,     	//	í˜„ìž¬ ì‹œê°„ - ì‹œë¶„
+    WIFI_FUNC_0011_STERILIZE_CYCLE, 	//	ì‚´ê·  ì£¼ê¸°
+    WIFI_FUNC_0012_STERILIZE_MODE,  	//	ì‚´ê·  ì£¼ê¸° ëª¨ë“œ
+    WIFI_FUNC_0013_STERILIZE_TIME,  	//	ì‚´ê·  ì‹œê°„ì„¤ì •-ì‹œë¶„
+    WIFI_FUNC_0014_STERILIZE_STATUS, 	//	ì‚´ê·  ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_0015_TDS_IN,  			//	ìž…ìˆ˜ TDS
+    WIFI_FUNC_0016_TDS_OUT, 			//	ì¶œìˆ˜ TDS
+    WIFI_FUNC_0017_WATER_PRESSURE,  	//	íìˆ˜ì••
+    WIFI_FUNC_0018_TDS_INTEMP,  		//	TDS ìž…ìˆ˜ ì˜¨ë„
+    WIFI_FUNC_0019_TDS_OUTTEMP, 		//	TDS ì¶œìˆ˜ ì˜¨ë„
+    WIFI_FUNC_001A_HOT_INTEMP,  		//	ìˆœê°„ ì˜¨ìˆ˜ ì›ìˆ˜ ì˜¨ë„ (â—‹)
+    WIFI_FUNC_001B_HOT_MEANTEMP,		//	ìˆœê°„ ì˜¨ìˆ˜ í‰ê·  ì˜¨ë„ (â—‹)
+    WIFI_FUNC_001C_HOT_SELTEMP, 		//	ì˜¨ìˆ˜ ì„¤ì • ì˜¨ë„ (â—‹)
+    WIFI_FUNC_001D_WATER_INQUANTITY,	//	ìž…ìˆ˜ ìœ ëŸ‰
+    WIFI_FUNC_001E_AUTODRAIN_SEL,   	//	ìžë™ ë°°ìˆ˜ ì„¤ì •
+    WIFI_FUNC_001F_DRAIN_STATUS,     	//	ë°°ìˆ˜ ë™ìž‘
+    WIFI_FUNC_0020_WATER_REQUANTITY,	//	ìž¬ ì •ìˆ˜ ìœ ëŸ‰
+    WIFI_FUNC_0021_HEART_TIME1, 		//	í•˜íŠ¸ ì„œë¹„ìŠ¤ì‹œê°„ 1
+    WIFI_FUNC_0022_HEART_TIME2, 		//	í•˜íŠ¸ ì„œë¹„ìŠ¤ì‹œê°„ 2
+    WIFI_FUNC_0023_HEART_TIME3, 		//	í•˜íŠ¸ ì„œë¹„ìŠ¤ì‹œê°„ 3
+    WIFI_FUNC_0024_HEART_TIME4, 		//	í•˜íŠ¸ ì„œë¹„ìŠ¤ì‹œê°„ 4 (â—‹)
+    WIFI_FUNC_0025_FILTER_NOTICE1,  	//	í•„í„°1 êµí™˜ì•Œë¦¼
+    WIFI_FUNC_0026_FILTER_NOTICE2,		//	í•„í„°2 êµí™˜ì•Œë¦¼
+    WIFI_FUNC_0027_FILTER_NOTICE3,		//	í•„í„°3 êµí™˜ì•Œë¦¼
+    WIFI_FUNC_0028_FILTER_NOTICE4,		//	í•„í„°4 êµí™˜ì•Œë¦¼
+    WIFI_FUNC_0029_SERVICE_TIME,    	//	ì„œë¹„ìŠ¤ ê²½ê³¼ì¼
+    WIFI_FUNC_002A_REMOVE_STATE,    	//	ì œê±°ìœ¨ ìƒíƒœ
+    WIFI_FUNC_002B_SAVE_DETECT,     	//	ì ˆì „ ì§„ìž…Ã—
+    WIFI_FUNC_002C_SILVER_CARE,     	//	ì‹¤ë²„ ì¼€ì–´ (â—‹)
+    WIFI_FUNC_002D_DRAIN_QUANTITY,  	//	ë°°ìˆ˜ ë¬¼ëŸ‰
+    WIFI_FUNC_002E_STERILIZE_QUANTITY,  //	ì‚´ê·  ë¬¼ëŸ‰
+    WIFI_FUNC_002F_SPARKLING_SEL,   	//	íƒ„ì‚°ìˆ˜ ì„ íƒ
+    WIFI_FUNC_0030_ICE_MAKETIME,    	//	ì–¼ìŒ ì¶”ì¶œ ì‹œê°„
+    WIFI_FUNC_0031_VOICE_SEL,   		//	ìŒì„± ì•ˆë‚´ ì„¤ì •
+    WIFI_FUNC_0032_ICELOCK_SEL, 		//	ì–¼ìŒ ìž ê¸ˆ ì„¤ì •
+    WIFI_FUNC_0033_VOICE_VOL_SEL,    	//	ìŒì„± ë³¼ë¥¨ ì„¤ì •
+    WIFI_FUNC_0034_LIGHT_SEL,   		//	ë¼ì´íŠ¸ ì„¤ì •
+    WIFI_FUNC_0035_COVER1_OPEN, 		//	ì»¤ë²„1 ì—´ë¦¼ (â—‹)
+    WIFI_FUNC_0036_COVER2_OPEN, 		//	ì»¤ë²„2 ì—´ë¦¼
+    WIFI_FUNC_0037_SLEEP_SEL,  			//	ìŠ¬ë¦½ ì„¤ì • (â—‹)
+    WIFI_FUNC_0038_MASH_CLEAN,  		//	ë©”ì‰¬ í•„í„° ì„¸ì²™ ì•Œë¦¼
+    WIFI_FUNC_0039_HOT_SEL,     		//	ì˜¨ìˆ˜ ì„¤ì •
+    WIFI_FUNC_003A_FREEZE_BURST,		//	ë™íŒŒ ë°©ì§€ ì•Œë¦¼
+    WIFI_FUNC_003B_HOT_TEMP_SEL,    	//	ë§žì¶¤ ì˜¨ë„ ì‚¬ìš© ì—¬ë¶€
+    WIFI_FUNC_003C_COLD_STRENGTH_SEL,   //	ëƒ‰ìˆ˜ ìƒì„¸ ì„¤ì •
+    WIFI_FUNC_003D_HEIGHT_SEL,          // 	ê³ ë„ ì„¤ì •
+    WIFI_FUNC_003E_WATER_COURSE_STATUS, // 	ìœ ë¡œ ëª¨ë“ˆ ìž¥ì°© ìƒíƒœ (â—‹)
+    WIFI_FUNC_003F_WATER_COURSE_RESET,  // 	ìœ ë¡œ ëª¨ë“ˆ ë¦¬ì…‹ (â—‹)
+    WIFI_FUNC_0040_SMART_CHECK_RQST,    // 	ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ ëª¨ë“œ ì„¤ì • (â—‹)
+    WIFI_FUNC_0041_SMART_CHECK_STATUS,  //	ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ ìƒíƒœ (â—‹)
+    WIFI_FUNC_0042_SMART_CHECK_PROGRESS,//	ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ ì§„í–‰ë¥  (â—‹)
+    WIFI_FUNC_0043_FILTER_STATUS1,      //	í•„í„°1 ìž¥ì°© ìƒíƒœ (â—‹)
+    WIFI_FUNC_0044_FILTER_STATUS2,		//	í•„í„°2 ìž¥ì°© ìƒíƒœ
+    WIFI_FUNC_0045_FILTER_STATUS3,		//	í•„í„°3 ìž¥ì°© ìƒíƒœ
+    WIFI_FUNC_0046_FILTER_STATUS4,		//	í•„í„°4 ìž¥ì°© ìƒíƒœ
+    WIFI_FUNC_0047_WATER_QUANTITY_SEL,  // 	ë§žì¶¤ ì¶”ì¶œëŸ‰
+    WIFI_FUNC_0048_HOT_TEMP_SEL,		//	ë§žì¶¤ ì˜¨ìˆ˜ ì˜¨ë„ ì„¤ì •
+    WIFI_FUNC_0049_OUT_BUTTON_LIGHT,	//	ì¶”ì¶œë“± (â—‹)
+    WIFI_FUNC_004A_WELCOME_LIGHT,		//	ì›°ì»´ ë¼ì´íŠ¸
+    WIFI_FUNC_004B_HIDDEN_LCD_SEL,		//	ížˆë“  í™”ë©´ ì„¤ì •
+    WIFI_FUNC_004C_FAUCET_MOVE_SEL,		//	íŒŒìš°ì…‹ ë¬´ë¹™ ì„¤ì •
+    WIFI_FUNC_004D_FAUCET_MOVE_STATUS,	//	íŒŒìš°ì…‹ ë¬´ë¹™ ìƒíƒœ
+    WIFI_FUNC_004E_CUP_SENSING_SEL,		//	ì»µ ì„¼ì‹± ì„¤ì •
+    WIFI_FUNC_004F_SOUND_VOL_SEL,		//	íš¨ê³¼ìŒ ë³¼ë¥¨ ì„¤ì •
+    WIFI_FUNC_0050_UV_STERILIZE_STATUS,	//	UV ì‚´ê·  ë™ìž‘ ìƒíƒœ - ì¶”ì¶œ
+    WIFI_FUNC_0051_QUANTITY_USE_SEL,	//	ë§žì¶¤ ì¶”ì¶œëŸ‰ ì‚¬ìš© ì—¬ë¶€
+    WIFI_FUNC_0052_VOICE_MODE_SEL,		//	ìŒì„± ëª¨ë“œ
+    WIFI_FUNC_0053_FILTER_RESET1,		//	í•„í„°1 ë¦¬ì…‹ (â—‹)
+    WIFI_FUNC_0054_FILTER_RESET2,		//	í•„í„°2 ë¦¬ì…‹
+    WIFI_FUNC_0055_FILTER_RESET3,		//	í•„í„°3 ë¦¬ì…‹
+    WIFI_FUNC_0056_FILTER_RESET4,		//	í•„í„°4 ë¦¬ì…‹
+    WIFI_FUNC_0057_CUP_SENSING_SENSITIVITY,		//	ì»µ ì„¼ì‹± ë¯¼ê°ë„ ì„¤ì •
+    WIFI_FUNC_0058_ICE_SIZE_SEL,				//	ì•„ì´ìŠ¤ ì‚¬ì´ì¦ˆ
+    WIFI_FUNC_0059_ICE_ONOFF_SEL,				//	ì–¼ìŒ On/Off
+    WIFI_FUNC_005A_UV_ICE_TANK_STATUS,			//	ì–¼ìŒ íƒ±í¬ ì‚´ê·  ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_005B_UV_ICE_TRAY_STATUS,			//	ì–¼ìŒ íŠ¸ë ˆì´ ì‚´ê·  ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_005C_SMART_CHECK_RESULT,			//	ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ ê²°ê³¼ ìƒíƒœ (â—‹)
+    WIFI_FUNC_005D_UV_ICE_FAUCET_STATUS,		//	ì–¼ìŒ íŒŒìš°ì…‹ ì‚´ê·  ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_005E_SLEEP_MODE_SEL,				//	ì·¨ì¹¨ëª¨ë“œ ì„¤ì •
+    WIFI_FUNC_005F_SLEEP_START_HOUR,			//	ì·¨ì¹¨ëª¨ë“œ ì‹œìž‘ ì‹œê°„
+    WIFI_FUNC_0060_SLEEP_START_MIN,				//	ì·¨ì¹¨ëª¨ë“œ ì‹œìž‘ ë¶„
+    WIFI_FUNC_0061_SLEEP_END_HOUR,				//	ì·¨ì¹¨ëª¨ë“œ ì¢…ë£Œ ì‹œê°„
+    WIFI_FUNC_0062_SLEEP_END_MIN,				//	ì·¨ì¹¨ëª¨ë“œ ì¢…ë£Œ ë¶„
+    WIFI_FUNC_0063_DEFAULT_QUANTITY_ML_SEL,		//	ê¸°ë³¸ ìš©ëŸ‰ ì„¤ì •
+    WIFI_FUNC_0064_STERILIZE_EXPECTED_TIME,		//	EW ì‚´ê·  ì†Œìš” ì˜ˆì • ì‹œê°„
+    WIFI_FUNC_0065_DEFAULT_TEMP_SEL,			//	ê¸°ë³¸ ì˜¨ìˆ˜ ì˜¨ë„ ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0066_DEFAULT_QUANTITY_SEL,		//	ê¸°ë³¸ ì¶”ì¶œ ë¬¼ëŸ‰ ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0067_WATER_QUANTITY_USE_SEL0,		//	4oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0068_WATER_QUANTITY_USE_SEL1,		//	6oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0069_WATER_QUANTITY_USE_SEL2, 	//	8oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_006A_WATER_QUANTITY_USE_SEL3, 	//	10oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_006B_WATER_QUANTITY_USE_SEL4, 	//	12oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_006C_WATER_QUANTITY_USE_SEL5, 	//	14oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_006D_WATER_QUANTITY_USE_SEL6, 	//	16oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_006E_WATER_QUANTITY_USE_SEL7, 	//	20oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_006F_WATER_QUANTITY_USE_SEL8, 	//	32oz ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0070_WATER_QUANTITY_USE_SEL9,		//	ì—°ì† ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0071_WATER_QUANTITY_USE_SEL10,	//	reserve2 ë¬¼ëŸ‰ ì‚¬ìš© ì„¤ì • ìƒíƒœ
+    WIFI_FUNC_0072_WATER_QUANTITY_SORT_SEL,		//	ë¬¼ëŸ‰ ì •ë ¬ ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0073_WATER_TEMP_SORT_SEL,			//	ì˜¨ìˆ˜ ì˜¨ë„ ì •ë ¬ ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0074_UNUSE_POWER_SAVING_SEL,		//	ë¯¸ì‚¬ìš© ì ˆì „ ì„¤ì •
+    WIFI_FUNC_0075_TEMP_UNIT_SEL,				//	ì˜¨ë„ ë‹¨ìœ„ í‘œì‹œ ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0076_WATER_QUANTITY_UNIT_SEL,		//	ì¶”ì¶œ ë¬¼ëŸ‰ ë‹¨ìœ„ í‘œì‹œ ì„¤ì • ìƒíƒœ (â—‹)
+    WIFI_FUNC_0077_HOT_TARGET_TEMP_TIME,        // 	ì˜¨ìˆ˜ ëª©í‘œ ì˜¨ë„ ë„ë‹¬ ì‹œê°„
+    WIFI_FUNC_0078_COLD_TARGET_TEMP_TIME,       // 	ëƒ‰ìˆ˜ ëª©í‘œ ì˜¨ë„ ë„ë‹¬ ì‹œê°„
+    WIFI_FUNC_0079_MIXED_WATER_AVE_TEMP,		//	í˜¼í•© ì¶”ì¶œ í‰ê·  ì˜¨ë„
+    WIFI_FUNC_007A_MIXED_WATER_MIN_TEMP,		//	í˜¼í•© ì¶”ì¶œ ìµœì†Œ ì˜¨ë„
+    WIFI_FUNC_007B_MIXED_WATER_MAX_TEMP,		//	í˜¼í•© ì¶”ì¶œ ìµœëŒ€ ì˜¨ë„
+    WIFI_FUNC_007C_COLDTANK_LOW_WATERLEVEL,		//	ëƒ‰ìˆ˜ íƒ±í¬ ì €ìˆ˜ìœ„ ìƒíƒœ
+    WIFI_FUNC_007D_COLDTANK_HIGH_WATERLEVEL,	//	ëƒ‰ìˆ˜ íƒ±í¬ ë§Œìˆ˜ìœ„ ìƒíƒœ
+    WIFI_FUNC_007E_HIGH_TEMP_STL_SEL,			//	ê³ ì˜¨ìˆ˜ ì‚´ê·  ì„¤ì •
+    // WIFI_FUNC_007F_HIGH_TEMP_STL_STATUS,		//	ê³ ì˜¨ìˆ˜ ì‚´ê·  ìƒíƒœ
+    WIFI_FUNC_007F_DEFAULT_TEMP_SET,            //  ê¸°ë³¸ì˜¨ìˆ˜ì˜¨ë„ì„¤ì •(ì˜¨ë„ê°’)
 
-    WIFI_FUNC_0080_HIGH_TEMP_STL_TIME,			//	°í¿Â¼ö »ì±Õ ¼³Á¤ ½Ã°£
-    WIFI_FUNC_0081_HIGH_TEMP_STL_TIME_M,		//	°í¿Â¼ö »ì±Õ ¼³Á¤ ½Ã°£ (ºÐ)
-    WIFI_FUNC_0082_UNUSE_POW_SAVING_STATUS,		//	¹Ì»ç¿ë ÀýÀü µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_0083_POWER_SAVING_STATUS,			//	ÀýÀü µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_0084_HOT_RESTARTING_TEMP,			//	¿Â¼ö Àç±âµ¿ ¿Âµµ
-    WIFI_FUNC_0085_HOT_STOP_TEMP,				//	¿Â¼ö Á¤Áö ¿Âµµ
-    WIFI_FUNC_0086_COLD_RESTARTING_TEMP,		//	³Ã¼ö Àç±âµ¿ ¿Âµµ
-    WIFI_FUNC_0087_COLD_STOP_TEMP,				//	³Ã¼ö Á¤Áö ¿Âµµ
-    WIFI_FUNC_0088_COLD_ADDITIONAL_TIME,    	//	³Ã¼ö ³Ã°¢ Ãß°¡ ½Ã°£
-    WIFI_FUNC_0089_BOOST_PUMP_STATUS,			//	ºÎ½ºÆ® ÆßÇÁ µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_008A_COLDTANK_UV_STL_STATUS,		//	³Ã¼ö ÅÊÅ© »ì±Õ µ¿ÀÛ »óÅÂ (UV)
-    WIFI_FUNC_008B_HEATER_STATUS,				//	È÷ÅÍ µ¿ÀÛ »óÅÂ (ÀúÅÁ½Ä)
-    WIFI_FUNC_008C_COMP_STATUS,					//	COMP µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_008D_FILTER_WATER_USAGE,			//	ÇÊÅÍ ¹° »ç¿ë·®
-    WIFI_FUNC_008E_FILTER_REMAINING_DAY,		//	ÇÊÅÍ ÀÜ¿© »ç¿ëÀÏ (½Ã°£)
-    WIFI_FUNC_008F_ICE_FULL_STATUS,				//	¸¸ºù °¨Áö »óÅÂ
+    WIFI_FUNC_0080_HIGH_TEMP_STL_TIME,			//	ê³ ì˜¨ìˆ˜ ì‚´ê·  ì„¤ì • ì‹œê°„
+    WIFI_FUNC_0081_HIGH_TEMP_STL_TIME_M,		//	ê³ ì˜¨ìˆ˜ ì‚´ê·  ì„¤ì • ì‹œê°„ (ë¶„)
+    WIFI_FUNC_0082_UNUSE_POW_SAVING_STATUS,		//	ë¯¸ì‚¬ìš© ì ˆì „ ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_0083_POWER_SAVING_STATUS,			//	ì ˆì „ ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_0084_HOT_RESTARTING_TEMP,			//	ì˜¨ìˆ˜ ìž¬ê¸°ë™ ì˜¨ë„
+    WIFI_FUNC_0085_HOT_STOP_TEMP,				//	ì˜¨ìˆ˜ ì •ì§€ ì˜¨ë„
+    WIFI_FUNC_0086_COLD_RESTARTING_TEMP,		//	ëƒ‰ìˆ˜ ìž¬ê¸°ë™ ì˜¨ë„
+    WIFI_FUNC_0087_COLD_STOP_TEMP,				//	ëƒ‰ìˆ˜ ì •ì§€ ì˜¨ë„
+    WIFI_FUNC_0088_COLD_ADDITIONAL_TIME,    	//	ëƒ‰ìˆ˜ ëƒ‰ê° ì¶”ê°€ ì‹œê°„
+    WIFI_FUNC_0089_BOOST_PUMP_STATUS,			//	ë¶€ìŠ¤íŠ¸ íŽŒí”„ ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_008A_COLDTANK_UV_STL_STATUS,		//	ëƒ‰ìˆ˜ íƒ±í¬ ì‚´ê·  ë™ìž‘ ìƒíƒœ (UV)
+    WIFI_FUNC_008B_HEATER_STATUS,				//	ížˆí„° ë™ìž‘ ìƒíƒœ (ì €íƒ•ì‹)
+    WIFI_FUNC_008C_COMP_STATUS,					//	COMP ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_008D_FILTER_WATER_USAGE,			//	í•„í„° ë¬¼ ì‚¬ìš©ëŸ‰
+    WIFI_FUNC_008E_FILTER_REMAINING_DAY,		//	í•„í„° ìž”ì—¬ ì‚¬ìš©ì¼ (ì‹œê°„)
+    WIFI_FUNC_008F_ICE_FULL_STATUS,				//	ë§Œë¹™ ê°ì§€ ìƒíƒœ
 
-    WIFI_FUNC_0090_ICE_TRAY_POSITION_STATUS,	//	¾óÀ½ Æ®·¹ÀÌ À§Ä¡ »óÅÂ
-    WIFI_FUNC_0091_REFRIGERANT_SWC_STATUS,		//	³Ã¸Å ÀüÈ¯ ¹ëºê »óÅÂ
-    WIFI_FUNC_0092_DEICING_STAUTS,				//	Å»ºù ¹ëºê »óÅÂ
-    WIFI_FUNC_0093_ICEMAKING_STAUTS,			//	Á¦ºù µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_0094_DUMMY_DEICING_STAUTS,		//	´õ¹Ì Å»ºù µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_0095_ICEMAKING_COMPLET_TIME,  	// 	Á¦ºù ¿Ï·á ½Ã°£
-    WIFI_FUNC_0096_DEICING_COMPLET_TIME,    	// 	Å»ºù ¿Ï·á ½Ã°£
-    WIFI_FUNC_0097_TARY_WATER_COMPLET_TIME, 	// 	Æ®·¹ÀÌ ÀÔ¼ö ¿Ï·á ½Ã°£
-    WIFI_FUNC_0098_TARY_WATER_QUANTITY,     	//	Æ®·¹ÀÌ ÀÔ¼ö À¯·®
-    WIFI_FUNC_0099_COMP_TARGET_RPS,				//	¾ÐÃà±â ¸ñÇ¥ RPS
-    WIFI_FUNC_009A_COMP_CURRENT_RPS,			//	¾ÐÃà±â ÇöÀç RPS
-    WIFI_FUNC_009B_DRAINTANK_LOW_WLEVEL,		//	µå·¹ÀÎ ÅÊÅ© Àú¼öÀ§ ¼¾¼­ »óÅÂ
-    WIFI_FUNC_009C_DRAINTANK_HIGH_WLEVEL,		//	µå·¹ÀÎ ÅÊÅ© ¸¸¼öÀ§ ¼¾¼­ »óÅÂ
-    WIFI_FUNC_009D_DRAINTANK_DRAIN_STAUTS,		//	µå·¹ÀÎ ¹è¼ö µ¿ÀÛ »óÅÂ
-    WIFI_FUNC_009E_COLD_EVA_TEMP,				//	Äð¸µ ÄÚÀÏ Áõ¹ß±â ¿Âµµ ¼¾¼­
-    WIFI_FUNC_009F_ICE_EVA_TEMP,				//	¾óÀ½ Áõ¹ß±â ¿Âµµ ¼¾¼­
+    WIFI_FUNC_0090_ICE_TRAY_POSITION_STATUS,	//	ì–¼ìŒ íŠ¸ë ˆì´ ìœ„ì¹˜ ìƒíƒœ
+    WIFI_FUNC_0091_REFRIGERANT_SWC_STATUS,		//	ëƒ‰ë§¤ ì „í™˜ ë°¸ë¸Œ ìƒíƒœ
+    WIFI_FUNC_0092_DEICING_STAUTS,				//	íƒˆë¹™ ë°¸ë¸Œ ìƒíƒœ
+    WIFI_FUNC_0093_ICEMAKING_STAUTS,			//	ì œë¹™ ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_0094_DUMMY_DEICING_STAUTS,		//	ë”ë¯¸ íƒˆë¹™ ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_0095_ICEMAKING_COMPLET_TIME,  	// 	ì œë¹™ ì™„ë£Œ ì‹œê°„
+    WIFI_FUNC_0096_DEICING_COMPLET_TIME,    	// 	íƒˆë¹™ ì™„ë£Œ ì‹œê°„
+    WIFI_FUNC_0097_TARY_WATER_COMPLET_TIME, 	// 	íŠ¸ë ˆì´ ìž…ìˆ˜ ì™„ë£Œ ì‹œê°„
+    WIFI_FUNC_0098_TARY_WATER_QUANTITY,     	//	íŠ¸ë ˆì´ ìž…ìˆ˜ ìœ ëŸ‰
+    WIFI_FUNC_0099_COMP_TARGET_RPS,				//	ì••ì¶•ê¸° ëª©í‘œ RPS
+    WIFI_FUNC_009A_COMP_CURRENT_RPS,			//	ì••ì¶•ê¸° í˜„ìž¬ RPS
+    WIFI_FUNC_009B_DRAINTANK_LOW_WLEVEL,		//	ë“œë ˆì¸ íƒ±í¬ ì €ìˆ˜ìœ„ ì„¼ì„œ ìƒíƒœ
+    WIFI_FUNC_009C_DRAINTANK_HIGH_WLEVEL,		//	ë“œë ˆì¸ íƒ±í¬ ë§Œìˆ˜ìœ„ ì„¼ì„œ ìƒíƒœ
+    WIFI_FUNC_009D_DRAINTANK_DRAIN_STAUTS,		//	ë“œë ˆì¸ ë°°ìˆ˜ ë™ìž‘ ìƒíƒœ
+    WIFI_FUNC_009E_COLD_EVA_TEMP,				//	ì¿¨ë§ ì½”ì¼ ì¦ë°œê¸° ì˜¨ë„ ì„¼ì„œ
+    WIFI_FUNC_009F_ICE_EVA_TEMP,				//	ì–¼ìŒ ì¦ë°œê¸° ì˜¨ë„ ì„¼ì„œ
 
-    WIFI_FUNC_00A0_COLD_TANK_TEMP,				//	³Ã¼ö ÅÊÅ© ¿Âµµ
-    WIFI_FUNC_00A1_HOT_TANK_TEMP,				//	¿Â¼ö ÅÊÅ© ¿Âµµ
-    WIFI_FUNC_00A2_CHILD_LOCK,					//	ÀüÃ¼ ¹öÆ° ÀÚµ¿ Àá±Ý (¡Û)
-    WIFI_FUNC_00A3_FLOWPATH_EMPTY,				//	À¯·Î ºñ¿ò ¼³Á¤
-    WIFI_FUNC_00A4_HOTTANK_LOW_W_LEVEL,			//	¿Â¼ö ÅÊÅ© Àú¼öÀ§ »óÅÂ
-    WIFI_FUNC_00A5_HOTTANK_HIGH_W_LEVEL,		//	¿Â¼ö ÅÊÅ© ¸¸¼öÀ§ »óÅÂ
-    WIFI_FUNC_00A6_PURETANK_LOW_W_LEVEL,		//	Á¤¼ö ÅÊÅ© Àú¼öÀ§ »óÅÂ
-    WIFI_FUNC_00A7_PURETANK_HIGH_W_LEVEL,		//	Á¤¼ö ÅÊÅ© ¸¸¼öÀ§ »óÅÂ
-	WIFI_FUNC_00A8_COLDTANK_MID_W_LEVEL,		//	³Ã¼ö ÅÊÅ© Áß¼öÀ§ »óÅÂ
-	WIFI_FUNC_00A9_UNUSED_TIME,					//	Á¦Ç° ¹Ì»ç¿ë ½Ã°£
-	WIFI_FUNC_00AA_SMART_SAVING_SET_TIME,		//	½º¸¶Æ® ÀýÀü ¹Ì»ç¿ë ¼³Á¤½Ã°£
-	WIFI_FUNC_00AB_SAMRT_SAVING_STATE,			//	½º¸¶Æ® ÀýÀü »óÅÂ
-	WIFI_FUNC_00AC_FILTER1_WATER_USAGE,			//	ÇÊÅÍ1 ´©Àû ¹° »ç¿ë·® (¡Û)
-	WIFI_FUNC_00AD_FILTER1_UASGE_DAY,			//	ÇÊÅÍ1 ÀÜ¿© »ç¿ë ½Ã°£ (¡Û)
-	WIFI_FUNC_00AE_FILTER2_WATER_USAGE,			//	ÇÊÅÍ2 ´©Àû ¹° »ç¿ë·®
-	WIFI_FUNC_00AF_FILTER2_UASGE_DAY,			//	ÇÊÅÍ2 ÀÜ¿© »ç¿ë ½Ã°£
-	WIFI_FUNC_00B0_FILTER3_WATER_USAGE,			//	ÇÊÅÍ3 ´©Àû ¹° »ç¿ë·®
-	WIFI_FUNC_00B1_FILTER3_UASGE_DAY,			//	ÇÊÅÍ3 ÀÜ¿© »ç¿ë ½Ã°£
-	WIFI_FUNC_00B2_FILTER_NOTICE1,				//	ÇÊÅÍ ±³Ã¼ ¾Ë¸² (¡Û)
-	WIFI_FUNC_00B3_FILTER_NOTICE2,				//	ÇÊÅÍ ±³Ã¼ ¾Ë¸² (¡Û)
-	WIFI_FUNC_00B4_FILTER_NOTICE3,				//	ÇÊÅÍ ±³Ã¼ ¾Ë¸² (¡Û)
-    WIFI_FUNC_00B5_FILTER_FLUSHING,             //  ÇÊÅÍ ÇÃ·¯½Ì »óÅÂ
-    WIFI_FUNC_00B6_VOICE_LANGUAGE,              //  À½¼º¾ð¾î¼³Á¤
-    WIFI_FUNC_00B7_FILTER_SEQ,                  //  ÇÊÅÍ±³Ã¼¼ø¼­
-    WIFI_FUNC_00B8_FILTER1_DDAY,                //  ÇÊÅÍ1 ±³Ã¼ µµ·¡ÀÏ
-    WIFI_FUNC_00B9_FILTER2_DDAY,                //  ÇÊÅÍ2 ±³Ã¼ µµ·¡ÀÏ
-    WIFI_FUNC_00BA_FILTER3_DDAY,                //  ÇÊÅÍ3 ±³Ã¼ µµ·¡ÀÏ
-    WIFI_FUNC_00BB_FLOWPATH_STL_STATUS,         //  À¯·Î °í¿Â¼ö »ì±Õ»óÅÂ
-    WIFI_FUNC_00BC_FAUCE_STL_STATUS,            //  ÆÄ¿ì¼Â °í¿Â¼ö »ì±Õ»óÅÂ
-    WIFI_FUNC_00BD_ICETANK_STL_STATUS,          //  ¾óÀ½ÅÊÅ© °í¿Â¼ö »ì±Õ»óÅÂ
-    WIFI_FUNC_00BE_QUANTITY_HALFCUP,            //  ¹ÝÄÅ ¿ë·®
-    WIFI_FUNC_00BF_QUANTITY_ONECUP,             //  ÇÑÄÅ ¿ë·®
+    WIFI_FUNC_00A0_COLD_TANK_TEMP,				//	ëƒ‰ìˆ˜ íƒ±í¬ ì˜¨ë„
+    WIFI_FUNC_00A1_HOT_TANK_TEMP,				//	ì˜¨ìˆ˜ íƒ±í¬ ì˜¨ë„
+    WIFI_FUNC_00A2_CHILD_LOCK,					//	ì „ì²´ ë²„íŠ¼ ìžë™ ìž ê¸ˆ (â—‹)
+    WIFI_FUNC_00A3_FLOWPATH_EMPTY,				//	ìœ ë¡œ ë¹„ì›€ ì„¤ì •
+    WIFI_FUNC_00A4_HOTTANK_LOW_W_LEVEL,			//	ì˜¨ìˆ˜ íƒ±í¬ ì €ìˆ˜ìœ„ ìƒíƒœ
+    WIFI_FUNC_00A5_HOTTANK_HIGH_W_LEVEL,		//	ì˜¨ìˆ˜ íƒ±í¬ ë§Œìˆ˜ìœ„ ìƒíƒœ
+    WIFI_FUNC_00A6_PURETANK_LOW_W_LEVEL,		//	ì •ìˆ˜ íƒ±í¬ ì €ìˆ˜ìœ„ ìƒíƒœ
+    WIFI_FUNC_00A7_PURETANK_HIGH_W_LEVEL,		//	ì •ìˆ˜ íƒ±í¬ ë§Œìˆ˜ìœ„ ìƒíƒœ
+	WIFI_FUNC_00A8_COLDTANK_MID_W_LEVEL,		//	ëƒ‰ìˆ˜ íƒ±í¬ ì¤‘ìˆ˜ìœ„ ìƒíƒœ
+	WIFI_FUNC_00A9_UNUSED_TIME,					//	ì œí’ˆ ë¯¸ì‚¬ìš© ì‹œê°„
+	WIFI_FUNC_00AA_SMART_SAVING_SET_TIME,		//	ìŠ¤ë§ˆíŠ¸ ì ˆì „ ë¯¸ì‚¬ìš© ì„¤ì •ì‹œê°„
+	WIFI_FUNC_00AB_SAMRT_SAVING_STATE,			//	ìŠ¤ë§ˆíŠ¸ ì ˆì „ ìƒíƒœ
+	WIFI_FUNC_00AC_FILTER1_WATER_USAGE,			//	í•„í„°1 ëˆ„ì  ë¬¼ ì‚¬ìš©ëŸ‰ (â—‹)
+	WIFI_FUNC_00AD_FILTER1_UASGE_DAY,			//	í•„í„°1 ìž”ì—¬ ì‚¬ìš© ì‹œê°„ (â—‹)
+	WIFI_FUNC_00AE_FILTER2_WATER_USAGE,			//	í•„í„°2 ëˆ„ì  ë¬¼ ì‚¬ìš©ëŸ‰
+	WIFI_FUNC_00AF_FILTER2_UASGE_DAY,			//	í•„í„°2 ìž”ì—¬ ì‚¬ìš© ì‹œê°„
+	WIFI_FUNC_00B0_FILTER3_WATER_USAGE,			//	í•„í„°3 ëˆ„ì  ë¬¼ ì‚¬ìš©ëŸ‰
+	WIFI_FUNC_00B1_FILTER3_UASGE_DAY,			//	í•„í„°3 ìž”ì—¬ ì‚¬ìš© ì‹œê°„
+	WIFI_FUNC_00B2_FILTER_NOTICE1,				//	í•„í„° êµì²´ ì•Œë¦¼ (â—‹)
+	WIFI_FUNC_00B3_FILTER_NOTICE2,				//	í•„í„° êµì²´ ì•Œë¦¼ (â—‹)
+	WIFI_FUNC_00B4_FILTER_NOTICE3,				//	í•„í„° êµì²´ ì•Œë¦¼ (â—‹)
+    WIFI_FUNC_00B5_FILTER_FLUSHING,             //  í•„í„° í”ŒëŸ¬ì‹± ìƒíƒœ
+    WIFI_FUNC_00B6_VOICE_LANGUAGE,              //  ìŒì„±ì–¸ì–´ì„¤ì •
+    WIFI_FUNC_00B7_FILTER_SEQ,                  //  í•„í„°êµì²´ìˆœì„œ
+    WIFI_FUNC_00B8_FILTER1_DDAY,                //  í•„í„°1 êµì²´ ë„ëž˜ì¼
+    WIFI_FUNC_00B9_FILTER2_DDAY,                //  í•„í„°2 êµì²´ ë„ëž˜ì¼
+    WIFI_FUNC_00BA_FILTER3_DDAY,                //  í•„í„°3 êµì²´ ë„ëž˜ì¼
+    WIFI_FUNC_00BB_FLOWPATH_STL_STATUS,         //  ìœ ë¡œ ê³ ì˜¨ìˆ˜ ì‚´ê· ìƒíƒœ
+    WIFI_FUNC_00BC_FAUCE_STL_STATUS,            //  íŒŒìš°ì…‹ ê³ ì˜¨ìˆ˜ ì‚´ê· ìƒíƒœ
+    WIFI_FUNC_00BD_ICETANK_STL_STATUS,          //  ì–¼ìŒíƒ±í¬ ê³ ì˜¨ìˆ˜ ì‚´ê· ìƒíƒœ
+    WIFI_FUNC_00BE_QUANTITY_HALFCUP,            //  ë°˜ì»µ ìš©ëŸ‰
+    WIFI_FUNC_00BF_QUANTITY_ONECUP,             //  í•œì»µ ìš©ëŸ‰
 
-    WIFI_FUNC_00C0_QUANTITY_TWOCUPS,            //  µÎÄÅ ¿ë·®
-    WIFI_FUNC_00C1_HOTTEMP_USE_SEL0,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 0 (45)
-    WIFI_FUNC_00C2_HOTTEMP_USE_SEL1,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 1 (50)
-    WIFI_FUNC_00C3_HOTTEMP_USE_SEL2,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 2 (55)
-    WIFI_FUNC_00C4_HOTTEMP_USE_SEL3,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 3 (60)
-    WIFI_FUNC_00C5_HOTTEMP_USE_SEL4,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 4 (65)
-    WIFI_FUNC_00C6_HOTTEMP_USE_SEL5,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 5 (70)
-    WIFI_FUNC_00C7_HOTTEMP_USE_SEL6,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 6 (75)
-    WIFI_FUNC_00C8_HOTTEMP_USE_SEL7,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 7 (80)
-    WIFI_FUNC_00C9_HOTTEMP_USE_SEL8,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 8 (85)
-    WIFI_FUNC_00CA_HOTTEMP_USE_SEL9,            //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 9 (100)
-    WIFI_FUNC_00CB_WATER_EXTRACT_STATUS,        //  ¹° ÃßÃâ»óÅÂ
-    WIFI_FUNC_00CC_ICE_EXTRACT_STATUS,          //  ¾óÀ½ ÃßÃâ»óÅÂ
-    WIFI_FUNC_00CD_SETUP_MODE_STATUS,           //  Á¦Ç° ¼³Á¤ »óÅÂ
+    WIFI_FUNC_00C0_QUANTITY_TWOCUPS,            //  ë‘ì»µ ìš©ëŸ‰
+    WIFI_FUNC_00C1_HOTTEMP_USE_SEL0,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 0 (45)
+    WIFI_FUNC_00C2_HOTTEMP_USE_SEL1,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 1 (50)
+    WIFI_FUNC_00C3_HOTTEMP_USE_SEL2,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 2 (55)
+    WIFI_FUNC_00C4_HOTTEMP_USE_SEL3,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 3 (60)
+    WIFI_FUNC_00C5_HOTTEMP_USE_SEL4,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 4 (65)
+    WIFI_FUNC_00C6_HOTTEMP_USE_SEL5,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 5 (70)
+    WIFI_FUNC_00C7_HOTTEMP_USE_SEL6,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 6 (75)
+    WIFI_FUNC_00C8_HOTTEMP_USE_SEL7,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 7 (80)
+    WIFI_FUNC_00C9_HOTTEMP_USE_SEL8,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 8 (85)
+    WIFI_FUNC_00CA_HOTTEMP_USE_SEL9,            //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 9 (100)
+    WIFI_FUNC_00CB_WATER_EXTRACT_STATUS,        //  ë¬¼ ì¶”ì¶œìƒíƒœ
+    WIFI_FUNC_00CC_ICE_EXTRACT_STATUS,          //  ì–¼ìŒ ì¶”ì¶œìƒíƒœ
+    WIFI_FUNC_00CD_SETUP_MODE_STATUS,           //  ì œí’ˆ ì„¤ì • ìƒíƒœ
 
-    WIFI_FUNC_00CE_HOTTEMP_USE_SEL10,           //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 10
-    WIFI_FUNC_00CF_HOTTEMP_USE_SEL11,           //  ¿Â¼ö¿Âµµ »ç¿ë ¼³Á¤ 11
+    WIFI_FUNC_00CE_HOTTEMP_USE_SEL10,           //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 10
+    WIFI_FUNC_00CF_HOTTEMP_USE_SEL11,           //  ì˜¨ìˆ˜ì˜¨ë„ ì‚¬ìš© ì„¤ì • 11
     
-    WIFI_FUNC_00D0_UV_ICE_TANK_STATUS2,			//	¾óÀ½ ÅÊÅ© »ì±Õ µ¿ÀÛ »óÅÂ2
-    WIFI_FUNC_00D1_ALTITUDE_AUTO,               //  °íµµ¸ðµå ÀÚµ¿ ¼³Á¤
-    WIFI_FUNC_00D2_ALARM_1_SET,                  //  ¾Ë¶÷½Ã°è 1 ¼³Á¤
-    WIFI_FUNC_00D3_ALARM_2_SET,                  //  ¾Ë¶÷½Ã°è 2 ¼³Á¤
-    WIFI_FUNC_00D4_ALARM_3_SET,                  //  ¾Ë¶÷½Ã°è 3 ¼³Á¤
-    WIFI_FUNC_00D5_ALARM_1_START_HOUR,           //  ¾Ë¶÷½Ã°è 1 ½ÃÀÛ½Ã°£ ½Ã ¼³Á¤
-    WIFI_FUNC_00D6_ALARM_2_START_HOUR,           //  ¾Ë¶÷½Ã°è 2 ½ÃÀÛ½Ã°£ ½Ã ¼³Á¤
-    WIFI_FUNC_00D7_ALARM_3_START_HOUR,           //  ¾Ë¶÷½Ã°è 3 ½ÃÀÛ½Ã°£ ½Ã ¼³Á¤
-    WIFI_FUNC_00D8_ALARM_1_START_MIN,            //  ¾Ë¶÷½Ã°è 1 ½ÃÀÛ½Ã°£ ºÐ ¼³Á¤
-    WIFI_FUNC_00D9_ALARM_2_START_MIN,            //  ¾Ë¶÷½Ã°è 2 ½ÃÀÛ½Ã°£ ºÐ ¼³Á¤
-    WIFI_FUNC_00DA_ALARM_3_START_MIN,            //  ¾Ë¶÷½Ã°è 3 ½ÃÀÛ½Ã°£ ºÐ ¼³Á¤
-    WIFI_FUNC_00DB_ALARM_1_SOUND,                //  ¾Ë¶÷½Ã°è 1 ¾Ë¶÷À½ ¼³Á¤
-    WIFI_FUNC_00DC_ALARM_2_SOUND,                //  ¾Ë¶÷½Ã°è 2 ¾Ë¶÷À½ ¼³Á¤
-    WIFI_FUNC_00DD_ALARM_3_SOUND,                //  ¾Ë¶÷½Ã°è 3 ¾Ë¶÷À½ ¼³Á¤
-    WIFI_FUNC_00DE_HOME_SCREEN_MODE,             //  ±âº»È¨ ¸ðµå ¼³Á¤ (¸ÞÀÎ / ·¹½ÃÇÇ / ¸¶ÀÌ¿öÅÍ)
-    WIFI_FUNC_00DF_STANBY_SCREEN,                //  ´ë±âÈ­¸é (³¯½Ã, ½Ã°£, »ç¿ëX)
+    WIFI_FUNC_00D0_UV_ICE_TANK_STATUS2,			//	ì–¼ìŒ íƒ±í¬ ì‚´ê·  ë™ìž‘ ìƒíƒœ2
+    WIFI_FUNC_00D1_ALTITUDE_AUTO,               //  ê³ ë„ëª¨ë“œ ìžë™ ì„¤ì •
+    WIFI_FUNC_00D2_ALARM_1_SET,                  //  ì•ŒëžŒì‹œê³„ 1 ì„¤ì •
+    WIFI_FUNC_00D3_ALARM_2_SET,                  //  ì•ŒëžŒì‹œê³„ 2 ì„¤ì •
+    WIFI_FUNC_00D4_ALARM_3_SET,                  //  ì•ŒëžŒì‹œê³„ 3 ì„¤ì •
+    WIFI_FUNC_00D5_ALARM_1_START_HOUR,           //  ì•ŒëžŒì‹œê³„ 1 ì‹œìž‘ì‹œê°„ ì‹œ ì„¤ì •
+    WIFI_FUNC_00D6_ALARM_2_START_HOUR,           //  ì•ŒëžŒì‹œê³„ 2 ì‹œìž‘ì‹œê°„ ì‹œ ì„¤ì •
+    WIFI_FUNC_00D7_ALARM_3_START_HOUR,           //  ì•ŒëžŒì‹œê³„ 3 ì‹œìž‘ì‹œê°„ ì‹œ ì„¤ì •
+    WIFI_FUNC_00D8_ALARM_1_START_MIN,            //  ì•ŒëžŒì‹œê³„ 1 ì‹œìž‘ì‹œê°„ ë¶„ ì„¤ì •
+    WIFI_FUNC_00D9_ALARM_2_START_MIN,            //  ì•ŒëžŒì‹œê³„ 2 ì‹œìž‘ì‹œê°„ ë¶„ ì„¤ì •
+    WIFI_FUNC_00DA_ALARM_3_START_MIN,            //  ì•ŒëžŒì‹œê³„ 3 ì‹œìž‘ì‹œê°„ ë¶„ ì„¤ì •
+    WIFI_FUNC_00DB_ALARM_1_SOUND,                //  ì•ŒëžŒì‹œê³„ 1 ì•ŒëžŒìŒ ì„¤ì •
+    WIFI_FUNC_00DC_ALARM_2_SOUND,                //  ì•ŒëžŒì‹œê³„ 2 ì•ŒëžŒìŒ ì„¤ì •
+    WIFI_FUNC_00DD_ALARM_3_SOUND,                //  ì•ŒëžŒì‹œê³„ 3 ì•ŒëžŒìŒ ì„¤ì •
+    WIFI_FUNC_00DE_HOME_SCREEN_MODE,             //  ê¸°ë³¸í™ˆ ëª¨ë“œ ì„¤ì • (ë©”ì¸ / ë ˆì‹œí”¼ / ë§ˆì´ì›Œí„°)
+    WIFI_FUNC_00DF_STANBY_SCREEN,                //  ëŒ€ê¸°í™”ë©´ (ë‚ ì‹œ, ì‹œê°„, ì‚¬ìš©X)
 
-    WIFI_FUNC_00E0_SCREEN_BRIGHTNESS,            //  ¹à±â ¼³Á¤
-    WIFI_FUNC_00E1_MYWATER_TEMP_1,               //  ¸¶ÀÌ¿öÅÍ1 ¿Âµµ
-    WIFI_FUNC_00E2_MYWATER_QUANTITY_1,           //  ¸¶ÀÌ¿öÅÍ1 ¿ë·®
-    WIFI_FUNC_00E3_MYWATER_RECIPE_1,             //  ¸¶ÀÌ¿öÅÍ1 ·¹½ÃÇÇ
-    WIFI_FUNC_00E4_MYWATER_TEMP_2,               //  ¸¶ÀÌ¿öÅÍ2 ¿Âµµ
-    WIFI_FUNC_00E5_MYWATER_QUANTITY_2,           //  ¸¶ÀÌ¿öÅÍ2 ¿ë·®
-    WIFI_FUNC_00E6_MYWATER_RECIPE_2,             //  ¸¶ÀÌ¿öÅÍ2 ·¹½ÃÇÇ
-    WIFI_FUNC_00E7_MYWATER_TEMP_3,               //  ¸¶ÀÌ¿öÅÍ3 ¿Âµµ
-    WIFI_FUNC_00E8_MYWATER_QUANTITY_3,           //  ¸¶ÀÌ¿öÅÍ3 ¿ë·®
-    WIFI_FUNC_00E9_MYWATER_RECIPE_3,             //  ¸¶ÀÌ¿öÅÍ3 ·¹½ÃÇÇ
-    WIFI_FUNC_00EA_MYWATER_TEMP_4,               //  ¸¶ÀÌ¿öÅÍ4 ¿Âµµ
-    WIFI_FUNC_00EB_MYWATER_QUANTITY_4,           //  ¸¶ÀÌ¿öÅÍ4 ¿ë·®
-    WIFI_FUNC_00EC_MYWATER_RECIPE_4,             //  ¸¶ÀÌ¿öÅÍ4 ·¹½ÃÇÇ
-    WIFI_FUNC_00ED_MYWATER_TEMP_5,               //  ¸¶ÀÌ¿öÅÍ5 ¿Âµµ
-    WIFI_FUNC_00EE_MYWATER_QUANTITY_5,           //  ¸¶ÀÌ¿öÅÍ5 ¿ë·®
-    WIFI_FUNC_00EF_MYWATER_RECIPE_5,             //  ¸¶ÀÌ¿öÅÍ5 ·¹½ÃÇÇ
+    WIFI_FUNC_00E0_SCREEN_BRIGHTNESS,            //  ë°ê¸° ì„¤ì •
+    WIFI_FUNC_00E1_MYWATER_TEMP_1,               //  ë§ˆì´ì›Œí„°1 ì˜¨ë„
+    WIFI_FUNC_00E2_MYWATER_QUANTITY_1,           //  ë§ˆì´ì›Œí„°1 ìš©ëŸ‰
+    WIFI_FUNC_00E3_MYWATER_RECIPE_1,             //  ë§ˆì´ì›Œí„°1 ë ˆì‹œí”¼
+    WIFI_FUNC_00E4_MYWATER_TEMP_2,               //  ë§ˆì´ì›Œí„°2 ì˜¨ë„
+    WIFI_FUNC_00E5_MYWATER_QUANTITY_2,           //  ë§ˆì´ì›Œí„°2 ìš©ëŸ‰
+    WIFI_FUNC_00E6_MYWATER_RECIPE_2,             //  ë§ˆì´ì›Œí„°2 ë ˆì‹œí”¼
+    WIFI_FUNC_00E7_MYWATER_TEMP_3,               //  ë§ˆì´ì›Œí„°3 ì˜¨ë„
+    WIFI_FUNC_00E8_MYWATER_QUANTITY_3,           //  ë§ˆì´ì›Œí„°3 ìš©ëŸ‰
+    WIFI_FUNC_00E9_MYWATER_RECIPE_3,             //  ë§ˆì´ì›Œí„°3 ë ˆì‹œí”¼
+    WIFI_FUNC_00EA_MYWATER_TEMP_4,               //  ë§ˆì´ì›Œí„°4 ì˜¨ë„
+    WIFI_FUNC_00EB_MYWATER_QUANTITY_4,           //  ë§ˆì´ì›Œí„°4 ìš©ëŸ‰
+    WIFI_FUNC_00EC_MYWATER_RECIPE_4,             //  ë§ˆì´ì›Œí„°4 ë ˆì‹œí”¼
+    WIFI_FUNC_00ED_MYWATER_TEMP_5,               //  ë§ˆì´ì›Œí„°5 ì˜¨ë„
+    WIFI_FUNC_00EE_MYWATER_QUANTITY_5,           //  ë§ˆì´ì›Œí„°5 ìš©ëŸ‰
+    WIFI_FUNC_00EF_MYWATER_RECIPE_5,             //  ë§ˆì´ì›Œí„°5 ë ˆì‹œí”¼
 
-    WIFI_FUNC_00F0_MYWATER_TEMP_6,               //  ¸¶ÀÌ¿öÅÍ6 ¿Âµµ
-    WIFI_FUNC_00F1_MYWATER_QUANTITY_6,           //  ¸¶ÀÌ¿öÅÍ6 ¿ë·®
-    WIFI_FUNC_00F2_MYWATER_RECIPE_6,             //  ¸¶ÀÌ¿öÅÍ6 ·¹½ÃÇÇ
-    WIFI_FUNC_00F3_MYWATER_TEMP_7,               //  ¸¶ÀÌ¿öÅÍ7 ¿Âµµ
-    WIFI_FUNC_00F4_MYWATER_QUANTITY_7,           //  ¸¶ÀÌ¿öÅÍ7 ¿ë·®
-    WIFI_FUNC_00F5_MYWATER_RECIPE_7,             //  ¸¶ÀÌ¿öÅÍ7 ·¹½ÃÇÇ
-    WIFI_FUNC_00F6_MYWATER_TEMP_8,               //  ¸¶ÀÌ¿öÅÍ8 ¿Âµµ
-    WIFI_FUNC_00F7_MYWATER_QUANTITY_8,           //  ¸¶ÀÌ¿öÅÍ8 ¿ë·®
-    WIFI_FUNC_00F8_MYWATER_RECIPE_8,             //  ¸¶ÀÌ¿öÅÍ8 ·¹½ÃÇÇ
-    WIFI_FUNC_00F9_MYWATER_TEMP_9,               //  ¸¶ÀÌ¿öÅÍ9 ¿Âµµ
-    WIFI_FUNC_00FA_MYWATER_QUANTITY_9,           //  ¸¶ÀÌ¿öÅÍ9 ¿ë·®
-    WIFI_FUNC_00FB_MYWATER_RECIPE_9,             //  ¸¶ÀÌ¿öÅÍ9 ·¹½ÃÇÇ
-    WIFI_FUNC_00FC_MYWATER_TEMP_10,               //  ¸¶ÀÌ¿öÅÍ10 ¿Âµµ
-    WIFI_FUNC_00FD_MYWATER_QUANTITY_10,           //  ¸¶ÀÌ¿öÅÍ10 ¿ë·®
-    WIFI_FUNC_00FE_MYWATER_RECIPE_10,             //  ¸¶ÀÌ¿öÅÍ10 ·¹½ÃÇÇ
+    WIFI_FUNC_00F0_MYWATER_TEMP_6,               //  ë§ˆì´ì›Œí„°6 ì˜¨ë„
+    WIFI_FUNC_00F1_MYWATER_QUANTITY_6,           //  ë§ˆì´ì›Œí„°6 ìš©ëŸ‰
+    WIFI_FUNC_00F2_MYWATER_RECIPE_6,             //  ë§ˆì´ì›Œí„°6 ë ˆì‹œí”¼
+    WIFI_FUNC_00F3_MYWATER_TEMP_7,               //  ë§ˆì´ì›Œí„°7 ì˜¨ë„
+    WIFI_FUNC_00F4_MYWATER_QUANTITY_7,           //  ë§ˆì´ì›Œí„°7 ìš©ëŸ‰
+    WIFI_FUNC_00F5_MYWATER_RECIPE_7,             //  ë§ˆì´ì›Œí„°7 ë ˆì‹œí”¼
+    WIFI_FUNC_00F6_MYWATER_TEMP_8,               //  ë§ˆì´ì›Œí„°8 ì˜¨ë„
+    WIFI_FUNC_00F7_MYWATER_QUANTITY_8,           //  ë§ˆì´ì›Œí„°8 ìš©ëŸ‰
+    WIFI_FUNC_00F8_MYWATER_RECIPE_8,             //  ë§ˆì´ì›Œí„°8 ë ˆì‹œí”¼
+    WIFI_FUNC_00F9_MYWATER_TEMP_9,               //  ë§ˆì´ì›Œí„°9 ì˜¨ë„
+    WIFI_FUNC_00FA_MYWATER_QUANTITY_9,           //  ë§ˆì´ì›Œí„°9 ìš©ëŸ‰
+    WIFI_FUNC_00FB_MYWATER_RECIPE_9,             //  ë§ˆì´ì›Œí„°9 ë ˆì‹œí”¼
+    WIFI_FUNC_00FC_MYWATER_TEMP_10,               //  ë§ˆì´ì›Œí„°10 ì˜¨ë„
+    WIFI_FUNC_00FD_MYWATER_QUANTITY_10,           //  ë§ˆì´ì›Œí„°10 ìš©ëŸ‰
+    WIFI_FUNC_00FE_MYWATER_RECIPE_10,             //  ë§ˆì´ì›Œí„°10 ë ˆì‹œí”¼
 
     WIFI_FUNC_NUM_1
 
@@ -289,30 +289,30 @@ typedef enum
 
 typedef enum
 {
-    WIFI_FUNC_00FF_CLEANING_STATUS = WIFI_FUNC_NUM_1,              //  ±¸¿¬»ê ¼¼Á¤»óÅÂ 
+    WIFI_FUNC_00FF_CLEANING_STATUS = WIFI_FUNC_NUM_1,              //  êµ¬ì—°ì‚° ì„¸ì •ìƒíƒœ 
     
-    WIFI_FUNC_0100_CLEANING_SW_STATUS,              //  ±¸¿¬»ê ¸®µå ½ºÀ§Ä¡ ÀåÂø »óÅÂ
-    WIFI_FUNC_0101_STERILIZE_REMAINING_DAY,         //  »ì±Õ½ÃÀÛ ÀÜ¿©ÀÏ
-    WIFI_FUNC_0102_SCREEN_SAVER,                    //  ½ºÅ©¸°¼¼ÀÌ¹ö ¼³Á¤ ON/OFF
-    WIFI_FUNC_0103_SCREEN_SAVER_START,              //  ½ºÅ©¸°¼¼ÀÌ¹ö ½ÃÀÛ ½Ã°£ (½Ã)
-    WIFI_FUNC_0104_SCREEN_SAVER_END,                //  ½ºÅ©¸°¼¼ÀÌ¹ö Á¾·á ½Ã°£ (½Ã)
-    WIFI_FUNC_0105_MAIN_THEME,                      //  ¸ÞÀÎÈ­¸é Å×¸¶ 0 Å¬·¡½Ä / 1 ³×ÀÌÃ³
-    WIFI_FUNC_0106_ADJUSTMENT_THEME,                //  ¹Ì¼¼Á¶Àý Å×¸¶ 0 ¿øÇü / 1 ¹öÆ°Çü
-    WIFI_FUNC_0107_MYWATER_ENABLE_1,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_0108_MYWATER_ENABLE_2,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_0109_MYWATER_ENABLE_3,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_010A_MYWATER_ENABLE_4,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_010B_MYWATER_ENABLE_5,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_010C_MYWATER_ENABLE_6,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_010D_MYWATER_ENABLE_7,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_010E_MYWATER_ENABLE_8,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_010F_MYWATER_ENABLE_9,                //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
-    WIFI_FUNC_0110_MYWATER_ENABLE_10,               //  MYWATER »ç¿ë¿©ºÎ 0(¹Ì»ç¿ë) / 1(»ç¿ë)
+    WIFI_FUNC_0100_CLEANING_SW_STATUS,              //  êµ¬ì—°ì‚° ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ ìž¥ì°© ìƒíƒœ
+    WIFI_FUNC_0101_STERILIZE_REMAINING_DAY,         //  ì‚´ê· ì‹œìž‘ ìž”ì—¬ì¼
+    WIFI_FUNC_0102_SCREEN_SAVER,                    //  ìŠ¤í¬ë¦°ì„¸ì´ë²„ ì„¤ì • ON/OFF
+    WIFI_FUNC_0103_SCREEN_SAVER_START,              //  ìŠ¤í¬ë¦°ì„¸ì´ë²„ ì‹œìž‘ ì‹œê°„ (ì‹œ)
+    WIFI_FUNC_0104_SCREEN_SAVER_END,                //  ìŠ¤í¬ë¦°ì„¸ì´ë²„ ì¢…ë£Œ ì‹œê°„ (ì‹œ)
+    WIFI_FUNC_0105_MAIN_THEME,                      //  ë©”ì¸í™”ë©´ í…Œë§ˆ 0 í´ëž˜ì‹ / 1 ë„¤ì´ì²˜
+    WIFI_FUNC_0106_ADJUSTMENT_THEME,                //  ë¯¸ì„¸ì¡°ì ˆ í…Œë§ˆ 0 ì›í˜• / 1 ë²„íŠ¼í˜•
+    WIFI_FUNC_0107_MYWATER_ENABLE_1,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_0108_MYWATER_ENABLE_2,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_0109_MYWATER_ENABLE_3,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_010A_MYWATER_ENABLE_4,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_010B_MYWATER_ENABLE_5,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_010C_MYWATER_ENABLE_6,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_010D_MYWATER_ENABLE_7,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_010E_MYWATER_ENABLE_8,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_010F_MYWATER_ENABLE_9,                //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
+    WIFI_FUNC_0110_MYWATER_ENABLE_10,               //  MYWATER ì‚¬ìš©ì—¬ë¶€ 0(ë¯¸ì‚¬ìš©) / 1(ì‚¬ìš©)
 
-    WIFI_FUNC_0111_WATER_COURSE_UASGE_DAY,          //  À¯·á¸ðµâ ÀÜ¿©»ç¿ëÀÏ (12°³¿ù)
+    WIFI_FUNC_0111_WATER_COURSE_UASGE_DAY,          //  ìœ ë£Œëª¨ë“ˆ ìž”ì—¬ì‚¬ìš©ì¼ (12ê°œì›”)
 
-    WIFI_FUNC_011E_HOT_TEMP_MIN_COUNT = 0x011E,            //  ¿Â¼ö¿Âµµ ÃÖ¼Ò ¼±ÅÃ °¹¼ö(1°³)
-    WIFI_FUNC_0120_HOT_TEMP_MAX_COUNT = 0x0120,            //  ¿Â¼ö¿Âµµ ÃÖ´ë ¼±ÅÃ °¹¼ö(5°³)
+    WIFI_FUNC_011E_HOT_TEMP_MIN_COUNT = 0x011E,            //  ì˜¨ìˆ˜ì˜¨ë„ ìµœì†Œ ì„ íƒ ê°¯ìˆ˜(1ê°œ)
+    WIFI_FUNC_0120_HOT_TEMP_MAX_COUNT = 0x0120,            //  ì˜¨ìˆ˜ì˜¨ë„ ìµœëŒ€ ì„ íƒ ê°¯ìˆ˜(5ê°œ)
 
     WIFI_FUNC_0126_FAUCET_EXPOSURE_LEVEL = 0x0126,
 
@@ -333,9 +333,9 @@ typedef enum
     WIFI_FUNC_013B_START_WATER_QUANTITY_SEL_9,
     WIFI_FUNC_013C_START_WATER_QUANTITY_SEL_10,
 
-    WIFI_FUNC_0140_FAUCET_UP_REED_SW = 0x0140,                  //  ÆÄ¿ì¼Â »ó½Â ¸®µå½ºÀ§Ä¡       
-    WIFI_FUNC_0141_FAUCET_DOWN_REED_SW = 0x0141,                //  ÆÄ¿ì¼Â ÇÏ°­ ¸®µå½ºÀ§Ä¡
-    WIFI_FUNC_0142_FAUCET_CUP_DETECTION_MICRO_SW = 0x0142,      //  ÆÄ¿ì¼Â ÄÅ°¨Áö ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡
+    WIFI_FUNC_0140_FAUCET_UP_REED_SW = 0x0140,                  //  íŒŒìš°ì…‹ ìƒìŠ¹ ë¦¬ë“œìŠ¤ìœ„ì¹˜       
+    WIFI_FUNC_0141_FAUCET_DOWN_REED_SW = 0x0141,                //  íŒŒìš°ì…‹ í•˜ê°• ë¦¬ë“œìŠ¤ìœ„ì¹˜
+    WIFI_FUNC_0142_FAUCET_CUP_DETECTION_MICRO_SW = 0x0142,      //  íŒŒìš°ì…‹ ì»µê°ì§€ ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜
 
     WIFI_FUNC_NUM_2
 

@@ -7,7 +7,7 @@
 #define ClrIORBit(Reg, ClrBitMap)		\
 		((Reg) &= ~(ClrBitMap))			\
 
-/*	bit set Á¤ÀÇ	*/
+/*	bit set ì •ì˜	*/
 #define SetIORBit(Reg, SetBitMap)		\
 		((Reg) |= (SetBitMap))			\
 
@@ -51,7 +51,7 @@
 
 #define TDEC(a) if (a != 0) a--;
 
-/*	TH ¿Âµµµ¥ÀÌÅÍ	[1/10¡É]	*/
+/*	TH ì˜¨ë„ë°ì´í„°	[1/10â„ƒ]	*/
 #define Z_TEMP_Minus10	(-100)
 #define Z_TEMP_Minus9	(-90)
 #define Z_TEMP_Minus8	(-80)

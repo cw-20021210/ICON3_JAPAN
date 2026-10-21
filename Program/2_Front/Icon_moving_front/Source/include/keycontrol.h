@@ -1,7 +1,7 @@
 /// @file   keycontrol.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Å° ÀÔ·Â Ã³¸® °ü·Ã Çì´õ file
+/// @brief  í‚¤ ì…ë ¥ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef KEYCONTROL_C
 	#define 	EXTERN
@@ -13,25 +13,25 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_KEYCONTROL()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_KEYCONTROL()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu8_TimerEffluentKey);	\
 									TDEC(gu8_TimerKeyProhibit);	\
 								}
-#define	TDEC_10ms_KEYCONTROL()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_KEYCONTROL()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerKeyDecide);	\
 								}
-#define	TDEC_100ms_KEYCONTROL()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_KEYCONTROL()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerKeyOnBreak);	\
 								}
-#define	TDEC_1s_KEYCONTROL()	{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_KEYCONTROL()	{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_KEYCONTROL()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10s_KEYCONTROL()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1min_KEYCONTROL()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_KEYCONTROL()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_KEYCONTROL()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_KEYCONTROL()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_KEYCONTROL()	{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_KEYCONTROL()	{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -44,9 +44,9 @@
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
- EXTERN U8 gu8_KeyControlStep;						//	Key Á¦¾î ½ºÅÜ
+ EXTERN U8 gu8_KeyControlStep;						//	Key ì œì–´ ìŠ¤í…
 
-EXTERN WORD_BIT gu16_ShortKeyArray;					//	´ÜÅ° È®Á¤
+EXTERN WORD_BIT gu16_ShortKeyArray;					//	ë‹¨í‚¤ í™•ì •
 	#define KEY_HOTWATER_SHORT			(gu16_ShortKeyArray.BIT.b0)
 	#define KEY_COLDWATER_SHORT			(gu16_ShortKeyArray.BIT.b1)
 	#define KEY_PUREWATER_SHORT			(gu16_ShortKeyArray.BIT.b2)
@@ -62,7 +62,7 @@ EXTERN WORD_BIT gu16_ShortKeyArray;					//	´ÜÅ° È®Á¤
 //	#define KEY_ALTITUDE_MODE_SHORT		(gu16_ShortKeyArray.BIT.b13)
 //	#define KEY_HOTTANK_CLEAR_SHORT		(gu16_ShortKeyArray.BIT.b14)
 
-//EXTERN WORD_BIT gu16_LongKeyArray;					//	·ÕÅ° È®Á¤
+//EXTERN WORD_BIT gu16_LongKeyArray;					//	ë¡±í‚¤ í™•ì •
 //	#define KEY_HOTWATER_LONG			(gu16_LongKeyArray.BIT.b0)
 //	#define KEY_COLDWATER_LONG			(gu16_LongKeyArray.BIT.b1)
 //	#define KEY_PUREWATER_LONG			(gu16_LongKeyArray.BIT.b2)
@@ -79,7 +79,7 @@ EXTERN WORD_BIT gu16_ShortKeyArray;					//	´ÜÅ° È®Á¤
 //	#define KEY_ALTITUDE_MODE_LONG		(gu16_LongKeyArray.BIT.b13)
 //	#define KEY_HOTTANK_CLEAR_LONG		(gu16_LongKeyArray.BIT.b14)
 //
-//EXTERN WORD_BIT gu16_VeryLongKeyArray;				//	º£¸®·ÕÅ° È®Á¤
+//EXTERN WORD_BIT gu16_VeryLongKeyArray;				//	ë² ë¦¬ë¡±í‚¤ í™•ì •
 ////	#define KEY_HOTWATER_VERYLONG			(gu16_VeryLongKeyArray.BIT.b0)
 ////	#define KEY_COLDWATER_VERYLONG			(gu16_VeryLongKeyArray.BIT.b1)
 ////	#define KEY_PUREWATER_VERYLONG			(gu16_VeryLongKeyArray.BIT.b2)
@@ -96,7 +96,7 @@ EXTERN WORD_BIT gu16_ShortKeyArray;					//	´ÜÅ° È®Á¤
 ////	#define KEY_ALTITUDE_MODE_VERYLONG		(gu16_VeryLongKeyArray.BIT.b13)
 ////	#define KEY_HOTTANK_CLEAR_VERYLONG		(gu16_VeryLongKeyArray.BIT.b14)
 //
-//EXTERN WORD_BIT gu16_FCTLongKeyArray;				//	Å×½ºÆ®¸ğµå ·ÕÅ° È®Á¤
+//EXTERN WORD_BIT gu16_FCTLongKeyArray;				//	í…ŒìŠ¤íŠ¸ëª¨ë“œ ë¡±í‚¤ í™•ì •
 ////	#define KEY_HOTWATER_FCTLONG			(gu16_FCTLongKeyArray.BIT.b0)
 ////	#define KEY_COLDWATER_FCTLONG			(gu16_FCTLongKeyArray.BIT.b1)
 ////	#define KEY_PUREWATER_FCTLONG			(gu16_FCTLongKeyArray.BIT.b2)
@@ -112,12 +112,12 @@ EXTERN WORD_BIT gu16_ShortKeyArray;					//	´ÜÅ° È®Á¤
 ////	#define KEY_ERROR_HIS_CLEAR_FCTLONG		(gu16_FCTLongKeyArray.BIT.b12)
 ////	#define KEY_ALTITUDE_MODE_FCTLONG		(gu16_FCTLongKeyArray.BIT.b13)
 ////	#define KEY_HOTTANK_CLEAR_FCTLONG		(gu16_FCTLongKeyArray.BIT.b14)
-EXTERN U16 gu16_TimerKeyDecide;						//	Å° È®Á¤ Å¸ÀÌ¸Ó
-EXTERN U8 gu8_TimerKeyProhibit;						//	Å° ÀÔ·Â ±İÁö Å¸ÀÌ¸Ó
+EXTERN U16 gu16_TimerKeyDecide;						//	í‚¤ í™•ì • íƒ€ì´ë¨¸
+EXTERN U8 gu8_TimerKeyProhibit;						//	í‚¤ ì…ë ¥ ê¸ˆì§€ íƒ€ì´ë¨¸
 //EXTERN U8 gu8_EffluentKey_OnBreak;
-EXTERN U8 gu8_TimerKeyOnBreak;						//	Å° ¿Â°íÀå È®Á¤ Å¸ÀÌ¸Ó
-EXTERN U8 F_VeryLongKey_Rejection;					//	Long key°¡ ActiveÇÏ°í Very Long key°¡ ÇÑ¹ø ´õ µ¿ÀÛµÇ´Â °ÍÀ» ¹æÁöÇÏ´Â ÇÃ·¡±×
-EXTERN U8 F_ShortKeyProhibit;						//	´ÜÅ° Áßº¹
+EXTERN U8 gu8_TimerKeyOnBreak;						//	í‚¤ ì˜¨ê³ ì¥ í™•ì • íƒ€ì´ë¨¸
+EXTERN U8 F_VeryLongKey_Rejection;					//	Long keyê°€ Activeí•˜ê³  Very Long keyê°€ í•œë²ˆ ë” ë™ì‘ë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ëŠ” í”Œë˜ê·¸
+EXTERN U8 F_ShortKeyProhibit;						//	ë‹¨í‚¤ ì¤‘ë³µ
 EXTERN U8 gu8_TimerEffluentKey;						//	<?ms/1ms>
 
 /*==============================================================================

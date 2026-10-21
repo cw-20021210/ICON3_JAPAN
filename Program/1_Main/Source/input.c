@@ -1,14 +1,14 @@
 /// @file     input.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ÀÔ·Â Ã³¸® file
+/// @brief    ìž…ë ¥ ì²˜ë¦¬ file
 #define INPUT_C
 #include "include/_include.h"
 
-static void Check_Faucet_Detect_Undetect_Detect(void);  // ?ŒŒ?š°?…‹ ê°ì?? -> ë¯¸ê°ì§? -> ê°ì?? ?Œ¨?„´ ì²´í¬
+static void Check_Faucet_Detect_Undetect_Detect(void);  // ?ë™†?ìŠ¦?ë€‘ åª›ë¨¯?? -> èª˜ë©¸ì»§ï§ž? -> åª›ë¨¯?? ?ë™£?ê½© ï§£ëŒ„ê²•
 static void Check_MicroSW_LongDetection(void);
 
-/// @brief    µðÁöÅÐ ÀÔ·Â ÃÊ±âÈ­
+/// @brief    ë””ì§€í„¸ ìž…ë ¥ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Input_Initialize(void)
@@ -18,25 +18,25 @@ void Input_Initialize(void)
 	gu8_Timer_FaucetTip_Reed_Detected = 20;
 	gu8_F_FaucetTip_Reed_Detected = CLEAR;
 	
-	// ÆÄ¿ì¼Â °¨Áö »óÅÂ ÃßÀû º¯¼ö ÃÊ±âÈ­
+	// íŒŒìš°ì…‹ ê°ì§€ ìƒíƒœ ì¶”ì  ë³€ìˆ˜ ì´ˆê¸°í™”
 	gu8_F_Faucet_Detected_Before = CLEAR;
 	gu8_F_Faucet_Was_Undetected = CLEAR;
 
-	// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ 10ºÐ Áö¼Ó °¨Áö ÃÊ±âÈ­
-	gu16_Timer_MicroSW_LongDetection = Z_TIMER_MICROSW_LONG_DETECTION;       // 10ºÐ (10ms * 60000 = 600ÃÊ)
+	// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ 10ë¶„ ì§€ì† ê°ì§€ ì´ˆê¸°í™”
+	gu16_Timer_MicroSW_LongDetection = Z_TIMER_MICROSW_LONG_DETECTION;       // 10ë¶„ (10ms * 60000 = 600ì´ˆ)
 	gu8_F_MicroSW_LongDetection_1h = CLEAR;
-	gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;          // 2ÃÊ (10ms * 200 = 2ÃÊ)	
+	gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;          // 2ì´ˆ (10ms * 200 = 2ì´ˆ)	
 }
 
-/// @brief    µðÁöÅÐ ÀÔ·Â Á¦¾î
+/// @brief    ë””ì§€í„¸ ìž…ë ¥ ì œì–´
 /// @param    void
 /// @return   void
 void InputControl(void)
 {
 	BYTE_BIT mu8_inputdata;
-	static U8 mu8_Prev_MicroSW_State = CLEAR;		// ÀÌÀü ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ »óÅÂ ÀúÀå // @001
+	static U8 mu8_Prev_MicroSW_State = CLEAR;		// ì´ì „ ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ìƒíƒœ ì €ìž¥ // @001
 
-	if (F_10ms_for_InputDigital ==  SET)			//	10ms ÁÖ±â
+	if (F_10ms_for_InputDigital ==  SET)			//	10ms ì£¼ê¸°
 	{
 		F_10ms_for_InputDigital = CLEAR;
 
@@ -47,7 +47,7 @@ void InputControl(void)
 		mu8_inputdata.Bit.b5 = !P_REED_SW_FAUCET_UP;
 		mu8_inputdata.Bit.b6 = !P_REED_SW_FAUCET_DOWN;		
 
-		ThreeMatchModule(&gu8_DigitalInput, mu8_inputdata.byte);	//	µðÁöÅÐ ÀÔ·Â 3È¸ ÀÏÄ¡ ¸ðµâ
+		ThreeMatchModule(&gu8_DigitalInput, mu8_inputdata.byte);	//	ë””ì§€í„¸ ìž…ë ¥ 3íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 
 		
 		if(gu8_F_Test_Input_ForcedControl == 1)
@@ -58,8 +58,8 @@ void InputControl(void)
 		}
 	}
 	
-	//	ÆÄ¿ì¼Â ³»·¯¿ÍÀÖÀ¸¸é, ÆÄ¿ì¼Â °£¼·À¸·Î ÇÊÅÍÄ¿¹ö ¾È¿­¸®±â¶§¹®¿¡ ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ ÀÔ·ÂÀ¸·Î °­Á¦ »ó½Â Á¦¾î Ãß°¡
-	//	auto °¡ ¾Æ´Ñ°æ¿ì¿¡¸¸ ¿Ã¸®±â À§ÇØ µ¿ÀÛ.
+	//	íŒŒìš°ì…‹ ë‚´ëŸ¬ì™€ìžˆìœ¼ë©´, íŒŒìš°ì…‹ ê°„ì„­ìœ¼ë¡œ í•„í„°ì»¤ë²„ ì•ˆì—´ë¦¬ê¸°ë•Œë¬¸ì— ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ìž…ë ¥ìœ¼ë¡œ ê°•ì œ ìƒìŠ¹ ì œì–´ ì¶”ê°€
+	//	auto ê°€ ì•„ë‹Œê²½ìš°ì—ë§Œ ì˜¬ë¦¬ê¸° ìœ„í•´ ë™ìž‘.
 	if(gu8_FaucetMoving_Set_Level >= Z_FAUCET_MOVING_FIX_2_LEVEL)
 	{
 		#if 0 // @001
@@ -84,15 +84,15 @@ void InputControl(void)
 		#endif
 		if(INPUT_MICRO_SW_FAUCET == CLEAR)						// @001
 		{														// @001
-			// ¹Ì°¨Áö »óÅÂ¿¡¼­´Â Å¸ÀÌ¸Ó ¸®¼Â ¹× ÇÃ·¡±× ÃÊ±âÈ­		// @001
-			gu8_Timer_InputMicroSW_ForcedFaucetUp = 30;		// 3ÃÊ = 30 * 100ms	// @001
+			// ë¯¸ê°ì§€ ìƒíƒœì—ì„œëŠ” íƒ€ì´ë¨¸ ë¦¬ì…‹ ë° í”Œëž˜ê·¸ ì´ˆê¸°í™”		// @001
+			gu8_Timer_InputMicroSW_ForcedFaucetUp = 30;		// 3ì´ˆ = 30 * 100ms	// @001
 			gu8_F_InputMicroSW_ForcedFaucetUp = CLEAR;			// @001
 			mu8_Prev_MicroSW_State = CLEAR;						// @001
 			gu8_F_FirstInputMicroSW_ForcedFaucetUp = CLEAR;		// @001
 		}														// @001
 		else													// @001
 		{														// @001									
-			// °¨Áö »óÅÂ¿¡¼­ Å¸ÀÌ¸Ó °æ°ú ÈÄ ÇÃ·¡±× ¼³Á¤			// @001
+			// ê°ì§€ ìƒíƒœì—ì„œ íƒ€ì´ë¨¸ ê²½ê³¼ í›„ í”Œëž˜ê·¸ ì„¤ì •			// @001
 			if((gu8_Timer_InputMicroSW_ForcedFaucetUp == 0)			// @001
 			&& (gu8_F_FirstInputMicroSW_ForcedFaucetUp == CLEAR))
 			{													// @001
@@ -105,63 +105,63 @@ void InputControl(void)
 		}	
 	}
 
-	// ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö Ã¼Å© (1ÃÊ µô·¹ÀÌ)
+	// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ì²´í¬ (1ì´ˆ ë”œë ˆì´)
 	if(INPUT_REED_SW_FAUCET == CLEAR)
 	{
-		// Å¸ÀÌ¸Ó °æ°ú ÈÄ ¹Ì°¨Áö·Î ÆÇ´Ü
+		// íƒ€ì´ë¨¸ ê²½ê³¼ í›„ ë¯¸ê°ì§€ë¡œ íŒë‹¨
 		if(gu8_Timer_FaucetTip_Reed_Undetected == 0)
 		{
-			// ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö ÇÃ·¡±× ¼³Á¤
+			// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ í”Œëž˜ê·¸ ì„¤ì •
 			gu8_F_FaucetTip_Reed_Undetected = SET;
 		}
-		// ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö »óÅÂ¿¡¼­´Â °¨Áö Å¸ÀÌ¸Ó ¸®¼Â
+		// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ìƒíƒœì—ì„œëŠ” ê°ì§€ íƒ€ì´ë¨¸ ë¦¬ì…‹
 		gu8_Timer_FaucetTip_Reed_Detected = 20;
 		gu8_F_FaucetTip_Reed_Detected = CLEAR;
 	}
 	else
 	{
-		// ÆÁ ¸®µå½ºÀ§Ä¡°¡ °¨ÁöµÇ¸é ¹Ì°¨Áö Å¸ÀÌ¸Ó¿Í ÇÃ·¡±× ¸®¼Â
+		// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ê°€ ê°ì§€ë˜ë©´ ë¯¸ê°ì§€ íƒ€ì´ë¨¸ì™€ í”Œëž˜ê·¸ ë¦¬ì…‹
 		gu8_Timer_FaucetTip_Reed_Undetected = 20;
 		gu8_F_FaucetTip_Reed_Undetected = CLEAR;
 		
-		// Å¸ÀÌ¸Ó °æ°ú ÈÄ °¨Áö·Î ÆÇ´Ü
+		// íƒ€ì´ë¨¸ ê²½ê³¼ í›„ ê°ì§€ë¡œ íŒë‹¨
 		if(gu8_Timer_FaucetTip_Reed_Detected == 0)
 		{
-			// ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ÇÃ·¡±× ¼³Á¤
+			// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í”Œëž˜ê·¸ ì„¤ì •
 			gu8_F_FaucetTip_Reed_Detected = SET;
 			gu8_F_FaucetTip_Undetected_Voice_Done = CLEAR;   //@022
-			gu8_F_FaucetTip_Undetected_Display_Done = CLEAR; // @022 µð½ºÇÃ·¹ÀÌ 1È¸ ÇÃ·¡±× ¸®¼Â
+			gu8_F_FaucetTip_Undetected_Display_Done = CLEAR; // @022 ë””ìŠ¤í”Œë ˆì´ 1íšŒ í”Œëž˜ê·¸ ë¦¬ì…‹
 		}
 	}
 	
-	// ÆÄ¿ì¼Â °¨Áö -> ¹Ì°¨Áö -> °¨Áö ÆÐÅÏ Ã¼Å©
+	// íŒŒìš°ì…‹ ê°ì§€ -> ë¯¸ê°ì§€ -> ê°ì§€ íŒ¨í„´ ì²´í¬
 	Check_Faucet_Detect_Undetect_Detect();
 
 	Check_MicroSW_LongDetection();	
 }
 
-/// @brief    ±âÁ¾ È®Á¤
+/// @brief    ê¸°ì¢… í™•ì •
 /// @param    void
 /// @return   void
 void Model_Decide(void)
 {
-	gu8_ModelType_forNational = MODEL_KOREA;		//	±¹³»ÇâÀ¸·Î...
+	gu8_ModelType_forNational = MODEL_KOREA;		//	êµ­ë‚´í–¥ìœ¼ë¡œ...
 
 
-	if (gu8_ModelType_forNational == MODEL_JAPAN)	//	ÀÏº»Çâ
+	if (gu8_ModelType_forNational == MODEL_JAPAN)	//	ì¼ë³¸í–¥
 	{
-		gu16_HeaterFull_WATT = HEATER_FULL_WATT_JP;		//	È÷ÅÍ ÃÖ´ëÃâ·Â WATT ÃÊ±âÄ¡ ÀúÀå
+		gu16_HeaterFull_WATT = HEATER_FULL_WATT_JP;		//	ížˆí„° ìµœëŒ€ì¶œë ¥ WATT ì´ˆê¸°ì¹˜ ì €ìž¥
 		gu16_HeaterRELAY_WATT = HEATER_RELAY_WATT_JP;
 
 		gu16_FlowMeter_Standard = Z_FlowMeter_Standard_JP;
 		gu16_FlowMeter_Standard_forHotWater = Z_FlowMeter_Standard_forHotWater_JP;
-		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard_JP);	//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard_JP);	//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 
 		F_HotLock = SET;
 	}
-	else											//	±¹³»Çâ
+	else											//	êµ­ë‚´í–¥
 	{
-		gu16_HeaterFull_WATT = HEATER_FULL_WATT_KOR;	//	È÷ÅÍ ÃÖ´ëÃâ·Â WATT ÃÊ±âÄ¡ ÀúÀå
+		gu16_HeaterFull_WATT = HEATER_FULL_WATT_KOR;	//	ížˆí„° ìµœëŒ€ì¶œë ¥ WATT ì´ˆê¸°ì¹˜ ì €ìž¥
 		gu16_HeaterRELAY_WATT = HEATER_RELAY_WATT_KOR;
 
 		gu16_FlowMeter_Standard = Z_FlowMeter_Standard_KOR;
@@ -172,11 +172,11 @@ void Model_Decide(void)
 		gu16_FlowMeter_Standard_forHotWater = Z_FlowMeter_Standard_forHotWater_KOR;
 	//	gu16_FlowMeter_Standard_forHotWater_forJapan = Z_FlowMeter_Standard_forHotWater_forJapan;
 #endif
-		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard_KOR);	//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard_KOR);	//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 	}
 }
 
-/// @brief    3È¸ ÀÏÄ¡ ¸ðµâ
+/// @brief    3íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 /// @param    void
 /// @return   void
 void ThreeMatchModule(ITTI3* p, U8 data)
@@ -191,7 +191,7 @@ void ThreeMatchModule(ITTI3* p, U8 data)
 }
 
 
-/// @brief    1È¸ ÀÏÄ¡ ¸ðµâ
+/// @brief    1íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 /// @param    void
 /// @return   void
 void OneMatchModule(ITTI1* p, U8 data)
@@ -204,7 +204,7 @@ void OneMatchModule(ITTI1* p, U8 data)
 }
 
 
-/// @brief    CP/CHP ÆÇ´Ü
+/// @brief    CP/CHP íŒë‹¨
 /// @param    void
 /// @return   void
 void CP_CHP_Decide(void)
@@ -221,20 +221,20 @@ void CP_CHP_Decide(void)
 	F_ModelDecide_Complete = SET;
 }
 
-/// @brief    ÆÄ¿ì¼Â °¨Áö -> ¹Ì°¨Áö -> °¨Áö ÆÐÅÏ Ã¼Å© ¹× ¸®¼Â µ¥ÀÌÅÍ ¼³Á¤
+/// @brief    íŒŒìš°ì…‹ ê°ì§€ -> ë¯¸ê°ì§€ -> ê°ì§€ íŒ¨í„´ ì²´í¬ ë° ë¦¬ì…‹ ë°ì´í„° ì„¤ì •
 /// @param    void
 /// @return   void
-/// @detail   ÆÄ¿ì¼ÂÀÌ °¨Áö -> ¹Ì°¨Áö -> ´Ù½Ã °¨ÁöµÇ´Â ÆÐÅÏÀ» °¨ÁöÇÏ¿©
-///           ÆÄ¿ì¼Â ¸®¼Â µ¥ÀÌÅÍ¸¦ ¼­¹ö¿¡ ¿Ã¸®µµ·Ï ÇÃ·¡±× ¼³Á¤
+/// @detail   íŒŒìš°ì…‹ì´ ê°ì§€ -> ë¯¸ê°ì§€ -> ë‹¤ì‹œ ê°ì§€ë˜ëŠ” íŒ¨í„´ì„ ê°ì§€í•˜ì—¬
+///           íŒŒìš°ì…‹ ë¦¬ì…‹ ë°ì´í„°ë¥¼ ì„œë²„ì— ì˜¬ë¦¬ë„ë¡ í”Œëž˜ê·¸ ì„¤ì •
 static void Check_Faucet_Detect_Undetect_Detect(void)
 {
-	// ÇöÀç ÆÄ¿ì¼Â °¨Áö »óÅÂ
+	// í˜„ìž¬ íŒŒìš°ì…‹ ê°ì§€ ìƒíƒœ
 	if(INPUT_REED_SW_FAUCET == SET)
 	{
-		// °¨Áö »óÅÂ: ÀÌÀü¿¡ ¹Ì°¨Áö »óÅÂ¸¦ °ÅÃÆ´Ù°¡ ´Ù½Ã °¨ÁöµÈ °æ¿ì
+		// ê°ì§€ ìƒíƒœ: ì´ì „ì— ë¯¸ê°ì§€ ìƒíƒœë¥¼ ê±°ì³¤ë‹¤ê°€ ë‹¤ì‹œ ê°ì§€ëœ ê²½ìš°
 		if((gu8_F_Faucet_Detected_Before == CLEAR) && (gu8_F_Faucet_Was_Undetected == SET))
 		{
-			// Wi-Fi ¿¬°á »óÅÂ È®ÀÎ ÈÄ ¸®¼Â µ¥ÀÌÅÍ ¼³Á¤
+			// Wi-Fi ì—°ê²° ìƒíƒœ í™•ì¸ í›„ ë¦¬ì…‹ ë°ì´í„° ì„¤ì •
 			F_Faucet_Reset = SET;
 			gu8_F_Faucet_Was_Undetected = CLEAR;
 			gu16_DayCount_forFaucet = CLEAR;   // @028
@@ -245,7 +245,7 @@ static void Check_Faucet_Detect_Undetect_Detect(void)
 	}
 	else
 	{
-		// ¹Ì°¨Áö »óÅÂ: ÀÌÀü¿¡ °¨Áö »óÅÂ¿´´Ù°¡ ¹Ì°¨Áö·Î º¯°æµÈ °æ¿ì
+		// ë¯¸ê°ì§€ ìƒíƒœ: ì´ì „ì— ê°ì§€ ìƒíƒœì˜€ë‹¤ê°€ ë¯¸ê°ì§€ë¡œ ë³€ê²½ëœ ê²½ìš°
 		if(gu8_F_Faucet_Detected_Before == SET)
 		{
 			gu8_F_Faucet_Was_Undetected = SET;
@@ -255,51 +255,51 @@ static void Check_Faucet_Detect_Undetect_Detect(void)
 }
 
 
-/// @brief    ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ 10ºÐ Áö¼Ó °¨Áö Ã¼Å©
+/// @brief    ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ 10ë¶„ ì§€ì† ê°ì§€ ì²´í¬
 /// @param    void
 /// @return   void
-/// @details  ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡°¡ 10ºÐ ÀÌ»ó Áö¼Ó °¨ÁöµÇ¸é ÇÃ·¡±× SET
-///           2ÃÊ ¿¬¼Ó ÇØÁ¦ °¨ÁöµÇ¸é ÇÃ·¡±× CLEAR
+/// @details  ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ê°€ 10ë¶„ ì´ìƒ ì§€ì† ê°ì§€ë˜ë©´ í”Œëž˜ê·¸ SET
+///           2ì´ˆ ì—°ì† í•´ì œ ê°ì§€ë˜ë©´ í”Œëž˜ê·¸ CLEAR
 static void Check_MicroSW_LongDetection(void)
 {
 	if(INPUT_MICRO_SW_FAUCET == SET)
 	{
-		// === 10ºÐ Áö¼Ó °¨Áö ·ÎÁ÷ ===
-		// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡°¡ °è¼Ó °¨ÁöµÇ°í ÀÖÀ¸¸é Å¸ÀÌ¸Ó °¨¼Ò (input.hÀÇ TDEC_10ms_INPUT ¸ÅÅ©·Î¿¡¼­ ÀÚµ¿ Ã³¸®)
-		if(gu16_Timer_MicroSW_LongDetection == 0)  // Å¸ÀÌ¸Ó ¿Ï·á (10ºÐ °æ°ú)
+		// === 10ë¶„ ì§€ì† ê°ì§€ ë¡œì§ ===
+		// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ê°€ ê³„ì† ê°ì§€ë˜ê³  ìžˆìœ¼ë©´ íƒ€ì´ë¨¸ ê°ì†Œ (input.hì˜ TDEC_10ms_INPUT ë§¤í¬ë¡œì—ì„œ ìžë™ ì²˜ë¦¬)
+		if(gu16_Timer_MicroSW_LongDetection == 0)  // íƒ€ì´ë¨¸ ì™„ë£Œ (10ë¶„ ê²½ê³¼)
 		{
 			if(gu8_F_MicroSW_LongDetection_1h == CLEAR)
 			{
-				gu8_F_MicroSW_LongDetection_1h = SET;  // 10ºÐ Áö¼Ó °¨Áö ÇÃ·¡±× ¼³Á¤
+				gu8_F_MicroSW_LongDetection_1h = SET;  // 10ë¶„ ì§€ì† ê°ì§€ í”Œëž˜ê·¸ ì„¤ì •
 				
-				// TODO: ¿©±â¼­ ÇÊ¿äÇÑ µ¿ÀÛ ¼öÇà (À½¼º Ãâ·Â, ¿¡·¯ ¼³Á¤ µî)
-				// ¿¹: Play_Voice(VOICE_XXX);
+				// TODO: ì—¬ê¸°ì„œ í•„ìš”í•œ ë™ìž‘ ìˆ˜í–‰ (ìŒì„± ì¶œë ¥, ì—ëŸ¬ ì„¤ì • ë“±)
+				// ì˜ˆ: Play_Voice(VOICE_XXX);
 			}
 		}
 		
-		// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡°¡ °¨ÁöµÇ¸é ÇØÁ¦ Å¸ÀÌ¸Ó ¸®¼Â
-		gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;  // 2ÃÊ ¸®¼Â
+		// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ê°€ ê°ì§€ë˜ë©´ í•´ì œ íƒ€ì´ë¨¸ ë¦¬ì…‹
+		gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;  // 2ì´ˆ ë¦¬ì…‹
 	}
-	else  // ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ ¹Ì°¨Áö
+	else  // ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€
 	{
-		// === 10ºÐ Áö¼Ó °¨Áö ÇÃ·¡±×°¡ SET »óÅÂÀÏ ¶§¸¸ ÇØÁ¦ ·ÎÁ÷ µ¿ÀÛ ===
+		// === 10ë¶„ ì§€ì† ê°ì§€ í”Œëž˜ê·¸ê°€ SET ìƒíƒœì¼ ë•Œë§Œ í•´ì œ ë¡œì§ ë™ìž‘ ===
 		if(gu8_F_MicroSW_LongDetection_1h == SET)
 		{
-			// 2ÃÊ ¿¬¼Ó ¹Ì°¨Áö È®ÀÎ (Å¸ÀÌ¸Ó´Â input.hÀÇ TDEC_10ms_INPUT ¸ÅÅ©·Î¿¡¼­ ÀÚµ¿ °¨¼Ò)
+			// 2ì´ˆ ì—°ì† ë¯¸ê°ì§€ í™•ì¸ (íƒ€ì´ë¨¸ëŠ” input.hì˜ TDEC_10ms_INPUT ë§¤í¬ë¡œì—ì„œ ìžë™ ê°ì†Œ)
 			if(gu8_Timer_MicroSW_Release_Check == 0)
 			{
-				// 2ÃÊ ¿¬¼Ó ¹Ì°¨Áö È®ÀÎµÇ¸é ÇÃ·¡±×¿Í Å¸ÀÌ¸Ó ¸ðµÎ ¸®¼Â
+				// 2ì´ˆ ì—°ì† ë¯¸ê°ì§€ í™•ì¸ë˜ë©´ í”Œëž˜ê·¸ì™€ íƒ€ì´ë¨¸ ëª¨ë‘ ë¦¬ì…‹
 				gu8_F_MicroSW_LongDetection_1h = CLEAR;
-				gu16_Timer_MicroSW_LongDetection = Z_TIMER_MICROSW_LONG_DETECTION;  // 10ºÐ Å¸ÀÌ¸Ó ¸®¼Â
-				gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;     // 2ÃÊ Å¸ÀÌ¸Ó ¸®¼Â
+				gu16_Timer_MicroSW_LongDetection = Z_TIMER_MICROSW_LONG_DETECTION;  // 10ë¶„ íƒ€ì´ë¨¸ ë¦¬ì…‹
+				gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;     // 2ì´ˆ íƒ€ì´ë¨¸ ë¦¬ì…‹
 				
 			}
-			// else: ¾ÆÁ÷ 2ÃÊ ¾ÈµÊ, Å¸ÀÌ¸Ó °è¼Ó °¨¼Ò (¸ÅÅ©·Î¿¡¼­ ÀÚµ¿ Ã³¸®)
+			// else: ì•„ì§ 2ì´ˆ ì•ˆë¨, íƒ€ì´ë¨¸ ê³„ì† ê°ì†Œ (ë§¤í¬ë¡œì—ì„œ ìžë™ ì²˜ë¦¬)
 		}
-		else  // ÇÃ·¡±×°¡ CLEAR »óÅÂ¸é 10ºÐ Å¸ÀÌ¸Ó¸¸ ¸®¼Â
+		else  // í”Œëž˜ê·¸ê°€ CLEAR ìƒíƒœë©´ 10ë¶„ íƒ€ì´ë¨¸ë§Œ ë¦¬ì…‹
 		{
-			gu16_Timer_MicroSW_LongDetection = Z_TIMER_MICROSW_LONG_DETECTION;      // 10ºÐ ¸®¼Â
-			gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;         // 2ÃÊ ¸®¼Â
+			gu16_Timer_MicroSW_LongDetection = Z_TIMER_MICROSW_LONG_DETECTION;      // 10ë¶„ ë¦¬ì…‹
+			gu8_Timer_MicroSW_Release_Check = Z_TIMER_MICROSW_RELEASE_CHECK;         // 2ì´ˆ ë¦¬ì…‹
 		}
 	}
 }

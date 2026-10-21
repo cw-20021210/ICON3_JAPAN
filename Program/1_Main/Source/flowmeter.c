@@ -1,11 +1,11 @@
 /// @file     watermeter.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    À¯·®¼¾¼­ µ¿ÀÛ Á¦¾î file
+/// @brief    ìœ ëŸ‰ì„¼ì„œ ë™ì‘ ì œì–´ file
 #define FLOWMETER_C
 #include "include/_include.h"
 
-#define TIMER_INPUT_COUNT_MINIMUM		(20)		//	Å¸ÀÌ¸Ó Ä«¿îÆ® ÃÖ¼ÒÄ¡
+#define TIMER_INPUT_COUNT_MINIMUM		(20)		//	íƒ€ì´ë¨¸ ì¹´ìš´íŠ¸ ìµœì†Œì¹˜
 
 #define Z_Timer_FlowSafety				(40)		//	<400ms/10ms>
 
@@ -17,27 +17,27 @@ typedef struct
 
 #ifdef _DPP_FLOWMETER_
 #define FlowMeter_NumMax	(1)
-/*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
+/*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
 FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 {
 	{156, 	Z_FlowMeter_Standard_KOR},
 };
 #else
 //#define FlowMeter_NumMax	(2)
-///*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
+///*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
 //FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 //{
 //	{30, 	(Z_FlowMeter_Standard+Z_FlowMeter_Revise)},
 //	{46, 	Z_FlowMeter_Standard},
 //};
 //#define FlowMeter_NumMax	(5)
-///*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
+///*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
 //FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 //{
 //#ifdef _FOR_JAPAN_90DEGREE_CONTINUE
 //	{6, 	Z_FlowMeter_Standard_forHotWater_forJapan},	//
 //#else
-//	{10, 	Z_FlowMeter_Standard_forHotWater_forJapan},	// Å×ÀÌºí ÀüÃ¼ µğ¹ö±ë
+//	{10, 	Z_FlowMeter_Standard_forHotWater_forJapan},	// í…Œì´ë¸” ì „ì²´ ë””ë²„ê¹…
 //#endif
 //	{22, 	Z_FlowMeter_Standard_forHotWater},		//
 //	{46, 	Z_FlowMeter_Standard},					//
@@ -47,7 +47,7 @@ FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 //#endif
 
 #define FlowMeter_NumMax	(5)
-// /*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
+// /*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
 FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 {
 	{29, 	(2381+Z_FlowMeter_Revise)},								//  0.4lpm = 28.7hz -> lpm/hz/60s			//0.3lpm = 18hz -> 2777
@@ -56,7 +56,7 @@ FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 	{77, 	(2165+Z_FlowMeter_Revise)},								//	1.0lpm = 77.3hz -> lpm/hz/60s			//1.0lpm = 60hz			//1 = 90 
 	{117, 	(2137+Z_FlowMeter_Revise)},								//	1.5LPM = 117.3hz -> lpm/hz/60s			//1.4lpm = 84hz
 };
-/*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
+/*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
 // FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 // {
 // 	{24, 	(2066+Z_FlowMeter_Revise)},				//	0.3lpm
@@ -66,7 +66,7 @@ FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 // 	{110, 	(1817+Z_FlowMeter_Revise)},				//	1.2lpm
 // 	{129, 	(1806+Z_FlowMeter_Revise)},				//	1.4lpm	
 // };
-// /*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
+// /*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
 // FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 // {
 // 	{10, 	(3300+Z_FlowMeter_Revise)},				//  0.4lpm = 22hz -> 0.4/22/60s			//
@@ -80,8 +80,8 @@ FlowMeter_Table FlowMeter_Hz_Table[FlowMeter_NumMax] =
 #endif
 
 #define FlowMeter_NumMax_Japan	(9)
-/*	À¯·®¼¾¼­ µ¥ÀÌÅÍ½ÃÆ® »ó Hzº° Á¤¼ö°ª ÁöÁ¤ (Hz±¸°£º° °è»ê½Ä »óÀÌ)	*/
-FlowMeter_Table FlowMeter_Hz_Table_Japan[FlowMeter_NumMax_Japan] =	// ÀúÀ¯·®¼¾¼­ Àû¿ë ½Ã ¼³°è ÇÊ¿ä
+/*	ìœ ëŸ‰ì„¼ì„œ ë°ì´í„°ì‹œíŠ¸ ìƒ Hzë³„ ì •ìˆ˜ê°’ ì§€ì • (Hzêµ¬ê°„ë³„ ê³„ì‚°ì‹ ìƒì´)	*/
+FlowMeter_Table FlowMeter_Hz_Table_Japan[FlowMeter_NumMax_Japan] =	// ì €ìœ ëŸ‰ì„¼ì„œ ì ìš© ì‹œ ì„¤ê³„ í•„ìš”
 {
 	{10, 	(2500+Z_FlowMeter_Revise_JP)},
 	{22, 	(Z_FlowMeter_Standard_forHotWater_JP+Z_FlowMeter_Revise_JP)},
@@ -96,15 +96,15 @@ FlowMeter_Table FlowMeter_Hz_Table_Japan[FlowMeter_NumMax_Japan] =	// ÀúÀ¯·®¼¾¼­
 	{118, 	(1977+Z_FlowMeter_Revise_JP)},
 };
 
-/// @brief    À¯·®¼¾¼­ Ã³¸® ÃÊ±âÈ­
+/// @brief    ìœ ëŸ‰ì„¼ì„œ ì²˜ë¦¬ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void FlowMeter_Initialize(void)
 {
 	gu8_Timer_FlowSafety = Z_Timer_FlowSafety;		//
 
-	gu16_Effluent_Hz = 0;                			// 	Á¤·® ÃßÃâµ¿ÀÛ Hz(ÃßÃâµ¿ÀÛ½Ã Flow Meter¸¦ ÅëÇØ Hz Ã¼Å©)
-	gu16_TimerEffluent = 0;              			// 	¿¬¼Ó ÃßÃâ½Ã ¿¬¼Ó ÃßÃâ ½Ã°£ Timer
+	gu16_Effluent_Hz = 0;                			// 	ì •ëŸ‰ ì¶”ì¶œë™ì‘ Hz(ì¶”ì¶œë™ì‘ì‹œ Flow Meterë¥¼ í†µí•´ Hz ì²´í¬)
+	gu16_TimerEffluent = 0;              			// 	ì—°ì† ì¶”ì¶œì‹œ ì—°ì† ì¶”ì¶œ ì‹œê°„ Timer
 
 //	gu8_FlowMeter_NumMax = FlowMeter_NumMax;
 	if (gu8_ModelType_forNational == MODEL_KOREA)
@@ -126,13 +126,13 @@ void FlowMeter_Initialize(void)
 //		gu16_FlowMeter_Standard_forHotWater = Z_FlowMeter_Standard_forHotWater;
 //	//	gu16_FlowMeter_Standard_forHotWater_forJapan = Z_FlowMeter_Standard_forHotWater_forJapan;
 //#endif
-//		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard);	//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+//		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard);	//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 //	}
 //	else
 //	{
 //		gu16_FlowMeter_Standard = Z_FlowMeter_Standard_Japan;
 //		gu16_FlowMeter_Standard_forHotWater = Z_FlowMeter_Standard_forHotWater_Japan;
-//		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard_Japan);	//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+//		gu16_Spec_FlowMeter = (U16)((U32)166666 / Z_FlowMeter_Standard_Japan);	//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 //	}
 }
 
@@ -142,7 +142,7 @@ void FlowMeter_Initialize(void)
 void FlowMeter_INT(void)
 {
 //	EI();
-	F_FlowCheck = SET;								//	ÀÎÅÍ·´Æ® ¹ß»ı ÈÄ FlowCheck ÇÊ¿ä È®Á¤
+	F_FlowCheck = SET;								//	ì¸í„°ëŸ½íŠ¸ ë°œìƒ í›„ FlowCheck í•„ìš” í™•ì •
 
 #ifdef _FOR_HEATER_ENDURANCE_TEST_
 		if (F_Heater_Endurance_Test == SET)
@@ -152,15 +152,15 @@ void FlowMeter_INT(void)
 #endif
 
 
-	if (gu8_OperationStep == Z_OperationStep_02)	//	ÇÃ·¯½Ì ´ë±â¡êÇÃ·¯½Ì ÁßÀ» ¿Ô´Ù°¬´ÙÇÏ¸é 02 ½ºÅÜ¿¡¼­ ÀÜ¿© ÃßÃâ·®‹š¹®¿¡ Hz°¡ ºüÁö´Â °æ¿ì°¡ ÀÖ¾î¼­ Á¦¿Ü Ã³¸®
+	if (gu8_OperationStep == Z_OperationStep_02)	//	í”ŒëŸ¬ì‹± ëŒ€ê¸°â†”í”ŒëŸ¬ì‹± ì¤‘ì„ ì™”ë‹¤ê°”ë‹¤í•˜ë©´ 02 ìŠ¤í…ì—ì„œ ì”ì—¬ ì¶”ì¶œëŸ‰ë–„ë¬¸ì— Hzê°€ ë¹ ì§€ëŠ” ê²½ìš°ê°€ ìˆì–´ì„œ ì œì™¸ ì²˜ë¦¬
 	{
 
 	}
-	else if (gu8_OperationStep == Z_OperationStep_03)	//	ÇÃ·¯½Ì Áú¼Ò ÆÛÁö¸¦ À§ÇØ º°µµ Ã³¸®ÇÔ
+	else if (gu8_OperationStep == Z_OperationStep_03)	//	í”ŒëŸ¬ì‹± ì§ˆì†Œ í¼ì§€ë¥¼ ìœ„í•´ ë³„ë„ ì²˜ë¦¬í•¨
 	{
 		if (F_First_Set == CLEAR)
 		{
-			if ((gu8_TimerFirstFlushing_AirPurge != 0) && (F_FirstFlushing_AirPurge == CLEAR))	//	ÃÊ±â ¼³Ä¡ ÇÃ·¯½Ì ½Ã, ³»ºÎ ÀÜ¿© Áú¼Ò·Î ÀÎÇØ ¼ö¾ĞÀÌ ¹Ğ¾î³»¸é¼­ À¯·®¼¾¼­°¡ ºü¸£°Ô Èê·¯ 20%°¡ ±×³É PassµÇ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÔ
+			if ((gu8_TimerFirstFlushing_AirPurge != 0) && (F_FirstFlushing_AirPurge == CLEAR))	//	ì´ˆê¸° ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì‹œ, ë‚´ë¶€ ì”ì—¬ ì§ˆì†Œë¡œ ì¸í•´ ìˆ˜ì••ì´ ë°€ì–´ë‚´ë©´ì„œ ìœ ëŸ‰ì„¼ì„œê°€ ë¹ ë¥´ê²Œ í˜ëŸ¬ 20%ê°€ ê·¸ëƒ¥ Passë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•¨
 			{
 
 			}
@@ -188,7 +188,7 @@ void FlowMeter_INT(void)
 #endif
 	}
 
-	if (gu8_OperationStep_hi == 0x50)				//	ÃßÃâ ÁßÀÎ °æ¿ì
+	if (gu8_OperationStep_hi == 0x50)				//	ì¶”ì¶œ ì¤‘ì¸ ê²½ìš°
 	{
 //		gu16_Effluent_Hz_Amount++;
 		#if 0
@@ -204,7 +204,7 @@ void FlowMeter_INT(void)
 	gu16_FlowMeterTCR_Now = (U16)P_FLOWMETER_TDR;				//
 }
 
-/// @brief    À¯·®°è»ê
+/// @brief    ìœ ëŸ‰ê³„ì‚°
 /// @param    void
 /// @return   void
 void FlowMeter_Decide(void)
@@ -234,26 +234,26 @@ void FlowMeter_Decide(void)
 	}
 	else
 #endif
-	// ¡Ø Timer´Â ÇÁ¸®½ºÄÉÀÏ ÁÖÆÄ¼ö°¡ 125kHz·Î½á  65536Ä«¿îÅÍ°¡ ¾à 524msÀÓ (ÃÖ´ëÄ¡) ÃÖ¼ÒÄ¡´Â 8ns
-	if (gu8_Timer_FlowSafety == 0) 					//	300ms(3.3Hz) ÃÊ°ú ½Ã (³ëÀÌÁî·Î ÆÇ´Ü)
+	// â€» TimerëŠ” í”„ë¦¬ìŠ¤ì¼€ì¼ ì£¼íŒŒìˆ˜ê°€ 125kHzë¡œì¨  65536ì¹´ìš´í„°ê°€ ì•½ 524msì„ (ìµœëŒ€ì¹˜) ìµœì†Œì¹˜ëŠ” 8ns
+	if (gu8_Timer_FlowSafety == 0) 					//	300ms(3.3Hz) ì´ˆê³¼ ì‹œ (ë…¸ì´ì¦ˆë¡œ íŒë‹¨)
 	{
 		gu8_Timer_FlowSafety = Z_Timer_FlowSafety;					//		Timer SET
-		gu16_FlowMeterTCR_Now = 0;					//		ÇöÀç µ¥ÀÌÅÍ Clear
-		gu16_FlowMeterTCR_Before = gu16_FlowMeterTCR_Now;     //		ÀÌÀü µ¥ÀÌÅÍ Clear
-		gu8_Counter_FlowMeterTCR = 0;				//		Ä«¿îÅÍ Clear
-		gu32_FlowMeterTCR_Sum = 0;					//		ÇÕ»êµ¥ÀÌÅÍ Clear
-		gu16_FlowDecide = 0;						//		Æò±Õ°ª Clear
-		gu16_FlowDecide_Hz = 0;						//		Hz µ¥¾ÆÅÍ Clear
-		gu16_FlowDecide_W = 0;						//		À¯·® µ¥ÀÌÅÍ Clear
+		gu16_FlowMeterTCR_Now = 0;					//		í˜„ì¬ ë°ì´í„° Clear
+		gu16_FlowMeterTCR_Before = gu16_FlowMeterTCR_Now;     //		ì´ì „ ë°ì´í„° Clear
+		gu8_Counter_FlowMeterTCR = 0;				//		ì¹´ìš´í„° Clear
+		gu32_FlowMeterTCR_Sum = 0;					//		í•©ì‚°ë°ì´í„° Clear
+		gu16_FlowDecide = 0;						//		í‰ê· ê°’ Clear
+		gu16_FlowDecide_Hz = 0;						//		Hz ë°ì•„í„° Clear
+		gu16_FlowDecide_W = 0;						//		ìœ ëŸ‰ ë°ì´í„° Clear
 
-		for (mu8_i = 0; mu8_i < Z_HOLESENSOR_NUM; mu8_i++)		//		¹è¿­ ÃÊ±âÈ­
+		for (mu8_i = 0; mu8_i < Z_HOLESENSOR_NUM; mu8_i++)		//		ë°°ì—´ ì´ˆê¸°í™”
 		{
 			gu16_FlowMeterTCR_Array[mu8_i] = 0;
 		}
 	}
 	else
 	{
-		if (F_FlowCheck == SET)						//		Interrupt ¹ß»ıÀÌ ÀÖÀ¸¸é
+		if (F_FlowCheck == SET)						//		Interrupt ë°œìƒì´ ìˆìœ¼ë©´
 		{
 			F_FlowCheck = CLEAR;					//			Flag Clear
 
@@ -267,41 +267,41 @@ void FlowMeter_Decide(void)
 				gu8_FlowMeter_NumMax = FlowMeter_NumMax_Japan;
 				Pointer_FlowMeter_Hz_Table = FlowMeter_Hz_Table_Japan;
 			}
-//			if (gu16_FlowMeterTCR_Before >= gu16_FlowMeterTCR_Now) {     //		ÀÌÀüµ¥ÀÌÅÍ°¡ ÇöÀçµ¥ÀÌÅÍº¸´Ù Å©¸é (Non-Underflow)
-//				buf = gu16_FlowMeterTCR_Before - gu16_FlowMeterTCR_Now;  //			Â÷ÀÌ°ª °è»ê
-//			} else {								//		ÇöÀçµ¥ÀÌÅÍ°¡ ÀÌÀüµ¥ÀÌÅÍº¸´Ù Å©¸é (Underflow)
-//				buf = (U16) (gu16_FlowMeterTCR_Before + (65535 - gu16_FlowMeterTCR_Now));     //			Â÷ÀÌ°ª °è»ê
+//			if (gu16_FlowMeterTCR_Before >= gu16_FlowMeterTCR_Now) {     //		ì´ì „ë°ì´í„°ê°€ í˜„ì¬ë°ì´í„°ë³´ë‹¤ í¬ë©´ (Non-Underflow)
+//				buf = gu16_FlowMeterTCR_Before - gu16_FlowMeterTCR_Now;  //			ì°¨ì´ê°’ ê³„ì‚°
+//			} else {								//		í˜„ì¬ë°ì´í„°ê°€ ì´ì „ë°ì´í„°ë³´ë‹¤ í¬ë©´ (Underflow)
+//				buf = (U16) (gu16_FlowMeterTCR_Before + (65535 - gu16_FlowMeterTCR_Now));     //			ì°¨ì´ê°’ ê³„ì‚°
 //			}
 			mu16_buf = gu16_FlowMeterTCR_Now;
 
-			// ¡Ø Timer´Â ÇÁ¸®½ºÄÉÀÏ ÁÖÆÄ¼ö°¡ 125kHz·Î½á  65536Ä«¿îÅÍ°¡ ¾à 524msÀÓ (ÃÖ´ëÄ¡) ÃÖ¼ÒÄ¡´Â 8ns
-//			if (buf > 782){     //		782 Count ÃÊ°ú¸¸ °è»ê. 782Count = 6.2ms 160HzÀÌ»óÀÌ¾î¼­  1.6LPM (À¯·®¼¾¼­ Spec. 0.25~1.4LPM) ÇÏÇÑÄ¡´Â »óÀ§ 300ms Å¸ÀÌ¸Ó·Î ¾ÈÀüÃ³¸®
-			if (mu16_buf > TIMER_INPUT_COUNT_MINIMUM) 	//		(»ó±â ÁÖ¼®(> 782)ÀÌ ¸Â´Â ¼³°èÀÌ³ª, ¶óÀÎ°Ë»ç¿¡¼­ Áú¼ÒÅ×½ºÆ®´Â ¾öÃ»ºü¸¥ HzÀÌ¹Ç·Î Á¦ÇÑ ¿©À¯ (20Àº ÇÏ±â Hz°è»ê½Ã¿¡ 16ºñÆ® ¿À¹öÇÃ·Î¿ì µÇÁö ¾Ê°Ô))
+			// â€» TimerëŠ” í”„ë¦¬ìŠ¤ì¼€ì¼ ì£¼íŒŒìˆ˜ê°€ 125kHzë¡œì¨  65536ì¹´ìš´í„°ê°€ ì•½ 524msì„ (ìµœëŒ€ì¹˜) ìµœì†Œì¹˜ëŠ” 8ns
+//			if (buf > 782){     //		782 Count ì´ˆê³¼ë§Œ ê³„ì‚°. 782Count = 6.2ms 160Hzì´ìƒì´ì–´ì„œ  1.6LPM (ìœ ëŸ‰ì„¼ì„œ Spec. 0.25~1.4LPM) í•˜í•œì¹˜ëŠ” ìƒìœ„ 300ms íƒ€ì´ë¨¸ë¡œ ì•ˆì „ì²˜ë¦¬
+			if (mu16_buf > TIMER_INPUT_COUNT_MINIMUM) 	//		(ìƒê¸° ì£¼ì„(> 782)ì´ ë§ëŠ” ì„¤ê³„ì´ë‚˜, ë¼ì¸ê²€ì‚¬ì—ì„œ ì§ˆì†Œí…ŒìŠ¤íŠ¸ëŠ” ì—„ì²­ë¹ ë¥¸ Hzì´ë¯€ë¡œ ì œí•œ ì—¬ìœ  (20ì€ í•˜ê¸° Hzê³„ì‚°ì‹œì— 16ë¹„íŠ¸ ì˜¤ë²„í”Œë¡œìš° ë˜ì§€ ì•Šê²Œ))
 			{
-				gu16_FlowMeterTCR_Array[gu8_Counter_FlowMeterTCR] = mu16_buf;     //		¹è¿­¿¡ ÀúÀå
-//				gu16_FlowMeterTCR_Before = gu16_FlowMeterTCR_Now;     //		ÀÌÀüµ¥ÀÌÅÍ ÇöÀçµ¥ÀÌÅÍ·Î ÀúÀå
-				gu8_Counter_FlowMeterTCR++;			//		Ä«¿îÅÍ Áõ°¡
-				if (gu8_Counter_FlowMeterTCR >= Z_HOLESENSOR_NUM)//		Ä«¿îÅÍ MaxÀÏ ½Ã
+				gu16_FlowMeterTCR_Array[gu8_Counter_FlowMeterTCR] = mu16_buf;     //		ë°°ì—´ì— ì €ì¥
+//				gu16_FlowMeterTCR_Before = gu16_FlowMeterTCR_Now;     //		ì´ì „ë°ì´í„° í˜„ì¬ë°ì´í„°ë¡œ ì €ì¥
+				gu8_Counter_FlowMeterTCR++;			//		ì¹´ìš´í„° ì¦ê°€
+				if (gu8_Counter_FlowMeterTCR >= Z_HOLESENSOR_NUM)//		ì¹´ìš´í„° Maxì¼ ì‹œ
 				{
 					gu8_Counter_FlowMeterTCR = 0;	//			Clear
 				}
-				for (mu8_i = 0; mu8_i < Z_HOLESENSOR_NUM; mu8_i++)	//		´Ü¼Ó Æò±ÕÀÌ ¾Æ´Ñ ¿¬¼Ó Æò±Õ
+				for (mu8_i = 0; mu8_i < Z_HOLESENSOR_NUM; mu8_i++)	//		ë‹¨ì† í‰ê· ì´ ì•„ë‹Œ ì—°ì† í‰ê· 
 				{
-					gu32_FlowMeterTCR_Sum += gu16_FlowMeterTCR_Array[mu8_i];		//		ÇÕ»ê
-					if (gu16_FlowMeterTCR_Array[mu8_i] == 0) //		µ¥ÀÌÅÍ Áß ÇÏ³ª¶óµµ 0µ¥ÀÌÅÍ°¡ ÀÖ´Â °æ¿ì, Áï ÃÖÃÊ 6È¸ ÃøÁ¤ ÈÄºÎÅÍ °è»ê
+					gu32_FlowMeterTCR_Sum += gu16_FlowMeterTCR_Array[mu8_i];		//		í•©ì‚°
+					if (gu16_FlowMeterTCR_Array[mu8_i] == 0) //		ë°ì´í„° ì¤‘ í•˜ë‚˜ë¼ë„ 0ë°ì´í„°ê°€ ìˆëŠ” ê²½ìš°, ì¦‰ ìµœì´ˆ 6íšŒ ì¸¡ì • í›„ë¶€í„° ê³„ì‚°
 					{
-						mu8_flag_Flow_NoDecide = 1;			//			À¯·®°áÁ¤ ¾ÈÇÔ
+						mu8_flag_Flow_NoDecide = 1;			//			ìœ ëŸ‰ê²°ì • ì•ˆí•¨
 					}
 				}
-				if (mu8_flag_Flow_NoDecide != 1)			//			À¯·®°áÁ¤ È®Á¤ÀÎ °æ¿ì
+				if (mu8_flag_Flow_NoDecide != 1)			//			ìœ ëŸ‰ê²°ì • í™•ì •ì¸ ê²½ìš°
 				{
-					gu16_FlowDecide = (U16) (gu32_FlowMeterTCR_Sum / Z_HOLESENSOR_NUM);		//		µ¥ÀÌÅÍ Æò±Õ
+					gu16_FlowDecide = (U16) (gu32_FlowMeterTCR_Sum / Z_HOLESENSOR_NUM);		//		ë°ì´í„° í‰ê· 
 					gu32_FlowMeterTCR_Sum = 0;
 
-					if (gu16_FlowDecide > TIMER_INPUT_COUNT_MINIMUM)	//		À¯È¿¹üÀ§ ÀÎ °æ¿ì
+					if (gu16_FlowDecide > TIMER_INPUT_COUNT_MINIMUM)	//		ìœ íš¨ë²”ìœ„ ì¸ ê²½ìš°
 					{
-						gu16_FlowDecide_Hz = (U16) (1250000 / gu16_FlowDecide);     //		Hz °è»ê  125Khz / Æò±Õ°ª	[1/10Hz]
-						if ((F_TestMode_LineFront == SET) || (F_TestMode_LineAuto == SET))	//		°øÀå °Ë»ç ÁßÀÎ °æ¿ì
+						gu16_FlowDecide_Hz = (U16) (1250000 / gu16_FlowDecide);     //		Hz ê³„ì‚°  125Khz / í‰ê· ê°’	[1/10Hz]
+						if ((F_TestMode_LineFront == SET) || (F_TestMode_LineAuto == SET))	//		ê³µì¥ ê²€ì‚¬ ì¤‘ì¸ ê²½ìš°
 						{
 							if(F_LineFrontTest_Hot_Select == SET)
 							{
@@ -330,17 +330,17 @@ void FlowMeter_Decide(void)
 							}
 						}
 
-						/*	À¯·®¼¾¼­ ½ºÆå µ¥ÀÌÅÍ Ã£±â ½ÃÀÛ	*/
+						/*	ìœ ëŸ‰ì„¼ì„œ ìŠ¤í™ ë°ì´í„° ì°¾ê¸° ì‹œì‘	*/
 						if (((gu8_OperationStep_hi == 0x00) || (gu8_OperationStep_hi == 0x50)) && (gu8_TimerEffluent_After_2s == 0))
 						{
 //							for (i = (FlowMeter_NumMax-1) ; i >= 0 ; i--)
 							for (i = (U8)((gu8_FlowMeter_NumMax-1)) ; i >= 0 ; i--)
 							{
-//								if ((gu16_FlowDecide_Hz/10) >= FlowMeter_Hz_Table[i].Hz)	//	ÇöÀç Hzº° ½ºÆå Á¤¼ö°ª Ã£±â
-								if ((gu16_FlowDecide_Hz/10) >= Pointer_FlowMeter_Hz_Table[i].Hz)	//	ÇöÀç Hzº° ½ºÆå Á¤¼ö°ª Ã£±â
+//								if ((gu16_FlowDecide_Hz/10) >= FlowMeter_Hz_Table[i].Hz)	//	í˜„ì¬ Hzë³„ ìŠ¤í™ ì •ìˆ˜ê°’ ì°¾ê¸°
+								if ((gu16_FlowDecide_Hz/10) >= Pointer_FlowMeter_Hz_Table[i].Hz)	//	í˜„ì¬ Hzë³„ ìŠ¤í™ ì •ìˆ˜ê°’ ì°¾ê¸°
 								{
-//									if (i == (FlowMeter_NumMax-1))	//	¸¶Áö¸· ¹è¿­±îÁö ¿Â °æ¿ì
-									if (i == (gu8_FlowMeter_NumMax-1))	//	¸¶Áö¸· ¹è¿­±îÁö ¿Â °æ¿ì
+//									if (i == (FlowMeter_NumMax-1))	//	ë§ˆì§€ë§‰ ë°°ì—´ê¹Œì§€ ì˜¨ ê²½ìš°
+									if (i == (gu8_FlowMeter_NumMax-1))	//	ë§ˆì§€ë§‰ ë°°ì—´ê¹Œì§€ ì˜¨ ê²½ìš°
 									{
 										if (gu8_WaterSelect == HOT_WATER)
 										{
@@ -365,17 +365,17 @@ void FlowMeter_Decide(void)
 											gu16_FlowMeter_Standard = Pointer_FlowMeter_Hz_Table[i].Standard;
 										}
 									}
-									else			//	½ºÆå Ã£Àº °æ¿ì
+									else			//	ìŠ¤í™ ì°¾ì€ ê²½ìš°
 									{
 //										mu8_Hz_buf = (U8)(abs(FlowMeter_Hz_Table[i+1].Hz - FlowMeter_Hz_Table[i].Hz));
-//										mu16_Standard_buf = abs(FlowMeter_Hz_Table[i+1].Standard - FlowMeter_Hz_Table[i].Standard);	//	½ºÆå µ¥ÀÌÅÍ Áß°£ °ª(ÆíÂ÷) ±¸ÇÏ±â
+//										mu16_Standard_buf = abs(FlowMeter_Hz_Table[i+1].Standard - FlowMeter_Hz_Table[i].Standard);	//	ìŠ¤í™ ë°ì´í„° ì¤‘ê°„ ê°’(í¸ì°¨) êµ¬í•˜ê¸°
 										mu8_Hz_buf = (U8)(abs(Pointer_FlowMeter_Hz_Table[i+1].Hz - Pointer_FlowMeter_Hz_Table[i].Hz));
-										mu16_Standard_buf = abs(Pointer_FlowMeter_Hz_Table[i+1].Standard - Pointer_FlowMeter_Hz_Table[i].Standard);	//	½ºÆå µ¥ÀÌÅÍ Áß°£ °ª(ÆíÂ÷) ±¸ÇÏ±â
+										mu16_Standard_buf = abs(Pointer_FlowMeter_Hz_Table[i+1].Standard - Pointer_FlowMeter_Hz_Table[i].Standard);	//	ìŠ¤í™ ë°ì´í„° ì¤‘ê°„ ê°’(í¸ì°¨) êµ¬í•˜ê¸°
 
 										mu16_Standard_diff = (mu16_Standard_buf * 10) / mu8_Hz_buf;
 
-//										mu16_buf1 = (gu16_FlowDecide_Hz/10) - FlowMeter_Hz_Table[i].Hz;	//	ÇöÀç Hz¿Í ½ºÆå Hz µ¨Å¸ ±¸ÇÏ±â
-										mu16_buf1 = (gu16_FlowDecide_Hz/10) - Pointer_FlowMeter_Hz_Table[i].Hz;	//	ÇöÀç Hz¿Í ½ºÆå Hz µ¨Å¸ ±¸ÇÏ±â
+//										mu16_buf1 = (gu16_FlowDecide_Hz/10) - FlowMeter_Hz_Table[i].Hz;	//	í˜„ì¬ Hzì™€ ìŠ¤í™ Hz ë¸íƒ€ êµ¬í•˜ê¸°
+										mu16_buf1 = (gu16_FlowDecide_Hz/10) - Pointer_FlowMeter_Hz_Table[i].Hz;	//	í˜„ì¬ Hzì™€ ìŠ¤í™ Hz ë¸íƒ€ êµ¬í•˜ê¸°
 										mu16_buf2 = (mu16_buf1 * mu16_Standard_diff) / 10;
 
 //										if (FlowMeter_Hz_Table[i].Standard >= mu16_buf2)
@@ -391,20 +391,20 @@ void FlowMeter_Decide(void)
 //												{
 ////													gu16_FlowMeter_Standard_forHotWater_forJapan = FlowMeter_Hz_Table[i].Standard - mu16_buf2;
 //													gu16_FlowMeter_Standard_forHotWater_forJapan = Pointer_FlowMeter_Hz_Table[i].Standard - mu16_buf2;
-//													gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater_forJapan);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+//													gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater_forJapan);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 //												}
 //												else
 //												{
 //													gu16_FlowMeter_Standard_forHotWater = FlowMeter_Hz_Table[i].Standard - mu16_buf2;
 													gu16_FlowMeter_Standard_forHotWater = Pointer_FlowMeter_Hz_Table[i].Standard - mu16_buf2;
-													gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+													gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 //												}
 											}
 											else
 											{
 //												gu16_FlowMeter_Standard = FlowMeter_Hz_Table[i].Standard - mu16_buf2;
 												gu16_FlowMeter_Standard = Pointer_FlowMeter_Hz_Table[i].Standard - mu16_buf2;
-												gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+												gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 											}
 										}
 										else
@@ -417,7 +417,7 @@ void FlowMeter_Decide(void)
 #else
 												gu16_FlowMeter_Standard_forHotWater = Z_FlowMeter_Standard_forHotWater_KOR;
 #endif
-												gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+												gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 											}
 											else
 											{
@@ -427,7 +427,7 @@ void FlowMeter_Decide(void)
 #else
 												gu16_FlowMeter_Standard_forHotWater = Z_FlowMeter_Standard_forHotWater_JP;
 #endif
-												gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+												gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 											}
 										}
 									}
@@ -445,20 +445,20 @@ void FlowMeter_Decide(void)
 //										{
 ////											gu16_FlowMeter_Standard_forHotWater_forJapan = FlowMeter_Hz_Table[i].Standard;
 //											gu16_FlowMeter_Standard_forHotWater_forJapan = Pointer_FlowMeter_Hz_Table[i].Standard;
-//											gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater_forJapan);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+//											gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater_forJapan);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 //										}
 //										else
 //										{
 //											gu16_FlowMeter_Standard_forHotWater = FlowMeter_Hz_Table[i].Standard;
 											gu16_FlowMeter_Standard_forHotWater = Pointer_FlowMeter_Hz_Table[i].Standard;
-											gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+											gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard_forHotWater);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 //										}
 									}
 									else
 									{
 //										gu16_FlowMeter_Standard = FlowMeter_Hz_Table[i].Standard;
 										gu16_FlowMeter_Standard = Pointer_FlowMeter_Hz_Table[i].Standard;
-										gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		À¯·®¼¾¼­ spec ±âÁØ µ¥ÀÌÅÍ Ã³¸®
+										gu16_Spec_FlowMeter = (U16)((U32)166666 / gu16_FlowMeter_Standard);		//		ìœ ëŸ‰ì„¼ì„œ spec ê¸°ì¤€ ë°ì´í„° ì²˜ë¦¬
 									}
 									break;
 								}
@@ -468,7 +468,7 @@ void FlowMeter_Decide(void)
 								}
 							}
 						}
-						/*	À¯·®¼¾¼­ ½ºÆå µ¥ÀÌÅÍ Ã£±â ³¡	*/
+						/*	ìœ ëŸ‰ì„¼ì„œ ìŠ¤í™ ë°ì´í„° ì°¾ê¸° ë	*/
 						if (gu8_WaterSelect == HOT_WATER)
 						{
 //#ifdef _FOR_JAPAN_90DEGREE_CONTINUE
@@ -488,7 +488,7 @@ void FlowMeter_Decide(void)
 						{
 							mu16_Standard_Calc = gu16_FlowMeter_Standard;
 						}
-						gu16_FlowDecide_W = (U16) ((U32) gu16_FlowDecide_Hz * mu16_Standard_Calc * 6 / 100000);     //	À¯·®°ª °è»ê [1/100LPM]
+						gu16_FlowDecide_W = (U16) ((U32) gu16_FlowDecide_Hz * mu16_Standard_Calc * 6 / 100000);     //	ìœ ëŸ‰ê°’ ê³„ì‚° [1/100LPM]
 					}
 				}
 			}
@@ -496,26 +496,26 @@ void FlowMeter_Decide(void)
 		}
 	}
 
-	if (F_100ms_for_FlowMeter_Average == SET)		//	100ms ¸¶´Ù À¯·® Æò±ÕÄ¡ °è»ê
+	if (F_100ms_for_FlowMeter_Average == SET)		//	100ms ë§ˆë‹¤ ìœ ëŸ‰ í‰ê· ì¹˜ ê³„ì‚°
 	{
 		F_100ms_for_FlowMeter_Average = CLEAR;		//		flag clear
-		if (gu8_OperationStep_hi == 0x50)			//		ÃßÃâÁßÀÎ °æ¿ì
+		if (gu8_OperationStep_hi == 0x50)			//		ì¶”ì¶œì¤‘ì¸ ê²½ìš°
 		{
-			gu32_FlowDecide_W_Ave_Sum += gu16_FlowDecide_W;	//			À¯·® µ¥ÀÌÅÍ ´©Àû
-			gu16_FlowDecide_W_Ave_Cnt++;			//		´©ÀûÄ«¿îÅÍ Áõ°¡
-			gu16_FlowDecide_W_Ave = (U16) (gu32_FlowDecide_W_Ave_Sum / gu16_FlowDecide_W_Ave_Cnt);	//			Æò±ÕÀ¯·® °è»ê
+			gu32_FlowDecide_W_Ave_Sum += gu16_FlowDecide_W;	//			ìœ ëŸ‰ ë°ì´í„° ëˆ„ì 
+			gu16_FlowDecide_W_Ave_Cnt++;			//		ëˆ„ì ì¹´ìš´í„° ì¦ê°€
+			gu16_FlowDecide_W_Ave = (U16) (gu32_FlowDecide_W_Ave_Sum / gu16_FlowDecide_W_Ave_Cnt);	//			í‰ê· ìœ ëŸ‰ ê³„ì‚°
 		}
 		else
 		{
 //			gu16_FlowDecide_W_Ave = 0;
-			gu32_FlowDecide_W_Ave_Sum = 0;			//		´©Àûµ¥ÀÌÅÍ clear
-			gu16_FlowDecide_W_Ave_Cnt = 0;			//		´©ÀûÄ«¿îÅÍ clear
+			gu32_FlowDecide_W_Ave_Sum = 0;			//		ëˆ„ì ë°ì´í„° clear
+			gu16_FlowDecide_W_Ave_Cnt = 0;			//		ëˆ„ì ì¹´ìš´í„° clear
 		}
 	}
 }
 
-/// @brief    ÃßÃâÀ¯·® °áÁ¤
-/// @param    ¹° Á¾·ù
+/// @brief    ì¶”ì¶œìœ ëŸ‰ ê²°ì •
+/// @param    ë¬¼ ì¢…ë¥˜
 /// @return   void
 void Effluent_Hz_Decide(void)
 {
@@ -527,16 +527,16 @@ void Effluent_Hz_Decide(void)
 //	else
 
 	#if 0
-	if (gu16_CupSize == CUPSIZE_CONTINUE)		//		¿¬¼ÓÃßÃâÀÎ °æ¿ì
+	if (gu16_CupSize == CUPSIZE_CONTINUE)		//		ì—°ì†ì¶”ì¶œì¸ ê²½ìš°
 	#endif
 	if(gu16_CupSize == CUPSIZE_CONTINUE)
 	{
-		gu16_TimerEffluent = 1800;					//			3ºĞ set
+		gu16_TimerEffluent = 1800;					//			3ë¶„ set
 		gu16_Effluent_Hz = 0;
 	}
-	else											//		¿¬¼Ó ÃßÃâ ¿Ü
+	else											//		ì—°ì† ì¶”ì¶œ ì™¸
 	{
-//		gu16_Effluent_Hz = CupSizeArray[mu8_waterkind][gu16_CupSize];    //		¹° Á¾·ù ¹× ÄÅ»çÀÌÁîº° µ¥ÀÌÅÍ set
+//		gu16_Effluent_Hz = CupSizeArray[mu8_waterkind][gu16_CupSize];    //		ë¬¼ ì¢…ë¥˜ ë° ì»µì‚¬ì´ì¦ˆë³„ ë°ì´í„° set
 		switch (gu16_CupSize)
 		{
 			case CUPSIZE_HALFCUP:
@@ -682,14 +682,14 @@ void Effluent_Hz_Decide(void)
 	}
 }
 
-/// @brief    ÃßÃâÀ¯·® Àû»ê
-/// @param    ¹° Á¾·ù
+/// @brief    ì¶”ì¶œìœ ëŸ‰ ì ì‚°
+/// @param    ë¬¼ ì¢…ë¥˜
 /// @return   void
 void FlowAmount_ForMonitor(void)
 {
 //	U16 Standard_1L = 0;
 //
-//	Standard_1L = (U16)((U32)10000000 / gu16_FlowMeter_Standard);	//	1000ccÀÇ Hz °è»ê
+//	Standard_1L = (U16)((U32)10000000 / gu16_FlowMeter_Standard);	//	1000ccì˜ Hz ê³„ì‚°
 //
 //	if (gu16_Effluent_Hz_FilterModule1 > Standard_1L)				//	1L
 //	{
@@ -697,7 +697,7 @@ void FlowAmount_ForMonitor(void)
 //		if (gu16_Effluent_1L_FilterModule1 < 65535)
 //		{
 //			gu16_Effluent_1L_FilterModule1++;
-//			if ((gu16_Effluent_1L_FilterModule1 == 65535) || ((gu16_Effluent_1L_FilterModule1 % 5) == 0))	//	EEPROM ¼ö¸íÀ¸·Î 5¸®ÅÍ¸¶´Ù ÀúÀå
+//			if ((gu16_Effluent_1L_FilterModule1 == 65535) || ((gu16_Effluent_1L_FilterModule1 % 5) == 0))	//	EEPROM ìˆ˜ëª…ìœ¼ë¡œ 5ë¦¬í„°ë§ˆë‹¤ ì €ì¥
 //			{
 //				gu8_FilterModule1_EEPROM_Low = (U8)(gu16_Effluent_1L_FilterModule1 & 0x00FF);
 //				gu8_FilterModule1_EEPROM_High = (U8)((gu16_Effluent_1L_FilterModule1 >> 8) & 0x00FF);
@@ -711,7 +711,7 @@ void FlowAmount_ForMonitor(void)
 //		if (gu16_Effluent_1L_FilterModule2 < 65535)
 //		{
 //			gu16_Effluent_1L_FilterModule2++;
-//			if ((gu16_Effluent_1L_FilterModule2 == 65535) || ((gu16_Effluent_1L_FilterModule2 % 5) == 0))	//	EEPROM ¼ö¸íÀ¸·Î 5¸®ÅÍ¸¶´Ù ÀúÀå
+//			if ((gu16_Effluent_1L_FilterModule2 == 65535) || ((gu16_Effluent_1L_FilterModule2 % 5) == 0))	//	EEPROM ìˆ˜ëª…ìœ¼ë¡œ 5ë¦¬í„°ë§ˆë‹¤ ì €ì¥
 //			{
 //				gu8_FilterModule2_EEPROM_Low = (U8)(gu16_Effluent_1L_FilterModule2 & 0x00FF);
 //				gu8_FilterModule2_EEPROM_High = (U8)((gu16_Effluent_1L_FilterModule2 >> 8) & 0x00FF);

@@ -1,7 +1,7 @@
 /// @file   I2C.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  EEPROM I2C √≥∏Æ ∞¸∑√ «Ï¥ı file
+/// @brief  EEPROM I2C Ï≤òÎ¶¨ Í¥ÄÎ†® Ìó§Îçî file
 
 #ifdef EEPROM_C
 	#define 	EXTERN
@@ -13,24 +13,24 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_EEPROM()		{	/*	1ms ≈∏¿Ã∏” ∞®ªÍ			*/	\
+#define	TDEC_1ms_EEPROM()		{	/*	1ms ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞			*/	\
 									TDEC(gu8_TimerEEPROM_Write_Delay);	\
 								}
-#define	TDEC_10ms_EEPROM()		{	/*	10ms ≈∏¿Ã∏” ∞®ªÍ		*/	\
+#define	TDEC_10ms_EEPROM()		{	/*	10ms ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞		*/	\
 									TDEC(gu8_TimerEEPROM_Limit);	\
 								}
-#define	TDEC_100ms_EEPROM()		{	/*	100ms ≈∏¿Ã∏” ∞®ªÍ		*/	\
+#define	TDEC_100ms_EEPROM()		{	/*	100ms ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞		*/	\
 									for (i = 0 ; i < Z_EEPROM_ADDR_Data_Max ; i++) {TDEC(EEPROM_Data_Table[i].write_timer);}	\
 								}
-#define	TDEC_1s_EEPROM()		{	/*	1s ≈∏¿Ã∏” ∞®ªÍ			*/	\
+#define	TDEC_1s_EEPROM()		{	/*	1s ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞			*/	\
 								}
-#define	TDEC_10s_EEPROM()		{	/*	10s ≈∏¿Ã∏” ∞®ªÍ			*/	\
+#define	TDEC_10s_EEPROM()		{	/*	10s ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞			*/	\
 								}
-#define	TDEC_1min_EEPROM()		{	/*	1min ≈∏¿Ã∏” ∞®ªÍ		*/	\
+#define	TDEC_1min_EEPROM()		{	/*	1min ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞		*/	\
 								}
-#define	TDEC_10min_EEPROM()		{	/*	10min ≈∏¿Ã∏” ∞®ªÍ		*/	\
+#define	TDEC_10min_EEPROM()		{	/*	10min ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞		*/	\
 								}
-#define	TDEC_1h_EEPROM()		{	/*	1h ≈∏¿Ã∏” ∞®ªÍ			*/	\
+#define	TDEC_1h_EEPROM()		{	/*	1h ÌÉÄÏù¥Î®∏ Í∞êÏÇ∞			*/	\
 								}
 
 
@@ -38,55 +38,55 @@
  Constant Definition
  ==============================================================================*/
 typedef struct {
-	U16 address;					//	EEPROM æÓµÂ∑πΩ∫
-	U8 init_data;					//	√ ±‚∞™ (Default data)
-	U8 eeprom_data;					//	EEPROM ¿˙¿Â µ•¿Ã≈Õ
-	U8 write_flag;					//	æ≤±‚ «√∑°±◊
-	U8 read_flag;					//	¿–±‚ «√∑°±◊
-	U8 *data;						//	Ω« µ•¿Ã≈Õ
-	U8 write_timer;					//	æ≤±‚±Ó¡ˆ¿« µÙ∑π¿Ã ≈∏¿Ã∏” (π¯∫π æ≤±‚ πÊ¡ˆ)
-	U8 data_valid_check_lower;		//	µ•¿Ã≈Õ ¿Ø»ø∞™ √÷º“
-	U8 data_valid_check_upper;		//	µ•¿Ã≈Õ ¿Ø»ø∞™ √÷¥Î
+	U16 address;					//	EEPROM Ïñ¥ÎìúÎ†àÏä§
+	U8 init_data;					//	Ï¥àÍ∏∞Í∞í (Default data)
+	U8 eeprom_data;					//	EEPROM Ï†ÄÏû• Îç∞Ïù¥ÌÑ∞
+	U8 write_flag;					//	Ïì∞Í∏∞ ÌîåÎûòÍ∑∏
+	U8 read_flag;					//	ÏùΩÍ∏∞ ÌîåÎûòÍ∑∏
+	U8 *data;						//	Ïã§ Îç∞Ïù¥ÌÑ∞
+	U8 write_timer;					//	Ïì∞Í∏∞ÍπåÏßÄÏùò ÎîúÎ†àÏù¥ ÌÉÄÏù¥Î®∏ (Î≤àÎ≥µ Ïì∞Í∏∞ Î∞©ÏßÄ)
+	U8 data_valid_check_lower;		//	Îç∞Ïù¥ÌÑ∞ Ïú†Ìö®Í∞í ÏµúÏÜå
+	U8 data_valid_check_upper;		//	Îç∞Ïù¥ÌÑ∞ Ïú†Ìö®Í∞í ÏµúÎåÄ
 } EEPROM_Data;
 
 //EEPROM ADDRESS
-#define EEPROM_ADDR_FIRST_A                         (0x0000)	//	±∏∫–¿⁄A
-#define EEPROM_ADDR_COLDONOFF                       (0x0001)	//	≥√ºˆ ON/OFF
+#define EEPROM_ADDR_FIRST_A                         (0x0000)	//	Íµ¨Î∂ÑÏûêA
+#define EEPROM_ADDR_COLDONOFF                       (0x0001)	//	ÎÉâÏàò ON/OFF
 #define EEPROM_ADDR_SLEEPMODE                       (0x0002)	//
-#define EEPROM_ADDR_HOTLOCK                         (0x0003)	//	ø¬ºˆ ¿·±›
-#define EERPOM_ADDR_CUPSIZE                 		(0x0004)	//	ƒ≈ ªÁ¿Ã¡Ó
+#define EEPROM_ADDR_HOTLOCK                         (0x0003)	//	Ïò®Ïàò Ïû†Í∏à
+#define EERPOM_ADDR_CUPSIZE                 		(0x0004)	//	Ïªµ ÏÇ¨Ïù¥Ï¶à
 #define EEPROM_ADDR_HOTWATER_100DEGREE	            (0x0005)	//
-#define EEPROM_ADDR_ALLLOCK                         (0x0006)	//	¡§¿¸ ¿¸ ¿¸√º ¿·±› ªÛ≈¬
+#define EEPROM_ADDR_ALLLOCK                         (0x0006)	//	Ï†ïÏ†Ñ Ï†Ñ Ï†ÑÏ≤¥ Ïû†Í∏à ÏÉÅÌÉú
 #define EEPROM_ADDR_CUPSIZE_MYSET		        	(0x0007)	//
-#define EEPROM_ADDR_FLUSHING_STATUS                 (0x0008)	//	«√∑ØΩÃ ∏µÂ µø¿€ ø©∫Œ
-#define EEPROM_ADDR_HEATER_FILL						(0x0009)	//	»˜≈Õ √§øÏ±‚ µø¿€ ø©∫Œ
-#define EEPROM_ADDR_COLDTANK_FILL					(0x000A)	//	≥√ºˆ≈ ≈© √§øÏ±‚ µø¿€ ø©∫Œ
+#define EEPROM_ADDR_FLUSHING_STATUS                 (0x0008)	//	ÌîåÎü¨Ïã± Î™®Îìú ÎèôÏûë Ïó¨Î∂Ä
+#define EEPROM_ADDR_HEATER_FILL						(0x0009)	//	ÌûàÌÑ∞ Ï±ÑÏö∞Í∏∞ ÎèôÏûë Ïó¨Î∂Ä
+#define EEPROM_ADDR_COLDTANK_FILL					(0x000A)	//	ÎÉâÏàòÌÉ±ÌÅ¨ Ï±ÑÏö∞Í∏∞ ÎèôÏûë Ïó¨Î∂Ä
 #define EEPROM_ADDR_CUPSIZE_MY_HIGH					(0x000B)	//
 #define EEPROM_ADDR_CUPSIZE_MY_LOW					(0x000C)	//
-#define EEPROM_ADDR_ERROR_HISTORY_1            		(0x000D)	//	ø°∑Ø¿Ã∑¬1
-#define EEPROM_ADDR_ERROR_HISTORY_2            		(0x000E)	//	ø°∑Ø¿Ã∑¬2
-#define EEPROM_ADDR_ERROR_HISTORY_3            		(0x000F)	//	ø°∑Ø¿Ã∑¬3
-#define EEPROM_ADDR_ERROR_HISTORY_4            		(0x0010)	//	ø°∑Ø¿Ã∑¬4
-#define EEPROM_ADDR_ERROR_HISTORY_5            		(0x0011)	//	ø°∑Ø¿Ã∑¬5
+#define EEPROM_ADDR_ERROR_HISTORY_1            		(0x000D)	//	ÏóêÎü¨Ïù¥Î†•1
+#define EEPROM_ADDR_ERROR_HISTORY_2            		(0x000E)	//	ÏóêÎü¨Ïù¥Î†•2
+#define EEPROM_ADDR_ERROR_HISTORY_3            		(0x000F)	//	ÏóêÎü¨Ïù¥Î†•3
+#define EEPROM_ADDR_ERROR_HISTORY_4            		(0x0010)	//	ÏóêÎü¨Ïù¥Î†•4
+#define EEPROM_ADDR_ERROR_HISTORY_5            		(0x0011)	//	ÏóêÎü¨Ïù¥Î†•5
 #define EEPROM_ADDR_WIFI__POWER      				(0x0012)   	// 	WIFI On/Off Status
 #define EEPROM_ADDR_FIRST__PAIRING  				(0x0013)   	// 	WIFI First Paring Status
 #define EEPROM_ADDR_FOTA__MODULE     				(0x0014)   	// 	WIFI Module Fota Status
 #define EEPROM_ADDR_FOTA__MCU      	  				(0x0015)   	// 	WIFI MCU Fota Status
-#define EEPROM_ADDR_USEDAY_forCNT_Filter_HIGH     	(0x0016)   	// 	« ≈Õ ªÁøÎ¿œ ºˆ
-#define EEPROM_ADDR_USEDAY_forCNT_Filter_LOW  		(0x0017)   	//	« ≈Õ ªÁøÎ¿œ ºˆ
+#define EEPROM_ADDR_USEDAY_forCNT_Filter_HIGH     	(0x0016)   	// 	ÌïÑÌÑ∞ ÏÇ¨Ïö©Ïùº Ïàò
+#define EEPROM_ADDR_USEDAY_forCNT_Filter_LOW  		(0x0017)   	//	ÌïÑÌÑ∞ ÏÇ¨Ïö©Ïùº Ïàò
 #define EEPROM_ADDR_USEDAY_forCNT_Faucet_HIGH    	(0x0018)   	//
 #define EEPROM_ADDR_USEDAY_forCNT_Faucet_LOW  		(0x0019)   	//
 #define EEPROM_ADDR_EFFLUENT_LED_OFF 				(0x001A)	//
 #define EEPROM_ADDR_DEFAULT_HOTTEMP        			(0x001B)	//
-#define EEPROM_ADDR_FOTA			        		(0x001C)	//	∆˜≈∏ ¡¯«‡
-#define EEPROM_ADDR_SELFSERVICE		        		(0x001D)	//	¿⁄∞°∞¸∏Æ
+#define EEPROM_ADDR_FOTA			        		(0x001C)	//	Ìè¨ÌÉÄ ÏßÑÌñâ
+#define EEPROM_ADDR_SELFSERVICE		        		(0x001D)	//	ÏûêÍ∞ÄÍ¥ÄÎ¶¨
 #define EEPROM_ADDR_FIRST_SET						(0x001E)	//
-#define EEPROM_ADDR_COOLING_UP						(0x001F)	//	≥√∞¢º∫¥… Up
+#define EEPROM_ADDR_COOLING_UP						(0x001F)	//	ÎÉâÍ∞ÅÏÑ±Îä• Up
 #define EEPROM_ADDR_SOUND_TYPE						(0x0020)	//
 #define EEPROM_ADDR_VOLUME							(0x0021)	//
 #define EEPROM_ADDR_FAN_NOISECLEAR					(0x0022)	//
 #define EEPROM_ADDR_HOT_DEGREEDISPLAY				(0x0023)	//
-#define EEPROM_ADDR_WELCOME_LIGHT_ENABLE			(0x0024)	//	¿£ƒƒ ∂Û¿Ã∆Æ
+#define EEPROM_ADDR_WELCOME_LIGHT_ENABLE			(0x0024)	//	Ïõ∞Ïª¥ ÎùºÏù¥Ìä∏
 #define EEPROM_ADDR_SPARE2							(0x0025)	//
 #define EEPROM_ADDR_COOLING_TARGET					(0x0026)	//
 #define EEPROM_ADDR_COOLING_PID						(0x0027)	//
@@ -132,10 +132,10 @@ typedef struct {
 #define EEPROM_ADDR_BLANK_AREA_18					(0x0048)
 #define EEPROM_ADDR_BLANK_AREA_19					(0x0049)
 #define EEPROM_ADDR_BLANK_AREA_20					(0x004A)	
-#define EEPROM_ADDR_CHECKSUM_HIGH            		(0x004B)	//	√º≈©º∂ ªÛ¿ß
-#define EEPROM_ADDR_CHECKSUM_LOW            		(0x004C)	//	√º≈©º∂ «œ¿ß
-#define EEPROM_ADDR_FIRST_B                         (0x004D)	//	±∏∫–¿⁄B
-/* °ÿ 16bit dat HIGH, LOW¥¬ ReadΩ√ Ω« µ•¿Ã≈Õ ∫Øºˆø° ≥÷¥¬ ¿€æ˜ «ÿ¡‡æﬂ«‘. void EEPROM_Control_30(void) «‘ºˆ ¬¸∞Ì */
+#define EEPROM_ADDR_CHECKSUM_HIGH            		(0x004B)	//	Ï≤¥ÌÅ¨ÏÑ¨ ÏÉÅÏúÑ
+#define EEPROM_ADDR_CHECKSUM_LOW            		(0x004C)	//	Ï≤¥ÌÅ¨ÏÑ¨ ÌïòÏúÑ
+#define EEPROM_ADDR_FIRST_B                         (0x004D)	//	Íµ¨Î∂ÑÏûêB
+/* ‚Äª 16bit dat HIGH, LOWÎäî ReadÏãú Ïã§ Îç∞Ïù¥ÌÑ∞ Î≥ÄÏàòÏóê ÎÑ£Îäî ÏûëÏóÖ Ìï¥Ï§òÏïºÌï®. void EEPROM_Control_30(void) Ìï®Ïàò Ï∞∏Í≥† */
 
 enum {
 	Z_EEPROM_ADDR_FIRST_A,
@@ -230,14 +230,14 @@ enum {
 
 #define EEPROM_FIRST_A                              (0xAA)
 #define EEPROM_DEFAULT_COLDONOFF                    (CLEAR)    	// 	Cold ON
-#define EEPROM_DEFAULT_SLEEPMODE                    (CLEAR)    	// 	ΩΩ∏≥∏µÂ  OFF
+#define EEPROM_DEFAULT_SLEEPMODE                    (CLEAR)    	// 	Ïä¨Î¶ΩÎ™®Îìú  OFF
 //#define EEPROM_DEFAULT_HOTONOFF                    	(CLEAR)    	// 	Hot ON
 #define EERPOM_DEFAULT_HOTLOCK                      (CLEAR)    	// 	Hot Unlock
 #define EERPOM_DEFAULT_CUPSIZE						(0)
 #define EERPOM_DEFAULT_HOTWATER_100DEGREE			(SET)
-#define EEPROM_DEFAULT_MANAGEMENT               	(0)	    	//	∞¸∏Æ∏µÂ
-#define EEPROM_DEFAULT_ALLLOCK                      (CLEAR)    	// 	¿¸√º ¿·±› πÃº≥¡§ ªÛ≈¬
-#define EEPROM_DEFAULT_FLUSHING_STATUS              (CLEAR)    	// 	«√∑ØΩÃ ∏µÂ∞° µø¿€«œ¡ˆ æ ¿∫ ªÛ≈¬
+#define EEPROM_DEFAULT_MANAGEMENT               	(0)	    	//	Í¥ÄÎ¶¨Î™®Îìú
+#define EEPROM_DEFAULT_ALLLOCK                      (CLEAR)    	// 	Ï†ÑÏ≤¥ Ïû†Í∏à ÎØ∏ÏÑ§Ï†ï ÏÉÅÌÉú
+#define EEPROM_DEFAULT_FLUSHING_STATUS              (CLEAR)    	// 	ÌîåÎü¨Ïã± Î™®ÎìúÍ∞Ä ÎèôÏûëÌïòÏßÄ ÏïäÏùÄ ÏÉÅÌÉú
 #define EEPROM_DEFAULT_HEATER_FILL					(CLEAR)
 #define EEPROM_DEFAULT_COLDTANK_FILL				(CLEAR)
 #define EEPROM_DEFAULT_CUPSIZE_MY_HIGH				((U8)(MY_CUPSIZE_CC>>8&0xff))
@@ -247,8 +247,8 @@ enum {
 #endif
 #define EEPROM_DEFAULT_HOTTEMP						(3)
 #define EEPROM_DEFAULT_SOUND_TYPE              		(3)
-#define EEPROM_DEFAULT_VOLUME	             		(3)			//	2¥‹∞Ë
-//#define EEPROM_DEFAULT_FILTERMODULE_AMOUNT_USED     (0)    		//	« ≈Õ ªÁøÎ∑Æ 0
+#define EEPROM_DEFAULT_VOLUME	             		(3)			//	2Îã®Í≥Ñ
+//#define EEPROM_DEFAULT_FILTERMODULE_AMOUNT_USED     (0)    		//	ÌïÑÌÑ∞ ÏÇ¨Ïö©Îüâ 0
 //#define	EEPROM_DEFAULT_COOLING_TARGET				(Z_TEMP3)	
 #define EEPROM_DEFAULT_WELCOME_LIGHT_ENABLE			(1)
 #define	EEPROM_DEFAULT_COOLING_TARGET				(Z_TEMP4)	
@@ -278,9 +278,9 @@ enum {
 #define EEPROM_DEFAULT_HEATER_FULL_WATT_HIGH            (0x0A)		//@036 HEATER_FULL_WATT_KOR(2700)
 #define EEPROM_DEFAULT_HEATER_FULL_WATT_LOW             (0x8C)		//@036
 
-#define EEPROM_DEFAULT_STEP_BEFORE_EFF_HIGH             (0x00)		//@037 πÃ«–Ω¿
+#define EEPROM_DEFAULT_STEP_BEFORE_EFF_HIGH             (0x00)		//@037 ÎØ∏ÌïôÏäµ
 #define EEPROM_DEFAULT_STEP_BEFORE_EFF_LOW              (0x00)		//@037
-#define EEPROM_DEFAULT_FLOW_BEFORE_EFF                  (0x00)		//@037 πÃ«–Ω¿
+#define EEPROM_DEFAULT_FLOW_BEFORE_EFF                  (0x00)		//@037 ÎØ∏ÌïôÏäµ
 #define EEPROM_DEFAULT_HOT_EFF_MAX                      (0x00)		//@037
 
 #define EEPROM_FIRST_B                              (0x55)
@@ -337,7 +337,7 @@ enum {
 	Z_EEPROM_Read_Num_Max
 };
 
-#define Z_EEPROM_Write_Timer_Delay		(10)		//	EEPROM µ•¿Ã≈Õ∞° ?√  ¿ÃªÛ ¥Ÿ∏£∏È write Ω√¿€ <?s/100ms>
+#define Z_EEPROM_Write_Timer_Delay		(10)		//	EEPROM Îç∞Ïù¥ÌÑ∞Í∞Ä ?Ï¥à Ïù¥ÏÉÅ Îã§Î•¥Î©¥ write ÏãúÏûë <?s/100ms>
 #define Z_TimerEEPROM_Limit				(50)		//	<500ms/10ms>
 
 
@@ -353,27 +353,27 @@ void EEPROM_Initialize(void);
 void EEPROM_Control(void);
 void EEPROM_Initialize(void);
 
-EXTERN U8 gu8_TxBuf[4];								//	Tx πˆ∆€
-EXTERN U8 gu8_RxBuf;								//	¿–±‚ πˆ∆€
-EXTERN U8 gu8_EEPROM_OperNum;						//	«ˆ¿Á µø¿€¡ﬂ¿Œ Table Number
+EXTERN U8 gu8_TxBuf[4];								//	Tx Î≤ÑÌçº
+EXTERN U8 gu8_RxBuf;								//	ÏùΩÍ∏∞ Î≤ÑÌçº
+EXTERN U8 gu8_EEPROM_OperNum;						//	ÌòÑÏû¨ ÎèôÏûëÏ§ëÏù∏ Table Number
 
-EXTERN U8 gu8_EEPROM_Control;						//	EEPROM √≥∏Æ Ω∫≈‹
+EXTERN U8 gu8_EEPROM_Control;						//	EEPROM Ï≤òÎ¶¨ Ïä§ÌÖù
 EXTERN U8 gu8_EEPROM_ControlNum;
 
-EXTERN U8 gu8_EEPROM_Write;							//	EEPROM Write Ω∫≈‹
+EXTERN U8 gu8_EEPROM_Write;							//	EEPROM Write Ïä§ÌÖù
 EXTERN U8 gu8_EEPROM_WriteNum;
 
-EXTERN U8 gu8_EEPROM_Read;							//	EEPROM Read Ω∫≈‹
+EXTERN U8 gu8_EEPROM_Read;							//	EEPROM Read Ïä§ÌÖù
 EXTERN U8 gu8_EEPROM_ReadNum;
 
-EXTERN U8 gu8_EEPROM_Data_First_A;					//	±∏∫–¿⁄A µ•¿Ã≈Õ ¿˙¿Â πˆ∆€
-EXTERN U8 gu8_EEPROM_Data_First_B;					//	±∏∫–¿⁄B µ•¿Ã≈Õ ¿˙¿Â πˆ∆€
-EXTERN U8 gu8_EEPROM_Data_Checksum_High;			//	√º≈©º∂ ªÛ¿ß ¿˙¿Â πˆ∆€
-EXTERN U8 gu8_EEPROM_Data_Checksum_Low;				//	√º≈©º∂ «œ¿ß ¿˙¿Â πˆ∆€
+EXTERN U8 gu8_EEPROM_Data_First_A;					//	Íµ¨Î∂ÑÏûêA Îç∞Ïù¥ÌÑ∞ Ï†ÄÏû• Î≤ÑÌçº
+EXTERN U8 gu8_EEPROM_Data_First_B;					//	Íµ¨Î∂ÑÏûêB Îç∞Ïù¥ÌÑ∞ Ï†ÄÏû• Î≤ÑÌçº
+EXTERN U8 gu8_EEPROM_Data_Checksum_High;			//	Ï≤¥ÌÅ¨ÏÑ¨ ÏÉÅÏúÑ Ï†ÄÏû• Î≤ÑÌçº
+EXTERN U8 gu8_EEPROM_Data_Checksum_Low;				//	Ï≤¥ÌÅ¨ÏÑ¨ ÌïòÏúÑ Ï†ÄÏû• Î≤ÑÌçº
 
-EXTERN U8 F_EEPROM_Forced_Initialize;				//	EEPROM √ ±‚»≠ Flag
+EXTERN U8 F_EEPROM_Forced_Initialize;				//	EEPROM Ï¥àÍ∏∞Ìôî Flag
 
-EXTERN U8 gu8_TimerEEPROM_Write_Delay;				//	EEPROM Write ∞£∞› Delay	<?ms/1ms>
+EXTERN U8 gu8_TimerEEPROM_Write_Delay;				//	EEPROM Write Í∞ÑÍ≤© Delay	<?ms/1ms>
 
 EXTERN U8 F_Checksum_Write;
 
@@ -391,14 +391,14 @@ EXTERN U8 gu8_FOTA_MCU;
 EXTERN U16 gu16_DayCount_forFilter;
 EXTERN U8 gu8_UseDay_forCNT_Filter_High;
 EXTERN U8 gu8_UseDay_forCNT_Filter_Low;
-EXTERN U8 F_FilterChange_Display;					//	« ≈Õ ªÁøÎ µµ∑° «•Ω√
-EXTERN U8 F_Filter_Reset;							//	º≠πˆ º€Ω≈ µ•¿Ã≈Õ
+EXTERN U8 F_FilterChange_Display;					//	ÌïÑÌÑ∞ ÏÇ¨Ïö© ÎèÑÎûò ÌëúÏãú
+EXTERN U8 F_Filter_Reset;							//	ÏÑúÎ≤Ñ ÏÜ°Ïã† Îç∞Ïù¥ÌÑ∞
 
 EXTERN U16 gu16_DayCount_forFaucet;
 EXTERN U8 gu8_UseDay_forCNT_Faucet_High;
 EXTERN U8 gu8_UseDay_forCNT_Faucet_Low;
 EXTERN U8 F_FaucetChange_Display;
-EXTERN U8 F_Faucet_Reset;							//	º≠πˆ º€Ω≈ µ•¿Ã≈Õ
+EXTERN U8 F_Faucet_Reset;							//	ÏÑúÎ≤Ñ ÏÜ°Ïã† Îç∞Ïù¥ÌÑ∞
 
 EXTERN U8 F_EEPROM_IniRead;
 

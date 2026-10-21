@@ -1,7 +1,7 @@
 /// @file     error.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Error Ã¼Å© µ¿ÀÛ °ü·Ã File
+/// @brief    Error ì²´í¬ ë™ì‘ ê´€ë ¨ File
 #define ERROR_C
 #include "include/_include.h"
 
@@ -35,11 +35,11 @@ void Error_Initialize(void)
 
 	for (i = 0 ; i < Z_ErrorHistory ; i++)			//
 	{
-		gu8_ErrorHistory[i] = CLEAR;				//		¿¡·¯ µ¥ÀÌÅÍ Clear
+		gu8_ErrorHistory[i] = CLEAR;				//		ì—ëŸ¬ ë°ì´í„° Clear
 	}
 }
 
-/// @brief    Error Check ÇÔ¼ö(100ms)
+/// @brief    Error Check í•¨ìˆ˜(100ms)
 /// @param    void
 /// @return   void
 void ErrorCheck(void)
@@ -49,34 +49,34 @@ void ErrorCheck(void)
 
 	static U8 (* const AT_Error[])(void) =
 	{
-		Error01_LeakageWater_ADC,     				// 	±Ş¼ö ´©¼ö ¿¡·¯ Ã¼Å© (ADC)
-		Error02_LeakageWater_FlowMeter,				// 	±Ş¼ö ´©¼ö ¿¡·¯ Ã¼Å© (À¯·®¼¾¼­)
-		Error08_HotCutWater,						//	¿Â¼ö ÃßÃâ ´Ü¼ö ¿¡·¯ Ã¼Å©
-		Error09_CutWater,							//	ÃßÃâ ´Ü¼ö ¿¡·¯ Ã¼Å©
-		Error25_HeatSinkTH,							// 	TEM ¿Âµµ ¼¾¼­ ¿¡·¯ Ã¼Å©
-		Error29_TEM_OverDrive,						// 	TEM ¿Âµµ ¼¾¼­ ÀÌ»ó ¿¡·¯ Ã¼Å©
-		Error40_OverHeat,							//	°ú¿­ ¿¡·¯
-		Error43_OutDoorAirTH,						// 	¿Ü±â ¿Âµµ ¼¾¼­ ¿¡·¯ Ã¼Å©
-		Error44_ColdTH,								// 	³Ã¼ö ¿Âµµ ¼¾¼­ ¿¡·¯ Ã¼Å©
-		Error46_HotInTH,							// 	¿Â¼öÀÔ¼ö ¿Âµµ ¼¾¼­ ¿¡·¯ Ã¼Å©
-		Error47_HotOutTH,							// 	¿Â¼öÃâ¼ö ¿Âµµ ¼¾¼­ ¿¡·¯ Ã¼Å©
-		Error48_HeaterTH,							// 	È÷ÅÍ ¿Âµµ ¼¾¼­ ¿¡·¯ Ã¼Å©		
-		ErrorA0_FrontCommunication,					//	ÇÁ·ĞÆ® Åë½Å¿¡·¯
-		Error77_FaucetUV,							//	UV ¿¡·¯ Ã¼Å©
+		Error01_LeakageWater_ADC,     				// 	ê¸‰ìˆ˜ ëˆ„ìˆ˜ ì—ëŸ¬ ì²´í¬ (ADC)
+		Error02_LeakageWater_FlowMeter,				// 	ê¸‰ìˆ˜ ëˆ„ìˆ˜ ì—ëŸ¬ ì²´í¬ (ìœ ëŸ‰ì„¼ì„œ)
+		Error08_HotCutWater,						//	ì˜¨ìˆ˜ ì¶”ì¶œ ë‹¨ìˆ˜ ì—ëŸ¬ ì²´í¬
+		Error09_CutWater,							//	ì¶”ì¶œ ë‹¨ìˆ˜ ì—ëŸ¬ ì²´í¬
+		Error25_HeatSinkTH,							// 	TEM ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬ ì²´í¬
+		Error29_TEM_OverDrive,						// 	TEM ì˜¨ë„ ì„¼ì„œ ì´ìƒ ì—ëŸ¬ ì²´í¬
+		Error40_OverHeat,							//	ê³¼ì—´ ì—ëŸ¬
+		Error43_OutDoorAirTH,						// 	ì™¸ê¸° ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬ ì²´í¬
+		Error44_ColdTH,								// 	ëƒ‰ìˆ˜ ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬ ì²´í¬
+		Error46_HotInTH,							// 	ì˜¨ìˆ˜ì…ìˆ˜ ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬ ì²´í¬
+		Error47_HotOutTH,							// 	ì˜¨ìˆ˜ì¶œìˆ˜ ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬ ì²´í¬
+		Error48_HeaterTH,							// 	íˆí„° ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬ ì²´í¬		
+		ErrorA0_FrontCommunication,					//	í”„ë¡ íŠ¸ í†µì‹ ì—ëŸ¬
+		Error77_FaucetUV,							//	UV ì—ëŸ¬ ì²´í¬
 	};
 
-	if (gu8_ErrorCode != 0)							//	¿¡·¯ ¹ß»ı »óÅÂ¸é
+	if (gu8_ErrorCode != 0)							//	ì—ëŸ¬ ë°œìƒ ìƒíƒœë©´
 	{
-		ErrorTimerSet();							//		Å¸ÀÌ¸Ó ÃÊ±âÈ­
+		ErrorTimerSet();							//		íƒ€ì´ë¨¸ ì´ˆê¸°í™”
 	}
 
 #ifndef _NO_ERROR_
 	/************************************************/
-	for (mu8_i = 0; mu8_i < (sizeof(AT_Error) / 4); mu8_i++)	//	error°ËÃâÃ³¸® Á¾·á ÆÇ´Ü
+	for (mu8_i = 0; mu8_i < (sizeof(AT_Error) / 4); mu8_i++)	//	errorê²€ì¶œì²˜ë¦¬ ì¢…ë£Œ íŒë‹¨
 	{
 
-		mu8_ret = (*AT_Error[mu8_i])();				//		°¢ error check
-		if ((mu8_ret != 0) && (gu8_ErrorCode == 0x00)) 	//		error °ËÃâÇÑ °æ¿ì
+		mu8_ret = (*AT_Error[mu8_i])();				//		ê° error check
+		if ((mu8_ret != 0) && (gu8_ErrorCode == 0x00)) 	//		error ê²€ì¶œí•œ ê²½ìš°
 		{
 			gu8_ErrorCode = mu8_ret;				//			error set
 			if (F_TestMode.byte == 0x00)
@@ -89,20 +89,20 @@ void ErrorCheck(void)
 #endif
 }
 
-/// @brief	    ¿¡·¯ÀÌ·Â °»½Å
+/// @brief	    ì—ëŸ¬ì´ë ¥ ê°±ì‹ 
 /// @param    void
 /// @return   void
 static void ErrorHistory(U8 mu8_ErrorData)
 {
 	U8 i;
 
-	for (i = (Z_ErrorHistory-1) ; i > 0 ; i--)			//	¿¡·¯1~4
+	for (i = (Z_ErrorHistory-1) ; i > 0 ; i--)			//	ì—ëŸ¬1~4
 	{
-		gu8_ErrorHistory[i] = gu8_ErrorHistory[i-1];	//		¿¡·¯ µ¥ÀÌÅÍ Shift
+		gu8_ErrorHistory[i] = gu8_ErrorHistory[i-1];	//		ì—ëŸ¬ ë°ì´í„° Shift
 	}
-	gu8_ErrorHistory[0] = mu8_ErrorData;				//	ÃÖ½Å¹ß»ı ¿¡·¯ ¿¡·¯1¿¡ ÀúÀå
+	gu8_ErrorHistory[0] = mu8_ErrorData;				//	ìµœì‹ ë°œìƒ ì—ëŸ¬ ì—ëŸ¬1ì— ì €ì¥
 
-	for (i = 0 ; i < Z_ErrorHistory ; i++)				//	EEPROM °»½Å
+	for (i = 0 ; i < Z_ErrorHistory ; i++)				//	EEPROM ê°±ì‹ 
 	{
 //		EEPROM_ConfirmWrite(EEPROM_ADDR_ERROR_HISTORY_1+i, gu8_ErrorHistory[i]);
 	}
@@ -120,7 +120,7 @@ static void ErrorTimerSet(void)
 	gu16_TimerErr29_2 = Z_TimerErr29_2;
 	gu16_TimerErr40 = Z_TimerErr40;
 
-	if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))	//	Å×½ºÆ®¸ğµåÀÎ °æ¿ì (¿¡·¯Å¸ÀÌ¸Ó Âª°Ô)
+	if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))	//	í…ŒìŠ¤íŠ¸ëª¨ë“œì¸ ê²½ìš° (ì—ëŸ¬íƒ€ì´ë¨¸ ì§§ê²Œ)
 	{
 		gu16_TimerErr01 = Z_TimerErr01_TestMode;
 		gu16_TimerErr25 = Z_TimerErr25_TestMode;
@@ -135,7 +135,7 @@ static void ErrorTimerSet(void)
 	else
 	{
 		gu16_TimerErr01 = Z_TimerErr01;
-		gu16_TimerErr25 = Z_TimerErr25;				//		Å¸ÀÌ¸Ó set
+		gu16_TimerErr25 = Z_TimerErr25;				//		íƒ€ì´ë¨¸ set
 		gu16_TimerErr43 = Z_TimerErr43;				//
 		gu16_TimerErr44 = Z_TimerErr44;
 		gu16_TimerErr46 = Z_TimerErr46;
@@ -146,12 +146,12 @@ static void ErrorTimerSet(void)
 	}
 }
 
-/// @brief    ´©¼ö Error Check (ADC)
+/// @brief    ëˆ„ìˆ˜ Error Check (ADC)
 /// @param    void
 /// @return   void
 static U8 Error01_LeakageWater_ADC(void)
 {
-	if (ADC_RESULT_LEAKSENSOR <= Z_LeakSensor_Error)	//	´©¼ö°¨Áö ADCµ¥ÀÌÅÍ°¡ Á¤»óµ¥ÀÌÅÍ ÀÎ °æ¿ì
+	if (ADC_RESULT_LEAKSENSOR <= Z_LeakSensor_Error)	//	ëˆ„ìˆ˜ê°ì§€ ADCë°ì´í„°ê°€ ì •ìƒë°ì´í„° ì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
@@ -159,7 +159,7 @@ static U8 Error01_LeakageWater_ADC(void)
 		}
 		else
 		{
-			gu16_TimerErr01 = Z_TimerErr01;				//			Å¸ÀÌ¸Ó set
+			gu16_TimerErr01 = Z_TimerErr01;				//			íƒ€ì´ë¨¸ set
 		}
 	}
 	else
@@ -175,31 +175,31 @@ static U8 Error01_LeakageWater_ADC(void)
 		}
 	}
 
-	if (gu16_TimerErr01 == 0)						//	Å¸ÀÌ¸Ó °æ°ú ½Ã
+	if (gu16_TimerErr01 == 0)						//	íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 	{
 		F_Err01_LeakWater = SET;
-		return (Z_Ecode01);							//		¿¡·¯ È®Á¤
+		return (Z_Ecode01);							//		ì—ëŸ¬ í™•ì •
 	}
 
 	if (gu16_TimerErr01_Clear == 0)
 	{
 		F_Err01_LeakWater = CLEAR;
-		if (gu8_ErrorCode == Z_Ecode01)    			//	ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó °æ°ú and ÇØ´ç¿¡·¯ÀÎ °æ¿ì
+		if (gu8_ErrorCode == Z_Ecode01)    			//	ìë™í•´ì œ íƒ€ì´ë¨¸ ê²½ê³¼ and í•´ë‹¹ì—ëŸ¬ì¸ ê²½ìš°
 		{
-			gu8_ErrorCode = CLEAR;					//		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;					//		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
 	return (0);
 }
 
-/// @brief    ´©¼ö Error Check (À¯·®¼¾¼­)
+/// @brief    ëˆ„ìˆ˜ Error Check (ìœ ëŸ‰ì„¼ì„œ)
 /// @param    void
 /// @return   void
 static U8 Error02_LeakageWater_FlowMeter(void)
 {
-	F_Err02_LeakWater = CLEAR;						//	E02 ¿¡·¯ »èÁ¦·Î ÀÚµ¿ ÇØÁ¦
-	if (gu8_ErrorCode == Z_Ecode02)    				//	E02 ¿¡·¯ »èÁ¦·Î ÀÚµ¿ ÇØÁ¦
+	F_Err02_LeakWater = CLEAR;						//	E02 ì—ëŸ¬ ì‚­ì œë¡œ ìë™ í•´ì œ
+	if (gu8_ErrorCode == Z_Ecode02)    				//	E02 ì—ëŸ¬ ì‚­ì œë¡œ ìë™ í•´ì œ
 	{												
 		gu8_ErrorCode = CLEAR;						
 	}												
@@ -208,96 +208,96 @@ static U8 Error02_LeakageWater_FlowMeter(void)
 }
 
 
-/// @brief    ¿Â¼ö ´Ü¼ö Error Check
+/// @brief    ì˜¨ìˆ˜ ë‹¨ìˆ˜ Error Check
 /// @param    void
 /// @return   void
 static U8 Error08_HotCutWater(void)
 {
-	if ((P_NOS_V == N_ON) && (P_FEED_HOTIN_V == ON))	//	¿Â¼ö ÀÔ¼ö ¹ëºê°¡ ¿­·ÁÀÖ´Â °æ¿ì (ÃßÃâÁßÀÎ °æ¿ì)
+	if ((P_NOS_V == N_ON) && (P_FEED_HOTIN_V == ON))	//	ì˜¨ìˆ˜ ì…ìˆ˜ ë°¸ë¸Œê°€ ì—´ë ¤ìˆëŠ” ê²½ìš° (ì¶”ì¶œì¤‘ì¸ ê²½ìš°)
 	{
-		if (gu16_FlowDecide_W < 10)					//		À¯·®ÀÌ 0.1LPM ¹Ì¸¸ÀÎ °æ¿ì
+		if (gu16_FlowDecide_W < 10)					//		ìœ ëŸ‰ì´ 0.1LPM ë¯¸ë§Œì¸ ê²½ìš°
 		{
-			if ((gu8_WaterSelect == HOT_WATER) && (gu8_TimerFlowCheck_AfterEff != 0))	//				¿Â¼öÀÎ °æ¿ì
+			if ((gu8_WaterSelect == HOT_WATER) && (gu8_TimerFlowCheck_AfterEff != 0))	//				ì˜¨ìˆ˜ì¸ ê²½ìš°
 			{
-				gu16_TimerErr08 = Z_TimerErr08;		//				¿Â¼ö µ¥ÀÌÅÍ·Î Å¸ÀÌ¸Ó set
+				gu16_TimerErr08 = Z_TimerErr08;		//				ì˜¨ìˆ˜ ë°ì´í„°ë¡œ íƒ€ì´ë¨¸ set
 			}
-			if ((F_TestMode_PBA == CLEAR) && (F_TestMode_LineFront == CLEAR) && (F_TestMode_LineTest2 == CLEAR) && (gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr08 == 0))			//			Å¸ÀÌ¸Ó °æ°ú ½Ã
+			if ((F_TestMode_PBA == CLEAR) && (F_TestMode_LineFront == CLEAR) && (F_TestMode_LineTest2 == CLEAR) && (gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr08 == 0))			//			íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 			{
-				gu8_TimerErr08_Clear = Z_TimerErr08_Clear;	//			ÀÚµ¿¿¡·¯ ÇØÁ¦ Å¸ÀÌ¸Ó set
+				gu8_TimerErr08_Clear = Z_TimerErr08_Clear;	//			ìë™ì—ëŸ¬ í•´ì œ íƒ€ì´ë¨¸ set
 				F_FirstHotEffluent = CLEAR;
 				F_Err08_HotCutWater = SET;
-				return (Z_Ecode08);					//				´Ü¼ö¿¡·¯ È®Á¤
+				return (Z_Ecode08);					//				ë‹¨ìˆ˜ì—ëŸ¬ í™•ì •
 			}
 		}
-		else										//		0.1LPM ÀÌ»óÀÎ °æ¿ì
+		else										//		0.1LPM ì´ìƒì¸ ê²½ìš°
 		{
-			gu16_TimerErr08 = Z_TimerErr08;     	//			Å¸ÀÌ¸Ó set
+			gu16_TimerErr08 = Z_TimerErr08;     	//			íƒ€ì´ë¨¸ set
 		}
 	}
-	else											//	¹ëºê ÀüÃ¼ OFF
+	else											//	ë°¸ë¸Œ ì „ì²´ OFF
 	{
-		gu16_TimerErr08 = Z_TimerErr08;     		//			Å¸ÀÌ¸Ó set
+		gu16_TimerErr08 = Z_TimerErr08;     		//			íƒ€ì´ë¨¸ set
 	}
 
-	if (gu8_TimerErr08_Clear == 0)					//	´Ü¼ö¿¡·¯ 1ºĞ µÚ ÀÚµ¿ ÇØÁ¦
+	if (gu8_TimerErr08_Clear == 0)					//	ë‹¨ìˆ˜ì—ëŸ¬ 1ë¶„ ë’¤ ìë™ í•´ì œ
 	{
 		F_Err08_HotCutWater = CLEAR;
 		if (gu8_ErrorCode == Z_Ecode08)
 		{
-			gu8_ErrorCode = CLEAR;						//		¿¡·¯ÇØÁ¦
+			gu8_ErrorCode = CLEAR;						//		ì—ëŸ¬í•´ì œ
 		}
 	}
 
 	return (0);
 }
 
-/// @brief    ´Ü¼ö Error Check
+/// @brief    ë‹¨ìˆ˜ Error Check
 /// @param    void
 /// @return   void
 static U8 Error09_CutWater(void)
 {
-	if ((P_NOS_V == N_ON) && ((P_FEED_COLD_IN_V == ON) || (P_FEED_PURE_V == ON)))	//	³ë½º¹ëºê ¿­¸° »óÅÂ¿¡¼­ Á¤³Ã¼ö ¹ëºê°¡ ÇÏ³ª¶óµµ ¿­·ÁÀÖ´Â °æ¿ì (ÃßÃâÁßÀÎ °æ¿ì)
+	if ((P_NOS_V == N_ON) && ((P_FEED_COLD_IN_V == ON) || (P_FEED_PURE_V == ON)))	//	ë…¸ìŠ¤ë°¸ë¸Œ ì—´ë¦° ìƒíƒœì—ì„œ ì •ëƒ‰ìˆ˜ ë°¸ë¸Œê°€ í•˜ë‚˜ë¼ë„ ì—´ë ¤ìˆëŠ” ê²½ìš° (ì¶”ì¶œì¤‘ì¸ ê²½ìš°)
 	{
-		if (gu16_FlowDecide_W < 10)					//		À¯·®ÀÌ 0.1LPM ¹Ì¸¸ÀÎ °æ¿ì
+		if (gu16_FlowDecide_W < 10)					//		ìœ ëŸ‰ì´ 0.1LPM ë¯¸ë§Œì¸ ê²½ìš°
 		{
-			if ((F_TestMode_PBA == CLEAR) && (F_TestMode_LineFront == CLEAR) && (F_TestMode_LineTest2 == CLEAR) && (gu16_TimerErr09 == 0))	//			Å¸ÀÌ¸Ó °æ°ú ½Ã
+			if ((F_TestMode_PBA == CLEAR) && (F_TestMode_LineFront == CLEAR) && (F_TestMode_LineTest2 == CLEAR) && (gu16_TimerErr09 == 0))	//			íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 
 			{
-				gu8_TimerErr09_Clear = Z_TimerErr09_Clear;	//			ÀÚµ¿¿¡·¯ ÇØÁ¦ Å¸ÀÌ¸Ó set
+				gu8_TimerErr09_Clear = Z_TimerErr09_Clear;	//			ìë™ì—ëŸ¬ í•´ì œ íƒ€ì´ë¨¸ set
 				F_Err09_CutWater = SET;
-				return (Z_Ecode09);					//				´Ü¼ö¿¡·¯ È®Á¤
+				return (Z_Ecode09);					//				ë‹¨ìˆ˜ì—ëŸ¬ í™•ì •
 			}
 		}
-		else										//		0.1LPM ÀÌ»óÀÎ °æ¿ì
+		else										//		0.1LPM ì´ìƒì¸ ê²½ìš°
 		{
-			if ((F_FirstFlushing == CLEAR) && (gu8_OperationStep_hi == 0x00))	//			ÇÃ·¯½Ì »óÅÂ
+			if ((F_FirstFlushing == CLEAR) && (gu8_OperationStep_hi == 0x00))	//			í”ŒëŸ¬ì‹± ìƒíƒœ
 			{
-				gu16_TimerErr09 = Z_TimerErr09_forFlushing;	//		(¡Ø ¿¡¾î°¡ Â÷ÀÖ´Â °æ¿ì À¯·®¼¾¼­ ÀÎ½Ä±îÁö ¿À·¡°É·Á¼­ ½Ã°£À» ±æ°ÔÇÔ)
+				gu16_TimerErr09 = Z_TimerErr09_forFlushing;	//		(â€» ì—ì–´ê°€ ì°¨ìˆëŠ” ê²½ìš° ìœ ëŸ‰ì„¼ì„œ ì¸ì‹ê¹Œì§€ ì˜¤ë˜ê±¸ë ¤ì„œ ì‹œê°„ì„ ê¸¸ê²Œí•¨)
 			}
 			else
 			{
-				gu16_TimerErr09 = Z_TimerErr09;     //			ÀÏ¹İ µ¥ÀÌÅÍ·Î Å¸ÀÌ¸Ó set
+				gu16_TimerErr09 = Z_TimerErr09;     //			ì¼ë°˜ ë°ì´í„°ë¡œ íƒ€ì´ë¨¸ set
 			}
 		}
 	}
-	else											//	¹ëºê ÀüÃ¼ OFF
+	else											//	ë°¸ë¸Œ ì „ì²´ OFF
 	{
-		if ((F_FirstFlushing == CLEAR) && (gu8_OperationStep_hi == 0x00))	//			ÇÃ·¯½Ì »óÅÂ
+		if ((F_FirstFlushing == CLEAR) && (gu8_OperationStep_hi == 0x00))	//			í”ŒëŸ¬ì‹± ìƒíƒœ
 		{
-			gu16_TimerErr09 = Z_TimerErr09_forFlushing;	//		(¡Ø ¿¡¾î°¡ Â÷ÀÖ´Â °æ¿ì À¯·®¼¾¼­ ÀÎ½Ä±îÁö ¿À·¡°É·Á¼­ ½Ã°£À» ±æ°ÔÇÔ)
+			gu16_TimerErr09 = Z_TimerErr09_forFlushing;	//		(â€» ì—ì–´ê°€ ì°¨ìˆëŠ” ê²½ìš° ìœ ëŸ‰ì„¼ì„œ ì¸ì‹ê¹Œì§€ ì˜¤ë˜ê±¸ë ¤ì„œ ì‹œê°„ì„ ê¸¸ê²Œí•¨)
 		}
 		else
 		{
-			gu16_TimerErr09 = Z_TimerErr09;     	//			ÀÏ¹İ µ¥ÀÌÅÍ·Î Å¸ÀÌ¸Ó set
+			gu16_TimerErr09 = Z_TimerErr09;     	//			ì¼ë°˜ ë°ì´í„°ë¡œ íƒ€ì´ë¨¸ set
 		}
 	}
 
-	if (gu8_TimerErr09_Clear == 0)					//	´Ü¼ö¿¡·¯ 1ºĞ µÚ ÀÚµ¿ ÇØÁ¦
+	if (gu8_TimerErr09_Clear == 0)					//	ë‹¨ìˆ˜ì—ëŸ¬ 1ë¶„ ë’¤ ìë™ í•´ì œ
 	{
 		F_Err09_CutWater = CLEAR;
 		if (gu8_ErrorCode == Z_Ecode09)
 		{
-			gu8_ErrorCode = CLEAR;						//		¿¡·¯ÇØÁ¦
+			gu8_ErrorCode = CLEAR;						//		ì—ëŸ¬í•´ì œ
 		}
 	}
 
@@ -312,131 +312,131 @@ static U8 Error25_HeatSinkTH(void)
 	/************************************************/
 	U8 mu8_OPENSHORT_Error;
 
-	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeatSinkSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ã¼Å©
+	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeatSinkSensor.TH_ADC_AVERAGE);     //	OPEN SHORT ì²´í¬
 
-	if (mu8_OPENSHORT_Error == 0)					//		Á¤»óÀÎ °æ¿ì
+	if (mu8_OPENSHORT_Error == 0)					//		ì •ìƒì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr25 = Z_TimerErr25_TestMode;//				Å¸ÀÌ¸Ó set
+			gu16_TimerErr25 = Z_TimerErr25_TestMode;//				íƒ€ì´ë¨¸ set
 		}
 		else
 		{
-			gu16_TimerErr25 = Z_TimerErr25;			//				Å¸ÀÌ¸Ó set
+			gu16_TimerErr25 = Z_TimerErr25;			//				íƒ€ì´ë¨¸ set
 		}
 	}
 	else
 	{
-		if (gu16_TimerErr25 == 0)					//	¿¡·¯ È®Á¤ÀÎ °æ¿ì
+		if (gu16_TimerErr25 == 0)					//	ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 		{
 			F_Err25_HeatSinkTH = SET;
-//			if ((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR))	//	³Ã¼ö ¼±ÅÃ ¹× ³Ã°¢ ONÀÎ °æ¿ì
-			if (((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR)) || (F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))	//	³Ã¼ö ¼±ÅÃ and (³Ã°¢ ONÀÎ °æ¿ì or °Ë»ç¸ğµåÀÎ °æ¿ì)
+//			if ((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR))	//	ëƒ‰ìˆ˜ ì„ íƒ ë° ëƒ‰ê° ONì¸ ê²½ìš°
+			if (((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR)) || (F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))	//	ëƒ‰ìˆ˜ ì„ íƒ and (ëƒ‰ê° ONì¸ ê²½ìš° or ê²€ì‚¬ëª¨ë“œì¸ ê²½ìš°)
 			{
 				if (gu16_TimerErr25_Display == 0)
 				{
-					return (Z_Ecode25);				//		¿¡·¯ÄÚµå ¹İÈ¯
+					return (Z_Ecode25);				//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 				}
 			}
 			else
 			{
-				if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))			//		Å×½ºÆ®¸ğµåÀÎ °æ¿ì Ç¥½Ã ºü¸£°Ô
+				if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))			//		í…ŒìŠ¤íŠ¸ëª¨ë“œì¸ ê²½ìš° í‘œì‹œ ë¹ ë¥´ê²Œ
 				{
-					gu16_TimerErr25_Display = Z_TimerErr25_Display_TestMode;//				Å¸ÀÌ¸Ó set
+					gu16_TimerErr25_Display = Z_TimerErr25_Display_TestMode;//				íƒ€ì´ë¨¸ set
 				}
 				else
 				{
-					gu16_TimerErr25_Display = Z_TimerErr25_Display;	//		3ÃÊ µÚ Ç¥½Ã
+					gu16_TimerErr25_Display = Z_TimerErr25_Display;	//		3ì´ˆ ë’¤ í‘œì‹œ
 				}
 			}
 		}
 	}
 
-	/*	¿¡·¯ ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó */
-	if (mu8_OPENSHORT_Error != 0)					//	OPEN SHORT»óÅÂÀÎ °æ¿ì
+	/*	ì—ëŸ¬ ìë™í•´ì œ íƒ€ì´ë¨¸ */
+	if (mu8_OPENSHORT_Error != 0)					//	OPEN SHORTìƒíƒœì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr25_Clear = Z_TimerErr25_TestMode;//	ÀÚµ¿ÇØÁ¦	Å¸ÀÌ¸Ó set
+			gu16_TimerErr25_Clear = Z_TimerErr25_TestMode;//	ìë™í•´ì œ	íƒ€ì´ë¨¸ set
 		}
 		else										//
 		{
-			gu16_TimerErr25_Clear = Z_TimerErr25;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+			gu16_TimerErr25_Clear = Z_TimerErr25;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 		}
-//		gu16_TimerErr25_Clear = Z_TimerErr25;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+//		gu16_TimerErr25_Clear = Z_TimerErr25;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 	}
 	if (gu16_TimerErr25_Clear == 0)
 	{
 		F_Err25_HeatSinkTH = CLEAR;
-		if (gu8_ErrorCode == Z_Ecode25)    			//	ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó °æ°ú and ÇØ´ç¿¡·¯ÀÎ °æ¿ì
+		if (gu8_ErrorCode == Z_Ecode25)    			//	ìë™í•´ì œ íƒ€ì´ë¨¸ ê²½ê³¼ and í•´ë‹¹ì—ëŸ¬ì¸ ê²½ìš°
 		{
-			gu8_ErrorCode = CLEAR;					//		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;					//		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
 	return (0);
 }
 
-/// @brief    TEM ¿¬¼Ó±¸µ¿ ¿¡·¯
+/// @brief    TEM ì—°ì†êµ¬ë™ ì—ëŸ¬
 //  @param    void
 /// @return   void
 static U8 Error29_TEM_OverDrive(void)
 {
 	U8 mu8_OPENSHORT_Error, mu8_OPENSHORT_Error2 = 0;
-	if (F_ColdOff == CLEAR)     					//  ³Ã°¢±â´É ON
+	if (F_ColdOff == CLEAR)     					//  ëƒ‰ê°ê¸°ëŠ¥ ON
 	{
-		//  #1 TEM ¿¬¼Ó 1½Ã°£ µ¿ÀÛ ½Ã ³Ã¼ö ¿Âµµ·Î ¿¡·¯ ÆÇ´Ü (35µµ ÀÌ»ó 1½Ã°£ À¯Áö)
+		//  #1 TEM ì—°ì† 1ì‹œê°„ ë™ì‘ ì‹œ ëƒ‰ìˆ˜ ì˜¨ë„ë¡œ ì—ëŸ¬ íŒë‹¨ (35ë„ ì´ìƒ 1ì‹œê°„ ìœ ì§€)
 		if (gu8_TEM_PWM_CMD != TEM_PWM_OFF)			//
 		{
 			mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_ColdSensor.TH_ADC_AVERAGE);
-			if (mu8_OPENSHORT_Error != 0)			//			´Ü¼± ´Ü¶ôÀÎ °æ¿ì ¿¡·¯ È®Á¤ÇÏÁö ¾ÊÀ½
+			if (mu8_OPENSHORT_Error != 0)			//			ë‹¨ì„  ë‹¨ë½ì¸ ê²½ìš° ì—ëŸ¬ í™•ì •í•˜ì§€ ì•ŠìŒ
 			{
-				gu16_TimerErr29_1 = Z_TimerErr29_1;	//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr29_1 = Z_TimerErr29_1;	//				íƒ€ì´ë¨¸ set
 			}
-			else if (gi16_ColdSensor.DEGREE < Z_TEMP35)	//			³Ã¼ö¼¾¼­°¡ 35µµ ¹Ì¸¸ÀÎ °æ¿ì
+			else if (gi16_ColdSensor.DEGREE < Z_TEMP35)	//			ëƒ‰ìˆ˜ì„¼ì„œê°€ 35ë„ ë¯¸ë§Œì¸ ê²½ìš°
 			{
-				gu16_TimerErr29_1 = Z_TimerErr29_1;	//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr29_1 = Z_TimerErr29_1;	//				íƒ€ì´ë¨¸ set
 			}
 			else
 			{
 
 			}
 
-			if (gu16_TimerErr29_1 == 0)				//		Å¸ÀÌ¸Ó °æ°ú ½Ã
+			if (gu16_TimerErr29_1 == 0)				//		íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 			{
-				F_Err29_TEM_OverDrive1 = SET;		//			¿¡·¯ ÇÃ·¡±× È®Á¤ (³Ã°¢À» OFFÇÏ±â À§ÇÔ)
+				F_Err29_TEM_OverDrive1 = SET;		//			ì—ëŸ¬ í”Œë˜ê·¸ í™•ì • (ëƒ‰ê°ì„ OFFí•˜ê¸° ìœ„í•¨)
 			}
 		}
-		else										//	»ó±â ¿Ü
+		else										//	ìƒê¸° ì™¸
 		{
-			gu16_TimerErr29_1 = Z_TimerErr29_1;		//		Å¸ÀÌ¸Ó set
+			gu16_TimerErr29_1 = Z_TimerErr29_1;		//		íƒ€ì´ë¨¸ set
 		}
 
-		//  #2 HEATSINK ¿Âµµ °ú¿­
-		mu8_OPENSHORT_Error2 = TH_Open_Short_Check(gi16_HeatSinkSensor.TH_ADC_AVERAGE);	//	´Ü¼± ´Ü¶ô Ã¼Å©
-		if (mu8_OPENSHORT_Error2 != 0)				//	´Ü¼± ´Ü¶ôÀÎ °æ¿ì ¿¡·¯ È®Á¤ÇÏÁö ¾ÊÀ½
+		//  #2 HEATSINK ì˜¨ë„ ê³¼ì—´
+		mu8_OPENSHORT_Error2 = TH_Open_Short_Check(gi16_HeatSinkSensor.TH_ADC_AVERAGE);	//	ë‹¨ì„  ë‹¨ë½ ì²´í¬
+		if (mu8_OPENSHORT_Error2 != 0)				//	ë‹¨ì„  ë‹¨ë½ì¸ ê²½ìš° ì—ëŸ¬ í™•ì •í•˜ì§€ ì•ŠìŒ
 		{
-			gu16_TimerErr29_2 = Z_TimerErr29_2;		//		Å¸ÀÌ¸Ó set
+			gu16_TimerErr29_2 = Z_TimerErr29_2;		//		íƒ€ì´ë¨¸ set
 		}
-		else if (gi16_HeatSinkSensor.DEGREE < Z_Cold_HeatSinkTH_CutDegree)	//	HEATSINK ¼¾¼­°¡ cut ¿Âµµ ¹Ì¸¸ÀÎ °æ¿ì
+		else if (gi16_HeatSinkSensor.DEGREE < Z_Cold_HeatSinkTH_CutDegree)	//	HEATSINK ì„¼ì„œê°€ cut ì˜¨ë„ ë¯¸ë§Œì¸ ê²½ìš°
 		{
-			gu16_TimerErr29_2 = Z_TimerErr29_2;		//		Å¸ÀÌ¸Ó set
+			gu16_TimerErr29_2 = Z_TimerErr29_2;		//		íƒ€ì´ë¨¸ set
 		}
 		else
 		{
 
 		}
 
-		if (gu16_TimerErr29_2 == 0)					//		Å¸ÀÌ¸Ó °æ°ú ½Ã
+		if (gu16_TimerErr29_2 == 0)					//		íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 		{
-			F_Err29_TEM_OverDrive2 = SET;			//			¿¡·¯ ÇÃ·¡±× È®Á¤ (³Ã°¢À» OFFÇÏ±â À§ÇÔ)
+			F_Err29_TEM_OverDrive2 = SET;			//			ì—ëŸ¬ í”Œë˜ê·¸ í™•ì • (ëƒ‰ê°ì„ OFFí•˜ê¸° ìœ„í•¨)
 		}
 
-		if ((gu8_WaterSelect == COLD_WATER) && ((F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET)))	//		³Ã¼ö ¼±ÅÃ ½Ã¿¡ ¿¡·¯ ÄÚµå Ç¥½Ã
+		if ((gu8_WaterSelect == COLD_WATER) && ((F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET)))	//		ëƒ‰ìˆ˜ ì„ íƒ ì‹œì— ì—ëŸ¬ ì½”ë“œ í‘œì‹œ
 		{
-			if (gu8_TimerErr29_Display == 0)		//	¼±ÅÃÇÏÀÚ¸¶ÀÚ ¿¡·¯°¡ ¹ß»ıÇØ¼­ ¼±ÅÃÀ½°ú ¿¡·¯À½ÀÌ ÁßÃ¸µÇ´Â ¹®Á¦°¡ ÀÖ¾î 0.5ÃÊ ÈÄ¿¡ ¿¡·¯ È®Á¤
+			if (gu8_TimerErr29_Display == 0)		//	ì„ íƒí•˜ìë§ˆì ì—ëŸ¬ê°€ ë°œìƒí•´ì„œ ì„ íƒìŒê³¼ ì—ëŸ¬ìŒì´ ì¤‘ì²©ë˜ëŠ” ë¬¸ì œê°€ ìˆì–´ 0.5ì´ˆ í›„ì— ì—ëŸ¬ í™•ì •
 			{
-				return (Z_Ecode29);					//			¿¡·¯ È®Á¤
+				return (Z_Ecode29);					//			ì—ëŸ¬ í™•ì •
 			}
 		}
 		else
@@ -444,17 +444,17 @@ static U8 Error29_TEM_OverDrive(void)
 			gu8_TimerErr29_Display = Z_Timer_Err29_Decide;
 		}
 	}
-	else											//	³Ã°¢ OFFÀÎ °æ¿ì
+	else											//	ëƒ‰ê° OFFì¸ ê²½ìš°
 	{
 		gu8_TimerErr29_Display = Z_Timer_Err29_Decide;
-		gu16_TimerErr29_1 = Z_TimerErr29_1;			//		Å¸ÀÌ¸Ó set
-		gu16_TimerErr29_2 = Z_TimerErr29_2;			//		Å¸ÀÌ¸Ó set
+		gu16_TimerErr29_1 = Z_TimerErr29_1;			//		íƒ€ì´ë¨¸ set
+		gu16_TimerErr29_2 = Z_TimerErr29_2;			//		íƒ€ì´ë¨¸ set
 	}
 
 	return (0);
 }
 
-/// @brief    ¿Â¼ö ¹è¼ö¸·Èû ¿¡·¯ (¡Ø ÀÌ ¿¡·¯´Â È÷ÅÍ¼Ò¼Õ¹æÁö(È÷ÅÍ À¯·Î°¡ ºüÁ® À¯·®Àº °¨ÁöµÇÁö¸¸ È÷ÅÍ¿¡ ¹°¾øÀÌ °¡¿­µÇ´Â °Í)µµ µÉ ¼ö ÀÖÀ½)
+/// @brief    ì˜¨ìˆ˜ ë°°ìˆ˜ë§‰í˜ ì—ëŸ¬ (â€» ì´ ì—ëŸ¬ëŠ” íˆí„°ì†Œì†ë°©ì§€(íˆí„° ìœ ë¡œê°€ ë¹ ì ¸ ìœ ëŸ‰ì€ ê°ì§€ë˜ì§€ë§Œ íˆí„°ì— ë¬¼ì—†ì´ ê°€ì—´ë˜ëŠ” ê²ƒ)ë„ ë  ìˆ˜ ìˆìŒ)
 /// @param    void
 /// @return   void
 //static U8 Error34_HotDrain_Cut(void)
@@ -468,7 +468,7 @@ static U8 Error29_TEM_OverDrive(void)
 //	return (0);
 //}
 
-/// @brief    °ú¿­ Error Check
+/// @brief    ê³¼ì—´ Error Check
 /// @param    void
 /// @return   void
 static U8 Error40_OverHeat(void)
@@ -476,14 +476,14 @@ static U8 Error40_OverHeat(void)
 	U8 mu8_OPENSHORT_Error1, mu8_OPENSHORT_Error2 = 0;
 	/************************************************/
 
-	switch (gu8_WaterSelect)							//	¹° ¼±ÅÃ
+	switch (gu8_WaterSelect)							//	ë¬¼ ì„ íƒ
 	{												//
-		case HOT_WATER:								//		¿Â¼ö ÀÎ °æ¿ì
-			mu8_OPENSHORT_Error1 = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);	//		¿Â¼öÃâ¼ö¼¾¼­ ´Ü¼±´Ü¶ô Ã¼Å©
-			mu8_OPENSHORT_Error2 = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);	//		È÷ÅÍ¼¾¼­ ´Ü¼±´Ü¶ô Ã¼Å©
-			if ((mu8_OPENSHORT_Error1 != 0) || (mu8_OPENSHORT_Error2 != 0))     //		´Ü¼± ´Ü¶ôÀÏ °æ¿ì ¿¡·¯ È®Á¤ÇÏÁö ¾ÊÀ½
+		case HOT_WATER:								//		ì˜¨ìˆ˜ ì¸ ê²½ìš°
+			mu8_OPENSHORT_Error1 = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);	//		ì˜¨ìˆ˜ì¶œìˆ˜ì„¼ì„œ ë‹¨ì„ ë‹¨ë½ ì²´í¬
+			mu8_OPENSHORT_Error2 = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);	//		íˆí„°ì„¼ì„œ ë‹¨ì„ ë‹¨ë½ ì²´í¬
+			if ((mu8_OPENSHORT_Error1 != 0) || (mu8_OPENSHORT_Error2 != 0))     //		ë‹¨ì„  ë‹¨ë½ì¼ ê²½ìš° ì—ëŸ¬ í™•ì •í•˜ì§€ ì•ŠìŒ
 			{
-				gu16_TimerErr40 = Z_TimerErr40;		//			Å¸ÀÌ¸Ó set
+				gu16_TimerErr40 = Z_TimerErr40;		//			íƒ€ì´ë¨¸ set
 			}
 // //			else if (((gi16_HotOutSensor.DEGREE < Z_TEMP105) && (gi16_HeaterSensor.DEGREE < Z_TEMP105)) || (gu8_OperationStep != Z_OperationStep_50))
 // 			else if (((gu8_HotTempSetup != HOT_TEMP_SETUP_KOR100_JP90) && (gi16_HotOutSensor.DEGREE < Z_TEMP105) && (gi16_HeaterSensor.DEGREE < Z_TEMP105))
@@ -497,15 +497,15 @@ static U8 Error40_OverHeat(void)
 					|| ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__90) && (gi16_HotOutSensor.DEGREE < Z_TEMP107) && (gi16_HeaterSensor.DEGREE < Z_TEMP107))
 					|| (gu8_OperationStep != Z_OperationStep_50))
 			{
-				gu16_TimerErr40 = Z_TimerErr40;		//			Å¸ÀÌ¸Ó set
+				gu16_TimerErr40 = Z_TimerErr40;		//			íƒ€ì´ë¨¸ set
 			}
 			else
 			{
 
 			}
 			break;
-		default:									//	»ó±âÀÌ¿Ü
-			gu16_TimerErr40 = Z_TimerErr40;			//		Å¸ÀÌ¸Óset
+		default:									//	ìƒê¸°ì´ì™¸
+			gu16_TimerErr40 = Z_TimerErr40;			//		íƒ€ì´ë¨¸set
 			break;
 	}
 
@@ -531,56 +531,56 @@ static U8 Error43_OutDoorAirTH(void)
 	/************************************************/
 	U8 mu8_OPENSHORT_Error;
 
-	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ã¼Å©
+	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);     //	OPEN SHORT ì²´í¬
 
-	if (mu8_OPENSHORT_Error == 0)					//	Á¤»óÀÎ °æ¿ì
+	if (mu8_OPENSHORT_Error == 0)					//	ì •ìƒì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr43 = Z_TimerErr43_TestMode;//			Å¸ÀÌ¸Ó set
+			gu16_TimerErr43 = Z_TimerErr43_TestMode;//			íƒ€ì´ë¨¸ set
 		}
 		else
 		{
-			gu16_TimerErr43 = Z_TimerErr43;			//			Å¸ÀÌ¸Ó set
+			gu16_TimerErr43 = Z_TimerErr43;			//			íƒ€ì´ë¨¸ set
 		}
 	}
 	else
 	{
-		if (gu16_TimerErr43 == 0)					//	¿¡·¯ È®Á¤ÀÎ °æ¿ì
+		if (gu16_TimerErr43 == 0)					//	ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 		{
 			F_Err43_OutDoorAirTH = SET;
 //			if (gu8_TimerSleepMode <= (Z_TimerSleepMode/2)) //
 			if (gu8_TimerEcode43_Display != 0)
 			{
-				return (Z_Ecode43);					//		¿¡·¯ÄÚµå ¹İÈ¯
+				return (Z_Ecode43);					//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 			}
 		}
 	}
 
-	/*	¿¡·¯ ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó */
-	if (mu8_OPENSHORT_Error != 0)					//	OPEN SHORT»óÅÂÀÎ °æ¿ì
+	/*	ì—ëŸ¬ ìë™í•´ì œ íƒ€ì´ë¨¸ */
+	if (mu8_OPENSHORT_Error != 0)					//	OPEN SHORTìƒíƒœì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr43_Clear = Z_TimerErr43_TestMode;//	ÀÚµ¿ÇØÁ¦	Å¸ÀÌ¸Ó set
+			gu16_TimerErr43_Clear = Z_TimerErr43_TestMode;//	ìë™í•´ì œ	íƒ€ì´ë¨¸ set
 		}
 		else											//
 		{
-			gu16_TimerErr43_Clear = Z_TimerErr43;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+			gu16_TimerErr43_Clear = Z_TimerErr43;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 		}
 	}
 	if (gu16_TimerErr43_Clear == 0)
 	{
 		F_Err43_OutDoorAirTH = CLEAR;
-		if (gu8_ErrorCode == Z_Ecode43)    			//	ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó °æ°ú and ÇØ´ç¿¡·¯ÀÎ °æ¿ì
+		if (gu8_ErrorCode == Z_Ecode43)    			//	ìë™í•´ì œ íƒ€ì´ë¨¸ ê²½ê³¼ and í•´ë‹¹ì—ëŸ¬ì¸ ê²½ìš°
 		{
-			gu8_ErrorCode = CLEAR;					//		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;					//		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
-	if ((gu8_ErrorCode == Z_Ecode43) && (gu8_TimerEcode43_Display == 0))	//	3ÃÊ Ç¥½Ã ÈÄ ÀÚµ¿ ÇØÁ¦
+	if ((gu8_ErrorCode == Z_Ecode43) && (gu8_TimerEcode43_Display == 0))	//	3ì´ˆ í‘œì‹œ í›„ ìë™ í•´ì œ
 	{
-		gu8_ErrorCode = CLEAR;					//		¿¡·¯ ÇØÁ¦
+		gu8_ErrorCode = CLEAR;					//		ì—ëŸ¬ í•´ì œ
 	}
 
 	return (0);
@@ -594,65 +594,65 @@ static U8 Error44_ColdTH(void)
 	/************************************************/
 	U8 mu8_OPENSHORT_Error;
 
-	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_ColdSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ã¼Å©
+	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_ColdSensor.TH_ADC_AVERAGE);     //	OPEN SHORT ì²´í¬
 
-	if (mu8_OPENSHORT_Error == 0)					//	Á¤»óÀÎ °æ¿ì
+	if (mu8_OPENSHORT_Error == 0)					//	ì •ìƒì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr44 = Z_TimerErr44_TestMode;//			Å¸ÀÌ¸Ó set
+			gu16_TimerErr44 = Z_TimerErr44_TestMode;//			íƒ€ì´ë¨¸ set
 		}
 		else
 		{
-			gu16_TimerErr44 = Z_TimerErr44;			//			Å¸ÀÌ¸Ó set
+			gu16_TimerErr44 = Z_TimerErr44;			//			íƒ€ì´ë¨¸ set
 		}
 	}
 	else
 	{
-		if (gu16_TimerErr44 == 0)					//	¿¡·¯ È®Á¤ÀÎ °æ¿ì
+		if (gu16_TimerErr44 == 0)					//	ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 		{
 			F_Err44_ColdTH = SET;
-//			if ((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR))	//	³Ã¼ö ¼±ÅÃ ¹× ³Ã°¢ ONÀÎ °æ¿ì
-			if (((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR)) || (F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))	//	³Ã¼ö ¼±ÅÃ and (³Ã°¢ ONÀÎ °æ¿ì or °Ë»ç¸ğµåÀÎ °æ¿ì)
+//			if ((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR))	//	ëƒ‰ìˆ˜ ì„ íƒ ë° ëƒ‰ê° ONì¸ ê²½ìš°
+			if (((gu8_WaterSelect == COLD_WATER) && (F_ColdOff == CLEAR)) || (F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))	//	ëƒ‰ìˆ˜ ì„ íƒ and (ëƒ‰ê° ONì¸ ê²½ìš° or ê²€ì‚¬ëª¨ë“œì¸ ê²½ìš°)
 			{
 				if (gu16_TimerErr44_Display == 0)
 				{
-					return (Z_Ecode44);				//		¿¡·¯ÄÚµå ¹İÈ¯
+					return (Z_Ecode44);				//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 				}
 			}
 			else
 			{
 				if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 				{
-					gu16_TimerErr44_Display = Z_TimerErr44_Display_TestMode;//				Å¸ÀÌ¸Ó set
+					gu16_TimerErr44_Display = Z_TimerErr44_Display_TestMode;//				íƒ€ì´ë¨¸ set
 				}
 				else
 				{
-					gu16_TimerErr44_Display = Z_TimerErr44_Display;	//		3ÃÊ µÚ Ç¥½Ã
+					gu16_TimerErr44_Display = Z_TimerErr44_Display;	//		3ì´ˆ ë’¤ í‘œì‹œ
 				}
 			}
 		}
 	}
 
-	/*	¿¡·¯ ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó */
-	if (mu8_OPENSHORT_Error != 0)					//	OPEN SHORT»óÅÂÀÎ °æ¿ì
+	/*	ì—ëŸ¬ ìë™í•´ì œ íƒ€ì´ë¨¸ */
+	if (mu8_OPENSHORT_Error != 0)					//	OPEN SHORTìƒíƒœì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr44_Clear = Z_TimerErr44_TestMode;//	ÀÚµ¿ÇØÁ¦	Å¸ÀÌ¸Ó set
+			gu16_TimerErr44_Clear = Z_TimerErr44_TestMode;//	ìë™í•´ì œ	íƒ€ì´ë¨¸ set
 		}
 		else										//
 		{
-			gu16_TimerErr44_Clear = Z_TimerErr44_Clear;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+			gu16_TimerErr44_Clear = Z_TimerErr44_Clear;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 		}
-//		gu16_TimerErr44_Clear = Z_TimerErr44;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+//		gu16_TimerErr44_Clear = Z_TimerErr44;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 	}
 	if (gu16_TimerErr44_Clear == 0)
 	{
 		F_Err44_ColdTH = CLEAR;
-		if (gu8_ErrorCode == Z_Ecode44)    			//	ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó °æ°ú and ÇØ´ç¿¡·¯ÀÎ °æ¿ì
+		if (gu8_ErrorCode == Z_Ecode44)    			//	ìë™í•´ì œ íƒ€ì´ë¨¸ ê²½ê³¼ and í•´ë‹¹ì—ëŸ¬ì¸ ê²½ìš°
 		{
-			gu8_ErrorCode = CLEAR;					//		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;					//		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
@@ -667,57 +667,57 @@ static U8 Error47_HotOutTH(void)
 	/************************************************/
 	U8 mu8_OPENSHORT_Error;
 
-	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);    //	OPEN SHORT Ã¼Å©
+	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);    //	OPEN SHORT ì²´í¬
 
-	switch (gu8_WaterSelect)							//	¹° ¼±ÅÃ
+	switch (gu8_WaterSelect)							//	ë¬¼ ì„ íƒ
 	{
-		case HOT_WATER:								//		¿Â¼ö ¼±ÅÃÀÎ °æ¿ì
-			if (mu8_OPENSHORT_Error == 0)			//			Á¤»óÀÎ °æ¿ì
+		case HOT_WATER:								//		ì˜¨ìˆ˜ ì„ íƒì¸ ê²½ìš°
+			if (mu8_OPENSHORT_Error == 0)			//			ì •ìƒì¸ ê²½ìš°
 			{
-				gu16_TimerErr47 = Z_TimerErr47;	//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr47 = Z_TimerErr47;	//				íƒ€ì´ë¨¸ set
 			}										//
 			break;
-		default:									//	»ó±âÀÌ¿Ü
+		default:									//	ìƒê¸°ì´ì™¸
 			if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 			{
-				if (mu8_OPENSHORT_Error == 0)		//			Á¤»óÀÎ °æ¿ì
+				if (mu8_OPENSHORT_Error == 0)		//			ì •ìƒì¸ ê²½ìš°
 				{
-					gu16_TimerErr47 = Z_TimerErr47_TestMode;//				Å¸ÀÌ¸Ó set
+					gu16_TimerErr47 = Z_TimerErr47_TestMode;//				íƒ€ì´ë¨¸ set
 				}
 			}
 			else
 			{
-				gu16_TimerErr47 = Z_TimerErr47;		//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr47 = Z_TimerErr47;		//				íƒ€ì´ë¨¸ set
 			}
 			break;
 	}
 
-	/*	¿¡·¯ ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó */
-	if (mu8_OPENSHORT_Error != 0)                   //	OPEN SHORT»óÅÂÀÎ °æ¿ì
+	/*	ì—ëŸ¬ ìë™í•´ì œ íƒ€ì´ë¨¸ */
+	if (mu8_OPENSHORT_Error != 0)                   //	OPEN SHORTìƒíƒœì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr47_Clear = Z_TimerErr47_TestMode;//	ÀÚµ¿ÇØÁ¦	Å¸ÀÌ¸Ó set
+			gu16_TimerErr47_Clear = Z_TimerErr47_TestMode;//	ìë™í•´ì œ	íƒ€ì´ë¨¸ set
 		}
 		else										//
 		{
-			gu16_TimerErr47_Clear = Z_TimerErr47;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+			gu16_TimerErr47_Clear = Z_TimerErr47;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 		}
-//		gu16_TimerErr47_Clear = Z_TimerErr47_Clear;	//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+//		gu16_TimerErr47_Clear = Z_TimerErr47_Clear;	//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 	}
-	if (gu16_TimerErr47_Clear == 0) 				//	ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó °æ°ú and ÇØ´ç¿¡·¯ÀÎ °æ¿ì
+	if (gu16_TimerErr47_Clear == 0) 				//	ìë™í•´ì œ íƒ€ì´ë¨¸ ê²½ê³¼ and í•´ë‹¹ì—ëŸ¬ì¸ ê²½ìš°
 	{
 		F_Err47_HotOutTH = CLEAR;
 		if (gu8_ErrorCode == Z_Ecode47)
 		{
-			gu8_ErrorCode = CLEAR;                      //		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;                      //		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
-	if ((gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr47 == 0))   //	¿¡·¯ È®Á¤ÀÎ °æ¿ì
+	if ((gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr47 == 0))   //	ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 	{
 		F_Err47_HotOutTH = SET;
-		return (Z_Ecode47);							//		¿¡·¯ÄÚµå ¹İÈ¯
+		return (Z_Ecode47);							//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 	}												//
 	return (0);
 }
@@ -730,57 +730,57 @@ static U8 Error46_HotInTH(void)
 	/************************************************/
 	U8 mu8_OPENSHORT_Error;
 
-	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotInSensor.TH_ADC_AVERAGE);    //	OPEN SHORT Ã¼Å©
+	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotInSensor.TH_ADC_AVERAGE);    //	OPEN SHORT ì²´í¬
 
-	switch (gu8_WaterSelect)							//	¹° ¼±ÅÃ¿¡ µû¶ó
+	switch (gu8_WaterSelect)							//	ë¬¼ ì„ íƒì— ë”°ë¼
 	{												//
-		case HOT_WATER:								//		¿Â¼ö ¼±ÅÃÀÎ °æ¿ì
-			if (mu8_OPENSHORT_Error == 0)			//			Á¤»óÀÎ °æ¿ì
+		case HOT_WATER:								//		ì˜¨ìˆ˜ ì„ íƒì¸ ê²½ìš°
+			if (mu8_OPENSHORT_Error == 0)			//			ì •ìƒì¸ ê²½ìš°
 			{
-				gu16_TimerErr46 = Z_TimerErr46;		//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr46 = Z_TimerErr46;		//				íƒ€ì´ë¨¸ set
 			}										//
 			break;
-		default:									//	»ó±âÀÌ¿Ü
+		default:									//	ìƒê¸°ì´ì™¸
 			if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 			{
-				if (mu8_OPENSHORT_Error == 0)		//			Á¤»óÀÎ °æ¿ì
+				if (mu8_OPENSHORT_Error == 0)		//			ì •ìƒì¸ ê²½ìš°
 				{
-					gu16_TimerErr46 = Z_TimerErr46_TestMode;	//				Å¸ÀÌ¸Ó set
+					gu16_TimerErr46 = Z_TimerErr46_TestMode;	//				íƒ€ì´ë¨¸ set
 				}
 			}
 			else
 			{
-				gu16_TimerErr46 = Z_TimerErr46;		//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr46 = Z_TimerErr46;		//				íƒ€ì´ë¨¸ set
 			}
 			break;
 	}
 
-	/*	¿¡·¯ ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó */
-	if (mu8_OPENSHORT_Error != 0)                   //	OPEN SHORT»óÅÂÀÎ °æ¿ì
+	/*	ì—ëŸ¬ ìë™í•´ì œ íƒ€ì´ë¨¸ */
+	if (mu8_OPENSHORT_Error != 0)                   //	OPEN SHORTìƒíƒœì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr46_Clear = Z_TimerErr46_TestMode;//	ÀÚµ¿ÇØÁ¦	Å¸ÀÌ¸Ó set
+			gu16_TimerErr46_Clear = Z_TimerErr46_TestMode;//	ìë™í•´ì œ	íƒ€ì´ë¨¸ set
 		}
 		else										//
 		{
-			gu16_TimerErr46_Clear = Z_TimerErr46;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+			gu16_TimerErr46_Clear = Z_TimerErr46;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 		}
-//		gu16_TimerErr46_Clear = Z_TimerErr46;       //		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+//		gu16_TimerErr46_Clear = Z_TimerErr46;       //		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 	}
 	if (gu16_TimerErr46_Clear == 0)
 	{
 		F_Err46_HotInTH = CLEAR;
 		if (gu8_ErrorCode == Z_Ecode46)
 		{
-			gu8_ErrorCode = CLEAR;                      //		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;                      //		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
-	if ((gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr46 == 0))  //	¿¡·¯ È®Á¤ÀÎ °æ¿ì
+	if ((gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr46 == 0))  //	ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 	{
 		F_Err46_HotInTH = SET;
-		return (Z_Ecode46);							//		¿¡·¯ÄÚµå ¹İÈ¯
+		return (Z_Ecode46);							//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 	}												//
 	return (0);
 }
@@ -793,73 +793,73 @@ static U8 Error48_HeaterTH(void)
 	/************************************************/
 	U8 mu8_OPENSHORT_Error = 0;
 
-	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);    //	OPEN SHORT Ã¼Å©
+	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);    //	OPEN SHORT ì²´í¬
 
-	switch (gu8_WaterSelect)							//	¹° ¼±ÅÃ¿¡ µû¶ó
+	switch (gu8_WaterSelect)							//	ë¬¼ ì„ íƒì— ë”°ë¼
 	{
-		case HOT_WATER:								//		¿Â¼ö ¼±ÅÃÀÎ °æ¿ì
-			if (mu8_OPENSHORT_Error == 0)			//			Á¤»óÀÎ °æ¿ì
+		case HOT_WATER:								//		ì˜¨ìˆ˜ ì„ íƒì¸ ê²½ìš°
+			if (mu8_OPENSHORT_Error == 0)			//			ì •ìƒì¸ ê²½ìš°
 			{
-				gu16_TimerErr48 = Z_TimerErr48;	//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr48 = Z_TimerErr48;	//				íƒ€ì´ë¨¸ set
 			}										//
 			break;
-		default:									//	»ó±âÀÌ¿Ü
+		default:									//	ìƒê¸°ì´ì™¸
 			if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 			{
-				if (mu8_OPENSHORT_Error == 0)		//			Á¤»óÀÎ °æ¿ì
+				if (mu8_OPENSHORT_Error == 0)		//			ì •ìƒì¸ ê²½ìš°
 				{
-					gu16_TimerErr48 = Z_TimerErr48_TestMode;	//				Å¸ÀÌ¸Ó set
+					gu16_TimerErr48 = Z_TimerErr48_TestMode;	//				íƒ€ì´ë¨¸ set
 				}
 			}
 			else
 			{
-				gu16_TimerErr48 = Z_TimerErr48;		//				Å¸ÀÌ¸Ó set
+				gu16_TimerErr48 = Z_TimerErr48;		//				íƒ€ì´ë¨¸ set
 			}
 			break;
 	}
 
-	/*	¿¡·¯ ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó */
-	if (mu8_OPENSHORT_Error != 0)                   //	OPEN SHORT»óÅÂÀÎ °æ¿ì
+	/*	ì—ëŸ¬ ìë™í•´ì œ íƒ€ì´ë¨¸ */
+	if (mu8_OPENSHORT_Error != 0)                   //	OPEN SHORTìƒíƒœì¸ ê²½ìš°
 	{
 		if ((F_TestMode_PBA == SET) || (F_TestMode_LineTest2 == SET))
 		{
-			gu16_TimerErr48_Clear = Z_TimerErr48_TestMode;//	ÀÚµ¿ÇØÁ¦	Å¸ÀÌ¸Ó set
+			gu16_TimerErr48_Clear = Z_TimerErr48_TestMode;//	ìë™í•´ì œ	íƒ€ì´ë¨¸ set
 		}
 		else										//
 		{
-			gu16_TimerErr48_Clear = Z_TimerErr48;		//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+			gu16_TimerErr48_Clear = Z_TimerErr48;		//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 		}
-//		gu16_TimerErr48_Clear = Z_TimerErr48_Clear;	//		ÀÚµ¿ÇØÁ¦ Å¸ÀÌ¸Ó set
+//		gu16_TimerErr48_Clear = Z_TimerErr48_Clear;	//		ìë™í•´ì œ íƒ€ì´ë¨¸ set
 	}
 	if (gu16_TimerErr48_Clear == 0)
 	{
 		F_Err48_HeaterTH = CLEAR;
 		if (gu8_ErrorCode == Z_Ecode48)
 		{
-			gu8_ErrorCode = CLEAR;                      //		¿¡·¯ ÇØÁ¦
+			gu8_ErrorCode = CLEAR;                      //		ì—ëŸ¬ í•´ì œ
 		}
 	}
 
-	if ((gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr48 == 0))     //	¿¡·¯ È®Á¤ÀÎ °æ¿ì
+	if ((gu8_ModelType_forCHP == MODEL_CHP) && (gu16_TimerErr48 == 0))     //	ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 	{
 		F_Err48_HeaterTH = SET;
-		return (Z_Ecode48);							//		¿¡·¯ÄÚµå ¹İÈ¯
+		return (Z_Ecode48);							//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 	}												//
 	return (0);
 }
 
-/// @brief    UV ¿¡·¯
+/// @brief    UV ì—ëŸ¬
 /// @param    void
 /// @return   void
 static U8 Error77_FaucetUV(void)
 {
-    // UV µ¿ÀÛ ÁßÀÎÁö È®ÀÎ
+    // UV ë™ì‘ ì¤‘ì¸ì§€ í™•ì¸
     if (P_UV == SET)
     {
-        // UV ÇÇµå¹éÀÌ 10 ÀÌÇÏÀÎÁö È®ÀÎ
+        // UV í”¼ë“œë°±ì´ 10 ì´í•˜ì¸ì§€ í™•ì¸
         if (ADC_RESULT_UV_FB <= 30)
         {
-            // Å¸ÀÌ¸Ó°¡ 0ÀÌ µÇ¸é ¿¡·¯ È®Á¤
+            // íƒ€ì´ë¨¸ê°€ 0ì´ ë˜ë©´ ì—ëŸ¬ í™•ì •
             if (gu16_TimerErr77 == 0)
             {
                 F_Err77_FaucetUV = SET;
@@ -868,10 +868,10 @@ static U8 Error77_FaucetUV(void)
         }
         else
         {
-			// Á¤»óÀÌ¸é
+			// ì •ìƒì´ë©´
 			if (F_Err77_FaucetUV == SET)
 			{
-				// ¿¡·¯°¡ È®Á¤µÈ »óÅÂÀÌ°í, Å¬¸®¾î Å¸ÀÌ¸Ó°¡ ¾ÆÁ÷ ¼³Á¤µÇÁö ¾Ê¾ÒÀ¸¸é Å¬¸®¾î Å¸ÀÌ¸Ó ¼³Á¤
+				// ì—ëŸ¬ê°€ í™•ì •ëœ ìƒíƒœì´ê³ , í´ë¦¬ì–´ íƒ€ì´ë¨¸ê°€ ì•„ì§ ì„¤ì •ë˜ì§€ ì•Šì•˜ìœ¼ë©´ í´ë¦¬ì–´ íƒ€ì´ë¨¸ ì„¤ì •
 				if (gu16_TimerErr77_Clear == 0)
 				{
 					F_Err77_FaucetUV = CLEAR;
@@ -879,22 +879,22 @@ static U8 Error77_FaucetUV(void)
 			}
 			else
 			{
-				// ¿¡·¯°¡ È®Á¤µÇÁö ¾Ê¾ÒÀ¸¸é Å¸ÀÌ¸Ó ¸®¼Â
+				// ì—ëŸ¬ê°€ í™•ì •ë˜ì§€ ì•Šì•˜ìœ¼ë©´ íƒ€ì´ë¨¸ ë¦¬ì…‹
 				gu16_TimerErr77 = Z_TimerErr77;
 			}
         }
     }
     else
     {
-        // UV µ¿ÀÛ ÁßÀÌ ¾Æ´Ï¸é
+        // UV ë™ì‘ ì¤‘ì´ ì•„ë‹ˆë©´
         if (F_Err77_FaucetUV == SET)
         {
-            // ¿¡·¯°¡ È®Á¤µÈ »óÅÂ¸é Å¬¸®¾î Å¸ÀÌ¸Ó ¼³Á¤
+            // ì—ëŸ¬ê°€ í™•ì •ëœ ìƒíƒœë©´ í´ë¦¬ì–´ íƒ€ì´ë¨¸ ì„¤ì •
             gu16_TimerErr77_Clear = Z_TimerErr77_Clear;
         }
         else
         {
-            // ¿¡·¯°¡ È®Á¤µÇÁö ¾Ê¾ÒÀ¸¸é Å¸ÀÌ¸Ó ¸®¼Â
+            // ì—ëŸ¬ê°€ í™•ì •ë˜ì§€ ì•Šì•˜ìœ¼ë©´ íƒ€ì´ë¨¸ ë¦¬ì…‹
             gu16_TimerErr77 = Z_TimerErr77;
         }
     }
@@ -902,30 +902,30 @@ static U8 Error77_FaucetUV(void)
     return (0);
 }
 
-/// @brief    ÇÁ·ĞÆ® Åë½Å ¿¡·¯
+/// @brief    í”„ë¡ íŠ¸ í†µì‹  ì—ëŸ¬
 /// @param    void
 /// @return   void
 static U8 ErrorA0_FrontCommunication(void)
 {
-	if (F_Front_Communication_Error == SET)			//	Åë½Å¿¡·¯ È®Á¤ÀÎ °æ¿ì
+	if (F_Front_Communication_Error == SET)			//	í†µì‹ ì—ëŸ¬ í™•ì •ì¸ ê²½ìš°
 	{
-		F_ErrA0_FrontCommunication = SET;			//		¿¡·¯ ÇÃ·¡±× set
-		return (Z_EcodeA0);							//		¿¡·¯ÄÚµå ¹İÈ¯
+		F_ErrA0_FrontCommunication = SET;			//		ì—ëŸ¬ í”Œë˜ê·¸ set
+		return (Z_EcodeA0);							//		ì—ëŸ¬ì½”ë“œ ë°˜í™˜
 	}
 
-	if (F_Front_Communication_Error == CLEAR)		//	Åë½Å¿¡·¯ clear
+	if (F_Front_Communication_Error == CLEAR)		//	í†µì‹ ì—ëŸ¬ clear
 	{
-		F_ErrA0_FrontCommunication = CLEAR;			//		¿¡·¯ ÇÃ·¡±× clear
-		if (gu8_ErrorCode == Z_EcodeA0)				//		ÇØ´Ù ¿¡·¯ÄÚµå¿´´ø °æ¿ì
+		F_ErrA0_FrontCommunication = CLEAR;			//		ì—ëŸ¬ í”Œë˜ê·¸ clear
+		if (gu8_ErrorCode == Z_EcodeA0)				//		í•´ë‹¤ ì—ëŸ¬ì½”ë“œì˜€ë˜ ê²½ìš°
 		{
-			gu8_ErrorCode = CLEAR;					//			ÄÚµå clear
+			gu8_ErrorCode = CLEAR;					//			ì½”ë“œ clear
 		}
 	}
 
 	return (0);
 }
 
-/// @brief    OPEN SHORT Ã¼Å© ÇÔ¼ö
+/// @brief    OPEN SHORT ì²´í¬ í•¨ìˆ˜
 /// @param    void
 /// @return   void
 U8 TH_Open_Short_Check(U16* mu16_ADCAddress)
@@ -935,29 +935,29 @@ U8 TH_Open_Short_Check(U16* mu16_ADCAddress)
 
 	for (mu8_i = 0; mu8_i < DEGREE_SENSOR_NUM; mu8_i++)
 	{
-		if (TH_DataArray[mu8_i]->TH_ADC_AVERAGE == mu16_ADCAddress)     //		Å×ÀÌºí¿¡¼­ ÇØ´ç ¾îµå·¹½º Ã£±â
+		if (TH_DataArray[mu8_i]->TH_ADC_AVERAGE == mu16_ADCAddress)     //		í…Œì´ë¸”ì—ì„œ í•´ë‹¹ ì–´ë“œë ˆìŠ¤ ì°¾ê¸°
 		{
 			break;
 		}
 	}
 
-	if (mu8_i < DEGREE_SENSOR_NUM)									//	µ¥ÀÌÅÍ°¡ ÀÖ´Â °æ¿ì
+	if (mu8_i < DEGREE_SENSOR_NUM)									//	ë°ì´í„°ê°€ ìˆëŠ” ê²½ìš°
 	{
-		if (*mu16_ADCAddress < TH_DataArray[mu8_i]->SHORT_DATA)	//	ÇØ´ç µ¥ÀÌÅÍÀÇ SHORTµ¥ÀÌÅÍ ¹Ì¸¸ÀÎ °æ¿ì
+		if (*mu16_ADCAddress < TH_DataArray[mu8_i]->SHORT_DATA)	//	í•´ë‹¹ ë°ì´í„°ì˜ SHORTë°ì´í„° ë¯¸ë§Œì¸ ê²½ìš°
 		{
-			mu8_ret = 1;							//		SHORT È®Á¤
+			mu8_ret = 1;							//		SHORT í™•ì •
 		}
 
-		if (*mu16_ADCAddress > TH_DataArray[mu8_i]->OPEN_DATA)	//	ÇØ´ç µ¥ÀÌÅÍÀÇ OPENµ¥ÀÌÅÍ ÃÊ°úÀÎ °æ¿ì
+		if (*mu16_ADCAddress > TH_DataArray[mu8_i]->OPEN_DATA)	//	í•´ë‹¹ ë°ì´í„°ì˜ OPENë°ì´í„° ì´ˆê³¼ì¸ ê²½ìš°
 		{
-			mu8_ret = 2;							//		OPEN È®Á¤
+			mu8_ret = 2;							//		OPEN í™•ì •
 		}
 	}
 
-	return (mu8_ret);								//	°á°ú ¹İÈ¯
+	return (mu8_ret);								//	ê²°ê³¼ ë°˜í™˜
 }
 
-/// @brief    ¿¡·¯ ÇØÁ¦ ½Ã µ¥ÀÌÅÍ Å¬¸®¾î
+/// @brief    ì—ëŸ¬ í•´ì œ ì‹œ ë°ì´í„° í´ë¦¬ì–´
 /// @param    void
 /// @return   void
 void ErrorClear(void)

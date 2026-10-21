@@ -1,12 +1,12 @@
 /// @file     input.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ÀÔ·Â Ã³¸® file
+/// @brief    ì…ë ¥ ì²˜ë¦¬ file
 #define INPUT_C
 #include "include/_include.h"
 
 
-/// @brief    µğÁöÅĞ ÀÔ·Â ÃÊ±âÈ­
+/// @brief    ë””ì§€í„¸ ì…ë ¥ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Input_Initialize(void)
@@ -14,7 +14,7 @@ void Input_Initialize(void)
 
 }
 
-/// @brief    µğÁöÅĞ ÀÔ·Â Á¦¾î
+/// @brief    ë””ì§€í„¸ ì…ë ¥ ì œì–´
 /// @param    void
 /// @return   void
 void InputControl(void)
@@ -27,34 +27,34 @@ void InputControl(void)
 	mu8_inputdata2.byte = 0x00;
 	mu8_inputdata3.byte = 0x00;
 
-	if (F_10ms_for_InputDigital ==  SET)			//	10ms ÁÖ±â
+	if (F_10ms_for_InputDigital ==  SET)			//	10ms ì£¼ê¸°
 	{
 		F_10ms_for_InputDigital = CLEAR;
 
-		/*	ÅÍÄ¡ Ã³¸®	*/
+		/*	í„°ì¹˜ ì²˜ë¦¬	*/
 		mu8_inputdata.Bit.b0 = !P_KEY_HOT;
 		mu8_inputdata.Bit.b1 = !P_KEY_COLD;
 		mu8_inputdata.Bit.b2 = !P_KEY_PURE;
 		mu8_inputdata.Bit.b3 = !P_KEY_AMOUNT;
 //		mu8_inputdata.Bit.b4 = !P_KEY_EFFLUENT;
 
-		ThreeMatchModule(&gu8_DigitalInput, mu8_inputdata.byte);	//	µğÁöÅĞ ÀÔ·Â 3È¸ ÀÏÄ¡ ¸ğµâ
+		ThreeMatchModule(&gu8_DigitalInput, mu8_inputdata.byte);	//	ë””ì§€í„¸ ì…ë ¥ 3íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 
-		/*	¸ğµ¨ ±âÁ¾ Ã³¸®	*/
+		/*	ëª¨ë¸ ê¸°ì¢… ì²˜ë¦¬	*/
 		mu8_inputdata2.Bit.b0 = P_MODEL;
 
-		ThreeMatchModule(&gu8_DigitalInput2, mu8_inputdata2.byte);	//	µğÁöÅĞ ÀÔ·Â 3È¸ ÀÏÄ¡ ¸ğµâ
+		ThreeMatchModule(&gu8_DigitalInput2, mu8_inputdata2.byte);	//	ë””ì§€í„¸ ì…ë ¥ 3íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 
 		mu8_inputdata.byte = 0x00;
 
-		/*	¹öÆ° Ã³¸®	*/
+		/*	ë²„íŠ¼ ì²˜ë¦¬	*/
 		mu8_inputdata3.Bit.b0 = !P_KEY_EFFLUENT;
 
-		ThreeMatchModule(&gu8_DigitalInput3, mu8_inputdata3.byte);	//	µğÁöÅĞ ÀÔ·Â 3È¸ ÀÏÄ¡ ¸ğµâ
+		ThreeMatchModule(&gu8_DigitalInput3, mu8_inputdata3.byte);	//	ë””ì§€í„¸ ì…ë ¥ 3íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 	}
 }
 
-/// @brief    3È¸ ÀÏÄ¡ ¸ğµâ
+/// @brief    3íšŒ ì¼ì¹˜ ëª¨ë“ˆ
 /// @param    void
 /// @return   void
 void ThreeMatchModule(ITTI3* p, U8 data)

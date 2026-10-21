@@ -45,7 +45,7 @@ typedef struct _wifi_txcmd_list_
 } WifiTxCommandList_T;
 
 
-// Device -> Server Protocol Packet Parameter ±¸ºĞÀÚ
+// Device -> Server Protocol Packet Parameter êµ¬ë¶„ì
 enum
 {
     PARA_NULL           = 0x00,

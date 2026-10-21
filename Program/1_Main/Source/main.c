@@ -1,7 +1,7 @@
 /// @file     main.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Main Ã³¸® file
+/// @brief    Main ì²˜ë¦¬ file
 #define MAIN_C
 #define FIX_RAM_C
 #include "include/_include.h"
@@ -13,7 +13,7 @@ static void Heater_Endurance_Test(void);
 
 static void Self_ChangeDisplay(void);
 
-/// @brief    ¸ŞÀÎ ·çÇÁ
+/// @brief    ë©”ì¸ ë£¨í”„
 /// @param    void
 /// @return   void
 void MainLoop(void)
@@ -34,7 +34,7 @@ void MainLoop(void)
     IAWCTL = 0x00U;
 	EI();
 	
-	RamClear();										//	º¯¼öÃÊ±âÈ­
+	RamClear();										//	ë³€ìˆ˜ì´ˆê¸°í™”
  
 	R_WDT_Restart();								//	WDT Reset
 
@@ -49,24 +49,24 @@ void MainLoop(void)
 
 	WifiControlProcess(WIFI_TIME_INI);
 
-	gu8_TimerHWWait = Z_TimerHWWait;				//	ÇÏµå¿ş¾î ¾ÈÁ¤È­ Å¸ÀÓ
+	gu8_TimerHWWait = Z_TimerHWWait;				//	í•˜ë“œì›¨ì–´ ì•ˆì •í™” íƒ€ì„
 
-	while (gu8_TimerHWWait != 0)					//	ÇÏµå¿ş¾î ¾ÈÁ¤È­ ´ë±â
+	while (gu8_TimerHWWait != 0)					//	í•˜ë“œì›¨ì–´ ì•ˆì •í™” ëŒ€ê¸°
 	{
 		R_WDT_Restart();							//		WDT Reset
 
-		Timer_Process();							//		Timer Ã³¸®
+		Timer_Process();							//		Timer ì²˜ë¦¬
 
-		InputControl();								//		Digital Input Ã³¸®
+		InputControl();								//		Digital Input ì²˜ë¦¬
 
 		EEPROM_Control();
 	}
 
-	Model_Decide();									//	±âÁ¾ È®Á¤
-	CP_CHP_Decide();								//	CP/CHP È®Á¤
+	Model_Decide();									//	ê¸°ì¢… í™•ì •
+	CP_CHP_Decide();								//	CP/CHP í™•ì •
 
-	StepMotor_ZeroBack_Open();						//	½ºÅ×ÇÎ¸ğÅÍ ÃÊ±âÈ­
-	FaucetStepMotor_ZeroBack_Close();				//	ÆÄ¿ì¼Â ½ºÅ×ÇÎ¸ğÅÍ ÃÊ±âÈ­
+	StepMotor_ZeroBack_Open();						//	ìŠ¤í…Œí•‘ëª¨í„° ì´ˆê¸°í™”
+	FaucetStepMotor_ZeroBack_Close();				//	íŒŒìš°ì…‹ ìŠ¤í…Œí•‘ëª¨í„° ì´ˆê¸°í™”
 
 	WifiControlProcess(WIFI_TIME_SET);
 
@@ -77,22 +77,22 @@ void MainLoop(void)
 	{
 		R_WDT_Restart();							//		WDT Reset
 
-		Timer_Process();							//		Timer Ã³¸®
+		Timer_Process();							//		Timer ì²˜ë¦¬
 
-		//	ÀÔ·Â
-		FlowMeter_Decide();							//		À¯·® Ã³¸®
+		//	ì…ë ¥
+		FlowMeter_Decide();							//		ìœ ëŸ‰ ì²˜ë¦¬
 
-		HeaterFullCurrent_Decide();					//		È÷ÅÍ Àü·Â °¨Áö
+		HeaterFullCurrent_Decide();					//		íˆí„° ì „ë ¥ ê°ì§€
 
-		Temperature_Change();						//		¿Âµµ º¯È¯
+		Temperature_Change();						//		ì˜¨ë„ ë³€í™˜
 
-		InputControl();								//		Digital Input Ã³¸®
+		InputControl();								//		Digital Input ì²˜ë¦¬
 
 		Effluent_Degree_Average();
 
-		KeyDecide(&gu8_DigitalInput_Key1);			//		Å° ÀÔ·Â Ã³¸®
+		KeyDecide(&gu8_DigitalInput_Key1);			//		í‚¤ ì…ë ¥ ì²˜ë¦¬
 
-		Get_WattCheck();							//		Àü·ù Ã¼Å©
+		Get_WattCheck();							//		ì „ë¥˜ ì²´í¬
 
 #ifdef _FOR_DEVELOP_
 	if (gu8_ModelType_forNational_Test != 0)		//
@@ -101,51 +101,51 @@ void MainLoop(void)
 	}
 #endif
 
-#ifdef _FOR_HEATER_ENDURANCE_TEST_					//		È÷ÅÍ ³»±¸ Å×½ºÆ®
+#ifdef _FOR_HEATER_ENDURANCE_TEST_					//		íˆí„° ë‚´êµ¬ í…ŒìŠ¤íŠ¸
 		Heater_Endurance_Test();
 #endif
-		//	Ã³¸®
+		//	ì²˜ë¦¬
 		ErrorCheck();								//		Error Check
 
-		Operation();								//		¿îÀü½ºÅÜ
-		Description__Mode();						//		¼³¸í¸ğµå
+		Operation();								//		ìš´ì „ìŠ¤í…
+		Description__Mode();						//		ì„¤ëª…ëª¨ë“œ
 
-		PureControl();								//		Á¤¼ö½ºÅÜ
+		PureControl();								//		ì •ìˆ˜ìŠ¤í…
 
-		ColdControl();								//		³Ã°¢½ºÅÜ
+		ColdControl();								//		ëƒ‰ê°ìŠ¤í…
 
-		HotControl();								//		¿Â¼ö½ºÅÜ
+		HotControl();								//		ì˜¨ìˆ˜ìŠ¤í…
 
-		PBAControl();								//		FCT Å×½ºÆ® ½ºÅÜ
+		PBAControl();								//		FCT í…ŒìŠ¤íŠ¸ ìŠ¤í…
 
-		FlowAmount_ForMonitor();					//		À¯·® ´©Àû
+		FlowAmount_ForMonitor();					//		ìœ ëŸ‰ ëˆ„ì 
 
 		gu8_Key_Short.byte = 0x00;
 
-		//	Ãâ·Â
-		if (gu8_ModelType_forCHP == MODEL_CHP)		//		¿Â¼ö¸ğµ¨¸¸ Step Motor Á¦¾î
+		//	ì¶œë ¥
+		if (gu8_ModelType_forCHP == MODEL_CHP)		//		ì˜¨ìˆ˜ëª¨ë¸ë§Œ Step Motor ì œì–´
 		{
 			FlowControl();
 		}
-		OutputControl();							//		Digital Output Ã³¸®
+		OutputControl();							//		Digital Output ì²˜ë¦¬
 
 		DisplayControl();							//		Display
 
-		SmartCheckControl();						//		ÀÚ°¡Áø´Ü
+		SmartCheckControl();						//		ìê°€ì§„ë‹¨
 
-		Self_ChangeDisplay();						//		ÀÚ°¡°ü¸® Ç¥½Ã
+		Self_ChangeDisplay();						//		ìê°€ê´€ë¦¬ í‘œì‹œ
 
-		//	¾ÈÀüÃ³¸®
-		Safety();									//		¾ÈÀüÃ³¸®
+		//	ì•ˆì „ì²˜ë¦¬
+		Safety();									//		ì•ˆì „ì²˜ë¦¬
 
-		//	Åë½ÅÃ³¸®
-	    SerialControl();							//		½Ã¸®¾ó Åë½Å
+		//	í†µì‹ ì²˜ë¦¬
+	    SerialControl();							//		ì‹œë¦¬ì–¼ í†µì‹ 
 
 	    EEPROM_Control();							//		EEPROM
 
-	    CommunicationControl();						//		ÇÁ·ĞÆ® Åë½Å
+	    CommunicationControl();						//		í”„ë¡ íŠ¸ í†µì‹ 
 
-	    LineAutoTestControl();						//		°øÀå °Ë»ç
+	    LineAutoTestControl();						//		ê³µì¥ ê²€ì‚¬
 
 	    WifiControlProcess(WIFI_TIME_WHILE);
 
@@ -233,7 +233,7 @@ static void Heater_Endurance_Test(void)
 //		gu8_TimerHeaterEndurance_Test = 60;
 //	}
 //
-//	if (gu16_FlowDecide_W < 20)						//	¹°¾øÀ¸¸é Å¸ÀÌ¸Ó ÃÊ±âÈ­
+//	if (gu16_FlowDecide_W < 20)						//	ë¬¼ì—†ìœ¼ë©´ íƒ€ì´ë¨¸ ì´ˆê¸°í™”
 //	{
 //		gu8_TimerHeaterEndurance_Test = 60;
 //	}
@@ -281,13 +281,13 @@ static void Heater_Endurance_Test(void)
 }
 #endif
 
-/// @brief    ÀÚ°¡°ü¸® Ç¥½Ã
+/// @brief    ìê°€ê´€ë¦¬ í‘œì‹œ
 /// @param    void
 /// @return   void
 static void Self_ChangeDisplay(void)
 {
-	//	ÇÊÅÍ
-	//	ÇÊÅÍ ¸¶Áø »èÁ¦(±¸ ¹öÁ¯ÀÇ °æ¿ì, ¹è¼ÛÀÏÁ¤À¸·Î ÀÎÇØ 30ÀÏ ¸¶ÁøÀ» ÁÖ¾úÀ½.)
+	//	í•„í„°
+	//	í•„í„° ë§ˆì§„ ì‚­ì œ(êµ¬ ë²„ì ¼ì˜ ê²½ìš°, ë°°ì†¡ì¼ì •ìœ¼ë¡œ ì¸í•´ 30ì¼ ë§ˆì§„ì„ ì£¼ì—ˆìŒ.)
 	#if 0
 	if (gu16_DayCount_forFilter >= (180+30))
 	#endif
@@ -307,9 +307,9 @@ static void Self_ChangeDisplay(void)
 		F_FilterChange_Display = CLEAR;
 	}
 
-	//	ÆÄ¿ì¼Â
+	//	íŒŒìš°ì…‹
 	#if 0
-	//	ÇÊÅÍ ¸¶Áø »èÁ¦(±¸ ¹öÁ¯ÀÇ °æ¿ì, ¹è¼ÛÀÏÁ¤À¸·Î ÀÎÇØ 30ÀÏ ¸¶ÁøÀ» ÁÖ¾úÀ½.)
+	//	í•„í„° ë§ˆì§„ ì‚­ì œ(êµ¬ ë²„ì ¼ì˜ ê²½ìš°, ë°°ì†¡ì¼ì •ìœ¼ë¡œ ì¸í•´ 30ì¼ ë§ˆì§„ì„ ì£¼ì—ˆìŒ.)
 	if (gu16_DayCount_forFaucet >= (365+30))
 	#endif
 	if (gu16_DayCount_forFaucet >= 365)

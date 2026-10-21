@@ -8,7 +8,7 @@
 /*==============================================================================
  Constant Definition
  ==============================================================================*/
-#define Z_ErrorHistory			(5)					//	¿¡·¯ÀÌ·Â °¹¼ö
+#define Z_ErrorHistory			(5)					//	ì—ëŸ¬ì´ë ¥ ê°¯ìˆ˜
 
 //***************************************
 //*              adc.c		            *
@@ -34,38 +34,38 @@
 //***************************************
 //*              eeprom.c		        *
 //***************************************
-EXTERN U8 F_EEPROM_CommunicationError;     			// 	EEPROM Åë½Å ¿¡·¯½Ã Ç¥½Ã (PBA °Ë»ç ½Ã)
+EXTERN U8 F_EEPROM_CommunicationError;     			// 	EEPROM í†µì‹  ì—ëŸ¬ì‹œ í‘œì‹œ (PBA ê²€ì‚¬ ì‹œ)
 
 //***************************************
 //*              pure.c                 *
 //***************************************
-EXTERN U8 F_FirstHotEffluent;          				// 	ºÎÆÃ ÈÄ ¿Â¼ö ÃßÃâ Ã¹ÀÜ Flag (CLEAR:¹Ì¿Ï·á / SET:¿Ï·á)
+EXTERN U8 F_FirstHotEffluent;          				// 	ë¶€íŒ… í›„ ì˜¨ìˆ˜ ì¶”ì¶œ ì²«ì” Flag (CLEAR:ë¯¸ì™„ë£Œ / SET:ì™„ë£Œ)
 
-EXTERN U8 gu8_WaterSelect;               			// 	³Ã¼ö : 0, Á¤¼ö : 1, ¿Â¼ö : 2
-EXTERN U8 gu8_DefaultWaterSelect;					//	¹° ¼±ÅÃ Default
+EXTERN U8 gu8_WaterSelect;               			// 	ëƒ‰ìˆ˜ : 0, ì •ìˆ˜ : 1, ì˜¨ìˆ˜ : 2
+EXTERN U8 gu8_DefaultWaterSelect;					//	ë¬¼ ì„ íƒ Default
 
 EXTERN U16 gu16_CupSize;								//	Cup Size
-EXTERN U8 gu8_DefaultCupSize;            			// 	ÄÅ »çÀÌÁî default°ª
-EXTERN volatile U16 gu16_Effluent_Hz;             	// 	[1/1Hz] ¿Â¼ö Á¤·® ÃßÃâµ¿ÀÛ Hz(ÃßÃâµ¿ÀÛ½Ã Flow Meter¸¦ ÅëÇØ Hz Ã¼Å©)
-EXTERN U16 gu16_FirstHotEff_Hz;						//	¿Â¼ö Ã¹ÀÜ Hz
-EXTERN U16 gu16_TimerEffluent;           			// 	¿¬¼Ó ÃßÃâ ½Ã ÃßÃâ ½Ã°£ Timer	<1800s/100ms>
-EXTERN U8 F_FirstHotEff_HeaterSensing;				//	¿Â¼ö Ã¹ÀÜ Áß È÷ÅÍ¼¾½Ì ¿Ï·á flag
+EXTERN U8 gu8_DefaultCupSize;            			// 	ì»µ ì‚¬ì´ì¦ˆ defaultê°’
+EXTERN volatile U16 gu16_Effluent_Hz;             	// 	[1/1Hz] ì˜¨ìˆ˜ ì •ëŸ‰ ì¶”ì¶œë™ì‘ Hz(ì¶”ì¶œë™ì‘ì‹œ Flow Meterë¥¼ í†µí•´ Hz ì²´í¬)
+EXTERN U16 gu16_FirstHotEff_Hz;						//	ì˜¨ìˆ˜ ì²«ì” Hz
+EXTERN U16 gu16_TimerEffluent;           			// 	ì—°ì† ì¶”ì¶œ ì‹œ ì¶”ì¶œ ì‹œê°„ Timer	<1800s/100ms>
+EXTERN U8 F_FirstHotEff_HeaterSensing;				//	ì˜¨ìˆ˜ ì²«ì” ì¤‘ íˆí„°ì„¼ì‹± ì™„ë£Œ flag
 
 
 
-EXTERN U8 F_100ms_for_FlowMeter_Average;			//	À¯·®¼¾¼­ ¾÷µ¥ÀÌÆ® 100ms
-EXTERN U8 F_Pure_First;								//	ºÎÆÃ ÈÄ Ã¹È¸ ÃßÃâ ÀÌÈÄ ÀÎ °æ¿ì (À¯·®º¯È­ 20%ÀÌ»ó Ã¼Å©¸¦ À§ÇÔ)
-EXTERN U16 gu16_FlowDecide_W_Ave;					//	ÇöÀçÃßÃâ Æò±Õ °ª
-EXTERN U32 gu32_FlowDecide_W_Ave_Sum;				//	Æò±Õ À¯·® ÇÕ»ê °ª
-EXTERN U16 gu16_FlowDecide_W_Ave_Cnt;				//	Æò±Õ À¯·® Ä«¿îÅÍ
-EXTERN U16 gu16_FlowDecide_W_Ave_Pure_Standard;		//	Æò±ÕÀ¯·® ±âÁØ °ª
+EXTERN U8 F_100ms_for_FlowMeter_Average;			//	ìœ ëŸ‰ì„¼ì„œ ì—…ë°ì´íŠ¸ 100ms
+EXTERN U8 F_Pure_First;								//	ë¶€íŒ… í›„ ì²«íšŒ ì¶”ì¶œ ì´í›„ ì¸ ê²½ìš° (ìœ ëŸ‰ë³€í™” 20%ì´ìƒ ì²´í¬ë¥¼ ìœ„í•¨)
+EXTERN U16 gu16_FlowDecide_W_Ave;					//	í˜„ì¬ì¶”ì¶œ í‰ê·  ê°’
+EXTERN U32 gu32_FlowDecide_W_Ave_Sum;				//	í‰ê·  ìœ ëŸ‰ í•©ì‚° ê°’
+EXTERN U16 gu16_FlowDecide_W_Ave_Cnt;				//	í‰ê·  ìœ ëŸ‰ ì¹´ìš´í„°
+EXTERN U16 gu16_FlowDecide_W_Ave_Pure_Standard;		//	í‰ê· ìœ ëŸ‰ ê¸°ì¤€ ê°’
 
 //***************************************
 //*              error.c		        *
 //***************************************
-EXTERN U8 gu8_ErrorCode;							//	¿¡·¯ ÄÚµå
+EXTERN U8 gu8_ErrorCode;							//	ì—ëŸ¬ ì½”ë“œ
 
-EXTERN U8 gu8_ErrorHistory[Z_ErrorHistory];			//	¿¡·¯ÀÌ·Â ÀúÀå
+EXTERN U8 gu8_ErrorHistory[Z_ErrorHistory];			//	ì—ëŸ¬ì´ë ¥ ì €ì¥
 
 //***************************************
 //*              flowmeter.c	        *
@@ -73,59 +73,59 @@ EXTERN U8 gu8_ErrorHistory[Z_ErrorHistory];			//	¿¡·¯ÀÌ·Â ÀúÀå
 EXTERN U16 gu16_Pure_FlowDecide_Hz_forLineAuto;
 EXTERN U16 gu16_Hot_FlowDecide_Hz_forLineAuto;		
 EXTERN U16 gu16_Cold_FlowDecide_Hz_forLineAuto;
-EXTERN U16 gu16_FlowDecide_Hz_forLineAuto;			//	ÀÚµ¿È­ °Ë»ç ÇÇµå¹éÀ» À§ÇÑ µ¥ÀÌÅÍ ÀúÀå [1/10Hz]
-EXTERN U16 gu16_FlowDecide_Hz;						//	À¯·® Hzº¯È¯		[1/10Hz]
-EXTERN U16 gu16_FlowDecide_W;						//	À¯·® LPM º¯È¯	[1/100LPM]
+EXTERN U16 gu16_FlowDecide_Hz_forLineAuto;			//	ìë™í™” ê²€ì‚¬ í”¼ë“œë°±ì„ ìœ„í•œ ë°ì´í„° ì €ì¥ [1/10Hz]
+EXTERN U16 gu16_FlowDecide_Hz;						//	ìœ ëŸ‰ Hzë³€í™˜		[1/10Hz]
+EXTERN U16 gu16_FlowDecide_W;						//	ìœ ëŸ‰ LPM ë³€í™˜	[1/100LPM]
 EXTERN U16 gu16_FlowMeter_Standard;
 EXTERN U16 gu16_FlowMeter_Standard_forHotWater;
 //EXTERN U16 gu16_FlowMeter_Standard_forHotWater_forJapan;
 
 EXTERN U16 gu16_FlowDecide_W_HotEffMax;
-EXTERN U8 gu8_FlowDecide_W_HotEffMax_forEEPROM;		//@037 fota ¿Ï·á ½Ã, ºÒ·¯¿Ã ¼ö ÀÖµµ·Ï eeprom ÀúÀå
+EXTERN U8 gu8_FlowDecide_W_HotEffMax_forEEPROM;		//@037 fota ì™„ë£Œ ì‹œ, ë¶ˆëŸ¬ì˜¬ ìˆ˜ ìˆë„ë¡ eeprom ì €ì¥
 
 //***************************************
 //*              hot.c		            *
 //***************************************
-EXTERN U8 gu8_HotStep;								//	¿Â¼ö ½ºÅÜ
+EXTERN U8 gu8_HotStep;								//	ì˜¨ìˆ˜ ìŠ¤í…
 	#define gu8_HotStep_hi	(gu8_HotStep & 0xf0)
 	#define gu8_HotStep_lo	(gu8_HotStep & 0x0f)
 
-EXTERN U16 gu16_HeaterFull_WATT;					//	È÷ÅÍ ÃÖ´ëÃâ·Â ½Ã WATTÀúÀå
-EXTERN U16 gu16_HeaterRELAY_WATT;					//	È÷ÅÍ ÃÖ´ëÃâ·Â ´ëºñ RELAY WATTÀúÀå
-EXTERN TYPE_WORD gu16_HeaterFull_WATT_forEEPROM;	//@036 fota ¿Ï·á ½Ã, ºÒ·¯¿Ã ¼ö ÀÖµµ·Ï eeprom ÀúÀå
-EXTERN U16 gu16_StepCount_BeforeEff;				//	ÀÌÀü ÃßÃâ ½Ã¿¡ ½ºÅÜ °ª
-EXTERN TYPE_WORD gu16_StepCount_BeforeEff_forEEPROM;	//@037 fota ¿Ï·á ½Ã, ºÒ·¯¿Ã ¼ö ÀÖµµ·Ï eeprom ÀúÀå
-EXTERN U16 gu16_FlowDecide_W_BeforeEff;				//	ÀÌÀü ÃßÃâ ½Ã¿¡ À¯·® °ª
-EXTERN U8 gu8_FlowDecide_W_BeforeEff_forEEPROM;		//@037 fota ¿Ï·á ½Ã, ºÒ·¯¿Ã ¼ö ÀÖµµ·Ï eeprom ÀúÀå
-EXTERN U16 gu16_Drain_Flow;							//	½ºÅÜ ÀÌµ¿ ÈÄ µå·¹ÀÎ À¯·® °ª
-//EXTERN U8 F_StartFlow_ReCalibration;				//	À¯·® ¸®Ä¶¸®ºê·¹ÀÌ¼Ç ÇÊ¿ä flag (Ã¹ È¸ ÃßÃâ½Ãº¸´Ù 80%ÀÌÇÏ·Î À¯·® °¨¼Ò ÇßÀ» ¶§)
+EXTERN U16 gu16_HeaterFull_WATT;					//	íˆí„° ìµœëŒ€ì¶œë ¥ ì‹œ WATTì €ì¥
+EXTERN U16 gu16_HeaterRELAY_WATT;					//	íˆí„° ìµœëŒ€ì¶œë ¥ ëŒ€ë¹„ RELAY WATTì €ì¥
+EXTERN TYPE_WORD gu16_HeaterFull_WATT_forEEPROM;	//@036 fota ì™„ë£Œ ì‹œ, ë¶ˆëŸ¬ì˜¬ ìˆ˜ ìˆë„ë¡ eeprom ì €ì¥
+EXTERN U16 gu16_StepCount_BeforeEff;				//	ì´ì „ ì¶”ì¶œ ì‹œì— ìŠ¤í… ê°’
+EXTERN TYPE_WORD gu16_StepCount_BeforeEff_forEEPROM;	//@037 fota ì™„ë£Œ ì‹œ, ë¶ˆëŸ¬ì˜¬ ìˆ˜ ìˆë„ë¡ eeprom ì €ì¥
+EXTERN U16 gu16_FlowDecide_W_BeforeEff;				//	ì´ì „ ì¶”ì¶œ ì‹œì— ìœ ëŸ‰ ê°’
+EXTERN U8 gu8_FlowDecide_W_BeforeEff_forEEPROM;		//@037 fota ì™„ë£Œ ì‹œ, ë¶ˆëŸ¬ì˜¬ ìˆ˜ ìˆë„ë¡ eeprom ì €ì¥
+EXTERN U16 gu16_Drain_Flow;							//	ìŠ¤í… ì´ë™ í›„ ë“œë ˆì¸ ìœ ëŸ‰ ê°’
+//EXTERN U8 F_StartFlow_ReCalibration;				//	ìœ ëŸ‰ ë¦¬ìº˜ë¦¬ë¸Œë ˆì´ì…˜ í•„ìš” flag (ì²« íšŒ ì¶”ì¶œì‹œë³´ë‹¤ 80%ì´í•˜ë¡œ ìœ ëŸ‰ ê°ì†Œ í–ˆì„ ë•Œ)
 EXTERN U16 gu16_HeaterPWM_TDR;
 EXTERN U16 gu16_HeaterPWM_TDR_Test;
 
-EXTERN I16 gi16_EffStartTargetTemp;					//	¿¹¿­ Áß ÃßÃâ½ÃÀÛ  ¸ñÇ¥¿Âµµ
-//EXTERN I16 gi16_EffStartTargetTemp2;				//	ÅÜµÎ¹øÂ°ÀÜ ÃßÃâ½ÃÀÛ  ¸ñÇ¥¿Âµµ
+EXTERN I16 gi16_EffStartTargetTemp;					//	ì˜ˆì—´ ì¤‘ ì¶”ì¶œì‹œì‘  ëª©í‘œì˜¨ë„
+//EXTERN I16 gi16_EffStartTargetTemp2;				//	í…ë‘ë²ˆì§¸ì” ì¶”ì¶œì‹œì‘  ëª©í‘œì˜¨ë„
 
 EXTERN U16 gu16_HotEffStart_Standard;
 EXTERN U16 gu16_HotEffStart_DeltaT;
 EXTERN U16 gu16_HotEffStart_First;
 EXTERN U8 gu8_HotPreHeatingStep;
-EXTERN U16 gu16_HotEff_HeaterSensor_BakUp;			//	È÷ÅÍ ¿Âµµ ¹é¾÷ Data (Display¿ë)
+EXTERN U16 gu16_HotEff_HeaterSensor_BakUp;			//	íˆí„° ì˜¨ë„ ë°±ì—… Data (Displayìš©)
 
-EXTERN U16 gu16_Heater_Di1;							//	È÷ÅÍ Á¦¾î IÁ¦¾î ±âÁØ°ª (´©Àû °¨°¡»ê)
-EXTERN U16 gu16_Heater_Dp1;							//	È÷ÅÍ Á¦¾î PÁ¦¾î ±âÁØ°ª (±â¿ï±â)
-EXTERN U16 gu16_Heater_Dp2;							//	È÷ÅÍ Á¦¾î PÁ¦¾î ±âÁØ°ª (Max)
-EXTERN I16 gi16_Heater_Di_ini;						//	È÷ÅÍ Á¦¾î IÁ¦¾î ±âÁØ°ª (I´©Àû ½ÃÀÛ µ¥ÀÌÅÍ)
+EXTERN U16 gu16_Heater_Di1;							//	íˆí„° ì œì–´ Iì œì–´ ê¸°ì¤€ê°’ (ëˆ„ì  ê°ê°€ì‚°)
+EXTERN U16 gu16_Heater_Dp1;							//	íˆí„° ì œì–´ Pì œì–´ ê¸°ì¤€ê°’ (ê¸°ìš¸ê¸°)
+EXTERN U16 gu16_Heater_Dp2;							//	íˆí„° ì œì–´ Pì œì–´ ê¸°ì¤€ê°’ (Max)
+EXTERN I16 gi16_Heater_Di_ini;						//	íˆí„° ì œì–´ Iì œì–´ ê¸°ì¤€ê°’ (Iëˆ„ì  ì‹œì‘ ë°ì´í„°)
 
-EXTERN I32 gi32_Heater_P;							//	È÷ÅÍ Á¦¾î P°ª
-EXTERN I32 gi32_Heater_I;							//	È÷ÅÍ Á¦¾î I°ª
-EXTERN I32 gi32_Heater_P_I;							//	È÷ÅÍ Á¦¾î P+I°ª
+EXTERN I32 gi32_Heater_P;							//	íˆí„° ì œì–´ Pê°’
+EXTERN I32 gi32_Heater_I;							//	íˆí„° ì œì–´ Iê°’
+EXTERN I32 gi32_Heater_P_I;							//	íˆí„° ì œì–´ P+Iê°’
 
-EXTERN U16 gu16_HeaterWATT;							//	È÷ÅÍÁ¦¾î Àü·Â °ª [1W]
-EXTERN U16 gu16_HeaterWATT_forCal;					//	Àü·Â °ª [1W]
-//EXTERN U8 F_OverHeating;							//	10ºĞ°£ 7ºĞ ¿¬¼Ó ¿Â¼ö»ç¿ë È®Á¤ ÇÃ·¡±×
+EXTERN U16 gu16_HeaterWATT;							//	íˆí„°ì œì–´ ì „ë ¥ ê°’ [1W]
+EXTERN U16 gu16_HeaterWATT_forCal;					//	ì „ë ¥ ê°’ [1W]
+//EXTERN U8 F_OverHeating;							//	10ë¶„ê°„ 7ë¶„ ì—°ì† ì˜¨ìˆ˜ì‚¬ìš© í™•ì • í”Œë˜ê·¸
 
-EXTERN U8 F_Flow_Rapidly_Decrease;					//	¿Â¼ö ÃßÃâ Áß À¯·® ±Ş°İ °¨¼Ò Ã¼Å© flag
-EXTERN U16 gu16_Flow_Buf[10];						//	¿Â¼ö ÃßÃâ Áß ÇöÀçÀ¯·® ÀúÀå
+EXTERN U8 F_Flow_Rapidly_Decrease;					//	ì˜¨ìˆ˜ ì¶”ì¶œ ì¤‘ ìœ ëŸ‰ ê¸‰ê²© ê°ì†Œ ì²´í¬ flag
+EXTERN U16 gu16_Flow_Buf[10];						//	ì˜¨ìˆ˜ ì¶”ì¶œ ì¤‘ í˜„ì¬ìœ ëŸ‰ ì €ì¥
 //***************************************
 //*              input.c		        *
 //***************************************
@@ -134,22 +134,22 @@ EXTERN U16 gu16_Flow_Buf[10];						//	¿Â¼ö ÃßÃâ Áß ÇöÀçÀ¯·® ÀúÀå
 //***************************************
 //*              keycontrol.c		    *
 //***************************************
-EXTERN U8 gu8_KeyControlStep;						//	Key Á¦¾î ½ºÅÜ
+EXTERN U8 gu8_KeyControlStep;						//	Key ì œì–´ ìŠ¤í…
 
-//EXTERN ITTI3 Struct_KeyData;						//	3È¸ ÀÏÄ¡ ÈÄ Å° µ¥ÀÌÅÍ
+//EXTERN ITTI3 Struct_KeyData;						//	3íšŒ ì¼ì¹˜ í›„ í‚¤ ë°ì´í„°
 //	#define KEY_AMOUNT_LEVEL	(Struct_KeyData.Level.Bit.b0)
 //	#define KEY_COLDWATER_LEVEL	(Struct_KeyData.Level.Bit.b1)
 //	#define KEY_PUREWATER_LEVEL	(Struct_KeyData.Level.Bit.b2)
 //	#define KEY_HOTWATER_LEVEL	(Struct_KeyData.Level.Bit.b3)
 //	#define KEY_EFFLUENT_LEVEL	(Struct_KeyData.Level.Bit.b4)
 
-//EXTERN volatile BYTE_BIT gu8_TouchData;				//	ÅÍÄ¡ µ¥ÀÌÅÍ
+//EXTERN volatile BYTE_BIT gu8_TouchData;				//	í„°ì¹˜ ë°ì´í„°
 //	#define TOUCH_AMOUNT		(gu8_TouchData.Bit.b0)
 //	#define TOUCH_COLDWATER		(gu8_TouchData.Bit.b1)
 //	#define TOUCH_PUREWATER		(gu8_TouchData.Bit.b2)
 //	#define TOUCH_HOTWATER		(gu8_TouchData.Bit.b3)
 
-//EXTERN WORD_BIT gu16_ShortKeyArray;					//	´ÜÅ° È®Á¤
+//EXTERN WORD_BIT gu16_ShortKeyArray;					//	ë‹¨í‚¤ í™•ì •
 //	#define KEY_AMOUNT_SHORT		(gu16_ShortKeyArray.BIT.b0)
 //	#define KEY_COLDWATER_SHORT		(gu16_ShortKeyArray.BIT.b1)
 //	#define KEY_PUREWATER_SHORT		(gu16_ShortKeyArray.BIT.b2)
@@ -166,7 +166,7 @@ EXTERN U8 gu8_KeyControlStep;						//	Key Á¦¾î ½ºÅÜ
 //	#define KEY_COLD_TIME_SHORT	(gu16_ShortKeyArray.BIT.b13)
 //	#define KEY_SILENT_SHORT	(gu16_ShortKeyArray.BIT.b14)
 
-EXTERN LONG_BIT gu32_LongKeyArray;					//	·ÕÅ° È®Á¤
+EXTERN LONG_BIT gu32_LongKeyArray;					//	ë¡±í‚¤ í™•ì •
 	#define KEY_HOTWATER_LONG			(gu32_LongKeyArray.BIT.b0)
 	#define KEY_COLDWATER_LONG			(gu32_LongKeyArray.BIT.b1)
 	#define KEY_PUREWATER_LONG			(gu32_LongKeyArray.BIT.b2)
@@ -184,7 +184,7 @@ EXTERN LONG_BIT gu32_LongKeyArray;					//	·ÕÅ° È®Á¤
 	#define KEY_SOUND_TYPE_LONG			(gu32_LongKeyArray.BIT.b14)
 	#define KEY_MOVING_SET_MODE_PBA_TEST	(gu32_LongKeyArray.BIT.b15)
 
-EXTERN LONG_BIT gu32_VeryLongKeyArray;				//	º£¸®·ÕÅ° È®Á¤
+EXTERN LONG_BIT gu32_VeryLongKeyArray;				//	ë² ë¦¬ë¡±í‚¤ í™•ì •
 	#define KEY_HOTWATER_VERYLONG			(gu32_VeryLongKeyArray.BIT.b0)
 	#define KEY_COLDWATER_VERYLONG			(gu32_VeryLongKeyArray.BIT.b1)
 	#define KEY_EFFLUENT_VERYLONG			(gu32_VeryLongKeyArray.BIT.b4)
@@ -192,7 +192,7 @@ EXTERN LONG_BIT gu32_VeryLongKeyArray;				//	º£¸®·ÕÅ° È®Á¤
 	#define KEY_COLDTANK_PBATEST_VERYLONG	(gu32_VeryLongKeyArray.BIT.b6)
 
 
-EXTERN LONG_BIT gu32_FCTLongKeyArray;				//	Å×½ºÆ®¸ğµå ·ÕÅ° È®Á¤
+EXTERN LONG_BIT gu32_FCTLongKeyArray;				//	í…ŒìŠ¤íŠ¸ëª¨ë“œ ë¡±í‚¤ í™•ì •
 	#define KEY_HOTWATER_FCT_LONG			(gu32_FCTLongKeyArray.BIT.b0)
 	#define KEY_COLDWATER_FCT_LONG			(gu32_FCTLongKeyArray.BIT.b1)
 	#define KEY_PUREWATER_FCT_LONG			(gu32_FCTLongKeyArray.BIT.b2)
@@ -223,44 +223,44 @@ EXTERN LONG_BIT gu32_FCTLongKeyArray;				//	Å×½ºÆ®¸ğµå ·ÕÅ° È®Á¤
 //***************************************
 //*               operation.c           *
 //***************************************
-EXTERN U8 gu8_OperationStep;						//	¿îÀü»óÅÂ
+EXTERN U8 gu8_OperationStep;						//	ìš´ì „ìƒíƒœ
 	#define gu8_OperationStep_hi	(gu8_OperationStep & 0xf0)
 	#define gu8_OperationStep_lo	(gu8_OperationStep & 0x0f)
 
-EXTERN U8 F_HotLock;                   				// 	¿Â¼ö Àá±İ Flag
+EXTERN U8 F_HotLock;                   				// 	ì˜¨ìˆ˜ ì ê¸ˆ Flag
 
 EXTERN U8 F_ColdOff;
-EXTERN U8 F_ColdOff_Display;						//	³Ã°¢ OFF Ç¥½Ã flag
+EXTERN U8 F_ColdOff_Display;						//	ëƒ‰ê° OFF í‘œì‹œ flag
 
 EXTERN U8 F_SleepMode;
 EXTERN U8 F_SleepMode_Display;
 
 EXTERN U8 F_FOTA_Setup;
-EXTERN U8 F_SelfService;							//	[0:¹æ¹®°ü¸®] [1:ÀÚ°¡°ü¸®]
-EXTERN U8 F_First_Set;								//	ÃÖÃÊ ¼³Ä¡
-EXTERN U8 F_FirstFlushing_AirPurge;					//	ÃÖÃÊ ¼³Ä¡ Áú¼Ò ÆÛÁö À¯¹«
-EXTERN U8 F_Cooling_Up;								//	À¯Áö¸ğµå ³Ã°¢ ¼º´É Up
-EXTERN U8 F_Cooling_PID;							//	³Ã°¢ PIÁ¦¾î
+EXTERN U8 F_SelfService;							//	[0:ë°©ë¬¸ê´€ë¦¬] [1:ìê°€ê´€ë¦¬]
+EXTERN U8 F_First_Set;								//	ìµœì´ˆ ì„¤ì¹˜
+EXTERN U8 F_FirstFlushing_AirPurge;					//	ìµœì´ˆ ì„¤ì¹˜ ì§ˆì†Œ í¼ì§€ ìœ ë¬´
+EXTERN U8 F_Cooling_Up;								//	ìœ ì§€ëª¨ë“œ ëƒ‰ê° ì„±ëŠ¥ Up
+EXTERN U8 F_Cooling_PID;							//	ëƒ‰ê° PIì œì–´
 //EXTERN U8 F_Filter_Alram_OFF;
-EXTERN U8 gu8_DefaultHotTempSetup;            		// 	¿Â¼ö µğÆúÆ® ¼³Á¤ ¿Âµµ
-EXTERN U8 gu8_HotTempSetup;            				// 	¿Â¼ö ¼³Á¤ ¿Âµµ
-EXTERN U8 F_HotWater_100Degree;						//	100µµ »ç¿ë¿©ºÎ
-EXTERN U8 F_HotWater_DegreeDisplay;					//	¿Â¼ö ÃßÃâ ½Ã ¿Âµµ Ç¥½Ã (1¡É ´ÜÀ§)
-EXTERN U8 F_HotWater_DegreeDisplay_TH;				//	¿Â¼ö ÃßÃâ ½Ã ¿Âµµ Ç¥½Ã (0:Ãâ¼ö¼¾¼­ / 1:È÷ÅÍ¼¾¼­)
-EXTERN U8 F_FAN_NoiseClear;							//	ÆÒ À¯Áö¸ğµå 21V ¡æ 18V º¯°æ
-EXTERN U8 F_TEMP_A_SMPS_Voltage_Display;			//	SMPS Àü¾Ğ Ç¥½Ã
+EXTERN U8 gu8_DefaultHotTempSetup;            		// 	ì˜¨ìˆ˜ ë””í´íŠ¸ ì„¤ì • ì˜¨ë„
+EXTERN U8 gu8_HotTempSetup;            				// 	ì˜¨ìˆ˜ ì„¤ì • ì˜¨ë„
+EXTERN U8 F_HotWater_100Degree;						//	100ë„ ì‚¬ìš©ì—¬ë¶€
+EXTERN U8 F_HotWater_DegreeDisplay;					//	ì˜¨ìˆ˜ ì¶”ì¶œ ì‹œ ì˜¨ë„ í‘œì‹œ (1â„ƒ ë‹¨ìœ„)
+EXTERN U8 F_HotWater_DegreeDisplay_TH;				//	ì˜¨ìˆ˜ ì¶”ì¶œ ì‹œ ì˜¨ë„ í‘œì‹œ (0:ì¶œìˆ˜ì„¼ì„œ / 1:íˆí„°ì„¼ì„œ)
+EXTERN U8 F_FAN_NoiseClear;							//	íŒ¬ ìœ ì§€ëª¨ë“œ 21V â†’ 18V ë³€ê²½
+EXTERN U8 F_TEMP_A_SMPS_Voltage_Display;			//	SMPS ì „ì•• í‘œì‹œ
 
-EXTERN U8 F_FirstFlushing;							//	ÃÊ±â ÇÃ·¯½Ì flag (CLEAR:ÇÃ·¯½Ì ÇÊ¿ä / SET:ÇÃ·¯½Ì ¿Ï·á)
-EXTERN U8 F_Heater_Fill;							//	È÷ÅÍ  ¹° Ã¤¿ì±â (SET:¿Ï·á /  CLEAR:¹Ì¿Ï·á)
-EXTERN U8 F_ColdTank_Fill;							//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â (SET:¿Ï·á /  CLEAR:¹Ì¿Ï·á)
+EXTERN U8 F_FirstFlushing;							//	ì´ˆê¸° í”ŒëŸ¬ì‹± flag (CLEAR:í”ŒëŸ¬ì‹± í•„ìš” / SET:í”ŒëŸ¬ì‹± ì™„ë£Œ)
+EXTERN U8 F_Heater_Fill;							//	íˆí„°  ë¬¼ ì±„ìš°ê¸° (SET:ì™„ë£Œ /  CLEAR:ë¯¸ì™„ë£Œ)
+EXTERN U8 F_ColdTank_Fill;							//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° (SET:ì™„ë£Œ /  CLEAR:ë¯¸ì™„ë£Œ)
 
-EXTERN U8 gu8_TimerWaterSelect;          			// 	³Ã¼ö, ¿Â¼ö ¼³Á¤ ½Ã°£ Å¸ÀÌ¸Ó		<7s/100ms>
-EXTERN U8 gu8_TimerCupSelect;						//	ÄÅ ¼¿·ºÆ® Å¸ÀÌ¸Ó		<7s/100ms>
+EXTERN U8 gu8_TimerWaterSelect;          			// 	ëƒ‰ìˆ˜, ì˜¨ìˆ˜ ì„¤ì • ì‹œê°„ íƒ€ì´ë¨¸		<7s/100ms>
+EXTERN U8 gu8_TimerCupSelect;						//	ì»µ ì…€ë ‰íŠ¸ íƒ€ì´ë¨¸		<7s/100ms>
 
-EXTERN U8 F_AllLock;								//	ÀüÃ¼Àá±İ
+EXTERN U8 F_AllLock;								//	ì „ì²´ì ê¸ˆ
 
 
-EXTERN U8 gu8_My_HotTemp;							//	app¿¡¼­ ¼³Á¤ÇÑ my ¿Âµµ
+EXTERN U8 gu8_My_HotTemp;							//	appì—ì„œ ì„¤ì •í•œ my ì˜¨ë„
 
 //***************************************
 //*               output.c              *
@@ -269,15 +269,15 @@ EXTERN U8 gu8_My_HotTemp;							//	app¿¡¼­ ¼³Á¤ÇÑ my ¿Âµµ
 //***************************************
 //*               pba.c          	    *
 //***************************************
-EXTERN U8 gu8_PBAStep;								//	PBA °Ë»ç ½ºÅÜ
+EXTERN U8 gu8_PBAStep;								//	PBA ê²€ì‚¬ ìŠ¤í…
 
 
 EXTERN BYTE_BIT F_TestMode;
 	#define F_TestMode_LineAuto 	(F_TestMode.Bit.b0)
 	#define F_TestMode_LineFront 	(F_TestMode.Bit.b1)
-	#define F_TestMode_PBA 			(F_TestMode.Bit.b2)		//	¼öµ¿JIG Å×½ºÆ®
-	#define F_TestMode_PBA_2 		(F_TestMode.Bit.b3)		//	¼öµ¿JIG Å×½ºÆ®
-	#define F_TestMode_LineTest2	(F_TestMode.Bit.b4)		//	°øÀå ´ÜÃà °Ë»ç
+	#define F_TestMode_PBA 			(F_TestMode.Bit.b2)		//	ìˆ˜ë™JIG í…ŒìŠ¤íŠ¸
+	#define F_TestMode_PBA_2 		(F_TestMode.Bit.b3)		//	ìˆ˜ë™JIG í…ŒìŠ¤íŠ¸
+	#define F_TestMode_LineTest2	(F_TestMode.Bit.b4)		//	ê³µì¥ ë‹¨ì¶• ê²€ì‚¬
 
 EXTERN U16 gu16_Effluent_Hz_Amount_forWIFI;
 //EXTERN U16 gu16_Effluent_Hz_Amount;
@@ -295,8 +295,8 @@ EXTERN U8 F_LineAuto_CommunicationConnect;
 //***************************************
 //*               stepmotor.c           *
 //***************************************
-EXTERN volatile I16 gi16_StepCount;					//	ÇöÀç ½ºÅÜ °ª
-EXTERN U16 gu16_OpenCloseStep_Value;				//	ÀÌµ¿ ÇÒ ½ºÅÜ °ª
+EXTERN volatile I16 gi16_StepCount;					//	í˜„ì¬ ìŠ¤í… ê°’
+EXTERN U16 gu16_OpenCloseStep_Value;				//	ì´ë™ í•  ìŠ¤í… ê°’
 
 //***************************************
 //*               timer.c               *
@@ -304,7 +304,7 @@ EXTERN U16 gu16_OpenCloseStep_Value;				//	ÀÌµ¿ ÇÒ ½ºÅÜ °ª
 
 
 //***************************************
-//*               Å×½ºÆ® ¿ë	            *
+//*               í…ŒìŠ¤íŠ¸ ìš©	            *
 //***************************************
 EXTERN U8 gu8_FrontTest_HotButton_Counter;
 EXTERN U8 gu8_FrontTest_PureButton_Counter;
@@ -312,9 +312,9 @@ EXTERN U8 gu8_FrontTest_ColdButton_Counter;
 EXTERN U8 gu8_FrontTest_AmountButton_Counter;
 EXTERN U8 F_FrontTest_EffluentButton;
 
-/*	°á·Î Å×½ºÆ® ¹× È÷ÅÍ³»±¸ Å×½ºÆ® ¿ë	*/
+/*	ê²°ë¡œ í…ŒìŠ¤íŠ¸ ë° íˆí„°ë‚´êµ¬ í…ŒìŠ¤íŠ¸ ìš©	*/
 EXTERN U32 gu32_Timer_Condensation;
-EXTERN U8 F_Heater_Endurance_Test_Start;			//	½ÃÀÛ ÇÃ·¡±×
+EXTERN U8 F_Heater_Endurance_Test_Start;			//	ì‹œì‘ í”Œë˜ê·¸
 EXTERN U8 F_Heater_Endurance_Test;
 EXTERN U8 gu8_TimerHeaterEndurance_Test;
 EXTERN U8 gu8_TimerHeaterEndurance_Test_30min;

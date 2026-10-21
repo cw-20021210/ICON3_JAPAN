@@ -1,7 +1,7 @@
 /// @file     communication.c
 /// @date     2021.01.12
 /// @author   PSM
-/// @brief    Åë½ÅÃ³¸® file
+/// @brief    í†µì‹ ì²˜ë¦¬ file
 /*==========================================================================*/
 /*		PRAGMA						   			  							*/
 /*==========================================================================*/
@@ -12,7 +12,7 @@
 #include "include/_include.h"
 
 //=============================================================================
-//		Macro Á¤ÀÇ
+//		Macro ì •ì˜
 //=============================================================================
 #define SERIAL_RX2EN()			{SRIF2 = 0;				/*	Int Request Flag Register clear	*/\
 								SRMK2 = 0;				/*	Int Mask Register clear			*/\
@@ -25,7 +25,7 @@
 
 	U8 F_TraOnce = 0;
 
-/// @brief    Åë½ÅÃ³¸® ÃÊ±âÈ­
+/// @brief    í†µì‹ ì²˜ë¦¬ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Communication_Initialize(void)
@@ -34,10 +34,10 @@ void Communication_Initialize(void)
 	SERIAL_RX2EN();									//		RX enable
 	gu8_TimerError_Time = Z_TimerError_Time; 		/*	Communication error 2sec timer set */
 	gu8_TimerRecInt_Check = Z_TimerRecInt_Check;    //	Rec. interrupot 30ms check
-	gu8_TimerDataReceive = Z_TimerDataReceive;		//	RX¼ö½Å ¿¡·¯ Å¸ÀÌ¸Ó 10ÃÊ
+	gu8_TimerDataReceive = Z_TimerDataReceive;		//	RXìˆ˜ì‹  ì—ëŸ¬ íƒ€ì´ë¨¸ 10ì´ˆ
 }
 
-/// @brief    Åë½ÅÃ³¸® Á¦¾î
+/// @brief    í†µì‹ ì²˜ë¦¬ ì œì–´
 /// @param    void
 /// @return   void
 void CommunicationControl(void)
@@ -46,7 +46,7 @@ void CommunicationControl(void)
 	RXControl();									//	RX control
 }
 
-/// @brief    Åë½Å Rx Ã³¸®
+/// @brief    í†µì‹  Rx ì²˜ë¦¬
 /// @param    void
 /// @return   void
 __interrupt void IntUartRx(void)
@@ -72,7 +72,7 @@ __interrupt void IntUartRx(void)
 	UartReceive(recdata); 							/*	Receive process */
 }
 
-/// @brief    Åë½Å Tx Ã³¸®
+/// @brief    í†µì‹  Tx ì²˜ë¦¬
 /// @param    void
 /// @return   void
 __interrupt void IntUartTx(void)
@@ -102,7 +102,7 @@ __interrupt void IntUartTx(void)
 	}
 }
 
-/// @brief    ¼ö½Å Ã³¸®
+/// @brief    ìˆ˜ì‹  ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void UartReceive(U8 recdata)
@@ -151,18 +151,18 @@ void TXControl(void)
 
 	if ((gu8_TimerTraWait == 0) && (F_TraOnce == CLEAR))
 	{													//	TX data set flag
-		F_Rx_Complete = 0;								//		¼ö½Å¿Ï·á flag clr
+		F_Rx_Complete = 0;								//		ìˆ˜ì‹ ì™„ë£Œ flag clr
 		gu8_TimerTraWait = Z_TimerTraWait;				//		10ms timer set
 #ifndef _FRONT_COMMU_CHANGE_
 		for (i = 0 ; i < Z_DataLen ; i++)
 #else
 		for (i = 0 ; i < Z_DataLen_Tx ; i++)
 #endif
-		{												//		¹öÆÛ Å¬¸®¾î
-			gu8_Buffer_MCU_TraData[i].byte = 0x00;		//			¹öÆÛ ÃÊ±âÈ­
+		{												//		ë²„í¼ í´ë¦¬ì–´
+			gu8_Buffer_MCU_TraData[i].byte = 0x00;		//			ë²„í¼ ì´ˆê¸°í™”
 		}
 
-		Send_Data();									//		¼Û½Å data set
+		Send_Data();									//		ì†¡ì‹  data set
 
 		gu8_CounterTraDataCount = 0;					//		TX counter clear
 		f_Tra_DataMake = 0;								//		TX data set flag clear
@@ -209,7 +209,7 @@ void RXControl(void)
 	U8 work;
 	U8 i;
 
-	if ((gu8_CounterRecvCount >= 1) && (gu8_TimerRecInt_Check == 0))	//	¼ö½Å Áß RX interrupt 30ms check
+	if ((gu8_CounterRecvCount >= 1) && (gu8_TimerRecInt_Check == 0))	//	ìˆ˜ì‹  ì¤‘ RX interrupt 30ms check
 	{
 		gu8_CounterRecvCount = 0;						//		Count clear
 		gu8_TimerRecInt_Check = Z_TimerRecInt_Check;	//		Rec. interrupot 30ms check
@@ -238,8 +238,8 @@ void RXControl(void)
 		{												// 		CRC OK
 			F_Rx_Complete = 1;
 			Data_Parsing(); 							//			RX data parsing
-			gu8_TimerDataReceive = Z_TimerDataReceive;	//			RX¼ö½Å ¿¡·¯ Å¸ÀÌ¸Ó 10ÃÊ
-			F_Rx_Exp = 1;								//			¼ö½Å °æÇè
+			gu8_TimerDataReceive = Z_TimerDataReceive;	//			RXìˆ˜ì‹  ì—ëŸ¬ íƒ€ì´ë¨¸ 10ì´ˆ
+			F_Rx_Exp = 1;								//			ìˆ˜ì‹  ê²½í—˜
 			gu8_CounterRXDError = 0;
 			F_Front_Communication_Error = CLEAR;
 			gu8_TimerError_Time = Z_TimerError_Time;	//		RX error timer set
@@ -268,13 +268,13 @@ void RXControl(void)
 		gu8_TimerError_Time = Z_TimerError_Time;		//		RX error timer set
 	}
 
-	if (gu8_CounterRXDError >= 5)						//	¼ö½Å Å¸ÀÌ¸Ó °æ°ú 5È¸ ÀÌ»óÀÎ °æ¿ì
+	if (gu8_CounterRXDError >= 5)						//	ìˆ˜ì‹  íƒ€ì´ë¨¸ ê²½ê³¼ 5íšŒ ì´ìƒì¸ ê²½ìš°
 	{
-		gu8_CounterRXDError = 5;						//		5È¸ °íÁ¤
+		gu8_CounterRXDError = 5;						//		5íšŒ ê³ ì •
 
-		if(gu8_TimerPBATest_Join != 0)					//	Å×½ºÆ® ¸ğµå ½Ã°£¿¡¸¸ ¿¡·¯ È®Á¤..
+		if(gu8_TimerPBATest_Join != 0)					//	í…ŒìŠ¤íŠ¸ ëª¨ë“œ ì‹œê°„ì—ë§Œ ì—ëŸ¬ í™•ì •..
 		{
-			F_Front_Communication_Error = SET;				//		¿¡·¯ ÇÃ·¡±× set
+			F_Front_Communication_Error = SET;				//		ì—ëŸ¬ í”Œë˜ê·¸ set
 		}
 	}
 }
@@ -361,9 +361,9 @@ void Send_Data(void)
 	gu8_Buffer_TraCrc = 0;										//	CRC clear
 
 	gu8_Buffer_MCU_TraData[0].byte = Z_STX;						//	STX
-	gu8_Buffer_MCU_TraData[1].byte = Z_Main_Address;			//	¸ŞÀÎ Address
-	gu8_Buffer_MCU_TraData[2].byte = Z_NormalData;				//	Åë»óµ¥ÀÌÅÍ
-	gu8_Buffer_MCU_TraData[3].byte = gu8_OperationStep;			//	¿îÀü»óÅÂ
+	gu8_Buffer_MCU_TraData[1].byte = Z_Main_Address;			//	ë©”ì¸ Address
+	gu8_Buffer_MCU_TraData[2].byte = Z_NormalData;				//	í†µìƒë°ì´í„°
+	gu8_Buffer_MCU_TraData[3].byte = gu8_OperationStep;			//	ìš´ì „ìƒíƒœ
 
 	gu8_Buffer_MCU_TraData[4].byte = DisplayControl_Data[Z_SEGMENT].Display_CMD;
 	gu8_Buffer_MCU_TraData[5].byte = SEG_OXX;
@@ -404,7 +404,7 @@ void Send_Data(void)
 	gu8_Buffer_MCU_TraData[39].byte = DisplayControl_Data[Z_LED_HOT_BAR_1].Display_CMD;
 	gu8_Buffer_MCU_TraData[40].byte = DisplayControl_Data[Z_LED_PERCENT].Display_CMD;
 
-	//	À½¼º	
+	//	ìŒì„±	
 	if(F_PlayVoice == SET)
 	{
 		gu8_play = SET;
@@ -455,7 +455,7 @@ void TraCrcCheck(void)
 #else
 	for (i = 0 ; i < (Z_DataLen_Tx - 2) ; i++)
 #endif
-	{			//	CRCµ¥ÀÌÅÍ °è»ê
+	{			//	CRCë°ì´í„° ê³„ì‚°
 		work = ((U16) (gu8_Buffer_TraCrc >> 8) ^ gu8_Buffer_MCU_TraData[i].byte) & 0x00ffU;
 		gu8_Buffer_TraCrc = (gu8_Buffer_TraCrc << 8) ^ crc_table1[work];
 	}

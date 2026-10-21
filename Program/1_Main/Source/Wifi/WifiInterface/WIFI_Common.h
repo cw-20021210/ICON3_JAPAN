@@ -24,8 +24,8 @@
 #define TEST_MODEM_SSID "coway_iot_01"  //"IQ0F1CA0264"
 #define TEST_MODEM_PW   "12345678"
 
-#define UNUSED_BLE_A1011_RX       // BLE DATA(A1011) ¼ö½ÅÃ³¸® ¹Ì»ç¿ë
-#define UNUSED_A9011_RX           // BLE / Wi-Fi DATA (A9011) ¼ö½ÅÃ³¸® ¹Ì»ç¿ë 
+#define UNUSED_BLE_A1011_RX       // BLE DATA(A1011) ìˆ˜ì‹ ì²˜ë¦¬ ë¯¸ì‚¬ìš©
+#define UNUSED_A9011_RX           // BLE / Wi-Fi DATA (A9011) ìˆ˜ì‹ ì²˜ë¦¬ ë¯¸ì‚¬ìš© 
 
 #define TEST_BLE_FCC    TEST_MODE_BLE_FCC // 0:Normal / 1:test Mode (BLE OFF X)
 #define BLE_ALWAYS      // (BLE AUTO OFF X)
@@ -271,10 +271,10 @@ typedef struct _wifi_normal_list_
 typedef enum
 {
     EVENT_UNUSED = 0x00,
-    EVENT_STATUS_CHANGE,        // »óÅÂº¯°æ ½Ã
-    EVENT_ZERO_TO_ONE,           // 0->1·Î º¯°æ ½Ã ¶Ç´Â ?->0À¸·Î º¯°æ ½Ã
-    EVENT_ZERO_TO_OTHER,         // 0 -> ? ·Î º¯°æ ½Ã  (ÃßÃâ¹°·®, ¿Â¼öÃâ¼ö ¿Âµµ µî)
-    EVENT_SPECIFIC_CONDITION,    // Æ¯Á¤ Á¶°Ç ÀÏ °æ¿ì (ex: 1,3,5,7 µî ¶Ç´Â 30ÀÌÇÏ ºÎÅÍ º¯°æ ½Ã)
+    EVENT_STATUS_CHANGE,        // ìƒíƒœë³€ê²½ ì‹œ
+    EVENT_ZERO_TO_ONE,           // 0->1ë¡œ ë³€ê²½ ì‹œ ë˜ëŠ” ?->0ìœ¼ë¡œ ë³€ê²½ ì‹œ
+    EVENT_ZERO_TO_OTHER,         // 0 -> ? ë¡œ ë³€ê²½ ì‹œ  (ì¶”ì¶œë¬¼ëŸ‰, ì˜¨ìˆ˜ì¶œìˆ˜ ì˜¨ë„ ë“±)
+    EVENT_SPECIFIC_CONDITION,    // íŠ¹ì • ì¡°ê±´ ì¼ ê²½ìš° (ex: 1,3,5,7 ë“± ë˜ëŠ” 30ì´í•˜ ë¶€í„° ë³€ê²½ ì‹œ)
     
     EVENT_FORM_MAX
 } E_EVENT_FORM_T;
@@ -283,7 +283,7 @@ typedef enum
 {
     TYPE_UNUSED = 0x00,
     TYPE_A1014,  
-    TYPE_SMART_DIAGNOSIS_CONTROL,     // ½º¸¶Æ®Áø´Ü ½ÃÀÛ/Á¤Áö ÇÁ·ÎÅäÄÝ        
+    TYPE_SMART_DIAGNOSIS_CONTROL,     // ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ ì‹œìž‘/ì •ì§€ í”„ë¡œí† ì½œ        
     EVENT_TYPE_MAX
 } E_EVENT_TYPE_FORM_T;
 

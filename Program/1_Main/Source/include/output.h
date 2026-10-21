@@ -1,7 +1,7 @@
 /// @file   output.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Ãâ·Â Ã³¸® file
+/// @brief  ì¶œë ¥ ì²˜ë¦¬ file
 
 #ifdef OUTPUT_C
 	#define 	EXTERN
@@ -13,30 +13,30 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_OUTPUT()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_OUTPUT()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_OUTPUT()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_OUTPUT()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerColdSensor_Sensing);	\
 									TDEC(gu8_Timer_TEM_24V_OffDelay);	\
 								}
-#define	TDEC_100ms_OUTPUT()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_OUTPUT()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerBoot_After1s);	\
 									TDEC(gu8_TimerStanbyOn_After1s);	\
 									TDEC(gu8_TimerFanDelay);	\
 									TDEC(gu8_Timer_Forced_TemOutput);	\
 								}
-#define	TDEC_1s_OUTPUT()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_OUTPUT()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu16_TimerColdSensor_ON);	\
 									TDEC(gu16_TimerColdSensor_OFF);	\
 									TDEC(gu8_Timer_TEM_Voltage_Retain);	\
 								}
-#define	TDEC_10s_OUTPUT()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_OUTPUT()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_OUTPUT()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_OUTPUT()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_OUTPUT()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_OUTPUT()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_OUTPUT()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_OUTPUT()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -44,12 +44,12 @@
  Constant Definition
  ==============================================================================*/
 typedef struct {
-	I16 Outdoor_Degree;					//	¿Ü±â¿Âµµ ±âÁØ
-	U16 TEM_Volt;						//	TEM Àü¾Ğ
+	I16 Outdoor_Degree;					//	ì™¸ê¸°ì˜¨ë„ ê¸°ì¤€
+	U16 TEM_Volt;						//	TEM ì „ì••
 } TEM_Data;
 
 typedef struct {
-	U16 TEM_Volt;						//	Àü¾Ğ
+	U16 TEM_Volt;						//	ì „ì••
 	U16 TEM_TDR;						//	TDR
 } TEM_Voltage_Data;
 
@@ -65,7 +65,7 @@ typedef struct {
 #define Z_TimerFanDelay				(10)			//	<1s/100ms>
 
 #define Z_TEM_Voltage_Data_Max	    (8)
-#define Z_CoolingUp_Volatage	    (1)					//	TEM Àü¾Ğ 1V »óÇâ
+#define Z_CoolingUp_Volatage	    (1)					//	TEM ì „ì•• 1V ìƒí–¥
 
 #define Z_Cooling_Voltage_24V		(24)
 #define Z_Cooling_Voltage_12V		(12)
@@ -96,9 +96,9 @@ EXTERN U8 gu8_UV_CMD;
 
 EXTERN U8 gu8_TimerFanDelay;						//	<1s/100ms>
 
-EXTERN U8 F_HeaterPWM_SingleControl;				//	È÷ÅÍ PWM¸¸ Á¦¾îÇÏ´Â flag (Relay OFF)
+EXTERN U8 F_HeaterPWM_SingleControl;				//	íˆí„° PWMë§Œ ì œì–´í•˜ëŠ” flag (Relay OFF)
 
-EXTERN U8 gu8_TimerColdSensor_Sensing;				//	¼¾¼­ OFF¡æON½Ã È¸·Î ¾ÈÁ¤È­ ½Ã°£ (CapÀ¸·Î ÀÎÇÑ Àü¾Ğ ´Ê°Ô »ó½Â) <500ms/10ms>
+EXTERN U8 gu8_TimerColdSensor_Sensing;				//	ì„¼ì„œ OFFâ†’ONì‹œ íšŒë¡œ ì•ˆì •í™” ì‹œê°„ (Capìœ¼ë¡œ ì¸í•œ ì „ì•• ëŠ¦ê²Œ ìƒìŠ¹) <500ms/10ms>
 
 EXTERN U8 F_ColdSensor_OFF;
 EXTERN U16 gu16_TimerColdSensor_ON;
@@ -107,11 +107,11 @@ EXTERN U8 gu8_TimerColdSensor_Sensing;
 
 EXTERN U16 gu16_TEM_Voltage;
 EXTERN U16 gu16_TEM_Voltage_Backup;
-EXTERN U8 gu8_Timer_TEM_Voltage_Retain;				//	TEM Ãâ·Â º¯°æ ½Ã, ÃÖ¼Ò 1ºĞÀº ÇØ´ç Ãâ·Â À¯ÁöÇÏµµ·Ï.
+EXTERN U8 gu8_Timer_TEM_Voltage_Retain;				//	TEM ì¶œë ¥ ë³€ê²½ ì‹œ, ìµœì†Œ 1ë¶„ì€ í•´ë‹¹ ì¶œë ¥ ìœ ì§€í•˜ë„ë¡.
 EXTERN U16 gu16_TEM_TDR_Data_Backup;
 
 EXTERN U16 gu16_TEM_Voltage;
-EXTERN U8 gu8_TEM_Voltage_BoJung;					//	TEMÀü¾Ğ 0.1V´ÜÀ§ Á¶ÀıÀ» À§ÇÑ º¸Á¤ µ¥ÀÌÅÍ
+EXTERN U8 gu8_TEM_Voltage_BoJung;					//	TEMì „ì•• 0.1Vë‹¨ìœ„ ì¡°ì ˆì„ ìœ„í•œ ë³´ì • ë°ì´í„°
 
 EXTERN U8 gu8_TimerBoot_After1s;
 EXTERN U8 gu8_TimerStanbyOn_After1s;
@@ -119,8 +119,8 @@ EXTERN U8 gu8_TimerStanbyOn_After1s;
 EXTERN U8 gu8_Timer_TEM_12V_OffDelay;
 EXTERN U8 gu8_Timer_TEM_24V_OffDelay;
 
-EXTERN U8 gu8_f_ad_feedback_mode;		//	TEM Ãâ·Â °­Á¦ Ç¥½Ã ÇÃ·¡±×
-EXTERN U8 gu8_Timer_Forced_TemOutput;				//	TEM Ãâ·Â °­Á¦ Ç¥½Ã Å¸ÀÌ¸Ó	
+EXTERN U8 gu8_f_ad_feedback_mode;		//	TEM ì¶œë ¥ ê°•ì œ í‘œì‹œ í”Œë˜ê·¸
+EXTERN U8 gu8_Timer_Forced_TemOutput;				//	TEM ì¶œë ¥ ê°•ì œ í‘œì‹œ íƒ€ì´ë¨¸	
 
 EXTERN U32 TEM_TDR_Data_TEST;
 EXTERN U8 gu16_TEM_Voltage_Test;

@@ -1,7 +1,7 @@
 /// @file   display.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ǥ�� ���� ���� ���� ���? file
+/// @brief  표占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占? file
 
 #ifdef DISPLAY_C
 	#define 	EXTERN
@@ -13,9 +13,9 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_DISPLAY()		{	/*	1ms Ÿ�̸� ����			*/	\
+#define	TDEC_1ms_DISPLAY()		{	/*	1ms 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
-#define	TDEC_10ms_DISPLAY()		{	/*	10ms Ÿ�̸� ����		*/	\
+#define	TDEC_10ms_DISPLAY()		{	/*	10ms 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									TDEC(gu8_TimerContSeg); 	\
 									TDEC(gu8_TimerSEG_TH_Limit);		\
 									TDEC(gu8_TimerSegTest);		\
@@ -28,7 +28,7 @@
 									TDEC(gu8_TimerLineTest_SegUpdate);	\
 									TDEC(gu8_Timer_Faucet_Set_Mode_Display);	\
 								}
-#define	TDEC_100ms_DISPLAY()	{	/*	100ms Ÿ�̸� ����		*/	\
+#define	TDEC_100ms_DISPLAY()	{	/*	100ms 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									TDEC(gu8_Timer_SEG_TH);		\
 									TDEC(gu8_Timer_SEG_MONITOR);	\
 									TDEC(gu8_TimerDefaultCupSize_Set_LEDFlic);	\
@@ -45,15 +45,15 @@
 									TDEC(gu8_Timer_Wifi_Pairing_Display_AfterEff);	\
 									TDEC(gu8_Timer_Smps_Feedback_Display);	\
 								}
-#define	TDEC_1s_DISPLAY()		{	/*	1s Ÿ�̸� ����			*/	\
+#define	TDEC_1s_DISPLAY()		{	/*	1s 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
-#define	TDEC_10s_DISPLAY()		{	/*	10s Ÿ�̸� ����			*/	\
+#define	TDEC_10s_DISPLAY()		{	/*	10s 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
-#define	TDEC_1min_DISPLAY()		{	/*	1min Ÿ�̸� ����		*/	\
+#define	TDEC_1min_DISPLAY()		{	/*	1min 타占싱몌옙 占쏙옙占쏙옙		*/	\
 								}
-#define	TDEC_10min_DISPLAY()	{	/*	10min Ÿ�̸� ����		*/	\
+#define	TDEC_10min_DISPLAY()	{	/*	10min 타占싱몌옙 占쏙옙占쏙옙		*/	\
 								}
-#define	TDEC_1h_DISPLAY()		{	/*	1h Ÿ�̸� ����			*/	\
+#define	TDEC_1h_DISPLAY()		{	/*	1h 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
 
 
@@ -89,7 +89,7 @@ EXTERN    const U8 DT_7seg[]							//	7segment
 	0x6D,                                               // 'S' 23 110 1101
 	0x78,                                               // 't' 24 111 1000
 	0x3E,                                               // 'U' 25 011 1110
-	0x80,                                               // 'DOT' 26 �̻��? (Dot ����)
+	0x80,                                               // 'DOT' 26 占싱삼옙占? (Dot 占쏙옙占쏙옙)
 	0x40,                                               // 'BAR' 27 100 0000
 	0x00,                                               // 'X' 28
 	0x39,                                               // 'C' 29
@@ -154,7 +154,7 @@ EXTERN    const U8 DT_7seg[]							//	7segment
 #define Z_NUM_J	   (41)
 #define Z_NUM_K	   (42)
 
-EXTERN const U8 DT_Cont_OXX[20]						//	7-Segment �������� �Ǵ� �������? Cycle
+EXTERN const U8 DT_Cont_OXX[20]						//	7-Segment 占쏙옙占쏙옙占쏙옙占쏙옙 占실댐옙 占쏙옙占쏙옙占쏙옙占? Cycle
 #ifdef    GLOBAL_VARIABLE_DEFINE
 = {
 	0b00000000,			//	1
@@ -181,7 +181,7 @@ EXTERN const U8 DT_Cont_OXX[20]						//	7-Segment �������� �Ǵ
 #endif
 ;
 
-EXTERN    const U8 DT_Cont_XOX[20]						//	7-Segment �������� �Ǵ� �������? Cycle
+EXTERN    const U8 DT_Cont_XOX[20]						//	7-Segment 占쏙옙占쏙옙占쏙옙占쏙옙 占실댐옙 占쏙옙占쏙옙占쏙옙占? Cycle
 #ifdef    GLOBAL_VARIABLE_DEFINE
 = {
 	0b00000000,			//	1
@@ -208,7 +208,7 @@ EXTERN    const U8 DT_Cont_XOX[20]						//	7-Segment �������� �
 #endif
 ;
 
-EXTERN    const U8 DT_Cont_XXO[20]						//	7-Segment �������� �Ǵ� �������? Cycle
+EXTERN    const U8 DT_Cont_XXO[20]						//	7-Segment 占쏙옙占쏙옙占쏙옙占쏙옙 占실댐옙 占쏙옙占쏙옙占쏙옙占? Cycle
 #ifdef    GLOBAL_VARIABLE_DEFINE
 = {
 	0b00000000,			//	1
@@ -276,9 +276,9 @@ EXTERN    const U8 DT_FrontTest[8]						//
 #define Z_Timer_SEG_TH		(40)					//	<4s/100ms>
 #define Z_Timer_SEG_MONITOR	(70)					//	<7s/100ms>
 
-#define Z_TimerDefaultCupSize_Set_LEDFlic	(20)	//	�� ������ ����Ʈ ���� �� LED���� Ÿ�̸�	<2s/100ms>
+#define Z_TimerDefaultCupSize_Set_LEDFlic	(20)	//	占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙트 占쏙옙占쏙옙 占쏙옙 LED占쏙옙占쏙옙 타占싱몌옙	<2s/100ms>
 
-#define Z_TimerSEG_TH_Limit		(50)				//	SEG TH Ÿ�̸� <500ms/10ms>
+#define Z_TimerSEG_TH_Limit		(50)				//	SEG TH 타占싱몌옙 <500ms/10ms>
 
 #define Z_TimerSegTest		(10)
 
@@ -292,7 +292,7 @@ EXTERN    const U8 DT_FrontTest[8]						//
 #define Z_TimerFlowSensorTestDisplay	(200)		//	<2000ms/10ms>
 
 
-#define Z_TimerUVDisplay	(250)				//	<7500ms/10ms> - 천천?�� ?��?��
+#define Z_TimerUVDisplay	(250)				//	<7500ms/10ms> - 泥쒖쿇?엳 ?쉶?쟾
 
 #define Z_TimerSmartCheckDisplay	(325)			//	25*130ms <3250ms/10ms>
 
@@ -397,33 +397,33 @@ EXTERN BYTE_BIT gu8_SegData[3];			//
 
 EXTERN BYTE_BIT gu8_SegData_Before[3];
 
-EXTERN U8 gu8_TimerContSeg;							//	�������� �� Ÿ�̸�
-EXTERN U8 gu8_CounterContSeg;						//	�������� �� ī����
+EXTERN U8 gu8_TimerContSeg;							//	占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙 타占싱몌옙
+EXTERN U8 gu8_CounterContSeg;						//	占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙 카占쏙옙占쏙옙
 
-EXTERN U8 gu8_LED_COLD_Before;						//	LED �ü��µ� ���� ����. �����׸��ý� ������ ���� �� �� �ֵ���
-EXTERN U16 gu16_Effluent_Hz_forSegDisplay;			//	Seg Display �� (% �� mL ǥ�ø� ���Ͽ� �ʱ� ���������� ����)
+EXTERN U8 gu8_LED_COLD_Before;						//	LED 占시쇽옙占승듸옙 占쏙옙占쏙옙 占쏙옙占쏙옙. 占쏙옙占쏙옙占쌓몌옙占시쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙 占쌍듸옙占쏙옙
+EXTERN U16 gu16_Effluent_Hz_forSegDisplay;			//	Seg Display 占쏙옙 (% 占쏙옙 mL 표占시몌옙 占쏙옙占싹울옙 占십깍옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙)
 EXTERN U16 gu16_Effluent_CupLitter;
 EXTERN U16 gu16_Effluent_CupLitter_forSegDisplay;
-EXTERN U16 gu16_Effluent_Amount_SegDisplay;			//	���� �� ���� ǥ�ø� ����
+EXTERN U16 gu16_Effluent_Amount_SegDisplay;			//	占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙 표占시몌옙 占쏙옙占쏙옙
 
-EXTERN U8 gu8_Counter_SEG_TH;						//	TH������ ǥ�� ī����
-EXTERN U8 gu8_Timer_SEG_TH;							//	TH������ ǥ�� Ÿ�̸�
+EXTERN U8 gu8_Counter_SEG_TH;						//	TH占쏙옙占쏙옙占쏙옙 표占쏙옙 카占쏙옙占쏙옙
+EXTERN U8 gu8_Timer_SEG_TH;							//	TH占쏙옙占쏙옙占쏙옙 표占쏙옙 타占싱몌옙
 
-EXTERN U8 gu8_Counter_SEG_ColdTest;					//	�ð��׽�Ʈ ǥ�� ī����
-EXTERN U8 gu8_Timer_SEG_ColdTest;					//	�ð��׽�Ʈ ǥ�� Ÿ�̸�
+EXTERN U8 gu8_Counter_SEG_ColdTest;					//	占시곤옙占쌓쏙옙트 표占쏙옙 카占쏙옙占쏙옙
+EXTERN U8 gu8_Timer_SEG_ColdTest;					//	占시곤옙占쌓쏙옙트 표占쏙옙 타占싱몌옙
 
-EXTERN U8 gu8_Counter_SEG_MONITOR;					//	�ÿ��� ����Ƚ�� �� ���ⷮ ǥ�� ī����
-EXTERN U8 gu8_Timer_SEG_MONITOR;					//	�ÿ��� ����Ƚ�� �� ���ⷮ ǥ�� Ÿ�̸�
+EXTERN U8 gu8_Counter_SEG_MONITOR;					//	占시울옙占쏙옙 占쏙옙占쏙옙횟占쏙옙 占쏙옙 占쏙옙占썩량 표占쏙옙 카占쏙옙占쏙옙
+EXTERN U8 gu8_Timer_SEG_MONITOR;					//	占시울옙占쏙옙 占쏙옙占쏙옙횟占쏙옙 占쏙옙 占쏙옙占썩량 표占쏙옙 타占싱몌옙
 
-EXTERN U8 gu8_TimerDefaultCupSize_Set_LEDFlic;		//	�� ������ ����Ʈ ���� �� LED���� Ÿ�̸�	<2s/100ms>
+EXTERN U8 gu8_TimerDefaultCupSize_Set_LEDFlic;		//	占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙트 占쏙옙占쏙옙 占쏙옙 LED占쏙옙占쏙옙 타占싱몌옙	<2s/100ms>
 
-EXTERN U8 gu8_TimerSEG_TH_Limit;					//	SEG TH ǥ��Ÿ�̸� (TH�����Ͱ� ������ ���ϱ� ������ 500ms ����) <500ms/10ms>
+EXTERN U8 gu8_TimerSEG_TH_Limit;					//	SEG TH 표占쏙옙타占싱몌옙 (TH占쏙옙占쏙옙占싶곤옙 占쏙옙占쏙옙占쏙옙 占쏙옙占싹깍옙 占쏙옙占쏙옙占쏙옙 500ms 占쏙옙占쏙옙) <500ms/10ms>
 
-EXTERN U8 gu8_TimerSegTest;							//	�� ����Ʈ �˻��?
-EXTERN U8 gu8_CounterSegTest;						//	�� ����Ʈ �˻��?
+EXTERN U8 gu8_TimerSegTest;							//	占쏙옙 占쏙옙占쏙옙트 占싯삼옙占?
+EXTERN U8 gu8_CounterSegTest;						//	占쏙옙 占쏙옙占쏙옙트 占싯삼옙占?
 
-EXTERN U8 gu8_TimerErrorHistory;					//	���� �̷� Ÿ�̸�
-EXTERN U8 gu8_CounterErrorHistory;					//	���� �̷� ī����
+EXTERN U8 gu8_TimerErrorHistory;					//	占쏙옙占쏙옙 占싱뤄옙 타占싱몌옙
+EXTERN U8 gu8_CounterErrorHistory;					//	占쏙옙占쏙옙 占싱뤄옙 카占쏙옙占쏙옙
 
 EXTERN U8 gu8_Fade_Select;
 EXTERN U8 gu8_ON_DimmingPercent;
@@ -445,7 +445,7 @@ EXTERN U16 gu16_TimerSmartCheckDisplay;				//	<?ms/10ms>
 
 EXTERN U8 gu8_TimerAllLockDisplay;					//	<2s/100ms>
 
-EXTERN U8 F_HotDegreeDisplay;						//	LED �� ǥ�� �÷���
+EXTERN U8 F_HotDegreeDisplay;						//	LED 占쏙옙 표占쏙옙 占시뤄옙占쏙옙
 
 EXTERN U8 gu8_TimerFlicker;							//	<?ms/10ms>
 
@@ -454,7 +454,7 @@ EXTERN U16 gu16_LineTest_Seg;
 
 EXTERN U8 F_ColdTemp_Display;						//	[0:WHITE] [1:BLUE]
 
-EXTERN U8 F_EffluentLED_OFF;						//	���� LED OFF flag
+EXTERN U8 F_EffluentLED_OFF;						//	占쏙옙占쏙옙 LED OFF flag
 
 EXTERN U8 gu8_TimerFOTA_Display;					//	<3s/100ms>
 EXTERN U8 F_FOTA_Display;
@@ -506,9 +506,9 @@ EXTERN Display_Control DisplayControl_Data[DisplayNum_Max]
 ;
 
 
-EXTERN U32 gu32_Display_PreHeat_Percent;			//	���� ǥ�� �ۼ�Ʈ Data ��
+EXTERN U32 gu32_Display_PreHeat_Percent;			//	占쏙옙占쏙옙 표占쏙옙 占쌜쇽옙트 Data 占쏙옙
 
-EXTERN U8 gu8_TimerColdTankClearDisplay;			//	�ü� ��ũ ���? ���� ǥ�� Ÿ�̸�
+EXTERN U8 gu8_TimerColdTankClearDisplay;			//	占시쇽옙 占쏙옙크 占쏙옙占? 占쏙옙占쏙옙 표占쏙옙 타占싱몌옙
 
 EXTERN U8 gu8_UV_Step_Before;
 

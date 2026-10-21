@@ -522,7 +522,7 @@ U16 GetUserSystemPart ( U16 mu16Part )
 
 /* [A1091] [Diagnosis Result]  Server -> Product */
 /* SetWifiSendStatus( TX_DATA, WIFI_TX_RQST_INFO_DRR );  A2010.0029 DiagnosisResultRequest  */ 
-void SetUserSystemDiagnosis ( U16 mu16DR, I16 mData ) // [1]: Error ����, [-100] : �̻�1
+void SetUserSystemDiagnosis ( U16 mu16DR, I16 mData ) // [1]: Error 있음, [-100] : 이상1
 {
 	#define DiagnosisError 	 (1)
 	#define DiagnosisAbnormal1 (-100)

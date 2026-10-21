@@ -1,14 +1,14 @@
 /// @file     description_mode.c
 /// @date     2025.01.XX
 /// @author   
-/// @brief    Description Mode Ã³¸® file
+/// @brief    Description Mode ì²˜ë¦¬ file
 #define DESCRIPTION_MODE_C
 #include "include/_include.h"
 
 static void DescriptionMode_Common(void);
 static void DescriptionMode_Water_Cup_SelectTimer(U8* address);
 
-//	Àü¿ª º¯¼ö Á¤ÀÇ
+//	ì „ì—­ ë³€ìˆ˜ ì •ì˜
 // U8 gu8_F_Start_DescriptionMode;
 // U8 gu8_DescriptionModeStep;
 // U8 gu8_DescriptionModeStepNum;
@@ -18,7 +18,7 @@ static void DescriptionMode_Water_Cup_SelectTimer(U8* address);
 
 Operation_StepTable DescriptionMode_Step[Z_DescriptionModeStepNum_Max] =
 {
-	//	½ºÅÜ No			 	Segment			ÃßÃâLED			¿Â¼öLED			Á¤¼öLED			³Ã¼öLED			¿ë·®LED			¿Â¼öÀá±İLED		CUP LED			³Ã¼ö¿ÂµµLED		WIFI LED		ÆÄ¿ì¼Â LED		ÇÊÅÍ ±³Ã¼ LED		mL LED			¡É LED			PERCENT LED      UV LED			HOT BAR			Step Func.
+	//	ìŠ¤í… No			 	Segment			ì¶”ì¶œLED			ì˜¨ìˆ˜LED			ì •ìˆ˜LED			ëƒ‰ìˆ˜LED			ìš©ëŸ‰LED			ì˜¨ìˆ˜ì ê¸ˆLED		CUP LED			ëƒ‰ìˆ˜ì˜¨ë„LED		WIFI LED		íŒŒìš°ì…‹ LED		í•„í„° êµì²´ LED		mL LED			â„ƒ LED			PERCENT LED      UV LED			HOT BAR			Step Func.
 	{ Z_DescriptionModeStep_10, 	SEG_ML,			LED_ON, 		LED_STATUS, 	LED_STATUS, 	LED_STATUS, 	LED_STATUS, 	LED_STATUS, 	LED_STATUS, 	LED_STATUS, 	LED_STATUS,		LED_STATUS,		LED_STATUS,		LED_forSEG, 	LED_forSEG, 	LED_OFF,		LED_OFF,		LED_STATUS,		DescriptionModeStep_10},
 	{ Z_DescriptionModeStep_15, 	SEG_ON_FLIC,	LED_ON, 		LED_STATUS, 	LED_STATUS, 	LED_FADE_F, 	LED_STATUS, 	LED_STATUS, 	LED_OFF, 		LED_FADE_F,	 	LED_STATUS,		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF,		LED_OFF,		LED_OFF,		DescriptionModeStep_15},
 	{ Z_DescriptionModeStep_16, 	SEG_OFF_DISP,	LED_ON, 		LED_STATUS, 	LED_STATUS, 	LED_OFF_DISP, 	LED_STATUS, 	LED_STATUS, 	LED_OFF, 		LED_OFF, 		LED_STATUS,		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF,		LED_OFF,		LED_OFF,		DescriptionModeStep_16},
@@ -30,12 +30,12 @@ Operation_StepTable DescriptionMode_Step[Z_DescriptionModeStepNum_Max] =
 	{ Z_DescriptionModeStep_43, 	SEG_MOVING,		LED_OFF, 		LED_ON, 		LED_OFF, 		LED_OFF, 		LED_ON, 		LED_OFF, 		LED_FAUCET_MODE, LED_OFF, 		LED_OFF,		LED_OFF,		LED_OFF,		LED_OFF, 		LED_OFF, 		LED_OFF,		LED_OFF,		LED_OFF,		DescriptionModeStep_43},
 };
 
-/// @brief    Description Mode ÃÊ±âÈ­
+/// @brief    Description Mode ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void DescriptionMode_Initialize(void)
 {
-	return_default_cup();					//	¿ë·®À» default·Î º¹±Í
+	return_default_cup();					//	ìš©ëŸ‰ì„ defaultë¡œ ë³µê·€
 	gu8_DescriptionModeStep = Z_DescriptionModeStep_10;
 	gu8_DescriptionModeStepNum = Z_DescriptionModeStepNum_10;
 	gu16_TimerDescriptionMode_100ms = 0;
@@ -43,20 +43,20 @@ void DescriptionMode_Initialize(void)
 	gu16_TimerDescriptionMode_20s = 0;
 }
 
-/// @brief    Description Mode Á¦¾î
+/// @brief    Description Mode ì œì–´
 /// @param    void
 /// @return   void
 void Description__Mode(void)
 {
 	/**************************************************************************
-	 * Description Mode Á¾·á Á¶°Ç (¾Æ·¡ Á¶°Ç Áß ÇÏ³ª¶óµµ ¸¸Á· ½Ã Á¾·á)
-	 * 1. ¿¡·¯ ¹ß»ı ½Ã (gu8_ErrorCode != 0)
-	 * 2. ÇÁ·ĞÆ® Ä¿¹ö°¡ ¿­·ÈÀ» ¶§ (INPUT_REED_SW_COVER == CLEAR)
-	 * 3. operation.c¿¡¼­ B0 ½ºÅÜÀ¸·Î ÀÌµ¿ÇßÀ» ¶§ (gu8_OperationStep == Z_OperationStep_B0)
-	 * 4. 20ÃÊ µ¿¾È shortkey ÀÔ·ÂÀÌ ¾øÀ» ¶§ (gu16_TimerDescriptionMode_20s == 0)
+	 * Description Mode ì¢…ë£Œ ì¡°ê±´ (ì•„ë˜ ì¡°ê±´ ì¤‘ í•˜ë‚˜ë¼ë„ ë§Œì¡± ì‹œ ì¢…ë£Œ)
+	 * 1. ì—ëŸ¬ ë°œìƒ ì‹œ (gu8_ErrorCode != 0)
+	 * 2. í”„ë¡ íŠ¸ ì»¤ë²„ê°€ ì—´ë ¸ì„ ë•Œ (INPUT_REED_SW_COVER == CLEAR)
+	 * 3. operation.cì—ì„œ B0 ìŠ¤í…ìœ¼ë¡œ ì´ë™í–ˆì„ ë•Œ (gu8_OperationStep == Z_OperationStep_B0)
+	 * 4. 20ì´ˆ ë™ì•ˆ shortkey ì…ë ¥ì´ ì—†ì„ ë•Œ (gu16_TimerDescriptionMode_20s == 0)
 	 **************************************************************************/
 
-	//	operation.c 03 ½ºÅÜ ÀÌ»ó 10 ½ºÅÜ ¹Ì¸¸ and ÃÊ±â ÇÃ·¯½Ì ¾È ³¡³µÀ» ¶§ KEY_STE_KITMODE_LONGÀ¸·Î description flag on/off
+	//	operation.c 03 ìŠ¤í… ì´ìƒ 10 ìŠ¤í… ë¯¸ë§Œ and ì´ˆê¸° í”ŒëŸ¬ì‹± ì•ˆ ëë‚¬ì„ ë•Œ KEY_STE_KITMODE_LONGìœ¼ë¡œ description flag on/off
 	if ((gu8_OperationStep >= Z_OperationStep_03) && (gu8_OperationStep < Z_OperationStep_10) 
 		&& ((F_FirstFlushing == CLEAR) || (F_Heater_Fill == CLEAR) || (F_ColdTank_Fill == CLEAR)))
 	{
@@ -65,14 +65,14 @@ void Description__Mode(void)
 			gu8_F_Start_DescriptionMode ^= 1;
 			if (gu8_F_Start_DescriptionMode == SET)
 			{
-				// Description mode ½ÃÀÛ ½Ã ÃÊ±âÈ­, 20ÃÊ Å¸ÀÌ¸Ó ¼³Á¤ ¹× ¼³Á¤À½ Ãâ·Â
+				// Description mode ì‹œì‘ ì‹œ ì´ˆê¸°í™”, 20ì´ˆ íƒ€ì´ë¨¸ ì„¤ì • ë° ì„¤ì •ìŒ ì¶œë ¥
 				DescriptionMode_Initialize();
 				gu16_TimerDescriptionMode_20s = Z_TimerDescriptionMode_100ms_20s;
 				Play_Voice(VOICE_BEEP_ON);
 			}
 			else
 			{
-				// Description mode Á¾·á ½Ã ÃÊ±âÈ­ ¹× ÇØÁ¦À½ Ãâ·Â
+				// Description mode ì¢…ë£Œ ì‹œ ì´ˆê¸°í™” ë° í•´ì œìŒ ì¶œë ¥
 				DescriptionMode_Initialize();
 				Play_Voice(VOICE_BEEP_OFF);
 			}
@@ -80,7 +80,7 @@ void Description__Mode(void)
 	}
 	else
 	{
-		// ÇÃ·¯½Ì ¿Ï·á ÈÄ ÀÏ¹İ ¸ğµå(10 ½ºÅÜ ÀÌ»ó)·Î ÀüÈ¯ ½Ã description mode ÃÊ±âÈ­
+		// í”ŒëŸ¬ì‹± ì™„ë£Œ í›„ ì¼ë°˜ ëª¨ë“œ(10 ìŠ¤í… ì´ìƒ)ë¡œ ì „í™˜ ì‹œ description mode ì´ˆê¸°í™”
 		if (gu8_F_Start_DescriptionMode == SET)
 		{
 			gu8_F_Start_DescriptionMode = CLEAR;
@@ -88,53 +88,53 @@ void Description__Mode(void)
 		}
 	}
 	
-    //  ¼³¸í¸ğµå ½ÃÀÛ
+    //  ì„¤ëª…ëª¨ë“œ ì‹œì‘
 	if (gu8_F_Start_DescriptionMode == CLEAR)
     {
         return;
     }
 
-	/*	1. ¿¡·¯ ¹ß»ı ½Ã description mode Á¾·á
-	 *	Á¶°Ç: gu8_ErrorCode != 0
+	/*	1. ì—ëŸ¬ ë°œìƒ ì‹œ description mode ì¢…ë£Œ
+	 *	ì¡°ê±´: gu8_ErrorCode != 0
 	 */
 	if (gu8_ErrorCode != 0)
 	{
-		gu8_F_Start_DescriptionMode = CLEAR;	//	description mode Á¾·á
-		DescriptionMode_Initialize();			//	ÃÊ±âÈ­
+		gu8_F_Start_DescriptionMode = CLEAR;	//	description mode ì¢…ë£Œ
+		DescriptionMode_Initialize();			//	ì´ˆê¸°í™”
 		return;
 	}
 	
-	/*	2. ÇÁ·ĞÆ® Ä¿¹ö ¿­¸² ½Ã ¶Ç´Â B0 ½ºÅÜÀ¸·Î ÀÌµ¿ÇßÀ» ¶§ description mode Á¾·á
-	 *	Á¶°Ç: INPUT_REED_SW_COVER == CLEAR ¶Ç´Â gu8_OperationStep == Z_OperationStep_B0
+	/*	2. í”„ë¡ íŠ¸ ì»¤ë²„ ì—´ë¦¼ ì‹œ ë˜ëŠ” B0 ìŠ¤í…ìœ¼ë¡œ ì´ë™í–ˆì„ ë•Œ description mode ì¢…ë£Œ
+	 *	ì¡°ê±´: INPUT_REED_SW_COVER == CLEAR ë˜ëŠ” gu8_OperationStep == Z_OperationStep_B0
 	 */
 	if ((INPUT_REED_SW_COVER == CLEAR) || (gu8_OperationStep == Z_OperationStep_B0))
 	{
-		gu8_F_Start_DescriptionMode = CLEAR;	//	description mode Á¾·á
-		DescriptionMode_Initialize();			//	ÃÊ±âÈ­
+		gu8_F_Start_DescriptionMode = CLEAR;	//	description mode ì¢…ë£Œ
+		DescriptionMode_Initialize();			//	ì´ˆê¸°í™”
 		return;
 	}
 
-	/*	3. 20ÃÊ Å¸ÀÌ¸Ó Ã¼Å© ¹× shortkey/longkey ÀÔ·Â Ã³¸®
-	 *	Á¶°Ç: gu8_Key_Short.byte != 0x00 (shortkey ÀÔ·ÂÀÌ µé¾î¿À¸é) ¶Ç´Â gu32_LongKeyArray.LONG != 0x0000U (longkey ÀÔ·ÂÀÌ µé¾î¿À¸é)
+	/*	3. 20ì´ˆ íƒ€ì´ë¨¸ ì²´í¬ ë° shortkey/longkey ì…ë ¥ ì²˜ë¦¬
+	 *	ì¡°ê±´: gu8_Key_Short.byte != 0x00 (shortkey ì…ë ¥ì´ ë“¤ì–´ì˜¤ë©´) ë˜ëŠ” gu32_LongKeyArray.LONG != 0x0000U (longkey ì…ë ¥ì´ ë“¤ì–´ì˜¤ë©´)
 	 */
-	if ((gu8_Key_Short.byte != 0x00) || (gu32_LongKeyArray.LONG != 0x0000U))	//	shortkey ¶Ç´Â longkey ÀÔ·ÂÀÌ µé¾î¿À¸é
+	if ((gu8_Key_Short.byte != 0x00) || (gu32_LongKeyArray.LONG != 0x0000U))	//	shortkey ë˜ëŠ” longkey ì…ë ¥ì´ ë“¤ì–´ì˜¤ë©´
 	{
-		gu16_TimerDescriptionMode_20s = Z_TimerDescriptionMode_100ms_20s;	//	20ÃÊ Å¸ÀÌ¸Ó ¸®¼Â
+		gu16_TimerDescriptionMode_20s = Z_TimerDescriptionMode_100ms_20s;	//	20ì´ˆ íƒ€ì´ë¨¸ ë¦¬ì…‹
 	}
 	
-	/*	4. 20ÃÊ °æ°ú ½Ã description mode Á¾·á
-	 *	Á¶°Ç: gu16_TimerDescriptionMode_20s == 0 (20ÃÊ °æ°ú ½Ã)
+	/*	4. 20ì´ˆ ê²½ê³¼ ì‹œ description mode ì¢…ë£Œ
+	 *	ì¡°ê±´: gu16_TimerDescriptionMode_20s == 0 (20ì´ˆ ê²½ê³¼ ì‹œ)
 	 */
-	if (gu16_TimerDescriptionMode_20s == 0)	//	20ÃÊ °æ°ú ½Ã
+	if (gu16_TimerDescriptionMode_20s == 0)	//	20ì´ˆ ê²½ê³¼ ì‹œ
 	{
-		gu8_F_Start_DescriptionMode = CLEAR;	//	description mode Á¾·á
-		DescriptionMode_Initialize();			//	ÃÊ±âÈ­
+		gu8_F_Start_DescriptionMode = CLEAR;	//	description mode ì¢…ë£Œ
+		DescriptionMode_Initialize();			//	ì´ˆê¸°í™”
 		return;
 	}
 
-	if (gu8_DescriptionModeStepNum < Z_DescriptionModeStepNum_Max)	//	½ºÅÜ Çã¿ë ¹üÀ§ ÀÌ³»
+	if (gu8_DescriptionModeStepNum < Z_DescriptionModeStepNum_Max)	//	ìŠ¤í… í—ˆìš© ë²”ìœ„ ì´ë‚´
 	{
-		(DescriptionMode_Step[gu8_DescriptionModeStepNum].exe)();	//		ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
+		(DescriptionMode_Step[gu8_DescriptionModeStepNum].exe)();	//		í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
 
 		DisplayControl_Data[Z_SEGMENT].Operation_CMD = DescriptionMode_Step[gu8_DescriptionModeStepNum].SEGMENT;
 		DisplayControl_Data[Z_LED_EFFLUENT].Operation_CMD = DescriptionMode_Step[gu8_DescriptionModeStepNum].EFFLUENT;
@@ -173,7 +173,7 @@ void Description__Mode(void)
 	}
 }
 
-/// @brief    ´ë±â
+/// @brief    ëŒ€ê¸°
 /// @param    void
 /// @return   void
 void DescriptionModeStep_10(void)
@@ -188,7 +188,7 @@ void Ini_DescriptionModeStep_10(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_10);
 }
 
-/// @brief    ON Ç¥½Ã
+/// @brief    ON í‘œì‹œ
 /// @param    void
 /// @return   void
 void DescriptionModeStep_15(void)
@@ -212,7 +212,7 @@ void Ini_DescriptionModeStep_15(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_15);
 }
 
-/// @brief    ³Ã¼ö OFF Ç¥½Ã
+/// @brief    ëƒ‰ìˆ˜ OFF í‘œì‹œ
 /// @param    void
 /// @return   void
 void DescriptionModeStep_16(void)
@@ -246,7 +246,7 @@ void Ini_DescriptionModeStep_16(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_16);
 }
 
-/// @brief    ÆÄ¿ì¼Â ON/OFF ¼³Á¤ Ç¥½Ã
+/// @brief    íŒŒìš°ì…‹ ON/OFF ì„¤ì • í‘œì‹œ
 /// @param    void
 /// @return   void
 void DescriptionModeStep_17(void)
@@ -268,7 +268,7 @@ void Ini_DescriptionModeStep_17(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_17);
 }
 
-/// @brief    OFF Ç¥½Ã
+/// @brief    OFF í‘œì‹œ
 /// @param    void
 /// @return   void
 void DescriptionModeStep_18(void)
@@ -292,7 +292,7 @@ void Ini_DescriptionModeStep_18(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_18);
 }
 
-/// @brief    ½½¸³¸ğµå
+/// @brief    ìŠ¬ë¦½ëª¨ë“œ
 /// @param    void
 /// @return   void
 void DescriptionModeStep_20(void)
@@ -303,7 +303,7 @@ void DescriptionModeStep_20(void)
 		Ini_DescriptionModeStep_10();
 		Play_Voice(VOICE_BEEP_SELECT);
 	}
-	#if 0		//	UV°ü¸®
+	#if 0		//	UVê´€ë¦¬
 	else if (gu8_TimerUV_6h == 0)
 	{
 		Ini_DescriptionModeStep_31();
@@ -319,7 +319,7 @@ void Ini_DescriptionModeStep_20(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_20);
 }
 
-/// @brief    ÀüÃ¼ Àá±İ
+/// @brief    ì „ì²´ ì ê¸ˆ
 /// @param    void
 /// @return   void
 void DescriptionModeStep_40(void)
@@ -348,7 +348,7 @@ void DescriptionModeStep_40(void)
 	{
 		Ini_DescriptionModeStep_10();
 	}
-	#if 0		//	UV°ü¸®
+	#if 0		//	UVê´€ë¦¬
 	else if (gu8_TimerUV_6h == 0)
 	{
 		Ini_DescriptionModeStep_31();
@@ -365,7 +365,7 @@ void Ini_DescriptionModeStep_40(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_40);
 }
 
-/// @brief    »ç¿îµå Å¸ÀÔ
+/// @brief    ì‚¬ìš´ë“œ íƒ€ì…
 /// @param    void
 /// @return   void
 void DescriptionModeStep_41(void)
@@ -470,7 +470,7 @@ void Ini_DescriptionModeStep_41(void)
 	DescriptionModeStepNoSet(Z_DescriptionModeStepNum_41);
 }
 
-/// @brief    ÆÄ¿ì¼Â ON/OFF
+/// @brief    íŒŒìš°ì…‹ ON/OFF
 /// @param    void
 /// @return   void
 void DescriptionModeStep_43(void)
@@ -557,7 +557,7 @@ void DescriptionModeStepNoSet(U8 data)
 		Z_DescriptionModeStep_43,
 	};
 	/************************************************/
-	gu8_DescriptionModeStepNum = data; /*	½ºÅÜ ¹øÈ£ set*/
+	gu8_DescriptionModeStepNum = data; /*	ìŠ¤í… ë²ˆí˜¸ set*/
 
 	if (data < (sizeof(DT_DescriptionModeNumber) / sizeof(DT_DescriptionModeNumber[0])))
 	{
@@ -565,7 +565,7 @@ void DescriptionModeStepNoSet(U8 data)
 	}
 	else
 	{
-		gu8_DescriptionModeStep = Z_DescriptionModeStep_10; /*	¹üÀ§ ÃÊ°ú ½Ã ±âº»°ª */
+		gu8_DescriptionModeStep = Z_DescriptionModeStep_10; /*	ë²”ìœ„ ì´ˆê³¼ ì‹œ ê¸°ë³¸ê°’ */
 	}
 }
 
@@ -574,7 +574,7 @@ void DescriptionModeStepNoSet(U8 data)
 /// @return   void
 static void DescriptionMode_Common(void)
 {
-    if (F_AllLock == SET)						//	ÀüÃ¼Àá±İÀÌ ÄÑÁø °æ¿ì
+    if (F_AllLock == SET)						//	ì „ì²´ì ê¸ˆì´ ì¼œì§„ ê²½ìš°
 	{
 		Ini_DescriptionModeStep_40();
 	}
@@ -604,24 +604,24 @@ static void DescriptionMode_Common(void)
 	{
 		Ini_DescriptionModeStep_43();
 	}
-	else if (KEY_COLDWATER_SHORT == SET)		//	³Ã¼ö¹öÆ°
+	else if (KEY_COLDWATER_SHORT == SET)		//	ëƒ‰ìˆ˜ë²„íŠ¼
 	{
 		F_HotDegreeDisplay = CLEAR;
-		if (F_ColdOff == SET)					//		³Ã¼ö OFFÀÎ °æ¿ì
+		if (F_ColdOff == SET)					//		ëƒ‰ìˆ˜ OFFì¸ ê²½ìš°
 		{
-			Ini_DescriptionModeStep_16();				//			OFFÇ¥½Ã
+			Ini_DescriptionModeStep_16();				//			OFFí‘œì‹œ
 			Play_Voice(VOICE_COLD_OFF_CHECK);
 		}
-		else									//		³Ã°¢ ON
+		else									//		ëƒ‰ê° ON
 		{
 			gu8_DefaultWaterSelect = COLD_WATER;
 			Play_Voice(VOICE_BEEP_SELECT);
 		}
 		gu8_WaterSelect = COLD_WATER;
-		DescriptionMode_Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			¹°¼±ÅÃ Å¸ÀÌ¸Ó set
+		DescriptionMode_Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			ë¬¼ì„ íƒ íƒ€ì´ë¨¸ set
 	}
 	else if ((KEY_COLDWATER_VERYLONG == SET)
-	&& (F_ColdOff == CLEAR))					//	ON -> OFF 7ÃÊ
+	&& (F_ColdOff == CLEAR))					//	ON -> OFF 7ì´ˆ
 	{
 		F_ColdOff ^= 1;
 		if (F_ColdOff == CLEAR)
@@ -638,7 +638,7 @@ static void DescriptionMode_Common(void)
 		}
 	}	
 	else if ((KEY_COLDWATER_LONG == SET)
-	&& (F_ColdOff == SET))					//	OFF -> ON 3ÃÊ
+	&& (F_ColdOff == SET))					//	OFF -> ON 3ì´ˆ
 	{
 		F_ColdOff ^= 1;
 		if (F_ColdOff == CLEAR)
@@ -685,18 +685,18 @@ static void DescriptionMode_Common(void)
 							{
 								if (F_HotWater_100Degree == SET)
 								{
-									if(gu8_f_hot_temp_sorting == Z_HOT_TEMP_ASCENDING)				//	¿À¸§ Â÷¼ø		
+									if(gu8_f_hot_temp_sorting == Z_HOT_TEMP_ASCENDING)				//	ì˜¤ë¦„ ì°¨ìˆœ		
 									{
 										gu8_hot_water_select_index++;
 
-										if(gu8_hot_water_select_index > (gu8_select_hot_temp_total_count - 1))		//	ÃÖ´ë °¹¼ö
+										if(gu8_hot_water_select_index > (gu8_select_hot_temp_total_count - 1))		//	ìµœëŒ€ ê°¯ìˆ˜
 										{
 											gu8_hot_water_select_index = 0;
 										}
 
 										gu8_HotTempSetup = selected_hot_temp[gu8_hot_water_select_index];
 									}
-									else																//	³»¸²Â÷¼ø
+									else																//	ë‚´ë¦¼ì°¨ìˆœ
 									{
 										if(gu8_hot_water_select_index != 0)
 										{
@@ -725,7 +725,7 @@ static void DescriptionMode_Common(void)
 #endif
 							Play_Voice(VOICE_BEEP_SELECT);
 						}
-						else									//	¿Â¼ö ¼±ÅÃ Áß¿¡ and Ã¹ÀÜ ¹Ì¿Ï·á »óÅÂ¿¡¼­ ¿Â¼ö¹öÆ° ´©¸¦ °æ¿ì
+						else									//	ì˜¨ìˆ˜ ì„ íƒ ì¤‘ì— and ì²«ì” ë¯¸ì™„ë£Œ ìƒíƒœì—ì„œ ì˜¨ìˆ˜ë²„íŠ¼ ëˆ„ë¥¼ ê²½ìš°
 						{
 #ifndef _KOREA_NEW_VOICE_
 							Play_Voice(VOICE_BEEP_WARNING);
@@ -759,7 +759,7 @@ static void DescriptionMode_Common(void)
 	else if ((gu8_ModelType_forCHP == MODEL_CHP) && (KEY_HOTWATER_LONG == SET))
 	{
 		F_HotLock ^= 1;
-		if (F_HotLock == CLEAR)					//			¿Â¼ö Àá±İ»óÅÂ°¡ ¾Æ´Ï¸é
+		if (F_HotLock == CLEAR)					//			ì˜¨ìˆ˜ ì ê¸ˆìƒíƒœê°€ ì•„ë‹ˆë©´
 		{
 			gu8_WaterSelect = HOT_WATER;
 			F_HotDegreeDisplay = SET;
@@ -770,7 +770,7 @@ static void DescriptionMode_Common(void)
 			gu8_WaterSelect = PURE_WATER;
 			Play_Voice(VOICE_HOT_LOCK_SETTING);
 		}
-		DescriptionMode_Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			¹°¼±ÅÃ Å¸ÀÌ¸Ó set
+		DescriptionMode_Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			ë¬¼ì„ íƒ íƒ€ì´ë¨¸ set
 	}
 	else if (KEY_PUREWATER_SHORT == SET)
 	{
@@ -785,7 +785,7 @@ static void DescriptionMode_Common(void)
 		U8 search_ok = 0;
 		U8 mu8_i = 0;
 		
-		gu8_TimerDefaultCupSize_Set_LEDFlic = 0;	//		µğÆúÆ®¼³Á¤ Á¡¸êÅ¸ÀÌ¸Ó clear
+		gu8_TimerDefaultCupSize_Set_LEDFlic = 0;	//		ë””í´íŠ¸ì„¤ì • ì ë©¸íƒ€ì´ë¨¸ clear
 
 		if (gu8_TimerSleepMode == 0)
 		{
@@ -808,7 +808,7 @@ static void DescriptionMode_Common(void)
 					}
 					else
 					{	
-						for(mu8_i = 0; mu8_i < CUPSIZE_FIVE; mu8_i++)  // ÃÖ´ë 5¹ø¸¸ °Ë»ö
+						for(mu8_i = 0; mu8_i < CUPSIZE_FIVE; mu8_i++)  // ìµœëŒ€ 5ë²ˆë§Œ ê²€ìƒ‰
 						{
 							if (++gu8_CupIndex > CUPSIZE_FIVE)
 							{
@@ -828,20 +828,20 @@ static void DescriptionMode_Common(void)
 						}
 
 						
-						if(gu8_CupIndex != CUPSIZE_FIVE)		//	¿¬¼Ó ¾Æ´Ï¸é..
+						if(gu8_CupIndex != CUPSIZE_FIVE)		//	ì—°ì† ì•„ë‹ˆë©´..
 						{
 							gu16_CupSize = (U16)gu8_Cup_size_Array[gu8_CupIndex].amount_volume * 10;		//	x 10
 						}
 						else
 						{
-							gu16_CupSize = CUPSIZE_CONTINUE;			//	¿¬¼ÓÀº 0xAA·Î...
+							gu16_CupSize = CUPSIZE_CONTINUE;			//	ì—°ì†ì€ 0xAAë¡œ...
 						}
 
 						gu8_F_CupSize_FineAdjust = SET;
 					}
 					Play_Voice(VOICE_BEEP_SELECT);
 				}
-				else										//	ÀÏº»Çâ
+				else										//	ì¼ë³¸í–¥
 				{
 					gu8_TimerCupSize_LEDFlic_forJAPAN_Limit = 0;
 					if ((gu8_WaterSelect == HOT_WATER) && (F_HotDegreeDisplay == SET))
@@ -877,8 +877,8 @@ static void DescriptionMode_Common(void)
 		if (gu16_CupSize != CUPSIZE_CONTINUE)
 		{
 			gu8_DefaultCupSize = gu8_CupIndex;
-			gu8_TimerDefaultCupSize_Set_LEDFlic = Z_TimerDefaultCupSize_Set_LEDFlic;	//		¹°¾ç ¼³Á¤ Á¡¸ê
-			gu8_TimerCupSelect = Z_TimerCupSelect;    //		¹°¾ç ¼³Á¤ ½Ã 7-Seg Á¡µîÀ» À§ÇÏ¿© Å¸ÀÌ¸Ó set
+			gu8_TimerDefaultCupSize_Set_LEDFlic = Z_TimerDefaultCupSize_Set_LEDFlic;	//		ë¬¼ì–‘ ì„¤ì • ì ë©¸
+			gu8_TimerCupSelect = Z_TimerCupSelect;    //		ë¬¼ì–‘ ì„¤ì • ì‹œ 7-Seg ì ë“±ì„ ìœ„í•˜ì—¬ íƒ€ì´ë¨¸ set
 			Play_Voice(VOICE_BEEP_ON);
 		}
 		else
@@ -956,25 +956,25 @@ static void DescriptionMode_Common(void)
 	}
 }
 
-/// @brief    ¹°/ÄÅ ¼±ÅÃ Å¸ÀÌ¸Ó
-/// @param    address - Å¸ÀÌ¸Ó ÁÖ¼Ò
+/// @brief    ë¬¼/ì»µ ì„ íƒ íƒ€ì´ë¨¸
+/// @param    address - íƒ€ì´ë¨¸ ì£¼ì†Œ
 /// @return   void
 static void DescriptionMode_Water_Cup_SelectTimer(U8* address)
 {
-	if (address == &gu8_TimerWaterSelect)			//	¹° ¼±ÅÃ Å¸ÀÌ¸ÓÀÎ °æ¿ì
+	if (address == &gu8_TimerWaterSelect)			//	ë¬¼ ì„ íƒ íƒ€ì´ë¨¸ì¸ ê²½ìš°
 	{
-		gu8_TimerWaterSelect = Z_TimerWaterSelect;	//		¹° ¼±ÅÃ Å¸ÀÌ¸Ó set
-		if (gu8_TimerCupSelect != 0)				//		ÄÅ ¼±ÅÃÀÌ 7ÃÊ ³²¾ÆÀÖ´Â °æ¿ì
+		gu8_TimerWaterSelect = Z_TimerWaterSelect;	//		ë¬¼ ì„ íƒ íƒ€ì´ë¨¸ set
+		if (gu8_TimerCupSelect != 0)				//		ì»µ ì„ íƒì´ 7ì´ˆ ë‚¨ì•„ìˆëŠ” ê²½ìš°
 		{
-			gu8_TimerCupSelect = Z_TimerCupSelect;	//			7ÃÊ reset
+			gu8_TimerCupSelect = Z_TimerCupSelect;	//			7ì´ˆ reset
 		}
 	}
-	else											//	ÄÅ ¼±ÅÃ Å¸ÀÌ¸ÓÀÎ °æ¿ì
+	else											//	ì»µ ì„ íƒ íƒ€ì´ë¨¸ì¸ ê²½ìš°
 	{
-		gu8_TimerCupSelect = Z_TimerCupSelect;		//		ÄÅ ¼±ÅÃ Å¸ÀÌ¸Ó set
-		if (gu8_TimerWaterSelect != 0)				//		¹° ¼±ÅÃÀÌ 7ÃÊ ³²¾ÆÀÖ´Â °æ¿ì
+		gu8_TimerCupSelect = Z_TimerCupSelect;		//		ì»µ ì„ íƒ íƒ€ì´ë¨¸ set
+		if (gu8_TimerWaterSelect != 0)				//		ë¬¼ ì„ íƒì´ 7ì´ˆ ë‚¨ì•„ìˆëŠ” ê²½ìš°
 		{
-			gu8_TimerWaterSelect = Z_TimerWaterSelect;	//			7ÃÊ reset
+			gu8_TimerWaterSelect = Z_TimerWaterSelect;	//			7ì´ˆ reset
 		}
 	}
 }

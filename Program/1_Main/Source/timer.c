@@ -1,7 +1,7 @@
 /// @file     timer.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Å¸ÀÌ¸Ó ÀÎÅÍ·´Æ® Ã³¸® file
+/// @brief    íƒ€ì´ë¨¸ ì¸í„°ëŸ½íŠ¸ ì²˜ë¦¬ file
 #define TIMER_C
 #include "include/_include.h"
 
@@ -33,16 +33,16 @@ void Timer_1msBase_Timer(void)
 {
 	static U8 mu8_2ms = 0;
 
-	EI();											//	´ÙÁßÀÎÅÍ·´Æ® Çã¿ë
-	Input_AD_Change();								//	ADC Ã³¸®
-	if (gu8_ModelType_forCHP == MODEL_CHP)		//	¿Â¼ö¸ğµ¨¸¸ Step Motor Á¦¾î
+	EI();											//	ë‹¤ì¤‘ì¸í„°ëŸ½íŠ¸ í—ˆìš©
+	Input_AD_Change();								//	ADC ì²˜ë¦¬
+	if (gu8_ModelType_forCHP == MODEL_CHP)		//	ì˜¨ìˆ˜ëª¨ë¸ë§Œ Step Motor ì œì–´
 	{
-		StepMotorMove();                   			// 		À¯·® Á¶Àı Á¦¾î
+		StepMotorMove();                   			// 		ìœ ëŸ‰ ì¡°ì ˆ ì œì–´
 	}
 
 	// FaucetStepMotorMove();
 
-	Time1ms(); 										/*	1ms TIMER °¨»ê			*/
+	Time1ms(); 										/*	1ms TIMER ê°ì‚°			*/
 
 	if (++mu8_2ms > 1)
 	{
@@ -50,28 +50,28 @@ void Timer_1msBase_Timer(void)
 	}
 
 	gu8_Counter10ms++; 								/*	10ms COUNTER +1			*/
-	if (gu8_Counter10ms >= 10)						/*	10ms °æ°úÇÑ °æ¿ì		*/
+	if (gu8_Counter10ms >= 10)						/*	10ms ê²½ê³¼í•œ ê²½ìš°		*/
 	{
 		gu8_Counter10ms = 0; 						/*		10ms COUTNER CLR	*/
-		Time10ms(); 								/*		10ms TIMER °¨»ê		*/
+		Time10ms(); 								/*		10ms TIMER ê°ì‚°		*/
 		gu8_Counter100ms++; 						/*		100ms COUNTER +1	*/
-		if (gu8_Counter100ms >= 10)					/*		100ms °æ°úÇÑ °æ¿ì	*/
+		if (gu8_Counter100ms >= 10)					/*		100ms ê²½ê³¼í•œ ê²½ìš°	*/
 		{
 			gu8_Counter100ms = 0; 					/*			100ms COUNTER CLR*/
-			gu8_FlagTime100ms = 1; 					/*			100ms °æ°ú FLAG SET*/
+			gu8_FlagTime100ms = 1; 					/*			100ms ê²½ê³¼ FLAG SET*/
 		}
 	}
 	gu8_Counter_1msTimerCheck = 0xFF; 				/*	1ms timer interrupt check counter clr */
 
 	gu8_Counter_MainLoopCheck--;
 
-	if (gu8_Counter_MainLoopCheck == 0)				//	¸ŞÀÎ Ã¼Å© Ä«¿îÅÍ resetµÇÁö ¾Ê´Â °æ¿ì
+	if (gu8_Counter_MainLoopCheck == 0)				//	ë©”ì¸ ì²´í¬ ì¹´ìš´í„° resetë˜ì§€ ì•ŠëŠ” ê²½ìš°
 	{
 		SafetyLoop();
 	}
 }
 
-/// @brief    Timer Ã³¸®
+/// @brief    Timer ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Timer_Process(void)
@@ -82,41 +82,41 @@ void Timer_Process(void)
 	static U8 mu8_Counter10min; 					/*	10min COUNTER			*/
 	static U8 mu8_Counter1h; 						/*	1h COUNTER				*/
 	/********************************************/
-	if (gu8_FlagTime100ms == 1)						/*	100ms °æ°ú FLAG SETÀÎ °æ¿ì	*/
+	if (gu8_FlagTime100ms == 1)						/*	100ms ê²½ê³¼ FLAG SETì¸ ê²½ìš°	*/
 	{
-		gu8_FlagTime100ms = 0; 						/*		100ms °æ°ú FLAG CLR		*/
-		Time100ms(); 								/*		100ms TIMER °¨»ê		*/
+		gu8_FlagTime100ms = 0; 						/*		100ms ê²½ê³¼ FLAG CLR		*/
+		Time100ms(); 								/*		100ms TIMER ê°ì‚°		*/
 
 		mu8_Counter1s++; 							/*		1s COUNTER +1			*/
-		if (mu8_Counter1s >= 10)					/*		1s °æ°úÇÑ °æ¿ì			*/
+		if (mu8_Counter1s >= 10)					/*		1s ê²½ê³¼í•œ ê²½ìš°			*/
 		{
 			mu8_Counter1s = 0; 						/*			1s COUNTER CLR		*/
-			gu8_FlagTime1000ms = 1; 				/*			1s °æ°ú FLAG SET	*/
-			Time1s(); 								/*			1s TIMER °¨»ê		*/
+			gu8_FlagTime1000ms = 1; 				/*			1s ê²½ê³¼ FLAG SET	*/
+			Time1s(); 								/*			1s TIMER ê°ì‚°		*/
 
 			mu8_Counter10s++; 						/*			10s COUNTER +1		*/
 			if (mu8_Counter10s >= 10)
-			{ 										/*			10s °æ°úÇÑ °æ¿ì		*/
+			{ 										/*			10s ê²½ê³¼í•œ ê²½ìš°		*/
 				mu8_Counter10s = 0; 				/*				10s COUNTER CLR	*/
-				Time10s(); 							/*				10s TIMER °¨»ê	*/
+				Time10s(); 							/*				10s TIMER ê°ì‚°	*/
 
 				mu8_Counter1min++; 					/*				1min COUNTER +1	*/
-				if (mu8_Counter1min >= 6)			/*				1min °æ°úÇÑ °æ¿ì			*/
+				if (mu8_Counter1min >= 6)			/*				1min ê²½ê³¼í•œ ê²½ìš°			*/
 				{
 					mu8_Counter1min = 0; 			/*					1min COUNTER CLR		*/
-					Time1min(); 					/*					1min TIMER °¨»ê			*/
+					Time1min(); 					/*					1min TIMER ê°ì‚°			*/
 
 					mu8_Counter10min++; 			/*					10min COUNTER +1		*/
-					if (mu8_Counter10min >= 10)		/*					10min °æ°úÇÑ °æ¿ì		*/
+					if (mu8_Counter10min >= 10)		/*					10min ê²½ê³¼í•œ ê²½ìš°		*/
 					{
 						mu8_Counter10min = 0; 		/*						10min COUNTER CLR	*/
-						Time10min(); 				/*						10min TIMER °¨»ê	*/
+						Time10min(); 				/*						10min TIMER ê°ì‚°	*/
 
 						mu8_Counter1h++; 			/*						1h COUNTER +1		*/
-						if (mu8_Counter1h >= 6)		/*						1h °æ°úÇÑ °æ¿ì		*/
+						if (mu8_Counter1h >= 6)		/*						1h ê²½ê³¼í•œ ê²½ìš°		*/
 						{
 							mu8_Counter1h = 0; 		/*							1h COUNTER CLR	*/
-							Time1h(); 				/*							1h TIMER °¨»ê	*/
+							Time1h(); 				/*							1h TIMER ê°ì‚°	*/
 						}
 					}
 				}
@@ -125,20 +125,20 @@ void Timer_Process(void)
 	}
 }
 
-/// @brief    1ms Ã³¸®
+/// @brief    1ms ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time1ms(void)
 {
 //	static U8 mu8_Timer11ms;
 //	/********************************************/
-//	if (mu8_Timer11ms == 0)							/*	DIGITAL ÀÔ·Â TIMER UPÀÎ °æ¿ì	*/
+//	if (mu8_Timer11ms == 0)							/*	DIGITAL ì…ë ¥ TIMER UPì¸ ê²½ìš°	*/
 //	{
-//		mu8_Timer11ms = ZT_11ms; 					/*		DIGITAL ÀÔ·Â TIMER SET		*/
+//		mu8_Timer11ms = ZT_11ms; 					/*		DIGITAL ì…ë ¥ TIMER SET		*/
 //	}
-//	else											/*	»ó±â ÀÌ¿Ü						*/
+//	else											/*	ìƒê¸° ì´ì™¸						*/
 //	{
-//		mu8_Timer11ms--; 							/*		TIMER °¨»ê					*/
+//		mu8_Timer11ms--; 							/*		TIMER ê°ì‚°					*/
 //	}
 	/*------------------------------------------*/
 	TDEC_1ms_ADC();
@@ -168,7 +168,7 @@ void Time1ms(void)
 	TDEC_1ms_FAUCET_MOVING();
 }
 
-/// @brief    10ms Ã³¸®
+/// @brief    10ms ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time10ms(void)								//
@@ -211,7 +211,7 @@ void Time10ms(void)								//
 
 }												//
 
-/// @brief    100ms Ã³¸®
+/// @brief    100ms ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time100ms(void)							//
@@ -259,21 +259,21 @@ void Time100ms(void)							//
 	}
 
 // #ifdef _FOR_DEVELOP_
-	if (gu8_HotStep == Z_HotStep_33)				//	°¡¿­ ÁßÀÎ °æ¿ì
+	if (gu8_HotStep == Z_HotStep_33)				//	ê°€ì—´ ì¤‘ì¸ ê²½ìš°
 	{
-		gu16_HeatingTime++;							//		°¡¿­ ½Ã°£ °¡»ê
+		gu16_HeatingTime++;							//		ê°€ì—´ ì‹œê°„ ê°€ì‚°
 	}
 #ifdef _FOR_DEVELOP_
-	if (gu8_HotStep == Z_HotStep_35)				//	¿Â¼ö ÃßÃâ ÁßÀÎ °æ¿ì
+	if (gu8_HotStep == Z_HotStep_35)				//	ì˜¨ìˆ˜ ì¶”ì¶œ ì¤‘ì¸ ê²½ìš°
 	{
-		gu16_HotEffluentTime++;						//		ÃßÃâ ½Ã°£ °¡»ê (À¯·® Ã¼Å© ¿ë)
+		gu16_HotEffluentTime++;						//		ì¶”ì¶œ ì‹œê°„ ê°€ì‚° (ìœ ëŸ‰ ì²´í¬ ìš©)
 	}
 #endif
 
 	WifiControlProcess(WIFI_TIME_100MS);
 }
 
-/// @brief    1sec Ã³¸®
+/// @brief    1sec ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time1s(void)
@@ -317,22 +317,22 @@ void Time1s(void)
 
 //	F_1s_for_TEM_OnTimeCheck = SET;
 
-//	if (++mu8_3sCount >= 3)							//	3ÃÊ Ã¼Å©
+//	if (++mu8_3sCount >= 3)							//	3ì´ˆ ì²´í¬
 //	{
 //		mu8_3sCount = 0;
 //		F_3s_for_FlowControl = SET;
 //	}
 
-	/*	Àü·Â °»½Å	*/
-	mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ¿¬°á»óÅÂ È®ÀÎ
+	/*	ì „ë ¥ ê°±ì‹ 	*/
+	mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ì—°ê²°ìƒíƒœ í™•ì¸
 
-	if (mu8_WifiDisp == WIFI_DISP_CONNECT)			//	¿¬°áµÈ °æ¿ì¿¡¸¸
+	if (mu8_WifiDisp == WIFI_DISP_CONNECT)			//	ì—°ê²°ëœ ê²½ìš°ì—ë§Œ
 	{
-		/* 1option ½ÇÁ¦ °è»ê	*/
-		gu32_Watt_per_Min_Result += gu32_Watt_Result / 3600;	//	Watt to Watt per h [W¡æWH]
+		/* 1option ì‹¤ì œ ê³„ì‚°	*/
+		gu32_Watt_per_Min_Result += gu32_Watt_Result / 3600;	//	Watt to Watt per h [Wâ†’WH]
 		/***********/
 
-		/* °­Á¦ °íÁ¤	*/
+		/* ê°•ì œ ê³ ì •	*/
 	//	if (gu8_HeaterRelay_CMD == HEATER_ON)			//
 	//	{                                               //
 	//		Watt_Data1 = 250000;						//		2500W [1/100W]
@@ -345,7 +345,7 @@ void Time1s(void)
 		/***********/
 	}
 
-	/*	ÇÏÆ®¼­ºñ½º ½Ã°£	*/
+	/*	í•˜íŠ¸ì„œë¹„ìŠ¤ ì‹œê°„	*/
 	if ((gu8_OperationStep == Z_OperationStep_B0) || (gu8_OperationStep == Z_OperationStep_F0))
 	{
 		if (gu16_HeartServiceTime < 65535)
@@ -378,7 +378,7 @@ void Time1s(void)
 	}	
 }													//
 
-/// @brief    10sec Ã³¸®
+/// @brief    10sec ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time10s(void)								//
@@ -412,7 +412,7 @@ void Time10s(void)								//
 	
 }												//
 
-/// @brief    1min Ã³¸®
+/// @brief    1min ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time1min(void)								//
@@ -444,9 +444,9 @@ void Time1min(void)								//
 	TDEC_1min_SMARTCHECK();
 	TDEC_1min_FAUCET_MOVING();	
 
-	if (gu16_PartTest_Period != 0)					//	¼Û½Å Çã¿ë ÁßÀÎ °æ¿ì (0ÀÎ °æ¿ì ±İÁöÀÓ)
+	if (gu16_PartTest_Period != 0)					//	ì†¡ì‹  í—ˆìš© ì¤‘ì¸ ê²½ìš° (0ì¸ ê²½ìš° ê¸ˆì§€ì„)
 	{
-		if (gu16_TimerPartTest == 0)				//		»ó½ÃÁø´Ü ÁÖ±â °æ°ú ½Ã
+		if (gu16_TimerPartTest == 0)				//		ìƒì‹œì§„ë‹¨ ì£¼ê¸° ê²½ê³¼ ì‹œ
 		{
 			gu16_TimerPartTest = gu16_PartTest_Period * 60;
 			// WifiSendData(WIFI_DATA_PART);
@@ -454,13 +454,13 @@ void Time1min(void)								//
 	}
 	else
 	{
-		gu16_TimerPartTest = 60;			//		1½Ã°£ ¸¶´Ù	ÁÖ±â µ¥ÀÌÅÍ ¿äÃ»
+		gu16_TimerPartTest = 60;			//		1ì‹œê°„ ë§ˆë‹¤	ì£¼ê¸° ë°ì´í„° ìš”ì²­
 	}
 
 	// WifiControlProcess(WIFI_TIME_1MIN);
 
 	#ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
-		//	½Å·Ú¼º °á·Î ÇÁ·Î±×·¥
+		//	ì‹ ë¢°ì„± ê²°ë¡œ í”„ë¡œê·¸ë¨
 		if(gu8_F_gu16_reliability_test == SET)
 		{
 			if(gu16_timer_gu16_reliability_test != 0)
@@ -471,7 +471,7 @@ void Time1min(void)								//
 	#endif
 }
 
-/// @brief    10min Ã³¸®
+/// @brief    10min ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time10min(void)							//
@@ -504,7 +504,7 @@ void Time10min(void)							//
 	TDEC_10min_FAUCET_MOVING();	
 }
 
-/// @brief    1h Ã³¸®
+/// @brief    1h ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Time1h(void)								//
@@ -541,19 +541,19 @@ void Time1h(void)								//
 	TDEC_1h_SMARTCHECK();
 	TDEC_1h_FAUCET_MOVING();	
 
-	mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ¿¬°á»óÅÂ È®ÀÎ
+	mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ì—°ê²°ìƒíƒœ í™•ì¸
 
-	if (mu8_WifiDisp == WIFI_DISP_CONNECT)			//	¿¬°áµÈ °æ¿ì¿¡¸¸
+	if (mu8_WifiDisp == WIFI_DISP_CONNECT)			//	ì—°ê²°ëœ ê²½ìš°ì—ë§Œ
 	{
 		buf1 = GetWifiRequestValue(WIFI_RQST_FILTER_D_DAY1);
 		buf2 = GetWifiRequestValue(WIFI_RQST_FILTER_D_DAY2);
 
 		data = GetWifiStatusValue(WIFI_STATUS_AP_FIRST);
 
-		if ((data == SET) &&						//	ÃÖÃÊ ¿¬°á ¿Ï·á Á¦Ç°
-			(((buf1 == 0xFFFFU) && (buf2 == 0xFFFFU))	//	¹æ¹®°ü¸® ¹× Ã¹ ¼³Ä¡´Â Ç¥½ÃÇÏÁö ¾ÊÀ½
-			|| ((buf1 == 9999) && (buf2 == 9999))		//	¹æ¹®°ü¸® ¹× Ã¹ ¼³Ä¡´Â Ç¥½ÃÇÏÁö ¾ÊÀ½
-			|| ((buf1 == 0x9999) && (buf2 == 0x9999))))	//	¹æ¹®°ü¸® ¹× Ã¹ ¼³Ä¡´Â Ç¥½ÃÇÏÁö ¾ÊÀ½
+		if ((data == SET) &&						//	ìµœì´ˆ ì—°ê²° ì™„ë£Œ ì œí’ˆ
+			(((buf1 == 0xFFFFU) && (buf2 == 0xFFFFU))	//	ë°©ë¬¸ê´€ë¦¬ ë° ì²« ì„¤ì¹˜ëŠ” í‘œì‹œí•˜ì§€ ì•ŠìŒ
+			|| ((buf1 == 9999) && (buf2 == 9999))		//	ë°©ë¬¸ê´€ë¦¬ ë° ì²« ì„¤ì¹˜ëŠ” í‘œì‹œí•˜ì§€ ì•ŠìŒ
+			|| ((buf1 == 0x9999) && (buf2 == 0x9999))))	//	ë°©ë¬¸ê´€ë¦¬ ë° ì²« ì„¤ì¹˜ëŠ” í‘œì‹œí•˜ì§€ ì•ŠìŒ
 		{
 			F_SelfService = CLEAR;
 		}
@@ -576,6 +576,6 @@ void Time1h(void)								//
 			gu16_DayCount_forFaucet++;
 		}
 
-		gu16_PartTest_Period = GetWifiRequestValue(WIFI_RQST_PART_PERIOD);	//	»ó½Ã Áø´Ü ÁÖ±â ¿äÃ»
+		gu16_PartTest_Period = GetWifiRequestValue(WIFI_RQST_PART_PERIOD);	//	ìƒì‹œ ì§„ë‹¨ ì£¼ê¸° ìš”ì²­
 	}
 }

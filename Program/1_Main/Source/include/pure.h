@@ -1,7 +1,7 @@
 /// @file   effluent.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ÃßÃâ µ¿ÀÛ Á¦¾î °ü·Ã Çì´õ file
+/// @brief  ì¶”ì¶œ ë™ì‘ ì œì–´ ê´€ë ¨ í—¤ë” file
 
 #ifdef PURE_C
 	#define 	EXTERN
@@ -13,22 +13,22 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_PURE()			{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_PURE()			{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_PURE()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_PURE()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_PURE()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_PURE()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_Timer_PureWaterFlow_Average_Start);	\
 								}
-#define	TDEC_1s_PURE()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_PURE()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_PURE()			{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_PURE()			{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_PURE()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_PURE()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_PURE()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_PURE()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_PURE()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_PURE()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -54,7 +54,7 @@ enum {
 #define Z_PureStep_22			(0x22)
 //#define Z_PureStep_B0			(0xB0)
 
-/*	ÄÅ »çÀÌÁî °ª	*/
+/*	ì»µ ì‚¬ì´ì¦ˆ ê°’	*/
 #define CUPSIZE_HALFCUP			(120)					//
 #define CUPSIZE_1CUP	        (250)					//
 #define CUPSIZE_2CUP         	(500)					//
@@ -67,12 +67,12 @@ enum {
 #define CUPSIZE_THREE			(2)
 #define CUPSIZE_FOUR			(3)
 #define CUPSIZE_FIVE			(4)
-// #define CUPSIZE_MAX				(5)				//	¿¬¼Ó Æ÷ÇÔ 5°³
+// #define CUPSIZE_MAX				(5)				//	ì—°ì† í¬í•¨ 5ê°œ
 
 #define CUP_SIZE_CONTINUE		(0xAA)
 
 
-/*	¹° Á¾·ù °ª	*/
+/*	ë¬¼ ì¢…ë¥˜ ê°’	*/
 #define PURE_WATER            	(0)
 #define COLD_WATER              (1)
 #define HOT_WATER               (2)
@@ -85,7 +85,7 @@ enum {
 EXTERN U8 gu8_PureStep;
 EXTERN U8 gu8_PureStepNum;
 
-EXTERN U8 gu8_Timer_PureWaterFlow_Average_Start;	//	Á¤¼ö ÃßÃâ ÈÄ 3ÃÊ°¡ Áö³­ µÚ(À¯·®°è»êÀÌ ¾ÈÁ¤È­ µÈ µÚ)ºÎÅÍ À¯·® Àç°è»ê È®Á¤
+EXTERN U8 gu8_Timer_PureWaterFlow_Average_Start;	//	ì •ìˆ˜ ì¶”ì¶œ í›„ 3ì´ˆê°€ ì§€ë‚œ ë’¤(ìœ ëŸ‰ê³„ì‚°ì´ ì•ˆì •í™” ëœ ë’¤)ë¶€í„° ìœ ëŸ‰ ì¬ê³„ì‚° í™•ì •
 
 /*==============================================================================
  function Definition

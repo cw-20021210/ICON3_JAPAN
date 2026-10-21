@@ -23,7 +23,7 @@ union adress_para
 };
 
 typedef enum
-{																// BOOL Çü½Ä
+{																// BOOL í˜•ì‹
 	TRUE = 1, FALSE = 0
 } bool_t;
 
@@ -37,7 +37,7 @@ typedef struct
 	U8 b5 :1; /* bit5 */
 	U8 b6 :1; /* bit6 */
 	U8 b7 :1; /* bit7 */
-} BIT; /* BITÇü bit access */
+} BIT; /* BITí˜• bit access */
 
 typedef struct
 {
@@ -57,31 +57,31 @@ typedef struct
 	U8 b13 :1; /* bit13 */
 	U8 b14 :1; /* bit14 */
 	U8 b15 :1; /* bit15 */
-} BIT_16; /* BITÇü bit access */
+} BIT_16; /* BITí˜• bit access */
 
 typedef struct
 {
 	U8 lo :4; /* bit0~3 */
 	U8 hi :4; /* bit4~7 */
-} NIBBLE; /* NIBBLEÇü	nibble access */
+} NIBBLE; /* NIBBLEí˜•	nibble access */
 
 typedef union
 {
 	U8 byte; /* byte 	*/
 	BIT Bit; /* bit 		*/
 	NIBBLE nibble; /* nibble 	*/
-} BYTE_BIT; /* BYTE_BITÇü byte & bit & nibble access */
+} BYTE_BIT; /* BYTE_BITí˜• byte & bit & nibble access */
 
 /*==============================================================================
- WORDÇü
+ WORDí˜•
  ==============================================================================*/
 typedef union
 {
 	U16 word;			//	word
 	struct
 	{
-		U8 b0;		//	ÇÏÀ§ byte
-		U8 b1;		//	»óÀ§ byte
+		U8 b0;		//	í•˜ìœ„ byte
+		U8 b1;		//	ìƒìœ„ byte
 	} byte;
 	struct
 	{
@@ -112,15 +112,15 @@ typedef union
 } WORD;					//	WORD	word & byte & nibble & bit access
 
 /*==============================================================================
- LONGÇü
+ LONGí˜•
  ==============================================================================*/
 typedef union
 {
 	U32 ulong;			//	word
 	struct
 	{
-		U16 b0;		//	ÇÏÀ§ byte
-		U16 b1;		//	»óÀ§ byte
+		U16 b0;		//	í•˜ìœ„ byte
+		U16 b1;		//	ìƒìœ„ byte
 	} word;
 	struct
 	{
@@ -165,24 +165,24 @@ struct void_func
 	void (*exeadr)(void);
 };
 
-typedef struct 										/*	3È¸ ¿¬¼Ó ÀÏÄ¡Çü (8bit)					*/
+typedef struct 										/*	3íšŒ ì—°ì† ì¼ì¹˜í˜• (8bit)					*/
 {
-	U8 First; 										/*		ÀÌ¹ø ÀÔ·ÂÄ¡					*/
-	U8 Second; 										/*		ÀüÈ¸ ÀÔ·ÂÄ¡					*/
-	U8 Third; 										/*		ÀüÀü¹ø ÀÔ·ÂÄ¡				*/
-	BYTE_BIT Level; 								/*		ÀÌ¹ø ·¹º§ È®Á¤Ä¡				*/
-	BYTE_BIT OnEdge; 								/*		ÀÌ¹ø ¿§Áö È®Á¤Ä¡				*/
-	BYTE_BIT OffEdge; 								/*		ÀÌ¹ø OFF¿§Áö È®Á¤Ä¡			*/
+	U8 First; 										/*		ì´ë²ˆ ì…ë ¥ì¹˜					*/
+	U8 Second; 										/*		ì „íšŒ ì…ë ¥ì¹˜					*/
+	U8 Third; 										/*		ì „ì „ë²ˆ ì…ë ¥ì¹˜				*/
+	BYTE_BIT Level; 								/*		ì´ë²ˆ ë ˆë²¨ í™•ì •ì¹˜				*/
+	BYTE_BIT OnEdge; 								/*		ì´ë²ˆ ì—£ì§€ í™•ì •ì¹˜				*/
+	BYTE_BIT OffEdge; 								/*		ì´ë²ˆ OFFì—£ì§€ í™•ì •ì¹˜			*/
 } ITTI3;
 
-typedef struct 										/*	3È¸ ¿¬¼Ó ÀÏÄ¡Çü (16bit)					*/
+typedef struct 										/*	3íšŒ ì—°ì† ì¼ì¹˜í˜• (16bit)					*/
 {
-	U16 First; 										/*		ÀÌ¹ø ÀÔ·ÂÄ¡					*/
-	U16 Second; 									/*		ÀüÈ¸ ÀÔ·ÂÄ¡					*/
-	U16 Third; 										/*		ÀüÀü¹ø ÀÔ·ÂÄ¡				*/
-	WORD Level; 									/*		ÀÌ¹ø ·¹º§ È®Á¤Ä¡				*/
-	WORD OnEdge; 									/*		ÀÌ¹ø ¿§Áö È®Á¤Ä¡				*/
-	WORD OffEdge; 									/*		ÀÌ¹ø OFF¿§Áö È®Á¤Ä¡			*/
+	U16 First; 										/*		ì´ë²ˆ ì…ë ¥ì¹˜					*/
+	U16 Second; 									/*		ì „íšŒ ì…ë ¥ì¹˜					*/
+	U16 Third; 										/*		ì „ì „ë²ˆ ì…ë ¥ì¹˜				*/
+	WORD Level; 									/*		ì´ë²ˆ ë ˆë²¨ í™•ì •ì¹˜				*/
+	WORD OnEdge; 									/*		ì´ë²ˆ ì—£ì§€ í™•ì •ì¹˜				*/
+	WORD OffEdge; 									/*		ì´ë²ˆ OFFì—£ì§€ í™•ì •ì¹˜			*/
 } ITTI3_WORD;
 
 typedef union
@@ -192,18 +192,18 @@ typedef union
 } WORD_BIT;
 
 typedef struct
-{													//	Ç¥ÁØ SERIAL COMMAND °Ë»öÇü
-	U8 name;										//		COMMAND¸í
-	U8 cmdsize;										//		COMMAND±æÀÌ (CMD1~CMDn±îÁöÀÇBYTE¼ö)
-	U8 (*exeadr)(void);								//		½ÇÇà ÇÔ¼ö
+{													//	í‘œì¤€ SERIAL COMMAND ê²€ìƒ‰í˜•
+	U8 name;										//		COMMANDëª…
+	U8 cmdsize;										//		COMMANDê¸¸ì´ (CMD1~CMDnê¹Œì§€ì˜BYTEìˆ˜)
+	U8 (*exeadr)(void);								//		ì‹¤í–‰ í•¨ìˆ˜
 } CMD_PARA;
 
 typedef struct
 {
-	U8 stepno;										//		½ºÅÜ No
+	U8 stepno;										//		ìŠ¤í… No
 	U8 Display_CMD;
 	void (*exe)(void);
-} Operation_StepTable;								//	¿îÀü½ºÅÜ
+} Operation_StepTable;								//	ìš´ì „ìŠ¤í…
 
 typedef struct
 {
@@ -297,10 +297,10 @@ typedef union
 
 typedef struct
 {
-	const U16* TH_ADC_ADDRESS;						//	ADC ¾îµå·¹½º
-	I16 DEGREE;										//	¿Âµµ°ª [1/10¡É]
-	U16 SHORT_DATA;									//	SHORT AD°ª
-	U16 OPEN_DATA;									//	OPEN AD°ª
-} TH_DataTable;										//	THµ¥ÀÌÅÍ Å×ÀÌºí
+	const U16* TH_ADC_ADDRESS;						//	ADC ì–´ë“œë ˆìŠ¤
+	I16 DEGREE;										//	ì˜¨ë„ê°’ [1/10â„ƒ]
+	U16 SHORT_DATA;									//	SHORT ADê°’
+	U16 OPEN_DATA;									//	OPEN ADê°’
+} TH_DataTable;										//	THë°ì´í„° í…Œì´ë¸”
 
 #endif

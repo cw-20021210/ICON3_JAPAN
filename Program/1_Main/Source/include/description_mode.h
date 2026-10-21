@@ -1,7 +1,7 @@
 /// @file   description_mode.h
 /// @date   2025.01.XX
 /// @author 
-/// @brief  Description Mode °ü·Ã Çì´õ file
+/// @brief  Description Mode ê´€ë ¨ í—¤ë” file
 
 #ifndef _DESCRIPTION_MODE_H_
 #define _DESCRIPTION_MODE_H_
@@ -19,38 +19,38 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_DESCRIPTION_MODE()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_DESCRIPTION_MODE()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_DESCRIPTION_MODE()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_DESCRIPTION_MODE()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_DESCRIPTION_MODE()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_DESCRIPTION_MODE()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerDescriptionMode_100ms);		\
 									TDEC(gu16_TimerDescriptionMode_20s);		\
 								}
-#define	TDEC_1s_DESCRIPTION_MODE()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_DESCRIPTION_MODE()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_DESCRIPTION_MODE()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_DESCRIPTION_MODE()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_DESCRIPTION_MODE()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_DESCRIPTION_MODE()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_DESCRIPTION_MODE()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_DESCRIPTION_MODE()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_DESCRIPTION_MODE()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_DESCRIPTION_MODE()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
 /*==============================================================================
  Constant Definition
  ==============================================================================*/
-#define Z_DescriptionModeStep_10			(0x10)          //	´ë±â
-#define Z_DescriptionModeStep_15			(0x15)          //	ON Ç¥½Ã
-#define Z_DescriptionModeStep_16			(0x16)          //	³Ã¼ö OFF Ç¥½Ã
-#define Z_DescriptionModeStep_17			(0x17)          //	ÆÄ¿ì¼Â ON/OFF ¼³Á¤ Ç¥½Ã
-#define Z_DescriptionModeStep_18			(0x18)          //	OFF Ç¥½Ã
-#define Z_DescriptionModeStep_20			(0x20)          //	½½¸³¸ğµå
-#define Z_DescriptionModeStep_40			(0x40)          //	ÀüÃ¼ Àá±İ
-#define Z_DescriptionModeStep_41			(0x41)          //	»ç¿îµå Å¸ÀÔ
-#define Z_DescriptionModeStep_43			(0x43)          //	ÆÄ¿ì¼Â ON/OFF
+#define Z_DescriptionModeStep_10			(0x10)          //	ëŒ€ê¸°
+#define Z_DescriptionModeStep_15			(0x15)          //	ON í‘œì‹œ
+#define Z_DescriptionModeStep_16			(0x16)          //	ëƒ‰ìˆ˜ OFF í‘œì‹œ
+#define Z_DescriptionModeStep_17			(0x17)          //	íŒŒìš°ì…‹ ON/OFF ì„¤ì • í‘œì‹œ
+#define Z_DescriptionModeStep_18			(0x18)          //	OFF í‘œì‹œ
+#define Z_DescriptionModeStep_20			(0x20)          //	ìŠ¬ë¦½ëª¨ë“œ
+#define Z_DescriptionModeStep_40			(0x40)          //	ì „ì²´ ì ê¸ˆ
+#define Z_DescriptionModeStep_41			(0x41)          //	ì‚¬ìš´ë“œ íƒ€ì…
+#define Z_DescriptionModeStep_43			(0x43)          //	íŒŒìš°ì…‹ ON/OFF
 
 enum {
 	Z_DescriptionModeStepNum_10,

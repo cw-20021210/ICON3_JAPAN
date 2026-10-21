@@ -1,7 +1,7 @@
 /// @file     communication.c
 /// @date     2021.01.12
 /// @author   PSM
-/// @brief    ≈ÎΩ≈√≥∏Æ file
+/// @brief    ÌÜµÏã†Ï≤òÎ¶¨ file
 /*==========================================================================*/
 /*		PRAGMA						   			  							*/
 /*==========================================================================*/
@@ -12,7 +12,7 @@
 #include "include/_include.h"
 
 //=============================================================================
-//		Macro ¡§¿«
+//		Macro Ï†ïÏùò
 //=============================================================================
 #define SERIAL_RX3EN()			{SRIF3 = 0;				/*	Int Request Flag Register clear	*/\
 								SRMK3 = 0;				/*	Int Mask Register clear			*/\
@@ -23,17 +23,17 @@
 								SetIORBit(SOE1L, 0x04);	/*	Enables TX1 output Serial Set	*/\
 								SetIORBit(SS1L, 0x04);	/*	TX1 Start						*/}
 
-/// @brief    ≈ÎΩ≈√≥∏Æ √ ±‚»≠
+/// @brief    ÌÜµÏã†Ï≤òÎ¶¨ Ï¥àÍ∏∞Ìôî
 /// @param    void
 /// @return   void
 void LineAutoTest_Initialize(void)
 {
 	gu8_TimerLineError_Time = Z_TimerLineError_Time; 		/*	Communication error 2sec timer set */
 	gu8_TimerLineRecInt_Check = Z_TimerLineRecInt_Check;    //	Rec. interrupot 30ms check
-	gu8_TimerLineDataReceive = Z_TimerLineDataReceive;		//	RXºˆΩ≈ ø°∑Ø ≈∏¿Ã∏” 10√ 
+	gu8_TimerLineDataReceive = Z_TimerLineDataReceive;		//	RXÏàòÏã† ÏóêÎü¨ ÌÉÄÏù¥Î®∏ 10Ï¥à
 }
 
-/// @brief    ≈ÎΩ≈√≥∏Æ ¡¶æÓ
+/// @brief    ÌÜµÏã†Ï≤òÎ¶¨ Ï†úÏñ¥
 /// @param    void
 /// @return   void
 void LineAutoTestControl(void)
@@ -146,7 +146,7 @@ void Line_TXControl(void)
 
 //	if ((F_LineRx_Complete == 1) && (F_TestMode_LineAuto == SET) && (gu8_TimerHeaterFeedBack_Delay == 0))
 	if ((F_LineRx_Complete == 1) && (F_TestMode_LineAuto == SET))
-	{													//	ºˆΩ≈ øœ∑·
+	{													//	ÏàòÏã† ÏôÑÎ£å
 
 	}
 	else
@@ -156,12 +156,12 @@ void Line_TXControl(void)
 
 	if ((gu8_TimerLineTraWait == 0))
 	{													//	TX data set flag & 100ms delay
-		F_LineRx_Complete = 0;							//		ºˆΩ≈øœ∑· flag clr
+		F_LineRx_Complete = 0;							//		ÏàòÏã†ÏôÑÎ£å flag clr
 		gu8_Line_TraData_CS = 0;
 		memset(gu8_Buffer_Line_TraData, 0x00, sizeof(gu8_Buffer_Line_TraData));
 //		for (i = 0 ; i < Z_LineDataLen ; i++)
-//		{												//		πˆ∆€ ≈¨∏ÆæÓ
-//			gu8_Buffer_Line_TraData[i].byte = 0x00;		//			πˆ∆€ √ ±‚»≠
+//		{												//		Î≤ÑÌçº ÌÅ¥Î¶¨Ïñ¥
+//			gu8_Buffer_Line_TraData[i].byte = 0x00;		//			Î≤ÑÌçº Ï¥àÍ∏∞Ìôî
 //		}
 
 		Line_Send_Data();
@@ -206,7 +206,7 @@ void Line_RXControl(void)
 	U8 buf2 = 0;
 
 	if ((gu8_CounterLineRecvCount >= 1) && (gu8_TimerLineRecInt_Check == 0))
-	{    												//	ºˆΩ≈ ¡ﬂ RX interrupt 30ms check
+	{    												//	ÏàòÏã† Ï§ë RX interrupt 30ms check
 		gu8_CounterLineRecvCount = 0;					//		Count clear
 		gu8_TimerLineRecInt_Check = Z_TimerLineRecInt_Check;	//		Rec. interrupot 30ms check
 	}
@@ -249,8 +249,8 @@ void Line_RXControl(void)
 		{
 //			F_LineRx_Complete = 1;
 			Line_Data_Parsing(); 						//			RX data parsing
-			gu8_TimerLineDataReceive = Z_TimerLineDataReceive;	//			RXºˆΩ≈ ø°∑Ø ≈∏¿Ã∏” 10√ 
-			F_LineRx_Exp = 1;							//			ºˆΩ≈ ∞Ê«Ë
+			gu8_TimerLineDataReceive = Z_TimerLineDataReceive;	//			RXÏàòÏã† ÏóêÎü¨ ÌÉÄÏù¥Î®∏ 10Ï¥à
+			F_LineRx_Exp = 1;							//			ÏàòÏã† Í≤ΩÌóò
 			gu8_CounterLineRXDError = 0;
 			F_LineAutoTest_Commu_Error = CLEAR;
 			gu8_TimerLineError_Time = Z_TimerLineError_Time;	//		RX error timer set
@@ -393,10 +393,10 @@ void Line_Send_Data(void)
 				}
 				break;
 			case LINETEST_SETTING_CHECK:
-				if (F_EEPROM_CommunicationError == SET)		//	EEPROM ≈ÎΩ≈ø°∑Ø¿œ ∞ÊøÏ
+				if (F_EEPROM_CommunicationError == SET)		//	EEPROM ÌÜµÏã†ÏóêÎü¨Ïùº Í≤ΩÏö∞
 				{
-					gu8_Buffer_Line_TraData[7].byte = '0';	//		∫Ò¡§ªÛ µ•¿Ã≈Õ º€Ω≈
-					gu8_Buffer_Line_TraData[8].byte = '0';	//		∫Ò¡§ªÛ µ•¿Ã≈Õ º€Ω≈
+					gu8_Buffer_Line_TraData[7].byte = '0';	//		ÎπÑÏ†ïÏÉÅ Îç∞Ïù¥ÌÑ∞ ÏÜ°Ïã†
+					gu8_Buffer_Line_TraData[8].byte = '0';	//		ÎπÑÏ†ïÏÉÅ Îç∞Ïù¥ÌÑ∞ ÏÜ°Ïã†
 				}
 				else
 				{
@@ -442,7 +442,7 @@ void Line_Send_Data(void)
 				break;
 			case LINETEST_FLOWMETER_CHECK:
 
-				//	¿¸√º max
+				//	Ï†ÑÏ≤¥ max
 				mu16_flow = gu16_Pure_FlowDecide_Hz_forLineAuto;
 				if(mu16_flow < gu16_Cold_FlowDecide_Hz_forLineAuto)
 				{
@@ -458,25 +458,25 @@ void Line_Send_Data(void)
 				gu8_Buffer_Line_TraData[10].byte = Ascii((U8)(mu16_flow & 0xFF), Z_asciilo);
 
 
-				//	¡§ºˆ max
+				//	Ï†ïÏàò max
 				gu8_Buffer_Line_TraData[11].byte = Ascii((U8)((gu16_Pure_FlowDecide_Hz_forLineAuto >> 8) & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[12].byte = Ascii((U8)((gu16_Pure_FlowDecide_Hz_forLineAuto >> 8) & 0xFF), Z_asciilo);
 				gu8_Buffer_Line_TraData[13].byte = Ascii((U8)(gu16_Pure_FlowDecide_Hz_forLineAuto & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[14].byte = Ascii((U8)(gu16_Pure_FlowDecide_Hz_forLineAuto & 0xFF), Z_asciilo);
 
-				//	≥√ºˆ max
+				//	ÎÉâÏàò max
 				gu8_Buffer_Line_TraData[15].byte = Ascii((U8)((gu16_Cold_FlowDecide_Hz_forLineAuto >> 8) & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[16].byte = Ascii((U8)((gu16_Cold_FlowDecide_Hz_forLineAuto >> 8) & 0xFF), Z_asciilo);
 				gu8_Buffer_Line_TraData[17].byte = Ascii((U8)(gu16_Cold_FlowDecide_Hz_forLineAuto & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[18].byte = Ascii((U8)(gu16_Cold_FlowDecide_Hz_forLineAuto & 0xFF), Z_asciilo);
 
-				//	ø¬ºˆ max
+				//	Ïò®Ïàò max
 				gu8_Buffer_Line_TraData[19].byte = Ascii((U8)((gu16_Hot_FlowDecide_Hz_forLineAuto >> 8) & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[20].byte = Ascii((U8)((gu16_Hot_FlowDecide_Hz_forLineAuto >> 8) & 0xFF), Z_asciilo);
 				gu8_Buffer_Line_TraData[21].byte = Ascii((U8)(gu16_Hot_FlowDecide_Hz_forLineAuto & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[22].byte = Ascii((U8)(gu16_Hot_FlowDecide_Hz_forLineAuto & 0xFF), Z_asciilo);
 
-				//	«ˆ¿Á ¿Ø∑Æ
+				//	ÌòÑÏû¨ Ïú†Îüâ
 				gu8_Buffer_Line_TraData[23].byte = Ascii((U8)((gu16_FlowDecide_Hz >> 8) & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[24].byte = Ascii((U8)((gu16_FlowDecide_Hz >> 8) & 0xFF), Z_asciilo);
 				gu8_Buffer_Line_TraData[25].byte = Ascii((U8)(gu16_FlowDecide_Hz & 0xFF), Z_asciihi);
@@ -537,17 +537,17 @@ void Line_Send_Data(void)
 				gu8_LineTra_Length = 15;
 				break;
 			case LINETEST_TH_CHECK:
-				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);     //	OPEN SHORT √º≈©
+				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ï≤¥ÌÅ¨
 				if (mu8_OPENSHORT_Error == 0)
 				{
 					mu16_dec2hex = DEC2HEX_16BIT((U16)abs(gi16_OutDoorAirSensor.DEGREE));
 					if (gi16_OutDoorAirSensor.DEGREE < 0)
 					{
-						gu8_Buffer_Line_TraData[7].byte = '1';	//	¿Ωºˆ
+						gu8_Buffer_Line_TraData[7].byte = '1';	//	ÏùåÏàò
 					}
 					else
 					{
-						gu8_Buffer_Line_TraData[7].byte = '0';	//	æÁºˆ
+						gu8_Buffer_Line_TraData[7].byte = '0';	//	ÏñëÏàò
 					}
 					gu8_Buffer_Line_TraData[8].byte = Ascii((U8)((mu16_dec2hex >> 8) & 0xFF), Z_asciilo);
 					gu8_Buffer_Line_TraData[9].byte = Ascii((U8)(mu16_dec2hex & 0xFF), Z_asciihi);
@@ -561,17 +561,17 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[10].byte = '9';
 				}
 
-				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_ColdSensor.TH_ADC_AVERAGE);     //	OPEN SHORT √º≈©
+				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_ColdSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ï≤¥ÌÅ¨
 				if (mu8_OPENSHORT_Error == 0)
 				{
 					mu16_dec2hex = DEC2HEX_16BIT((U16)abs(gi16_ColdSensor.DEGREE));
 					if (gi16_ColdSensor.DEGREE < 0)
 					{
-						gu8_Buffer_Line_TraData[11].byte = '1';	//	¿Ωºˆ
+						gu8_Buffer_Line_TraData[11].byte = '1';	//	ÏùåÏàò
 					}
 					else
 					{
-						gu8_Buffer_Line_TraData[11].byte = '0';	//	æÁºˆ
+						gu8_Buffer_Line_TraData[11].byte = '0';	//	ÏñëÏàò
 					}
 					gu8_Buffer_Line_TraData[12].byte = Ascii((U8)((mu16_dec2hex >> 8) & 0xFF), Z_asciilo);
 					gu8_Buffer_Line_TraData[13].byte = Ascii((U8)(mu16_dec2hex & 0xFF), Z_asciihi);
@@ -585,17 +585,17 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[14].byte = '9';
 				}
 
-				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotInSensor.TH_ADC_AVERAGE);     //	OPEN SHORT √º≈©
+				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotInSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ï≤¥ÌÅ¨
 				if (mu8_OPENSHORT_Error == 0)
 				{
 					mu16_dec2hex = DEC2HEX_16BIT((U16)abs(gi16_HotInSensor.DEGREE));
 					if (gi16_HotInSensor.DEGREE < 0)
 					{
-						gu8_Buffer_Line_TraData[15].byte = '1';	//	¿Ωºˆ
+						gu8_Buffer_Line_TraData[15].byte = '1';	//	ÏùåÏàò
 					}
 					else
 					{
-						gu8_Buffer_Line_TraData[15].byte = '0';	//	æÁºˆ
+						gu8_Buffer_Line_TraData[15].byte = '0';	//	ÏñëÏàò
 					}
 					gu8_Buffer_Line_TraData[16].byte = Ascii((U8)((mu16_dec2hex >> 8) & 0xFF), Z_asciilo);
 					gu8_Buffer_Line_TraData[17].byte = Ascii((U8)(mu16_dec2hex & 0xFF), Z_asciihi);
@@ -609,17 +609,17 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[18].byte = '9';
 				}
 
-				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);     //	OPEN SHORT √º≈©
+				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ï≤¥ÌÅ¨
 				if (mu8_OPENSHORT_Error == 0)
 				{
 					mu16_dec2hex = DEC2HEX_16BIT((U16)abs(gi16_HotOutSensor.DEGREE));
 					if (gi16_HotOutSensor.DEGREE < 0)
 					{
-						gu8_Buffer_Line_TraData[19].byte = '1';	//	¿Ωºˆ
+						gu8_Buffer_Line_TraData[19].byte = '1';	//	ÏùåÏàò
 					}
 					else
 					{
-						gu8_Buffer_Line_TraData[19].byte = '0';	//	æÁºˆ
+						gu8_Buffer_Line_TraData[19].byte = '0';	//	ÏñëÏàò
 					}
 					gu8_Buffer_Line_TraData[20].byte = Ascii((U8)((mu16_dec2hex >> 8) & 0xFF), Z_asciilo);
 					gu8_Buffer_Line_TraData[21].byte = Ascii((U8)(mu16_dec2hex & 0xFF), Z_asciihi);
@@ -633,17 +633,17 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[22].byte = '9';
 				}
 
-				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeatSinkSensor.TH_ADC_AVERAGE);     //	OPEN SHORT √º≈©
+				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeatSinkSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ï≤¥ÌÅ¨
 				if (mu8_OPENSHORT_Error == 0)
 				{
 					mu16_dec2hex = DEC2HEX_16BIT((U16)abs(gi16_HeatSinkSensor.DEGREE));
 					if (gi16_HeatSinkSensor.DEGREE < 0)
 					{
-						gu8_Buffer_Line_TraData[23].byte = '1';	//	¿Ωºˆ
+						gu8_Buffer_Line_TraData[23].byte = '1';	//	ÏùåÏàò
 					}
 					else
 					{
-						gu8_Buffer_Line_TraData[23].byte = '0';	//	æÁºˆ
+						gu8_Buffer_Line_TraData[23].byte = '0';	//	ÏñëÏàò
 					}
 					gu8_Buffer_Line_TraData[24].byte = Ascii((U8)((mu16_dec2hex >> 8) & 0xFF), Z_asciilo);
 					gu8_Buffer_Line_TraData[25].byte = Ascii((U8)(mu16_dec2hex & 0xFF), Z_asciihi);
@@ -657,17 +657,17 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[26].byte = '9';
 				}
 
-				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);     //	OPEN SHORT √º≈©
+				mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ï≤¥ÌÅ¨
 				if (mu8_OPENSHORT_Error == 0)
 				{
 					mu16_dec2hex = DEC2HEX_16BIT((U16)abs(gi16_HeaterSensor.DEGREE));
 					if (gi16_HeaterSensor.DEGREE < 0)
 					{
-						gu8_Buffer_Line_TraData[27].byte = '1';	//	¿Ωºˆ
+						gu8_Buffer_Line_TraData[27].byte = '1';	//	ÏùåÏàò
 					}
 					else
 					{
-						gu8_Buffer_Line_TraData[27].byte = '0';	//	æÁºˆ
+						gu8_Buffer_Line_TraData[27].byte = '0';	//	ÏñëÏàò
 					}
 					gu8_Buffer_Line_TraData[28].byte = Ascii((U8)((mu16_dec2hex >> 8) & 0xFF), Z_asciilo);
 					gu8_Buffer_Line_TraData[29].byte = Ascii((U8)(mu16_dec2hex & 0xFF), Z_asciihi);
@@ -686,7 +686,7 @@ void Line_Send_Data(void)
 			case LINETEST_LEVEL_SENSOR:
 				break;
 			case LINETEST_ETC_SENSOR:
-				//	æ∆øÙ∆¡ ∞®¡ˆºæº≠
+				//	ÏïÑÏõÉÌåÅ Í∞êÏßÄÏÑºÏÑú
 				gu8_Buffer_Line_TraData[7].byte = '0';
 				if (REED_SW_WATERFLOW_Ready == SET)
 				{
@@ -697,7 +697,7 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[8].byte = '0';
 				}
 
-				//	∆ƒøÏº¬ ∞®¡ˆ ºæº≠
+				//	ÌååÏö∞ÏÖã Í∞êÏßÄ ÏÑºÏÑú
 				gu8_Buffer_Line_TraData[9].byte = '0';
 				if (gu8_F_LineAuto_Faucet_MicroSW == SET)
 				{
@@ -708,7 +708,7 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[10].byte = '0';
 				}
 				
-				/*	« ≈Õ ∏ÆµÂ Ω∫¿ßƒ°	*/
+				/*	ÌïÑÌÑ∞ Î¶¨Îìú Ïä§ÏúÑÏπò	*/
 				gu8_Buffer_Line_TraData[11].byte = '0';
 				if (REED_SW_FILTER_Ready == SET)
 				{
@@ -719,7 +719,7 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[12].byte = '0';
 				}
 
-				//	« ≈Õ ƒøπˆ ∞®¡ˆ ºæº≠
+				//	ÌïÑÌÑ∞ Ïª§Î≤Ñ Í∞êÏßÄ ÏÑºÏÑú
 				gu8_Buffer_Line_TraData[13].byte = '0';
 				if (REED_SW_COVER_Ready == SET)
 				{
@@ -730,7 +730,7 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[14].byte = '0';
 				}
 
-				//	∆ƒøÏº¬ æ˜ ∞®¡ˆ ºæº≠
+				//	ÌååÏö∞ÏÖã ÏóÖ Í∞êÏßÄ ÏÑºÏÑú
 				gu8_Buffer_Line_TraData[15].byte = '0';
 				if (gu8_F_LineAuto_Faucet_UpReed == SET)
 				{
@@ -741,7 +741,7 @@ void Line_Send_Data(void)
 					gu8_Buffer_Line_TraData[16].byte = '0';
 				}
 
-				//	∆ƒøÏº¬ ¥ŸøÓ ∞®¡ˆ ºæº≠
+				//	ÌååÏö∞ÏÖã Îã§Ïö¥ Í∞êÏßÄ ÏÑºÏÑú
 				gu8_Buffer_Line_TraData[17].byte = '0';
 				if (gu8_F_LineAuto_Faucet_DownReed == SET)
 				{
@@ -757,7 +757,7 @@ void Line_Send_Data(void)
 
 				break;
 			case LINETEST_HEATER_FEEDBACK:
-				/*	ªÛ/«œ∆« ∫∞µµ √‚∑¬	*/
+				/*	ÏÉÅ/ÌïòÌåê Î≥ÑÎèÑ Ï∂úÎ†•	*/
 //				gu8_Buffer_Line_TraData[7].byte = Ascii((U8)((gu16_Heater_FB_Relay_forLineTest >> 8) & 0xFF), Z_asciihi);
 //				gu8_Buffer_Line_TraData[8].byte = Ascii((U8)((gu16_Heater_FB_Relay_forLineTest >> 8) & 0xFF), Z_asciilo);
 //				gu8_Buffer_Line_TraData[9].byte = Ascii((U8)(gu16_Heater_FB_Relay_forLineTest & 0xFF), Z_asciihi);
@@ -769,10 +769,10 @@ void Line_Send_Data(void)
 //				gu8_Buffer_Line_TraData[14].byte = Ascii((U8)(gu16_Heater_FB_Triac_forLineTest & 0xFF), Z_asciilo);
 //				gu8_LineTra_Length = 15;
 
-				/*	ªÛ/«œ∆« µøΩ√ √‚∑¬	*/
+				/*	ÏÉÅ/ÌïòÌåê ÎèôÏãú Ï∂úÎ†•	*/
 				if (gu16_Heater_FB_forLineTest >= 100)
 				{
-					gu16_Heater_FB_forLineTest -= 100;	//	º¯∞£ ¿¸æ– ªÛΩ¬(πÃæ»¡§»≠)¿∏∑Œ 100W ∞®ªÍ
+					gu16_Heater_FB_forLineTest -= 100;	//	ÏàúÍ∞Ñ Ï†ÑÏïï ÏÉÅÏäπ(ÎØ∏ÏïàÏ†ïÌôî)ÏúºÎ°ú 100W Í∞êÏÇ∞
 				}
 				gu8_Buffer_Line_TraData[7].byte = Ascii((U8)((gu16_Heater_FB_forLineTest >> 8) & 0xFF), Z_asciihi);
 				gu8_Buffer_Line_TraData[8].byte = Ascii((U8)((gu16_Heater_FB_forLineTest >> 8) & 0xFF), Z_asciilo);
@@ -994,7 +994,7 @@ void Line_CMD_Check(void)
 				FaucetStepMotor_ZeroBack_Close();
 				break;
 			case LINETEST_TEST_COMPLETE:
-				#if 0	//	±ª¿Ã clear«œ¡ˆ∏ª∞Ì..±◊≥… ≥¿µŒ¿⁄..æÓ¬˜«« eeprom ¿˙¿Â«œ¥¬∞≈ æ∆¥œ±‚µµ «œ∞Ì..πÿø°º≠ √‚∑¬¡‡æﬂ«œπ«∑Œ
+				#if 0	//	Íµ≥Ïù¥ clearÌïòÏßÄÎßêÍ≥†..Í∑∏ÎÉ• ÎÉÖÎëêÏûê..Ïñ¥Ï∞®Ìîº eeprom Ï†ÄÏû•ÌïòÎäîÍ±∞ ÏïÑÎãàÍ∏∞ÎèÑ ÌïòÍ≥†..Î∞ëÏóêÏÑú Ï∂úÎ†•Ï§òÏïºÌïòÎØÄÎ°ú
 				F_TestMode_LineAuto = CLEAR;
 				#endif
 				gu16_LineTest_LoadCMD.Word = 0x0000U;

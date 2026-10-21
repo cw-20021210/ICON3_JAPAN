@@ -1,11 +1,11 @@
 /// @file     safety.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ¾ÈÀü Ã³¸® °ü·Ã file
+/// @brief    ì•ˆì „ ì²˜ë¦¬ ê´€ë ¨ file
 #define SAFETY_C
 #include "include/_include.h"
 
-/// @brief    ¾ÈÀüÃ³¸® ÃÊ±âÈ­
+/// @brief    ì•ˆì „ì²˜ë¦¬ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Safety_Initialize(void)
@@ -13,16 +13,16 @@ void Safety_Initialize(void)
 	gu8_Counter_MainLoopCheck = 0xFF;
 }
 
-/// @brief    ¾ÈÀüÃ³¸®
+/// @brief    ì•ˆì „ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void Safety(void)
 {
-	gu8_Counter_MainLoopCheck = 0xFF;				//	Main Loop °¨½Ã Reset
+	gu8_Counter_MainLoopCheck = 0xFF;				//	Main Loop ê°ì‹œ Reset
 
 	gu8_Counter_1msTimerCheck--;
 
-	if (gu8_Counter_1msTimerCheck == 0)				//	Å¸ÀÌ¸Ó ÀÎÅÍ·´Æ® ¹ß»ıÀÌ ¾øÀ¸¸é
+	if (gu8_Counter_1msTimerCheck == 0)				//	íƒ€ì´ë¨¸ ì¸í„°ëŸ½íŠ¸ ë°œìƒì´ ì—†ìœ¼ë©´
 	{
 		SafetyLoop();								//		Reset
 	}
@@ -36,10 +36,10 @@ void WatchdogClear(void)
 	WDTE = 0xACU;
 }
 
-/// @brief    ¾ÈÀüÁ¤Áö (MCU Reset)
+/// @brief    ì•ˆì „ì •ì§€ (MCU Reset)
 /// @param    void
 /// @return   void
 void SafetyLoop(void)
 {
-	//¡Ú¡Ú	WDTE = 0xFFU;
+	//â˜…â˜…	WDTE = 0xFFU;
 }

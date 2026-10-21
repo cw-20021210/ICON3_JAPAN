@@ -1,7 +1,7 @@
 /// @file   error.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ¿¡·¯ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ì—ëŸ¬ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef ERROR_C
 	#define 	EXTERN
@@ -13,9 +13,9 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_ERROR()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_ERROR()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_ERROR()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_ERROR()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerErr01);		\
 									TDEC(gu16_TimerErr08);		\
 									TDEC(gu16_TimerErr09);		\
@@ -36,13 +36,13 @@
 									TDEC(gu16_TimerErr77);	\
 									TDEC(gu16_TimerErr77_Clear);	\
 								}
-#define	TDEC_100ms_ERROR()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_ERROR()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerErr29_2);	\
 									TDEC(gu16_TimerErr25_Display);	\
 									TDEC(gu16_TimerErr44_Display);	\
 									TDEC(gu8_TimerEcode43_Display);	\
 								}
-#define	TDEC_1s_ERROR()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_ERROR()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu16_TimerErr02);		\
 									TDEC(gu8_TimerErr08_Clear);	\
 									TDEC(gu8_TimerErr09_Clear);	\
@@ -50,34 +50,34 @@
 									TDEC(gu16_TimerErr01_Clear);\
 									TDEC(gu16_TimerErr02_Clear);	\
 								}
-#define	TDEC_10s_ERROR()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_ERROR()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_ERROR()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_ERROR()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerErr29_1);	\
 								}
-#define	TDEC_10min_ERROR()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_ERROR()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_ERROR()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_ERROR()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
 /*==============================================================================
  Constant Definition
  ==============================================================================*/
-#define Z_Ecode01		(0x01)						//	´©¼ö ¿¡·¯
-#define Z_Ecode02		(0x02)						//	´©¼ö ¿¡·¯(À¯·® °¨Áö)
-#define Z_Ecode08		(0x08)						//	¿Â¼ö ´Ü¼ö ¿¡·¯
-#define Z_Ecode09		(0x09)						//	´Ü¼ö ¿¡·¯
-#define Z_Ecode25		(0x25)						//	TEM ¹æ¿­ÆÇ ¼¾¼­ ¿¡·¯ (´Ü¼±/´Ü¶ô)
-#define Z_Ecode29		(0x29)						//	TEM ¿Âµµ ÀÌ»ó ¿¡·¯
-#define Z_Ecode40		(0x40)						//	°ú¿­ ¿¡·¯
-#define Z_Ecode43		(0x43)						//	¿Ü±â ¿Âµµ ¼¾¼­ (´Ü¼±/´Ü¶ô)
-#define Z_Ecode44		(0x44)						//	³Ã¼ö ¿Âµµ ¼¾¼­ (´Ü¼±/´Ü¶ô)
-#define Z_Ecode46		(0x46)						//	¿Â¼ö ÀÔ¼ö ¿Âµµ ¼¾¼­ (´Ü¼±/´Ü¶ô)
-#define Z_Ecode47		(0x47)						//	¿Â¼ö Ãâ¼ö ¿Âµµ ¼¾¼­ (´Ü¼±/´Ü¶ô)
-#define Z_Ecode48		(0x48)						//	È÷ÅÍ¿Âµµ ¼¾¼­ ¿¡·¯
-#define Z_Ecode77		(0x77)						//	uv¿¡·¯
-#define Z_EcodeA0		(0xA0)						//	ÇÁ·ĞÆ® Åë½Å ¿¡·¯
+#define Z_Ecode01		(0x01)						//	ëˆ„ìˆ˜ ì—ëŸ¬
+#define Z_Ecode02		(0x02)						//	ëˆ„ìˆ˜ ì—ëŸ¬(ìœ ëŸ‰ ê°ì§€)
+#define Z_Ecode08		(0x08)						//	ì˜¨ìˆ˜ ë‹¨ìˆ˜ ì—ëŸ¬
+#define Z_Ecode09		(0x09)						//	ë‹¨ìˆ˜ ì—ëŸ¬
+#define Z_Ecode25		(0x25)						//	TEM ë°©ì—´íŒ ì„¼ì„œ ì—ëŸ¬ (ë‹¨ì„ /ë‹¨ë½)
+#define Z_Ecode29		(0x29)						//	TEM ì˜¨ë„ ì´ìƒ ì—ëŸ¬
+#define Z_Ecode40		(0x40)						//	ê³¼ì—´ ì—ëŸ¬
+#define Z_Ecode43		(0x43)						//	ì™¸ê¸° ì˜¨ë„ ì„¼ì„œ (ë‹¨ì„ /ë‹¨ë½)
+#define Z_Ecode44		(0x44)						//	ëƒ‰ìˆ˜ ì˜¨ë„ ì„¼ì„œ (ë‹¨ì„ /ë‹¨ë½)
+#define Z_Ecode46		(0x46)						//	ì˜¨ìˆ˜ ì…ìˆ˜ ì˜¨ë„ ì„¼ì„œ (ë‹¨ì„ /ë‹¨ë½)
+#define Z_Ecode47		(0x47)						//	ì˜¨ìˆ˜ ì¶œìˆ˜ ì˜¨ë„ ì„¼ì„œ (ë‹¨ì„ /ë‹¨ë½)
+#define Z_Ecode48		(0x48)						//	íˆí„°ì˜¨ë„ ì„¼ì„œ ì—ëŸ¬
+#define Z_Ecode77		(0x77)						//	uvì—ëŸ¬
+#define Z_EcodeA0		(0xA0)						//	í”„ë¡ íŠ¸ í†µì‹  ì—ëŸ¬
 
 #define Z_TimerErr01			(300)				//	<3s/10ms>
 #define Z_TimerErr01_Clear		(60)				//	<60s/1s>
@@ -122,12 +122,12 @@
 
 #define Z_Timer_Err29_Decide	(50)				//	<500ms/10ms>
 
-#define Z_TimerPumpDelay_forCutWater	(30)		//	´Ü¼ö¿¡·¯ ¹ß»ı ½Ã ÆßÇÁÁö¿¬½Ã°£ 30ºĞ	<30min/1min>
+#define Z_TimerPumpDelay_forCutWater	(30)		//	ë‹¨ìˆ˜ì—ëŸ¬ ë°œìƒ ì‹œ íŒí”„ì§€ì—°ì‹œê°„ 30ë¶„	<30min/1min>
 
-//#define Z_Cold_HeatSinkTH_CutDegree	(Z_TEMP75)		//	29¹ø ¿¡·¯ È÷Æ®½ÌÅ©TH ¿¡·¯
-#define Z_Cold_HeatSinkTH_CutDegree	(Z_TEMP80)		//	29¹ø ¿¡·¯ È÷Æ®½ÌÅ©TH ¿¡·¯
+//#define Z_Cold_HeatSinkTH_CutDegree	(Z_TEMP75)		//	29ë²ˆ ì—ëŸ¬ íˆíŠ¸ì‹±í¬TH ì—ëŸ¬
+#define Z_Cold_HeatSinkTH_CutDegree	(Z_TEMP80)		//	29ë²ˆ ì—ëŸ¬ íˆíŠ¸ì‹±í¬TH ì—ëŸ¬
 
-#define Z_LeakSensor_Error		(614)				//	´©¼ö ¿¡·¯ °ª	¡Ø SHORT½Ã 950 / ¹° ³Ö¾úÀ» ½Ã 580Á¤µµ ¹ß»ı
+#define Z_LeakSensor_Error		(614)				//	ëˆ„ìˆ˜ ì—ëŸ¬ ê°’	â€» SHORTì‹œ 950 / ë¬¼ ë„£ì—ˆì„ ì‹œ 580ì •ë„ ë°œìƒ
 
 #define Z_TimerEcode43_Display	(30)
 
@@ -151,26 +151,26 @@ EXTERN U16 gu16_TimerErr47;
 EXTERN U16 gu16_TimerErr48;
 EXTERN U16 gu16_TimerErr77;
 
-EXTERN U16 gu16_TimerErr25_Display;					//	¿¡·¯È®Á¤Àº ÇÃ·¡±×·Î ÇÏ°í, ³Ã¼ö ¼±ÅÃ ÈÄ¿¡ 3ÃÊ µÚ¿¡ ¿¡·¯ÄÚµå Ç¥½ÃÇÏ±â À§ÇÔ
-EXTERN U16 gu16_TimerErr44_Display;					//	¿¡·¯È®Á¤Àº ÇÃ·¡±×·Î ÇÏ°í, ³Ã¼ö ¼±ÅÃ ÈÄ¿¡ 3ÃÊ µÚ¿¡ ¿¡·¯ÄÚµå Ç¥½ÃÇÏ±â À§ÇÔ
-EXTERN U8 gu8_TimerErr29_Display;					//	¿¡·¯È®Á¤Àº ÇÃ·¡±×·Î ÇÏ°í, ³Ã¼ö ¼±ÅÃ ÈÄ¿¡ 0.5ÃÊ µÚ¿¡ ¿¡·¯ÄÚµå Ç¥½ÃÇÏ±â À§ÇÔ
+EXTERN U16 gu16_TimerErr25_Display;					//	ì—ëŸ¬í™•ì •ì€ í”Œë˜ê·¸ë¡œ í•˜ê³ , ëƒ‰ìˆ˜ ì„ íƒ í›„ì— 3ì´ˆ ë’¤ì— ì—ëŸ¬ì½”ë“œ í‘œì‹œí•˜ê¸° ìœ„í•¨
+EXTERN U16 gu16_TimerErr44_Display;					//	ì—ëŸ¬í™•ì •ì€ í”Œë˜ê·¸ë¡œ í•˜ê³ , ëƒ‰ìˆ˜ ì„ íƒ í›„ì— 3ì´ˆ ë’¤ì— ì—ëŸ¬ì½”ë“œ í‘œì‹œí•˜ê¸° ìœ„í•¨
+EXTERN U8 gu8_TimerErr29_Display;					//	ì—ëŸ¬í™•ì •ì€ í”Œë˜ê·¸ë¡œ í•˜ê³ , ëƒ‰ìˆ˜ ì„ íƒ í›„ì— 0.5ì´ˆ ë’¤ì— ì—ëŸ¬ì½”ë“œ í‘œì‹œí•˜ê¸° ìœ„í•¨
 
-EXTERN U16 gu16_TimerErr25_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
-EXTERN U16 gu16_TimerErr43_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
-EXTERN U16 gu16_TimerErr44_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
-EXTERN U16 gu16_TimerErr46_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
-EXTERN U16 gu16_TimerErr47_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
-EXTERN U16 gu16_TimerErr48_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
-EXTERN U16 gu16_TimerErr77_Clear;					//	Á¤»óµ¥ÀÌÅÍ 3ÃÊ À¯Áö ½Ã  TH´Ü¼±´Ü¶ô ¿¡·¯ ÀÚµ¿ÇØÁ¦	<3s/10ms>
+EXTERN U16 gu16_TimerErr25_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
+EXTERN U16 gu16_TimerErr43_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
+EXTERN U16 gu16_TimerErr44_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
+EXTERN U16 gu16_TimerErr46_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
+EXTERN U16 gu16_TimerErr47_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
+EXTERN U16 gu16_TimerErr48_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
+EXTERN U16 gu16_TimerErr77_Clear;					//	ì •ìƒë°ì´í„° 3ì´ˆ ìœ ì§€ ì‹œ  THë‹¨ì„ ë‹¨ë½ ì—ëŸ¬ ìë™í•´ì œ	<3s/10ms>
 
-EXTERN U8 gu8_TimerErr08_Clear;						//	1ºĞ ÈÄ ´Ü¼ö¿¡·¯ ÀÚµ¿ÇØÁ¦	<60s/1s>
-EXTERN U8 gu8_TimerErr09_Clear;						//	1ºĞ ÈÄ ´Ü¼ö¿¡·¯ ÀÚµ¿ÇØÁ¦	<60s/1s>
+EXTERN U8 gu8_TimerErr08_Clear;						//	1ë¶„ í›„ ë‹¨ìˆ˜ì—ëŸ¬ ìë™í•´ì œ	<60s/1s>
+EXTERN U8 gu8_TimerErr09_Clear;						//	1ë¶„ í›„ ë‹¨ìˆ˜ì—ëŸ¬ ìë™í•´ì œ	<60s/1s>
 
 EXTERN U8 gu8_TimerTEM_PBATest;
 
-EXTERN U8 F_OverHeatError;							//	°ú¿­¿¡·¯ ¹ß»ı ÈÄ 80µµ ÀÌÇÏ¸¦ °¨ÁöÇØ¾ß Â÷È¸ ÃßÃâ °¡´É °ü·Ã Flag
+EXTERN U8 F_OverHeatError;							//	ê³¼ì—´ì—ëŸ¬ ë°œìƒ í›„ 80ë„ ì´í•˜ë¥¼ ê°ì§€í•´ì•¼ ì°¨íšŒ ì¶”ì¶œ ê°€ëŠ¥ ê´€ë ¨ Flag
 
-EXTERN U8 gu8_TimerEcode43_Display;					//	¿Ü±â¿Âµµ 3ÃÊ Ç¥½Ã
+EXTERN U8 gu8_TimerEcode43_Display;					//	ì™¸ê¸°ì˜¨ë„ 3ì´ˆ í‘œì‹œ
 
 EXTERN WORD_BIT F_Error_Flag;
 	#define F_Err01_LeakWater 			(F_Error_Flag.Bit.b0)

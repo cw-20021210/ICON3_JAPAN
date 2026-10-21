@@ -1,7 +1,7 @@
 /// @file   buzzer.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Buzzer µ¿ÀÛ Á¦¾î °ü·Ã Çì´õ file
+/// @brief  Buzzer ë™ì‘ ì œì–´ ê´€ë ¨ í—¤ë” file
 
 #ifdef PBA_C
 	#define 	EXTERN
@@ -13,9 +13,9 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_PBA()			{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_PBA()			{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_PBA()			{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_PBA()			{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerPBATest_TEM_ON);	\
 									TDEC(gu8_TimerPBATest_PureVV_ON);	\
 									TDEC(gu8_TimerPBATest_FanDisplay);	\
@@ -26,21 +26,21 @@
 									TDEC(gu8_TimerPBATest_HeaterTriac);	\
 									TDEC(gu8_Timer_PBATest_UV);	\
 								}
-#define	TDEC_100ms_PBA()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_PBA()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerPBATest_FanFB);	\
 									TDEC(gu8_TimerPBATest_HeaterFB);	\
 									TDEC(gu8_TimerPBATest_TemFB);	\
 								}
-#define	TDEC_1s_PBA()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_PBA()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_PBA()			{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_PBA()			{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_PBA()			{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_PBA()			{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									/*TDEC(gu8_TimerFCTReset);*/	\
 								}
-#define	TDEC_10min_PBA()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_PBA()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_PBA()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_PBA()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -80,7 +80,7 @@ enum {
  ==============================================================================*/
 EXTERN U8 gu8_PBAStepNum;
 
-//	Å×½ºÆ® ¸ğµå1
+//	í…ŒìŠ¤íŠ¸ ëª¨ë“œ1
 EXTERN U8 F_PBATest_ColdSensorOFF;
 EXTERN U8 F_PBATest_LeakSensorOFF;
 EXTERN U8 gu8_PBATest_FanTest;
@@ -94,7 +94,7 @@ EXTERN U8 gu8_TimerPBATest_HotLoadDisplay;			//	<500ms/10ms>
 EXTERN U8 gu8_TimerPBATest_ColdLoadDisplay;			//	<500ms/10ms>
 EXTERN U8 gu8_TimerPBATest_PureLoadDisplay;			//	<500ms/10ms>
 
-//	Å×½ºÆ® ¸ğµå2
+//	í…ŒìŠ¤íŠ¸ ëª¨ë“œ2
 EXTERN U8 F_PBATest_SteppingMotor;
 EXTERN U8 F_PBATest_StandBy_OFF;
 
@@ -121,10 +121,10 @@ EXTERN U8 F_TEMFeedBack_Error;
 EXTERN U8 F_24VFeedBack_Error;
 EXTERN U8 F_PBATest_FanFeedBack_Error;
 
-EXTERN U8 F_PBATest_TEM;							//	½ÇÇà ¿©ºÎ
-EXTERN U8 F_PBATest_Heater;							//	½ÇÇà ¿©ºÎ
-EXTERN U8 F_PBATest_24V;							//	½ÇÇà ¿©ºÎ
-EXTERN U8 F_PBATest_Fan;							//	½ÇÇà ¿©ºÎ
+EXTERN U8 F_PBATest_TEM;							//	ì‹¤í–‰ ì—¬ë¶€
+EXTERN U8 F_PBATest_Heater;							//	ì‹¤í–‰ ì—¬ë¶€
+EXTERN U8 F_PBATest_24V;							//	ì‹¤í–‰ ì—¬ë¶€
+EXTERN U8 F_PBATest_Fan;							//	ì‹¤í–‰ ì—¬ë¶€
 
 EXTERN U8 gu8_TimerPBATest_FanFB;
 EXTERN U8 gu8_TimerPBATest_HeaterFB;

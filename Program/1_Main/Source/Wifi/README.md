@@ -3,26 +3,26 @@ User Interface Function
 =======================
 ---
 
-## 1. Main Setting ¼³Á¤ °¡ÀÌµå
+## 1. Main Setting ì„¤ì • ê°€ì´ë“œ
 
 ---
-#### -  <1> Uart Interrupt ¼³Á¤ [ÇÊ¼ö]
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    void InterruptUartWifiTx ()           : Wi-Fi Module <-> MCU Uart TX ÀÎÅÍ·´Æ® ¼³Á¤
+#### -  <1> Uart Interrupt ì„¤ì • [í•„ìˆ˜]
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    void InterruptUartWifiTx ()           : Wi-Fi Module <-> MCU Uart TX ì¸í„°ëŸ½íŠ¸ ì„¤ì •
 ```C++
     __interrupt static void r_uart1_interrupt_send(void)
     {
         InterruptUartWifiTx();
     }
 ```
-    void InterruptUartWifiRx (RXD1)       : Wi-Fi Module <-> MCU Uart RX ÀÎÅÍ·´Æ® ¼³Á¤
+    void InterruptUartWifiRx (RXD1)       : Wi-Fi Module <-> MCU Uart RX ì¸í„°ëŸ½íŠ¸ ì„¤ì •
 ```C++
     __interrupt static void r_uart1_interrupt_receive(void)
     {
         InterruptUartWifiRx(RXD1);
     }
 ```
-    void InterruptUartWifiError ()        : Uart Error Callback ¼³Á¤
+    void InterruptUartWifiError ()        : Uart Error Callback ì„¤ì •
 ```C++
     static void r_uart1_callback_error(uint8_t err_type)
     {
@@ -31,272 +31,272 @@ User Interface Function
 ```
 <br>
 
-#### -  <2> ÃÊ±âÈ­ ¹× ÁÖ±âÇÔ¼ö ¼³Á¤ [ÇÊ¼ö] [Parameter : 1 / Return : X ]
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    WifiControlProcess(WIFI_TIME_INI)           : ÃÊ±âÈ­ (EEPROM ÃÊ±âÈ­ ÀÌÀü) 
-    WifiControlProcess(WIFI_TIME_SET)           : ÃÊ±â¼ÂÆÃ (EEPROM ÃÊ±âÈ­ ÀÌÈÄ While ÀÌÀü)
-    WifiControlProcess(WIFI_TIME_WHILE)         : Main While ¹®¿¡¼­ È£Ãâ
-    WifiControlProcess(WIFI_TIME_100MS)         : Main 100ms Å¸ÀÌ¸Ó ¿¡¼­ È£Ãâ (100ms ÁÖ±â)   
+#### -  <2> ì´ˆê¸°í™” ë° ì£¼ê¸°í•¨ìˆ˜ ì„¤ì • [í•„ìˆ˜] [Parameter : 1 / Return : X ]
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    WifiControlProcess(WIFI_TIME_INI)           : ì´ˆê¸°í™” (EEPROM ì´ˆê¸°í™” ì´ì „) 
+    WifiControlProcess(WIFI_TIME_SET)           : ì´ˆê¸°ì…‹íŒ… (EEPROM ì´ˆê¸°í™” ì´í›„ While ì´ì „)
+    WifiControlProcess(WIFI_TIME_WHILE)         : Main While ë¬¸ì—ì„œ í˜¸ì¶œ
+    WifiControlProcess(WIFI_TIME_100MS)         : Main 100ms íƒ€ì´ë¨¸ ì—ì„œ í˜¸ì¶œ (100ms ì£¼ê¸°)   
 <br>
 
-#### - <3> Wifi Key È£Ãâ [Parameter : 1 / Return : X ] 
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    WifiKey(WIFI_KEY_AP)                        : Wifi Pairing ¸ðµå ÁøÀÔ Key 
-    WifiKey(WIFI_KEY_BLE)                       : BLE Pairing ¸ðµå ÁøÀÔ Key
-    WifiKey(WIFI_KEY_ONOFF)                     : WIFI Power On/Off ¼³Á¤ (Toggle)
-    WifiKey(WIFI_KEY_BLE_CERT)                  : BLE Á¡À¯ÀÎÁõ È®ÀÎ
-    WifiKey(WIFI_KEY_BLE_CERT_CANCEL)           : BLE Á¡À¯ÀÎÁõ Ãë¼Ò
+#### - <3> Wifi Key í˜¸ì¶œ [Parameter : 1 / Return : X ] 
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    WifiKey(WIFI_KEY_AP)                        : Wifi Pairing ëª¨ë“œ ì§„ìž… Key 
+    WifiKey(WIFI_KEY_BLE)                       : BLE Pairing ëª¨ë“œ ì§„ìž… Key
+    WifiKey(WIFI_KEY_ONOFF)                     : WIFI Power On/Off ì„¤ì • (Toggle)
+    WifiKey(WIFI_KEY_BLE_CERT)                  : BLE ì ìœ ì¸ì¦ í™•ì¸
+    WifiKey(WIFI_KEY_BLE_CERT_CANCEL)           : BLE ì ìœ ì¸ì¦ ì·¨ì†Œ
 <br>
 
-#### - <4> Wifi Send Data  (Server DATA Àü¼Û) [Parameter : 1 / Return : X ] 
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    [ÇÊ¼ö]
-    WifiSendData(WIFI_DATA_EXAMINE)             : Á¤¹Ð °íÀåÁø´Ü ¿Ï·á ½Ã (ÀÌº¥Æ®)
+#### - <4> Wifi Send Data  (Server DATA ì „ì†¡) [Parameter : 1 / Return : X ] 
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    [í•„ìˆ˜]
+    WifiSendData(WIFI_DATA_EXAMINE)             : ì •ë°€ ê³ ìž¥ì§„ë‹¨ ì™„ë£Œ ì‹œ (ì´ë²¤íŠ¸)
     
-    [¼±ÅÃ»çÇ× - Protocol ¼³Á¤ ½Ã ÀÌº¥Æ® ¹æ½Ä ¼³Á¤]
-    WifiSendData(WIFI_DATA_FUNCTION)            : ±â´Éµ¥ÀÌÅÍ º¯°æ ½Ã (»óÅÂº¯°æ ½Ã)
-    WifiSendData(WIFI_DATA_ERROR)               : ¿¡·¯µ¥ÀÌÅÍ º¯°æ ½Ã (¹ß»ý/ÇØÁö)
-    WifiSendDataControl(WIFI_DATA_FUNCTION_CONTROL, U16 API ID) : Á¦Ç° KEYÁ¶ÀÛ ½Ã 
+    [ì„ íƒì‚¬í•­ - Protocol ì„¤ì • ì‹œ ì´ë²¤íŠ¸ ë°©ì‹ ì„¤ì •]
+    WifiSendData(WIFI_DATA_FUNCTION)            : ê¸°ëŠ¥ë°ì´í„° ë³€ê²½ ì‹œ (ìƒíƒœë³€ê²½ ì‹œ)
+    WifiSendData(WIFI_DATA_ERROR)               : ì—ëŸ¬ë°ì´í„° ë³€ê²½ ì‹œ (ë°œìƒ/í•´ì§€)
+    WifiSendDataControl(WIFI_DATA_FUNCTION_CONTROL, U16 API ID) : ì œí’ˆ KEYì¡°ìž‘ ì‹œ 
 <Br>
 
 
-#### - <5> Á¦Ç°»óÅÂÁ¤º¸ ¼³Á¤ [Parameter : 2 / Return : X ] 
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
+#### - <5> ì œí’ˆìƒíƒœì •ë³´ ì„¤ì • [Parameter : 2 / Return : X ] 
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
     (1) SetWifiSystemStatus(E_WIFI_USER_VALUE_T Status, U8 val)                
 
 <br>
 
-    WIFI_MODEL_TYPE                : ¸ðµ¨ Å¸ÀÔ ¼³Á¤
+    WIFI_MODEL_TYPE                : ëª¨ë¸ íƒ€ìž… ì„¤ì •
         0 CLEAR                    : Model 0 (Model_0)
         1 SET                      : Model 1 (Model_1)
 
-    WIFI_FACTORY_STATUS            : Wi-Fi °Ë»ç¸ðµå ÁøÀÔ ¼³Á¤
+    WIFI_FACTORY_STATUS            : Wi-Fi ê²€ì‚¬ëª¨ë“œ ì§„ìž… ì„¤ì •
         0 CLEAR                    : Normal
         1 SET                      : Factory/PCB Test mode
 
-    WIFI_RX_STATUS                 : ÀÏ¹ÝÁ¦¾î ºÒ°¡»óÅÂ ¼³Á¤      
+    WIFI_RX_STATUS                 : ì¼ë°˜ì œì–´ ë¶ˆê°€ìƒíƒœ ì„¤ì •      
         0 CLEAR                    : Possible (Normal) (App Control O)
         1 SET                      : Impossible (Operating...) (App Control X)
 
-    WIFI_SMART_POSSIBLE_STATUS     : ½º¸¶Æ®Áø´Ü ºÒ°¡»óÅÂ ¼³Á¤       
+    WIFI_SMART_POSSIBLE_STATUS     : ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ ë¶ˆê°€ìƒíƒœ ì„¤ì •       
         0 CLEAR                    : Possible (Normal)
         1 SET                      : Impossible (Operating...)
 
-    WIFI_SMART_SENSING_STATUS      : ½º¸¶Æ®Áø´Ü Áß »óÅÂ ¼³Á¤  
+    WIFI_SMART_SENSING_STATUS      : ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ ì¤‘ ìƒíƒœ ì„¤ì •  
         0 CLEAR                    : Normal
         1 SET                      : Operating
 
-    WIFI_FOTA_POSSIBLE_STATUS      : FOTA ºÒ°¡ »óÅÂ ¼³Á¤      
+    WIFI_FOTA_POSSIBLE_STATUS      : FOTA ë¶ˆê°€ ìƒíƒœ ì„¤ì •      
         0 CLEAR                    : Normal
         1 SET                      : Impossible (Operating...)
 
-    WIFI_FACTORY_DIRECTFOTA_STATUS : ´ÙÀÌ·ºÆ® Æ÷Å¸ ÁøÀÔ ¼³Á¤
+    WIFI_FACTORY_DIRECTFOTA_STATUS : ë‹¤ì´ë ‰íŠ¸ í¬íƒ€ ì§„ìž… ì„¤ì •
         0 CLEAR                    : Normal
         1 SET                      : Direct FOTA mode
 
 ---
 
-## 2. WiFi »óÅÂ Á¤º¸ DATA (Get Function) ¼³Á¤ °¡ÀÌµå
-#### - <1> Wi-Fi Module »óÅÂ DATA [Parameter : 1 / Return : 1 ] 
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    (1) GetWifiStatusValue(WIFI_STATUS_DISP) : WIFI »óÅÂ DISPLAY DATA (Enum Âü°í:  E_WIFI_DISPLAY_T) 
+## 2. WiFi ìƒíƒœ ì •ë³´ DATA (Get Function) ì„¤ì • ê°€ì´ë“œ
+#### - <1> Wi-Fi Module ìƒíƒœ DATA [Parameter : 1 / Return : 1 ] 
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    (1) GetWifiStatusValue(WIFI_STATUS_DISP) : WIFI ìƒíƒœ DISPLAY DATA (Enum ì°¸ê³ :  E_WIFI_DISPLAY_T) 
 
-###### Return DATA : Wi-Fi OFF [¼Òµî]
+###### Return DATA : Wi-Fi OFF [ì†Œë“±]
     WIFI_DISP_OFF          
 
-###### Return DATA : Soft AP Pairing MODE [Æä¾î¸µÁ¡¸ê]
-    WIFI_DISP_AP_START    // Soft AP MODE START     : WiFi Æä¾î¸µ ¸ðµå ÁøÀÔ
-    WIFI_DISP_AP_STEP0    // Pairing Mode ing       : Soft AP Æä¾î¸µ ¸ðµå È°¼ºÈ­ ¿Ï·á
-    WIFI_DISP_AP_STEP1    // APP Pairing START      : APPÀ¸·ÎºÎÅÍ Æä¾î¸µ DATA¼ö½Å (25%)
-    WIFI_DISP_AP_STEP2    // AP Connect             : AP¿¬°á¿Ï·á (50%)
-    WIFI_DISP_AP_STEP3    // AUTHENTICATE           : ÀÎÁõ¼­¹ö È®ÀÎ Áß (75&)
+###### Return DATA : Soft AP Pairing MODE [íŽ˜ì–´ë§ì ë©¸]
+    WIFI_DISP_AP_START    // Soft AP MODE START     : WiFi íŽ˜ì–´ë§ ëª¨ë“œ ì§„ìž…
+    WIFI_DISP_AP_STEP0    // Pairing Mode ing       : Soft AP íŽ˜ì–´ë§ ëª¨ë“œ í™œì„±í™” ì™„ë£Œ
+    WIFI_DISP_AP_STEP1    // APP Pairing START      : APPìœ¼ë¡œë¶€í„° íŽ˜ì–´ë§ DATAìˆ˜ì‹  (25%)
+    WIFI_DISP_AP_STEP2    // AP Connect             : APì—°ê²°ì™„ë£Œ (50%)
+    WIFI_DISP_AP_STEP3    // AUTHENTICATE           : ì¸ì¦ì„œë²„ í™•ì¸ ì¤‘ (75&)
 
-###### Return DATA : BLE Pairing MODE [Æä¾î¸µÁ¡¸ê]
-    WIFI_DISP_BLE_START   // BLE MODE START         : BLE Æä¾î¸µ ¸ðµå ÁøÀÔ
-    WIFI_DISP_BLE_STEP0   // Pairing Mode ing       : Soft AP Æä¾î¸µ ¸ðµå È°¼ºÈ­ ¿Ï·á
-    WIFI_DISP_BLE_STEP1   // APP Pairing START      : APPÀ¸·ÎºÎÅÍ Æä¾î¸µ DATA¼ö½Å (25%)
-    WIFI_DISP_BLE_STEP2   // AP Connect             : AP¿¬°á¿Ï·á (50%)
-    WIFI_DISP_BLE_STEP3   // AUTHENTICATE           : ÀÎÁõ¼­¹ö È®ÀÎ Áß (75%)
+###### Return DATA : BLE Pairing MODE [íŽ˜ì–´ë§ì ë©¸]
+    WIFI_DISP_BLE_START   // BLE MODE START         : BLE íŽ˜ì–´ë§ ëª¨ë“œ ì§„ìž…
+    WIFI_DISP_BLE_STEP0   // Pairing Mode ing       : Soft AP íŽ˜ì–´ë§ ëª¨ë“œ í™œì„±í™” ì™„ë£Œ
+    WIFI_DISP_BLE_STEP1   // APP Pairing START      : APPìœ¼ë¡œë¶€í„° íŽ˜ì–´ë§ DATAìˆ˜ì‹  (25%)
+    WIFI_DISP_BLE_STEP2   // AP Connect             : APì—°ê²°ì™„ë£Œ (50%)
+    WIFI_DISP_BLE_STEP3   // AUTHENTICATE           : ì¸ì¦ì„œë²„ í™•ì¸ ì¤‘ (75%)
 
-###### Return DATA : Server ¿¬°á¿Ï·á [Á¡µî]
-    WIFI_DISP_CONNECT     // Server Connected       : ¼­¹ö ¿¬°á¿Ï·á (100%)
+###### Return DATA : Server ì—°ê²°ì™„ë£Œ [ì ë“±]
+    WIFI_DISP_CONNECT     // Server Connected       : ì„œë²„ ì—°ê²°ì™„ë£Œ (100%)
 
-###### Return DATA : Wi-Fi ON & ¼­¹ö ¿¬°á²÷±è [Á¡¸ê]
-    WIFI_DISP_AP1         : °øÀ¯±â ¾ÏÈ£ ºÒÀÏÄ¡
-    WIFI_DISP_AP2         : °øÀ¯±â ¹Ì°Ë»ö 
-    WIFI_DISP_AP3         : °øÀ¯±â Á¢¼Ó °ÅºÎ
-    WIFI_DISP_AP4         : °øÀ¯±â ÀÀ´ä ¾øÀ½
-    WIFI_DISP_AP5         : ¼­¹ö ÀÀ´ä¾øÀ½
-    WIFI_DISP_TRY         : ¿¬°á ½Ãµµ Áß
+###### Return DATA : Wi-Fi ON & ì„œë²„ ì—°ê²°ëŠê¹€ [ì ë©¸]
+    WIFI_DISP_AP1         : ê³µìœ ê¸° ì•”í˜¸ ë¶ˆì¼ì¹˜
+    WIFI_DISP_AP2         : ê³µìœ ê¸° ë¯¸ê²€ìƒ‰ 
+    WIFI_DISP_AP3         : ê³µìœ ê¸° ì ‘ì† ê±°ë¶€
+    WIFI_DISP_AP4         : ê³µìœ ê¸° ì‘ë‹µ ì—†ìŒ
+    WIFI_DISP_AP5         : ì„œë²„ ì‘ë‹µì—†ìŒ
+    WIFI_DISP_TRY         : ì—°ê²° ì‹œë„ ì¤‘
 <Br>
-    (2) GetWifiStatusValue(WIFI_STATUS_TEST)        : TestMode ¿¡¼­ ¿¬°áÈ®ÀÎ 
+    (2) GetWifiStatusValue(WIFI_STATUS_TEST)        : TestMode ì—ì„œ ì—°ê²°í™•ì¸ 
 
 ###### Return DATA
         0: Disconnected 
-        1: Connected (°Ë»ç¼º°ø/¿Ï·á)
+        1: Connected (ê²€ì‚¬ì„±ê³µ/ì™„ë£Œ)
 <Br>
-    (3) GetWifiStatusValue(WIFI_STATUS_ERROR)       : Wifi Error  (ÀÌÀü ¿¬°á Error ÀÌ·Â)
+    (3) GetWifiStatusValue(WIFI_STATUS_ERROR)       : Wifi Error  (ì´ì „ ì—°ê²° Error ì´ë ¥)
 
 ###### Return DATA
         0: Normal
         1~5: WiFi Err No.
 <Br>
-    (4) GetWifiStatusValue(WIFI_STATUS_AP_ERROR)    : Wifi Error  (Æä¾î¸µÁß Error)
+    (4) GetWifiStatusValue(WIFI_STATUS_AP_ERROR)    : Wifi Error  (íŽ˜ì–´ë§ì¤‘ Error)
 
 ###### Return DATA
         0:Normal
-        1~5: Æä¾î¸µ Áß Err No.
+        1~5: íŽ˜ì–´ë§ ì¤‘ Err No.
 <Br>
-    (5) GetWifiStatusValue(WIFI_STATUS_BLE_CERT)    : Á¡À¯ÀÎÁõ »óÅÂ
+    (5) GetWifiStatusValue(WIFI_STATUS_BLE_CERT)    : ì ìœ ì¸ì¦ ìƒíƒœ
 
 ###### Return DATA
-        0: Á¡À¯ÀÎÁõºÒ°¡»óÅÂ
-        1: Á¡À¯ÀÎÁõ°¡´É »óÅÂ
-        2: Á¡À¯ÀÎÁõ¿Ï·á»óÅÂ 
+        0: ì ìœ ì¸ì¦ë¶ˆê°€ìƒíƒœ
+        1: ì ìœ ì¸ì¦ê°€ëŠ¥ ìƒíƒœ
+        2: ì ìœ ì¸ì¦ì™„ë£Œìƒíƒœ 
 <Br> 
-    (6) GetWifiStatusValue(WIFI_STATUS_SERVER_CON)  : ¼­¹ö ¿¬°á Áß »óÅÂ
+    (6) GetWifiStatusValue(WIFI_STATUS_SERVER_CON)  : ì„œë²„ ì—°ê²° ì¤‘ ìƒíƒœ
 
 ###### Return DATA
-        0: ¿¬°á²÷±è Áß  
-        1: ¿¬°áÁß
+        0: ì—°ê²°ëŠê¹€ ì¤‘  
+        1: ì—°ê²°ì¤‘
 <Br>
-    (7) GetWifiStatusValue(WIFI_STATUS_PAIRING)     : Æä¾î¸µ ¸ðµå »óÅÂ 
+    (7) GetWifiStatusValue(WIFI_STATUS_PAIRING)     : íŽ˜ì–´ë§ ëª¨ë“œ ìƒíƒœ 
 
 ###### Return DATA
-        0: Æä¾î¸µ ¸ðµå ºñÈ°¼ºÈ­ »óÅÂ 
-        1: BLE È°¼ºÈ­ Áß »óÅÂ 
-        2: Wi-Fi ¿¬°á¸ðµå È°¼ºÈ­ Áß »óÅÂ
+        0: íŽ˜ì–´ë§ ëª¨ë“œ ë¹„í™œì„±í™” ìƒíƒœ 
+        1: BLE í™œì„±í™” ì¤‘ ìƒíƒœ 
+        2: Wi-Fi ì—°ê²°ëª¨ë“œ í™œì„±í™” ì¤‘ ìƒíƒœ
 <Br>
-    (8) GetWifiStatusValue(WIFI_STATUS_LOCATION)    : APP À§Ä¡Á¤º¸ ¼³Á¤»óÅÂ (Iocare2.0)
+    (8) GetWifiStatusValue(WIFI_STATUS_LOCATION)    : APP ìœ„ì¹˜ì •ë³´ ì„¤ì •ìƒíƒœ (Iocare2.0)
 
 ###### Return DATA
-        0: APP¿¡¼­ À§Ä¡Á¤º¸ ¼³Á¤ X
-        1: APP¿¡¼­ À§Ä¡Á¤º¸ ¼³Á¤ ¿Ï·á
+        0: APPì—ì„œ ìœ„ì¹˜ì •ë³´ ì„¤ì • X
+        1: APPì—ì„œ ìœ„ì¹˜ì •ë³´ ì„¤ì • ì™„ë£Œ
 <Br>
-    (9) GetWifiStatusValue(WIFI_STATUS_SAP_CODE)    : SAP ºÎ°¡Á¤º¸ DATA ¼ö½Å¿©ºÎ (A2021 SAP DATA) 
+    (9) GetWifiStatusValue(WIFI_STATUS_SAP_CODE)    : SAP ë¶€ê°€ì •ë³´ DATA ìˆ˜ì‹ ì—¬ë¶€ (A2021 SAP DATA) 
 
 ###### Return DATA
-        0: SAP DATA °¡Á®¿À±â ½ÇÆÐ
-        1: SAP DATA ¼ö½Å¼º°ø (S1000) 
-        2: SAP DATA ¾øÀ½ (E9000)
+        0: SAP DATA ê°€ì ¸ì˜¤ê¸° ì‹¤íŒ¨
+        1: SAP DATA ìˆ˜ì‹ ì„±ê³µ (S1000) 
+        2: SAP DATA ì—†ìŒ (E9000)
 <Br>
-    (10) GetWifiStatusValue(WIFI_STATUS_FOTA)       : MCU FOTA »óÅÂ  
+    (10) GetWifiStatusValue(WIFI_STATUS_FOTA)       : MCU FOTA ìƒíƒœ  
 
 ###### Return DATA
-        0: FOTA »óÅÂ ¾Æ´Ô
-        1: FOTA Áß »óÅÂ (FOTA ½ÃÀÛ)
+        0: FOTA ìƒíƒœ ì•„ë‹˜
+        1: FOTA ì¤‘ ìƒíƒœ (FOTA ì‹œìž‘)
 <br>
 
 #### - <2> Wifi Infomation data
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    (1) GetWifiRequestValue(WIFI_RQST_WEATHER)          : ³¯¾¾µ¥ÀÌÅÍ 
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    (1) GetWifiRequestValue(WIFI_RQST_WEATHER)          : ë‚ ì”¨ë°ì´í„° 
 
 ###### Return DATA
-        1: ¸¼À½ / 2: ±¸¸§Á¶±Ý / 3: ±¸¸§¸¹À½ / 4: Èå¸² / 5: Èå¸®°í ºñ / 6: Èå¸®°í ´« / 7: ºñ¿ÂµÚ °· / 8: ¼Ò³ª±â / 9: ºñ ¶Ç´Â ´« / 11: ÃµµÕ¹ø°³ / 12: ¾È°³
+        1: ë§‘ìŒ / 2: êµ¬ë¦„ì¡°ê¸ˆ / 3: êµ¬ë¦„ë§ŽìŒ / 4: íë¦¼ / 5: íë¦¬ê³  ë¹„ / 6: íë¦¬ê³  ëˆˆ / 7: ë¹„ì˜¨ë’¤ ê°¬ / 8: ì†Œë‚˜ê¸° / 9: ë¹„ ë˜ëŠ” ëˆˆ / 11: ì²œë‘¥ë²ˆê°œ / 12: ì•ˆê°œ
 <br>
 
     (2) GetWifiRequestValue(WIFI_RQST_AQI) : AQI (1 ~ 4)
 
 ###### Return DATA
-        1: ÁÁÀ½ / 2: º¸Åë / 3: ³ª»Ý / 4: ¸Å¿ì³ª»Ý
+        1: ì¢‹ìŒ / 2: ë³´í†µ / 3: ë‚˜ì¨ / 4: ë§¤ìš°ë‚˜ì¨
 <br>
 
-    (3) GetWifiRequestValue(WIFI_RQST_CURRENT_TEMP)     : ÇöÀç¿Âµµ
+    (3) GetWifiRequestValue(WIFI_RQST_CURRENT_TEMP)     : í˜„ìž¬ì˜¨ë„
 
 ###### Return DATA
         -50 ~ 50
 <br>
 
-    (4) GetWifiRequestValue(WIFI_RQST_HIGH_TEMP)        : ÃÖ°í¿Âµµ 
+    (4) GetWifiRequestValue(WIFI_RQST_HIGH_TEMP)        : ìµœê³ ì˜¨ë„ 
 
 ###### Return DATA
         -50 ~ 50
 <br>
 
-    (5) GetWifiRequestValue(WIFI_RQST_LOW_TEMP)         : ÃÖÀú¿Âµµ
+    (5) GetWifiRequestValue(WIFI_RQST_LOW_TEMP)         : ìµœì €ì˜¨ë„
 
 ###### Return DATA
         -50 ~ 50
 <br>
 
-    (6) GetWifiRequestValue(WIFI_RQST_FILTER_D_DAY1)    : ÀÚ°¡°ü¸® / ¹æ¹®°ü¸® ±¸ºÐ
+    (6) GetWifiRequestValue(WIFI_RQST_FILTER_D_DAY1)    : ìžê°€ê´€ë¦¬ / ë°©ë¬¸ê´€ë¦¬ êµ¬ë¶„
 
 ###### Return DATA
-    0xFFFF : µ¥ÀÌÅÍ°¡ ¾ø´Â °æ¿ì(ÀÚ°¡) / 9999 : ¹æ¹®°ü¸®
+    0xFFFF : ë°ì´í„°ê°€ ì—†ëŠ” ê²½ìš°(ìžê°€) / 9999 : ë°©ë¬¸ê´€ë¦¬
 <br>
 
-    (7) GetWifiRequestValue(WIFI_RQST_FILTER_CHANGE_CYCLE) : ÇÊÅÍ±³È¯ ÁÖ±â(%) (Ex: 15Month(±âº») X 100%)
+    (7) GetWifiRequestValue(WIFI_RQST_FILTER_CHANGE_CYCLE) : í•„í„°êµí™˜ ì£¼ê¸°(%) (Ex: 15Month(ê¸°ë³¸) X 100%)
 
 ###### Return DATA
-    100: 100%(±âº»), 1~999 %
+    100: 100%(ê¸°ë³¸), 1~999 %
 <br>
 
-    (8) GetWifiRequestValue(WIFI_RQST_PART_PERIOD)      : »ó½ÃÁø´Ü ÁÖ±â Àû¿ë 
+    (8) GetWifiRequestValue(WIFI_RQST_PART_PERIOD)      : ìƒì‹œì§„ë‹¨ ì£¼ê¸° ì ìš© 
 
 ###### Return DATA
-    1: 1½Ã°£(±âº»), 1~720
+    1: 1ì‹œê°„(ê¸°ë³¸), 1~720
 <br>
 
-#### - <3> SAP ºÎ°¡Á¤º¸ DATA ¿äÃ»   [Parameter : X / Return : X ] 
-##### #include "WIFI_Config.h" Ãß°¡ÇÊ¿ä
-    GetWifiRequestSAP(void);                            : SAP ºÎ°¡Á¤º¸ DATA ¿äÃ» (A2021 Json DATA ¿äÃ»)
+#### - <3> SAP ë¶€ê°€ì •ë³´ DATA ìš”ì²­   [Parameter : X / Return : X ] 
+##### #include "WIFI_Config.h" ì¶”ê°€í•„ìš”
+    GetWifiRequestSAP(void);                            : SAP ë¶€ê°€ì •ë³´ DATA ìš”ì²­ (A2021 Json DATA ìš”ì²­)
 <Br>
 
 
-## 3. [WIFI_Config.h] / [WIFI_Config.c] Settings : È¯°æ ¼³Á¤ °¡ÀÌµå
+## 3. [WIFI_Config.h] / [WIFI_Config.c] Settings : í™˜ê²½ ì„¤ì • ê°€ì´ë“œ
 ---
 #### - <1> [WIFI_Config.h]
-##### (1) User TEST MODE ¼³Á¤
-    - TEST_MODE_WIFI_OTA    :  OTA °¨µµ Å×½ºÆ® ÁøÇà ½Ã È°¼ºÈ­ (WiFi OFF/RESET X )
+##### (1) User TEST MODE ì„¤ì •
+    - TEST_MODE_WIFI_OTA    :  OTA ê°ë„ í…ŒìŠ¤íŠ¸ ì§„í–‰ ì‹œ í™œì„±í™” (WiFi OFF/RESET X )
         0: Normal / 1: OTA Test Mode       
-    - TEST_MODE_BLE_FCC     :  BLE FCC ÀÎÁõ¿ë Å×½ºÆ® ÁøÇà ½Ã È°¼ºÈ­ (BLE OFF X)
+    - TEST_MODE_BLE_FCC     :  BLE FCC ì¸ì¦ìš© í…ŒìŠ¤íŠ¸ ì§„í–‰ ì‹œ í™œì„±í™” (BLE OFF X)
         0: Normal / 1: BLE FCC Test Mode   
 
-##### (2) Version / Model Name / POP Code ¼³Á¤
+##### (2) Version / Model Name / POP Code ì„¤ì •
     - USER_WIFI_VERSION     :   MCU Version (Ex: 0.0.0.1)
     - MODEL_NAME_0          :   Main Model Name  
-    - MODEL_NAME_1          :   Sub Model Name (CHP/CP µî °ø¿ëÈ­ ¼³°è ½Ã È°¿ë)
+    - MODEL_NAME_1          :   Sub Model Name (CHP/CP ë“± ê³µìš©í™” ì„¤ê³„ ì‹œ í™œìš©)
     - PRODUCT_CODE_0        :   Main Model POP Code
-    - PRODUCT_CODE_1        :   Sub Model POP Code (CHP/CP µî °ø¿ëÈ­ ¼³°è ½Ã È°¿ë)
-    - WIFI_REQUEST_ID       :   MCU -> SERVER DATA Àü¼Û ½Ã Reqeust ID prefix
+    - PRODUCT_CODE_1        :   Sub Model POP Code (CHP/CP ë“± ê³µìš©í™” ì„¤ê³„ ì‹œ í™œìš©)
+    - WIFI_REQUEST_ID       :   MCU -> SERVER DATA ì „ì†¡ ì‹œ Reqeust ID prefix
 
-##### (3) H/W Port ¼³Á¤
-    - TXD1, RXD1 »ç¿ë       :   Uart Baudrate (115200bps)	
+##### (3) H/W Port ì„¤ì •
+    - TXD1, RXD1 ì‚¬ìš©       :   Uart Baudrate (115200bps)	
     - P_WIFI_ON             :   Wi-Fi Module Power Pin No.
     - P_WIFI_RSTN           :   Wi-Fi Module Reset Pin No.
 
-##### (4) FOTA ¼³Á¤
-    - USER_FOTA_ENABLE      :   MCU FOTA »ç¿ë À¯/¹« ¼³Á¤
+##### (4) FOTA ì„¤ì •
+    - USER_FOTA_ENABLE      :   MCU FOTA ì‚¬ìš© ìœ /ë¬´ ì„¤ì •
         0: DISABLE   /   1: ENABLE
-    - USER_FOTA_SIZE        :   MCU ROM SIZE ¼³Á¤ 
+    - USER_FOTA_SIZE        :   MCU ROM SIZE ì„¤ì • 
 
-##### (5) ºÎ°¡Á¤º¸ DATA ¼³Á¤
-    - USER_USE_A2010_INFO           : A2010 / A2011 »ç¿ë À¯/¹« ¼³Á¤
+##### (5) ë¶€ê°€ì •ë³´ DATA ì„¤ì •
+    - USER_USE_A2010_INFO           : A2010 / A2011 ì‚¬ìš© ìœ /ë¬´ ì„¤ì •
         0: DISABLE   /   1: ENABLE
-    - USER_USE_A2010_INFO_WEATHER   : ³¯¾¾Á¤º¸ »ç¿ë À¯/¹« ¼³Á¤
+    - USER_USE_A2010_INFO_WEATHER   : ë‚ ì”¨ì •ë³´ ì‚¬ìš© ìœ /ë¬´ ì„¤ì •
         0: DISABLE   /   1: ENABLE
-    - USER_USE_A2021_SAPINFO        : SAPÁ¤º¸(JSON) »ç¿ë À¯/¹« ¼³Á¤
+    - USER_USE_A2021_SAPINFO        : SAPì •ë³´(JSON) ì‚¬ìš© ìœ /ë¬´ ì„¤ì •
         0: DISABLE   /   1: ENABLE
 
-##### (6) User ÇÁ·ÎÅäÄÝ DATA »çÀÌÁî ¼³Á¤
-    - USER_DATA_MAX_SIZE                 : A1010 »óÅÂµ¥ÀÌÅÍ ÇÁ·ÎÅäÄÝÀÇ ÃÖ´ë °¹¼ö ¼³Á¤
-    - USER_DATA_MULTI_CONTROL_MAX_SIZE   : A1011 ¸ÖÆ¼Á¦¾î ÇÁ·ÎÅäÄÝÀÇ ÃÖ´ë °¹¼ö
-    - USER_INFO_MAX_SZIE                 : A2010 ºÎ°¡Á¤º¸ ÇÁ·ÎÅäÄÝÀÇ ÃÖ´ë °¹¼ö
-    - USER_DIAGNOSIS_MAX_SIZE            : A1091 ½º¸¶Æ®Áø´Ü(Á¦Ç°ÀÚÃ¼Áø´Ü) ÇÁ·ÎÅäÄÝ ÃÖ´ë °¹¼ö
+##### (6) User í”„ë¡œí† ì½œ DATA ì‚¬ì´ì¦ˆ ì„¤ì •
+    - USER_DATA_MAX_SIZE                 : A1010 ìƒíƒœë°ì´í„° í”„ë¡œí† ì½œì˜ ìµœëŒ€ ê°¯ìˆ˜ ì„¤ì •
+    - USER_DATA_MULTI_CONTROL_MAX_SIZE   : A1011 ë©€í‹°ì œì–´ í”„ë¡œí† ì½œì˜ ìµœëŒ€ ê°¯ìˆ˜
+    - USER_INFO_MAX_SZIE                 : A2010 ë¶€ê°€ì •ë³´ í”„ë¡œí† ì½œì˜ ìµœëŒ€ ê°¯ìˆ˜
+    - USER_DIAGNOSIS_MAX_SIZE            : A1091 ìŠ¤ë§ˆíŠ¸ì§„ë‹¨(ì œí’ˆìžì²´ì§„ë‹¨) í”„ë¡œí† ì½œ ìµœëŒ€ ê°¯ìˆ˜
 
-##### (7) A2021 SAP ºÎ°¡Á¤º¸ µ¥ÀÌÅÍÀÇ ±¸Á¶Ã¼ ¼³Á¤
-    - USER_JSON_MAX_ITEMS           :   [Key : Value] ½Ö°ªÀÇ ÃÖ´ë °¹¼ö  -> { Key1 : Val1, Key2 : Val2, ... Key5 : Val5 }
-    - USER_JSON_MAX_ARRAY_VALUE     :   Array ÀÇ ÃÖ´ë °¹¼ö    ->  [ 1 ], [ 2 ]
-    - USER_JSON_MAX_ARRAY_OBJECT    :   Array ÀÇ Object ÃÖ´ë °¹¼ö   -> [ {1}, {2} ]
+##### (7) A2021 SAP ë¶€ê°€ì •ë³´ ë°ì´í„°ì˜ êµ¬ì¡°ì²´ ì„¤ì •
+    - USER_JSON_MAX_ITEMS           :   [Key : Value] ìŒê°’ì˜ ìµœëŒ€ ê°¯ìˆ˜  -> { Key1 : Val1, Key2 : Val2, ... Key5 : Val5 }
+    - USER_JSON_MAX_ARRAY_VALUE     :   Array ì˜ ìµœëŒ€ ê°¯ìˆ˜    ->  [ 1 ], [ 2 ]
+    - USER_JSON_MAX_ARRAY_OBJECT    :   Array ì˜ Object ìµœëŒ€ ê°¯ìˆ˜   -> [ {1}, {2} ]
 
 #### - <2> [WIFI_Config.c]
-##### (1) EEPROM Write / Read ¼³Á¤
-    - EEPROM_ADDR_WIFI_POWER    : Wi-Fi ON/OFF »óÅÂ ±â¾ï
-    - EEPROM_ADDR_FIRST_PARING  : Wi-Fi ÃÖÃÊ Æä¾î¸µ »óÅÂ ±â¾ï
-    - EEPROM_ADDR_FOTA_MODULE   : Wi-Fi Module FOTA »óÅÂ ±â¾ï
-    - EEPROM_ADDR_FOTA_MCU      : MCU FOTA »óÅÂ ±â¾ï
-##### Write ÇÔ¼ö ÀÛ¼º   
-    Wi-Fi °ü·Ã EEPROM »ç¿ëÀ» À§ÇÑ EEPROM Write ÇÔ¼ö ÀÛ¼º
+##### (1) EEPROM Write / Read ì„¤ì •
+    - EEPROM_ADDR_WIFI_POWER    : Wi-Fi ON/OFF ìƒíƒœ ê¸°ì–µ
+    - EEPROM_ADDR_FIRST_PARING  : Wi-Fi ìµœì´ˆ íŽ˜ì–´ë§ ìƒíƒœ ê¸°ì–µ
+    - EEPROM_ADDR_FOTA_MODULE   : Wi-Fi Module FOTA ìƒíƒœ ê¸°ì–µ
+    - EEPROM_ADDR_FOTA_MCU      : MCU FOTA ìƒíƒœ ê¸°ì–µ
+##### Write í•¨ìˆ˜ ìž‘ì„±   
+    Wi-Fi ê´€ë ¨ EEPROM ì‚¬ìš©ì„ ìœ„í•œ EEPROM Write í•¨ìˆ˜ ìž‘ì„±
 ```C++
     void UserWriteEep ( U16 mu16Addr, U8 mu8Val )
     {
@@ -305,8 +305,8 @@ User Interface Function
         /* End user code. */
     }
 ```
-##### Read ÇÔ¼ö ÀÛ¼º   
-    Wi-Fi °ü·Ã EEPROM »ç¿ëÀ» À§ÇÑ EEPROM Read ÇÔ¼ö ÀÛ¼º
+##### Read í•¨ìˆ˜ ìž‘ì„±   
+    Wi-Fi ê´€ë ¨ EEPROM ì‚¬ìš©ì„ ìœ„í•œ EEPROM Read í•¨ìˆ˜ ìž‘ì„±
 ```C++
     U8 UserReadEep ( U16 mu16Addr )
     {
@@ -315,23 +315,23 @@ User Interface Function
         /* End user code. */
     }
 ```
-##### (2) Wi-Fi Buzz / Sound ¼³Á¤
-    - WIFI_BUZZER_SELECT            : Æä¾î¸µ ÁøÇà À½ (¼±ÅÃÀ½ "¶ò")
-    - WIFI_BUZZER_AP_CONNECT        : AP¿¬°áÀ½ (ÁøÀÔÀ½ "¶ì¸®¸µ" / Wi-Fi ¿¬°á¸ðµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù.)
-    - WIFI_BUZZER_BLE_CONNECT       : AP¿¬°á (ÁøÀÔÀ½ "¶ì¸®¸µ" / BLE¿¬°á¸ðµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù.)
-    - WIFI_BUZZER_SETUP             : WIFI ON (¼³Á¤À½ "¶òµ¿¢Ö" / Á¦Ç°ÀÇ Wi-Fi°¡ ÄÑÁ³½À´Ï´Ù.)
-    - WIFI_BUZZER_SERVER_CONNECT    : ¼­¹ö¿¬°á (¿¬°áÀ½ "¶ì¸®¸µ¢Ö" / Á¦Ç°°ú ¾ÛÀÌ ¼º°øÀûÀ¸·Î ¿¬°áµÇ¾ú½À´Ï´Ù.)
-    - WIFI_BUZZER_CANCEL            : WIFI OFF (ÇØÁ¦À½ "µ¿¶ò" / Á¦Ç°ÀÇ Wi-Fi°¡ ²¨Á³½À´Ï´Ù.)
-    - WIFI_BUZZER_AP_START          : AP½ÃÀÛÀ½ (¼³Á¤À½ "¶òµ¿ ¢Ö")
-    - WIFI_BUZZER_ERROR             : ºÒ°¡À½ (¿¡·¯À½ "¶ò±ø¶ò±ø")
-    - WIFI_BUZZER_WiFi_OFF          : Wi-Fi Æä¾î¸µ ÇØÁ¦À½(µ¿¶ò) / Wi-Fi ¿¬°á ¸ðµå°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù.
-    - WIFI_BUZZER_BLE_OFF           : ºí·çÅõ½º Æä¾î¸µ ÇØÁ¦À½(µ¿¶ò) / ºí·çÅõ½º ¿¬°á ¸ðµå°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù.
-    - WIFI_BUZZER_BLE_CERT          : Á¡À¯ÀÎÁõ¿Ï·æ À½(¼±ÅÃÀ½ "¶ò") / Á¦Ç°ÀÎÁõÀ» ÁøÇà ÁßÀÔ´Ï´Ù. ¾Û¿¡¼­ °¡ÀÌµåÇÏ´Â ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-    - WIFI_BUZZER_SERVER_FIRST      : Æä¾î¸µ ¿Ï·á ÈÄ ¼­¹ö¿¬°á (¿¬°áÀ½ "¶ì¸®¸µ¢Ö" / Á¦Ç°°ú ¾ÛÀÌ ¼º°øÀûÀ¸·Î ¿¬°áµÇ¾ú½À´Ï´Ù.)
-    - WIFI_BUZZER_SMART_CHECK_OK    : ¼³Á¤À½ ("¶òµ¿ ¢Ö") / ½º¸¶Æ® Áø´ÜÀÌ ¿Ï·á µÇ¾î Á¦Ç°À» »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-    - WIFI_BUZZER_SMART_CHECK_ERROR : ºÒ°¡À½ (¿¡·¯À½ "¶ò±ø¶ò±ø") / ½º¸¶Æ® Áø´ÜÀÌ ¿Ï·á µÇ¾ú½À´Ï´Ù.
-##### Buzz / Sound Ãâ·Â ÇÔ¼ö ÀÛ¼º   
-    Wi-Fi°ü·Ã ºÎÀú/À½¼º »ç¿îµå Ãâ·ÂÀ» À§ÇÑ ÄÚµå ÀÛ¼º  
+##### (2) Wi-Fi Buzz / Sound ì„¤ì •
+    - WIFI_BUZZER_SELECT            : íŽ˜ì–´ë§ ì§„í–‰ ìŒ (ì„ íƒìŒ "ëµ")
+    - WIFI_BUZZER_AP_CONNECT        : APì—°ê²°ìŒ (ì§„ìž…ìŒ "ë ë¦¬ë§" / Wi-Fi ì—°ê²°ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    - WIFI_BUZZER_BLE_CONNECT       : APì—°ê²° (ì§„ìž…ìŒ "ë ë¦¬ë§" / BLEì—°ê²°ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    - WIFI_BUZZER_SETUP             : WIFI ON (ì„¤ì •ìŒ "ëµë™â†—" / ì œí’ˆì˜ Wi-Fiê°€ ì¼œì¡ŒìŠµë‹ˆë‹¤.)
+    - WIFI_BUZZER_SERVER_CONNECT    : ì„œë²„ì—°ê²° (ì—°ê²°ìŒ "ë ë¦¬ë§â†—" / ì œí’ˆê³¼ ì•±ì´ ì„±ê³µì ìœ¼ë¡œ ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    - WIFI_BUZZER_CANCEL            : WIFI OFF (í•´ì œìŒ "ë™ëµ" / ì œí’ˆì˜ Wi-Fiê°€ êº¼ì¡ŒìŠµë‹ˆë‹¤.)
+    - WIFI_BUZZER_AP_START          : APì‹œìž‘ìŒ (ì„¤ì •ìŒ "ëµë™ â†—")
+    - WIFI_BUZZER_ERROR             : ë¶ˆê°€ìŒ (ì—ëŸ¬ìŒ "ëµê¹¡ëµê¹¡")
+    - WIFI_BUZZER_WiFi_OFF          : Wi-Fi íŽ˜ì–´ë§ í•´ì œìŒ(ë™ëµ) / Wi-Fi ì—°ê²° ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.
+    - WIFI_BUZZER_BLE_OFF           : ë¸”ë£¨íˆ¬ìŠ¤ íŽ˜ì–´ë§ í•´ì œìŒ(ë™ëµ) / ë¸”ë£¨íˆ¬ìŠ¤ ì—°ê²° ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.
+    - WIFI_BUZZER_BLE_CERT          : ì ìœ ì¸ì¦ì™„ë£¡ ìŒ(ì„ íƒìŒ "ëµ") / ì œí’ˆì¸ì¦ì„ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤. ì•±ì—ì„œ ê°€ì´ë“œí•˜ëŠ” ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+    - WIFI_BUZZER_SERVER_FIRST      : íŽ˜ì–´ë§ ì™„ë£Œ í›„ ì„œë²„ì—°ê²° (ì—°ê²°ìŒ "ë ë¦¬ë§â†—" / ì œí’ˆê³¼ ì•±ì´ ì„±ê³µì ìœ¼ë¡œ ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    - WIFI_BUZZER_SMART_CHECK_OK    : ì„¤ì •ìŒ ("ëµë™ â†—") / ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì´ ì™„ë£Œ ë˜ì–´ ì œí’ˆì„ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+    - WIFI_BUZZER_SMART_CHECK_ERROR : ë¶ˆê°€ìŒ (ì—ëŸ¬ìŒ "ëµê¹¡ëµê¹¡") / ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì´ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.
+##### Buzz / Sound ì¶œë ¥ í•¨ìˆ˜ ìž‘ì„±   
+    Wi-Fiê´€ë ¨ ë¶€ì €/ìŒì„± ì‚¬ìš´ë“œ ì¶œë ¥ì„ ìœ„í•œ ì½”ë“œ ìž‘ì„±  
 ```C++
     void UserBuzzSound ( U16 mu16Buzz )
     {
@@ -346,17 +346,17 @@ User Interface Function
         }
     }
 ```
-##### (3) ¼­¹ö ½Ã°£ ¼³Á¤
+##### (3) ì„œë²„ ì‹œê°„ ì„¤ì •
     Ex)
-    - mYear     : 2024 (2024³â)
-    - mMonth    : 12 (12¿ù)
-    - mDate     : 25 (25ÀÏ)
-    - mHour     : 23 (¿ÀÈÄ 11½Ã)
-    - mMin      : 59 (59ºÐ)
-    - mSec      : 59 (59ÃÊ)
-    - mDay      : 3 (¼ö¿äÀÏ) (1:¿ù ~ 7:ÀÏ)
-##### ¼­¹ö ½Ã°£ ¼³Á¤ ÇÔ¼ö ÀÛ¼º
-    ¼­¹ö·ÎºÎÅÍ ½Ã°èµ¥ÀÌÅÍ ¼ö½Å ½Ã ¸¶´Ù ¾Æ·¡ ÇÔ¼ö È£Ãâ (ÀÌº¥Æ®)
+    - mYear     : 2024 (2024ë…„)
+    - mMonth    : 12 (12ì›”)
+    - mDate     : 25 (25ì¼)
+    - mHour     : 23 (ì˜¤í›„ 11ì‹œ)
+    - mMin      : 59 (59ë¶„)
+    - mSec      : 59 (59ì´ˆ)
+    - mDay      : 3 (ìˆ˜ìš”ì¼) (1:ì›” ~ 7:ì¼)
+##### ì„œë²„ ì‹œê°„ ì„¤ì • í•¨ìˆ˜ ìž‘ì„±
+    ì„œë²„ë¡œë¶€í„° ì‹œê³„ë°ì´í„° ìˆ˜ì‹  ì‹œ ë§ˆë‹¤ ì•„ëž˜ í•¨ìˆ˜ í˜¸ì¶œ (ì´ë²¤íŠ¸)
 ```C++
     void SetUserSystemTime ( U16 mYear, U16 mMonth, U16 mDate, U16 mHour, U16 mMin, U16 mSec, U16 mDay )
     {
@@ -367,29 +367,29 @@ User Interface Function
 ```
 <br>
 
-## 4. Protocol List Settings  : ÇÁ·ÎÅäÄÝ ¼³Á¤ °¡ÀÌµå
+## 4. Protocol List Settings  : í”„ë¡œí† ì½œ ì„¤ì • ê°€ì´ë“œ
 ---
-### Æú´õ: WifiServerProtocolList/
-#### - <1> WIFI_A101x_FunctionList.c (»óÅÂ µ¥ÀÌÅÍ)
-##### (1) ÇÁ·ÎÅäÄÝ LIST ÀÛ¼º
-    - API ID            : ÇÁ·ÎÅäÄÝÀÇ API ID 
+### í´ë”: WifiServerProtocolList/
+#### - <1> WIFI_A101x_FunctionList.c (ìƒíƒœ ë°ì´í„°)
+##### (1) í”„ë¡œí† ì½œ LIST ìž‘ì„±
+    - API ID            : í”„ë¡œí† ì½œì˜ API ID 
 <br>
 
-    - DATA TYPE         : A1014 »ç¿ë¿©ºÎ / ½º¸¶Æ®Áø´Ü ÇÁ·ÎÅäÄÝ »ç¿ë¿©ºÎ ¼±ÅÃ (ÀÌ¿Ü´Â ¹Ì»ç¿ë)
-        -> TYPE_UNUSED                  : DATA TYPE ¹Ì»ç¿ë (Normal)
-        -> TYPE_A1014                   : A1014 »ç¿ë¼±ÅÃ (Á¦Ç°¿¡¼­ »óÅÂ ¼³Á¤ ½Ã DATAÀü¼Û)  
-        -> TYPE_SMART_DIAGNOSIS_CONTROL : ½º¸¶Æ®Áø´Ü ½ÃÀÛ/Á¤Áö ÇÁ·ÎÅäÄÝ ID, Áø´Ü½ÇÇà Áß ¿¹¿ÜÃ³¸®¸¦ À§ÇÑ DATA TYPE ¼³Á¤
+    - DATA TYPE         : A1014 ì‚¬ìš©ì—¬ë¶€ / ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ í”„ë¡œí† ì½œ ì‚¬ìš©ì—¬ë¶€ ì„ íƒ (ì´ì™¸ëŠ” ë¯¸ì‚¬ìš©)
+        -> TYPE_UNUSED                  : DATA TYPE ë¯¸ì‚¬ìš© (Normal)
+        -> TYPE_A1014                   : A1014 ì‚¬ìš©ì„ íƒ (ì œí’ˆì—ì„œ ìƒíƒœ ì„¤ì • ì‹œ DATAì „ì†¡)  
+        -> TYPE_SMART_DIAGNOSIS_CONTROL : ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ ì‹œìž‘/ì •ì§€ í”„ë¡œí† ì½œ ID, ì§„ë‹¨ì‹¤í–‰ ì¤‘ ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ìœ„í•œ DATA TYPE ì„¤ì •
 <br>
 
-    - Initial VALUE     : Event DATA Ã³¸®¸¦ À§ÇÑ ÃÊ±â°ª (¼öÁ¤ ÇÊ¿ä ¾øÀ½. [0]°íÁ¤)
+    - Initial VALUE     : Event DATA ì²˜ë¦¬ë¥¼ ìœ„í•œ ì´ˆê¸°ê°’ (ìˆ˜ì • í•„ìš” ì—†ìŒ. [0]ê³ ì •)
 <br>
 
-    - Event Form        : ÇØ´ç ÇÁ·ÎÅäÄÝ IDÀÇ Event Ã³¸®¸¦ À§ÇÑ Evnet À¯Çü ¼³Á¤ (1ÃÊ¸¶´Ù Event Check ÁøÇà)
-        -> EVENT_UNUSED         : Event Ã³¸® ¾øÀ½
-        -> EVENT_STATUS_CHANGE  : ÇØ´ç IDÀÇ DATA º¯°æ ½Ã Event DATA Àü¼Û
-        -> EVENT_ZERO_TO_ONE    : ÇØ´ç IDÀÇ DATA°¡ "0"¿¡¼­ "1"·Î º¯°æ ½Ã¸¸ Event DATA Àü¼Û
-        -> EVENT_ZERO_TO_OTHER  : ÇØ´ç IDÀÇ DATA°¡ "0"¿¡¼­ "?"(0ÀÌ ¾Æ´Ñ°ª)À¸·Î º¯°æ ½Ã Event DATA Àü¼Û
-    [EventÃ³¸®°¡ »ó±â À¯Çü(Event Form)¿¡ ÇØ´çµÇÁö ¾Ê´Â ÀÌº¥Æ® Ã³¸®ÀÇ °æ¿ì [EVENT_UNUSED]·Î ¼³Á¤ ÈÄ Main ÇÁ·Î±×·¥¿¡¼­ "WifiSendData(WIFI_DATA_FUNCTION)" È£Ãâ ÇÏ¿© Event Ã³¸®]
+    - Event Form        : í•´ë‹¹ í”„ë¡œí† ì½œ IDì˜ Event ì²˜ë¦¬ë¥¼ ìœ„í•œ Evnet ìœ í˜• ì„¤ì • (1ì´ˆë§ˆë‹¤ Event Check ì§„í–‰)
+        -> EVENT_UNUSED         : Event ì²˜ë¦¬ ì—†ìŒ
+        -> EVENT_STATUS_CHANGE  : í•´ë‹¹ IDì˜ DATA ë³€ê²½ ì‹œ Event DATA ì „ì†¡
+        -> EVENT_ZERO_TO_ONE    : í•´ë‹¹ IDì˜ DATAê°€ "0"ì—ì„œ "1"ë¡œ ë³€ê²½ ì‹œë§Œ Event DATA ì „ì†¡
+        -> EVENT_ZERO_TO_OTHER  : í•´ë‹¹ IDì˜ DATAê°€ "0"ì—ì„œ "?"(0ì´ ì•„ë‹Œê°’)ìœ¼ë¡œ ë³€ê²½ ì‹œ Event DATA ì „ì†¡
+    [Eventì²˜ë¦¬ê°€ ìƒê¸° ìœ í˜•(Event Form)ì— í•´ë‹¹ë˜ì§€ ì•ŠëŠ” ì´ë²¤íŠ¸ ì²˜ë¦¬ì˜ ê²½ìš° [EVENT_UNUSED]ë¡œ ì„¤ì • í›„ Main í”„ë¡œê·¸ëž¨ì—ì„œ "WifiSendData(WIFI_DATA_FUNCTION)" í˜¸ì¶œ í•˜ì—¬ Event ì²˜ë¦¬]
 <br>
 
 ```C++
@@ -408,11 +408,11 @@ WifiTxFuncEventList_T WifiFuncEventList[] =
     {   0x000A,       TYPE_UNUSED,                          0,         EVENT_STATUS_CHANGE },
 };
 ```
-##### (2) ÇÁ·ÎÅäÄÝ DATA ÀÛ¼º
-    - ÇÁ·ÎÅäÄÝ ID¿¡ ÇØ´çÇÏ´Â DATA ÀÛ¼º
+##### (2) í”„ë¡œí† ì½œ DATA ìž‘ì„±
+    - í”„ë¡œí† ì½œ IDì— í•´ë‹¹í•˜ëŠ” DATA ìž‘ì„±
 <br>
 
-    - [Á¦Ç°] -> [¼­¹ö]
+    - [ì œí’ˆ] -> [ì„œë²„]
 
 ```C++
 // Ex)
@@ -422,14 +422,14 @@ U16 GetUserSystemFunction ( U16 mu16Func )
     switch ( mu16Func )
     {
         case 0x0002 :               /* ID */
-            mu16Data = F_ColdOff;   /* ID¿¡ ÇØ´çÇÏ´Â DATA ¼³Á¤ ÀÛ¼º */
+            mu16Data = F_ColdOff;   /* IDì— í•´ë‹¹í•˜ëŠ” DATA ì„¤ì • ìž‘ì„± */
         break;
     }
 }
 ```
 <br>
 
-    - [¼­¹ö] -> [Á¦Ç°]
+    - [ì„œë²„] -> [ì œí’ˆ]
     
 ```C++
 // Ex)
@@ -438,7 +438,7 @@ void SetUserSystemFunction ( U16 mu16Func, U16 mData )
     switch ( mu16Func )
     {
         case 0x0002 :               /* ID */
-            if (mData == 1)         /* ID¿¡ ÇØ´çÇÏ´Â DATA ¼³Á¤ ÀÛ¼º */
+            if (mData == 1)         /* IDì— í•´ë‹¹í•˜ëŠ” DATA ì„¤ì • ìž‘ì„± */
             {
                 F_ColdOff = CLEAR;
                 Play_Voice(VOICE_COLD_ON_SETTING);
@@ -453,15 +453,15 @@ void SetUserSystemFunction ( U16 mu16Func, U16 mData )
 }
 ```
 
-#### - <2> WIFI_A102x_SensorList.c (¼¾¼­ µ¥ÀÌÅÍ)
-##### (1) ÇÁ·ÎÅäÄÝ LIST ÀÛ¼º
-    - API ID            : ÇÁ·ÎÅäÄÝÀÇ API ID 
+#### - <2> WIFI_A102x_SensorList.c (ì„¼ì„œ ë°ì´í„°)
+##### (1) í”„ë¡œí† ì½œ LIST ìž‘ì„±
+    - API ID            : í”„ë¡œí† ì½œì˜ API ID 
 <br>
 
-    - DATA TYPE         : A1014 »ç¿ë¿©ºÎ / ½º¸¶Æ®Áø´Ü ÇÁ·ÎÅäÄÝ »ç¿ë¿©ºÎ ¼±ÅÃ (ÀÌ¿Ü´Â ¹Ì»ç¿ë)
-        -> TYPE_UNSIGNED                 : ºÎÈ£ ¾ø´Â µ¥ÀÌÅÍ (0 ~ 65535)
-        -> TYPE_SIGNED                   : ºÎÈ£ ÀÖ´Â µ¥ÀÌÅÍ (-32768 ~ 32767) 
-        -> TYPE_STYPE_SENSOR_WATT        : Àü·Â µ¥ÀÌÅÍ 0.00 ~ 655.35
+    - DATA TYPE         : A1014 ì‚¬ìš©ì—¬ë¶€ / ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ í”„ë¡œí† ì½œ ì‚¬ìš©ì—¬ë¶€ ì„ íƒ (ì´ì™¸ëŠ” ë¯¸ì‚¬ìš©)
+        -> TYPE_UNSIGNED                 : ë¶€í˜¸ ì—†ëŠ” ë°ì´í„° (0 ~ 65535)
+        -> TYPE_SIGNED                   : ë¶€í˜¸ ìžˆëŠ” ë°ì´í„° (-32768 ~ 32767) 
+        -> TYPE_STYPE_SENSOR_WATT        : ì „ë ¥ ë°ì´í„° 0.00 ~ 655.35
 <br>
 
 ```C++
@@ -480,11 +480,11 @@ static const WifiNormalList_T WifiSensorProtocolList[] =
     {   0x000A,    TYPE_SIGNED      },
 };
 ```
-##### (2) ÇÁ·ÎÅäÄÝ DATA ÀÛ¼º
-    - ÇÁ·ÎÅäÄÝ ID¿¡ ÇØ´çÇÏ´Â DATA ÀÛ¼º
+##### (2) í”„ë¡œí† ì½œ DATA ìž‘ì„±
+    - í”„ë¡œí† ì½œ IDì— í•´ë‹¹í•˜ëŠ” DATA ìž‘ì„±
 <br>
 
-    - [Á¦Ç°] -> [¼­¹ö]
+    - [ì œí’ˆ] -> [ì„œë²„]
 
 ```C++
 // Ex)
@@ -503,20 +503,20 @@ I16 GetUserSystemSensor ( U16 mu16Sen )
 ```
 <br>
 
-#### - <3> WIFI_A103x_ErrorList.c (¿¡·¯ µ¥ÀÌÅÍ)
-##### (1) ÇÁ·ÎÅäÄÝ LIST ÀÛ¼º
-    - API ID            : ÇÁ·ÎÅäÄÝÀÇ API ID 
+#### - <3> WIFI_A103x_ErrorList.c (ì—ëŸ¬ ë°ì´í„°)
+##### (1) í”„ë¡œí† ì½œ LIST ìž‘ì„±
+    - API ID            : í”„ë¡œí† ì½œì˜ API ID 
 <br>
 
-    - DATA TYPE         : (¹Ì»ç¿ë)
-        -> TYPE_UNUSED  : DATA TYPE ¹Ì»ç¿ë (Normal)
+    - DATA TYPE         : (ë¯¸ì‚¬ìš©)
+        -> TYPE_UNUSED  : DATA TYPE ë¯¸ì‚¬ìš© (Normal)
 <br>
 
-    - Initial VALUE     : Event DATA Ã³¸®¸¦ À§ÇÑ ÃÊ±â°ª (¼öÁ¤ ÇÊ¿ä ¾øÀ½. [0]°íÁ¤)
+    - Initial VALUE     : Event DATA ì²˜ë¦¬ë¥¼ ìœ„í•œ ì´ˆê¸°ê°’ (ìˆ˜ì • í•„ìš” ì—†ìŒ. [0]ê³ ì •)
 <br>
 
-    - Event Form        : ÇØ´ç ÇÁ·ÎÅäÄÝ IDÀÇ Event Ã³¸®¸¦ À§ÇÑ Evnet À¯Çü ¼³Á¤ (1ÃÊ¸¶´Ù Event Check ÁøÇà)
-        -> EVENT_STATUS_CHANGE  : ÇØ´ç IDÀÇ DATA º¯°æ ½Ã Event DATA Àü¼Û (°íÁ¤)
+    - Event Form        : í•´ë‹¹ í”„ë¡œí† ì½œ IDì˜ Event ì²˜ë¦¬ë¥¼ ìœ„í•œ Evnet ìœ í˜• ì„¤ì • (1ì´ˆë§ˆë‹¤ Event Check ì§„í–‰)
+        -> EVENT_STATUS_CHANGE  : í•´ë‹¹ IDì˜ DATA ë³€ê²½ ì‹œ Event DATA ì „ì†¡ (ê³ ì •)
 <br>
 
 ```C++
@@ -535,12 +535,12 @@ WifiTxFuncEventList_T WifiErrorProtocolList[] =
     {   0x000A,          TYPE_UNUSED,           0,              EVENT_STATUS_CHANGE },
 };
 ```
-##### (2) ÇÁ·ÎÅäÄÝ DATA ÀÛ¼º
-    - ÇÁ·ÎÅäÄÝ ID¿¡ ÇØ´çÇÏ´Â DATA ÀÛ¼º
+##### (2) í”„ë¡œí† ì½œ DATA ìž‘ì„±
+    - í”„ë¡œí† ì½œ IDì— í•´ë‹¹í•˜ëŠ” DATA ìž‘ì„±
 <br>
 
-    - [Á¦Ç°] -> [¼­¹ö]
-    - ÇØ´ç ¿¡·¯ÇÁ·ÎÅäÄÝÀÇ Error ¾øÀ½ [0] / Error ÀÖÀ½ [1] 
+    - [ì œí’ˆ] -> [ì„œë²„]
+    - í•´ë‹¹ ì—ëŸ¬í”„ë¡œí† ì½œì˜ Error ì—†ìŒ [0] / Error ìžˆìŒ [1] 
 
 ```C++
 // Ex)
@@ -559,14 +559,14 @@ I16 GetUserSystemError ( U16 mu16Err )
 ```
 <br>
 
-#### - <4> WIFI_A108x_A109x_PartList.c (½º¸¶Æ®Áø´Ü µ¥ÀÌÅÍ)
-##### (1) ÇÁ·ÎÅäÄÝ LIST ÀÛ¼º
-    - API ID            : ÇÁ·ÎÅäÄÝÀÇ API ID 
+#### - <4> WIFI_A108x_A109x_PartList.c (ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ ë°ì´í„°)
+##### (1) í”„ë¡œí† ì½œ LIST ìž‘ì„±
+    - API ID            : í”„ë¡œí† ì½œì˜ API ID 
 <br>
 
     - DATA TYPE         
-        -> TYPE_UNSIGNED                 : ºÎÈ£ ¾ø´Â µ¥ÀÌÅÍ (0 ~ 65535)
-        -> TYPE_SIGNED                   : ºÎÈ£ ÀÖ´Â µ¥ÀÌÅÍ (-32768 ~ 32767) 
+        -> TYPE_UNSIGNED                 : ë¶€í˜¸ ì—†ëŠ” ë°ì´í„° (0 ~ 65535)
+        -> TYPE_SIGNED                   : ë¶€í˜¸ ìžˆëŠ” ë°ì´í„° (-32768 ~ 32767) 
 <br>
 
 ```C++
@@ -585,11 +585,11 @@ static const WifiNormalList_T WifiParaProtocolList[] =
     {   0x000A,    TYPE_UNSIGNED   },
 };
 ```
-##### (2) ÇÁ·ÎÅäÄÝ DATA ÀÛ¼º
-    - ÇÁ·ÎÅäÄÝ ID¿¡ ÇØ´çÇÏ´Â DATA ÀÛ¼º
+##### (2) í”„ë¡œí† ì½œ DATA ìž‘ì„±
+    - í”„ë¡œí† ì½œ IDì— í•´ë‹¹í•˜ëŠ” DATA ìž‘ì„±
 <br>
 
-    - [Á¦Ç°] -> [¼­¹ö]
+    - [ì œí’ˆ] -> [ì„œë²„]
 
 ```C++
 // Ex)
@@ -607,23 +607,23 @@ U16 GetUserSystemPara ( U16 mu16Para )
 ```
 <br>
 
-#### - <5> WIFI_A20xx_InformationList.c (ºÎ°¡Á¤º¸ µ¥ÀÌÅÍ)
-##### (1) ÇÁ·ÎÅäÄÝ LIST ÀÛ¼º
-    - API ID            : ÇÁ·ÎÅäÄÝÀÇ API ID 
+#### - <5> WIFI_A20xx_InformationList.c (ë¶€ê°€ì •ë³´ ë°ì´í„°)
+##### (1) í”„ë¡œí† ì½œ LIST ìž‘ì„±
+    - API ID            : í”„ë¡œí† ì½œì˜ API ID 
 <br>
 
     - DATA TYPE         
-        -> TYPE_INFO_NORMAL                 : ±âº» µ¥ÀÌÅÍ
-        -> TYPE_INFO_TIME                   : ½Ã°£ µ¥ÀÌÅÍ
-        -> TYPE_INFO_WEATHER                : ³¯¾¾ µ¥ÀÌÅÍ
-        -> TYPE_INFO_AQI                    : °ø±âÁú µ¥ÀÌÅÍ
-        -> TYPE_INFO_TEMP                   : ¿Âµµ µ¥ÀÌÅÍ
-        -> TYPE_INFO_DIAGNOSIS_RQ           : Á¤¹ÐÁø´Ü °á°ú ¿äÃ» µ¥ÀÌÅÍ
-        -> TYPE_INFO_JSON                   : SAP ºÎ°¡Á¤º¸ JSON µ¥ÀÌÅÍ
+        -> TYPE_INFO_NORMAL                 : ê¸°ë³¸ ë°ì´í„°
+        -> TYPE_INFO_TIME                   : ì‹œê°„ ë°ì´í„°
+        -> TYPE_INFO_WEATHER                : ë‚ ì”¨ ë°ì´í„°
+        -> TYPE_INFO_AQI                    : ê³µê¸°ì§ˆ ë°ì´í„°
+        -> TYPE_INFO_TEMP                   : ì˜¨ë„ ë°ì´í„°
+        -> TYPE_INFO_DIAGNOSIS_RQ           : ì •ë°€ì§„ë‹¨ ê²°ê³¼ ìš”ì²­ ë°ì´í„°
+        -> TYPE_INFO_JSON                   : SAP ë¶€ê°€ì •ë³´ JSON ë°ì´í„°
 <br>
 
 ```C++
-// Ex) »ç¿ëÇÏ´Â µ¥ÀÌÅÍ¸¸ È°¼ºÈ­ ¼³Á¤
+// Ex) ì‚¬ìš©í•˜ëŠ” ë°ì´í„°ë§Œ í™œì„±í™” ì„¤ì •
 /* (1) Initial or 24H cycle                 : TYPE_INFO_TIME / TYPE_INFO_NORMAL / TYPE_INFO_WEATHER / TYPE_INFO_TEMP / TYPE_INFO_JSON */
 /* (2) WifiSendData(WIFI_DATA_INFO) Reqest  : TYPE_INFO_TIME / TYPE_INFO_NORMAL / TYPE_INFO_WEATHER */
 /* (3) 20Min cycle                          : TYPE_INFO_NORMAL / TYPE_INFO_WEATHER / TYPE_INFO_TEMP */
@@ -664,20 +664,20 @@ static const WifiNormalList_T WifiInfoProtocolList[] =
     {   WIFI_INFO_0032_ENVIRONMENT,              TYPE_INFO_JSON         } 
 };
 ```
-##### (2) JSON ÇÁ·ÎÅäÄÝ µ¥ÀÌÅÍ ÀÛ¼º
-    - ÇÁ·ÎÅäÄÝ ID¿¡ ÇØ´çÇÏ´Â DATA ÀÛ¼º
+##### (2) JSON í”„ë¡œí† ì½œ ë°ì´í„° ìž‘ì„±
+    - í”„ë¡œí† ì½œ IDì— í•´ë‹¹í•˜ëŠ” DATA ìž‘ì„±
 <br>
 
-    - [¼­¹ö] -> [Á¦Ç°]
+    - [ì„œë²„] -> [ì œí’ˆ]
 ```C++
-// Ex) JSON µ¥ÀÌÅÍ ÆÄ½Ì
+// Ex) JSON ë°ì´í„° íŒŒì‹±
 void SetUserSystemJsonObject ( U16 mu16Info, I8 *pBuf )
 {
 	U8 mu8KeyIndex = 0;
 	U8 mu8SAPCode = 0;
 	switch ( mu16Info )
     {
-		case WIFI_INFO_JSON_0030_UV_DATE:   // UV ÃÖ±Ù»ì±Õ½Ã°£ / UV»ì±Õ¿¹Á¤½Ã°£ ÇÁ·ÎÅäÄÝ
+		case WIFI_INFO_JSON_0030_UV_DATE:   // UV ìµœê·¼ì‚´ê· ì‹œê°„ / UVì‚´ê· ì˜ˆì •ì‹œê°„ í”„ë¡œí† ì½œ
 
             _MEMSET_( (void __FAR*) &JsonObjectDepth_1, 0, sizeof(JSONObject) );
             _MEMSET_( (void __FAR*) &JsonObjectDepth_2, 0, sizeof(JSONObject) );
@@ -686,32 +686,32 @@ void SetUserSystemJsonObject ( U16 mu16Info, I8 *pBuf )
             // Object O, Array X - Json parsing Depth1 c:"S1000"
 
             mu8SAPCode = JsonSAPCodeSuccess(&JsonObjectDepth_1);
-            if (mu8SAPCode == F1000)      // SAP Á¢¼Ó ½ÇÆÐ (CODE : F1000, SAP001)
+            if (mu8SAPCode == F1000)      // SAP ì ‘ì† ì‹¤íŒ¨ (CODE : F1000, SAP001)
             {
                 SetWifiSapStatus(STATUS_SVR_SAP_0030_UV_DATE, F1000);
                 return;
             }
-            else if (mu8SAPCode == E9000) // E9000 (µ¥ÀÌÅÍ ¾øÀ½)
+            else if (mu8SAPCode == E9000) // E9000 (ë°ì´í„° ì—†ìŒ)
             {
                 SetWifiSapStatus(STATUS_SVR_SAP_0030_UV_DATE, E9000);
             }
-            else	                      // S1000 (µ¥ÀÌÅÍ °¡Á®¿À±â ¼º°ø)
+            else	                      // S1000 (ë°ì´í„° ê°€ì ¸ì˜¤ê¸° ì„±ê³µ)
             {
                 SetWifiSapStatus(STATUS_SVR_SAP_0030_UV_DATE, S1000);
             }
 
             mu8KeyIndex = (U8)GetJsonKeyIndexSearch(JSON_KEY_UV_FAUCETINFO, &JsonObjectDepth_1);   // Key "fc"
-            if(mu8KeyIndex != (U8)0xFF){ // Index Ã£±â ¿Ï·á ½Ã
+            if(mu8KeyIndex != (U8)0xFF){ // Index ì°¾ê¸° ì™„ë£Œ ì‹œ
                 cJsonParseJson(JsonObjectDepth_1.items[mu8KeyIndex].value, &JsonObjectDepth_2, NULL); 
                 // Object O, Array X  - Depth2 Parsing : "fc": { Key:Value, Key:Value }
 
-                /* ÆÄ¿ì¼Â UV ÃÖ±Ù µ¿ÀÛ½Ã°£ */
+                /* íŒŒìš°ì…‹ UV ìµœê·¼ ë™ìž‘ì‹œê°„ */
                 GetJsonDateValue(gJsonValue.UV_Faucet.u8JsonDateLD, JSON_KEY_LAST_DATE, &JsonObjectDepth_2);
-                // [gJsonValue.UV_Faucet.u8JsonDateLD]¿¡ ÆÄ½Ì DATA ¼³Á¤
+                // [gJsonValue.UV_Faucet.u8JsonDateLD]ì— íŒŒì‹± DATA ì„¤ì •
 
-                /* ÆÄ¿ì¼Â UV µ¿ÀÛ ¿¹Á¤½Ã°£ */
+                /* íŒŒìš°ì…‹ UV ë™ìž‘ ì˜ˆì •ì‹œê°„ */
                 GetJsonDateValue(gJsonValue.UV_Faucet.u8JsonDateND, JSON_KEY_NEXT_DATE, &JsonObjectDepth_2);
-                //[gJsonValue.UV_Faucet.u8JsonDateND]¿¡ ÆÄ½Ì DATA ¼³Á¤
+                //[gJsonValue.UV_Faucet.u8JsonDateND]ì— íŒŒì‹± DATA ì„¤ì •
             }
 		break;
 		default:
@@ -726,5 +726,5 @@ void SetUserSystemJsonObject ( U16 mu16Info, I8 *pBuf )
 
 <br>
 
-#### - <6> WIFI_A105x_ParaList.c (ÆÄ¶ó¹ÌÅÍ µ¥ÀÌÅÍ)
-#### - <7> WIFI_A10Ax_AccumulateList.c (´©ÀûÁ¤º¸ µ¥ÀÌÅÍ)
+#### - <6> WIFI_A105x_ParaList.c (íŒŒë¼ë¯¸í„° ë°ì´í„°)
+#### - <7> WIFI_A10Ax_AccumulateList.c (ëˆ„ì ì •ë³´ ë°ì´í„°)

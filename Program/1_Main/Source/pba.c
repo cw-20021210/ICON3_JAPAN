@@ -1,7 +1,7 @@
 /// @file     buzzer.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ºÎÀú  µ¿ÀÛ Á¦¾î file
+/// @brief    ë¶€ì €  ë™ì‘ ì œì–´ file
 #define PBA_C
 #include "include/_include.h"
 
@@ -17,13 +17,13 @@ static void PBAStepNoSet(U8 data);
 
 PBA_StepTable PBA_Step[Z_PBAStepNum_Max] =
 {
-	//	½ºÅÜ No			 	Step Func.
-	{ Z_PBAStep_00, 		PBAStep_00 },     		//	ºÎÆÃ
-	{ Z_PBAStep_10, 		PBAStep_10 },    		//	±â´É°Ë»ç¸ğµå
-	{ Z_PBAStep_20, 		PBAStep_20 },     		//	ºÎÇÏ°Ë»ç¸ğµå
+	//	ìŠ¤í… No			 	Step Func.
+	{ Z_PBAStep_00, 		PBAStep_00 },     		//	ë¶€íŒ…
+	{ Z_PBAStep_10, 		PBAStep_10 },    		//	ê¸°ëŠ¥ê²€ì‚¬ëª¨ë“œ
+	{ Z_PBAStep_20, 		PBAStep_20 },     		//	ë¶€í•˜ê²€ì‚¬ëª¨ë“œ
 };
 
-/// @brief    ÃÊ±âÈ­
+/// @brief    ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void PBA_Initialize(void)
@@ -31,32 +31,32 @@ void PBA_Initialize(void)
 	Ini_PBAStep_00();
 }
 
-/// @brief    PBA TestMode Á¦¾î
+/// @brief    PBA TestMode ì œì–´
 /// @param    void
 /// @return   void
 void PBAControl(void)
 {
-	if (gu8_PBAStepNum < Z_PBAStepNum_Max)			//	½ºÅÜ Çã¿ë ¹üÀ§ ÀÌ³»
+	if (gu8_PBAStepNum < Z_PBAStepNum_Max)			//	ìŠ¤í… í—ˆìš© ë²”ìœ„ ì´ë‚´
 	{
-		if ((gu8_PBAStep != Z_PBAStep_00) && (F_TestMode_PBA == CLEAR))	//		°Ë»ç¸ğµå°¡ ¾Æ´Ñ °æ¿ì
+		if ((gu8_PBAStep != Z_PBAStep_00) && (F_TestMode_PBA == CLEAR))	//		ê²€ì‚¬ëª¨ë“œê°€ ì•„ë‹Œ ê²½ìš°
 		{
 			Ini_PBAStep_00();
 		}
 
-		(PBA_Step[gu8_PBAStepNum].exe)();			//		ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
+		(PBA_Step[gu8_PBAStepNum].exe)();			//		í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
 	}
-	else											//	½ºÅÜ¹üÀ§ ¿Ü
+	else											//	ìŠ¤í…ë²”ìœ„ ì™¸
 	{
-		SafetyLoop();								//		¾ÈÀüÁ¤Áö ·çÇÁ
+		SafetyLoop();								//		ì•ˆì „ì •ì§€ ë£¨í”„
 	}
 }
 
-/// @brief    ´ë±â
+/// @brief    ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void PBAStep_00(void)
 {
-	if (F_TestMode_PBA == SET)						//	°Ë»ç¸ğµå ÁøÀÔ ÀÎ °æ¿ì
+	if (F_TestMode_PBA == SET)						//	ê²€ì‚¬ëª¨ë“œ ì§„ì… ì¸ ê²½ìš°
 	{
 		Ini_PBAStep_10();
 	}
@@ -66,7 +66,7 @@ static void Ini_PBAStep_00(void)
 	PBAStepNoSet(Z_PBAStepNum_00);
 }
 
-/// @brief    ±â´É°Ë»ç¸ğµå
+/// @brief    ê¸°ëŠ¥ê²€ì‚¬ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void PBAStep_10(void)
@@ -164,7 +164,7 @@ static void PBAStep_10(void)
 }
 static void Ini_PBAStep_10(void)
 {
-	F_TestMode_PBA_2 = CLEAR;					//	ºÎÇÏÅ×½ºÆ® ¸ğµå ÇØÁ¦
+	F_TestMode_PBA_2 = CLEAR;					//	ë¶€í•˜í…ŒìŠ¤íŠ¸ ëª¨ë“œ í•´ì œ
 
 	F_PBATest_ColdSensorOFF = 0;
 	F_PBATest_LeakSensorOFF = 0;
@@ -197,12 +197,12 @@ static void Ini_PBAStep_10(void)
 
 	gu8_TimerPBATest_FanFB = Z_TimerPBATest_FanFB;
 
-	gu8_TimerFCTSet = Z_TimerFCTSet;			//		Å×½ºÆ®¸ğµå ÀüÈ¯ Ç¥½Ã(tE1, tE2) Å¸ÀÌ¸Ó set
+	gu8_TimerFCTSet = Z_TimerFCTSet;			//		í…ŒìŠ¤íŠ¸ëª¨ë“œ ì „í™˜ í‘œì‹œ(tE1, tE2) íƒ€ì´ë¨¸ set
 
 	PBAStepNoSet(Z_PBAStepNum_10);
 }
 
-/// @brief    ºÎÇÏ°Ë»ç¸ğµå
+/// @brief    ë¶€í•˜ê²€ì‚¬ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void PBAStep_20(void)
@@ -435,8 +435,8 @@ static void Ini_PBAStep_20(void)
 	F_TEMFeedBack_Error = 0;
 	F_24VFeedBack_Error = 0;
 
-	F_TestMode_PBA_2 = SET;						//	ºÎÇÏ Å×½ºÆ®¸ğµå ¼³Á¤
-	gu8_TimerFCTSet = Z_TimerFCTSet;			//		Å×½ºÆ®¸ğµå ÀüÈ¯ Ç¥½Ã(tE1, tE2) Å¸ÀÌ¸Ó set
+	F_TestMode_PBA_2 = SET;						//	ë¶€í•˜ í…ŒìŠ¤íŠ¸ëª¨ë“œ ì„¤ì •
+	gu8_TimerFCTSet = Z_TimerFCTSet;			//		í…ŒìŠ¤íŠ¸ëª¨ë“œ ì „í™˜ í‘œì‹œ(tE1, tE2) íƒ€ì´ë¨¸ set
 
 	gu8_TimerPBATest_HeaterFB = Z_TimerPBATest_HeaterFB;
 	gu8_TimerPBATest_TemFB = Z_TimerPBATest_TemFB;
@@ -444,7 +444,7 @@ static void Ini_PBAStep_20(void)
 	PBAStepNoSet(Z_PBAStepNum_20);
 }
 
-/// @brief    °Ë»ç¸ğµå ½ºÅÜ ¼³Á¤
+/// @brief    ê²€ì‚¬ëª¨ë“œ ìŠ¤í… ì„¤ì •
 /// @param    void
 /// @return   void
 static void PBAStepNoSet(U8 data)
@@ -456,7 +456,7 @@ static void PBAStepNoSet(U8 data)
 		Z_PBAStep_20,
 	};
 	/************************************************/
-	gu8_PBAStepNum = data; 							/*	ÀÏ·Ã ¹øÈ£ set*/
+	gu8_PBAStepNum = data; 							/*	ì¼ë ¨ ë²ˆí˜¸ set*/
 
-	gu8_PBAStep = DT_PBANumber[gu8_PBAStepNum]; 	/*	»óÅÂ mode No. set*/
+	gu8_PBAStep = DT_PBANumber[gu8_PBAStepNum]; 	/*	ìƒíƒœ mode No. set*/
 }

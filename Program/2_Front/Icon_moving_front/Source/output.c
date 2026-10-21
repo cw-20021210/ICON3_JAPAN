@@ -1,14 +1,14 @@
 /// @file     output.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Ãâ·Â Ã³¸® file
+/// @brief    ì¶œë ¥ ì²˜ë¦¬ file
 #define OUTPUT_C
 #include "include/_include.h"
 
 
 static void OutputNotUsePort(void);
 
-/// @brief    Ãâ·ÂÃ³¸® ÃÊ±âÈ­
+/// @brief    ì¶œë ¥ì²˜ë¦¬ ì´ˆê¸°í™”
 /// @param    voidu
 /// @return   void
 void Output_Initialize(void)
@@ -16,23 +16,23 @@ void Output_Initialize(void)
 
 }
 
-/// @brief    Ãâ·Â Ã³¸®
+/// @brief    ì¶œë ¥ ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void OutputControl(void)
 {
 	/************************************************/
 	/*---------------------------------*/
-	/*	Àü ºÎÇÏÀÇ Ãâ·Â Ã³¸®				   */
+	/*	ì „ ë¶€í•˜ì˜ ì¶œë ¥ ì²˜ë¦¬				   */
 	/*---------------------------------*/
 
 	/*---------------------------------*/
-	/*	¹Ì»ç¿ë PORT Ãâ·Â Ã³¸®			   */
+	/*	ë¯¸ì‚¬ìš© PORT ì¶œë ¥ ì²˜ë¦¬			   */
 	/*---------------------------------*/
-	OutputNotUsePort(); 							//	¹Ì»ç¿ë Æ÷Æ® Ãâ·Â
+	OutputNotUsePort(); 							//	ë¯¸ì‚¬ìš© í¬íŠ¸ ì¶œë ¥
 }
 
-/// @brief    ¹Ì»ç¿ë Æ÷Æ® Ã³¸®
+/// @brief    ë¯¸ì‚¬ìš© í¬íŠ¸ ì²˜ë¦¬
 /// @param    void
 /// @return   void
 static void OutputNotUsePort(void)

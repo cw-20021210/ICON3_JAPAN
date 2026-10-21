@@ -1,12 +1,12 @@
 /// @file     macro.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    °ø¿ë Macro Ã³¸® file
+/// @brief    ê³µìš© Macro ì²˜ë¦¬ file
 #define MACRO_C
 #include "include/_include.h"
 
 
-/// @brief    delay ÇÔ¼ö
+/// @brief    delay í•¨ìˆ˜
 /// @param    mu8Time : ??
 /// @return   void
 void Delay(U16 mu8Time)
@@ -30,8 +30,8 @@ void Delay(U16 mu8Time)
 //	while(--time) NOP();
 //}
 
-/// @brief    delay ms ÇÔ¼ö
-/// @param    mu8Time : delay ½Ã°£(ms)
+/// @brief    delay ms í•¨ìˆ˜
+/// @param    mu8Time : delay ì‹œê°„(ms)
 /// @return   void
 void Delay_ms(U16 mu8Time)
 {
@@ -73,89 +73,89 @@ U8 DEC2HEX(U8 mu8DecData)
 	return mu8ReturnData;
 }
 
-/// @brief    ASCII CODE ¿ªº¯È¯ (1¹ÙÀÌÆ®ºĞ)
-/// @param    U8 *pBuffer (º¯È¯Àü DATA·ÎÀÇ POINTER) / U8 *pByteDat (º¯È¯ÈÄ DATA º¸Á¸ RAMÀÇ POINTER)
-/// @return   0=ÀÌ»óÁ¾·á	1=Á¤»óÁ¾·á
+/// @brief    ASCII CODE ì—­ë³€í™˜ (1ë°”ì´íŠ¸ë¶„)
+/// @param    U8 *pBuffer (ë³€í™˜ì „ DATAë¡œì˜ POINTER) / U8 *pByteDat (ë³€í™˜í›„ DATA ë³´ì¡´ RAMì˜ POINTER)
+/// @return   0=ì´ìƒì¢…ë£Œ	1=ì •ìƒì¢…ë£Œ
 U8 DisAsciiByte(U8 *pBuffer, U8 *pByteDat)
 {
 	U8 work1, work2;
 	/****************************************************/
 	if (DisAsciiNibble(pBuffer, &work1) == 0)
-	{ /*	»óÀ§nibble data º¯È¯ÀÎ °æ¿ì*/
-		return (0); /*		¹İÈ¯°ª=[0:ÀÌ»óÁ¾·á]*/
+	{ /*	ìƒìœ„nibble data ë³€í™˜ì¸ ê²½ìš°*/
+		return (0); /*		ë°˜í™˜ê°’=[0:ì´ìƒì¢…ë£Œ]*/
 	}
 	if (DisAsciiNibble(pBuffer + 1, &work2) == 0)
-	{ /*	ÇÏÀ§nibble data º¯È¯ÀÎ °æ¿ì*/
-		return (0); /*		¹İÈ¯°ª=[0:ÀÌ»óÁ¾·á]*/
+	{ /*	í•˜ìœ„nibble data ë³€í™˜ì¸ ê²½ìš°*/
+		return (0); /*		ë°˜í™˜ê°’=[0:ì´ìƒì¢…ë£Œ]*/
 	}
 	*pByteDat = (U8) ((work1 * 0x10) + work2);
-	return (1); /*	¹İÈ¯°ª=[1:Á¤»óÁ¾·á]*/
+	return (1); /*	ë°˜í™˜ê°’=[1:ì •ìƒì¢…ë£Œ]*/
 }
 
-/// @brief    ASCII CODE ¿ªº¯È¯ (NIBBLE)
-/// @param    U8 *pBuffer (º¯È¯Àü DATA·ÎÀÇ POINTER) / U8 *pNibbleDat (º¯È¯ÈÄ DATA º¸Á¸ RAMÀÇ POINTER)
-/// @return   0=ÀÌ»óÁ¾·á	1=Á¤»óÁ¾·á
+/// @brief    ASCII CODE ì—­ë³€í™˜ (NIBBLE)
+/// @param    U8 *pBuffer (ë³€í™˜ì „ DATAë¡œì˜ POINTER) / U8 *pNibbleDat (ë³€í™˜í›„ DATA ë³´ì¡´ RAMì˜ POINTER)
+/// @return   0=ì´ìƒì¢…ë£Œ	1=ì •ìƒì¢…ë£Œ
 U8 DisAsciiNibble(U8 *pBuffer, U8 *pNibbleDat)
 {
 	U8 work;
 	/****************************************************/
-	work = *pBuffer; /* ASCII CODE º¯È¯´ë»ó data*/
+	work = *pBuffer; /* ASCII CODE ë³€í™˜ëŒ€ìƒ data*/
 	if ((work < 0x30) || (work > 0x46) || ((work > 0x39) && (work < 0x41)))
 	{
-		/*	ASCII CODE ÀÌ»óÄ¡ÀÎ °æ¿ì*/
-		return (0); /*		¹İÈ¯°ª=[0:ÀÌ»óÁ¾·á]*/
+		/*	ASCII CODE ì´ìƒì¹˜ì¸ ê²½ìš°*/
+		return (0); /*		ë°˜í™˜ê°’=[0:ì´ìƒì¢…ë£Œ]*/
 	}
 
 	if (work < 0x41)
-	{ /*	0x30~0x39 ÀÎ °æ¿ì*/
+	{ /*	0x30~0x39 ì¸ ê²½ìš°*/
 		*pNibbleDat = (U8) (work - 0x30); /*		0 ~ 9*/
 	}
 	else
-	{ /*	0x41~0x46 ÀÎ °æ¿ì*/
+	{ /*	0x41~0x46 ì¸ ê²½ìš°*/
 		*pNibbleDat = (U8) (work - 0x37); /*		A(10) ~ F(15)*/
 	}
-	return (1); /*	¹İÈ¯°ª=[1:Á¤»óÁ¾·á]*/
+	return (1); /*	ë°˜í™˜ê°’=[1:ì •ìƒì¢…ë£Œ]*/
 }
 
-/// @brief    ASCII CODE ¿ªº¯È¯ (2¹ÙÀÌÆ®ºĞ)
-/// @param    U8 *pBuffer (º¯È¯Àü DATAÀÇ POINTER) / U16 *pByteDat (º¯È¯ÈÄ DATA º¸Á¸ RAMÀÇ POINTER)
-/// @return   0=ÀÌ»óÁ¾·á	1=Á¤»óÁ¾·á
+/// @brief    ASCII CODE ì—­ë³€í™˜ (2ë°”ì´íŠ¸ë¶„)
+/// @param    U8 *pBuffer (ë³€í™˜ì „ DATAì˜ POINTER) / U16 *pByteDat (ë³€í™˜í›„ DATA ë³´ì¡´ RAMì˜ POINTER)
+/// @return   0=ì´ìƒì¢…ë£Œ	1=ì •ìƒì¢…ë£Œ
 U8 DisAsciiWord(U8 *pBuffer, U16 *pWordDat)
 {
 	U8 work1, work2;
 	/****************************************************/
 	if (DisAsciiByte(pBuffer, &work1) == 0)
-	{ /*	»óÀ§byte data º¯È¯ ÀÌ»óÀÎ °æ¿ì*/
+	{ /*	ìƒìœ„byte data ë³€í™˜ ì´ìƒì¸ ê²½ìš°*/
 		return (0);
 	}
 	if (DisAsciiByte(pBuffer + 2, &work2) == 0)
-	{ /*	ÇÏÀ§byte data º¯È¯ ÀÌ»óÀÎ °æ¿ì*/
+	{ /*	í•˜ìœ„byte data ë³€í™˜ ì´ìƒì¸ ê²½ìš°*/
 		return (0);
 	}
 	*pWordDat = ((U16) work1 * 0x0100U) + work2;
 	return (1);
 }
 
-/// @brief    ASCII º¯È¯ (NIBBLE)
-/// @param    U8 data (º¯È¯ ¿øDATA) / U8 hilo (»óÀ§ÇÏÀ§ ÁöÁ¤ (0:Lo,1:Hi))
-/// @return   U8 (º¯È¯ÈÄ DATA)
+/// @brief    ASCII ë³€í™˜ (NIBBLE)
+/// @param    U8 data (ë³€í™˜ ì›DATA) / U8 hilo (ìƒìœ„í•˜ìœ„ ì§€ì • (0:Lo,1:Hi))
+/// @return   U8 (ë³€í™˜í›„ DATA)
 U8 Ascii(U8 data, U8 hilo)
 {
 	/****************************************************/
 	if (hilo == Z_asciihi)
-	{ /*	»óÀ§4ºñÆ® ÁöÁ¤ÀÎ °æ¿ì*/
-		data >>= 4; /*		4Bit ¿ì·Î shift*/
+	{ /*	ìƒìœ„4ë¹„íŠ¸ ì§€ì •ì¸ ê²½ìš°*/
+		data >>= 4; /*		4Bit ìš°ë¡œ shift*/
 	}
-	data &= 0x0f; /*	ÇÏÀ§4ºñÆ®¸¸ À¯È¿*/
+	data &= 0x0f; /*	í•˜ìœ„4ë¹„íŠ¸ë§Œ ìœ íš¨*/
 	if (data < 10)
-	{ /*	0 ~ 9 ÀÎ °æ¿ì*/
+	{ /*	0 ~ 9 ì¸ ê²½ìš°*/
 		data += 0x30; /*		0 ~ 9 (0x30 ~ 0x39)*/
 	}
 	else
-	{ /*	10 ~ 15 ÀÎ °æ¿ì*/
+	{ /*	10 ~ 15 ì¸ ê²½ìš°*/
 		data += 0x37; /*		10 ~ 15 (0x41 ~ 0x46)*/
 	}
-	return (data); /*	¹İÈ¯°ª=[ASCII º¯È¯ DATA]*/
+	return (data); /*	ë°˜í™˜ê°’=[ASCII ë³€í™˜ DATA]*/
 }
 
 /// @brief    Decimal to HEX

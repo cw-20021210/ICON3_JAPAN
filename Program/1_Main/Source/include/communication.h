@@ -1,7 +1,7 @@
 /// @file   communication.h
 /// @date   2021.01.12
 /// @author PSM
-/// @brief  Åë½Å Ã³¸® file
+/// @brief  í†µì‹  ì²˜ë¦¬ file
 
 #ifdef COMMUNICATION_C
 	#define 	EXTERN
@@ -13,28 +13,28 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_COMMUNICATION()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1ms_COMMUNICATION()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 										TDEC(gu8_TimerRecWait);		\
 										TDEC(gu8_TimerTraWait);		\
 										TDEC(gu8_TimerTrahalt);		\
 										TDEC(gu8_TimerRecInt_Check);	\
 										TDEC(gu8_TimerTraWait_Short);	\
 									}
-#define	TDEC_10ms_COMMUNICATION()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_COMMUNICATION()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 										TDEC(gu8_TimerError_Time);		\
 									}
-#define	TDEC_100ms_COMMUNICATION()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_COMMUNICATION()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 										TDEC(gu8_TimerDataReceive);	\
 									}
-#define	TDEC_1s_COMMUNICATION()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_COMMUNICATION()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									}
-#define	TDEC_10s_COMMUNICATION()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10s_COMMUNICATION()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									}
-#define	TDEC_1min_COMMUNICATION()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_COMMUNICATION()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									}
-#define	TDEC_10min_COMMUNICATION()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_COMMUNICATION()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									}
-#define	TDEC_1h_COMMUNICATION()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_COMMUNICATION()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									}
 
 
@@ -48,25 +48,25 @@
 #define Z_DataLen_Rx			(15)						/* Packet data  */
 #endif
 #ifdef _FRONT_TEST_
-#define Z_TimerError_Time		(100)						/* ¿ì¸² Áö±×´Â 1ÃÊ·Î ºü¸£°Ô Åë½Å ¹Ì¼ö½Å ¿¡·¯ */
+#define Z_TimerError_Time		(100)						/* ìš°ë¦¼ ì§€ê·¸ëŠ” 1ì´ˆë¡œ ë¹ ë¥´ê²Œ í†µì‹  ë¯¸ìˆ˜ì‹  ì—ëŸ¬ */
 #else
-#define Z_TimerError_Time		(200)						/* Åë½Å ¹Ì¼ö½Å ¿¡·¯ */
+#define Z_TimerError_Time		(200)						/* í†µì‹  ë¯¸ìˆ˜ì‹  ì—ëŸ¬ */
 #endif
 #define Z_TimerRecInt_Check		(30)						//	Rec. Interrupt 30ms check
 
-#define Z_TimerRecWait			(20)						/* ¼ö½Å´ë±â Timer 20ms */
-//#define Z_TimerTraWait			(10)						/* ¼Û½Å´ë±â Timer 10ms */
-//@015 #define Z_TimerTraWait			(40)						/* ¼Û½Å´ë±â Timer 200ms */
-#define Z_TimerTraWait			(120)						/* @015 ¼Û½Å´ë±â Timer 120ms */
+#define Z_TimerRecWait			(20)						/* ìˆ˜ì‹ ëŒ€ê¸° Timer 20ms */
+//#define Z_TimerTraWait			(10)						/* ì†¡ì‹ ëŒ€ê¸° Timer 10ms */
+//@015 #define Z_TimerTraWait			(40)						/* ì†¡ì‹ ëŒ€ê¸° Timer 200ms */
+#define Z_TimerTraWait			(120)						/* @015 ì†¡ì‹ ëŒ€ê¸° Timer 120ms */
 
-#define Z_TimerTrahalt			(50)						//	Tx Á¤ÁöÃ¼Å© Timer 50ms
-#define Z_TimerDataReceive		(100)						//	Åë½Å ¹Ì¼ö½Å 10ÃÊ <10s/100ms>
+#define Z_TimerTrahalt			(50)						//	Tx ì •ì§€ì²´í¬ Timer 50ms
+#define Z_TimerDataReceive		(100)						//	í†µì‹  ë¯¸ìˆ˜ì‹  10ì´ˆ <10s/100ms>
 
 #define Z_STX					(0x02)
 #define Z_ETX					(0x03)
 #define Z_Main_Address			(0x10)
 
-#define Z_NormalData			(0x11)						//	Åë»ó µ¥ÀÌÅÍ
+#define Z_NormalData			(0x11)						//	í†µìƒ ë°ì´í„°
 
 //#define Z_Commu_NormalData		(1)
 
@@ -76,44 +76,44 @@
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN U8 gu8_TimerError_Time;								/* 	2ÃÊ ¹Ì¼ö½Å Å¸ÀÌ¸Ó <2s/10ms>	*/
+EXTERN U8 gu8_TimerError_Time;								/* 	2ì´ˆ ë¯¸ìˆ˜ì‹  íƒ€ì´ë¨¸ <2s/10ms>	*/
 EXTERN U8 gu8_CounterRXDError;
 EXTERN U8 gu8_CounterTXDError;
 EXTERN U8 F_Front_Communication_Error;
-EXTERN U8 gu8_TimerDataReceive;								//	Åë½Å ¹Ì¼ö½Å 10ÃÊ	<10s/100ms>
-EXTERN BYTE_BIT gu8_UartState;							//	Åë½Å»óÅÂ º¯¼ö
-	#define	f_Rec_End			(gu8_UartState.Bit.b1)	//		¼ö½Å ³¡
-	#define	f_Rec_Start			(gu8_UartState.Bit.b2)	//		¼ö½Å ½ÃÀÛ
-	#define	f_Tra_DataMake		(gu8_UartState.Bit.b3)	//		¼Û½Å µ¥ÀÌÅÍ »ı¼º
-	#define	f_Tra_Start			(gu8_UartState.Bit.b4)	//		¼Û½Å ½ÃÀÛ
+EXTERN U8 gu8_TimerDataReceive;								//	í†µì‹  ë¯¸ìˆ˜ì‹  10ì´ˆ	<10s/100ms>
+EXTERN BYTE_BIT gu8_UartState;							//	í†µì‹ ìƒíƒœ ë³€ìˆ˜
+	#define	f_Rec_End			(gu8_UartState.Bit.b1)	//		ìˆ˜ì‹  ë
+	#define	f_Rec_Start			(gu8_UartState.Bit.b2)	//		ìˆ˜ì‹  ì‹œì‘
+	#define	f_Tra_DataMake		(gu8_UartState.Bit.b3)	//		ì†¡ì‹  ë°ì´í„° ìƒì„±
+	#define	f_Tra_Start			(gu8_UartState.Bit.b4)	//		ì†¡ì‹  ì‹œì‘
 
-EXTERN U8 gu8_CounterRecvCount;						/* 	¼ö½Å µ¥ÀÌÅÍ ±æÀÌ Ä«¿îÅÍ	*/
-EXTERN U8 gu8_CounterTraDataCount;					/* 	¼Û½Å µ¥ÀÌÅÍ Ä«¿îÅÍ	*/
-EXTERN U16 gu8_Buffer_RecCrc;						/* 	¼ö½ÅCRC DATA 		*/
-EXTERN U16 gu8_Buffer_TraCrc;						/* 	¼Û½ÅCRC DATA 		*/
+EXTERN U8 gu8_CounterRecvCount;						/* 	ìˆ˜ì‹  ë°ì´í„° ê¸¸ì´ ì¹´ìš´í„°	*/
+EXTERN U8 gu8_CounterTraDataCount;					/* 	ì†¡ì‹  ë°ì´í„° ì¹´ìš´í„°	*/
+EXTERN U16 gu8_Buffer_RecCrc;						/* 	ìˆ˜ì‹ CRC DATA 		*/
+EXTERN U16 gu8_Buffer_TraCrc;						/* 	ì†¡ì‹ CRC DATA 		*/
 #ifndef _FRONT_COMMU_CHANGE_
-EXTERN BYTE_BIT	gu8_Buffer_MCU_RecData[Z_DataLen+2];	/* 	¼ö½Å µ¥ÀÌÅÍ ¹öÆÛ	*/
-EXTERN BYTE_BIT	gu8_Buffer_MCU_TraData[Z_DataLen+2];	/* 	¼Û½Å µ¥ÀÌÅÍ ¹öÆÛ	*/
+EXTERN BYTE_BIT	gu8_Buffer_MCU_RecData[Z_DataLen+2];	/* 	ìˆ˜ì‹  ë°ì´í„° ë²„í¼	*/
+EXTERN BYTE_BIT	gu8_Buffer_MCU_TraData[Z_DataLen+2];	/* 	ì†¡ì‹  ë°ì´í„° ë²„í¼	*/
 #else
-EXTERN BYTE_BIT	gu8_Buffer_MCU_RecData[Z_DataLen_Rx+2];	/* 	¼ö½Å µ¥ÀÌÅÍ ¹öÆÛ	*/
-EXTERN BYTE_BIT	gu8_Buffer_MCU_TraData[Z_DataLen_Tx+2];	/* 	¼Û½Å µ¥ÀÌÅÍ ¹öÆÛ	*/
+EXTERN BYTE_BIT	gu8_Buffer_MCU_RecData[Z_DataLen_Rx+2];	/* 	ìˆ˜ì‹  ë°ì´í„° ë²„í¼	*/
+EXTERN BYTE_BIT	gu8_Buffer_MCU_TraData[Z_DataLen_Tx+2];	/* 	ì†¡ì‹  ë°ì´í„° ë²„í¼	*/
 #endif
 
-EXTERN U16 gu8_TimerRecWait;						/* 	¼ö½Å ´ë±â Å¸ÀÌ¸Ó		<20ms/1ms> */
-EXTERN U16 gu8_TimerTraWait;						/* 	¼Û½Å ´ë±â Å¸ÀÌ¸Ó		<20ms/1ms> */
+EXTERN U16 gu8_TimerRecWait;						/* 	ìˆ˜ì‹  ëŒ€ê¸° íƒ€ì´ë¨¸		<20ms/1ms> */
+EXTERN U16 gu8_TimerTraWait;						/* 	ì†¡ì‹  ëŒ€ê¸° íƒ€ì´ë¨¸		<20ms/1ms> */
 
-EXTERN U8 gu8_TimerTrahalt;							//	Tx Ã¼Å©		<50ms/1ms>
-EXTERN U8 gu8_TimerRecInt_Check;					//	Rx Ã¼Å©		<30ms/1ms>
+EXTERN U8 gu8_TimerTrahalt;							//	Tx ì²´í¬		<50ms/1ms>
+EXTERN U8 gu8_TimerRecInt_Check;					//	Rx ì²´í¬		<30ms/1ms>
 
-EXTERN U8 F_Rx_Complete;							//	¼ö½Å¼º°ø flag
-EXTERN U8 F_Rx_Exp;									//	¼ö½Å °æÇè
+EXTERN U8 F_Rx_Complete;							//	ìˆ˜ì‹ ì„±ê³µ flag
+EXTERN U8 F_Rx_Exp;									//	ìˆ˜ì‹  ê²½í—˜
 
 //EXTERN U8 gu8_CommuPacketType;
 
 EXTERN U8 gu8_Front_OperationStep;
 EXTERN U16 gu16_Front_ProgramVer;
 
-EXTERN U16 gu16_Front_UV_FB;						//	¿¡·¯´Â ¾ø´Â°Ç°¡?
+EXTERN U16 gu16_Front_UV_FB;						//	ì—ëŸ¬ëŠ” ì—†ëŠ”ê±´ê°€?
 EXTERN U16 gu16_FAN_FB_forLineTest;
 
 EXTERN U8 gu8_TimerTraWait_Short;
@@ -156,9 +156,9 @@ EXTERN BYTE_BIT gu8_Key_Short;
 //	#define KEY_COLD_FAUSET_LEVEL		(gu8_Key_Level.Bit.b6)
 //	#define KEY_HOT_FAUSET_LEVEL		(gu8_Key_Level.Bit.b7)
 
-EXTERN U8 F_CommunicationCMD;						//	Áï½Ã Åë½Å flag
+EXTERN U8 F_CommunicationCMD;						//	ì¦‰ì‹œ í†µì‹  flag
 
-EXTERN ITTI1 gu8_DigitalInput_Key1;					//	µğÁöÅĞ ÀÔ·Â µ¥ÀÌÅÍ
+EXTERN ITTI1 gu8_DigitalInput_Key1;					//	ë””ì§€í„¸ ì…ë ¥ ë°ì´í„°
 	#define KEY_HOTWATER_LEVEL			(gu8_DigitalInput_Key1.Level.Bit.b0)
 	#define KEY_HOTWATER_LOW_EDGE		(gu8_DigitalInput_Key1.OffEdge.Bit.b0)
 	#define KEY_HOTWATER_HIGH_EDGE		(gu8_DigitalInput_Key1.OnEdge.Bit.b0)
@@ -238,16 +238,16 @@ EXTERN const U16 crc_table1[256]
 void Communication_Initialize(void);
 void CommunicationControl(void);
 
-void UartInitial(void);							//	Åë½ÅÃÊ±âÈ­
-void UartReceive(U8 recdata);					//	RxÃ³¸® ÇÔ¼ö (ÀÎÅÍ·´Æ® ³»)
-void UartControl(void);							//	Åë½ÅÃ³¸® ÇÔ¼ö
-void TXControl(void);							//	TxÃ³¸®ÇÔ¼ö
-void RXControl(void);							//	RxÃ³¸®ÇÔ¼ö
-void TraCrcCheck(void);							//	Tx CRC Ã¼Å©
-void Data_Parsing(void);						//	¼ö½Åµ¥ÀÌÅÍ ºĞ¼®
-U8 Crc_Check(void);								//	CRC Ã¼Å©
-void Send_Data(void);							//	Åë»ó µ¥ÀÌÅÍ »ı¼º
-void Uart_SFR_Refresh(void);					//	Åë½Å°ü·Ã SFR refresh
+void UartInitial(void);							//	í†µì‹ ì´ˆê¸°í™”
+void UartReceive(U8 recdata);					//	Rxì²˜ë¦¬ í•¨ìˆ˜ (ì¸í„°ëŸ½íŠ¸ ë‚´)
+void UartControl(void);							//	í†µì‹ ì²˜ë¦¬ í•¨ìˆ˜
+void TXControl(void);							//	Txì²˜ë¦¬í•¨ìˆ˜
+void RXControl(void);							//	Rxì²˜ë¦¬í•¨ìˆ˜
+void TraCrcCheck(void);							//	Tx CRC ì²´í¬
+void Data_Parsing(void);						//	ìˆ˜ì‹ ë°ì´í„° ë¶„ì„
+U8 Crc_Check(void);								//	CRC ì²´í¬
+void Send_Data(void);							//	í†µìƒ ë°ì´í„° ìƒì„±
+void Uart_SFR_Refresh(void);					//	í†µì‹ ê´€ë ¨ SFR refresh
 __interrupt void IntUartTx(void);				//	Tx interrupt
 __interrupt void IntUartRx(void);				//	Rx interrupt
 

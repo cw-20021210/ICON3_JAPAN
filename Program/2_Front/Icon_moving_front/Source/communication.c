@@ -1,7 +1,7 @@
  /// @file     communication.c
 /// @date     2021.01.12
 /// @author   PSM
-/// @brief    ���ó�� file
+/// @brief    통신처리 file
 /*==========================================================================*/
 /*		PRAGMA						   			  							*/
 /*==========================================================================*/
@@ -12,7 +12,7 @@
 #include "include/_include.h"
 
 //=============================================================================
-//		Macro ����
+//		Macro 정의
 //=============================================================================
 #define SERIAL_RX2EN()			{SRIF2 = 0;				/*	Int Request Flag Register clear	*/\
 								SRMK2 = 0;				/*	Int Mask Register clear			*/\
@@ -23,7 +23,7 @@
 								SetIORBit(SOE1L, 0x01);	/*	Enables TX1 output Serial Set	*/\
 								SetIORBit(SS1L, 0x01);	/*	TX1 Start						*/}
 
-/// @brief    ���ó�� �ʱ�ȭ
+/// @brief    통신처리 초기화
 /// @param    void
 /// @return   void
 void Communication_Initialize(void)
@@ -34,7 +34,7 @@ void Communication_Initialize(void)
 	gu8_TimerRecInt_Check = Z_TimerRecInt_Check;    //	Rec. interrupot 30ms check
 }
 
-/// @brief    ���ó�� ����
+/// @brief    통신처리 제어
 /// @param    void
 /// @return   void
 void CommunicationControl(void)
@@ -145,8 +145,8 @@ void TXControl(void)
 
 		gu8_testttt = CLEAR;
 		for (i = 0 ; i < Z_DataLen_Tx ; i++)
-		{											//		���� Ŭ����
-			gu8_Buffer_MCU_TraData[i].byte = 0x00;	//			���� �ʱ�ȭ
+		{											//		버퍼 클리어
+			gu8_Buffer_MCU_TraData[i].byte = 0x00;	//			버퍼 초기화
 		} 
 
 		SendData();						//			TX data set
@@ -195,7 +195,7 @@ void RXControl(void)
 
 	#if 0
 	if ((gu8_CounterRecvCount >= 1) && (gu8_TimerRecInt_Check == 0))
-	{    //	���� �� RX interrupt 30ms check
+	{    //	수신 중 RX interrupt 30ms check
 		gu8_CounterRecvCount = 0;								//		Count clear
 		gu8_TimerRecInt_Check = Z_TimerRecInt_Check;	//		Rec. interrupot 30ms check
 	}
@@ -280,7 +280,7 @@ void Data_Parsing(void)
 	U16 mu16_buff = 0;
 
 	/****************************************************/
-	gu8_Main_OperationStep = gu8_Buffer_MCU_RecData[3].byte;			//	��������
+	gu8_Main_OperationStep = gu8_Buffer_MCU_RecData[3].byte;			//	운전상태
 
 	gu8_Main_SEGMENT_CMD = gu8_Buffer_MCU_RecData[4].byte;
 	gu8_Main_SEGMENT_OXX = gu8_Buffer_MCU_RecData[5].byte;
@@ -370,7 +370,7 @@ void SendData(void)
 	gu8_Buffer_MCU_TraData[4].Bit.b0 = CLEAR;
 #else
 
-	MODEL_DECIDE = 1;			//	�ڡ�
+	MODEL_DECIDE = 1;			//	★★
 	gu8_Buffer_MCU_TraData[4].Bit.b0 = MODEL_DECIDE;
 #endif
 #endif
@@ -386,7 +386,7 @@ void SendData(void)
 	gu8_Buffer_MCU_TraData[6].Bit.b3 = KEY_AMOUNT_LEVEL;
 	gu8_Buffer_MCU_TraData[6].Bit.b4 = KEY_EFFLUENT_LEVEL;
 
-	//	���� ack
+	//	음성 ack
 	gu8_Buffer_MCU_TraData[7].byte = gu8_F_Voice_Play_ForCommu;
 
 	gu8_Buffer_MCU_TraData[8].byte = 0;
@@ -402,7 +402,7 @@ void SendData(void)
 
 	f_Tra_DataMake = 1;								//	Complete TX data set
 
-	gu16_ShortKeyArray.WORD = 0x0000U;				//	������ CLEAR
+	gu16_ShortKeyArray.WORD = 0x0000U;				//	데이터 CLEAR
 }
 
 /// @brief

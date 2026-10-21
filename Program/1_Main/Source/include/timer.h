@@ -1,7 +1,7 @@
 /// @file   timer.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Timer µ¿ÀÛ Á¦¾î °ü·Ã Çì´õ file
+/// @brief  Timer ë™ì‘ ì œì–´ ê´€ë ¨ í—¤ë” file
 
 #ifdef TIMER_C
 	#define 	EXTERN
@@ -13,22 +13,22 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_TIMER()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_TIMER()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_TIMER()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_TIMER()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_TIMER()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_TIMER()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_TIMER()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_TIMER()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_TIMER()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_TIMER()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_TIMER()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_TIMER()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerPartTest);	\
 								}
-#define	TDEC_10min_TIMER()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_TIMER()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_TIMER()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_TIMER()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -66,7 +66,7 @@ EXTERN U16 gu16_TimerPartTest;
  function Definition
  ==============================================================================*/
 void Timer_Initialize(void);
-void Timer_100us_Timer(void);       //	½ºÅ×ÇÎ¸ğÅÍ Á¦¾î¿ë
+void Timer_100us_Timer(void);       //	ìŠ¤í…Œí•‘ëª¨í„° ì œì–´ìš©
 void Timer_1msBase_Timer(void);
 void Timer_Process(void);
 void Time1ms(void);

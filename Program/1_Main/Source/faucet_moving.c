@@ -33,46 +33,46 @@ static void func_faucet_moving_LineAuto(void);
 
 static void func_faucet_add_pulse_after_InputUpReed(void);
 static void func_faucet_add_pulse_after_InputDownReed(void);
-static void func_faucet_decel_mode_activate(void);		//	°¨¼Ó ¸ğµå È°¼ºÈ­
+static void func_faucet_decel_mode_activate(void);		//	ê°ì† ëª¨ë“œ í™œì„±í™”
 
-static void func_faucet_moving_LineTest2(void);			//	¸ŞÀÎ¶óÀÎ ´ÜÃà °Ë»ç¸ğµå
-static void func_LineAuto_CupMicroSW_PatternCheck(void);	// @023 ÄÅ ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ ¹Ì°¨Áö¡æ°¨Áö¡æ¹Ì°¨Áö ÆĞÅÏ Ã¼Å©
-static void func_faucet_moving_SmartCheck(void);		//	½º¸¶Æ®Ã¼Å© ÆÄ¿ì¼Â Å×½ºÆ®
+static void func_faucet_moving_LineTest2(void);			//	ë©”ì¸ë¼ì¸ ë‹¨ì¶• ê²€ì‚¬ëª¨ë“œ
+static void func_LineAuto_CupMicroSW_PatternCheck(void);	// @023 ì»µ ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€â†’ê°ì§€â†’ë¯¸ê°ì§€ íŒ¨í„´ ì²´í¬
+static void func_faucet_moving_SmartCheck(void);		//	ìŠ¤ë§ˆíŠ¸ì²´í¬ íŒŒìš°ì…‹ í…ŒìŠ¤íŠ¸
 static void smartcheck_add_pulse_after_InputUpReed(void);
 static void smartcheck_add_pulse_after_InputDownReed(void);
 static void smartcheck_initial(void);
-static void func_faucet_reed_undetected_move_up(void);	//	¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö ½Ã ÃÖ»ó´Ü ÀÌµ¿
-static void func_faucet_reed_undetected_wait_tip(void);	//	¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö ½Ã ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ´ë±â
+static void func_faucet_reed_undetected_move_up(void);	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ì‹œ ìµœìƒë‹¨ ì´ë™
+static void func_faucet_reed_undetected_wait_tip(void);	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ì‹œ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ëŒ€ê¸°
 
-CI8 au8FaucetStep_Open[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };	//	OPEN ½ºÅÜ ·çÆ¾
-CI8 au8FaucetStep_Close[8] = { 8, 7, 6, 5, 4, 3, 2, 1 };	//	CLOSE ½ºÅÜ ·çÆ¾
+CI8 au8FaucetStep_Open[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };	//	OPEN ìŠ¤í… ë£¨í‹´
+CI8 au8FaucetStep_Close[8] = { 8, 7, 6, 5, 4, 3, 2, 1 };	//	CLOSE ìŠ¤í… ë£¨í‹´
 
-// ¼³Á¤ ¸ğµå¿¡¼­ÀÇ ÀÌÀü ¹æÇâ ÀúÀå (¹é·¡½Ã º¸Á¤¿ë)
+// ì„¤ì • ëª¨ë“œì—ì„œì˜ ì´ì „ ë°©í–¥ ì €ì¥ (ë°±ë˜ì‹œ ë³´ì •ìš©)
 static U8 gu8_Prev_Setting_Direction = 0;
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù °ü·Ã ÃÊ±âÈ­
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ê´€ë ¨ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void FaucetMoving_Initialize(void)
 {
 	gu8_F_FaucetMoving_Initialize = SET;
 
-	// Àü¿ø ÀÎ°¡ ½Ã ÇöÀç À§Ä¡ ÃÊ±âÈ­ (¸®µå½ºÀ§Ä¡ °¨Áö Àü±îÁö´Â 0)
+	// ì „ì› ì¸ê°€ ì‹œ í˜„ì¬ ìœ„ì¹˜ ì´ˆê¸°í™” (ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ì „ê¹Œì§€ëŠ” 0)
 	gu16_Faucet_Current_Location = 0;
 
-	gu8_F_ResetAccel_ForAddPulse = CLEAR;  // Ãß°¡ ÆŞ½º °¡¼Ó ÃÊ±âÈ­ ÇÃ·¡±× ÃÊ±âÈ­
+	gu8_F_ResetAccel_ForAddPulse = CLEAR;  // ì¶”ê°€ í„ìŠ¤ ê°€ì† ì´ˆê¸°í™” í”Œë˜ê·¸ ì´ˆê¸°í™”
 
-	F_SmartCheck_UpReed_Detected = CLEAR;  // »ó½Â ¸®µå½ºÀ§Ä¡ °¨Áö ÀÌ·Â ÇÃ·¡±×
+	F_SmartCheck_UpReed_Detected = CLEAR;  // ìƒìŠ¹ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ì´ë ¥ í”Œë˜ê·¸
 
-	gu8_F_Skip_First_ReedUndet_MoveUp = SET; // @025 ºÎÆÃ ÈÄ ¼³Á¤·¹º§ µµÂø µÚ Ã¹ ÀÌÅ»¸¸ ÃÖ»ó´Ü ½ºÅµ
+	gu8_F_Skip_First_ReedUndet_MoveUp = SET; // @025 ë¶€íŒ… í›„ ì„¤ì •ë ˆë²¨ ë„ì°© ë’¤ ì²« ì´íƒˆë§Œ ìµœìƒë‹¨ ìŠ¤í‚µ
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù Á¦¾î
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ì œì–´
 /// @param    void
 /// @return   void
 void FaucetMoving_Control(void)
 {
-	if(gu8_F_Moving_Durability == SET)			//	ÆÄ¿ì¼Â ³»±¸¼º ¸ğµå
+	if(gu8_F_Moving_Durability == SET)			//	íŒŒìš°ì…‹ ë‚´êµ¬ì„± ëª¨ë“œ
 	{
 		faucet_Durability_Mode();
 	}		
@@ -93,7 +93,7 @@ void FaucetMoving_Control(void)
 	
 }
 
-/// @brief    @018 ÆÁ ¸®µå °¨Áö/¹Ì°¨Áö ÀüÈ¯¸¸ °Ë»ç (»óÅÂ º¯È­ ½Ã¿¡¸¸ 1/2 ¹İÈ¯)
+/// @brief    @018 íŒ ë¦¬ë“œ ê°ì§€/ë¯¸ê°ì§€ ì „í™˜ë§Œ ê²€ì‚¬ (ìƒíƒœ ë³€í™” ì‹œì—ë§Œ 1/2 ë°˜í™˜)
 /// @return   @018 F_FAUCET_REED_EDGE_NONE / F_FAUCET_REED_EDGE_TO_UNDETECTED / F_FAUCET_REED_EDGE_TO_DETECTED
 static U8 func_faucet_reed_edge_check(void)
 {
@@ -121,67 +121,67 @@ static U8 func_faucet_reed_edge_check(void)
 	return ret;
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù normal ¸ğµå
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ normal ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void faucet_Normal_Mode(void)
 {
 	U8 edge = 0; //@018
 
-	// ÆÄ¿ì¼Â ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö Ã¼Å© (¸ğµç ´Ü°è¿¡¼­, ¸ğÅÍ Á¤Áö »óÅÂÀÏ ¶§)
-	// ´Ü, ÃÊ±âÈ­ ´Ü°è¿Í ¹Ì°¨Áö ÀÌµ¿ ´Ü°è´Â Á¦¿Ü
+	// íŒŒìš°ì…‹ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ì²´í¬ (ëª¨ë“  ë‹¨ê³„ì—ì„œ, ëª¨í„° ì •ì§€ ìƒíƒœì¼ ë•Œ)
+	// ë‹¨, ì´ˆê¸°í™” ë‹¨ê³„ì™€ ë¯¸ê°ì§€ ì´ë™ ë‹¨ê³„ëŠ” ì œì™¸
 	if((gu8_FaucetMoving_Step != Z_FAUCET_REED_UNDETECTED_MOVE_UP)
 	&& (gu8_FaucetMoving_Step != Z_FAUCET_REED_UNDETECTED_WAIT_TIP)
 	&& (gu8_FaucetMoving_Step != Z_FAUCET_MOVING_INITIAL)
 	&& (gu8_FaucetMoving_Step != Z_FAUCET_MOVING__INITIAL_SET_LEVEL)
 	&& (gu8_FaucetMoving_Step != Z_FAUCET_MOVING__INITIAL_SET_LEVEL_COMPLETE)
 	&& (gu8_FaucetMoving_Step != Z_FAUCET_LEVEL_SETTING)
-	&& (gu16_FaucetMovingPulse == 0)  // ¸ğÅÍ Á¤Áö »óÅÂÀÏ ¶§¸¸
-	&& (gu8_OperationStep != Z_OperationStep_90))  // °Ë»ç¸ğµå¶§´Â º¸Áö¸»ÀÚ..
+	&& (gu16_FaucetMovingPulse == 0)  // ëª¨í„° ì •ì§€ ìƒíƒœì¼ ë•Œë§Œ
+	&& (gu8_OperationStep != Z_OperationStep_90))  // ê²€ì‚¬ëª¨ë“œë•ŒëŠ” ë³´ì§€ë§ì..
 	{
 		edge = func_faucet_reed_edge_check();  		//@018
 
-		// ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö ÇÃ·¡±× È®ÀÎ (input.c¿¡¼­ 1ÃÊ µô·¹ÀÌ ÈÄ ¼³Á¤)
+		// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ í”Œë˜ê·¸ í™•ì¸ (input.cì—ì„œ 1ì´ˆ ë”œë ˆì´ í›„ ì„¤ì •)
 		//@018 if(gu8_F_FaucetTip_Reed_Undetected == SET)
-		if((edge == F_FAUCET_REED_EDGE_TO_UNDETECTED) || (edge == F_FAUCET_REED_EDGE_TO_DETECTED))  //@018 °¨Áö->¹Ì°¨Áö or ¹Ì°¨Áö->°¨Áö: µ¿ÀÏÇÏ°Ô ÃÖ»ó´Ü 
+		if((edge == F_FAUCET_REED_EDGE_TO_UNDETECTED) || (edge == F_FAUCET_REED_EDGE_TO_DETECTED))  //@018 ê°ì§€->ë¯¸ê°ì§€ or ë¯¸ê°ì§€->ê°ì§€: ë™ì¼í•˜ê²Œ ìµœìƒë‹¨ 
 		{
 			if(gu8_F_Came_From_Wait_Tip_To_Level == SET)   //@018 
 			{          												//@018
 				gu8_F_Came_From_Wait_Tip_To_Level = CLEAR; //@018
 			}														//@018
-			else if((edge == F_FAUCET_REED_EDGE_TO_UNDETECTED)                      //@025 ºÎÆÃ ÈÄ ¼³Á¤·¹º§ Á÷ÈÄ Ã¹ ÀÌÅ»Àº ÃÖ»ó´Ü ÀÌµ¿ »ı·«
+			else if((edge == F_FAUCET_REED_EDGE_TO_UNDETECTED)                      //@025 ë¶€íŒ… í›„ ì„¤ì •ë ˆë²¨ ì§í›„ ì²« ì´íƒˆì€ ìµœìƒë‹¨ ì´ë™ ìƒëµ
 			     && (gu8_F_Skip_First_ReedUndet_MoveUp == SET))                      //@025
 			{                                                                       //@025
 				gu8_F_Skip_First_ReedUndet_MoveUp = CLEAR;                          //@025                                                                //@025
 			}                                                                       //@025
-			//	ÇÑ¹ø ½ÇÇàÇÑ ÀÌ·Â ÀÖÀ¸¸é ÇÏÁö¸»µµ·Ï..(¹«ÇÑ Ãâ·ÂÁÜ..)
+			//	í•œë²ˆ ì‹¤í–‰í•œ ì´ë ¥ ìˆìœ¼ë©´ í•˜ì§€ë§ë„ë¡..(ë¬´í•œ ì¶œë ¥ì¤Œ..)
 			else if(gu8_FaucetMoving_Set_Level_Backup != CLEAR)
 			{
-				// ÇöÀç ·¹º§ ¹é¾÷ (¿ø·¡ À§Ä¡·Î º¹±ÍÇÏ±â À§ÇØ)
+				// í˜„ì¬ ë ˆë²¨ ë°±ì—… (ì›ë˜ ìœ„ì¹˜ë¡œ ë³µê·€í•˜ê¸° ìœ„í•´)
 				gu8_FaucetMoving_Set_Level_Backup = CLEAR;
-				// ÃÖ»ó´ÜÀ¸·Î ÀÌµ¿ (¿øÁ¡ Àç¼³Á¤)
+				// ìµœìƒë‹¨ìœ¼ë¡œ ì´ë™ (ì›ì  ì¬ì„¤ì •)
 				FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);
 				gu8_FaucetMoving_Step = Z_FAUCET_REED_UNDETECTED_MOVE_UP;
-				gu8_F_FaucetTip_Reed_Undetected = CLEAR;  // ÇÃ·¡±× ¸®¼Â
-				gu8_F_Faucet_Fast_Return_for_Reed_Detected = SET;			//	¿Ã¶ó°¥¶§ °¨¼Ó ¾ÈÇÏ±â À§ÇÔ..
+				gu8_F_FaucetTip_Reed_Undetected = CLEAR;  // í”Œë˜ê·¸ ë¦¬ì…‹
+				gu8_F_Faucet_Fast_Return_for_Reed_Detected = SET;			//	ì˜¬ë¼ê°ˆë•Œ ê°ì† ì•ˆí•˜ê¸° ìœ„í•¨..
 				return;				
 			}		
 		}
 		else
 		{
-			//	ÀÌ ±¸¹® ¾øÀ¸¸é....ÇØÁ¦ -> °¨Áö -> ÇØÁ¦ÀÎ°æ¿ì ´Ù½Ã ½ÇÇà¾ÈµÊ..
+			//	ì´ êµ¬ë¬¸ ì—†ìœ¼ë©´....í•´ì œ -> ê°ì§€ -> í•´ì œì¸ê²½ìš° ë‹¤ì‹œ ì‹¤í–‰ì•ˆë¨..
 			if(gu8_F_Faucet_Level_ForWifi == CLEAR)
 			{
 				gu8_FaucetMoving_Set_Level_Backup = gu8_FaucetMoving_Set_Level; 
 			}
 
-			gu8_F_Came_From_Wait_Tip_To_Level = CLEAR;   // @018 ÀüÈ¯ ¾øÀ¸¸é ÇÃ·¡±× Á¤¸®
+			gu8_F_Came_From_Wait_Tip_To_Level = CLEAR;   // @018 ì „í™˜ ì—†ìœ¼ë©´ í”Œë˜ê·¸ ì •ë¦¬
 		}
 	}
 	else
 	{
 		#if 0
-		// ´Ù¸¥ ½ºÅÜÀÌ°Å³ª ¸ğÅÍ µ¿ÀÛ ÁßÀÌ¸é ÇÃ·¡±× ¸®¼Â
+		// ë‹¤ë¥¸ ìŠ¤í…ì´ê±°ë‚˜ ëª¨í„° ë™ì‘ ì¤‘ì´ë©´ í”Œë˜ê·¸ ë¦¬ì…‹
 		gu8_F_FaucetTip_Reed_Undetected = CLEAR;
 		#endif
 	}
@@ -302,7 +302,7 @@ static void faucet_Normal_Mode(void)
 
 			func_faucet_reed_undetected_wait_tip();
 
-			// ÆÄ¿ì¼Â ÆÁ ¹Ì°¨Áö -> °¨Áö ½Ã, °¨¼Ó ¾ÈÁÖ±â À§ÇÔ. flag clear
+			// íŒŒìš°ì…‹ íŒ ë¯¸ê°ì§€ -> ê°ì§€ ì‹œ, ê°ì† ì•ˆì£¼ê¸° ìœ„í•¨. flag clear
 			if(gu8_F_Faucet_Fast_Return_for_Reed_Detected == SET)
 			{
 				gu8_F_Faucet_Fast_Return_for_Reed_Detected = CLEAR;
@@ -315,12 +315,12 @@ static void faucet_Normal_Mode(void)
 	}   
 }
 
-/// @brief    Àü¿øÀÎ°¡ ÈÄ, ÆÄ¿ì¼Â ÃÊ±âÈ­
+/// @brief    ì „ì›ì¸ê°€ í›„, íŒŒìš°ì…‹ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 static void func_faucet_initial(void)
 {
-	if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ¸®µå½ºÀ§Ä¡ °¨Áö?
+	if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€?
 	{	
 		func_faucet_add_pulse_after_InputUpReed();
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING__INITIAL_SET_LEVEL;
@@ -334,12 +334,12 @@ static void func_faucet_initial(void)
 	}
 }
 
-/// @brief    Àü¿øÀÎ°¡ ÈÄ, ¼³Á¤µÈ ÆÄ¿ì¼Â ´Ü°è·Î
+/// @brief    ì „ì›ì¸ê°€ í›„, ì„¤ì •ëœ íŒŒìš°ì…‹ ë‹¨ê³„ë¡œ
 /// @param    void
 /// @return   void
 static void func_faucet__initial_set_level(void)
 {
-	//	auto°¡ ¾Æ´Ï¸é..ÇØ´ç À§Ä¡·Î...
+	//	autoê°€ ì•„ë‹ˆë©´..í•´ë‹¹ ìœ„ì¹˜ë¡œ...
 	if(gu16_FaucetMovingPulse == 0)
 	{
 		if(gu8_FaucetMoving_Set_Level > Z_FAUCET_MOVING_FIX_1_LEVEL)
@@ -354,20 +354,20 @@ static void func_faucet__initial_set_level(void)
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù ´ë±â
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void func_faucet__initial_set_level_Complete(void)
 {
 	static U8 mu8_initial_complete = 0;
 
-	if(INPUT_REED_SW_FAUCET_DOWN == SET)			//	ÆÄ¿ì¼Â DOWN ¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ, Ãß°¡ ÆŞ½º(Á¶¸³¿¡ µû¶ó ÆíÂ÷ ÀÖ±â ¶§¹®¿¡ ÀüÃ¼ ÆŞ½º¸¸Å­ ´õÁÖ±â.)
+	if(INPUT_REED_SW_FAUCET_DOWN == SET)			//	íŒŒìš°ì…‹ DOWN ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, ì¶”ê°€ í„ìŠ¤(ì¡°ë¦½ì— ë”°ë¼ í¸ì°¨ ìˆê¸° ë•Œë¬¸ì— ì „ì²´ í„ìŠ¤ë§Œí¼ ë”ì£¼ê¸°.)
 	{
 		func_faucet_add_pulse_after_InputDownReed();
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING_WAIT;
 	}
 	else
-	{	//	¸®µå½ºÀ§Ä¡ ³¡±îÁö °¨Áö ¾ÈµÇ¸é ±×³É ¿Ï·á Ä¡±â..
+	{	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ëê¹Œì§€ ê°ì§€ ì•ˆë˜ë©´ ê·¸ëƒ¥ ì™„ë£Œ ì¹˜ê¸°..
 		if(gu16_FaucetMovingPulse == 0)
 		{
 			gu8_FaucetMoving_Step = Z_FAUCET_MOVING_WAIT;
@@ -380,43 +380,43 @@ static void func_faucet__initial_set_level_Complete(void)
 
 	if(gu8_FaucetMoving_Step == Z_FAUCET_MOVING_WAIT)
 	{
-		if(gu8_F_Came_From_Wait_Tip_To_Level == SET)   //@025 WAIT_TIP¿¡¼­ º¹±ÍÇÑ °æ¿ì Ã¹ ÀÌÅ» ½ºÅµ ºñÈ°¼º
+		if(gu8_F_Came_From_Wait_Tip_To_Level == SET)   //@025 WAIT_TIPì—ì„œ ë³µê·€í•œ ê²½ìš° ì²« ì´íƒˆ ìŠ¤í‚µ ë¹„í™œì„±
 		{                                               //@025
 			gu8_F_Skip_First_ReedUndet_MoveUp = CLEAR;  //@025
 		}                                               //@025
-		gu8_FaucetMoving_Set_Level_Backup = gu8_FaucetMoving_Set_Level;  // ÃÊ±âÈ­ ¿Ï·á ½Ã µ¿±âÈ­
+		gu8_FaucetMoving_Set_Level_Backup = gu8_FaucetMoving_Set_Level;  // ì´ˆê¸°í™” ì™„ë£Œ ì‹œ ë™ê¸°í™”
 
-		if(gu8_OperationStep == Z_OperationStep_11)   // @019 ÀÌÀüÀ§Ä¡ ÀÌµ¿¿Ï·á ÈÄ ÃßÃâ½ÃÀÛ
-		{                                             // @019 ÀÌÀüÀ§Ä¡ ÀÌµ¿¿Ï·á ÈÄ ÃßÃâ½ÃÀÛ
-			gu8_F_Finish_Faucet_Down = SET;          // @019 ÀÌÀüÀ§Ä¡ ÀÌµ¿¿Ï·á ÈÄ ÃßÃâ½ÃÀÛ
-		}                                            // @019 ÀÌÀüÀ§Ä¡ ÀÌµ¿¿Ï·á ÈÄ ÃßÃâ½ÃÀÛ
+		if(gu8_OperationStep == Z_OperationStep_11)   // @019 ì´ì „ìœ„ì¹˜ ì´ë™ì™„ë£Œ í›„ ì¶”ì¶œì‹œì‘
+		{                                             // @019 ì´ì „ìœ„ì¹˜ ì´ë™ì™„ë£Œ í›„ ì¶”ì¶œì‹œì‘
+			gu8_F_Finish_Faucet_Down = SET;          // @019 ì´ì „ìœ„ì¹˜ ì´ë™ì™„ë£Œ í›„ ì¶”ì¶œì‹œì‘
+		}                                            // @019 ì´ì „ìœ„ì¹˜ ì´ë™ì™„ë£Œ í›„ ì¶”ì¶œì‹œì‘
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù ´ë±â
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void func_faucet_moving_wait(void)
 {
 
-	//	ÆÄ¿ì¼Â ¹«ºù ½ÃÀÛ..
+	//	íŒŒìš°ì…‹ ë¬´ë¹™ ì‹œì‘..
 	if(gu8_OperationStep == Z_OperationStep_11)	
 	#if 0
 	if((gu8_OperationStep == Z_OperationStep_11) || (gu8_OperationStep == Z_OperationStep_50))
 	#endif
 	{
-		if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)			//	AutoÀÎ°æ¿ì¸¸ µ¿ÀÛ..
+		if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)			//	Autoì¸ê²½ìš°ë§Œ ë™ì‘..
 		{
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_STEP_ZERO_BACK);
 			gu8_FaucetMoving_Step = Z_FAUCET_MOVING_DOWN;
 		}
 	}
 	#if 0
-	else if((F_TestMode_LineFront == SET) || (F_LineTest2_FaucetMoving == SET)) 	//	¶óÀÎ°Ë»ç or °øÀå ´ÜÃà°Ë»ç¸ğµå
+	else if((F_TestMode_LineFront == SET) || (F_LineTest2_FaucetMoving == SET)) 	//	ë¼ì¸ê²€ì‚¬ or ê³µì¥ ë‹¨ì¶•ê²€ì‚¬ëª¨ë“œ
 	#endif
-	//	¶óÀÎ°Ë»ç or °øÀå ´ÜÃà°Ë»ç¸ğµå
-	//	¶óÀÎ°Ë»ç, °øÀå ´ÜÃà°Ë»ç¸ğµå ºĞ¸®
-	//	¿ë·®Å° ÀÔ·Â½Ã¿¡¸¸ ÆÄ¿ì¼Â °Ë»ç µ¿ÀÛÇÏµµ·Ï Àû¿ë...
+	//	ë¼ì¸ê²€ì‚¬ or ê³µì¥ ë‹¨ì¶•ê²€ì‚¬ëª¨ë“œ
+	//	ë¼ì¸ê²€ì‚¬, ê³µì¥ ë‹¨ì¶•ê²€ì‚¬ëª¨ë“œ ë¶„ë¦¬
+	//	ìš©ëŸ‰í‚¤ ì…ë ¥ì‹œì—ë§Œ íŒŒìš°ì…‹ ê²€ì‚¬ ë™ì‘í•˜ë„ë¡ ì ìš©...
 	else if((gu8_OperationStep == Z_OperationStep_90) && (F_TestMode_LineFront == SET) && (F_LineFrontTest_AMount_Select == SET))		
 	{
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING_LINE_AUTO;
@@ -451,7 +451,7 @@ static void func_faucet_moving_wait(void)
 	gu16_Faucet_Current_Location = 0;
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù ´Ù¿î
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ë‹¤ìš´
 /// @param    void
 /// @return   void
 static void func_faucet_moving_down(void)
@@ -463,7 +463,7 @@ static void func_faucet_moving_down(void)
 	if((gu8_OperationStep == Z_OperationStep_11) || (gu8_OperationStep == Z_OperationStep_50))
 	#endif
 	{
-		if(INPUT_MICRO_SW_FAUCET == SET)            		//	¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö ÈÄ, Ãß°¡ ÆŞ½º...(ÄÅ ³¤´Ù)
+		if(INPUT_MICRO_SW_FAUCET == SET)            		//	ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, ì¶”ê°€ í„ìŠ¤...(ì»µ ë‚€ë‹¤)
 		{			
 			FaucetControl_StepMove(FAUCET_STEP_MOTOR_MICRO_SW_DETECTION, FAUCET_MICO_SW_INPUT_DETECTION_STEP);
 			gu8_FaucetMoving_AccelStage = 0;
@@ -471,15 +471,15 @@ static void func_faucet_moving_down(void)
 		}
 		else
 		{
-			if(INPUT_REED_SW_FAUCET_DOWN == SET)			//	ÆÄ¿ì¼Â DOWN ¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ, Ãß°¡ ÆŞ½º(Á¶¸³¿¡ µû¶ó ÆíÂ÷ ÀÖ±â ¶§¹®¿¡ ÀüÃ¼ ÆŞ½º¸¸Å­ ´õÁÖ±â.)
+			if(INPUT_REED_SW_FAUCET_DOWN == SET)			//	íŒŒìš°ì…‹ DOWN ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, ì¶”ê°€ í„ìŠ¤(ì¡°ë¦½ì— ë”°ë¼ í¸ì°¨ ìˆê¸° ë•Œë¬¸ì— ì „ì²´ í„ìŠ¤ë§Œí¼ ë”ì£¼ê¸°.)
 			{
-				// ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ °¨Áö ½Ã °¨¼Ó ¸ğµå È°¼ºÈ­
+				// ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ ê°ì† ëª¨ë“œ í™œì„±í™”
 				// func_faucet_decel_mode_activate();
 				func_faucet_add_pulse_after_InputDownReed();
 				gu8_FaucetMoving_Step = Z_FAUCET_MOVING__DOWN_COMPLETE;
 			}
 			else
-			{	//	¸®µå½ºÀ§Ä¡ ³¡±îÁö °¨Áö ¾ÈµÇ¸é ±×³É ¿Ï·á Ä¡±â..
+			{	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ëê¹Œì§€ ê°ì§€ ì•ˆë˜ë©´ ê·¸ëƒ¥ ì™„ë£Œ ì¹˜ê¸°..
 				if(gu16_FaucetMovingPulse == 0)
 				{
 					gu8_FaucetMoving_Step = Z_FAUCET_MOVING__DOWN_COMPLETE;
@@ -493,18 +493,18 @@ static void func_faucet_moving_down(void)
 	}
 	else
 	{
-		//	³»·¯¿À´ÂÁß¿¡....ÃßÃâ ´­·¯¼­ Ãë¼Ò....
-		FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);	//	³Ê¹« ÂªÀ¸¸é ¾È¿Ã¶ó°¨...´õ Áà¾ßÇÒµí		
+		//	ë‚´ëŸ¬ì˜¤ëŠ”ì¤‘ì—....ì¶”ì¶œ ëˆŒëŸ¬ì„œ ì·¨ì†Œ....
+		FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);	//	ë„ˆë¬´ ì§§ìœ¼ë©´ ì•ˆì˜¬ë¼ê°...ë” ì¤˜ì•¼í• ë“¯		
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING_UP;
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù ´Ù¿î ¿Ï·á
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ë‹¤ìš´ ì™„ë£Œ
 /// @param    void
 /// @return   void
 static void func_faucet_moving__downComplete(void)
 {
-	//	ÇØ´ç½ºÅÜÀº ÃßÃâ¿Ï·á Àü, ¹«ºùÆÄ¿ì¼Â ¿òÁ÷ÀÌ´Â stepÀÌ¹Ç·Î 11step Á¶°Ç Ãß°¡...(¾ÈÀü»ç¾ç)	
+	//	í•´ë‹¹ìŠ¤í…ì€ ì¶”ì¶œì™„ë£Œ ì „, ë¬´ë¹™íŒŒìš°ì…‹ ì›€ì§ì´ëŠ” stepì´ë¯€ë¡œ 11step ì¡°ê±´ ì¶”ê°€...(ì•ˆì „ì‚¬ì–‘)	
 	if(gu8_OperationStep ==Z_OperationStep_11)
 	#if 0
 	if((gu8_OperationStep == Z_OperationStep_11) || (gu8_OperationStep == Z_OperationStep_50))
@@ -516,7 +516,7 @@ static void func_faucet_moving__downComplete(void)
 			gu8_F_MicroSW_LateDetection = CLEAR;
 			gu8_FaucetMoving_Step = Z_WAIT_FOR_EFFLUENT_COMPLETE;
 		}
-		else if((INPUT_MICRO_SW_FAUCET == SET) && (gu8_F_MicroSW_LateDetection == CLEAR))            		//	¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö ÈÄ, Ãß°¡ ÆŞ½º...(ÄÅ ³¤´Ù)
+		else if((INPUT_MICRO_SW_FAUCET == SET) && (gu8_F_MicroSW_LateDetection == CLEAR))            		//	ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, ì¶”ê°€ í„ìŠ¤...(ì»µ ë‚€ë‹¤)
 		{
 			gu8_F_MicroSW_LateDetection = SET;		
 			FaucetControl_StepMove(FAUCET_STEP_MOTOR_MICRO_SW_DETECTION, FAUCET_MICO_SW_INPUT_DETECTION_STEP);
@@ -529,13 +529,13 @@ static void func_faucet_moving__downComplete(void)
 	}
 	else
 	{
-		//	³»·¯¿À´ÂÁß¿¡....ÃßÃâ ´­·¯¼­ Ãë¼Ò....
-		FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);	//	³Ê¹« ÂªÀ¸¸é ¾È¿Ã¶ó°¨...´õ Áà¾ßÇÒµí		
+		//	ë‚´ëŸ¬ì˜¤ëŠ”ì¤‘ì—....ì¶”ì¶œ ëˆŒëŸ¬ì„œ ì·¨ì†Œ....
+		FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);	//	ë„ˆë¬´ ì§§ìœ¼ë©´ ì•ˆì˜¬ë¼ê°...ë” ì¤˜ì•¼í• ë“¯		
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING_UP;		
 	}
 }
 
-/// @brief    ÃßÃâ ¿Ï·á ´ë±â
+/// @brief    ì¶”ì¶œ ì™„ë£Œ ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void func_wait_for_effluent_complete(void)
@@ -548,11 +548,11 @@ static void func_wait_for_effluent_complete(void)
 	}
 	else if(gu8_OperationStep == Z_OperationStep_11)
 	{
-		//	pulse Ãâ·Â¾È³¡³¯¼ö ÀÖÀ¸´Ï, 11step¿¡¼­´Â ´ë±â..
+		//	pulse ì¶œë ¥ì•ˆëë‚ ìˆ˜ ìˆìœ¼ë‹ˆ, 11stepì—ì„œëŠ” ëŒ€ê¸°..
 	}
 	else
 	{
-		//	ÆŞ½º³¡³¯¶§±îÁö ´ë±â
+		//	í„ìŠ¤ëë‚ ë•Œê¹Œì§€ ëŒ€ê¸°
 		if(gu16_FaucetMovingPulse == 0)
 		{
 			gu8_FaucetMoving_Step = Z_WAIT_FOR_FAUCET_MOVING_DOWN;
@@ -560,19 +560,19 @@ static void func_wait_for_effluent_complete(void)
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â down »óÅÂ·Î ´ë±â
+/// @brief    íŒŒìš°ì…‹ down ìƒíƒœë¡œ ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void func_wait_for_faucet_moving_down(void)
 {
 	if(gu8_FaucetMoving_Set_Level == SET)
 	{
-		if(gu8_Timer_FaucetDown_WaitingTime == 0)			//	´ë±â Å¸ÀÌ¸Ó °æ°ú ...¹«ºù¾÷ ½ÃÀÛ..
+		if(gu8_Timer_FaucetDown_WaitingTime == 0)			//	ëŒ€ê¸° íƒ€ì´ë¨¸ ê²½ê³¼ ...ë¬´ë¹™ì—… ì‹œì‘..
 		{
 			gu8_F_Finish_Faucet_Down = CLEAR;					//	finish close...
 			gu8_FaucetMoving_Step = Z_FAUCET_MOVING_UP;
 
-			//	¸¸¾à UPÀÌ °¨ÁöµÇ¾îÀÖÀ¸¸é...Ãâ·Â ¾ÈÁàµµµÊ.
+			//	ë§Œì•½ UPì´ ê°ì§€ë˜ì–´ìˆìœ¼ë©´...ì¶œë ¥ ì•ˆì¤˜ë„ë¨.
 			if(INPUT_REED_SW_FAUCET_UP == CLEAR)
 			{
 				FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);	
@@ -595,18 +595,18 @@ static void func_wait_for_faucet_moving_down(void)
 	}
 	else
 	{
-		//	ÆÄ¿ì¼Â off -> ÇöÀç À§Ä¡¿¡¼­ ´ë±â 
-		// 	ÆÄ¿ì¼Â off -> on ÈÄ, 10ÃÊ µÚ »ó½Â
+		//	íŒŒìš°ì…‹ off -> í˜„ì¬ ìœ„ì¹˜ì—ì„œ ëŒ€ê¸° 
+		// 	íŒŒìš°ì…‹ off -> on í›„, 10ì´ˆ ë’¤ ìƒìŠ¹
 		gu8_Timer_FaucetDown_WaitingTime = Z_FAUCET_DOWN_WAITING_TIME;
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â up ÁøÇà
+/// @brief    íŒŒìš°ì…‹ up ì§„í–‰
 /// @param    void
 /// @return   void
 static void func_faucet_moving_up(void)
 {
-	if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ¸®µå½ºÀ§Ä¡ °¨Áö?
+	if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€?
 	{
 		func_faucet_add_pulse_after_InputUpReed();
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING__UP_COMPLETE;
@@ -618,11 +618,11 @@ static void func_faucet_moving_up(void)
 		if((gu8_OperationStep == Z_OperationStep_11) || (gu8_OperationStep == Z_OperationStep_50))
 		#endif
 		{
-			//	¿Ã¶ó°¡´ÂÁß¿¡ ÃßÃâ¹öÆ° ÀÔ·ÂÇÏ¸é...´Ù½Ã ³»·Á¿Í¾ßÇÔ..
+			//	ì˜¬ë¼ê°€ëŠ”ì¤‘ì— ì¶”ì¶œë²„íŠ¼ ì…ë ¥í•˜ë©´...ë‹¤ì‹œ ë‚´ë ¤ì™€ì•¼í•¨..
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_STEP_ZERO_BACK);
 			gu8_FaucetMoving_Step = Z_FAUCET_MOVING_DOWN;
 		}
-		else if(gu16_FaucetMovingPulse == 0)		//	¸®µå°¨Áö ¾ÈµÇ°í...
+		else if(gu16_FaucetMovingPulse == 0)		//	ë¦¬ë“œê°ì§€ ì•ˆë˜ê³ ...
 		{
 			gu8_FaucetMoving_Step = Z_FAUCET_MOVING__UP_COMPLETE;
 		}
@@ -633,7 +633,7 @@ static void func_faucet_moving_up(void)
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â up ¿Ï·á
+/// @brief    íŒŒìš°ì…‹ up ì™„ë£Œ
 /// @param    void
 /// @return   void
 static void func_faucet_moving__upComplete(void)
@@ -645,22 +645,22 @@ static void func_faucet_moving__upComplete(void)
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö ½Ã ÃÖ»ó´Ü ÀÌµ¿
+/// @brief    íŒŒìš°ì…‹ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ì‹œ ìµœìƒë‹¨ ì´ë™
 /// @param    void
 /// @return   void
 static void func_faucet_reed_undetected_move_up(void)
 {
-	// UP ¸®µå½ºÀ§Ä¡ °¨Áö È®ÀÎ (ÆŞ½º Ãâ·Â Áß¿¡µµ Ã¼Å©)
+	// UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í™•ì¸ (í„ìŠ¤ ì¶œë ¥ ì¤‘ì—ë„ ì²´í¬)
 	if(INPUT_REED_SW_FAUCET_UP == SET)
 	{
-		// ¿øÁ¡ Àâ±â¸¦ À§ÇØ Ãß°¡ ÆŞ½º Ãâ·Â
+		// ì›ì  ì¡ê¸°ë¥¼ ìœ„í•´ ì¶”ê°€ í„ìŠ¤ ì¶œë ¥
 		func_faucet_add_pulse_after_InputUpReed();
 		
 		#if 0
-		// Ãß°¡ ÆŞ½º Ãâ·Â ÈÄ ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ´ë±â ½ºÅÜÀ¸·Î ÀÌµ¿
+		// ì¶”ê°€ í„ìŠ¤ ì¶œë ¥ í›„ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ëŒ€ê¸° ìŠ¤í…ìœ¼ë¡œ ì´ë™
 		gu8_FaucetMoving_Step = Z_FAUCET_REED_UNDETECTED_WAIT_TIP;
 		#endif
-		// ÇÊÅÍ ±³Ã¼ ¸ğµå¸é ÇÊÅÍ ±³Ã¼ ¸ğµå·Î º¹±Í
+		// í•„í„° êµì²´ ëª¨ë“œë©´ í•„í„° êµì²´ ëª¨ë“œë¡œ ë³µê·€
 		if(gu8_F_InputMicroSW_ForcedFaucetUp == SET)
 		{
 			gu8_FaucetMoving_Step = Z_FILTER_CHANGE_MODE;
@@ -673,15 +673,15 @@ static void func_faucet_reed_undetected_move_up(void)
 	}
 	else
 	{
-		// UP ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö »óÅÂ
-		// ÆŞ½º Ãâ·Â ¿Ï·á ÈÄ ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ´ë±â ½ºÅÜÀ¸·Î ÀÌµ¿
+		// UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ìƒíƒœ
+		// í„ìŠ¤ ì¶œë ¥ ì™„ë£Œ í›„ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ëŒ€ê¸° ìŠ¤í…ìœ¼ë¡œ ì´ë™
 		if(gu16_FaucetMovingPulse == 0)
 		{
 			#if 0
-			// ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ´ë±â ½ºÅÜÀ¸·Î ÀÌµ¿ (¸®µå °íÀå ½Ã ´ë±âÇÏ±â À§ÇØ)
+			// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ëŒ€ê¸° ìŠ¤í…ìœ¼ë¡œ ì´ë™ (ë¦¬ë“œ ê³ ì¥ ì‹œ ëŒ€ê¸°í•˜ê¸° ìœ„í•´)
 			gu8_FaucetMoving_Step = Z_FAUCET_REED_UNDETECTED_WAIT_TIP;
 			#endif
-			// ÇÊÅÍ ±³Ã¼ ¸ğµå¸é ÇÊÅÍ ±³Ã¼ ¸ğµå·Î º¹±Í
+			// í•„í„° êµì²´ ëª¨ë“œë©´ í•„í„° êµì²´ ëª¨ë“œë¡œ ë³µê·€
 			if(gu8_F_InputMicroSW_ForcedFaucetUp == SET)
 			{
 				gu8_FaucetMoving_Step = Z_FILTER_CHANGE_MODE;
@@ -695,26 +695,26 @@ static void func_faucet_reed_undetected_move_up(void)
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö ½Ã ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ´ë±â
+/// @brief    íŒŒìš°ì…‹ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ ì‹œ íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void func_faucet_reed_undetected_wait_tip(void)
 {
-	// ÆÁ ¸®µå½ºÀ§Ä¡ °¨Áö ÇÃ·¡±× È®ÀÎ (input.c¿¡¼­ 2ÃÊ µô·¹ÀÌ ÈÄ ¼³Á¤)
+	// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í”Œë˜ê·¸ í™•ì¸ (input.cì—ì„œ 2ì´ˆ ë”œë ˆì´ í›„ ì„¤ì •)
 	// @018 if(gu8_F_FaucetTip_Reed_Detected == SET)
 	if((gu8_F_FaucetTip_Reed_Detected == SET) 
-	|| (gu8_OperationStep == Z_OperationStep_11)                  //@018 ÃßÃâÇÏ¸é..¿ø·¡ À§Ä¡·Î 
-	|| (gu8_OperationStep == Z_OperationStep_50))                 //@018 ÃßÃâÇÏ¸é..¿ø·¡ À§Ä¡·Î
+	|| (gu8_OperationStep == Z_OperationStep_11)                  //@018 ì¶”ì¶œí•˜ë©´..ì›ë˜ ìœ„ì¹˜ë¡œ 
+	|| (gu8_OperationStep == Z_OperationStep_50))                 //@018 ì¶”ì¶œí•˜ë©´..ì›ë˜ ìœ„ì¹˜ë¡œ
 	{
-		if(gu8_F_FaucetTip_Reed_Detected == SET)		//@018 ¹Ì°¨Áö -> ÃÖ»ó´ÜÀÌµ¿ -> °¨Áö ÇÒ¶§ µÎ¹ø ¿Ô´Ù°«´Ù ÇÔ.
-		{                                               //@018 ¹Ì°¨Áö -> ÃÖ»ó´ÜÀÌµ¿ -> °¨Áö ÇÒ¶§ µÎ¹ø ¿Ô´Ù°«´Ù ÇÔ.
-			gu8_F_Came_From_Wait_Tip_To_Level = SET;   //@018 ¹Ì°¨Áö -> ÃÖ»ó´ÜÀÌµ¿ -> °¨Áö ÇÒ¶§ µÎ¹ø ¿Ô´Ù°«´Ù ÇÔ.
-		}                                              //@018 ¹Ì°¨Áö -> ÃÖ»ó´ÜÀÌµ¿ -> °¨Áö ÇÒ¶§ µÎ¹ø ¿Ô´Ù°«´Ù ÇÔ.
+		if(gu8_F_FaucetTip_Reed_Detected == SET)		//@018 ë¯¸ê°ì§€ -> ìµœìƒë‹¨ì´ë™ -> ê°ì§€ í• ë•Œ ë‘ë²ˆ ì™”ë‹¤ê°“ë‹¤ í•¨.
+		{                                               //@018 ë¯¸ê°ì§€ -> ìµœìƒë‹¨ì´ë™ -> ê°ì§€ í• ë•Œ ë‘ë²ˆ ì™”ë‹¤ê°“ë‹¤ í•¨.
+			gu8_F_Came_From_Wait_Tip_To_Level = SET;   //@018 ë¯¸ê°ì§€ -> ìµœìƒë‹¨ì´ë™ -> ê°ì§€ í• ë•Œ ë‘ë²ˆ ì™”ë‹¤ê°“ë‹¤ í•¨.
+		}                                              //@018 ë¯¸ê°ì§€ -> ìµœìƒë‹¨ì´ë™ -> ê°ì§€ í• ë•Œ ë‘ë²ˆ ì™”ë‹¤ê°“ë‹¤ í•¨.
 
-		// ÆÁ ¸®µå½ºÀ§Ä¡ °¨ÁöµÇ¸é ¿ø·¡ ·¹º§·Î º¹±Í
+		// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ë˜ë©´ ì›ë˜ ë ˆë²¨ë¡œ ë³µê·€
 		gu8_FaucetMoving_Step = Z_FAUCET_MOVING__INITIAL_SET_LEVEL;
-		gu8_F_FaucetTip_Reed_Detected = CLEAR;  // ÇÃ·¡±× ¸®¼Â
-		gu8_FaucetMoving_Set_Level_Backup = CLEAR;			//	ÀÌ°Å Å¬¸®¾î ¾ÈÇÏ¸é.....5´Ü°è Á¦¿ÜÇÏ°í ¿øÀ§Ä¡·Î ¾È°¨.
+		gu8_F_FaucetTip_Reed_Detected = CLEAR;  // í”Œë˜ê·¸ ë¦¬ì…‹
+		gu8_FaucetMoving_Set_Level_Backup = CLEAR;			//	ì´ê±° í´ë¦¬ì–´ ì•ˆí•˜ë©´.....5ë‹¨ê³„ ì œì™¸í•˜ê³  ì›ìœ„ì¹˜ë¡œ ì•ˆê°.
 
 		gu8_F_Faucet_Fast_Return_for_Reed_Detected = SET;
 	}
@@ -739,17 +739,17 @@ static void func_faucet_reed_undetected_wait_tip(void)
 	{
 	
 	}
-	// ÆÁ ¸®µå½ºÀ§Ä¡ ¹Ì°¨Áö¸é °è¼Ó ´ë±â (¾Æ¹« µ¿ÀÛ ¾ÈÇÔ)
+	// íŒ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€ë©´ ê³„ì† ëŒ€ê¸° (ì•„ë¬´ ë™ì‘ ì•ˆí•¨)
 }
 
-/// @brief    ÆÄ¿ì¼Â ¼³Á¤ ¸ğµå
+/// @brief    íŒŒìš°ì…‹ ì„¤ì • ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void faucet_Level_Set_Mode(void)
 {
 	switch(gu8_Faucet_Level_Set_Step)
 	{
-		//	¿øÁ¡À¸·Î ¿Ã¶ó¿Ã¼öÀÖµµ·Ï...
+		//	ì›ì ìœ¼ë¡œ ì˜¬ë¼ì˜¬ìˆ˜ìˆë„ë¡...
 		case Z_FAUCET_SET_MODE_WAIT:					
 
 			if((gu8_FaucetMoving_Set_Level_Backup != gu8_FaucetMoving_Set_Level)
@@ -774,11 +774,11 @@ static void faucet_Level_Set_Mode(void)
 
 			break;
 
-		case Z_FAUCET_SET_MODE_FULL_UP:		//	´Ù ¿Ã¶ó°¬´ÂÁö È®ÀÎ..
-			if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ¸®µå½ºÀ§Ä¡ °¨Áö?
+		case Z_FAUCET_SET_MODE_FULL_UP:		//	ë‹¤ ì˜¬ë¼ê°”ëŠ”ì§€ í™•ì¸..
+			if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€?
 			{
-				// AUTO -> 1´Ü°è º¯°æ ½Ã¿¡¸¸ Ãß°¡ ÆŞ½º ½ºÅµ
-				// (¹é¾÷ º¯¼ö´Â ¾ÆÁ÷ ¾÷µ¥ÀÌÆ® ÀüÀÌ¹Ç·Î ÀÌÀü ·¹º§À» È®ÀÎ °¡´É)
+				// AUTO -> 1ë‹¨ê³„ ë³€ê²½ ì‹œì—ë§Œ ì¶”ê°€ í„ìŠ¤ ìŠ¤í‚µ
+				// (ë°±ì—… ë³€ìˆ˜ëŠ” ì•„ì§ ì—…ë°ì´íŠ¸ ì „ì´ë¯€ë¡œ ì´ì „ ë ˆë²¨ì„ í™•ì¸ ê°€ëŠ¥)
 				if(((gu8_FaucetMoving_Set_Level_Backup == Z_FAUCET_MOVING_FIX_1_LEVEL)
 				&& (gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL))
 				|| ((gu8_FaucetMoving_Set_Level_Backup == Z_FAUCET_MOVING_AUTO_LEVEL)
@@ -793,27 +793,27 @@ static void faucet_Level_Set_Mode(void)
 
 				gu8_Faucet_Level_Set_Step = Z_FAUCET_SET_MODE_SETTING;				
 			}
-			else if(gu16_FaucetMovingPulse == 0)	//	¸®µå½ºÀ§Ä¡ ³¡±îÁö °¨Áö ¾ÈµÇ¸é ÆŞ½º 0ÀÏ ¶§ ¿Ï·á
+			else if(gu16_FaucetMovingPulse == 0)	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ëê¹Œì§€ ê°ì§€ ì•ˆë˜ë©´ í„ìŠ¤ 0ì¼ ë•Œ ì™„ë£Œ
 			{
 				gu8_Faucet_Level_Set_Step = Z_FAUCET_SET_MODE_SETTING;
 			}
 			break;
 			
 		case Z_FAUCET_SET_MODE_FULL_DOWN:
-			if(INPUT_REED_SW_FAUCET_DOWN == SET)			//	ÆÄ¿ì¼Â DOWN ¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ, Ãß°¡ ÆŞ½º(Á¶¸³¿¡ µû¶ó ÆíÂ÷ ÀÖ±â ¶§¹®¿¡ ÀüÃ¼ ÆŞ½º¸¸Å­ ´õÁÖ±â.)
+			if(INPUT_REED_SW_FAUCET_DOWN == SET)			//	íŒŒìš°ì…‹ DOWN ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, ì¶”ê°€ í„ìŠ¤(ì¡°ë¦½ì— ë”°ë¼ í¸ì°¨ ìˆê¸° ë•Œë¬¸ì— ì „ì²´ í„ìŠ¤ë§Œí¼ ë”ì£¼ê¸°.)
 			{
 				func_faucet_add_pulse_after_InputDownReed();
 				gu8_Faucet_Level_Set_Step = Z_FAUCET_SET_MODE_SETTING;
 			}
-			else if(gu16_FaucetMovingPulse == 0)	//	¸®µå½ºÀ§Ä¡ ³¡±îÁö °¨Áö ¾ÈµÇ¸é ÆŞ½º 0ÀÏ ¶§ ¿Ï·á
+			else if(gu16_FaucetMovingPulse == 0)	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ëê¹Œì§€ ê°ì§€ ì•ˆë˜ë©´ í„ìŠ¤ 0ì¼ ë•Œ ì™„ë£Œ
 			{
 				gu8_Faucet_Level_Set_Step = Z_FAUCET_SET_MODE_SETTING;
 			}
 			break;
 
-		case Z_FAUCET_SET_MODE_SETTING:		//	ÆÄ¿ì¼Â ¼³Á¤ ´ë±â
+		case Z_FAUCET_SET_MODE_SETTING:		//	íŒŒìš°ì…‹ ì„¤ì • ëŒ€ê¸°
 
-			// ÆÄ¿ì¼Â ÀÌµ¿ÀÌ ¿Ï·áµÇ¸é ¹é¾÷ º¯¼ö ¾÷µ¥ÀÌÆ® ÈÄ WAIT »óÅÂ·Î º¹±Í
+			// íŒŒìš°ì…‹ ì´ë™ì´ ì™„ë£Œë˜ë©´ ë°±ì—… ë³€ìˆ˜ ì—…ë°ì´íŠ¸ í›„ WAIT ìƒíƒœë¡œ ë³µê·€
 			if(gu16_FaucetMovingPulse == 0)
 			{
 				gu8_FaucetMoving_Set_Level_Backup = gu8_FaucetMoving_Set_Level;
@@ -839,10 +839,10 @@ static void faucet_Level_Set_Mode(void)
 			break;		
 	}
 
-	// gu8_FaucetMoving_Step = Z_FAUCET_MOVING_WAIT;			//	¼³Á¤ÇÏ°í Ã³À½À¸·Î °¥¼öÀÖµµ·Ï..
+	// gu8_FaucetMoving_Step = Z_FAUCET_MOVING_WAIT;			//	ì„¤ì •í•˜ê³  ì²˜ìŒìœ¼ë¡œ ê°ˆìˆ˜ìˆë„ë¡..
 }
 
-/// @brief    ÆÄ¿ì¼Â ¸ğµå ¼±ÅÃ...(ÃÊ±âÈ­¶û °°ÀÌ ¾²±âÀ§ÇØ ÇÔ¼öºĞ¸®)
+/// @brief    íŒŒìš°ì…‹ ëª¨ë“œ ì„ íƒ...(ì´ˆê¸°í™”ë‘ ê°™ì´ ì“°ê¸°ìœ„í•´ í•¨ìˆ˜ë¶„ë¦¬)
 /// @param    void
 /// @return   void
 static void faucet_Level_Select(void)
@@ -861,7 +861,7 @@ static void faucet_Level_Select(void)
 	{
 		mu16_level_pulse = faucet_Setting_Mode_Pulse_Compare();
 		
-		// FIX_5_LEVELÀº Ç×»ó OPEN ¹æÇâ, ³ª¸ÓÁö´Â ¼³Á¤µÈ ¹æÇâ »ç¿ë
+		// FIX_5_LEVELì€ í•­ìƒ OPEN ë°©í–¥, ë‚˜ë¨¸ì§€ëŠ” ì„¤ì •ëœ ë°©í–¥ ì‚¬ìš©
 		if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_FIX_5_LEVEL)
 		{
 			mu8_direction = FAUCET_STEP_MOTER_OPEN;
@@ -878,13 +878,13 @@ static void faucet_Level_Select(void)
 	#endif
 
 		
-	// FIX_5_LEVELÀº Ç×»ó OPEN ¹æÇâ, ³ª¸ÓÁö´Â ¼³Á¤µÈ ¹æÇâ »ç¿ë
+	// FIX_5_LEVELì€ í•­ìƒ OPEN ë°©í–¥, ë‚˜ë¨¸ì§€ëŠ” ì„¤ì •ëœ ë°©í–¥ ì‚¬ìš©
 	if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_FIX_5_LEVEL)
 	{
 		mu8_direction = FAUCET_STEP_MOTER_OPEN;
 		// gu8_Faucet_Level_Set_Step = Z_FAUCET_SET_MODE_FULL_DOWN;
 		FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_STEP_ZERO_BACK);
-		gu8_Prev_Setting_Direction = mu8_direction;  // ÇöÀç ¹æÇâ ÀúÀå
+		gu8_Prev_Setting_Direction = mu8_direction;  // í˜„ì¬ ë°©í–¥ ì €ì¥
 	}
 	else if((gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)
 	|| (gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_FIX_1_LEVEL))
@@ -892,21 +892,21 @@ static void faucet_Level_Select(void)
 		mu8_direction = FAUCET_STEP_MOTER_CLOSE;
 		// gu8_Faucet_Level_Set_Step = Z_FAUCET_SET_MODE_FULL_UP;
 		FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);
-		gu8_Prev_Setting_Direction = mu8_direction;  // ÇöÀç ¹æÇâ ÀúÀå
+		gu8_Prev_Setting_Direction = mu8_direction;  // í˜„ì¬ ë°©í–¥ ì €ì¥
 	}
 	else
 	{
 		mu8_direction = gu8_F_FaucetMoving_Set_Level_Way;
 		mu16_level_pulse = faucet_Setting_Mode_Pulse_Compare();
 		
-		// ¹é·¡½Ã º¸Á¤: ¼³Á¤ ¸ğµå¿¡¼­ ¹æÇâ ÀüÈ¯ ½Ã¿¡¸¸ º¸Á¤Ä¡ Ãß°¡
+		// ë°±ë˜ì‹œ ë³´ì •: ì„¤ì • ëª¨ë“œì—ì„œ ë°©í–¥ ì „í™˜ ì‹œì—ë§Œ ë³´ì •ì¹˜ ì¶”ê°€
 		if ((gu8_Prev_Setting_Direction != mu8_direction) && (mu8_direction == FAUCET_STEP_MOTER_CLOSE))
 		{
-			// OPEN -> CLOSE ÀüÈ¯ ½Ã¿¡¸¸ º¸Á¤Ä¡ Ãß°¡
+			// OPEN -> CLOSE ì „í™˜ ì‹œì—ë§Œ ë³´ì •ì¹˜ ì¶”ê°€
 			mu16_level_pulse += Z_FAUCET_BACKLASH_COMPENSATION;
 		}
 		
-		gu8_Prev_Setting_Direction = mu8_direction;  // ÇöÀç ¹æÇâ ÀúÀå
+		gu8_Prev_Setting_Direction = mu8_direction;  // í˜„ì¬ ë°©í–¥ ì €ì¥
 		FaucetControl_StepMove(mu8_direction, mu16_level_pulse);
 	}
 		
@@ -914,9 +914,9 @@ static void faucet_Level_Select(void)
 	gu8_F_FaucetMoving_Set_Level_Way = 0;
 }
 
-/// @brief    ·¹º§ °ªÀ» ÆŞ½º °ªÀ¸·Î º¯È¯
-/// @param    mu8_level ·¹º§ °ª (Z_FAUCET_MOVING_FIX_X_LEVEL)
-/// @return   ÇØ´ç ·¹º§ÀÇ ÆŞ½º °ª
+/// @brief    ë ˆë²¨ ê°’ì„ í„ìŠ¤ ê°’ìœ¼ë¡œ ë³€í™˜
+/// @param    mu8_level ë ˆë²¨ ê°’ (Z_FAUCET_MOVING_FIX_X_LEVEL)
+/// @return   í•´ë‹¹ ë ˆë²¨ì˜ í„ìŠ¤ ê°’
 static U16 faucet_Level_To_Pulse(U8 mu8_level)
 {
 	U16 mu16_pulse = 0;
@@ -949,20 +949,20 @@ static U16 faucet_Level_To_Pulse(U8 mu8_level)
 	return (mu16_pulse);
 }
 
-/// @brief    ÆÄ¿ì¼Â À§Ä¡ ¼ÂÆÃ ½Ã, ¹é¾÷ ·¹º§°ú ÇöÀç ·¹º§ÀÇ Â÷ÀÌ¸¸Å­ ÆŞ½º °è»ê
+/// @brief    íŒŒìš°ì…‹ ìœ„ì¹˜ ì…‹íŒ… ì‹œ, ë°±ì—… ë ˆë²¨ê³¼ í˜„ì¬ ë ˆë²¨ì˜ ì°¨ì´ë§Œí¼ í„ìŠ¤ ê³„ì‚°
 /// @param    void
-/// @return   ·¹º§ Â÷ÀÌ¿¡ ÇØ´çÇÏ´Â ÆŞ½º °ª
+/// @return   ë ˆë²¨ ì°¨ì´ì— í•´ë‹¹í•˜ëŠ” í„ìŠ¤ ê°’
 static U16 faucet_Setting_Mode_Pulse_Compare(void)
 {
 	U16 mu16_ret_pulse = 0;
 	U16 mu16_backup_pulse = 0;
 	U16 mu16_current_pulse = 0;
 
-	//	¹é¾÷ ·¹º§°ú ÇöÀç ·¹º§À» ÆŞ½º·Î º¯È¯
+	//	ë°±ì—… ë ˆë²¨ê³¼ í˜„ì¬ ë ˆë²¨ì„ í„ìŠ¤ë¡œ ë³€í™˜
 	mu16_backup_pulse = faucet_Level_To_Pulse(gu8_FaucetMoving_Set_Level_Backup);
 	mu16_current_pulse = faucet_Level_To_Pulse(gu8_FaucetMoving_Set_Level);
 
-	//	·¹º§ Â÷ÀÌ¿¡ ÇØ´çÇÏ´Â ÆŞ½º Â÷ÀÌ °è»ê
+	//	ë ˆë²¨ ì°¨ì´ì— í•´ë‹¹í•˜ëŠ” í„ìŠ¤ ì°¨ì´ ê³„ì‚°
 	if(mu16_current_pulse > mu16_backup_pulse)
 	{
 		mu16_ret_pulse = mu16_current_pulse - mu16_backup_pulse;
@@ -980,7 +980,7 @@ static U16 faucet_Setting_Mode_Pulse_Compare(void)
 }
 
 
-/// @brief    ÆÄ¿ì¼Â up ¿Ï·á
+/// @brief    íŒŒìš°ì…‹ up ì™„ë£Œ
 /// @param    void
 /// @return   void
 static void func_faucet_moving_LineAuto(void)
@@ -988,7 +988,7 @@ static void func_faucet_moving_LineAuto(void)
 	switch(gu8_FaucetMoving_LineAutoStep)
 	{
 		case 0:
-			gu8_LineAuto_CupMicroSW_Step = 0;				// @023 ÆĞÅÏ ÃÊ±âÈ­
+			gu8_LineAuto_CupMicroSW_Step = 0;				// @023 íŒ¨í„´ ì´ˆê¸°í™”
 			FaucetStepMotor_ZeroBack_Open();
 			gu8_FaucetMoving_LineAutoStep++;
 			break;
@@ -1043,7 +1043,7 @@ static void func_faucet_moving_LineAuto(void)
 
 			break;
 
-		case 4://	¿Ï·á Ä¿¸Çµå ¹ŞÀ¸¸é ¹Ù·Î ÃÖ»ó´ÜÀ¸·Î ÀÌµ¿...ÆÄ¿ì¼Â Áö±× »¬¶§ ³»·Á¿ÔÀ¸´Ï³¢¤¿.
+		case 4://	ì™„ë£Œ ì»¤ë§¨ë“œ ë°›ìœ¼ë©´ ë°”ë¡œ ìµœìƒë‹¨ìœ¼ë¡œ ì´ë™...íŒŒìš°ì…‹ ì§€ê·¸ ëº„ë•Œ ë‚´ë ¤ì™”ìœ¼ë‹ˆë¼ã….
 			if((F_LineTest_Complete == SET) && (INPUT_REED_SW_FAUCET == CLEAR))
 			{
 				FaucetStepMotor_ZeroBack_Close();
@@ -1082,7 +1082,7 @@ static void func_faucet_moving_LineAuto(void)
 	}
 }
 
-/// @brief    @023 ÄÅ ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ ¹Ì°¨Áö¡æ°¨Áö¡æ¹Ì°¨Áö ÆĞÅÏ Ã¼Å© (case 1, 2 °øÅë)
+/// @brief    @023 ì»µ ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ ë¯¸ê°ì§€â†’ê°ì§€â†’ë¯¸ê°ì§€ íŒ¨í„´ ì²´í¬ (case 1, 2 ê³µí†µ)
 /// @param    void
 /// @return   void
 static void func_LineAuto_CupMicroSW_PatternCheck(void)
@@ -1091,11 +1091,11 @@ static void func_LineAuto_CupMicroSW_PatternCheck(void)
 	{
 		if(gu8_LineAuto_CupMicroSW_Step == 0)
 		{
-			gu8_LineAuto_CupMicroSW_Step = 1;			// @023 ¹Ì°¨Áö È®ÀÎ
+			gu8_LineAuto_CupMicroSW_Step = 1;			// @023 ë¯¸ê°ì§€ í™•ì¸
 		}
 		else if(gu8_LineAuto_CupMicroSW_Step == 2)
 		{
-			gu8_LineAuto_CupMicroSW_Step = 3;			// @023 ÆĞÅÏ ¿Ï¼º
+			gu8_LineAuto_CupMicroSW_Step = 3;			// @023 íŒ¨í„´ ì™„ì„±
 			gu8_F_LineAuto_Faucet_MicroSW = SET;		// @023
 		}
 	}
@@ -1103,12 +1103,12 @@ static void func_LineAuto_CupMicroSW_PatternCheck(void)
 	{
 		if(gu8_LineAuto_CupMicroSW_Step == 1)
 		{
-			gu8_LineAuto_CupMicroSW_Step = 2;			// @023 °¨Áö È®ÀÎ
+			gu8_LineAuto_CupMicroSW_Step = 2;			// @023 ê°ì§€ í™•ì¸
 		}
 	}
 }
 
-/// @brief    ¶óÀÎ ´ÜÃà °Ë»ç¸ğµå
+/// @brief    ë¼ì¸ ë‹¨ì¶• ê²€ì‚¬ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void func_faucet_moving_LineTest2(void)
@@ -1122,7 +1122,7 @@ static void func_faucet_moving_LineTest2(void)
 			gu8_F_LineAuto_Faucet_DownReed = CLEAR;			//@014
 			gu8_F_LineAuto_Faucet_UpReed = CLEAR;			//@014
 			gu8_F_LineAuto_Faucet_MicroSW = CLEAR;			//@014			
-			gu8_LineAuto_CupMicroSW_Step = 0;					// @022 ÆĞÅÏ ÃÊ±âÈ­			
+			gu8_LineAuto_CupMicroSW_Step = 0;					// @022 íŒ¨í„´ ì´ˆê¸°í™”			
 		}                                           //@014
 	}                                               //@014
 
@@ -1137,7 +1137,7 @@ static void func_faucet_moving_LineTest2(void)
 				break;
 
 			case 1:
-				func_LineAuto_CupMicroSW_PatternCheck();	// @023 ¹Ì°¨Áö¡æ°¨Áö¡æ¹Ì°¨Áö ÆĞÅÏ Ã¼Å©
+				func_LineAuto_CupMicroSW_PatternCheck();	// @023 ë¯¸ê°ì§€â†’ê°ì§€â†’ë¯¸ê°ì§€ íŒ¨í„´ ì²´í¬
 
 				if(INPUT_REED_SW_FAUCET_DOWN == SET)
 				{
@@ -1152,7 +1152,7 @@ static void func_faucet_moving_LineTest2(void)
 				break;
 
 			case 2:
-				func_LineAuto_CupMicroSW_PatternCheck();	// @023 ¹Ì°¨Áö¡æ°¨Áö¡æ¹Ì°¨Áö ÆĞÅÏ Ã¼Å©
+				func_LineAuto_CupMicroSW_PatternCheck();	// @023 ë¯¸ê°ì§€â†’ê°ì§€â†’ë¯¸ê°ì§€ íŒ¨í„´ ì²´í¬
 
 				if(gu16_FaucetMovingPulse != 0)
 				{
@@ -1197,7 +1197,7 @@ static void func_faucet_moving_LineTest2(void)
 	}
 }
 
-/// @brief    ÆÄ¿ì¼Â ³»±¸¼º ¸ğµå
+/// @brief    íŒŒìš°ì…‹ ë‚´êµ¬ì„± ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void faucet_up_for_front_cover(void)
@@ -1209,15 +1209,15 @@ static void faucet_up_for_front_cover(void)
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);
 			Play_Voice(VOICE_START_FILTER_CHANGE_MODE);
 			break;
-		case 1:			//	close ´ë±â
-			if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ¸®µå½ºÀ§Ä¡ °¨Áö?
+		case 1:			//	close ëŒ€ê¸°
+			if(INPUT_REED_SW_FAUCET_UP == SET)					//	UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€?
 			{
 				func_faucet_add_pulse_after_InputUpReed();
 				gu8_Step_Faucet_Up_forFrontCover_Open++;
 				gu8_Timer_Faucet_Up_forFrontCover_Open = Z_FAUCET_UP_FOR_FRONT_COVER_OPEN;
 			}
 			else
-			{	//	¸®µå½ºÀ§Ä¡ ³¡±îÁö °¨Áö ¾ÈµÇ¸é ±×³É ¿Ï·á Ä¡±â..
+			{	//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ëê¹Œì§€ ê°ì§€ ì•ˆë˜ë©´ ê·¸ëƒ¥ ì™„ë£Œ ì¹˜ê¸°..
 				if(gu16_FaucetMovingPulse == 0)
 				{
 					gu8_Step_Faucet_Up_forFrontCover_Open++;
@@ -1229,15 +1229,15 @@ static void faucet_up_for_front_cover(void)
 				}
 			}			
 			break;
-		case 2:				//	filter cover ´İÈû ´ë±â.
+		case 2:				//	filter cover ë‹«í˜ ëŒ€ê¸°.
 
-			if((gu8_OperationStep < Z_OperationStep_10)			//	ÇÃ·¯½Ì ÁßÀÌ¸é...°è¼Ó À¯Áö
+			if((gu8_OperationStep < Z_OperationStep_10)			//	í”ŒëŸ¬ì‹± ì¤‘ì´ë©´...ê³„ì† ìœ ì§€
 			|| (gu8_OperationStep == Z_OperationStep_B0)
 			|| (gu8_Key_Short.byte != 0x00))
 			{
 				gu8_Timer_Faucet_Up_forFrontCover_Open = Z_FAUCET_UP_FOR_FRONT_COVER_OPEN;				
 			}
-			else if(gu8_Timer_Faucet_Up_forFrontCover_Open == 0)	//	30ÃÊ °æ°ú ÈÄ, ¿ø·¡ ÀÚ¸®·Î..
+			else if(gu8_Timer_Faucet_Up_forFrontCover_Open == 0)	//	30ì´ˆ ê²½ê³¼ í›„, ì›ë˜ ìë¦¬ë¡œ..
 			{
 				gu8_F_InputMicroSW_ForcedFaucetUp = CLEAR;
 				gu8_Step_Faucet_Up_forFrontCover_Open = 0;
@@ -1248,7 +1248,7 @@ static void faucet_up_for_front_cover(void)
 				#endif
 				gu8_FaucetMoving_Step = Z_FAUCET_MOVING__INITIAL_SET_LEVEL;
 
-				//	ÆÄ¿ì¼Â Á¦ÀÚ¸® Ã£¾Æ°¡°í À½¼º ÇÑ¹ø ³» ±âÀ§ÇÔ...
+				//	íŒŒìš°ì…‹ ì œìë¦¬ ì°¾ì•„ê°€ê³  ìŒì„± í•œë²ˆ ë‚´ ê¸°ìœ„í•¨...
 				if((gu8_F_ReedSWCheck_forFaucetTip_Voice == SET)
 				&& (gu8_F_FaucetTip_Reed_Undetected == SET))
 				{
@@ -1281,7 +1281,7 @@ static void faucet_up_for_front_cover(void)
 }
 
 
-/// @brief    ÆÄ¿ì¼Â ³»±¸¼º ¸ğµå
+/// @brief    íŒŒìš°ì…‹ ë‚´êµ¬ì„± ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void faucet_Durability_Mode(void)
@@ -1316,9 +1316,9 @@ static void faucet_Durability_Mode(void)
 static void func_faucet_add_pulse_after_InputUpReed(void)
 {
 	#if 0
-	if(gu16_FaucetMovingPulse != 0)				//	¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ, ÆŞ½º°¡ ³²¾ÆÀÖÀ¸¸é....±×¸¸Å­ ÆŞ½º ´õ ÁÖ±â..(¿ÏÀüÈ÷ ³»·Á¿À±â À§ÇÔ..)
+	if(gu16_FaucetMovingPulse != 0)				//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, í„ìŠ¤ê°€ ë‚¨ì•„ìˆìœ¼ë©´....ê·¸ë§Œí¼ í„ìŠ¤ ë” ì£¼ê¸°..(ì™„ì „íˆ ë‚´ë ¤ì˜¤ê¸° ìœ„í•¨..)
 	{
-		// °¨¼Ó ¸ğµå »ç¿ë ¾ÈÇÔ
+		// ê°ì† ëª¨ë“œ ì‚¬ìš© ì•ˆí•¨
 		
 		FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_INPUT_UP_REED_SW_DETECTION_ADD_PULSE);
 	}
@@ -1327,7 +1327,7 @@ static void func_faucet_add_pulse_after_InputUpReed(void)
 	}
 	#endif
 
-	gu8_F_ResetAccel_ForAddPulse = SET;  // ÇÃ·¡±× ¼³Á¤
+	gu8_F_ResetAccel_ForAddPulse = SET;  // í”Œë˜ê·¸ ì„¤ì •
 	FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_INPUT_UP_REED_SW_DETECTION_ADD_PULSE);
 }
 
@@ -1335,13 +1335,13 @@ static void func_faucet_add_pulse_after_InputUpReed(void)
 static void func_faucet_add_pulse_after_InputDownReed(void)
 {
 	#if 0
-	if(gu16_FaucetMovingPulse != 0)				//	¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ, ÆŞ½º°¡ ³²¾ÆÀÖÀ¸¸é....±×¸¸Å­ ÆŞ½º ´õ ÁÖ±â..(¿ÏÀüÈ÷ ³»·Á¿À±â À§ÇÔ..)
+	if(gu16_FaucetMovingPulse != 0)				//	ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„, í„ìŠ¤ê°€ ë‚¨ì•„ìˆìœ¼ë©´....ê·¸ë§Œí¼ í„ìŠ¤ ë” ì£¼ê¸°..(ì™„ì „íˆ ë‚´ë ¤ì˜¤ê¸° ìœ„í•¨..)
 	{
-		// °¨¼Ó ¸ğµå »ç¿ë ¾ÈÇÔ
+		// ê°ì† ëª¨ë“œ ì‚¬ìš© ì•ˆí•¨
 		
 		if(gu16_FaucetMovingPulse > FAUCET_INPUT_DOWN_REED_SW_DETECTION_ADD_PULSE)
 		{
-			FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, gu16_FaucetMovingPulse);		//	³²Àº ÆŞ½º°¡ ³Ê¹«¸¹À¸¸é ¿ÀÂ÷ ¹ß»ıÇÏ¿©, ÀÏÁ¤°ªÀÌ»óÀÎ°æ¿ì ±×³É ²ô,¤¼±îÁö ³»¸²
+			FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, gu16_FaucetMovingPulse);		//	ë‚¨ì€ í„ìŠ¤ê°€ ë„ˆë¬´ë§ìœ¼ë©´ ì˜¤ì°¨ ë°œìƒí•˜ì—¬, ì¼ì •ê°’ì´ìƒì¸ê²½ìš° ê·¸ëƒ¥ ë„,ã…Œê¹Œì§€ ë‚´ë¦¼
 		}
 		else
 		{
@@ -1354,11 +1354,11 @@ static void func_faucet_add_pulse_after_InputDownReed(void)
 	}
 	#endif
 
-	gu8_F_ResetAccel_ForAddPulse = SET;  // ÇÃ·¡±× ¼³Á¤
+	gu8_F_ResetAccel_ForAddPulse = SET;  // í”Œë˜ê·¸ ì„¤ì •
 	FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_INPUT_DOWN_REED_SW_DETECTION_ADD_PULSE);
 }
 
-/// @brief    ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ °¨Áö ½Ã °¨¼Ó ¸ğµå È°¼ºÈ­
+/// @brief    ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ ê°ì† ëª¨ë“œ í™œì„±í™”
 /// @param    void
 /// @return   void
 static void func_faucet_decel_mode_activate(void)
@@ -1373,43 +1373,43 @@ static void func_faucet_decel_mode_activate(void)
 /// @return   void
 void FaucetControl_StepMove(U8 mu8OpenClose, U16 mu16Pulse)
 {
-	// if (gu8_Stepping_ZeroBack == 0)					//	½ºÅÜÃÊ±âÈ­ flag clearÀÎ °æ¿ì
+	// if (gu8_Stepping_ZeroBack == 0)					//	ìŠ¤í…ì´ˆê¸°í™” flag clearì¸ ê²½ìš°
 	// {
-	// 	gu8_FaucetStepMotorWay = mu8OpenClose;				//		½ºÅ×ÇÎ¸ğÅÍ ¹æÇâ
-	// 	gu16_FaucetMovingPulse = mu16Pulse;			//		½ºÅÜ Ä¡
-	// 	gu8_FaucetMoving_Pps_Control = 0;							//		PPS ¼¼ÆÃ
-	// 	gu8_FaucetMoving_Cycle = 0;							//		½ºÅÜ ·çÆ¾ ÃÊ±âÈ­
+	// 	gu8_FaucetStepMotorWay = mu8OpenClose;				//		ìŠ¤í…Œí•‘ëª¨í„° ë°©í–¥
+	// 	gu16_FaucetMovingPulse = mu16Pulse;			//		ìŠ¤í… ì¹˜
+	// 	gu8_FaucetMoving_Pps_Control = 0;							//		PPS ì„¸íŒ…
+	// 	gu8_FaucetMoving_Cycle = 0;							//		ìŠ¤í… ë£¨í‹´ ì´ˆê¸°í™”
 	// }
-	// else											//	½ºÅ×ÇÎ¸ğÅÍ ÃÊ±âÈ­ ÁßÀÎ °æ¿ì
+	// else											//	ìŠ¤í…Œí•‘ëª¨í„° ì´ˆê¸°í™” ì¤‘ì¸ ê²½ìš°
 	// {
-	// 	// gu8_StepMotorWay_Backup = mu8OpenClose;		//		µ¥ÀÌÅÍ back up (ÃÊ±âÈ­ ¿Ï·á ÈÄ ÀÌµ¿)
-	// 	// gu16_StepMovingPulse_Backup = mu16Pulse;	//		µ¥ÀÌÅÍ back up (ÃÊ±âÈ­ ¿Ï·á ÈÄ ÀÌµ¿)
+	// 	// gu8_StepMotorWay_Backup = mu8OpenClose;		//		ë°ì´í„° back up (ì´ˆê¸°í™” ì™„ë£Œ í›„ ì´ë™)
+	// 	// gu16_StepMovingPulse_Backup = mu16Pulse;	//		ë°ì´í„° back up (ì´ˆê¸°í™” ì™„ë£Œ í›„ ì´ë™)
 	// }
-    gu8_FaucetStepMotorWay = mu8OpenClose;				//		½ºÅ×ÇÎ¸ğÅÍ ¹æÇâ
-    gu16_FaucetMovingPulse = mu16Pulse;			//		½ºÅÜ Ä¡
-    gu8_FaucetMoving_Pps_Control = 0;							//		PPS ¼¼ÆÃ
-    gu8_FaucetMoving_Cycle = 0;							//		½ºÅÜ ·çÆ¾ ÃÊ±âÈ­
+    gu8_FaucetStepMotorWay = mu8OpenClose;				//		ìŠ¤í…Œí•‘ëª¨í„° ë°©í–¥
+    gu16_FaucetMovingPulse = mu16Pulse;			//		ìŠ¤í… ì¹˜
+    gu8_FaucetMoving_Pps_Control = 0;							//		PPS ì„¸íŒ…
+    gu8_FaucetMoving_Cycle = 0;							//		ìŠ¤í… ë£¨í‹´ ì´ˆê¸°í™”
     
-    if (gu8_F_ResetAccel_ForAddPulse == CLEAR)  // Ãß°¡ ÆŞ½ºÀÎ °æ¿ì¿¡¸¸ °¡¼Ó ´Ü°è ÃÊ±âÈ­
+    if (gu8_F_ResetAccel_ForAddPulse == CLEAR)  // ì¶”ê°€ í„ìŠ¤ì¸ ê²½ìš°ì—ë§Œ ê°€ì† ë‹¨ê³„ ì´ˆê¸°í™”
     {
-        gu8_FaucetMoving_AccelStage = 0;						//		°¡¼Ó ´Ü°è ÃÊ±âÈ­
-        gu16_FaucetMoving_AccelCount = 0;						//		°¡¼Ó Ä«¿îÅÍ ÃÊ±âÈ­
+        gu8_FaucetMoving_AccelStage = 0;						//		ê°€ì† ë‹¨ê³„ ì´ˆê¸°í™”
+        gu16_FaucetMoving_AccelCount = 0;						//		ê°€ì† ì¹´ìš´í„° ì´ˆê¸°í™”
     }
 	else
 	{
-		gu8_F_ResetAccel_ForAddPulse = CLEAR;  // ÇÃ·¡±× Å¬¸®¾î
+		gu8_F_ResetAccel_ForAddPulse = CLEAR;  // í”Œë˜ê·¸ í´ë¦¬ì–´
 	}
 }
 
-/// @brief    Step Motor À§Ä¡ º¯°æ(Move) ÇÔ¼ö(1ms)
+/// @brief    Step Motor ìœ„ì¹˜ ë³€ê²½(Move) í•¨ìˆ˜(1ms)
 /// @param    void
 /// @return   void
 void FaucetStepMotorMove(void)
 {
-	// if ((gu8_Stepping_ZeroBack == 0) && (gu16_StepMovingPulse_Backup != 0))	//	½ºÅ×ÇÎ¸ğÅÍ ÃÊ±âÈ­ ¿Ï·á ÈÄ back up µ¥ÀÌÅÍ ÀÖÀ» °æ¿ì
+	// if ((gu8_Stepping_ZeroBack == 0) && (gu16_StepMovingPulse_Backup != 0))	//	ìŠ¤í…Œí•‘ëª¨í„° ì´ˆê¸°í™” ì™„ë£Œ í›„ back up ë°ì´í„° ìˆì„ ê²½ìš°
 	// {
-	// 	gu8_StepMotorWay = gu8_StepMotorWay_Backup;             //		½ºÅ×ÇÎ¸ğÅÍ ¹æÇâ
-	// 	gu16_StepMovingPulse = gu16_StepMovingPulse_Backup;   //		½ºÅÜ Ä¡
+	// 	gu8_StepMotorWay = gu8_StepMotorWay_Backup;             //		ìŠ¤í…Œí•‘ëª¨í„° ë°©í–¥
+	// 	gu16_StepMovingPulse = gu16_StepMovingPulse_Backup;   //		ìŠ¤í… ì¹˜
 	// 	gu8_StepMotorWay_Backup = 0;                           //
 	// 	gu16_StepMovingPulse_Backup = 0;                      //
 	// }
@@ -1432,63 +1432,63 @@ void FaucetStepMotorMove(void)
 	}
 	else
 	{
-		if (gu16_FaucetMovingPulse != 0)					//      Step MotorÀÇ ÀÌµ¿°ªÀÌ ÀÖ´Â °æ¿ì
+		if (gu16_FaucetMovingPulse != 0)					//      Step Motorì˜ ì´ë™ê°’ì´ ìˆëŠ” ê²½ìš°
 		{
 			#if (_FAUCET_MOVING_SPEED_ == 1)
-			if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)  // ³»·Á°¥ ¶§
+			if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)  // ë‚´ë ¤ê°ˆ ë•Œ
 			{
-				// ¸®µå½ºÀ§Ä¡ °¨Áö ½Ã °¨¼Ó (800 -> 500 PPS)
+				// ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ ê°ì† (800 -> 500 PPS)
 				if(INPUT_REED_SW_FAUCET_DOWN == SET)
 				{
-					// ¸®µå½ºÀ§Ä¡ °¨Áö ½Ã ´À¸° ¼Óµµ (500 PPS)
-					gu8_FaucetMoving_Move_PPS = 20;   // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ)
-					gu8_FaucetMoving_AccelStage = 0;   // °¡¼Ó ´Ü°è ÃÊ±âÈ­
-					gu16_FaucetMoving_AccelCount = 0;  // °¡¼Ó Ä«¿îÅÍ ÃÊ±âÈ­
+					// ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ ëŠë¦° ì†ë„ (500 PPS)
+					gu8_FaucetMoving_Move_PPS = 20;   // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
+					gu8_FaucetMoving_AccelStage = 0;   // ê°€ì† ë‹¨ê³„ ì´ˆê¸°í™”
+					gu16_FaucetMoving_AccelCount = 0;  // ê°€ì† ì¹´ìš´í„° ì´ˆê¸°í™”
 				}
 				else
 				{
-					// °¡¼Ó ±¸°£ (500 -> 800 PPS)
-					if (gu8_FaucetMoving_AccelStage == 0)   // °¡¼Ó ±¸°£ (0´Ü°è: 500 PPS)
+					// ê°€ì† êµ¬ê°„ (500 -> 800 PPS)
+					if (gu8_FaucetMoving_AccelStage == 0)   // ê°€ì† êµ¬ê°„ (0ë‹¨ê³„: 500 PPS)
 					{
-						// 10ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+						// 10msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 						{
 							gu16_FaucetMoving_AccelCount = 0;
-							gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î (800 PPS)
+							gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ (800 PPS)
 						}
 						
-						// 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+						// 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 						gu8_FaucetMoving_Move_PPS = 20;
 					}
-					else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+					else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 13;   // 800 PPS (¾à 13È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 13;   // 800 PPS (ì•½ 13íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 			}
-			else if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION)  // ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö ½Ã (CLOSE µ¿ÀÛ)
+			else if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION)  // ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ (CLOSE ë™ì‘)
 			{
-				// °¡¼Ó ±¸°£ (500 -> 800 PPS)
-				if (gu8_FaucetMoving_AccelStage == 0)   // °¡¼Ó ±¸°£ (0´Ü°è: 500 PPS)
+				// ê°€ì† êµ¬ê°„ (500 -> 800 PPS)
+				if (gu8_FaucetMoving_AccelStage == 0)   // ê°€ì† êµ¬ê°„ (0ë‹¨ê³„: 500 PPS)
 				{
-					// 10ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+					// 10msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 					if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 					{
 						gu16_FaucetMoving_AccelCount = 0;
-						gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î (800 PPS)
+						gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ (800 PPS)
 					}
 					
-					// 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+					// 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 					gu8_FaucetMoving_Move_PPS = 20;
 				}
-				else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+				else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 				{
-					gu8_FaucetMoving_Move_PPS = 13;   // 800 PPS (¾à 13È¸ È£Ãâ´ç 1½ºÅÜ)
+					gu8_FaucetMoving_Move_PPS = 13;   // 800 PPS (ì•½ 13íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 				}
 			}
-			else  // ¿Ã¶ó°¥ ¶§ (ÀÏ¹İ CLOSE)
+			else  // ì˜¬ë¼ê°ˆ ë•Œ (ì¼ë°˜ CLOSE)
 			{
-				// ³²Àº ÆŞ½º ¶Ç´Â ÇöÀç À§Ä¡¸¦ ±âÁØÀ¸·Î °¨¼Ó ¸ğµå ÀÚµ¿ È°¼ºÈ­
+				// ë‚¨ì€ í„ìŠ¤ ë˜ëŠ” í˜„ì¬ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ê°ì† ëª¨ë“œ ìë™ í™œì„±í™”
 				if ((((gu16_FaucetMovingPulse <= 900) || (gu16_Faucet_Current_Location <= 500)) && (gu8_FaucetMoving_DecelMode == CLEAR))
 				&& (gu8_OperationStep >= Z_OperationStepNum_10)
 				&& (gu8_OperationStep <= Z_OperationStepNum_43)
@@ -1498,233 +1498,233 @@ void FaucetStepMotorMove(void)
 					func_faucet_decel_mode_activate();
 				}
 				
-				if (gu8_FaucetMoving_DecelMode == SET)  // °¨¼Ó ¸ğµå
+				if (gu8_FaucetMoving_DecelMode == SET)  // ê°ì† ëª¨ë“œ
 				{
-					if (gu8_FaucetMoving_DecelStage < FAUCET_DECEL_STAGE_MAX)   // °¨¼Ó ±¸°£ (0~3´Ü°è)
+					if (gu8_FaucetMoving_DecelStage < FAUCET_DECEL_STAGE_MAX)   // ê°ì† êµ¬ê°„ (0~3ë‹¨ê³„)
 					{
-						// 10ms¸¶´Ù °¨¼Ó ´Ü°è Áõ°¡
+						// 10msë§ˆë‹¤ ê°ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_DecelCount >= FAUCET_DECEL_20MS_COUNT)
 						{
 							gu16_FaucetMoving_DecelCount = 0;
-							gu8_FaucetMoving_DecelStage++;   // ´ÙÀ½ °¨¼Ó ´Ü°è·Î
+							gu8_FaucetMoving_DecelStage++;   // ë‹¤ìŒ ê°ì† ë‹¨ê³„ë¡œ
 						}
 
-						// °¨¼Ó ´Ü°èº° PPS ¼³Á¤ (850 -> 600 -> 500 -> 400 PPS)
+						// ê°ì† ë‹¨ê³„ë³„ PPS ì„¤ì • (850 -> 600 -> 500 -> 400 PPS)
 						switch(gu8_FaucetMoving_DecelStage)
 						{
-							case 0:  // 850 PPS (12È¸ È£Ãâ´ç 1½ºÅÜ) - ÃÊ±â
+							case 0:  // 850 PPS (12íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ì´ˆê¸°
 								gu8_FaucetMoving_Move_PPS = 11;
 								break;
-							case 1:  // 600 PPS (17È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 1´Ü°è
+							case 1:  // 600 PPS (17íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 1ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 12;
 								break;
-							case 2:  // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 2´Ü°è
+							case 2:  // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 2ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 13;
 								break;
-							case 3:  // 400 PPS (25È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 3´Ü°è
+							case 3:  // 400 PPS (25íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 3ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 14;
 								break;
 							default:
-								gu8_FaucetMoving_Move_PPS = 15;  // ÃÖÁ¾ ¼Óµµ
+								gu8_FaucetMoving_Move_PPS = 15;  // ìµœì¢… ì†ë„
 								break;
 						}
 					}
-					else  // °¨¼Ó ¿Ï·á ÈÄ ÃÖÁ¾ ¼Óµµ
+					else  // ê°ì† ì™„ë£Œ í›„ ìµœì¢… ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 20;   // 400 PPS (25È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 20;   // 400 PPS (25íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 				else
 				{
-					if (gu8_FaucetMoving_AccelStage == 0)   // °¡¼Ó ±¸°£ (0´Ü°è: 500 PPS)
+					if (gu8_FaucetMoving_AccelStage == 0)   // ê°€ì† êµ¬ê°„ (0ë‹¨ê³„: 500 PPS)
 					{
-						// 10ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+						// 10msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 						{
 							gu16_FaucetMoving_AccelCount = 0;
-							gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î (1000 PPS)
+							gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ (1000 PPS)
 						}
 						
-						// 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+						// 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 						gu8_FaucetMoving_Move_PPS = 20;
 					}
-					else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+					else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 			}				
 			#elif (_FAUCET_MOVING_SPEED_ == 2)
-			// ³²Àº ÆŞ½º ¶Ç´Â ÇöÀç À§Ä¡¸¦ ±âÁØÀ¸·Î °¨¼Ó ¸ğµå ÀÚµ¿ È°¼ºÈ­
+			// ë‚¨ì€ í„ìŠ¤ ë˜ëŠ” í˜„ì¬ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ê°ì† ëª¨ë“œ ìë™ í™œì„±í™”
 			if (((gu16_FaucetMovingPulse <= 900) || (gu16_Faucet_Current_Location <= 900)) && (gu8_FaucetMoving_DecelMode == CLEAR))
 			{
 				func_faucet_decel_mode_activate();
 			}
 			
-			// °¨¼Ó ¸ğµå Ã¼Å©
-			if (gu8_FaucetMoving_DecelMode == SET)  // °¨¼Ó ¸ğµå
+			// ê°ì† ëª¨ë“œ ì²´í¬
+			if (gu8_FaucetMoving_DecelMode == SET)  // ê°ì† ëª¨ë“œ
 			{
-				if (gu8_FaucetMoving_DecelStage < FAUCET_DECEL_STAGE_MAX)   // °¨¼Ó ±¸°£ (0~3´Ü°è)
+				if (gu8_FaucetMoving_DecelStage < FAUCET_DECEL_STAGE_MAX)   // ê°ì† êµ¬ê°„ (0~3ë‹¨ê³„)
 				{
-					// 100ms¸¶´Ù °¨¼Ó ´Ü°è Áõ°¡
+					// 100msë§ˆë‹¤ ê°ì† ë‹¨ê³„ ì¦ê°€
 					if (++gu16_FaucetMoving_DecelCount >= FAUCET_DECEL_10MS_COUNT)
 					{
 						gu16_FaucetMoving_DecelCount = 0;
-						gu8_FaucetMoving_DecelStage++;   // ´ÙÀ½ °¨¼Ó ´Ü°è·Î
+						gu8_FaucetMoving_DecelStage++;   // ë‹¤ìŒ ê°ì† ë‹¨ê³„ë¡œ
 					}
 
-					// °¨¼Ó ´Ü°èº° PPS ¼³Á¤ (1000 -> 700 -> 500 -> 400 PPS)
+					// ê°ì† ë‹¨ê³„ë³„ PPS ì„¤ì • (1000 -> 700 -> 500 -> 400 PPS)
 					switch(gu8_FaucetMoving_DecelStage)
 					{
-						case 0:  // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ) - ÃÊ±â
+						case 0:  // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ì´ˆê¸°
 							gu8_FaucetMoving_Move_PPS = 10;
 							break;
-						case 1:  // 700 PPS (14È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 1´Ü°è
+						case 1:  // 700 PPS (14íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 1ë‹¨ê³„
 							gu8_FaucetMoving_Move_PPS = 14;
 							break;
-						case 2:  // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 2´Ü°è
+						case 2:  // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 2ë‹¨ê³„
 							gu8_FaucetMoving_Move_PPS = 20;
 							break;
-						case 3:  // 400 PPS (25È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 3´Ü°è
+						case 3:  // 400 PPS (25íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 3ë‹¨ê³„
 							gu8_FaucetMoving_Move_PPS = 25;
 							break;
 						default:
-							gu8_FaucetMoving_Move_PPS = 25;  // ÃÖÁ¾ ¼Óµµ
+							gu8_FaucetMoving_Move_PPS = 25;  // ìµœì¢… ì†ë„
 							break;
 					}
 				}
-				else  // °¨¼Ó ¿Ï·á ÈÄ ÃÖÁ¾ ¼Óµµ
+				else  // ê°ì† ì™„ë£Œ í›„ ìµœì¢… ì†ë„
 				{
-					gu8_FaucetMoving_Move_PPS = 25;   // 400 PPS (25È¸ È£Ãâ´ç 1½ºÅÜ)
+					gu8_FaucetMoving_Move_PPS = 25;   // 400 PPS (25íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 				}
 			}
-			else  // °¡¼Ó/Á¤»ó ¸ğµå
+			else  // ê°€ì†/ì •ìƒ ëª¨ë“œ
 			{
-				if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)  // ³»·Á°¥ ¶§
+				if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)  // ë‚´ë ¤ê°ˆ ë•Œ
 				{
-					if (gu8_FaucetMoving_AccelStage < FAUCET_ACCEL_OPEN_STAGE_MAX)   // °¡¼Ó ±¸°£ (0~2´Ü°è)
+					if (gu8_FaucetMoving_AccelStage < FAUCET_ACCEL_OPEN_STAGE_MAX)   // ê°€ì† êµ¬ê°„ (0~2ë‹¨ê³„)
 					{
-						// 100ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+						// 100msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 						{
 							gu16_FaucetMoving_AccelCount = 0;
-							gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î
+							gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ
 						}
 
-						// °¡¼Ó ´Ü°èº° PPS ¼³Á¤ (³»·Á°¥ ¶§: 500 -> 700 -> 1000 PPS)
+						// ê°€ì† ë‹¨ê³„ë³„ PPS ì„¤ì • (ë‚´ë ¤ê°ˆ ë•Œ: 500 -> 700 -> 1000 PPS)
 						switch(gu8_FaucetMoving_AccelStage)
 						{
-							case 0:  // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+							case 0:  // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 								gu8_FaucetMoving_Move_PPS = 20;
 								break;
-							case 1:  // 700 PPS (14È¸ È£Ãâ´ç 1½ºÅÜ) - °¡¼Ó 1´Ü°è
+							case 1:  // 700 PPS (14íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°€ì† 1ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 14;
 								break;
-							case 2:  // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ) - °¡¼Ó 2´Ü°è
+							case 2:  // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°€ì† 2ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 10;
 								break;
 							default:
-								gu8_FaucetMoving_Move_PPS = 10;  // ÃÖ´ë ¼Óµµ
+								gu8_FaucetMoving_Move_PPS = 10;  // ìµœëŒ€ ì†ë„
 								break;
 						}
 					}
-					else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+					else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
-				else  // ¿Ã¶ó°¥ ¶§
+				else  // ì˜¬ë¼ê°ˆ ë•Œ
 				{
-					if (gu8_FaucetMoving_AccelStage < FAUCET_ACCEL_OPEN_STAGE_MAX)   // °¡¼Ó ±¸°£ (0~1´Ü°è)
+					if (gu8_FaucetMoving_AccelStage < FAUCET_ACCEL_OPEN_STAGE_MAX)   // ê°€ì† êµ¬ê°„ (0~1ë‹¨ê³„)
 					{
-						// 100ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+						// 100msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 						{
 							gu16_FaucetMoving_AccelCount = 0;
-							gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î
+							gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ
 						}
 
-						// °¡¼Ó ´Ü°èº° PPS ¼³Á¤ (¿Ã¶ó°¥ ¶§)
+						// ê°€ì† ë‹¨ê³„ë³„ PPS ì„¤ì • (ì˜¬ë¼ê°ˆ ë•Œ)
 						switch(gu8_FaucetMoving_AccelStage)
 						{
-							case 0:  // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+							case 0:  // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 								gu8_FaucetMoving_Move_PPS = 20;
 								break;
-							case 1:  // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ) - ±¸µ¿
+							case 1:  // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - êµ¬ë™
 								gu8_FaucetMoving_Move_PPS = 10;
 								break;
 							default:
-								gu8_FaucetMoving_Move_PPS = 10;  // ÃÖ´ë ¼Óµµ
+								gu8_FaucetMoving_Move_PPS = 10;  // ìµœëŒ€ ì†ë„
 								break;
 						}
 					}
-					else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+					else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 			}
 
 			#else
-			// ³»·Á°¥ ¶§: 500 -> 1000 PPS (°¨¼Ó ¾øÀ½)
-			// ¿Ã¶ó°¥ ¶§: 500 -> 1000 -> 714 -> 500 -> 400 (°¨¼Ó ÀÖÀ½, 900 ÆŞ½º ÀÌÇÏ¿¡¼­ °¨¼Ó ½ÃÀÛ)
-			// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö ½Ã: 500 -> 1000 PPS (°¨¼Ó ¾øÀ½, CLOSE µ¿ÀÛ)
+			// ë‚´ë ¤ê°ˆ ë•Œ: 500 -> 1000 PPS (ê°ì† ì—†ìŒ)
+			// ì˜¬ë¼ê°ˆ ë•Œ: 500 -> 1000 -> 714 -> 500 -> 400 (ê°ì† ìˆìŒ, 900 í„ìŠ¤ ì´í•˜ì—ì„œ ê°ì† ì‹œì‘)
+			// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ: 500 -> 1000 PPS (ê°ì† ì—†ìŒ, CLOSE ë™ì‘)
 			
-			if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)  // ³»·Á°¥ ¶§
+			if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)  // ë‚´ë ¤ê°ˆ ë•Œ
 			{
-				// ¸®µå½ºÀ§Ä¡ °¨Áö ½Ã ÃµÃµÈ÷ ³»·Á°¡±â (1000 -> 500 PPS)
+				// ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ ì²œì²œíˆ ë‚´ë ¤ê°€ê¸° (1000 -> 500 PPS)
 				if(INPUT_REED_SW_FAUCET_DOWN == SET)
 				{
-					// ¸®µå½ºÀ§Ä¡ °¨Áö ½Ã ´À¸° ¼Óµµ (500 PPS)
-					gu8_FaucetMoving_Move_PPS = 20;   // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ)
-					gu8_FaucetMoving_AccelStage = 0;   //@007 °¡¼Ó ´Ü°è ÃÊ±âÈ­
-					gu16_FaucetMoving_AccelCount = 0;  //@007 °¡¼Ó Ä«¿îÅÍ ÃÊ±âÈ­
+					// ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ ëŠë¦° ì†ë„ (500 PPS)
+					gu8_FaucetMoving_Move_PPS = 20;   // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
+					gu8_FaucetMoving_AccelStage = 0;   //@007 ê°€ì† ë‹¨ê³„ ì´ˆê¸°í™”
+					gu16_FaucetMoving_AccelCount = 0;  //@007 ê°€ì† ì¹´ìš´í„° ì´ˆê¸°í™”
 				}
 				else
 				{
-					// °¡¼Ó ±¸°£ (500 -> 1000 PPS)
-					if (gu8_FaucetMoving_AccelStage == 0)   // °¡¼Ó ±¸°£ (0´Ü°è: 500 PPS)
+					// ê°€ì† êµ¬ê°„ (500 -> 1000 PPS)
+					if (gu8_FaucetMoving_AccelStage == 0)   // ê°€ì† êµ¬ê°„ (0ë‹¨ê³„: 500 PPS)
 					{
-						// 10ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+						// 10msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 						{
 							gu16_FaucetMoving_AccelCount = 0;
-							gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î (1000 PPS)
+							gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ (1000 PPS)
 						}
 						
-						// 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+						// 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 						gu8_FaucetMoving_Move_PPS = 20;
 					}
-					else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+					else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 					{
-						//@007 gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ)
-						gu8_FaucetMoving_Move_PPS = 13;   //@007 800 PPS (¾à 13È¸ È£Ãâ´ç 1½ºÅÜ)
+						//@007 gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
+						gu8_FaucetMoving_Move_PPS = 13;   //@007 800 PPS (ì•½ 13íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 			}
-			else if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION)  // ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö ½Ã (CLOSE µ¿ÀÛ, °¨¼Ó ¾øÀ½)
+			else if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION)  // ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ ì‹œ (CLOSE ë™ì‘, ê°ì† ì—†ìŒ)
 			{
-				// °¡¼Ó ±¸°£ (500 -> 1000 PPS)
-				if (gu8_FaucetMoving_AccelStage == 0)   // °¡¼Ó ±¸°£ (0´Ü°è: 500 PPS)
+				// ê°€ì† êµ¬ê°„ (500 -> 1000 PPS)
+				if (gu8_FaucetMoving_AccelStage == 0)   // ê°€ì† êµ¬ê°„ (0ë‹¨ê³„: 500 PPS)
 				{
-					// 10ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+					// 10msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 					if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 					{
 						gu16_FaucetMoving_AccelCount = 0;
-						gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î (1000 PPS)
+						gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ (1000 PPS)
 					}
 					
-					// 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+					// 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 					gu8_FaucetMoving_Move_PPS = 20;
 				}
-				else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+				else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 				{
-					gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ)
+					gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 				}
 			}
-			else  // ¿Ã¶ó°¥ ¶§ (ÀÏ¹İ CLOSE)
+			else  // ì˜¬ë¼ê°ˆ ë•Œ (ì¼ë°˜ CLOSE)
 			{
-				// ³²Àº ÆŞ½º ¶Ç´Â ÇöÀç À§Ä¡¸¦ ±âÁØÀ¸·Î °¨¼Ó ¸ğµå ÀÚµ¿ È°¼ºÈ­
+				// ë‚¨ì€ í„ìŠ¤ ë˜ëŠ” í˜„ì¬ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ê°ì† ëª¨ë“œ ìë™ í™œì„±í™”
 				if ((((gu16_FaucetMovingPulse <= 900) || (gu16_Faucet_Current_Location <= 500)) && (gu8_FaucetMoving_DecelMode == CLEAR))
 				&& (gu8_OperationStep >= Z_OperationStepNum_10)
 				&& (gu8_OperationStep <= Z_OperationStepNum_43)
@@ -1734,110 +1734,110 @@ void FaucetStepMotorMove(void)
 					func_faucet_decel_mode_activate();
 				}
 				
-				if (gu8_FaucetMoving_DecelMode == SET)  // °¨¼Ó ¸ğµå
+				if (gu8_FaucetMoving_DecelMode == SET)  // ê°ì† ëª¨ë“œ
 				{
-					if (gu8_FaucetMoving_DecelStage < FAUCET_DECEL_STAGE_MAX)   // °¨¼Ó ±¸°£ (0~3´Ü°è)
+					if (gu8_FaucetMoving_DecelStage < FAUCET_DECEL_STAGE_MAX)   // ê°ì† êµ¬ê°„ (0~3ë‹¨ê³„)
 					{
-						// 10ms¸¶´Ù °¨¼Ó ´Ü°è Áõ°¡
+						// 10msë§ˆë‹¤ ê°ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_DecelCount >= FAUCET_DECEL_20MS_COUNT)
 						{
 							gu16_FaucetMoving_DecelCount = 0;
-							gu8_FaucetMoving_DecelStage++;   // ´ÙÀ½ °¨¼Ó ´Ü°è·Î
+							gu8_FaucetMoving_DecelStage++;   // ë‹¤ìŒ ê°ì† ë‹¨ê³„ë¡œ
 						}
 
-						// °¨¼Ó ´Ü°èº° PPS ¼³Á¤ (850 -> 600 -> 500 -> 400 PPS)
+						// ê°ì† ë‹¨ê³„ë³„ PPS ì„¤ì • (850 -> 600 -> 500 -> 400 PPS)
 						switch(gu8_FaucetMoving_DecelStage)
 						{
-							case 0:  // 850 PPS (12È¸ È£Ãâ´ç 1½ºÅÜ) - ÃÊ±â
+							case 0:  // 850 PPS (12íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ì´ˆê¸°
 								gu8_FaucetMoving_Move_PPS = 11;
 								break;
-							case 1:  // 600 PPS (17È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 1´Ü°è
+							case 1:  // 600 PPS (17íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 1ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 12;
 								break;
-							case 2:  // 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 2´Ü°è
+							case 2:  // 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 2ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 13;
 								break;
-							case 3:  // 400 PPS (25È¸ È£Ãâ´ç 1½ºÅÜ) - °¨¼Ó 3´Ü°è
+							case 3:  // 400 PPS (25íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê°ì† 3ë‹¨ê³„
 								gu8_FaucetMoving_Move_PPS = 14;
 								break;
 							default:
-								gu8_FaucetMoving_Move_PPS = 15;  // ÃÖÁ¾ ¼Óµµ
+								gu8_FaucetMoving_Move_PPS = 15;  // ìµœì¢… ì†ë„
 								break;
 						}
 					}
-					else  // °¨¼Ó ¿Ï·á ÈÄ ÃÖÁ¾ ¼Óµµ
+					else  // ê°ì† ì™„ë£Œ í›„ ìµœì¢… ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 20;   // 400 PPS (25È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 20;   // 400 PPS (25íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 				else
 				{
-					if (gu8_FaucetMoving_AccelStage == 0)   // °¡¼Ó ±¸°£ (0´Ü°è: 500 PPS)
+					if (gu8_FaucetMoving_AccelStage == 0)   // ê°€ì† êµ¬ê°„ (0ë‹¨ê³„: 500 PPS)
 					{
-						// 10ms¸¶´Ù °¡¼Ó ´Ü°è Áõ°¡
+						// 10msë§ˆë‹¤ ê°€ì† ë‹¨ê³„ ì¦ê°€
 						if (++gu16_FaucetMoving_AccelCount >= FAUCET_ACCEL_10MS_COUNT)
 						{
 							gu16_FaucetMoving_AccelCount = 0;
-							gu8_FaucetMoving_AccelStage++;   // ´ÙÀ½ °¡¼Ó ´Ü°è·Î (1000 PPS)
+							gu8_FaucetMoving_AccelStage++;   // ë‹¤ìŒ ê°€ì† ë‹¨ê³„ë¡œ (1000 PPS)
 						}
 						
-						// 500 PPS (20È¸ È£Ãâ´ç 1½ºÅÜ) - ±âµ¿
+						// 500 PPS (20íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…) - ê¸°ë™
 						gu8_FaucetMoving_Move_PPS = 20;
 					}
-					else  // °¡¼Ó ¿Ï·á ÈÄ Á¤»ó ¼Óµµ
+					else  // ê°€ì† ì™„ë£Œ í›„ ì •ìƒ ì†ë„
 					{
-						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10È¸ È£Ãâ´ç 1½ºÅÜ)
+						gu8_FaucetMoving_Move_PPS = 10;   // 1000 PPS (10íšŒ í˜¸ì¶œë‹¹ 1ìŠ¤í…)
 					}
 				}
 			}
 			
 			#endif
 
-			if (++gu8_Count_FaucetMoving_Move_PPS >= gu8_FaucetMoving_Move_PPS)			//		PPS ¼º¸³ ½Ã
+			if (++gu8_Count_FaucetMoving_Move_PPS >= gu8_FaucetMoving_Move_PPS)			//		PPS ì„±ë¦½ ì‹œ
 			{
-				gu8_Count_FaucetMoving_Move_PPS = 0;							//			Ä«¿îÆ® ÃÊ±âÈ­
+				gu8_Count_FaucetMoving_Move_PPS = 0;							//			ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
 
-				gu16_FaucetMovingPulse--;					//			¿òÁ÷ÀÏ ½ºÅÜ °¨¼Ò
-				FaucetStepMotor_Control();    				//			½ºÅ×ÇÎ¸ğÅÍ Á¦¾î
+				gu16_FaucetMovingPulse--;					//			ì›€ì§ì¼ ìŠ¤í… ê°ì†Œ
+				FaucetStepMotor_Control();    				//			ìŠ¤í…Œí•‘ëª¨í„° ì œì–´
 
-				if (++gu8_FaucetMoving_Cycle >= 8)				//			8 Cycle ·çÆ¾ ÃÊ°úÀÎ °æ¿ì
+				if (++gu8_FaucetMoving_Cycle >= 8)				//			8 Cycle ë£¨í‹´ ì´ˆê³¼ì¸ ê²½ìš°
 				{
-					gu8_FaucetMoving_Cycle = 0;					//				·çÆ¾Ä«¿îÅÍ ÃÊ±âÈ­
+					gu8_FaucetMoving_Cycle = 0;					//				ë£¨í‹´ì¹´ìš´í„° ì´ˆê¸°í™”
 				}
 			}
 
-			gu16_Backup_FaucetMovingPulse = gu16_FaucetMovingPulse;			//	¹é¾÷...³»·¯¿À´Â µµÁß Ãë¼ÒÇÏ¸é...±×¸¸Å­ ¿Ã¶ó°¡±â À§ÇÔ.			
+			gu16_Backup_FaucetMovingPulse = gu16_FaucetMovingPulse;			//	ë°±ì—…...ë‚´ëŸ¬ì˜¤ëŠ” ë„ì¤‘ ì·¨ì†Œí•˜ë©´...ê·¸ë§Œí¼ ì˜¬ë¼ê°€ê¸° ìœ„í•¨.			
 		}
-		else											// 	Step MotorÀÇ ÀÌµ¿°ªÀÌ ¾ø´Â °æ¿ì
+		else											// 	Step Motorì˜ ì´ë™ê°’ì´ ì—†ëŠ” ê²½ìš°
 		{
-			gu16_FaucetMovingPulse = 0;					//		µ¥ÀÌÅÍ ÃÊ±âÈ­
-			gu8_FaucetMoving_Pps_Control = 0;							//		µ¥ÀÌÅÍ ÃÊ±âÈ­
-			// gu8_FaucetMoving_Cycle = 0;							//		µ¥ÀÌÅÍ ÃÊ±âÈ­
-			gu8_FaucetMoving_AccelStage = 0;						//		°¡¼Ó ´Ü°è ÃÊ±âÈ­
-			gu16_FaucetMoving_AccelCount = 0;						//		°¡¼Ó Ä«¿îÅÍ ÃÊ±âÈ­
-			gu8_FaucetMoving_DecelMode = 0;						//		°¨¼Ó ¸ğµå ÃÊ±âÈ­
-			gu8_FaucetMoving_DecelStage = 0;						//		°¨¼Ó ´Ü°è ÃÊ±âÈ­
-			gu16_FaucetMoving_DecelCount = 0;						//		°¨¼Ó Ä«¿îÅÍ ÃÊ±âÈ­
-			gu8_FaucetStepMotorWay = FAUCET_STEP_MOTER_OPEN;			//		OPENÀ¸·Î ¼ÂÆÃ
+			gu16_FaucetMovingPulse = 0;					//		ë°ì´í„° ì´ˆê¸°í™”
+			gu8_FaucetMoving_Pps_Control = 0;							//		ë°ì´í„° ì´ˆê¸°í™”
+			// gu8_FaucetMoving_Cycle = 0;							//		ë°ì´í„° ì´ˆê¸°í™”
+			gu8_FaucetMoving_AccelStage = 0;						//		ê°€ì† ë‹¨ê³„ ì´ˆê¸°í™”
+			gu16_FaucetMoving_AccelCount = 0;						//		ê°€ì† ì¹´ìš´í„° ì´ˆê¸°í™”
+			gu8_FaucetMoving_DecelMode = 0;						//		ê°ì† ëª¨ë“œ ì´ˆê¸°í™”
+			gu8_FaucetMoving_DecelStage = 0;						//		ê°ì† ë‹¨ê³„ ì´ˆê¸°í™”
+			gu16_FaucetMoving_DecelCount = 0;						//		ê°ì† ì¹´ìš´í„° ì´ˆê¸°í™”
+			gu8_FaucetStepMotorWay = FAUCET_STEP_MOTER_OPEN;			//		OPENìœ¼ë¡œ ì…‹íŒ…
 
-			FaucetStepMotor_Stop();							//		½ºÅÜÁ¦¾î Á¤Áö (¿©ÀÚ OFF)
+			FaucetStepMotor_Stop();							//		ìŠ¤í…ì œì–´ ì •ì§€ (ì—¬ì OFF)
 		}
 	}
 }
 
 
-/// @brief    Step Motor Á¦¾î ÇÔ¼ö
+/// @brief    Step Motor ì œì–´ í•¨ìˆ˜
 /// @param    void
 /// @return   void
 void FaucetStepMotor_Control(void)
 {
 	U8 mu8FaucetStep_Order = 0;
 
-	if (gu8_FaucetMoving_ZeroBack == 1)				//		OPEN ÃÊ±âÈ­ Áö½Ã ÀÖ´Â °æ¿ì
+	if (gu8_FaucetMoving_ZeroBack == 1)				//		OPEN ì´ˆê¸°í™” ì§€ì‹œ ìˆëŠ” ê²½ìš°
 	{
 		gu8_FaucetMoving_ZeroBack = 0;				//			Flag Clear
 	}
-	else if (gu8_FaucetMoving_ZeroBack == 2)          //		CLOSE ÃÊ±âÈ­ Áö½Ã ÀÖ´Â °æ¿ì
+	else if (gu8_FaucetMoving_ZeroBack == 2)          //		CLOSE ì´ˆê¸°í™” ì§€ì‹œ ìˆëŠ” ê²½ìš°
 	{
 		gu8_FaucetMoving_ZeroBack = 0;                //			Flag Clear
 	}
@@ -1846,30 +1846,30 @@ void FaucetStepMotor_Control(void)
 	}
 
 
-	if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_CLOSE)		//	CLOSE Áö½Ã ÀÎ °æ¿ì
+	if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_CLOSE)		//	CLOSE ì§€ì‹œ ì¸ ê²½ìš°
 	{
-		mu8FaucetStep_Order = au8FaucetStep_Close[gu8_FaucetMoving_Cycle];	//		CLOSE ·çÆ¾
+		mu8FaucetStep_Order = au8FaucetStep_Close[gu8_FaucetMoving_Cycle];	//		CLOSE ë£¨í‹´
 	}
-	else if(gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION)		//	¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö Áö½Ã ÀÎ °æ¿ì
+	else if(gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION)		//	ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ ì§€ì‹œ ì¸ ê²½ìš°
 	{
-		mu8FaucetStep_Order = au8FaucetStep_Close[gu8_FaucetMoving_Cycle];	//		CLOSE ·çÆ¾
+		mu8FaucetStep_Order = au8FaucetStep_Close[gu8_FaucetMoving_Cycle];	//		CLOSE ë£¨í‹´
 	}	
-	else											//	OPEN Áö½Ã
+	else											//	OPEN ì§€ì‹œ
 	{
-		mu8FaucetStep_Order = au8FaucetStep_Open[gu8_FaucetMoving_Cycle];	//		OPEN ·çÆ¾
+		mu8FaucetStep_Order = au8FaucetStep_Open[gu8_FaucetMoving_Cycle];	//		OPEN ë£¨í‹´
 	}
 
 
-	// ÇöÀç À§Ä¡ ¾÷µ¥ÀÌÆ® (ÇÑ »çÀÌÅ¬ ¿Ï·á ½Ã: gu8_FaucetMoving_CycleÀÌ 7ÀÏ ¶§, ´ÙÀ½ È£Ãâ¿¡¼­ 0À¸·Î ¸®¼ÂµÊ)
+	// í˜„ì¬ ìœ„ì¹˜ ì—…ë°ì´íŠ¸ (í•œ ì‚¬ì´í´ ì™„ë£Œ ì‹œ: gu8_FaucetMoving_Cycleì´ 7ì¼ ë•Œ, ë‹¤ìŒ í˜¸ì¶œì—ì„œ 0ìœ¼ë¡œ ë¦¬ì…‹ë¨)
 	
 	if (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_OPEN)
 	{
-		// OPEN ¹æÇâ À§Ä¡ Áõ°¡ (³»·Á°¨)
+		// OPEN ë°©í–¥ ìœ„ì¹˜ ì¦ê°€ (ë‚´ë ¤ê°)
 		gu16_Faucet_Current_Location++;
 	}
 	else if ((gu8_FaucetStepMotorWay == FAUCET_STEP_MOTER_CLOSE) || (gu8_FaucetStepMotorWay == FAUCET_STEP_MOTOR_MICRO_SW_DETECTION))
 	{
-		// CLOSE ¹æÇâ À§Ä¡ °¨¼Ò (¿Ã¶ó°¨)
+		// CLOSE ë°©í–¥ ìœ„ì¹˜ ê°ì†Œ (ì˜¬ë¼ê°)
 		if(gu16_Faucet_Current_Location > 0)
 		{
 			gu16_Faucet_Current_Location--;
@@ -1967,7 +1967,7 @@ void FaucetStepMotor_ZeroBack_Close(void)
 	gu8_FaucetMoving_ZeroBack = 2;
 }
 
-/// @brief    ½º¸¶Æ®Ã¼Å© ÆÄ¿ì¼Â ¹«ºù Å×½ºÆ®
+/// @brief    ìŠ¤ë§ˆíŠ¸ì²´í¬ íŒŒìš°ì…‹ ë¬´ë¹™ í…ŒìŠ¤íŠ¸
 /// @param    void
 /// @return   void
 static void func_faucet_moving_SmartCheck(void)
@@ -1976,15 +1976,15 @@ static void func_faucet_moving_SmartCheck(void)
 	
 	switch(gu8_SmartCheck_Faucet_Moving_Step)
 	{
-		case 0:  // ÃÊ±âÈ­ ¹× ÃÖ»ó´ÜÀ¸·Î ¿Ã¸®±â		
+		case 0:  // ì´ˆê¸°í™” ë° ìµœìƒë‹¨ìœ¼ë¡œ ì˜¬ë¦¬ê¸°		
 			
 			F_SmartCheck_Faucet_Complete = CLEAR;
 
 			if(gu8_FaucetMoving_Set_Level > Z_FAUCET_MOVING_FIX_1_LEVEL)
 			{
-				// ÃÖ»ó´Ü±îÁö ¿Ã¸®±â
+				// ìµœìƒë‹¨ê¹Œì§€ ì˜¬ë¦¬ê¸°
 				FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);
-				gu8_SmartCheck_Faucet_Moving_Step = 1;  // ÃÖ»ó´Ü µµ´Ş ´ë±â
+				gu8_SmartCheck_Faucet_Moving_Step = 1;  // ìµœìƒë‹¨ ë„ë‹¬ ëŒ€ê¸°
 			}
 			else
 			{
@@ -1993,18 +1993,18 @@ static void func_faucet_moving_SmartCheck(void)
 
 			break;
 			
-		case 1:  // ÃÖ»ó´Ü µµ´Ş ´ë±â (UP ¸®µå½ºÀ§Ä¡ °¨Áö + Ãß°¡ ÆŞ½º)
-			// UP ¸®µå½ºÀ§Ä¡ °¨ÁöµÊ (Ãß°¡ ÆŞ½º°¡ ÁøÇà ÁßÀÌ ¾Æ´Ò ¶§¸¸)
+		case 1:  // ìµœìƒë‹¨ ë„ë‹¬ ëŒ€ê¸° (UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ + ì¶”ê°€ í„ìŠ¤)
+			// UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ë¨ (ì¶”ê°€ í„ìŠ¤ê°€ ì§„í–‰ ì¤‘ì´ ì•„ë‹ ë•Œë§Œ)
 			if(INPUT_REED_SW_FAUCET_UP == SET)
 			{
-				smartcheck_add_pulse_after_InputUpReed();  // Ãß°¡ ÆŞ½º Ã³¸®
-				// ÃÖ»ó´Ü µµ´Ş ¿Ï·á, CMD Áö½Ã ´ë±â ´Ü°è·Î ÀÌµ¿
+				smartcheck_add_pulse_after_InputUpReed();  // ì¶”ê°€ í„ìŠ¤ ì²˜ë¦¬
+				// ìµœìƒë‹¨ ë„ë‹¬ ì™„ë£Œ, CMD ì§€ì‹œ ëŒ€ê¸° ë‹¨ê³„ë¡œ ì´ë™
 				gu8_SmartCheck_Faucet_Moving_Step = 2;
-				F_SmartCheck_UpReed_Detected = SET;  // °¨Áö ÀÌ·Â ÀúÀå
+				F_SmartCheck_UpReed_Detected = SET;  // ê°ì§€ ì´ë ¥ ì €ì¥
 			}
-			else if(gu16_FaucetMovingPulse == 0)  // ÆŞ½º ¿Ï·áµÊ
+			else if(gu16_FaucetMovingPulse == 0)  // í„ìŠ¤ ì™„ë£Œë¨
 			{
-				// ÃÖ»ó´Ü µµ´Ş ¿Ï·á, CMD Áö½Ã ´ë±â ´Ü°è·Î ÀÌµ¿
+				// ìµœìƒë‹¨ ë„ë‹¬ ì™„ë£Œ, CMD ì§€ì‹œ ëŒ€ê¸° ë‹¨ê³„ë¡œ ì´ë™
 				gu8_SmartCheck_Faucet_Moving_Step = 2;
 			}
 			else
@@ -2013,11 +2013,11 @@ static void func_faucet_moving_SmartCheck(void)
 			}
 			break;
 			
-		case 2:  // F_SmartCheck_FaucetMoving_CMD Áö½Ã ´ë±â
-			// CMD Áö½Ã°¡ SETÀÏ ¶§±îÁö ´ë±â
+		case 2:  // F_SmartCheck_FaucetMoving_CMD ì§€ì‹œ ëŒ€ê¸°
+			// CMD ì§€ì‹œê°€ SETì¼ ë•Œê¹Œì§€ ëŒ€ê¸°
 			if((F_SmartCheck_FaucetMoving_CMD == SET) && (gu16_FaucetMovingPulse == 0))
 			{
-				// Áö½Ã È®ÀÎµÊ, ÇÏ°­ ½ÃÀÛ
+				// ì§€ì‹œ í™•ì¸ë¨, í•˜ê°• ì‹œì‘
 				F_SmartCheck_FaucetMoving_CMD = CLEAR;
 				gu8_SmartCheck_Faucet_Moving_Step = 3;
 				FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_STEP_ZERO_BACK);
@@ -2025,35 +2025,35 @@ static void func_faucet_moving_SmartCheck(void)
 			
 			if(INPUT_REED_SW_FAUCET_UP == SET)
 			{
-				gu16_SmartCheck_Result_Faucet_ReedDetected = 1;  // °¨Áö ÀÌ·Â ÀúÀå
+				gu16_SmartCheck_Result_Faucet_ReedDetected = 1;  // ê°ì§€ ì´ë ¥ ì €ì¥
 			}
 
 			break;
 			
 		case 3: 
-			// ÇÏ°­ ½ÃÀÛ
-			// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨ÁöµÊ (ÇÏ°­ Áß °¨Áö ½Ã ¹Ù·Î »ó½Â)
+			// í•˜ê°• ì‹œì‘
+			// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ë¨ (í•˜ê°• ì¤‘ ê°ì§€ ì‹œ ë°”ë¡œ ìƒìŠ¹)
 			if(INPUT_MICRO_SW_FAUCET == SET)
 			{
 				gu16_SmartCheck_Result_CupDetection_MicroSW = SET;
-				// ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨ÁöµÇ¸é ¹Ù·Î »ó½Â
+				// ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ë˜ë©´ ë°”ë¡œ ìƒìŠ¹
 				// FaucetControl_StepMove(FAUCET_STEP_MOTOR_MICRO_SW_DETECTION, FAUCET_MICO_SW_INPUT_DETECTION_STEP);
 				FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_STEP_ZERO_BACK);
-				gu8_SmartCheck_Faucet_Moving_Step = 4;  // »ó½Â Áß ´Ü°è·Î
+				gu8_SmartCheck_Faucet_Moving_Step = 4;  // ìƒìŠ¹ ì¤‘ ë‹¨ê³„ë¡œ
 			}
 			else
 			{
 				if(INPUT_REED_SW_FAUCET_DOWN == SET)
 				{
 					gu16_SmartCheck_Result_CupDetection_MicroSW = CLEAR;
-					smartcheck_add_pulse_after_InputDownReed();  // Ãß°¡ ÆŞ½º Ã³¸®
+					smartcheck_add_pulse_after_InputDownReed();  // ì¶”ê°€ í„ìŠ¤ ì²˜ë¦¬
 					gu8_SmartCheck_Faucet_Moving_Step = 4;
 					mu8_flag_pulse = 0;
 				}
-				else if(gu16_FaucetMovingPulse == 0)  // ÆŞ½º ¿Ï·áµÆ´Âµ¥ ¸®µå½ºÀ§Ä¡ ¾ÈÀâÈû
+				else if(gu16_FaucetMovingPulse == 0)  // í„ìŠ¤ ì™„ë£ŒëëŠ”ë° ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì•ˆì¡í˜
 				{
 					gu16_SmartCheck_Result_CupDetection_MicroSW = CLEAR;
-					gu8_SmartCheck_Faucet_Moving_Step = 4;  // ´ÙÀ½ ´Ü°è·Î	
+					gu8_SmartCheck_Faucet_Moving_Step = 4;  // ë‹¤ìŒ ë‹¨ê³„ë¡œ	
 					mu8_flag_pulse = 0;
 				}
 				else
@@ -2064,7 +2064,7 @@ static void func_faucet_moving_SmartCheck(void)
 
 			if(INPUT_REED_SW_FAUCET_UP == CLEAR)
 			{
-				gu16_SmartCheck_Result_Faucet_ReedDetected = 2;  // °¨Áö ÀÌ·Â ÃÊ±âÈ­
+				gu16_SmartCheck_Result_Faucet_ReedDetected = 2;  // ê°ì§€ ì´ë ¥ ì´ˆê¸°í™”
 			}
 
 			gu8_Timer_SmartCheck_Faucet_Moving = 5;		
@@ -2072,7 +2072,7 @@ static void func_faucet_moving_SmartCheck(void)
 			
 			break;
 			
-		case 4:  // »ó½Â ÁØºñ
+		case 4:  // ìƒìŠ¹ ì¤€ë¹„
 
 			if (gu8_Timer_SmartCheck_Faucet_Moving == 0)
 			{
@@ -2081,15 +2081,15 @@ static void func_faucet_moving_SmartCheck(void)
 			}		
 			break;
 			
-		case 5:  // »ó½Â Áß - UP ¸®µå½ºÀ§Ä¡ ´ë±â
-			// UP ¸®µå½ºÀ§Ä¡ °¨ÁöµÊ
+		case 5:  // ìƒìŠ¹ ì¤‘ - UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ëŒ€ê¸°
+			// UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ë¨
 			if(INPUT_REED_SW_FAUCET_UP == SET)
 			{
-				smartcheck_add_pulse_after_InputUpReed();  // Ãß°¡ ÆŞ½º Ã³¸®
-				// »ó½Â ¼º°ø Ç¥½Ã
-				gu8_SmartCheck_Faucet_Moving_Step = 6;  // ¿Ï·á
+				smartcheck_add_pulse_after_InputUpReed();  // ì¶”ê°€ í„ìŠ¤ ì²˜ë¦¬
+				// ìƒìŠ¹ ì„±ê³µ í‘œì‹œ
+				gu8_SmartCheck_Faucet_Moving_Step = 6;  // ì™„ë£Œ
 			}
-			else if(gu16_FaucetMovingPulse == 0)  // ÆŞ½º ¿Ï·áµÆ´Âµ¥ ¸®µå½ºÀ§Ä¡ ¾ÈÀâÈû
+			else if(gu16_FaucetMovingPulse == 0)  // í„ìŠ¤ ì™„ë£ŒëëŠ”ë° ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì•ˆì¡í˜
 			{
 				gu8_SmartCheck_Faucet_Moving_Step = 6;
 			}
@@ -2099,7 +2099,7 @@ static void func_faucet_moving_SmartCheck(void)
 			}
 			break;
 			
-		case 6:  // ¿Ï·á
+		case 6:  // ì™„ë£Œ
 		default:
 		
 			F_SmartCheck_Faucet_Complete = SET;
@@ -2121,52 +2121,52 @@ static void func_faucet_moving_SmartCheck(void)
 	// }
 }
 
-/// @brief    SmartCheck UP ¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ Ãß°¡ ÆŞ½º
+/// @brief    SmartCheck UP ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„ ì¶”ê°€ í„ìŠ¤
 /// @param    void
 /// @return   void
 static void smartcheck_add_pulse_after_InputUpReed(void)
 {
 	#if 0
-	if(gu16_FaucetMovingPulse != 0)		// ³²Àº ÆŞ½º°¡ ÀÖÀ¸¸é
+	if(gu16_FaucetMovingPulse != 0)		// ë‚¨ì€ í„ìŠ¤ê°€ ìˆìœ¼ë©´
 	{
 		if(gu16_FaucetMovingPulse > FAUCET_INPUT_UP_REED_SW_DETECTION_ADD_PULSE)
 		{
-			// ³²Àº ÆŞ½º¸¸Å­ ´õ »ó½Â
+			// ë‚¨ì€ í„ìŠ¤ë§Œí¼ ë” ìƒìŠ¹
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, gu16_FaucetMovingPulse);
 		}
 		else
 		{
-			// °íÁ¤°ª¸¸Å­ ´õ »ó½Â
+			// ê³ ì •ê°’ë§Œí¼ ë” ìƒìŠ¹
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_INPUT_UP_REED_SW_DETECTION_ADD_PULSE);
 		}	
 	}
 	#endif		
 
-	gu8_F_ResetAccel_ForAddPulse = SET;  // ÇÃ·¡±× ¼³Á¤
+	gu8_F_ResetAccel_ForAddPulse = SET;  // í”Œë˜ê·¸ ì„¤ì •
 	FaucetControl_StepMove(FAUCET_STEP_MOTER_CLOSE, FAUCET_INPUT_UP_REED_SW_DETECTION_ADD_PULSE);
 }
 
-/// @brief    SmartCheck DOWN ¸®µå½ºÀ§Ä¡ °¨Áö ÈÄ Ãß°¡ ÆŞ½º
+/// @brief    SmartCheck DOWN ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ í›„ ì¶”ê°€ í„ìŠ¤
 /// @param    void
 /// @return   void
 static void smartcheck_add_pulse_after_InputDownReed(void)
 {
 	#if 0
-	if(gu16_FaucetMovingPulse != 0)		// ³²Àº ÆŞ½º°¡ ÀÖÀ¸¸é
+	if(gu16_FaucetMovingPulse != 0)		// ë‚¨ì€ í„ìŠ¤ê°€ ìˆìœ¼ë©´
 	{
 		if(gu16_FaucetMovingPulse > FAUCET_INPUT_DOWN_REED_SW_DETECTION_ADD_PULSE)
 		{
-			// ³²Àº ÆŞ½º°¡ ³Ê¹«¸¹À¸¸é ¿ÀÂ÷ ¹ß»ıÇÏ¿©, ÀÏÁ¤°ªÀÌ»óÀÎ°æ¿ì ±×³É ³¡±îÁö ³»¸²
+			// ë‚¨ì€ í„ìŠ¤ê°€ ë„ˆë¬´ë§ìœ¼ë©´ ì˜¤ì°¨ ë°œìƒí•˜ì—¬, ì¼ì •ê°’ì´ìƒì¸ê²½ìš° ê·¸ëƒ¥ ëê¹Œì§€ ë‚´ë¦¼
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_INPUT_DOWN_REED_SW_DETECTION_ADD_PULSE);
 		}
 		else
 		{
-			// ³²Àº ÆŞ½º¸¸Å­ ´õ ÇÏ°­
+			// ë‚¨ì€ í„ìŠ¤ë§Œí¼ ë” í•˜ê°•
 			FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, gu16_FaucetMovingPulse);
 		}
 	}
 	#endif
-	gu8_F_ResetAccel_ForAddPulse = SET;  // ÇÃ·¡±× ¼³Á¤
+	gu8_F_ResetAccel_ForAddPulse = SET;  // í”Œë˜ê·¸ ì„¤ì •
 	FaucetControl_StepMove(FAUCET_STEP_MOTER_OPEN, FAUCET_INPUT_DOWN_REED_SW_DETECTION_ADD_PULSE);
 }
 
@@ -2176,5 +2176,5 @@ static void smartcheck_add_pulse_after_InputDownReed(void)
 static void smartcheck_initial(void)
 {
 	gu8_SmartCheck_Faucet_Moving_Step = 0;
-	gu8_FaucetMoving_Step = Z_FAUCET_MOVING_INITIAL;  // ´ë±â »óÅÂ·Î
+	gu8_FaucetMoving_Step = Z_FAUCET_MOVING_INITIAL;  // ëŒ€ê¸° ìƒíƒœë¡œ
 }

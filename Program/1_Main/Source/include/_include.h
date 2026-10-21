@@ -1,42 +1,42 @@
 #ifndef _GLOBAL_HEADER_H_
 #define _GLOBAL_HEADER_H_
 
-// #define _FOR_DEVELOP_						//�ڡ�	���߸��? (������ ������ ���� ����/���? ����͸�? ���?/���� ��°�ڸ�(PP�ܰ�)���� ǥ��)
-// #define _NO_ERROR_						//�ڡ�	LJH: �����߻����� ����
-// #define _NO_FLUSHING_						//�ڡ�	LJH: �÷��̻��� �ڵ� ����
-// #define _FRONT_JIG_PROGRAM_				//�ڡ�	LJH: ����Ʈ �׽�Ʈ ���� (�� ��ư ���� ������ LED �ϳ��� �ҵ�) (���� ��ü���� display.c�� ���� ���� �˻�)
-//#define _FOR_HEATER_ENDURANCE_TEST_		//�ڡ�	���ͳ��� �׽�Ʈ (������? ������, 60�� �ֱ��? 30�� ����OFF)/30�� ����ON �ݺ�. 95�ɼ����µ� ����) (���? ���� �����������? 30�� �ֱ��? ����, �̰���)
-//#define _HOT_TEST_						//�ڡ�	�¼� �׽�Ʈ (���� �� �¼�����µ�? ǥ��/�¼� ���� ���� �� �¼� �µ� 2ȸ ����)
-//#define _FOR_REPEAT_EFF_ENDURANCE_TEST_	//�ڡ�	�ݺ����� ���� �׽�Ʈ (�������� ����. ������? ������, 120cc ������ ���ʴ��? ����. �ü����� 1�� �����?10�� ���������� 1�� �����?10�� ������¼�? 1�� �����?10�� ������ݺ�?)
-//#define _FOR_WQA_							//�ڡ�	(�عٷ� �� Repeat�̶� ���� ����) WQA 48�ð� �÷��� (3�и��� ���ÿ� ��ȯ���� ����. ���ʹ� OFF)
-//#define _FOR_COLD_ONOFF_TEST_				//�ڡ�	(�عٷ� �������� Repeat�̶� ���� ����) �ð� �޼Ӹ��? �Ϸ� �� �ݺ����� ���� �� �޼Ҹ��? 5�� �ֱ��? �ð����? OFF 5�� �Ŀ� ON
+// #define _FOR_DEVELOP_						//占쌘∽옙	占쏙옙占쌩몌옙占? (占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙/占쏙옙酉? 占쏙옙占쏙옙拷占? 占쏙옙占?/占쏙옙占쏙옙 占쏙옙째占쌘몌옙(PP占쌤곤옙)占쏙옙占쏙옙 표占쏙옙)
+// #define _NO_ERROR_						//占쌘∽옙	LJH: 占쏙옙占쏙옙占쌩삼옙占쏙옙占쏙옙 占쏙옙占쏙옙
+// #define _NO_FLUSHING_						//占쌘∽옙	LJH: 占시뤄옙占싱삼옙占쏙옙 占쌘듸옙 占쏙옙占쏙옙
+// #define _FRONT_JIG_PROGRAM_				//占쌘∽옙	LJH: 占쏙옙占쏙옙트 占쌓쏙옙트 占쏙옙占쏙옙 (占쏙옙 占쏙옙튼 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 LED 占싹놂옙占쏙옙 占쌀듸옙) (占쏙옙占쏙옙 占쏙옙체占쏙옙占쏙옙 display.c占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占싯삼옙)
+//#define _FOR_HEATER_ENDURANCE_TEST_		//占쌘∽옙	占쏙옙占싶놂옙占쏙옙 占쌓쏙옙트 (占쏙옙占쏙옙占싣? 占쏙옙占쏙옙占쏙옙, 60占쏙옙 占쌍깍옙占? 30占쏙옙 占쏙옙占쏙옙OFF)/30占쏙옙 占쏙옙占쏙옙ON 占쌥븝옙. 95占심쇽옙占쏙옙占승듸옙 占쏙옙占쏙옙) (占쏙옙占? 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占? 30占쏙옙 占쌍깍옙占? 占쏙옙占쏙옙, 占싱곤옙占쏙옙)
+//#define _HOT_TEST_						//占쌘∽옙	占승쇽옙 占쌓쏙옙트 (占쏙옙占쏙옙 占쏙옙 占승쇽옙占쏙옙占쏙옙쨉占? 표占쏙옙/占승쇽옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占승쇽옙 占승듸옙 2회 占쏙옙占쏙옙)
+//#define _FOR_REPEAT_EFF_ENDURANCE_TEST_	//占쌘∽옙	占쌥븝옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쌓쏙옙트 (占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙. 占쏙옙占쏙옙占싣? 占쏙옙占쏙옙占쏙옙, 120cc 占쏙옙占쏙옙占쏙옙 占쏙옙占십댐옙占? 占쏙옙占쏙옙. 占시쇽옙占쏙옙占쏙옙 1占쏙옙 占쏙옙占쏙옙占?10占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 1占쏙옙 占쏙옙占쏙옙占?10占쏙옙 占쏙옙占쏙옙占쏙옙쩌占? 1占쏙옙 占쏙옙占쏙옙占?10占쏙옙 占쏙옙占쏙옙占쏙옙趺占?)
+//#define _FOR_WQA_							//占쌘∽옙	(占쌔바뤄옙 占쏙옙 Repeat占싱띰옙 占쏙옙占쏙옙 占쏙옙占쏙옙) WQA 48占시곤옙 占시뤄옙占쏙옙 (3占싻몌옙占쏙옙 占쏙옙占시울옙 占쏙옙환占쏙옙占쏙옙 占쏙옙占쏙옙. 占쏙옙占싶댐옙 OFF)
+//#define _FOR_COLD_ONOFF_TEST_				//占쌘∽옙	(占쌔바뤄옙 占쏙옙占쏙옙占쏙옙占쏙옙 Repeat占싱띰옙 占쏙옙占쏙옙 占쏙옙占쏙옙) 占시곤옙 占쌨속몌옙占? 占싹뤄옙 占쏙옙 占쌥븝옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쌨소몌옙恙? 5占쏙옙 占쌍깍옙占? 占시곤옙占쏙옙占? OFF 5占쏙옙 占식울옙 ON
 //  #define _FOR_HOTWATER_1CUP_EFF_30s_DELAY_	//  ?? ??? ???? 30s ??? 120cc ??
 // #define _FOR_COLD_PURE_EFF_10s_REPEAT_		// ??/?? ??? ???? 10s ??? 30cc ????? ??
-// #define _FOR_COLD_PURE_HOT_EFF_30s_REPEAT_  //  �ڡ�    LJH: ���� ����(�ü� 30�� ���� -> 30�� ���� -> ���� 30�� ���� -> 30�� ���� -> �¼� 30�� ���� -> 30�� ����....�ݺ�) ==> _FOR_COLD_PURE_EFF_30s_REPEAT_ �̰Ŷ� ���� �����ؾ���.
-//#define _COLD_TEST_DEGREE_DISPLAY_		//�ڡ�	�����¿��� �ü�/�ܱ�µ�? ǥ��
-// #define _HEATER_CURRENT_CHECK_			//�ڡ�	���� ���� üũ ��
-//#define _HEATER_OFF_						//�ڡ�	���� OFF
-//#define _JAPAN_MODEL_						//�ڡ�	�Ϻ��� �� ����
-//#define _DPP_FLOWMETER_					//�ڡ�	DPP�� �ʼ��� ��������
-//#define _FOR_JAPAN_90DEGREE_CONTINUE		//�ڡ�	�Ϻ��� 90�� 120ml �ʰ� ���� ����
-// #define _Flowmeter_Fake						//�ڡ�	���� ��¥�� �����ϵ���(Ÿ�̸ӷ� �̿�)
-// #define _FOR_DEVLOP_NO_LOAD_OUTPUT_         //�ڡ�    ���� ���?? X
-// #define _FOR_DEVELOP_NO_HOT_LOAD_OUTPUT_   //�ڡ�  �¼� ���� ���ϸ� ���̱�
-// #define _FOR_RELIABILITY_CONDENSATION_PROGRAM_          //   LJH:  �ŷڼ� ���? ���α׷�
-// #define _EFF_Continue_Heater_OFF          //�ڡ�    ���� ���� (�������� �� ���Ͱ���off)
+// #define _FOR_COLD_PURE_HOT_EFF_30s_REPEAT_  //  占쌘∽옙    LJH: 占쏙옙占쏙옙 占쏙옙占쏙옙(占시쇽옙 30占쏙옙 占쏙옙占쏙옙 -> 30占쏙옙 占쏙옙占쏙옙 -> 占쏙옙占쏙옙 30占쏙옙 占쏙옙占쏙옙 -> 30占쏙옙 占쏙옙占쏙옙 -> 占승쇽옙 30占쏙옙 占쏙옙占쏙옙 -> 30占쏙옙 占쏙옙占쏙옙....占쌥븝옙) ==> _FOR_COLD_PURE_EFF_30s_REPEAT_ 占싱거띰옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쌔억옙占쏙옙.
+//#define _COLD_TEST_DEGREE_DISPLAY_		//占쌘∽옙	占쏙옙占쏙옙占승울옙占쏙옙 占시쇽옙/占쌤깍옙쨉占? 표占쏙옙
+// #define _HEATER_CURRENT_CHECK_			//占쌘∽옙	占쏙옙占쏙옙 占쏙옙占쏙옙 체크 占쏙옙
+//#define _HEATER_OFF_						//占쌘∽옙	占쏙옙占쏙옙 OFF
+//#define _JAPAN_MODEL_						//占쌘∽옙	占싹븝옙占쏙옙 占쏙옙 占쏙옙占쏙옙
+//#define _DPP_FLOWMETER_					//占쌘∽옙	DPP占쏙옙 占십쇽옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙
+//#define _FOR_JAPAN_90DEGREE_CONTINUE		//占쌘∽옙	占싹븝옙占쏙옙 90占쏙옙 120ml 占십곤옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+// #define _Flowmeter_Fake						//占쌘∽옙	占쏙옙占쏙옙 占쏙옙짜占쏙옙 占쏙옙占쏙옙占싹듸옙占쏙옙(타占싱머뤄옙 占싱울옙)
+// #define _FOR_DEVLOP_NO_LOAD_OUTPUT_         //占쌘∽옙    占쏙옙占쏙옙 占쏙옙占?? X
+// #define _FOR_DEVELOP_NO_HOT_LOAD_OUTPUT_   //占쌘∽옙  占승쇽옙 占쏙옙占쏙옙 占쏙옙占싹몌옙 占쏙옙占싱깍옙
+// #define _FOR_RELIABILITY_CONDENSATION_PROGRAM_          //   LJH:  占신뢰쇽옙 占쏙옙占? 占쏙옙占싸그뤄옙
+// #define _EFF_Continue_Heater_OFF          //占쌘∽옙    占쏙옙占쏙옙 占쏙옙占쏙옙 (占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占싶곤옙占쏙옙off)
 // #define _FOR_DEV_REGULAR_UV_OFF      // ???? OFF
 // #define _FOR_DEV_COLD_INFINITY_EFFLUENT_    // ?? ?? ?? ???
 // #define _HEATER_SENSOR_MAX_DEGREE_UPDATE_	//cbr 2025-12-16 ?????? max ?? ??
-// #define SMPS_VOLTAGE_AND_TEM_CURRENT_DISPLAY    //  �ּ� �����ϸ�, �ο� �����ͷ� ����. ���� 5V �ǵ�鰪����
-// #define _DEV_FAUCET_MOVING_FAST_AT_THE_END        // �Ŀ�� ���� �������� ������..
+// #define SMPS_VOLTAGE_AND_TEM_CURRENT_DISPLAY    //  주석 해제하면, 로우 데이터로 보임. 전류 5V 피드백값으로
+// #define _DEV_FAUCET_MOVING_FAST_AT_THE_END        // 파우셋 무빙 마지막에 빠르게..
 
-//define ���� �ؾ� �� �͵� �ڡ�
-#define _HOT_TEMP_4STEP_					//	100�� �߰�
-#define _AFTER_LPP_IMDCHANGE_				//	LPP���� IMD���� ���?? (����/�Ŀ��??/���ͱ�ü)
-#define _FAN_CIRCUIT_CHANGE_				//	FAN ON/OFF ȸ�� ����
-#define _FRONT_COMMU_CHANGE_				//	����Ʈ ���ŵ����� ��Ŷ ���̾�Ʈ
-#define _FRONT_LED_UP_						//	����Ʈ 7-SEG ���?? Up (3cycle)
-#define _KOREA_NEW_VOICE_					//	������ ���� �߰� ����
+//define 占쏙옙占쏙옙 占쌔억옙 占쏙옙 占싶듸옙 占쌘∽옙
+#define _HOT_TEMP_4STEP_					//	100占쏙옙 占쌩곤옙
+#define _AFTER_LPP_IMDCHANGE_				//	LPP占쏙옙占쏙옙 IMD占쏙옙占쏙옙 占쏙옙占?? (占쏙옙占쏙옙/占식울옙占??/占쏙옙占싶깍옙체)
+#define _FAN_CIRCUIT_CHANGE_				//	FAN ON/OFF 회占쏙옙 占쏙옙占쏙옙
+#define _FRONT_COMMU_CHANGE_				//	占쏙옙占쏙옙트 占쏙옙占신듸옙占쏙옙占쏙옙 占쏙옙킷 占쏙옙占싱억옙트
+#define _FRONT_LED_UP_						//	占쏙옙占쏙옙트 7-SEG 占쏙옙占?? Up (3cycle)
+#define _KOREA_NEW_VOICE_					//	占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쌩곤옙 占쏙옙占쏙옙
  
 // headers generated by code generator
 #include "r_cg_macrodriver.h"

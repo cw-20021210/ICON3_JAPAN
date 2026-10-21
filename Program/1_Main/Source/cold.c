@@ -1,39 +1,39 @@
 /// @file     cold.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ³Ã°¢ µ¿ÀÛ Á¦¾î °ü·Ã file
+/// @brief    ëƒ‰ê° ë™ì‘ ì œì–´ ê´€ë ¨ file
 #define COLD_C
 #include "include/_include.h"
 
-static void Ini_ColdEffStep_00(void);				//	ºÎÆÃ
-static void Ini_ColdEffStep_01(void);				//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â ´ë±â
-static void Ini_ColdEffStep_02(void);				//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â Áß
-static void Ini_ColdEffStep_03(void);				//	ÇÃ·¯½Ì Àü Ãâ¼ö ¹ëºê ¼±OPEN
-static void Ini_ColdEffStep_04(void);				//	ÇÃ·¯½Ì Áß
-static void Ini_ColdEffStep_05(void);				//	ÇÃ·¯½Ì ¿Ï·á ÈÄ ÀÔ¼ö¹ëºê ¼± CLOSE
-static void Ini_ColdEffStep_10(void);				//	´ë±â
-static void Ini_ColdEffStep_20(void);				//	³Ã¼ö ¼±ÅÃ
-static void Ini_ColdEffStep_21(void);				//	ÃßÃâ Àü ÃßÃâ ¹ëºê ¼±OPEN
-static void Ini_ColdEffStep_22(void);				//	ÃßÃâ
-static void Ini_ColdEffStep_23(void);				//	ÃßÃâ Á¾·á ½Ã ÃßÃâ ¹ëºê ÈÄCLOSE
-static void Ini_ColdEffStep_B0(void);				//	ÀÜ¾Ğ Á¦°Å
-static void Ini_ColdEffStep_C0(void);				//	³Ã¼öÅÊÅ© Áø°øÇØÁ¦
-static void Ini_ColdEffStep_E0(void);				//	³Ã¼ö °ü·Ã ¿¡·¯
+static void Ini_ColdEffStep_00(void);				//	ë¶€íŒ…
+static void Ini_ColdEffStep_01(void);				//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ëŒ€ê¸°
+static void Ini_ColdEffStep_02(void);				//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ì¤‘
+static void Ini_ColdEffStep_03(void);				//	í”ŒëŸ¬ì‹± ì „ ì¶œìˆ˜ ë°¸ë¸Œ ì„ OPEN
+static void Ini_ColdEffStep_04(void);				//	í”ŒëŸ¬ì‹± ì¤‘
+static void Ini_ColdEffStep_05(void);				//	í”ŒëŸ¬ì‹± ì™„ë£Œ í›„ ì…ìˆ˜ë°¸ë¸Œ ì„  CLOSE
+static void Ini_ColdEffStep_10(void);				//	ëŒ€ê¸°
+static void Ini_ColdEffStep_20(void);				//	ëƒ‰ìˆ˜ ì„ íƒ
+static void Ini_ColdEffStep_21(void);				//	ì¶”ì¶œ ì „ ì¶”ì¶œ ë°¸ë¸Œ ì„ OPEN
+static void Ini_ColdEffStep_22(void);				//	ì¶”ì¶œ
+static void Ini_ColdEffStep_23(void);				//	ì¶”ì¶œ ì¢…ë£Œ ì‹œ ì¶”ì¶œ ë°¸ë¸Œ í›„CLOSE
+static void Ini_ColdEffStep_B0(void);				//	ì”ì•• ì œê±°
+static void Ini_ColdEffStep_C0(void);				//	ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µí•´ì œ
+static void Ini_ColdEffStep_E0(void);				//	ëƒ‰ìˆ˜ ê´€ë ¨ ì—ëŸ¬
 
-static void ColdEffStep_00(void);					//	ºÎÆÃ
-static void ColdEffStep_01(void);					//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â ´ë±â
-static void ColdEffStep_02(void);					//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â Áß
-static void ColdEffStep_03(void);					//	ÇÃ·¯½Ì Àü Ãâ¼ö ¹ëºê ¼±OPEN
-static void ColdEffStep_04(void);					//	ÇÃ·¯½Ì Áß
-static void ColdEffStep_05(void);					//	ÇÃ·¯½Ì ¿Ï·á ÈÄ ÀÔ¼ö¹ëºê ¼± CLOSE
-static void ColdEffStep_10(void);					//  ´ë±â
-static void ColdEffStep_20(void);					//  ³Ã¼ö ¼±ÅÃ
-static void ColdEffStep_21(void);					//  ÃßÃâ Àü ÃßÃâ ¹ëºê ¼±OPEN
-static void ColdEffStep_22(void);					//  ÃßÃâ
-static void ColdEffStep_23(void);					//	ÃßÃâ Á¾·á ½Ã ÀÔ¼ö¹ëºê ¼± CLOSE ÈÄ ÃßÃâ ¹ëºê CLOSE
-static void ColdEffStep_B0(void);					//	ÀÜ¾Ğ Á¦°Å
-static void ColdEffStep_C0(void);					//	³Ã¼öÅÊÅ© Áø°øÇØÁ¦
-static void ColdEffStep_E0(void);					//	³Ã¼ö °ü·Ã ¿¡·¯
+static void ColdEffStep_00(void);					//	ë¶€íŒ…
+static void ColdEffStep_01(void);					//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ëŒ€ê¸°
+static void ColdEffStep_02(void);					//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ì¤‘
+static void ColdEffStep_03(void);					//	í”ŒëŸ¬ì‹± ì „ ì¶œìˆ˜ ë°¸ë¸Œ ì„ OPEN
+static void ColdEffStep_04(void);					//	í”ŒëŸ¬ì‹± ì¤‘
+static void ColdEffStep_05(void);					//	í”ŒëŸ¬ì‹± ì™„ë£Œ í›„ ì…ìˆ˜ë°¸ë¸Œ ì„  CLOSE
+static void ColdEffStep_10(void);					//  ëŒ€ê¸°
+static void ColdEffStep_20(void);					//  ëƒ‰ìˆ˜ ì„ íƒ
+static void ColdEffStep_21(void);					//  ì¶”ì¶œ ì „ ì¶”ì¶œ ë°¸ë¸Œ ì„ OPEN
+static void ColdEffStep_22(void);					//  ì¶”ì¶œ
+static void ColdEffStep_23(void);					//	ì¶”ì¶œ ì¢…ë£Œ ì‹œ ì…ìˆ˜ë°¸ë¸Œ ì„  CLOSE í›„ ì¶”ì¶œ ë°¸ë¸Œ CLOSE
+static void ColdEffStep_B0(void);					//	ì”ì•• ì œê±°
+static void ColdEffStep_C0(void);					//	ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µí•´ì œ
+static void ColdEffStep_E0(void);					//	ëƒ‰ìˆ˜ ê´€ë ¨ ì—ëŸ¬
 
 static void ColdEffStepNoSet(U8 data);
 
@@ -41,23 +41,23 @@ static void Ini_CoolingStep_00(void);
 static void Ini_CoolingStep_10(void);
 static void Ini_CoolingStep_20(void);
 static void Ini_CoolingStep_21(void);
-static void Ini_CoolingStep_22(void);				//	¿¡ÄÚ¸ğµå ¹æÄ¡ 14½Ã°£
-static void Ini_CoolingStep_23(void);				//	¿¡ÄÚ¸ğµå ¹æÄ¡ 14½Ã°£~³Ã¼ö ÃßÃâ »çÀÌ
-static void Ini_CoolingStep_24(void);				//	³Ã¼ö Ã¹ ÃßÃâ ÈÄ 10½Ã°£ ¹æÄ¡
+static void Ini_CoolingStep_22(void);				//	ì—ì½”ëª¨ë“œ ë°©ì¹˜ 14ì‹œê°„
+static void Ini_CoolingStep_23(void);				//	ì—ì½”ëª¨ë“œ ë°©ì¹˜ 14ì‹œê°„~ëƒ‰ìˆ˜ ì¶”ì¶œ ì‚¬ì´
+static void Ini_CoolingStep_24(void);				//	ëƒ‰ìˆ˜ ì²« ì¶”ì¶œ í›„ 10ì‹œê°„ ë°©ì¹˜
 static void Ini_CoolingStep_30(void);
 static void Ini_CoolingStep_40(void);
 static void Ini_CoolingStep_41(void);
 static void Ini_CoolingStep_E0(void);
 
-static void CoolingStep_00(void);					//	ºÎÆÃ
-static void CoolingStep_10(void);					//	³Ã°¢ OFF
-static void CoolingStep_20(void);					//	±Ş¼Ó¸ğµå
-static void CoolingStep_21(void);					//	À¯Áö¸ğµå
-static void CoolingStep_22(void);					//	(¿¡ÄÚ¸ğµå) ¹æÄ¡ 14½Ã°£
-static void CoolingStep_23(void);					//	(¿¡ÄÚ¸ğµå) ¹æÄ¡ 14½Ã°£~³Ã¼ö ÃßÃâ »çÀÌ
-static void CoolingStep_24(void);					//	(¿¡ÄÚ¸ğµå) ³Ã¼ö Ã¹ ÃßÃâ ÈÄ 10½Ã°£ ¹æÄ¡
-static void CoolingStep_30(void);					//	¿Â¼ö ¼±ÅÃ ¹× ÃßÃâ
-static void CoolingStep_40(void);					//	³Ã°¢ Á¾·á
+static void CoolingStep_00(void);					//	ë¶€íŒ…
+static void CoolingStep_10(void);					//	ëƒ‰ê° OFF
+static void CoolingStep_20(void);					//	ê¸‰ì†ëª¨ë“œ
+static void CoolingStep_21(void);					//	ìœ ì§€ëª¨ë“œ
+static void CoolingStep_22(void);					//	(ì—ì½”ëª¨ë“œ) ë°©ì¹˜ 14ì‹œê°„
+static void CoolingStep_23(void);					//	(ì—ì½”ëª¨ë“œ) ë°©ì¹˜ 14ì‹œê°„~ëƒ‰ìˆ˜ ì¶”ì¶œ ì‚¬ì´
+static void CoolingStep_24(void);					//	(ì—ì½”ëª¨ë“œ) ëƒ‰ìˆ˜ ì²« ì¶”ì¶œ í›„ 10ì‹œê°„ ë°©ì¹˜
+static void CoolingStep_30(void);					//	ì˜¨ìˆ˜ ì„ íƒ ë° ì¶”ì¶œ
+static void CoolingStep_40(void);					//	ëƒ‰ê° ì¢…ë£Œ
 static void CoolingStep_41(void);
 static void CoolingStep_E0(void);
 
@@ -69,45 +69,45 @@ static I32 TEM_Volt_Calculation_I(void);
 
 #define	Z_RetainMode_TEM_Volt_Max	(210)			//	21V
 #define	Z_RetainMode_TEM_Volt_Min	(40)			//	4V
-#define Z_Cooling_P_Control_LimitTemp	(Z_TEMP2)	//	PÁ¦¾î »êÃâ ¸®¹ÌÆ® ¿Âµµ
-#define Z_Cooling_I_Control_LimitTemp	(Z_TEMP0_3)	//	IÁ¦¾î »êÃâ ¸®¹ÌÆ® ¿Âµµ
+#define Z_Cooling_P_Control_LimitTemp	(Z_TEMP2)	//	Pì œì–´ ì‚°ì¶œ ë¦¬ë¯¸íŠ¸ ì˜¨ë„
+#define Z_Cooling_I_Control_LimitTemp	(Z_TEMP0_3)	//	Iì œì–´ ì‚°ì¶œ ë¦¬ë¯¸íŠ¸ ì˜¨ë„
 
 ColdEff_StepTable ColdEff_Step[Z_ColdEffStepNum_Max] =
 {
-	//	½ºÅÜ No			³Ã¼ö ÀÔ¼ö ¹ëºê 		³Ã¼ö ÃßÃâ ¹ëºê		Step Func.
-	{ Z_ColdEffStep_00,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_00 },     //	ºÎÆÃ
-	{ Z_ColdEffStep_01,	VALVE_OFF,	 	VALVE_OFF,	 	ColdEffStep_01 },     //	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â ´ë±â
-	{ Z_ColdEffStep_02,	VALVE_ON,	 	VALVE_ON,	 	ColdEffStep_02 },     //	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â Áß
-	{ Z_ColdEffStep_03,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_03 },     //	ÇÃ·¯½Ì Àü Ãâ¼ö ¹ëºê ¼±OPEN
-	{ Z_ColdEffStep_04,	VALVE_ON, 		VALVE_ON, 		ColdEffStep_04 },     //	ÇÃ·¯½Ì Áß
-	{ Z_ColdEffStep_05,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_05 },     //	ÇÃ·¯½Ì ¿Ï·á ÈÄ ÀÔ¼ö¹ëºê ¼± CLOSE
-	{ Z_ColdEffStep_10,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_10 },     //	´ë±â
-	{ Z_ColdEffStep_20,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_20 },     //	³Ã¼ö ¼±ÅÃ
-	{ Z_ColdEffStep_21,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_21 },     //	ÃßÃâ Àü ÃßÃâ ¹ëºê ¼±OPEN
-	{ Z_ColdEffStep_22,	VALVE_ON, 		VALVE_ON, 		ColdEffStep_22 },     //	ÃßÃâ
-	{ Z_ColdEffStep_23,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_23 },     //	ÃßÃâ Á¾·á ½Ã ÀÔ¼ö¹ëºê ¼± CLOSE ÈÄ ÃßÃâ ¹ëºê CLOSE
+	//	ìŠ¤í… No			ëƒ‰ìˆ˜ ì…ìˆ˜ ë°¸ë¸Œ 		ëƒ‰ìˆ˜ ì¶”ì¶œ ë°¸ë¸Œ		Step Func.
+	{ Z_ColdEffStep_00,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_00 },     //	ë¶€íŒ…
+	{ Z_ColdEffStep_01,	VALVE_OFF,	 	VALVE_OFF,	 	ColdEffStep_01 },     //	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ëŒ€ê¸°
+	{ Z_ColdEffStep_02,	VALVE_ON,	 	VALVE_ON,	 	ColdEffStep_02 },     //	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ì¤‘
+	{ Z_ColdEffStep_03,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_03 },     //	í”ŒëŸ¬ì‹± ì „ ì¶œìˆ˜ ë°¸ë¸Œ ì„ OPEN
+	{ Z_ColdEffStep_04,	VALVE_ON, 		VALVE_ON, 		ColdEffStep_04 },     //	í”ŒëŸ¬ì‹± ì¤‘
+	{ Z_ColdEffStep_05,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_05 },     //	í”ŒëŸ¬ì‹± ì™„ë£Œ í›„ ì…ìˆ˜ë°¸ë¸Œ ì„  CLOSE
+	{ Z_ColdEffStep_10,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_10 },     //	ëŒ€ê¸°
+	{ Z_ColdEffStep_20,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_20 },     //	ëƒ‰ìˆ˜ ì„ íƒ
+	{ Z_ColdEffStep_21,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_21 },     //	ì¶”ì¶œ ì „ ì¶”ì¶œ ë°¸ë¸Œ ì„ OPEN
+	{ Z_ColdEffStep_22,	VALVE_ON, 		VALVE_ON, 		ColdEffStep_22 },     //	ì¶”ì¶œ
+	{ Z_ColdEffStep_23,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_23 },     //	ì¶”ì¶œ ì¢…ë£Œ ì‹œ ì…ìˆ˜ë°¸ë¸Œ ì„  CLOSE í›„ ì¶”ì¶œ ë°¸ë¸Œ CLOSE
 	{ Z_ColdEffStep_B0,	VALVE_B0, 		VALVE_B0, 		ColdEffStep_B0 },     //
 	{ Z_ColdEffStep_C0,	VALVE_OFF, 		VALVE_ON, 		ColdEffStep_C0 },     //
-	{ Z_ColdEffStep_E0,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_E0 },     //	³Ã¼ö °ü·Ã ¿¡·¯
+	{ Z_ColdEffStep_E0,	VALVE_OFF, 		VALVE_OFF, 		ColdEffStep_E0 },     //	ëƒ‰ìˆ˜ ê´€ë ¨ ì—ëŸ¬
 };
 
 Cooling_StepTable Cooling_Step[Z_CoolingStepNum_Max] =
 {
-	//	½ºÅÜ No				TEM PWM			FAN 18V		Step
+	//	ìŠ¤í… No				TEM PWM			FAN 18V		Step
 	{ Z_CoolingStep_00,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_00 },     //
 	{ Z_CoolingStep_10,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_10 },     //
-	{ Z_CoolingStep_20,		TEM_PWM_RAPID,	FAN_21V_ON,	CoolingStep_20 },     //	±Ş¼Ó¸ğµå
-	{ Z_CoolingStep_21,		TEM_PWM_RETAIN,	FAN_18V_ON,	CoolingStep_21 },     //	À¯Áö¸ğµå
-	{ Z_CoolingStep_22,		TEM_PWM_ECOMODE,FAN_18V_ON,	CoolingStep_22 },     //	¿¡ÄÚ¸ğµå ¹æÄ¡ 14½Ã°£
-	{ Z_CoolingStep_23,		TEM_PWM_ECOMODE,FAN_18V_ON,	CoolingStep_23 },     //	¿¡ÄÚ¸ğµå ¹æÄ¡ 14½Ã°£~³Ã¼ö ÃßÃâ »çÀÌ
-	{ Z_CoolingStep_24,		TEM_PWM_ECO_9V,	FAN_18V_ON,	CoolingStep_24 },     //	³Ã¼ö Ã¹ ÃßÃâ ÈÄ 10½Ã°£ ¹æÄ¡
-	{ Z_CoolingStep_30,		TEM_PWM_MIN,	FAN_18V_ON,	CoolingStep_30 },     //	¿Â¼ö ¼±ÅÃ
-	{ Z_CoolingStep_40,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_40 },     //	³Ã°¢ Á¾·á
-	{ Z_CoolingStep_41,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_41 },     //	³Ã°¢ 10ºĞ Á¤Áö
+	{ Z_CoolingStep_20,		TEM_PWM_RAPID,	FAN_21V_ON,	CoolingStep_20 },     //	ê¸‰ì†ëª¨ë“œ
+	{ Z_CoolingStep_21,		TEM_PWM_RETAIN,	FAN_18V_ON,	CoolingStep_21 },     //	ìœ ì§€ëª¨ë“œ
+	{ Z_CoolingStep_22,		TEM_PWM_ECOMODE,FAN_18V_ON,	CoolingStep_22 },     //	ì—ì½”ëª¨ë“œ ë°©ì¹˜ 14ì‹œê°„
+	{ Z_CoolingStep_23,		TEM_PWM_ECOMODE,FAN_18V_ON,	CoolingStep_23 },     //	ì—ì½”ëª¨ë“œ ë°©ì¹˜ 14ì‹œê°„~ëƒ‰ìˆ˜ ì¶”ì¶œ ì‚¬ì´
+	{ Z_CoolingStep_24,		TEM_PWM_ECO_9V,	FAN_18V_ON,	CoolingStep_24 },     //	ëƒ‰ìˆ˜ ì²« ì¶”ì¶œ í›„ 10ì‹œê°„ ë°©ì¹˜
+	{ Z_CoolingStep_30,		TEM_PWM_MIN,	FAN_18V_ON,	CoolingStep_30 },     //	ì˜¨ìˆ˜ ì„ íƒ
+	{ Z_CoolingStep_40,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_40 },     //	ëƒ‰ê° ì¢…ë£Œ
+	{ Z_CoolingStep_41,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_41 },     //	ëƒ‰ê° 10ë¶„ ì •ì§€
 	{ Z_CoolingStep_E0,		TEM_PWM_OFF,	FAN_OFF,	CoolingStep_E0 },     //
 };
 
-/// @brief    ³Ã°¢ Á¦¾î ÃÊ±âÈ­
+/// @brief    ëƒ‰ê° ì œì–´ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Cold_Initialize(void)
@@ -117,7 +117,7 @@ void Cold_Initialize(void)
 	gu16_Cooling_Di1 = 3500;						
 	gu16_Cooling_TargetDegree = Z_TEMP3;			
 
-	gi16_TEM_Volt_I = 70;							//	ÃÊ±â IÀü¾Ğ 7V
+	gi16_TEM_Volt_I = 70;							//	ì´ˆê¸° Iì „ì•• 7V
 
 	F_ColdOff = CLEAR;
 	F_ColdTank_Fill = CLEAR;
@@ -128,7 +128,7 @@ void Cold_Initialize(void)
 
 	gu16_TimerCoolingRapid_6Hour = Z_TimerCoolingRapid_6Hour;
 
-	gu16_TimerColdEcoMode_24Hour = Z_TimerColdEcoMode_24Hour;	//	¿¡ÄÚ¸ğµå 24½Ã°£Àº Àü¿øÀÎ°¡ ÈÄ, ¹«Á¶°Ç Àç½ÃÀÛ
+	gu16_TimerColdEcoMode_24Hour = Z_TimerColdEcoMode_24Hour;	//	ì—ì½”ëª¨ë“œ 24ì‹œê°„ì€ ì „ì›ì¸ê°€ í›„, ë¬´ì¡°ê±´ ì¬ì‹œì‘
 
 	F_ColdEffStep_B0_Request = CLEAR;
 
@@ -136,7 +136,7 @@ void Cold_Initialize(void)
 	Ini_CoolingStep_00();
 }
 
-/// @brief    ³Ã°¢ Á¦¾î
+/// @brief    ëƒ‰ê° ì œì–´
 /// @param    void
 /// @return   void
 void ColdControl(void)
@@ -144,9 +144,9 @@ void ColdControl(void)
 	static U8 F_ColdWater_EffStart = CLEAR;
 	U8 mu8_OPENSHORT_Error;
 
-	if (gu8_ColdEffStepNum < Z_ColdEffStepNum_Max)		//	½ºÅÜ Çã¿ë ¹üÀ§ÀÎ °æ¿ì
+	if (gu8_ColdEffStepNum < Z_ColdEffStepNum_Max)		//	ìŠ¤í… í—ˆìš© ë²”ìœ„ì¸ ê²½ìš°
 	{
-		mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);     //	OPEN SHORT Ã¼Å©
+		mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);     //	OPEN SHORT ì²´í¬
 		if ((gu8_Key_Short.byte != 0)
 		|| (mu8_OPENSHORT_Error != 0)
 		|| (gi16_OutDoorAirSensor.DEGREE < Z_TEMP23)
@@ -159,8 +159,8 @@ void ColdControl(void)
 			gu16_TimerColdEcoMode_24Hour = Z_TimerColdEcoMode_24Hour;
 		}
 
-		(ColdEff_Step[gu8_ColdEffStepNum].exe)();				//	ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
-		(Cooling_Step[gu8_CoolingStepNum].exe)();				//	ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
+		(ColdEff_Step[gu8_ColdEffStepNum].exe)();				//	í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
+		(Cooling_Step[gu8_CoolingStepNum].exe)();				//	í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
 
 		gu8_Cold_In_Valve_CMD = ColdEff_Step[gu8_ColdEffStepNum].COLD_IN_V;
 		gu8_Cold_Out_Valve_CMD = ColdEff_Step[gu8_ColdEffStepNum].COLD_OUT_V;
@@ -169,22 +169,22 @@ void ColdControl(void)
 		gu8_FAN_CMD = Cooling_Step[gu8_CoolingStepNum].FAN;
 
 		#if 0
-		if ((gu8_ColdEffStep != Z_ColdEffStep_B0) && (gu8_OperationStep == Z_OperationStep_B0))	//	Å¾ Ä¿¹ö ÀÜ¾Ğ Á¦°Å
+		if ((gu8_ColdEffStep != Z_ColdEffStep_B0) && (gu8_OperationStep == Z_OperationStep_B0))	//	íƒ‘ ì»¤ë²„ ì”ì•• ì œê±°
 		#endif
-		// º¯°æ: ÇÃ·¡±×¿Í OperationStep Á¶°Ç ¸ğµÎ Ã¼Å©
+		// ë³€ê²½: í”Œë˜ê·¸ì™€ OperationStep ì¡°ê±´ ëª¨ë‘ ì²´í¬
 		if ((gu8_ColdEffStep != Z_ColdEffStep_B0) && (gu8_OperationStep == Z_OperationStep_B0) && (F_ColdEffStep_B0_Request == SET))
 		{
 			Ini_ColdEffStep_B0();
 		}
-		else if ((gu8_ColdEffStep != Z_ColdEffStep_C0) && (gu8_OperationStep == Z_OperationStep_C0))	//	³Ã¼öÅÊÅ© Áø°ø ÇØÁ¦
+		else if ((gu8_ColdEffStep != Z_ColdEffStep_C0) && (gu8_OperationStep == Z_OperationStep_C0))	//	ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µ í•´ì œ
 		{
 			Ini_ColdEffStep_C0();
 		}
 #ifndef _NO_ERROR_
-		else if (((F_Err25_HeatSinkTH == SET) || (F_Err44_ColdTH == SET) || (F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET))	//	³Ã¼ö °ü·Ã ¿¡·¯ (³Ã°¢ ºÒ°¡)
+		else if (((F_Err25_HeatSinkTH == SET) || (F_Err44_ColdTH == SET) || (F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET))	//	ëƒ‰ìˆ˜ ê´€ë ¨ ì—ëŸ¬ (ëƒ‰ê° ë¶ˆê°€)
 			&& (gu8_ColdEffStep > Z_ColdEffStep_02) && (gu8_ColdEffStep != Z_ColdEffStep_E0) && (gu8_ColdEffStep != Z_ColdEffStep_B0) && (gu8_ColdEffStep != Z_ColdEffStep_C0) && (F_ColdOff == CLEAR))
 		{
-			Ini_ColdEffStep_E0();							//		E0 ÀÌÇà
+			Ini_ColdEffStep_E0();							//		E0 ì´í–‰
 		}
 		else
 		{
@@ -196,35 +196,35 @@ void ColdControl(void)
 			gu16_TimerCoolingRapid_6Hour = Z_TimerCoolingRapid_6Hour;
 		}
 
-		if (((F_Err01_LeakWater == SET) || (F_Err02_LeakWater == SET) || (F_Err25_HeatSinkTH == SET) || (F_Err44_ColdTH == SET) || (F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET))	//	³Ã¼ö °ü·Ã ¿¡·¯ (³Ã°¢ ºÒ°¡)
+		if (((F_Err01_LeakWater == SET) || (F_Err02_LeakWater == SET) || (F_Err25_HeatSinkTH == SET) || (F_Err44_ColdTH == SET) || (F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET))	//	ëƒ‰ìˆ˜ ê´€ë ¨ ì—ëŸ¬ (ëƒ‰ê° ë¶ˆê°€)
 			&& (gu8_CoolingStep != Z_CoolingStep_E0) && (F_ColdOff == CLEAR))
 		{
-			Ini_CoolingStep_E0();							//		E0 ÀÌÇà
+			Ini_CoolingStep_E0();							//		E0 ì´í–‰
 		}
 #endif
 	}
-	else											//	Çã¿ë¹üÀ§ ¿Ü
+	else											//	í—ˆìš©ë²”ìœ„ ì™¸
 	{
-		SafetyLoop();								//		¾ÈÀüÁ¤Áö ·çÇÁ
+		SafetyLoop();								//		ì•ˆì „ì •ì§€ ë£¨í”„
 	}
 }
 
-/// @brief    ºÎÆÃ ÈÄ
+/// @brief    ë¶€íŒ… í›„
 /// @param    void
 /// @return   void
 static void ColdEffStep_00(void)
 {
 #ifndef _NO_FLUSHING_
-	if (F_FirstFlushing == SET)						//	ÃÊ±â ÇÃ·¯½ÌÀÌ ¿Ï·á µÈ °æ¿ì
+	if (F_FirstFlushing == SET)						//	ì´ˆê¸° í”ŒëŸ¬ì‹±ì´ ì™„ë£Œ ëœ ê²½ìš°
 	{
-		Ini_ColdEffStep_10();						//		´ë±â ÀÌÇà
+		Ini_ColdEffStep_10();						//		ëŒ€ê¸° ì´í–‰
 	}
 	else
 	{
-		Ini_ColdEffStep_01();						//		³Ã¼öÅÊÅ© Ã¤¿ò ´ë±â ÀÌÇà
+		Ini_ColdEffStep_01();						//		ëƒ‰ìˆ˜íƒ±í¬ ì±„ì›€ ëŒ€ê¸° ì´í–‰
 	}
 #else
-	Ini_ColdEffStep_10();							//		³Ã°¢ ´ë±â ÀÌÇà
+	Ini_ColdEffStep_10();							//		ëƒ‰ê° ëŒ€ê¸° ì´í–‰
 #endif
 }
 static void Ini_ColdEffStep_00(void)
@@ -232,7 +232,7 @@ static void Ini_ColdEffStep_00(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_00);
 }
 
-/// @brief    ³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â ´ë±â
+/// @brief    ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void ColdEffStep_01(void)
@@ -259,18 +259,18 @@ static void Ini_ColdEffStep_01(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_01);
 }
 
-/// @brief    ³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â
+/// @brief    ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸°
 /// @param    void
 /// @return   void
 static void ColdEffStep_02(void)
 {
-	if (F_ColdTank_Fill == SET)						//	ÃßÃâ ¿Ï·á ½Ã
+	if (F_ColdTank_Fill == SET)						//	ì¶”ì¶œ ì™„ë£Œ ì‹œ
 	{
 		Ini_ColdEffStep_10();
 	}
-	else if (gu8_OperationStep != Z_OperationStep_05)	//	ÅÊÅ© ¹° Ã¤¿ì±â ÁßÀÌ ¾Æ´Ñ °æ¿ì
+	else if (gu8_OperationStep != Z_OperationStep_05)	//	íƒ±í¬ ë¬¼ ì±„ìš°ê¸° ì¤‘ì´ ì•„ë‹Œ ê²½ìš°
 	{
-		Ini_ColdEffStep_01();							//		ÇÃ·¯½Ì ´ë±â·Î ÀÌÇà
+		Ini_ColdEffStep_01();							//		í”ŒëŸ¬ì‹± ëŒ€ê¸°ë¡œ ì´í–‰
 	}
 	else
 	{
@@ -282,7 +282,7 @@ static void Ini_ColdEffStep_02(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_02);
 }
 
-/// @brief    ÇÃ·¯½Ì Àü ³Ã¼öÃâ¼ö¹ëºê ¼± OPEN
+/// @brief    í”ŒëŸ¬ì‹± ì „ ëƒ‰ìˆ˜ì¶œìˆ˜ë°¸ë¸Œ ì„  OPEN
 /// @param    void
 /// @return   void
 static void ColdEffStep_03(void)
@@ -306,7 +306,7 @@ static void Ini_ColdEffStep_03(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_03);
 }
 
-/// @brief    ÇÃ·¯½Ì Áß
+/// @brief    í”ŒëŸ¬ì‹± ì¤‘
 /// @param    void
 /// @return   void
 static void ColdEffStep_04(void)
@@ -329,7 +329,7 @@ static void Ini_ColdEffStep_04(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_04);
 }
 
-/// @brief    ÇÃ·¯½Ì ¿Ï·á ÈÄ ³Ã¼öÀÔ¼ö¹ëºê ¼± CLOSE
+/// @brief    í”ŒëŸ¬ì‹± ì™„ë£Œ í›„ ëƒ‰ìˆ˜ì…ìˆ˜ë°¸ë¸Œ ì„  CLOSE
 /// @param    void
 /// @return   void
 static void ColdEffStep_05(void)
@@ -345,7 +345,7 @@ static void Ini_ColdEffStep_05(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_05);
 }
 
-/// @brief    ´ë±â
+/// @brief    ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void ColdEffStep_10(void)
@@ -368,7 +368,7 @@ static void Ini_ColdEffStep_10(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_10);
 }
 
-/// @brief    ³Ã¼ö ¼±ÅÃ
+/// @brief    ëƒ‰ìˆ˜ ì„ íƒ
 /// @param    void
 /// @return   void
 static void ColdEffStep_20(void)
@@ -395,7 +395,7 @@ static void Ini_ColdEffStep_20(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_20);
 }
 
-/// @brief    ³Ã¼ö ÃßÃâ Àü ³Ã¼öÃâ¼ö¹ëºê ¼± OPEN
+/// @brief    ëƒ‰ìˆ˜ ì¶”ì¶œ ì „ ëƒ‰ìˆ˜ì¶œìˆ˜ë°¸ë¸Œ ì„  OPEN
 /// @param    void
 /// @return   void
 static void ColdEffStep_21(void)
@@ -424,7 +424,7 @@ static void Ini_ColdEffStep_21(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_21);
 }
 
-/// @brief    ³Ã¼ö ÃßÃâ
+/// @brief    ëƒ‰ìˆ˜ ì¶”ì¶œ
 /// @param    void
 /// @return   void
 static void ColdEffStep_22(void)
@@ -440,7 +440,7 @@ static void Ini_ColdEffStep_22(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_22);
 }
 
-/// @brief    ³Ã¼ö ÃßÃâ Á¾·á ½Ã ³Ã¼öÀÔ¼ö¹ëºê  ¼± CLOSE
+/// @brief    ëƒ‰ìˆ˜ ì¶”ì¶œ ì¢…ë£Œ ì‹œ ëƒ‰ìˆ˜ì…ìˆ˜ë°¸ë¸Œ  ì„  CLOSE
 /// @param    void
 /// @return   void
 static void ColdEffStep_23(void)
@@ -456,7 +456,7 @@ static void Ini_ColdEffStep_23(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_23);
 }
 
-/// @brief    ³»ºÎ ÀÜ¾Ğ Á¦°Å
+/// @brief    ë‚´ë¶€ ì”ì•• ì œê±°
 /// @param    void
 /// @return   void
 static void ColdEffStep_B0(void)
@@ -470,12 +470,12 @@ static void ColdEffStep_B0(void)
 	{
 		if (F_ColdTank_Fill == CLEAR)
 		{
-			F_ColdEffStep_B0_Request = CLEAR;	// ÀÜ¾Ğ Á¦°Å ¿äÃ» ÃÊ±âÈ­
+			F_ColdEffStep_B0_Request = CLEAR;	// ì”ì•• ì œê±° ìš”ì²­ ì´ˆê¸°í™”
 			Ini_ColdEffStep_01();
 		}
 		else
 		{
-			F_ColdEffStep_B0_Request = CLEAR;	// ÀÜ¾Ğ Á¦°Å ¿äÃ» ÃÊ±âÈ­
+			F_ColdEffStep_B0_Request = CLEAR;	// ì”ì•• ì œê±° ìš”ì²­ ì´ˆê¸°í™”
 			Ini_ColdEffStep_10();
 		}
 	}
@@ -487,7 +487,7 @@ static void Ini_ColdEffStep_B0(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_B0);
 }
 
-/// @brief    ³Ã¼öÅÊÅ© Áø°øÇØÁ¦
+/// @brief    ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µí•´ì œ
 /// @param    void
 /// @return   void
 static void ColdEffStep_C0(void)
@@ -509,7 +509,7 @@ static void Ini_ColdEffStep_C0(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_C0);
 }
 
-/// @brief    ³Ã°¢ °ü·Ã ¿¡·¯ »óÅÂ (³Ã°¢ ±İÁö)
+/// @brief    ëƒ‰ê° ê´€ë ¨ ì—ëŸ¬ ìƒíƒœ (ëƒ‰ê° ê¸ˆì§€)
 /// @param    void
 /// @return   void
 static void ColdEffStep_E0(void)
@@ -524,7 +524,7 @@ static void Ini_ColdEffStep_E0(void)
 	ColdEffStepNoSet(Z_ColdEffStepNum_E0);
 }
 
-/// @brief    ³Ã°¢ ½ºÅÜ ¼³Á¤
+/// @brief    ëƒ‰ê° ìŠ¤í… ì„¤ì •
 /// @param    void
 /// @return   void
 static void ColdEffStepNoSet(U8 data)
@@ -547,12 +547,12 @@ static void ColdEffStepNoSet(U8 data)
 		Z_ColdEffStep_E0,
 	};
 	/************************************************/
-	gu8_ColdEffStepNum = data; 							/*	ÀÏ·Ã ¹øÈ£ set*/
+	gu8_ColdEffStepNum = data; 							/*	ì¼ë ¨ ë²ˆí˜¸ set*/
 
-	gu8_ColdEffStep = DT_ColdNumber[gu8_ColdEffStepNum];	/*	»óÅÂ mode No. set*/
+	gu8_ColdEffStep = DT_ColdNumber[gu8_ColdEffStepNum];	/*	ìƒíƒœ mode No. set*/
 }
 
-/// @brief    ºÎÆÃ
+/// @brief    ë¶€íŒ…
 /// @param    void
 /// @return   void
 static void CoolingStep_00(void)
@@ -567,7 +567,7 @@ static void Ini_CoolingStep_00(void)
 	CoolingStepNoSet(Z_CoolingStepNum_00);
 }
 
-/// @brief    ³Ã°¢ OFF
+/// @brief    ëƒ‰ê° OFF
 /// @param    void
 /// @return   void
 static void CoolingStep_10(void)
@@ -597,26 +597,26 @@ static void Ini_CoolingStep_10(void)
 	CoolingStepNoSet(Z_CoolingStepNum_10);
 }
 
-/// @brief    ±Ş¼Ó¸ğµå
+/// @brief    ê¸‰ì†ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void CoolingStep_20(void)
 {
 	U8 mu8_OPENSHORT_Error = 0;
 
-	//	³Ã°¢ ¿Ï·á Á¶°Ç Ã¼Å©
-	//	¿Ü±â 30µµ ÀÌ»ó : 1.5 °¨Áö
-	//	¿Ü±â 30µµ ¹Ì¸¸ : 2µµ °¨Áö
+	//	ëƒ‰ê° ì™„ë£Œ ì¡°ê±´ ì²´í¬
+	//	ì™¸ê¸° 30ë„ ì´ìƒ : 1.5 ê°ì§€
+	//	ì™¸ê¸° 30ë„ ë¯¸ë§Œ : 2ë„ ê°ì§€
 	if(gi16_OutDoorAirSensor.DEGREE >= Z_TEMP30)
 	{
-		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_1)			//	³Ã°¢ Á¾·á Á¶°Ç Ã¼Å©
+		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_1)			//	ëƒ‰ê° ì¢…ë£Œ ì¡°ê±´ ì²´í¬
 		{
 			gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 		}		
 	}
 	else
 	{
-		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)			//	³Ã°¢ Á¾·á Á¶°Ç Ã¼Å©
+		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)			//	ëƒ‰ê° ì¢…ë£Œ ì¡°ê±´ ì²´í¬
 		{
 			gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 		}		
@@ -624,17 +624,17 @@ static void CoolingStep_20(void)
 
 
 
-	//	À¯Áö¸ğµå ¹Ù·Î ÁøÀÔ ¿Âµµ Á¶°Ç
+	//	ìœ ì§€ëª¨ë“œ ë°”ë¡œ ì§„ì… ì˜¨ë„ ì¡°ê±´
 	if(gi16_OutDoorAirSensor.DEGREE >= Z_TEMP30)
 	{
-		if (gi16_ColdSensor.DEGREE > RETAIN_JOIN_DEGREE_1)		//	À¯Áö¸ğµå ¹Ù·Î ÁøÀÔ ¿Âµµ Á¶°Ç
+		if (gi16_ColdSensor.DEGREE > RETAIN_JOIN_DEGREE_1)		//	ìœ ì§€ëª¨ë“œ ë°”ë¡œ ì§„ì… ì˜¨ë„ ì¡°ê±´
 		{
 			gu8_TimerCoolingStep_100ms_3 = Z_TimerCoolingStep_100ms_3s;
 		}		
 	}
 	else
 	{
-		if (gi16_ColdSensor.DEGREE > RETAIN_JOIN_DEGREE_2)		//	À¯Áö¸ğµå ¹Ù·Î ÁøÀÔ ¿Âµµ Á¶°Ç
+		if (gi16_ColdSensor.DEGREE > RETAIN_JOIN_DEGREE_2)		//	ìœ ì§€ëª¨ë“œ ë°”ë¡œ ì§„ì… ì˜¨ë„ ì¡°ê±´
 		{
 			gu8_TimerCoolingStep_100ms_3 = Z_TimerCoolingStep_100ms_3s;
 		}			
@@ -648,7 +648,7 @@ static void CoolingStep_20(void)
 
 	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);
 
-	if (gi16_ColdSensor.DEGREE > RAPID_COMPLETE_DEGREE)	//	±Ş¼Ó¸ğµå ¿Ï·áÁ¶°Ç Ã¼Å©
+	if (gi16_ColdSensor.DEGREE > RAPID_COMPLETE_DEGREE)	//	ê¸‰ì†ëª¨ë“œ ì™„ë£Œì¡°ê±´ ì²´í¬
 	{
 		if (F_CoolingRapid_Complete == CLEAR)
 		{
@@ -681,7 +681,7 @@ static void CoolingStep_20(void)
 			}
 			else
 			{
-				gu16_TimerCoolingRapid = Z_TimerCoolingRapid_Out20Degree;		//	¿Ü±â¿Âµµ¼¾¼­ °íÀå ½Ã
+				gu16_TimerCoolingRapid = Z_TimerCoolingRapid_Out20Degree;		//	ì™¸ê¸°ì˜¨ë„ì„¼ì„œ ê³ ì¥ ì‹œ
 			}
 		}
 		else
@@ -690,7 +690,7 @@ static void CoolingStep_20(void)
 		}
 	}
 
-	if (gu16_TimerCoolingRapid == 0)				//	Ãß°¡ ³Ã°¢ ¿Ï·á ½Ã
+	if (gu16_TimerCoolingRapid == 0)				//	ì¶”ê°€ ëƒ‰ê° ì™„ë£Œ ì‹œ
 	{
 		Ini_CoolingStep_21();
 	}
@@ -706,15 +706,15 @@ static void CoolingStep_20(void)
 	{
 		Ini_CoolingStep_10();
 	}
-	else if (gu8_WaterSelect == HOT_WATER)			//	¿Â¼ö ¼±ÅÃ ½Ã
+	else if (gu8_WaterSelect == HOT_WATER)			//	ì˜¨ìˆ˜ ì„ íƒ ì‹œ
 	{
 		Ini_CoolingStep_30();
 	}
-	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	¿Ü±â¿Âµµ¿¡ µû¶ó ºĞ¸®
+	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	ì™¸ê¸°ì˜¨ë„ì— ë”°ë¼ ë¶„ë¦¬
 	{
 		Ini_CoolingStep_40();
 	}
-	else if (gu8_TimerCoolingStep_100ms_4 == 0) 	//	³Ã¼ö 6µµ and ¿Ü±â 6µµ ÆÇ´Ü
+	else if (gu8_TimerCoolingStep_100ms_4 == 0) 	//	ëƒ‰ìˆ˜ 6ë„ and ì™¸ê¸° 6ë„ íŒë‹¨
 	{
 		Ini_CoolingStep_40();
 	}
@@ -739,7 +739,7 @@ static void Ini_CoolingStep_20(void)
 	CoolingStepNoSet(Z_CoolingStepNum_20);
 }
 
-/// @brief    À¯Áö¸ğµå
+/// @brief    ìœ ì§€ëª¨ë“œ
 /// @param    void
 /// @return   void
 static void CoolingStep_21(void)
@@ -753,19 +753,19 @@ static void CoolingStep_21(void)
 		gu8_TimerCoolingStep_100ms = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	//	³Ã°¢ ¿Ï·á Á¶°Ç Ã¼Å©
-	//	¿Ü±â 30µµ ÀÌ»ó : 1.5 °¨Áö
-	//	¿Ü±â 30µµ ¹Ì¸¸ : 2µµ °¨Áö
+	//	ëƒ‰ê° ì™„ë£Œ ì¡°ê±´ ì²´í¬
+	//	ì™¸ê¸° 30ë„ ì´ìƒ : 1.5 ê°ì§€
+	//	ì™¸ê¸° 30ë„ ë¯¸ë§Œ : 2ë„ ê°ì§€
 	if(gi16_OutDoorAirSensor.DEGREE >= Z_TEMP30)
 	{
-		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_1)			//	³Ã°¢ Á¾·á Á¶°Ç Ã¼Å©
+		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_1)			//	ëƒ‰ê° ì¢…ë£Œ ì¡°ê±´ ì²´í¬
 		{
 			gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 		}		
 	}
 	else
 	{
-		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)			//	³Ã°¢ Á¾·á Á¶°Ç Ã¼Å©
+		if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)			//	ëƒ‰ê° ì¢…ë£Œ ì¡°ê±´ ì²´í¬
 		{
 			gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 		}		
@@ -774,7 +774,7 @@ static void CoolingStep_21(void)
 
 	if (mu8_OPENSHORT_Error == 0)
 	{
-		if ((gi16_ColdSensor.DEGREE >= Z_TEMP6) || (gi16_OutDoorAirSensor.DEGREE >= Z_TEMP6))	//	³Ã°¢ Á¤ÁöÁ¶°Ç ÆÇ´Ü
+		if ((gi16_ColdSensor.DEGREE >= Z_TEMP6) || (gi16_OutDoorAirSensor.DEGREE >= Z_TEMP6))	//	ëƒ‰ê° ì •ì§€ì¡°ê±´ íŒë‹¨
 		{
 			gu8_TimerCoolingStep_100ms_4 = Z_TimerCoolingStep_100ms_3s;
 		}
@@ -784,19 +784,19 @@ static void CoolingStep_21(void)
 		gu8_TimerCoolingStep_100ms_4 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	if (gu8_TimerCoolingStep_100ms == 0)		//	±Ş¼Ó¸ğµå ÁøÀÔ ÆÇ´Ü
+	if (gu8_TimerCoolingStep_100ms == 0)		//	ê¸‰ì†ëª¨ë“œ ì§„ì… íŒë‹¨
 	{
 		Ini_CoolingStep_20();
 	}
-	else if (gu8_WaterSelect == HOT_WATER)			//	¿Â¼ö ¼±ÅÃ ½Ã
+	else if (gu8_WaterSelect == HOT_WATER)			//	ì˜¨ìˆ˜ ì„ íƒ ì‹œ
 	{
 		Ini_CoolingStep_30();
 	}
-	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	2.5µµ °ú³Ã ÆÇ´Ü
+	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	2.5ë„ ê³¼ëƒ‰ íŒë‹¨
 	{
 		Ini_CoolingStep_40();
 	}
-	else if (gu8_TimerCoolingStep_100ms_4 == 0)		//	³Ã¼ö 6µµ and ¿Ü±â 6µµ ÆÇ´Ü
+	else if (gu8_TimerCoolingStep_100ms_4 == 0)		//	ëƒ‰ìˆ˜ 6ë„ and ì™¸ê¸° 6ë„ íŒë‹¨
 	{
 		Ini_CoolingStep_40();
 	}
@@ -834,7 +834,7 @@ static void Ini_CoolingStep_21(void)
 	else if (gi16_OutDoorAirSensor.DEGREE >= Z_TEMP6) mu16_I_Volt = 40;
 	else mu16_I_Volt = 30;
 
-	if (gu8_CoolingStep == Z_CoolingStep_20)		//	±Ş¼Ó¸ğµå¿¡¼­ À¯Áö¸ğµå ³Ñ¾î¿Ã ¶§ ÃÖÀú I°ª ¼³Á¤
+	if (gu8_CoolingStep == Z_CoolingStep_20)		//	ê¸‰ì†ëª¨ë“œì—ì„œ ìœ ì§€ëª¨ë“œ ë„˜ì–´ì˜¬ ë•Œ ìµœì € Iê°’ ì„¤ì •
 	{
 		if (gi16_TEM_Volt_I < mu16_I_Volt)
 		{
@@ -849,7 +849,7 @@ static void Ini_CoolingStep_21(void)
 	CoolingStepNoSet(Z_CoolingStepNum_21);
 }
 
-/// @brief    ¿¡ÄÚ¸ğµå ¹æÄ¡ 14½Ã°£
+/// @brief    ì—ì½”ëª¨ë“œ ë°©ì¹˜ 14ì‹œê°„
 /// @param    void
 /// @return   void
 static void CoolingStep_22(void)
@@ -864,13 +864,13 @@ static void CoolingStep_22(void)
 		gu8_TimerCoolingStep_100ms_3 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	//	¿¡ÄÚ¸ğµå ¿Ü±â 30µµ ¹Ì¸¸À¸·Î Àû¿ë
+	//	ì—ì½”ëª¨ë“œ ì™¸ê¸° 30ë„ ë¯¸ë§Œìœ¼ë¡œ ì ìš©
 	if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)	
 	{
 		gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	if (gu8_TimerCoolingStep_100ms_2 == 0)		//	1µµ °ú³Ã ÆÇ´Ü
+	if (gu8_TimerCoolingStep_100ms_2 == 0)		//	1ë„ ê³¼ëƒ‰ íŒë‹¨
 	{
 		Ini_CoolingStep_40();
 	}
@@ -882,7 +882,7 @@ static void CoolingStep_22(void)
 	{
 		Ini_CoolingStep_21();						
 	}
-//	else if (gu8_Key_Short.byte != 0)				//	220310 ³Ãµ¿´ã´çÀÚ ¿äÃ»À¸·Î »èÁ¦
+//	else if (gu8_Key_Short.byte != 0)				//	220310 ëƒ‰ë™ë‹´ë‹¹ì ìš”ì²­ìœ¼ë¡œ ì‚­ì œ
 //	{
 //		Ini_CoolingStep_21();
 //	}
@@ -890,7 +890,7 @@ static void CoolingStep_22(void)
 	{
 		Ini_CoolingStep_23();
 	}
-	else if (gu8_WaterSelect == HOT_WATER)				//	¿Â¼ö ¼±ÅÃ ½Ã
+	else if (gu8_WaterSelect == HOT_WATER)				//	ì˜¨ìˆ˜ ì„ íƒ ì‹œ
 	{
 		Ini_CoolingStep_30();
 	}
@@ -916,7 +916,7 @@ static void Ini_CoolingStep_22(void)
 	CoolingStepNoSet(Z_CoolingStepNum_22);
 }
 
-/// @brief    (¿¡ÄÚ¸ğµå) ¹æÄ¡ 14½Ã°£~³Ã¼ö ÃßÃâ »çÀÌ
+/// @brief    (ì—ì½”ëª¨ë“œ) ë°©ì¹˜ 14ì‹œê°„~ëƒ‰ìˆ˜ ì¶”ì¶œ ì‚¬ì´
 /// @param    void
 /// @return   void
 static void CoolingStep_23(void)
@@ -931,17 +931,17 @@ static void CoolingStep_23(void)
 		gu8_TimerCoolingStep_100ms_3 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	//	¿¡ÄÚ¸ğµå ¿Ü±â 30µµ ¹Ì¸¸À¸·Î Àû¿ë
+	//	ì—ì½”ëª¨ë“œ ì™¸ê¸° 30ë„ ë¯¸ë§Œìœ¼ë¡œ ì ìš©
 	if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)
 	{
 		gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	if (gu8_WaterSelect == HOT_WATER)				//	¿Â¼ö ¼±ÅÃ ½Ã
+	if (gu8_WaterSelect == HOT_WATER)				//	ì˜¨ìˆ˜ ì„ íƒ ì‹œ
 	{
 		Ini_CoolingStep_30();
 	}
-	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	1µµ °ú³Ã ÆÇ´Ü
+	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	1ë„ ê³¼ëƒ‰ íŒë‹¨
 	{
 		Ini_CoolingStep_40();
 	}
@@ -974,7 +974,7 @@ static void Ini_CoolingStep_23(void)
 	CoolingStepNoSet(Z_CoolingStepNum_23);
 }
 
-/// @brief    (¿¡ÄÚ¸ğµå) ³Ã¼ö Ã¹ ÃßÃâ ÈÄ 10½Ã°£ ¹æÄ¡
+/// @brief    (ì—ì½”ëª¨ë“œ) ëƒ‰ìˆ˜ ì²« ì¶”ì¶œ í›„ 10ì‹œê°„ ë°©ì¹˜
 /// @param    void
 /// @return   void
 static void CoolingStep_24(void)
@@ -989,17 +989,17 @@ static void CoolingStep_24(void)
 		gu8_TimerCoolingStep_100ms_3 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	//	¿¡ÄÚ¸ğµå ¿Ü±â 30µµ ¹Ì¸¸À¸·Î Àû¿ë
+	//	ì—ì½”ëª¨ë“œ ì™¸ê¸° 30ë„ ë¯¸ë§Œìœ¼ë¡œ ì ìš©
 	if (gi16_ColdSensor.DEGREE >= COLD_COMPLETE_DEGREE_2)
 	{
 		gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 	}
 
-	if (gu8_WaterSelect == HOT_WATER)				//	¿Â¼ö ¼±ÅÃ ½Ã
+	if (gu8_WaterSelect == HOT_WATER)				//	ì˜¨ìˆ˜ ì„ íƒ ì‹œ
 	{
 		Ini_CoolingStep_30();
 	}
-	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	1µµ °ú³Ã ÆÇ´Ü
+	else if (gu8_TimerCoolingStep_100ms_2 == 0)		//	1ë„ ê³¼ëƒ‰ íŒë‹¨
 	{
 		Ini_CoolingStep_40();
 	}
@@ -1033,7 +1033,7 @@ static void Ini_CoolingStep_24(void)
 	CoolingStepNoSet(Z_CoolingStepNum_24);
 }
 
-/// @brief    ¿Â¼ö ¼±ÅÃ MIN
+/// @brief    ì˜¨ìˆ˜ ì„ íƒ MIN
 /// @param    void
 /// @return   void
 static void CoolingStep_30(void)
@@ -1056,7 +1056,7 @@ static void Ini_CoolingStep_30(void)
 	CoolingStepNoSet(Z_CoolingStepNum_30);
 }
 
-/// @brief    ³Ã°¢ Á¾·á
+/// @brief    ëƒ‰ê° ì¢…ë£Œ
 /// @param    void
 /// @return   void
 static void CoolingStep_40(void)
@@ -1065,19 +1065,19 @@ static void CoolingStep_40(void)
 
 	mu8_OPENSHORT_Error = TH_Open_Short_Check(gi16_OutDoorAirSensor.TH_ADC_AVERAGE);
 
-	//	³Ã°¢ Àçµ¿ÀÛ Á¶°Ç Ã¼Å©
-	//	¿Ü±â 30µµ ÀÌ»ó : 1.5 °¨Áö
-	//	¿Ü±â 30µµ ¹Ì¸¸ : 2µµ °¨Áö
+	//	ëƒ‰ê° ì¬ë™ì‘ ì¡°ê±´ ì²´í¬
+	//	ì™¸ê¸° 30ë„ ì´ìƒ : 1.5 ê°ì§€
+	//	ì™¸ê¸° 30ë„ ë¯¸ë§Œ : 2ë„ ê°ì§€
 	if(gi16_OutDoorAirSensor.DEGREE >= Z_TEMP30)
 	{
-		if (gi16_ColdSensor.DEGREE < COLD_COMPLETE_DEGREE_1)			//	³Ã°¢ Á¾·á Á¶°Ç Ã¼Å©
+		if (gi16_ColdSensor.DEGREE < COLD_COMPLETE_DEGREE_1)			//	ëƒ‰ê° ì¢…ë£Œ ì¡°ê±´ ì²´í¬
 		{
 			gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 		}		
 	}
 	else
 	{
-		if (gi16_ColdSensor.DEGREE < COLD_COMPLETE_DEGREE_2)			//	³Ã°¢ Á¾·á Á¶°Ç Ã¼Å©
+		if (gi16_ColdSensor.DEGREE < COLD_COMPLETE_DEGREE_2)			//	ëƒ‰ê° ì¢…ë£Œ ì¡°ê±´ ì²´í¬
 		{
 			gu8_TimerCoolingStep_100ms_2 = Z_TimerCoolingStep_100ms_3s;
 		}		
@@ -1098,7 +1098,7 @@ static void CoolingStep_40(void)
 
 	if (mu8_OPENSHORT_Error == 0)
 	{
-		if ((gu8_TimerCoolingStep_100ms_2 == 0) && (gu8_TimerCoolingStep_100ms_4 == 0))	//	³Ã°¢ Àçµ¿ÀÛ Ã¼Å©
+		if ((gu8_TimerCoolingStep_100ms_2 == 0) && (gu8_TimerCoolingStep_100ms_4 == 0))	//	ëƒ‰ê° ì¬ë™ì‘ ì²´í¬
 		{
 			Ini_CoolingStep_21();
 		}
@@ -1119,7 +1119,7 @@ static void Ini_CoolingStep_40(void)
 }
 
 
-/// @brief    ³Ã°¢ 10ºĞ Á¤Áö
+/// @brief    ëƒ‰ê° 10ë¶„ ì •ì§€
 /// @param    void
 /// @return   void
 static void CoolingStep_41(void)
@@ -1172,72 +1172,72 @@ static void CoolingStepNoSet(U8 data)
 	};
 	/************************************************/
 	gu8_CoolingStepNum_Before = gu8_CoolingStepNum;
-	gu8_CoolingStepNum = data; 							/*	ÀÏ·Ã ¹øÈ£ set*/
+	gu8_CoolingStepNum = data; 							/*	ì¼ë ¨ ë²ˆí˜¸ set*/
 
 	gu8_CoolingStep_Before = gu8_CoolingStep;
-	gu8_CoolingStep = DT_CoolingNumber[gu8_CoolingStepNum];	/*	»óÅÂ mode No. set*/
+	gu8_CoolingStep = DT_CoolingNumber[gu8_CoolingStepNum];	/*	ìƒíƒœ mode No. set*/
 }
 
-/// @brief	  TEM PI ¿¬»ê	
+/// @brief	  TEM PI ì—°ì‚°	
 /// @param    void
 /// @return   void
 static void Cooling_PID_Calculration(void)
 {
-	gi16_TEM_Volt_P = (U16)TEM_Volt_Calculation_P();			//	P°ª °è»ê
-	gi16_TEM_Volt_I = (U16)TEM_Volt_Calculation_I();			//	I°ª °è»ê
+	gi16_TEM_Volt_P = (U16)TEM_Volt_Calculation_P();			//	Pê°’ ê³„ì‚°
+	gi16_TEM_Volt_I = (U16)TEM_Volt_Calculation_I();			//	Iê°’ ê³„ì‚°
 
-	/*	P+I °ª ¼³Á¤	*/
+	/*	P+I ê°’ ì„¤ì •	*/
 	gi16_TEM_Volt_P_I = gi16_TEM_Volt_P + gi16_TEM_Volt_I;//	P+I
 
-	if (gi16_TEM_Volt_P_I >= Z_RetainMode_TEM_Volt_Max)		//	°áÁ¤°ªÀÌ ÃÖ´ëÃâ·Â°ª º¸´Ù ³ôÀ» °æ¿ì
+	if (gi16_TEM_Volt_P_I >= Z_RetainMode_TEM_Volt_Max)		//	ê²°ì •ê°’ì´ ìµœëŒ€ì¶œë ¥ê°’ ë³´ë‹¤ ë†’ì„ ê²½ìš°
 	{
-		gi16_TEM_Volt_P_I = Z_RetainMode_TEM_Volt_Max;		//		ÃÖ´ë°ª Á¦ÇÑ
+		gi16_TEM_Volt_P_I = Z_RetainMode_TEM_Volt_Max;		//		ìµœëŒ€ê°’ ì œí•œ
 	}
-	else if (gi16_TEM_Volt_P_I < Z_RetainMode_TEM_Volt_Min)		//	ÀÌ»ó °è»êÀÏ °æ¿ì
+	else if (gi16_TEM_Volt_P_I < Z_RetainMode_TEM_Volt_Min)		//	ì´ìƒ ê³„ì‚°ì¼ ê²½ìš°
 	{
-		gi16_TEM_Volt_P_I = Z_RetainMode_TEM_Volt_Min;			//		ÃÖ¼Ò°ª Á¦ÇÑ
+		gi16_TEM_Volt_P_I = Z_RetainMode_TEM_Volt_Min;			//		ìµœì†Œê°’ ì œí•œ
 	}
 	else
 	{
 
 	}
 
-	if (gi16_TEM_Volt_P_I < Z_RetainMode_TEM_Volt_Min)	//	PI °ªÀÌ ¸¶ÀÌ³Ê½ºÀÎ °æ¿ì
+	if (gi16_TEM_Volt_P_I < Z_RetainMode_TEM_Volt_Min)	//	PI ê°’ì´ ë§ˆì´ë„ˆìŠ¤ì¸ ê²½ìš°
 	{
-		gu16_TEM_Volt = Z_RetainMode_TEM_Volt_Min;	//		0À¸·Î °íÁ¤
+		gu16_TEM_Volt = Z_RetainMode_TEM_Volt_Min;	//		0ìœ¼ë¡œ ê³ ì •
 	}
-	else											//	¾ç¼öÀÎ °æ¿ì
+	else											//	ì–‘ìˆ˜ì¸ ê²½ìš°
 	{
-		gu16_TEM_Volt = (U16)gi16_TEM_Volt_P_I;		//		PI°ªÀ¸·Î °»½Å
+		gu16_TEM_Volt = (U16)gi16_TEM_Volt_P_I;		//		PIê°’ìœ¼ë¡œ ê°±ì‹ 
 	}
 }
 
-/// @brief    ³Ã°¢ P°ª ¿¬»ê
+/// @brief    ëƒ‰ê° Pê°’ ì—°ì‚°
 /// @param    void
 /// @return   void
 static I32 TEM_Volt_Calculation_P(void)
 {
-	I16	mi16_diff;									//	Tset'£­Tout buffer
+	I16	mi16_diff;									//	Tset'ï¼Tout buffer
 	I32	mi32_DP;									//	DP buffer
 	I32	mi32_max, mi32_min;
 	I32	mi32_max_work;								//	max buf
 
-	/*	P °ª ¼³Á¤	*/
-	mi16_diff = gi16_ColdSensor.DEGREE - (I16)gu16_Cooling_TargetDegree;		//		Tset - Tout				[1/10:¡É]
+	/*	P ê°’ ì„¤ì •	*/
+	mi16_diff = gi16_ColdSensor.DEGREE - (I16)gu16_Cooling_TargetDegree;		//		Tset - Tout				[1/10:â„ƒ]
 	if (mi16_diff >= Z_Cooling_P_Control_LimitTemp)
-	{												//		Â÷ÀÌ°¡ ?¡É ÀÌ»ó Â÷ÀÌ ÀÖ´Â °æ¿ì
-		mi16_diff = Z_Cooling_P_Control_LimitTemp;			//			maxÀÇ Á¦ÇÑ
+	{												//		ì°¨ì´ê°€ ?â„ƒ ì´ìƒ ì°¨ì´ ìˆëŠ” ê²½ìš°
+		mi16_diff = Z_Cooling_P_Control_LimitTemp;			//			maxì˜ ì œí•œ
 	}
 	else if (mi16_diff <= -Z_Cooling_P_Control_LimitTemp)
-	{												//		Â÷ÀÌ°¡ ?¡É ÀÌÇÏÀÎ °æ¿ì
-		mi16_diff = -Z_Cooling_P_Control_LimitTemp;		//			minÀÇ Á¦ÇÑ
+	{												//		ì°¨ì´ê°€ ?â„ƒ ì´í•˜ì¸ ê²½ìš°
+		mi16_diff = -Z_Cooling_P_Control_LimitTemp;		//			minì˜ ì œí•œ
 	}
 	else
 	{
 		/* ... */
 	}
 
-	mi32_DP = ((I32)gu16_Cooling_Dp1 * (I32)mi16_diff) / 10;	//		DP£½dp1¡¿(DTset'£­DTout)	[1/10V]
+	mi32_DP = ((I32)gu16_Cooling_Dp1 * (I32)mi16_diff) / 10;	//		DPï¼dp1Ã—(DTset'ï¼DTout)	[1/10V]
 
 	if (mi32_DP < 0)
 	{
@@ -1246,27 +1246,27 @@ static I32 TEM_Volt_Calculation_P(void)
 
 	/************************************************/
 	mi32_max_work = (I32)Z_RetainMode_TEM_Volt_Max;		//
-	mi32_max = (mi32_max_work * gu16_Cooling_Dp2) / 10;	//	MAXÄ¡ = max ¡¿ Dp2 	[1/10V]
-//	mi32_min = 0;									//	MINÄ¡ = 0V	[1/10V]
-	mi32_min = -mi32_max;							//	MINÄ¡ = -MAX	[1/10V]
+	mi32_max = (mi32_max_work * gu16_Cooling_Dp2) / 10;	//	MAXì¹˜ = max Ã— Dp2 	[1/10V]
+//	mi32_min = 0;									//	MINì¹˜ = 0V	[1/10V]
+	mi32_min = -mi32_max;							//	MINì¹˜ = -MAX	[1/10V]
 
 	if (mi32_DP < mi32_min)
-	{												//	ÃÖ¼ÒÄ¡º¸´Ù ÀÛÀº °æ¿ì
-		mi32_DP = mi32_min;							//		DPÀÇ MIN Á¦ÇÑ
+	{												//	ìµœì†Œì¹˜ë³´ë‹¤ ì‘ì€ ê²½ìš°
+		mi32_DP = mi32_min;							//		DPì˜ MIN ì œí•œ
 	}
 	else if (mi32_DP > mi32_max)
-	{												//	ÃÖ´ëÄ¡º¸´Ù Å« °æ¿ì
-		mi32_DP = mi32_max;							//		DPÀÇ MAX Á¦ÇÑ
+	{												//	ìµœëŒ€ì¹˜ë³´ë‹¤ í° ê²½ìš°
+		mi32_DP = mi32_max;							//		DPì˜ MAX ì œí•œ
 	}
 	else
 	{
 		/* ... */
 	}
 
-	return (mi32_DP);								//	Á¦ÇÑÈÄÀÇ DPÀÇ ¼³Á¤
+	return (mi32_DP);								//	ì œí•œí›„ì˜ DPì˜ ì„¤ì •
 }
 
-/// @brief    ³Ã°¢ I°ª ¿¬»ê		
+/// @brief    ëƒ‰ê° Iê°’ ì—°ì‚°		
 /// @param    void
 /// @return   void
 static I32 TEM_Volt_Calculation_I(void)
@@ -1281,40 +1281,40 @@ static I32 TEM_Volt_Calculation_I(void)
 //	if (PSM_gu16_Cooling_Di1 != 0) gu16_Cooling_Di1 = PSM_gu16_Cooling_Di1;
 //#endif
 
-	/*	I °ª ¼³Á¤	*/
-	mi16_diff = gi16_ColdSensor.DEGREE - (I16)gu16_Cooling_TargetDegree;		//		Tset - Tout				[1/10:¡É]
+	/*	I ê°’ ì„¤ì •	*/
+	mi16_diff = gi16_ColdSensor.DEGREE - (I16)gu16_Cooling_TargetDegree;		//		Tset - Tout				[1/10:â„ƒ]
 	if (mi16_diff >= Z_Cooling_I_Control_LimitTemp)
-	{												//		Â÷ÀÌ°¡ ?¡É ÀÌ»ó Â÷ÀÌ ÀÖ´Â °æ¿ì
-		mi16_diff = Z_Cooling_I_Control_LimitTemp;			//			maxÀÇ Á¦ÇÑ
+	{												//		ì°¨ì´ê°€ ?â„ƒ ì´ìƒ ì°¨ì´ ìˆëŠ” ê²½ìš°
+		mi16_diff = Z_Cooling_I_Control_LimitTemp;			//			maxì˜ ì œí•œ
 	}
 	else if (mi16_diff <= -Z_Cooling_I_Control_LimitTemp)
-	{												//		Â÷ÀÌ°¡ ?¡É ÀÌÇÏÀÎ °æ¿ì
-		mi16_diff = -Z_Cooling_I_Control_LimitTemp;		//			minÀÇ Á¦ÇÑ
+	{												//		ì°¨ì´ê°€ ?â„ƒ ì´í•˜ì¸ ê²½ìš°
+		mi16_diff = -Z_Cooling_I_Control_LimitTemp;		//			minì˜ ì œí•œ
 	}
 	else
 	{
 		/* ... */
 	}
 
-	mi32_DIn2 = (I32)(((I32)gu16_Cooling_Di1 * (I32)mi16_diff) / 10000);	//	I°ª ´©Àû
-	mi32_DIn = gi16_TEM_Volt_I + mi32_DIn2;	//	I°ª ´©Àû
+	mi32_DIn2 = (I32)(((I32)gu16_Cooling_Di1 * (I32)mi16_diff) / 10000);	//	Iê°’ ëˆ„ì 
+	mi32_DIn = gi16_TEM_Volt_I + mi32_DIn2;	//	Iê°’ ëˆ„ì 
 
-	if ((mi32_DIn+gi16_TEM_Volt_P) > Z_RetainMode_TEM_Volt_Max)			//	I°ª ÃÖ´ëÄ¡ Á¦ÇÑ
+	if ((mi32_DIn+gi16_TEM_Volt_P) > Z_RetainMode_TEM_Volt_Max)			//	Iê°’ ìµœëŒ€ì¹˜ ì œí•œ
 	{
 		mi32_DIn = Z_RetainMode_TEM_Volt_Max-gi16_TEM_Volt_P;
 	}
 
-	mi32_max = Z_RetainMode_TEM_Volt_Max;				//	MAXÄ¡ = [1/10V]
-	mi32_min = Z_RetainMode_TEM_Volt_Min;				//	MINÄ¡ = [1/10V]
+	mi32_max = Z_RetainMode_TEM_Volt_Max;				//	MAXì¹˜ = [1/10V]
+	mi32_min = Z_RetainMode_TEM_Volt_Min;				//	MINì¹˜ = [1/10V]
 
-//	mi32_DIDP = mi32_DIn + gi16_TEM_Volt_P;			//	DI£«DP
-	mi32_DIDP = mi32_DIn;			//	DI£«DP
+//	mi32_DIDP = mi32_DIn + gi16_TEM_Volt_P;			//	DIï¼‹DP
+	mi32_DIDP = mi32_DIn;			//	DIï¼‹DP
 
-	if (mi32_DIDP <= mi32_min)						//	ÃÖ¼Ò°ªº¸´Ù ÀÛÀº °æ¿ì
+	if (mi32_DIDP <= mi32_min)						//	ìµœì†Œê°’ë³´ë‹¤ ì‘ì€ ê²½ìš°
 	{
-		mi32_DIn = mi32_min;		//		DIÀÇ MIN Á¦ÇÑ(DI)
+		mi32_DIn = mi32_min;		//		DIì˜ MIN ì œí•œ(DI)
 	}
-	else if (mi32_DIDP >= mi32_max)					//	ÃÖ´ë°ªº¸´Ù Å« °æ¿ì
+	else if (mi32_DIDP >= mi32_max)					//	ìµœëŒ€ê°’ë³´ë‹¤ í° ê²½ìš°
 	{
 		mi32_DIn = mi32_max;
 	}
@@ -1323,5 +1323,5 @@ static I32 TEM_Volt_Calculation_I(void)
 
 	}
 
-	return (mi32_DIn);									//	DIÀÇ ¼³Á¤							[1/1000:Kcal/min]
+	return (mi32_DIn);									//	DIì˜ ì„¤ì •							[1/1000:Kcal/min]
 }

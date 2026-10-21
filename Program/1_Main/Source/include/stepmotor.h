@@ -1,7 +1,7 @@
 /// @file   stepmotor.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ½ºÅ×ÇÎ¸ğÅÍ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ìŠ¤í…Œí•‘ëª¨í„° ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef STEPMOTOR_C
 	#define 	EXTERN
@@ -13,44 +13,44 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_STEPMOTOR()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_STEPMOTOR()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_STEPMOTOR()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_STEPMOTOR()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_STEPMOTOR()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_STEPMOTOR()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_STEPMOTOR()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_STEPMOTOR()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_STEPMOTOR()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_STEPMOTOR()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_STEPMOTOR()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_STEPMOTOR()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_STEPMOTOR()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_STEPMOTOR()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_STEPMOTOR()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_STEPMOTOR()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
 /*==============================================================================
  Constant Definition
  ==============================================================================*/
-#define STEP_MOTER_OPEN   (0)						//	OPEN °ª
-#define STEP_MOTER_CLOSE  (1)						//	CLOSE °ª
+#define STEP_MOTER_OPEN   (0)						//	OPEN ê°’
+#define STEP_MOTER_CLOSE  (1)						//	CLOSE ê°’
 
-#define ZERO_BACK         (3000)					//	ÃÊ±âÈ­ °ª
+#define ZERO_BACK         (3000)					//	ì´ˆê¸°í™” ê°’
 
 
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN volatile U8 gu8_Step_Cycle;					//	StepMotor ½ÃÄö½º
-EXTERN volatile U8 gu8_StepMotorWay;         		// 	StepMotor ¹æÇâ
+EXTERN volatile U8 gu8_Step_Cycle;					//	StepMotor ì‹œí€€ìŠ¤
+EXTERN volatile U8 gu8_StepMotorWay;         		// 	StepMotor ë°©í–¥
 
-EXTERN volatile U8 gu8_StepMotorWay_Backup;         	// 	StepMotor ¹æÇâ
-EXTERN volatile U16 gu16_StepMovingPulse_Backup;	//	½ºÅÜ Áö½Ã°ª back up
-EXTERN volatile U8 gu8_Stepping_ZeroBack;			//	¿øÀ§Ä¡ flag (0:¹Ìµ¿ÀÛ 1:OPEN 2:CLOSE)
+EXTERN volatile U8 gu8_StepMotorWay_Backup;         	// 	StepMotor ë°©í–¥
+EXTERN volatile U16 gu16_StepMovingPulse_Backup;	//	ìŠ¤í… ì§€ì‹œê°’ back up
+EXTERN volatile U8 gu8_Stepping_ZeroBack;			//	ì›ìœ„ì¹˜ flag (0:ë¯¸ë™ì‘ 1:OPEN 2:CLOSE)
 
-EXTERN volatile U8 gu8_Pps_Control;					//	PPS ¼¼ÆÃ
+EXTERN volatile U8 gu8_Pps_Control;					//	PPS ì„¸íŒ…
 EXTERN volatile U8 gu8Move_PPS;						//
 EXTERN volatile U8 gu8Cnt_PPS;
 EXTERN volatile U16 gu16_StepMovingPulse;

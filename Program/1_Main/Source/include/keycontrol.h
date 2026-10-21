@@ -1,7 +1,7 @@
 /// @file   keycontrol.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Å° ÀÔ·Â Ã³¸® °ü·Ã Çì´õ file
+/// @brief  í‚¤ ì…ë ¥ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef KEYCONTROL_C
 	#define 	EXTERN
@@ -13,24 +13,24 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_KEYCONTROL()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_KEYCONTROL()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_KEYCONTROL()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_KEYCONTROL()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerKeyDecide);	\
 									TDEC(gu8_TimerKeyProhibit);	\
 								}
-#define	TDEC_100ms_KEYCONTROL()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_KEYCONTROL()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerKeyOnBreak);	\
 								}
-#define	TDEC_1s_KEYCONTROL()	{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_KEYCONTROL()	{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_KEYCONTROL()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_KEYCONTROL()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_KEYCONTROL()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_KEYCONTROL()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_KEYCONTROL()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_KEYCONTROL()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_KEYCONTROL()	{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_KEYCONTROL()	{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -43,15 +43,15 @@
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN U16 gu16_TimerKeyDecide;						//	Å° È®Á¤ Å¸ÀÌ¸Ó
-EXTERN U8 gu8_TimerKeyProhibit;						//	Å° ÀÔ·Â ±İÁö Å¸ÀÌ¸Ó
+EXTERN U16 gu16_TimerKeyDecide;						//	í‚¤ í™•ì • íƒ€ì´ë¨¸
+EXTERN U8 gu8_TimerKeyProhibit;						//	í‚¤ ì…ë ¥ ê¸ˆì§€ íƒ€ì´ë¨¸
 //EXTERN U8 gu8_EffluentKey_OnBreak;
-EXTERN U8 gu8_TimerKeyOnBreak;						//	Å° ¿Â°íÀå È®Á¤ Å¸ÀÌ¸Ó
-EXTERN U8 F_VeryLongKey_Rejection;					//	Long key°¡ ActiveÇÏ°í Very Long key°¡ ÇÑ¹ø ´õ µ¿ÀÛµÇ´Â °ÍÀ» ¹æÁöÇÏ´Â ÇÃ·¡±×
-EXTERN U8 F_ShortKeyProhibit;						//	´ÜÅ° Áßº¹
+EXTERN U8 gu8_TimerKeyOnBreak;						//	í‚¤ ì˜¨ê³ ì¥ í™•ì • íƒ€ì´ë¨¸
+EXTERN U8 F_VeryLongKey_Rejection;					//	Long keyê°€ Activeí•˜ê³  Very Long keyê°€ í•œë²ˆ ë” ë™ì‘ë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ëŠ” í”Œë˜ê·¸
+EXTERN U8 F_ShortKeyProhibit;						//	ë‹¨í‚¤ ì¤‘ë³µ
 
-EXTERN U8 F_KeyOnce;								//	Àü¿ø ºÎÆÃ ÈÄ ÃÖÃÊ Å° ÀÔ·Â ÇÃ·¡±× (´­·ÁÀÖ´Â »óÅÂ·Î ÁøÀÔÇßÀ» °æ¿ì¸¦ ÆÇ´Ü)
-EXTERN U8 gu8_KeyOnBreak;							//	Àü¿ø ºÎÆÃ ÈÄ ÃÖÃÊ Å° ÀÔ·Â µ¥ÀÌÅÍ (´­·ÁÀÖ´Â »óÅÂ·Î ÁøÀÔÇßÀ» °æ¿ì¸¦ ÆÇ´Ü)
+EXTERN U8 F_KeyOnce;								//	ì „ì› ë¶€íŒ… í›„ ìµœì´ˆ í‚¤ ì…ë ¥ í”Œë˜ê·¸ (ëˆŒë ¤ìˆëŠ” ìƒíƒœë¡œ ì§„ì…í–ˆì„ ê²½ìš°ë¥¼ íŒë‹¨)
+EXTERN U8 gu8_KeyOnBreak;							//	ì „ì› ë¶€íŒ… í›„ ìµœì´ˆ í‚¤ ì…ë ¥ ë°ì´í„° (ëˆŒë ¤ìˆëŠ” ìƒíƒœë¡œ ì§„ì…í–ˆì„ ê²½ìš°ë¥¼ íŒë‹¨)
 
 /*==============================================================================
  function Definition

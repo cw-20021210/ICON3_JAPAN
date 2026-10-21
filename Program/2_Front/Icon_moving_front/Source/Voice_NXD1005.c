@@ -1,7 +1,7 @@
 /// @file     Voice_NXD1005.c
 /// @date     2022.01.02
 /// @author   PSM
-/// @brief    À½¼º Ã³¸® file
+/// @brief    ìŒì„± ì²˜ë¦¬ file
 #define VOICE_H_
 #include "include/_include.h"
 
@@ -10,7 +10,7 @@ static U8 SoundMode(U16 vocie_address);
 static U8 VoiceMode(U16 vocie_address);
 
 //---------------------------------------------------------
-//       Voice Volume Address ÁöÁ¤(Next Lab Àü¿ë)
+//       Voice Volume Address ì§€ì •(Next Lab ì „ìš©)
 //---------------------------------------------------------
 U16 gu16VoiceVolumeRegList[] =
 	{
@@ -28,15 +28,15 @@ U16 gu16BeepVolumeRegList[] =
 		BEEP_COMMAND_VOLUME_5};
 
 //---------------------------------------------------------
-//       Voice IC  ÃÊ±âÈ­(Next Lab Àü¿ë)
+//       Voice IC  ì´ˆê¸°í™”(Next Lab ì „ìš©)
 //---------------------------------------------------------
 void Initial_Voice(void)
 {
 	//   P_VOICE_RESET = ON;
-	Delay(400); // ¾à25us
+	Delay(400); // ì•½25us
 	P_VOICE_RESET = LOW;
 	
-	Delay(60000); // ¾à25us
+	Delay(60000); // ì•½25us
 	P_VOICE_RESET = HIGH;
 
 	// set E2, E3 control Register
@@ -48,18 +48,18 @@ void Initial_Voice(void)
 	SEND_SPI_COMMAND();
 }
 //---------------------------------------------------------
-//       ¹Ì  »ç  ¿ë
+//       ë¯¸  ì‚¬  ìš©
 //---------------------------------------------------------
 void SetVoiceLevel(U8 mu8Val)
 {
 	gu8_Sound_Type = mu8Val;
 	if (gu8_Sound_Type == SOUND_TYPE_0)
 	{
-		F_OneMoreSound = 1; /*ÀıÀü ÇØÁö½Ã ºÎÀúÀ½ 1È¸ Ãâ·Â*/
+		F_OneMoreSound = 1; /*ì ˆì „ í•´ì§€ì‹œ ë¶€ì €ìŒ 1íšŒ ì¶œë ¥*/
 	}
 }
 //---------------------------------------------------------
-//      À½¼ºÅ¸ÀÔ Ã¼Å©(¹«À½,È¿°úÀ½,À½¼º)
+//      ìŒì„±íƒ€ì… ì²´í¬(ë¬´ìŒ,íš¨ê³¼ìŒ,ìŒì„±)
 //---------------------------------------------------------
 U8 Get_Sound_Type(void)
 {
@@ -67,7 +67,7 @@ U8 Get_Sound_Type(void)
 }
 
 //---------------------------------------------------------
-//       Voice Ãâ·Â Á¤Áö(Next Lab Àü¿ë)
+//       Voice ì¶œë ¥ ì •ì§€(Next Lab ì „ìš©)
 //---------------------------------------------------------
 void VoiceStop(void)
 {
@@ -75,7 +75,7 @@ void VoiceStop(void)
 	SEND_SPI_COMMAND();
 }
 //---------------------------------------------------------
-//       Voice Ãâ·Â Áö½Ã(°ø¿ë °¡´É / STOP¸¸ ±¸ºĞ)
+//       Voice ì¶œë ¥ ì§€ì‹œ(ê³µìš© ê°€ëŠ¥ / STOPë§Œ êµ¬ë¶„)
 //---------------------------------------------------------
 
 void Play_Voice(U16 mu16MemoryAddress)
@@ -85,8 +85,8 @@ void Play_Voice(U16 mu16MemoryAddress)
 	VoiceStop();
 }
 //---------------------------------------------------------
-//       Voice Ãâ·Â Ã³¸®(per 2ms) (Next Lab Àü¿ë)
-// È¿°úÀ½/À½¼º¾È³» ±¸ºĞ -> Ãâ·Â º¼·ı°áÁ¤
+//       Voice ì¶œë ¥ ì²˜ë¦¬(per 2ms) (Next Lab ì „ìš©)
+// íš¨ê³¼ìŒ/ìŒì„±ì•ˆë‚´ êµ¬ë¶„ -> ì¶œë ¥ ë³¼ë¥¨ê²°ì •
 //---------------------------------------------------------
 void ProcessVoice(void)
 {
@@ -102,12 +102,12 @@ void ProcessVoice(void)
 	}
 
 
-	// º¸ÀÌ½º Ãâ·Â Áö½Ã
+	// ë³´ì´ìŠ¤ ì¶œë ¥ ì§€ì‹œ
 	if (F_PlayVoice)
 	{
 #if 0
 		//-------------------------------------------------
-		// (1) Ãâ·Â º¼·ı Á¦¾î
+		// (1) ì¶œë ¥ ë³¼ë¥¨ ì œì–´
 		//-------------------------------------------------
 		if (gu16_Voice_Address == VOICE_CONTIUNE_EFFLUENT
 			|| gu16_Voice_Address == VOICE_EFFLUENT_START
@@ -125,7 +125,7 @@ void ProcessVoice(void)
 //			|| gu16_Voice_Address == VOICE_CAREMODE_2
 			)
 		{
-			F_Beep_Sound = 1;                         // È¿°úÀ½ ÆÇ´Ü (º¼·ı Å©±â ±¸º°-> µ¥½Ãº§)
+			F_Beep_Sound = 1;                         // íš¨ê³¼ìŒ íŒë‹¨ (ë³¼ë¥¨ í¬ê¸° êµ¬ë³„-> ë°ì‹œë²¨)
 		}
 
 		gu8PlayVoice_Count--;
@@ -134,20 +134,20 @@ void ProcessVoice(void)
 			F_PlayVoice = 0;
 		}
 
-		/*º¼·ı ¼³Á¤*/
-		// Critcal »óÅÂÀÎ°æ¿ì¿¡´Â º¼·ı Å©°Ô
+		/*ë³¼ë¥¨ ì„¤ì •*/
+		// Critcal ìƒíƒœì¸ê²½ìš°ì—ëŠ” ë³¼ë¥¨ í¬ê²Œ
 		if ((IsCriticalVoice(gu16_Voice_Address) == TRUE) || (F_TestMode.byte != 0x00))
 		{
 			if (F_Beep_Sound)
 			{
-				COMMAND = 0xE100 + BEEP_COMMAND_VOLUME_5;      // ÃÖ´ë5´Ü
+				COMMAND = 0xE100 + BEEP_COMMAND_VOLUME_5;      // ìµœëŒ€5ë‹¨
 			}
 			else
 			{
 				COMMAND = 0xE100 + VOICE_COMMAND_VOLUME_5;
 			}
 		}
-		// ÀÏ¹İ Ãâ·Â Ç×¸ñ
+		// ì¼ë°˜ ì¶œë ¥ í•­ëª©
 		else
 		{
 			if (F_Beep_Sound)
@@ -165,13 +165,13 @@ void ProcessVoice(void)
 
 		F_PlayVoice = 0;
 
-		Delay(400); // ¾à25us
+		Delay(400); // ì•½25us
 
 		SEND_SPI_COMMAND();
-		Delay(400); // ¾à25us
+		Delay(400); // ì•½25us
 
 		//-------------------------------------------------
-		// (2) Ãâ·Â À½¼º Á¦¾î
+		// (2) ì¶œë ¥ ìŒì„± ì œì–´
 		//-------------------------------------------------
 		// set $E4 register = 00 if address is < 256
 		if (gu16_Voice_Address < 256)
@@ -179,7 +179,7 @@ void ProcessVoice(void)
 			COMMAND = VOICE_COMMAND_ADDRESS_256; // phase group=0, high address = 000
 			SEND_SPI_COMMAND();
 			// set lower 8 bit address on $E0 register
-			Delay(400);												// ¾à25us
+			Delay(400);												// ì•½25us
 			COMMAND = VOICE_COMMAND_ADDRESS_0 + gu16_Voice_Address; // set lower 8 bit address on $E0 register
 			SEND_SPI_COMMAND();
 		}
@@ -189,7 +189,7 @@ void ProcessVoice(void)
 			COMMAND = VOICE_COMMAND_ADDRESS_512; // phrase group = 1, high address = 1
 			SEND_SPI_COMMAND();
 			// set lower 8 bit address on $E0 register
-			Delay(400);														// ¾à25us
+			Delay(400);														// ì•½25us
 			COMMAND = VOICE_COMMAND_ADDRESS_0 + (gu16_Voice_Address - 256); // set lower 8 bit address on $E0 register
 			SEND_SPI_COMMAND();
 		}
@@ -262,11 +262,11 @@ void ProcessVoice(void)
 		
 	}
 	//==================================================
-	// Ãâ·Â Áö½Ã ´ë±â
+	// ì¶œë ¥ ì§€ì‹œ ëŒ€ê¸°
 	else
 	{
-		// gu8PlayVoice_Count = 2;                      // ¿¬¼Ó 2¹ø¾¿ Ãâ·Â Áö½Ã
-		gu8PlayVoice_Count = 1; // ¿¬¼Ó 1¹ø¸¸ Ãâ·Â Áö½Ã
+		// gu8PlayVoice_Count = 2;                      // ì—°ì† 2ë²ˆì”© ì¶œë ¥ ì§€ì‹œ
+		gu8PlayVoice_Count = 1; // ì—°ì† 1ë²ˆë§Œ ì¶œë ¥ ì§€ì‹œ
 	}
 	//==================================================
 	F_Beep_Sound = 0;
@@ -276,7 +276,7 @@ void ProcessVoice(void)
 }
 
 /****************************************************************************
-				Output One Word Command to the Voice IC (°ø¿ë°¡´É)
+				Output One Word Command to the Voice IC (ê³µìš©ê°€ëŠ¥)
  ***************************************************************************/
 void SEND_SPI_COMMAND(void)
 {
@@ -284,21 +284,21 @@ void SEND_SPI_COMMAND(void)
 
 	P_VOICE_CSB = 0; // start SPI
 
-	//   Delay(640);                    // ¾à40us
+	//   Delay(640);                    // ì•½40us
 
-	// Delay(16000);                    // ¾à1ms (X)
-	// Delay(20000);                    // ¾à1.25ms (X)
-	Delay(24000); // ¾à1.5ms
-	// Delay(32000);                    // ¾à2ms
+	// Delay(16000);                    // ì•½1ms (X)
+	// Delay(20000);                    // ì•½1.25ms (X)
+	Delay(24000); // ì•½1.5ms
+	// Delay(32000);                    // ì•½2ms
 
 	P_VOICE_CLK = 0; // stand-by status,
 
-	/*16bit Ã³¸®*/
+	/*16bit ì²˜ë¦¬*/
 	while (i < 16)
 	{
 		P_VOICE_CLK = 0;
 
-		Delay(160); // ¾à10us
+		Delay(160); // ì•½10us
 
 		if (COMMAND & MK_COMMAND)
 		{
@@ -311,18 +311,18 @@ void SEND_SPI_COMMAND(void)
 
 		COMMAND <<= 1; // shift left
 
-		Delay(160); // ¾à10us
+		Delay(160); // ì•½10us
 
 		P_VOICE_CLK = 1;
 		i++;
 
 		if (i == 8)
 		{
-			Delay(640); // ¾à40us (1Byte-1byte ÆĞÅ¶±¸ºĞ)
+			Delay(640); // ì•½40us (1Byte-1byte íŒ¨í‚·êµ¬ë¶„)
 		}
 		else
 		{
-			Delay(320); // ¾à20us
+			Delay(320); // ì•½20us
 		}
 	}
 
@@ -334,7 +334,7 @@ void SEND_SPI_COMMAND(void)
 	Delay(320); // 20us
 }
 
-/// @brief    delay ÇÔ¼ö
+/// @brief    delay í•¨ìˆ˜
 /// @param    mu8Time : ??
 /// @return   void
 void Delay(U16 mu8Time)

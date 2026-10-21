@@ -84,7 +84,7 @@
 
 
 
-//  ¿Ωº∫
+//  ÏùåÏÑ±
 //	Voice
 #define P_VOICE_RESET		(P0.1)
 #define P_VOICE_CSB			(P0.2)

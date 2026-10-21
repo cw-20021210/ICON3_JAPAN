@@ -1,7 +1,7 @@
 /// @file   main.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ¸ŞÀÎ·çÇÁ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ë©”ì¸ë£¨í”„ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef MAIN_C
 	#define 	EXTERN
@@ -13,51 +13,51 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_MAIN()			{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_MAIN()			{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_MAIN()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_MAIN()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerHWWait);		\
 								}
-#define	TDEC_100ms_MAIN()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_MAIN()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerBootDisplay);	\
 									TDEC(gu8_TimerVersionDisplay);	\
 								}
-#define	TDEC_1s_MAIN()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_MAIN()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_MAIN()			{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_MAIN()			{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_MAIN()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_MAIN()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_MAIN()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_MAIN()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_MAIN()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_MAIN()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 /*==============================================================================
  Constant Definition
  ==============================================================================*/
-// ÇÁ·Î±×·¥ ¹öÀü Ç¥½Ã
-// 1) Ã¹¹øÂ° ÀÚ¸® : 	1 - ¾ç»ê Àû¿ë
-//                  0 - ¾ç»ê ¿Ü
-// 2) µÎ¹øÂ° ÀÚ¸® : 	1 - DPP
+// í”„ë¡œê·¸ë¨ ë²„ì „ í‘œì‹œ
+// 1) ì²«ë²ˆì§¸ ìë¦¬ : 	1 - ì–‘ì‚° ì ìš©
+//                  0 - ì–‘ì‚° ì™¸
+// 2) ë‘ë²ˆì§¸ ìë¦¬ : 	1 - DPP
 //                  2 - LPP
-//					0 - ¾ç»ê
-// 3) ¼¼¹øÂ° ÀÚ¸® : 		¹ÌÁ¤ÀÇ
-// 4) ³×¹øÂ° ÀÚ¸® : ¹öÀü Ç¥½Ã 
-//                  0 ~ 16  (16ÀÌ»óÀÌ¸é 0 ºÎÅÍ Àç½ÃÀÛ) 
+//					0 - ì–‘ì‚°
+// 3) ì„¸ë²ˆì§¸ ìë¦¬ : 		ë¯¸ì •ì˜
+// 4) ë„¤ë²ˆì§¸ ìë¦¬ : ë²„ì „ í‘œì‹œ 
+//                  0 ~ 16  (16ì´ìƒì´ë©´ 0 ë¶€í„° ì¬ì‹œì‘) 
 // #define PROGRAM_VERSION_NO      (0x1001)			//
 // #define PROGRAM_VERSION_NO      (0x0201)			//	LPP
-// #define PROGRAM_VERSION_NO      (0x0202)			//	LPP ÃÖÁ¾ ¹öÁ¯ V0.2.0.2
-#define PROGRAM_VERSION_NO      (0x1001)			//	¾ç»ê ½ÃÀÛ V1.0.0.1
+// #define PROGRAM_VERSION_NO      (0x0202)			//	LPP ìµœì¢… ë²„ì ¼ V0.2.0.2
+#define PROGRAM_VERSION_NO      (0x1001)			//	ì–‘ì‚° ì‹œì‘ V1.0.0.1
 
-#define Z_TimerHWWait			(50)				//	ÇÏµå¿ş¾î ¾ÈÁ¤È­ ´ë±â ½Ã°£	<100ms/10ms>
+#define Z_TimerHWWait			(50)				//	í•˜ë“œì›¨ì–´ ì•ˆì •í™” ëŒ€ê¸° ì‹œê°„	<100ms/10ms>
 
 #define Z_TimerBootDisplay		(20)
 
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN U8 gu8_TimerHWWait;							//	ÇÏµå¿ş¾î ¾ÈÁ¤È­ ½Ã°£	<100ms/100ms>
+EXTERN U8 gu8_TimerHWWait;							//	í•˜ë“œì›¨ì–´ ì•ˆì •í™” ì‹œê°„	<100ms/100ms>
 
 EXTERN U8 gu8_TimerBootDisplay;
 EXTERN U8 gu8_TimerVersionDisplay;

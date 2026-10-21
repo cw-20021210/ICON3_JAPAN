@@ -1,7 +1,7 @@
 /// @file   watermeter.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  À¯·®¼¾¼­ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ìœ ëŸ‰ì„¼ì„œ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef HOT_C
 	#define 	EXTERN
@@ -13,15 +13,15 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_HOT()			{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_HOT()			{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_HOT()			{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_HOT()			{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerHotStep_10ms);	\
 									TDEC(gu8_TimerFirstHot_HeaterSensing);	\
 									TDEC(gu8_TimerHeaterCheck);	\
 									TDEC(gu8_Timer_High_Flow_w);	\
 								}
-#define	TDEC_100ms_HOT()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_HOT()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerHotSafety);	\
 									TDEC(gu8_TimerFlowControl_AfterEff);	\
 									TDEC(gu8_TimerHeaterControl_AfterEff);	\
@@ -38,15 +38,15 @@
 									TDEC(gu8_TimerHeaterLimitCheck);	\
 									TDEC(gu8_TimerTargetFlow_Decrease);	\
 								}
-#define	TDEC_1s_HOT()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_HOT()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_HOT()			{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_HOT()			{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_HOT()			{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_HOT()			{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_HOT()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_HOT()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_HOT()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_HOT()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -107,14 +107,14 @@ typedef enum
 #define HOT_TEMP_SETUP_KOR100_JP90   	(0)
 #endif
 
-#define HEATER_FULL_WATT_KOR		(2700)				//	È÷ÅÍ FULL¿ÍÆ® ÀÌ·Ğ µ¥ÀÌÅÍ
-#define HEATER_RELAY_WATT_KOR		(1500)				//	È÷ÅÍ Relay¿ÍÆ® ÀÌ·Ğ µ¥ÀÌÅÍ
-#define HEATER_RELAY_Percent_KOR	(((U32)HEATER_RELAY_WATT_KOR*100)/HEATER_FULL_WATT_KOR)	//	Relay¿Í TRIAC %
+#define HEATER_FULL_WATT_KOR		(2700)				//	íˆí„° FULLì™€íŠ¸ ì´ë¡  ë°ì´í„°
+#define HEATER_RELAY_WATT_KOR		(1500)				//	íˆí„° Relayì™€íŠ¸ ì´ë¡  ë°ì´í„°
+#define HEATER_RELAY_Percent_KOR	(((U32)HEATER_RELAY_WATT_KOR*100)/HEATER_FULL_WATT_KOR)	//	Relayì™€ TRIAC %
 
-#define HEATER_FULL_WATT_JP			(1400)				//	È÷ÅÍ FULL¿ÍÆ® ÀÌ·Ğ µ¥ÀÌÅÍ
-#define HEATER_RELAY_WATT_JP		(700)				//	È÷ÅÍ Relay¿ÍÆ® ÀÌ·Ğ µ¥ÀÌÅÍ
-#define HEATER_RELAY_Percent_JP		(((U32)HEATER_RELAY_WATT_JP*100)/HEATER_FULL_WATT_JP)	//	Relay¿Í TRIAC %
-//#define HEATER_PWM_WATT			(HEATER_FULL_WATT_KOR-HEATER_RELAY_WATT_KOR)	//	È÷ÅÍ TRIAC¿ÍÆ® ÀÌ·Ğ µ¥ÀÌÅÍ
+#define HEATER_FULL_WATT_JP			(1400)				//	íˆí„° FULLì™€íŠ¸ ì´ë¡  ë°ì´í„°
+#define HEATER_RELAY_WATT_JP		(700)				//	íˆí„° Relayì™€íŠ¸ ì´ë¡  ë°ì´í„°
+#define HEATER_RELAY_Percent_JP		(((U32)HEATER_RELAY_WATT_JP*100)/HEATER_FULL_WATT_JP)	//	Relayì™€ TRIAC %
+//#define HEATER_PWM_WATT			(HEATER_FULL_WATT_KOR-HEATER_RELAY_WATT_KOR)	//	íˆí„° TRIACì™€íŠ¸ ì´ë¡  ë°ì´í„°
 
 enum {
 	Z_HotStepNum_00,
@@ -166,7 +166,7 @@ enum {
 #define Z_TimerHeaterSafety_AfterEff	(7)			//	<700ms/100ms>
 
 #define Z_TimerFlowCheck_AfterEff		(7)			//	<700ms/100ms>
-#define Z_TimerFlowCheck_AfterEff_forJapan	(15)	//	ÀÏº»Çâ ÀúÀ¯·® ±¸°£¿¡¼­´Â Hz°¡ ´Ê°Ô °áÁ¤µÊ <?s/100ms>
+#define Z_TimerFlowCheck_AfterEff_forJapan	(15)	//	ì¼ë³¸í–¥ ì €ìœ ëŸ‰ êµ¬ê°„ì—ì„œëŠ” Hzê°€ ëŠ¦ê²Œ ê²°ì •ë¨ <?s/100ms>
 #define Z_TimerTargetFlow_Change_AfterEff	(30)	//	<3s/100ms>
 
 #define Z_TimerHeaterTest				(150)		//	<1500ms/10ms>
@@ -187,10 +187,10 @@ enum {
 #define Z_TimerVoiceOutput__HotCaution_FlowFaucet	(130)		//	<13s/100ms>
 #define Z_TimerHeaterLimit				(40)		//	<4s/100ms>
 
-#define Z_TimerHeaterLimitCheck			(40)		//	ÃßÃâ ?s ÀÌ³» È÷ÅÍ ¿Âµµ ±Ş»ó½Â Ã¼Å©ÇÏ¿© Limit
+#define Z_TimerHeaterLimitCheck			(40)		//	ì¶”ì¶œ ?s ì´ë‚´ íˆí„° ì˜¨ë„ ê¸‰ìƒìŠ¹ ì²´í¬í•˜ì—¬ Limit
 
-#define Z_TimerTargetFlow_Decrease_Start	(60)	//	ÃßÃâ ½ÃÀÛºÎÅÍ ¿Âµµ Ã¼Å©±îÁöÀÇ Áö¿¬½Ã°£		<6s/100ms>
-#define Z_TimerTargetFlow_Decrease_Ing	(20)		//	»ó±â Áö¿¬½Ã°£ °æ°ú ºÎÅÍ xÃÊ ÁÖ±â·Î ¿ÂµµÃ¼Å©		<2s/100ms>
+#define Z_TimerTargetFlow_Decrease_Start	(60)	//	ì¶”ì¶œ ì‹œì‘ë¶€í„° ì˜¨ë„ ì²´í¬ê¹Œì§€ì˜ ì§€ì—°ì‹œê°„		<6s/100ms>
+#define Z_TimerTargetFlow_Decrease_Ing	(20)		//	ìƒê¸° ì§€ì—°ì‹œê°„ ê²½ê³¼ ë¶€í„° xì´ˆ ì£¼ê¸°ë¡œ ì˜¨ë„ì²´í¬		<2s/100ms>
 
 #define Z_SELECT_TEMP_MAX				(5)
 
@@ -199,27 +199,27 @@ enum {
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN U8 gu8_HotStepNum;							//	¿Â¼ö ½ºÅÜ Num
+EXTERN U8 gu8_HotStepNum;							//	ì˜¨ìˆ˜ ìŠ¤í… Num
 
-EXTERN U8 F_MilkEff_MoreHot;						//	ºĞÀ¯ ÃßÃâ ½Ã È÷ÅÍ ³»ºÎ ¿Âµµ°¡ ³Ê¹« ³ôÀº °æ¿ì ¹Ì°¡¿­
+EXTERN U8 F_MilkEff_MoreHot;						//	ë¶„ìœ  ì¶”ì¶œ ì‹œ íˆí„° ë‚´ë¶€ ì˜¨ë„ê°€ ë„ˆë¬´ ë†’ì€ ê²½ìš° ë¯¸ê°€ì—´
 
-EXTERN U8 gu8_TimerHotSafety;						//	¿¹¿­ ÃÖ´ë½Ã°£ Å¸ÀÌ¸Ó	<?s/100ms>
-EXTERN U16 gu16_TimerHotStep_10ms;					//	½ºÅÜ °ü·Ã Å¸ÀÌ¸Ó <?ms/10ms>
-EXTERN U8 gu8_TimerHotStep_100ms;					//	½ºÅÜ °ü·Ã Å¸ÀÌ¸Ó	<2s/100ms>
+EXTERN U8 gu8_TimerHotSafety;						//	ì˜ˆì—´ ìµœëŒ€ì‹œê°„ íƒ€ì´ë¨¸	<?s/100ms>
+EXTERN U16 gu16_TimerHotStep_10ms;					//	ìŠ¤í… ê´€ë ¨ íƒ€ì´ë¨¸ <?ms/10ms>
+EXTERN U8 gu8_TimerHotStep_100ms;					//	ìŠ¤í… ê´€ë ¨ íƒ€ì´ë¨¸	<2s/100ms>
 
-EXTERN U8 gu8_TimerFlowControl_AfterEff;			//	ÃßÃâ ½ÃÀÛ ÈÄ À¯·®Á¦¾î Å¸ÀÌ¸Ó
-EXTERN U8 gu8_TimerHeaterControl_AfterEff;			//	ÃßÃâ ½ÃÀÛ ÈÄ È÷ÅÍÁ¦¾î Å¸ÀÌ¸Ó
-EXTERN U8 gu8_TimerHeaterSafety_AfterEff;			//	ÃßÃâ ½ÃÀÛ ÈÄ È÷ÅÍ ¾ÈÀü Å¸ÀÌ¸Ó
-EXTERN U8 gu8_TimerFlowCheck_AfterEff;				//	ÃßÃâ ½ÃÀÛ ÈÄ À¯·®Ã¼Å© Å¸ÀÌ¸Ó
-EXTERN U8 gu8_TimerTargetFlow_Change_AfterEff;		//	ÃßÃâ ½ÃÀÛÈÄ ¸ñÇ¥À¯·® º¯°æ Å¸ÀÌ¸Ó set
+EXTERN U8 gu8_TimerFlowControl_AfterEff;			//	ì¶”ì¶œ ì‹œì‘ í›„ ìœ ëŸ‰ì œì–´ íƒ€ì´ë¨¸
+EXTERN U8 gu8_TimerHeaterControl_AfterEff;			//	ì¶”ì¶œ ì‹œì‘ í›„ íˆí„°ì œì–´ íƒ€ì´ë¨¸
+EXTERN U8 gu8_TimerHeaterSafety_AfterEff;			//	ì¶”ì¶œ ì‹œì‘ í›„ íˆí„° ì•ˆì „ íƒ€ì´ë¨¸
+EXTERN U8 gu8_TimerFlowCheck_AfterEff;				//	ì¶”ì¶œ ì‹œì‘ í›„ ìœ ëŸ‰ì²´í¬ íƒ€ì´ë¨¸
+EXTERN U8 gu8_TimerTargetFlow_Change_AfterEff;		//	ì¶”ì¶œ ì‹œì‘í›„ ëª©í‘œìœ ëŸ‰ ë³€ê²½ íƒ€ì´ë¨¸ set
 
 EXTERN U16 gu16_WATT_forTest;
-EXTERN I16 gi16_FlowCheck;							//	ÀÔ¼ö¾Ğ¿¡ µû¶ó °¨»ê º¸Á¤ (½ºÅÜbyÀ¯·®À¸·Î Ã¼Å©)
-EXTERN I16 gi16_HotIn_DegreeCheck;					//	¿Â¼öÀÔ¼ö¿Âµµ¿¡ µû¶ó º¸Á¤
+EXTERN I16 gi16_FlowCheck;							//	ì…ìˆ˜ì••ì— ë”°ë¼ ê°ì‚° ë³´ì • (ìŠ¤í…byìœ ëŸ‰ìœ¼ë¡œ ì²´í¬)
+EXTERN I16 gi16_HotIn_DegreeCheck;					//	ì˜¨ìˆ˜ì…ìˆ˜ì˜¨ë„ì— ë”°ë¼ ë³´ì •
 
-EXTERN U16 gu16_TargetDegree;						//	¿Â¼ö ¸ñÇ¥¿Âµµ
+EXTERN U16 gu16_TargetDegree;						//	ì˜¨ìˆ˜ ëª©í‘œì˜¨ë„
 
-EXTERN I16 gi16_HotInSensor_BackUp_forFlowDecide;	//	ÃßÃâ Àü À¯·® °áÁ¤ ÈÄ ÀÔ¼ö ¿Âµµ ?µµ ÀÌ»ó º¯È­ÇÏ¸é ¸ñÇ¥À¯·® Àç¼³Á¤
+EXTERN I16 gi16_HotInSensor_BackUp_forFlowDecide;	//	ì¶”ì¶œ ì „ ìœ ëŸ‰ ê²°ì • í›„ ì…ìˆ˜ ì˜¨ë„ ?ë„ ì´ìƒ ë³€í™”í•˜ë©´ ëª©í‘œìœ ëŸ‰ ì¬ì„¤ì •
 
 EXTERN U16 gu16_HeatingTime;
 
@@ -231,30 +231,30 @@ EXTERN U8 gu8_TimerHeaterCheck;						//	<500ms/10ms>
 
 EXTERN U8 gu8_TimerHotTest_DegreeDisplay;			//	<3s/100ms>
 
-EXTERN U8 F_FirstHotEff_Detect;						//	Ã¹ Â°ÀÜ °¨Áö	@cjh
-EXTERN U8 F_2ndHot_Effluent;						//	µÎ¹øÂ° ÀÜ
-EXTERN U8 F_2ndHot_Effluent_HeaterDown;				//	µÎ¹øÂ° ÀÜ
-EXTERN U8 F_LatentHeat_Clear;						//	Àá¿­Á¦°Å ½ÃÇà¿©ºÎ
-//EXTERN U8 F_MorePreHeating_forJapan;				//	µÎ¹øÂ°ÀÜ ´õ °¡¿­ (ÀÏº»Çâ)
+EXTERN U8 F_FirstHotEff_Detect;						//	ì²« ì§¸ì” ê°ì§€	@cjh
+EXTERN U8 F_2ndHot_Effluent;						//	ë‘ë²ˆì§¸ ì”
+EXTERN U8 F_2ndHot_Effluent_HeaterDown;				//	ë‘ë²ˆì§¸ ì”
+EXTERN U8 F_LatentHeat_Clear;						//	ì ì—´ì œê±° ì‹œí–‰ì—¬ë¶€
+//EXTERN U8 F_MorePreHeating_forJapan;				//	ë‘ë²ˆì§¸ì” ë” ê°€ì—´ (ì¼ë³¸í–¥)
 
-EXTERN U8 gu8_TimerMustHeating;						//	Must È÷ÆÃ Å¸ÀÓ <?s/100ms>
+EXTERN U8 gu8_TimerMustHeating;						//	Must íˆíŒ… íƒ€ì„ <?s/100ms>
 
-EXTERN U16 gu16_HeaterOff_Hz;						//	Àá¿­Á¦°Å ½ÃÀÛ ÀÜ¿©Hz
-EXTERN U8 F_PreHeatingVoice_forJapan;				//	(forÀÏº»Çâ) ¿¹¿­½Ã°£ÀÌ ±æ °æ¿ì À½¼º¸ÇÆ® Ãâ·Â ÇÃ·¡±×
-//EXTERN U8 gu8_TimerHotEff_CautionVoice;				//	¿Â¼ö 85µµ ÀÌ»ó ÃßÃâ ÁÖÀÇÇÏ¼¼¿ä À½¼º Ãâ·Â ÁÖ±âÅ¸ÀÌ¸Ó<10s/100ms>
+EXTERN U16 gu16_HeaterOff_Hz;						//	ì ì—´ì œê±° ì‹œì‘ ì”ì—¬Hz
+EXTERN U8 F_PreHeatingVoice_forJapan;				//	(forì¼ë³¸í–¥) ì˜ˆì—´ì‹œê°„ì´ ê¸¸ ê²½ìš° ìŒì„±ë§¨íŠ¸ ì¶œë ¥ í”Œë˜ê·¸
+//EXTERN U8 gu8_TimerHotEff_CautionVoice;				//	ì˜¨ìˆ˜ 85ë„ ì´ìƒ ì¶”ì¶œ ì£¼ì˜í•˜ì„¸ìš” ìŒì„± ì¶œë ¥ ì£¼ê¸°íƒ€ì´ë¨¸<10s/100ms>
 
-EXTERN U8 gu8_TimerVoiceOutput_HotCaution;			//	ÀÌÀü À½¼º Á¾·á ÈÄ 3ÃÊ µÚ¿¡ "°í¿Â¼ö°¡ ÃßÃâµË´Ï´Ù. ÄÅÀ» °¡±îÀÌÇØÁÖ¼¼¿ä" À½¼ºÀÌ ¾à 5ÃÊ °É¸² <8s/100ms>
+EXTERN U8 gu8_TimerVoiceOutput_HotCaution;			//	ì´ì „ ìŒì„± ì¢…ë£Œ í›„ 3ì´ˆ ë’¤ì— "ê³ ì˜¨ìˆ˜ê°€ ì¶”ì¶œë©ë‹ˆë‹¤. ì»µì„ ê°€ê¹Œì´í•´ì£¼ì„¸ìš”" ìŒì„±ì´ ì•½ 5ì´ˆ ê±¸ë¦¼ <8s/100ms>
 EXTERN U8 F_VoiceOutput_HotCaution;
 
 EXTERN I16 gi16_HeaterSensor_Before_forEff;
 
-EXTERN U8 gu8_TimerHeaterLimitCheck;				//	<?s/100ms>	ÃßÃâ ?s ÀÌ³» È÷ÅÍ ¿Âµµ ±Ş»ó½Â Ã¼Å©ÇÏ¿© Limit
+EXTERN U8 gu8_TimerHeaterLimitCheck;				//	<?s/100ms>	ì¶”ì¶œ ?s ì´ë‚´ íˆí„° ì˜¨ë„ ê¸‰ìƒìŠ¹ ì²´í¬í•˜ì—¬ Limit
 EXTERN U8 gu8_TimerHeaterLimit;						//	<4s/100ms>
 EXTERN U8 F_HeaterLimit;
 EXTERN U8 F_Heater_Decrease;						//@cjh
 
 EXTERN HOT_TEMP_LEVEL selected_hot_temp[Z_SELECT_TEMP_MAX];			//cbr_test
-EXTERN U8 gu8_select_hot_temp_total_count;				//	app¿¡¼­ ¼³Á¤ÇÑ ¿Â¼ö ÃÖ´ë °¹¼ö
+EXTERN U8 gu8_select_hot_temp_total_count;				//	appì—ì„œ ì„¤ì •í•œ ì˜¨ìˆ˜ ìµœëŒ€ ê°¯ìˆ˜
 EXTERN TYPE_WORD gu8_hot_temp_data_for_wifi;
 EXTERN U8 gu8_hot_temp_default_data_for_wifi;
 EXTERN U8 gu8_f_hot_temp_sorting;
@@ -275,13 +275,13 @@ EXTERN U8 gu8_F_SecondHot_Effluent_Hot90_100;  //@032
 /*==============================================================================
  function Definition
  ==============================================================================*/
-void Hot_Initialize(void);							//	ÃÊ±â¼³Á¤
-void HotControl(void);								//	¿Â¼ö½ºÅÜ Ã³¸®
+void Hot_Initialize(void);							//	ì´ˆê¸°ì„¤ì •
+void HotControl(void);								//	ì˜¨ìˆ˜ìŠ¤í… ì²˜ë¦¬
 
-U16 WATT_Ini(void);									//	Ãâ¼ö ½Ã 1ÃÊ°£ ÃÊ±â WATT
+U16 WATT_Ini(void);									//	ì¶œìˆ˜ ì‹œ 1ì´ˆê°„ ì´ˆê¸° WATT
 U16 WATT_forTest(void);
-U16 StartFlow_Decide(void);							//	À¯·® °áÁ¤
-void StartFlow_StepMotorControl(void);				//	ÃÊ±âÀ¯·®¿¡ µû¸¥ ½ºÅÜ¸ğÅÍ Á¶±âÀÌµ¿
+U16 StartFlow_Decide(void);							//	ìœ ëŸ‰ ê²°ì •
+void StartFlow_StepMotorControl(void);				//	ì´ˆê¸°ìœ ëŸ‰ì— ë”°ë¥¸ ìŠ¤í…ëª¨í„° ì¡°ê¸°ì´ë™
 
 
 void HotTemp_Setting(void);

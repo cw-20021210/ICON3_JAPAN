@@ -7,7 +7,7 @@
 #define ClrIORBit(Reg, ClrBitMap)		\
 		((Reg) &= ~(ClrBitMap))			\
 
-/*	bit set Á¤ÀÇ	*/
+/*	bit set ì •ì˜	*/
 #define SetIORBit(Reg, SetBitMap)		\
 		((Reg) |= (SetBitMap))			\
 
@@ -32,7 +32,7 @@
 #define VALVE_OFF		(0)
 #define VALVE_ON		(1)
 #define VALVE_STATUS	(2)
-#define VALVE_B0		(3)							//	¹ëºê ÀÜ¾Ğ Á¦°Å
+#define VALVE_B0		(3)							//	ë°¸ë¸Œ ì”ì•• ì œê±°
 
 #define TEM_PWM_OFF		(0)
 #define TEM_PWM_RAPID	(1)
@@ -123,7 +123,7 @@
 
 #define TDEC(a) if (a != 0) a--;
 
-/*	TH ¿Âµµµ¥ÀÌÅÍ	[1/10¡É]	*/
+/*	TH ì˜¨ë„ë°ì´í„°	[1/10â„ƒ]	*/
 #define Z_TEMP_Minus10	(-100)
 #define Z_TEMP_Minus9	(-90)
 #define Z_TEMP_Minus8	(-80)

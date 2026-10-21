@@ -1,7 +1,7 @@
 /// @file     output.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Ãâ·Â Ã³¸® file
+/// @brief    ì¶œë ¥ ì²˜ë¦¬ file
 #include "include/_user_define.h"
 #define OUTPUT_C
 #include "include/_include.h"
@@ -25,20 +25,20 @@ static void Output_Welcome_LED(void);
 static void OutputNotUsePort(void);
 
 #ifdef _DPP_FLOWMETER_
-#define Z_HeaterOFF_Hz		(100)					//	100Hz(¾à10cc) [1Hz]
+#define Z_HeaterOFF_Hz		(100)					//	100Hz(ì•½10cc) [1Hz]
 #else
-//#define Z_HeaterOFF_Hz		(20)					//	20Hz(¾à8cc) [1Hz]
-#define Z_HeaterOFF_Hz		(35)					//	35(¾à14cc) [1Hz]
+//#define Z_HeaterOFF_Hz		(20)					//	20Hz(ì•½8cc) [1Hz]
+#define Z_HeaterOFF_Hz		(35)					//	35(ì•½14cc) [1Hz]
 #endif
 
-#define TEM_PWM_FULL_TDR    ((_0C7F_TAU_TDR03_VALUE+1) - (_0C7F_TAU_TDR03_VALUE+1)) //  ¹İÀü Ãâ·Â
-#define TEM_PWM_OFF_TDR     ((_0C7F_TAU_TDR03_VALUE+1))     //  ¹İÀü Ãâ·Â
+#define TEM_PWM_FULL_TDR    ((_0C7F_TAU_TDR03_VALUE+1) - (_0C7F_TAU_TDR03_VALUE+1)) //  ë°˜ì „ ì¶œë ¥
+#define TEM_PWM_OFF_TDR     ((_0C7F_TAU_TDR03_VALUE+1))     //  ë°˜ì „ ì¶œë ¥
 //#define TEM_PWM_RMS_CAL       ((_DABF_TAU_TDR02_VALUE+1) / 240 * 8 / 10)
 //#define TEM_PWM_RMS_CAL       (106)       //  ((_DABF_TAU_TDR02_VALUE+1) / 240 * 8 / 10)
-#define Z_HEATER_PWM_TDR_HIGH_TEMP  (3199U)    //@030  90¡ÆC ÀÌ»ó ¼³Á¤ ½Ã È÷ÅÍ PWM ÃÖ´ë TDR Á¦ÇÑ°ª
+#define Z_HEATER_PWM_TDR_HIGH_TEMP  (3199U)    //@030  90Â°C ì´ìƒ ì„¤ì • ì‹œ íˆí„° PWM ìµœëŒ€ TDR ì œí•œê°’
 
 
-TEM_Voltage_Data TEM_Voltage_DataTable[Z_TEM_Voltage_Data_Max] =    //  ÆÄ¿ö³İ SMPS
+TEM_Voltage_Data TEM_Voltage_DataTable[Z_TEM_Voltage_Data_Max] =    //  íŒŒì›Œë„· SMPS
 {
 		{	12, 0	},
 		{	11, 530	},
@@ -50,7 +50,7 @@ TEM_Voltage_Data TEM_Voltage_DataTable[Z_TEM_Voltage_Data_Max] =    //  ÆÄ¿ö³İ S
 		{	5, 	3200	},
 };
 
-/// @brief    Ãâ·ÂÃ³¸® ÃÊ±âÈ­
+/// @brief    ì¶œë ¥ì²˜ë¦¬ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Output_Initialize(void)
@@ -63,31 +63,31 @@ void Output_Initialize(void)
 	gu8_F_UV_First_On = CLEAR;
 }
 
-/// @brief    Ãâ·Â Ã³¸®
+/// @brief    ì¶œë ¥ ì²˜ë¦¬
 /// @param    void
 /// @return   void
 void OutputControl(void)
 {
 	/************************************************/
 	/*---------------------------------*/
-	/*	Àü ºÎÇÏÀÇ Ãâ·Â Ã³¸®				   */
+	/*	ì „ ë¶€í•˜ì˜ ì¶œë ¥ ì²˜ë¦¬				   */
 	/*---------------------------------*/
 	#ifndef _FOR_DEVLOP_NO_LOAD_OUTPUT_
-	Output_PureValve();								//	Á¤¼ö ÇÇµå¹ëºê
-	Output_NosValve();								//	³ë½º¹ëºê
-	Output_ColdInValve();							//	³Ã¼öÀÔ¼ö ÇÇµå¹ëºê
-	Output_ColdOutValve();							//	³Ã¼öÃâ¼ö ÇÇµå¹ëºê
+	Output_PureValve();								//	ì •ìˆ˜ í”¼ë“œë°¸ë¸Œ
+	Output_NosValve();								//	ë…¸ìŠ¤ë°¸ë¸Œ
+	Output_ColdInValve();							//	ëƒ‰ìˆ˜ì…ìˆ˜ í”¼ë“œë°¸ë¸Œ
+	Output_ColdOutValve();							//	ëƒ‰ìˆ˜ì¶œìˆ˜ í”¼ë“œë°¸ë¸Œ
 
-	if ((gu8_ModelType_forCHP == MODEL_CHP) || (F_TestMode_PBA == SET))	//	¿Â¼ö¸ğµ¨ÀÎ °æ¿ì or PBAÅ×½ºÆ®¸ğµåÀÎ °æ¿ì
+	if ((gu8_ModelType_forCHP == MODEL_CHP) || (F_TestMode_PBA == SET))	//	ì˜¨ìˆ˜ëª¨ë¸ì¸ ê²½ìš° or PBAí…ŒìŠ¤íŠ¸ëª¨ë“œì¸ ê²½ìš°
 	{
-		Output_HotInValve();						//		¿Â¼öÀÔ¼ö ÇÇµå¹ëºê
-		Output_HotOutValve();						//		¿Â¼öÃâ¼ö ÇÇµå/³ë½º¹ëºê
+		Output_HotInValve();						//		ì˜¨ìˆ˜ì…ìˆ˜ í”¼ë“œë°¸ë¸Œ
+		Output_HotOutValve();						//		ì˜¨ìˆ˜ì¶œìˆ˜ í”¼ë“œ/ë…¸ìŠ¤ë°¸ë¸Œ
 		#ifndef _FOR_DEVELOP_NO_HOT_LOAD_OUTPUT_
-		Output_Heater();							//		È÷ÅÍ RELAY/TRIAC
+		Output_Heater();							//		íˆí„° RELAY/TRIAC
 		#endif
 	}
 	// TDR04 = 0xDABFU;
-	Output_TEM();									//	¿­Àü¸ğµâ
+	Output_TEM();									//	ì—´ì „ëª¨ë“ˆ
 	Output_FAN();									//	FAN
 	Output_LeakSensor();
 	Output_FCT_TxRx();
@@ -100,12 +100,12 @@ void OutputControl(void)
 
 	Output_Welcome_LED();
 	/*---------------------------------*/
-	/*	¹Ì»ç¿ë PORT Ãâ·Â Ã³¸®			   */
+	/*	ë¯¸ì‚¬ìš© PORT ì¶œë ¥ ì²˜ë¦¬			   */
 	/*---------------------------------*/
-	OutputNotUsePort(); 							//	¹Ì»ç¿ë Æ÷Æ® Ãâ·Â
+	OutputNotUsePort(); 							//	ë¯¸ì‚¬ìš© í¬íŠ¸ ì¶œë ¥
 }
 
-/// @brief    ¹Ì»ç¿ë Æ÷Æ® Ã³¸®
+/// @brief    ë¯¸ì‚¬ìš© í¬íŠ¸ ì²˜ë¦¬
 /// @param    void
 /// @return   void
 static void OutputNotUsePort(void)
@@ -114,7 +114,7 @@ static void OutputNotUsePort(void)
 
 }
 
-/// @brief    Á¤¼ö¹ëºê
+/// @brief    ì •ìˆ˜ë°¸ë¸Œ
 /// @param    void
 /// @return   void
 static void Output_PureValve(void)
@@ -217,7 +217,7 @@ static void Output_PureValve(void)
 	}
 }
 
-/// @brief    NOS¹ëºê
+/// @brief    NOSë°¸ë¸Œ
 /// @param    void
 /// @return   void
 static void Output_NosValve(void)
@@ -297,7 +297,7 @@ static void Output_NosValve(void)
 	}
 }
 
-/// @brief    ¿Â¼öÀÔ¼ö ¹ëºê
+/// @brief    ì˜¨ìˆ˜ì…ìˆ˜ ë°¸ë¸Œ
 /// @param    void
 /// @return   void
 static void Output_HotInValve(void)
@@ -376,7 +376,7 @@ static void Output_HotInValve(void)
 	}
 }
 
-/// @brief    ¿Â¼öÃâ¼ö FEED/NOS ¹ëºê
+/// @brief    ì˜¨ìˆ˜ì¶œìˆ˜ FEED/NOS ë°¸ë¸Œ
 /// @param    void
 /// @return   void
 static void Output_HotOutValve(void)
@@ -447,7 +447,7 @@ static void Output_HotOutValve(void)
 		}
 		else
 		{
-			if (gu8_HotOutValve_CMD == VALVE_ON)		//		Ãâ¼ö Áö½ÃÀÎ °æ¿ì
+			if (gu8_HotOutValve_CMD == VALVE_ON)		//		ì¶œìˆ˜ ì§€ì‹œì¸ ê²½ìš°
 			{
 				P_FEED_HOTOUT_V = ON;
 			}
@@ -459,7 +459,7 @@ static void Output_HotOutValve(void)
 	}
 }
 
-/// @brief    ³Ã¼öÃâ¼ö ¹ëºê
+/// @brief    ëƒ‰ìˆ˜ì¶œìˆ˜ ë°¸ë¸Œ
 /// @param    void
 /// @return   void
 static void Output_ColdOutValve(void)
@@ -562,7 +562,7 @@ static void Output_ColdOutValve(void)
 	}
 }
 
-/// @brief    ³Ã¼öÀÔ¼ö ¹ëºê
+/// @brief    ëƒ‰ìˆ˜ì…ìˆ˜ ë°¸ë¸Œ
 /// @param    void
 /// @return   void
 static void Output_ColdInValve(void)
@@ -664,7 +664,7 @@ static void Output_ColdInValve(void)
 	}
 }
 
-/// @brief    È÷ÅÍ
+/// @brief    íˆí„°
 /// @param    void
 /// @return   void
 static void Output_Heater(void)
@@ -678,8 +678,8 @@ static void Output_Heater(void)
 	U16 HeaterOff_Time = 0;
 	I16 HeaterOff_Buf = 0;
 	I16 mi16_Buf1, mi16_Buf2 = 0;
-	//@041 U16 mu16_HeaterPWM_MaxTDR = (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR__90) ? (U16)Z_HEATER_PWM_TDR_HIGH_TEMP : (U16)_DABF_TAU_TDR02_VALUE;	//@030	90¡ÆC ÀÌ»ó: 3199, ¹Ì¸¸: _DABF_TAU_TDR02_VALUE
-	U16 mu16_HeaterPWM_MaxTDR = (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR__80) ? (U16)Z_HEATER_PWM_TDR_HIGH_TEMP : (U16)_DABF_TAU_TDR02_VALUE;	//@041	70¡ÆC ÀÌ»ó: 3199, ¹Ì¸¸: _DABF_TAU_TDR02_VALUE
+	//@041 U16 mu16_HeaterPWM_MaxTDR = (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR__90) ? (U16)Z_HEATER_PWM_TDR_HIGH_TEMP : (U16)_DABF_TAU_TDR02_VALUE;	//@030	90Â°C ì´ìƒ: 3199, ë¯¸ë§Œ: _DABF_TAU_TDR02_VALUE
+	U16 mu16_HeaterPWM_MaxTDR = (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR__80) ? (U16)Z_HEATER_PWM_TDR_HIGH_TEMP : (U16)_DABF_TAU_TDR02_VALUE;	//@041	70Â°C ì´ìƒ: 3199, ë¯¸ë§Œ: _DABF_TAU_TDR02_VALUE
 
 #ifdef _HEATER_OFF_
 	P_HEATER_RELAY = OFF;
@@ -695,8 +695,8 @@ static void Output_Heater(void)
 	return;
 #endif
 
-	mu8_OPENSHORT_Error1 = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);	//	¿Â¼öÃâ¼öTH ´Ü¼±´Ü¶ô Ã¼Å©
-	mu8_OPENSHORT_Error2 = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);	//	È÷ÅÍTH ´Ü¼±´Ü¶ô Ã¼Å©
+	mu8_OPENSHORT_Error1 = TH_Open_Short_Check(gi16_HotOutSensor.TH_ADC_AVERAGE);	//	ì˜¨ìˆ˜ì¶œìˆ˜TH ë‹¨ì„ ë‹¨ë½ ì²´í¬
+	mu8_OPENSHORT_Error2 = TH_Open_Short_Check(gi16_HeaterSensor.TH_ADC_AVERAGE);	//	íˆí„°TH ë‹¨ì„ ë‹¨ë½ ì²´í¬
 #ifdef _FOR_HEATER_ENDURANCE_TEST_
 //	if ((F_Heater_Endurance_Test == SET) && (gu8_TimerHeaterEndurance_Test >= 30) && (gu8_HotStep == Z_HotStep_35))
 //	{
@@ -735,7 +735,7 @@ static void Output_Heater(void)
 			P_HEATER_PWM_TDR = 0x0000U;
 		}
 	}
-	else if ((mu8_OPENSHORT_Error1 != 0) || (mu8_OPENSHORT_Error2 != 0))	//	´Ü¼±´Ü¶ô ½Ã
+	else if ((mu8_OPENSHORT_Error1 != 0) || (mu8_OPENSHORT_Error2 != 0))	//	ë‹¨ì„ ë‹¨ë½ ì‹œ
 	{
 		P_HEATER_RELAY = OFF;
 		P_HEATER_TRIAC = OFF;
@@ -743,7 +743,7 @@ static void Output_Heater(void)
 	}
 	else if ((gi16_HeaterSensor.DEGREE >= Z_TEMP103)
 		&& ((gu8_HotStep == Z_HotStep_33) || (gu8_HotStep == Z_HotStep_34)
-		|| ((gu8_HotStep == Z_HotStep_35) && (gu16_FlowDecide_W < 10) && (gu8_TimerFlowCheck_AfterEff != 0))))	//	¿Â¼ö ÃßÃâ Áß ÇÃ·Î¿ìÃ¼Å© Å¸ÀÌ¸Ó °æ°ú µÇÁö ¾Ê¾ÒÀ» ¶§
+		|| ((gu8_HotStep == Z_HotStep_35) && (gu16_FlowDecide_W < 10) && (gu8_TimerFlowCheck_AfterEff != 0))))	//	ì˜¨ìˆ˜ ì¶”ì¶œ ì¤‘ í”Œë¡œìš°ì²´í¬ íƒ€ì´ë¨¸ ê²½ê³¼ ë˜ì§€ ì•Šì•˜ì„ ë•Œ
 	{
 		P_HEATER_RELAY = OFF;
 		P_HEATER_TRIAC = OFF;
@@ -752,7 +752,7 @@ static void Output_Heater(void)
 	else
 	{
 		if ((gu8_HotStep != Z_HotStep_32) &&(gu8_HotStep != Z_HotStep_33) && (gu8_HotStep != Z_HotStep_34) && (gu8_HotStep != Z_HotStep_37)		//cbr_test 2025-10-21
-			&& ((gu8_HotStep & 0xF0) == 0x30) && (gu16_FlowDecide_W < 10) && (gu8_TimerFlowCheck_AfterEff == 0))	//	¿Â¼ö ÃßÃâ ½ÃÄö½º Áß ¿¹¿­½ºÅÜÀ» Á¦¿ÜÇÏ°í À¯·®ÀÌ 0.1LPM ¹Ì¸¸ÀÌ¸é È÷ÅÍ Á¤Áö
+			&& ((gu8_HotStep & 0xF0) == 0x30) && (gu16_FlowDecide_W < 10) && (gu8_TimerFlowCheck_AfterEff == 0))	//	ì˜¨ìˆ˜ ì¶”ì¶œ ì‹œí€€ìŠ¤ ì¤‘ ì˜ˆì—´ìŠ¤í…ì„ ì œì™¸í•˜ê³  ìœ ëŸ‰ì´ 0.1LPM ë¯¸ë§Œì´ë©´ íˆí„° ì •ì§€
 		{
 			P_HEATER_RELAY = OFF;
 			P_HEATER_TRIAC = OFF;
@@ -778,9 +778,9 @@ static void Output_Heater(void)
 				gu16_HeaterOff_Hz = 0;
 			}
 //			gu16_HeaterOff_Hz = Z_HeaterOFF_Hz - (((I16)Z_TEMP25 - gi16_HotInSensor.DEGREE)/5);
-			HeaterOff_Time = 20;					//	2ÃÊ <1/10s>
+			HeaterOff_Time = 20;					//	2ì´ˆ <1/10s>
 
-//			/*	Àá¿­ Á¦°Å È÷ÅÍ OFF Á¶°Ç	*/
+//			/*	ì ì—´ ì œê±° íˆí„° OFF ì¡°ê±´	*/
 #ifdef _HOT_TEMP_4STEP_
             if ((gu8_ModelType_forNational == MODEL_KOREA)
             && (gu8_HotStep == Z_HotStep_35) && ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR85_JP80) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__95)
@@ -791,7 +791,7 @@ static void Output_Heater(void)
 #endif
 			{
 				// #if 0
-				if (gu16_CupSize == CUPSIZE_CONTINUE)	//	¿¬¼Ó ÃßÃâ ½Ã ¸¶Áö¸· 3ÃÊ Àá¿­Á¦°Å ½ÃÀÛ
+				if (gu16_CupSize == CUPSIZE_CONTINUE)	//	ì—°ì† ì¶”ì¶œ ì‹œ ë§ˆì§€ë§‰ 3ì´ˆ ì ì—´ì œê±° ì‹œì‘
 				// #endif
 				// if(gu8_Cup_size_Array[gu8_CupIndex].amount_volume == CUPSIZE_CONTINUE)
 				{
@@ -818,7 +818,7 @@ static void Output_Heater(void)
 					}
 					else
 					{
-						if (gu16_Effluent_Hz <= gu16_HeaterOff_Hz)	//	Àá¿­Á¦°Å ½ÃÀÛ À¯·® Ã¼Å©
+						if (gu16_Effluent_Hz <= gu16_HeaterOff_Hz)	//	ì ì—´ì œê±° ì‹œì‘ ìœ ëŸ‰ ì²´í¬
 						{
 							if((gu16_Effluent_Hz < (gu16_HeaterOff_Hz/3))	//220405
 							|| (gu16_Effluent_Hz <= 5))						//2025-12-29
@@ -831,7 +831,7 @@ static void Output_Heater(void)
 					}
 				}
 			}
-			/*	¸±·¹ÀÌ	*/
+			/*	ë¦´ë ˆì´	*/
 			if (F_TestMode_PBA == SET)
 			{
 				if ((gu8_PBATest_HotLoad == 3) && (gu8_TimerPBATest_HeaterRelay != 0))
@@ -885,7 +885,7 @@ static void Output_Heater(void)
 						}
 						break;
 					case HEATER_ON:
-						if (gu16_HeaterRELAY_WATT > 200)		//		È÷ÅÍ RELAY WATT°¡ 200W ÀÌ»óÀÎ °æ¿ì
+						if (gu16_HeaterRELAY_WATT > 200)		//		íˆí„° RELAY WATTê°€ 200W ì´ìƒì¸ ê²½ìš°
 						{
 							mu16_Buf1 = gu16_HeaterRELAY_WATT - 200;	//
 							if (gu16_HeaterWATT > gu16_HeaterRELAY_WATT)
@@ -896,24 +896,24 @@ static void Output_Heater(void)
 #ifndef _HEATER_CURRENT_CHECK_
 #ifdef _EFF_Continue_Heater_OFF
                         if(F_Eff_Continue_Heater_Off == SET){
-                            P_HEATER_RELAY = OFF;                           //  È÷ÅÍ Relay Off
-                            P_HEATER_TRIAC = OFF;                           //  È÷ÅÍ Æ®¸®¾Ç Off
-                            P_HEATER_PWM_TDR = 0x0000U;                     //  È÷ÅÍ Æ®¸®¾Ç PWM Off
+                            P_HEATER_RELAY = OFF;                           //  íˆí„° Relay Off
+                            P_HEATER_TRIAC = OFF;                           //  íˆí„° íŠ¸ë¦¬ì•… Off
+                            P_HEATER_PWM_TDR = 0x0000U;                     //  íˆí„° íŠ¸ë¦¬ì•… PWM Off
                             return;
                         }
 
 #endif
 						if ((F_HeaterPWM_SingleControl == SET)
-						|| ((gu8_HotStep == Z_HotStep_35) && (gu16_HeaterWATT <= mu16_Buf1)) 	//		¿Â¼ö ÃßÃâ Áß ÇÊ¿ä WATT°¡ Xº¸´Ù ³·Àº °æ¿ì
-						|| (F_MilkEff_MoreHot == SET))	//		ºĞÀ¯ ÃßÃâ ½ÃÀÛ ½Ã ³»¿­ÀÌ ³ôÀº °æ¿ì
+						|| ((gu8_HotStep == Z_HotStep_35) && (gu16_HeaterWATT <= mu16_Buf1)) 	//		ì˜¨ìˆ˜ ì¶”ì¶œ ì¤‘ í•„ìš” WATTê°€ Xë³´ë‹¤ ë‚®ì€ ê²½ìš°
+						|| (F_MilkEff_MoreHot == SET))	//		ë¶„ìœ  ì¶”ì¶œ ì‹œì‘ ì‹œ ë‚´ì—´ì´ ë†’ì€ ê²½ìš°
 						{
-							F_HeaterPWM_SingleControl = SET;	//			PWM Single Control Á¦¾î ¼³Á¤
-							P_HEATER_RELAY = OFF;				//			È÷ÅÍ RELAY OFF
+							F_HeaterPWM_SingleControl = SET;	//			PWM Single Control ì œì–´ ì„¤ì •
+							P_HEATER_RELAY = OFF;				//			íˆí„° RELAY OFF
 						}
 						else
-						{	//cbr 2025-11-21 À¯·® °æ°è°ªÀÌ¸é ¸±·¹ÀÌ on/off¹İº¹ ºÒ·®
+						{	//cbr 2025-11-21 ìœ ëŸ‰ ê²½ê³„ê°’ì´ë©´ ë¦´ë ˆì´ on/offë°˜ë³µ ë¶ˆëŸ‰
 							// if ((gu8_HotStep == Z_HotStep_35) && (gu8_TimerHeaterSafety_AfterEff == 0)
-							// && (gu16_FlowDecide_W < (gu16_FlowTarget_W*2/3))	//	À¯·®ÀÌ ÀûÀº °æ¿ì 		
+							// && (gu16_FlowDecide_W < (gu16_FlowTarget_W*2/3))	//	ìœ ëŸ‰ì´ ì ì€ ê²½ìš° 		
 							// && (gu8_HotTempSetup != HOT_TEMP_SETUP_KOR45_JPX)	//cbr_test 2025-11-18
 							// && (gu8_HotTempSetup != HOT_TEMP_SETUP_KOR__50)		//cbr_test 2025-11-18
 							// && (gu8_HotTempSetup != HOT_TEMP_SETUP_KOR__55)		//cbr_test 2025-11-18
@@ -923,7 +923,7 @@ static void Output_Heater(void)
 							// 	mi16_Buf1 = gu16_FlowTarget_W - gu16_FlowDecide_W;
 							// 	if ((gi16_HotOutSensor.DEGREE > (Z_TEMP100-mi16_Buf1)) || (gi16_HeaterSensor.DEGREE > (Z_TEMP100-mi16_Buf1)))
 							// 	{
-							// 		P_HEATER_RELAY = OFF;				//			È÷ÅÍ RELAY OFF
+							// 		P_HEATER_RELAY = OFF;				//			íˆí„° RELAY OFF
 							// 	}
 							// 	else if ((gi16_HotOutSensor.DEGREE <= (Z_TEMP100-mi16_Buf1-Z_TEMP2)) && (gi16_HeaterSensor.DEGREE <= (Z_TEMP100-mi16_Buf1-Z_TEMP2)))
 							// 	{
@@ -931,35 +931,35 @@ static void Output_Heater(void)
 							// 	}
 							// 	else
 							// 	{
-							// 		//	È÷½ºÅ×¸®½Ã½º
+							// 		//	íˆìŠ¤í…Œë¦¬ì‹œìŠ¤
 							// 	}
 							// }
 							// else
 							// {	//cbr_test 2025-09-16
 								if(((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR45_JPX)
 								|| (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__50))
-								// && (gi16_HotInSensor.DEGREE > Z_TEMP15))			//cbr_test 2025-11-26 10µµ Á¶°Ç ¿Âµµ¹Ì´Ş	//2026-01-05
+								// && (gi16_HotInSensor.DEGREE > Z_TEMP15))			//cbr_test 2025-11-26 10ë„ ì¡°ê±´ ì˜¨ë„ë¯¸ë‹¬	//2026-01-05
 								&& ((gu16_FlowDecide_W_HotEffMax < (gu16_FlowTarget_W*2))
 								|| (gi16_HotInSensor.DEGREE > Z_TEMP15)
 								|| (gu8_Heater_PowerLevel != Z_HEATER_POWER_LEVEL_LOW)))
 								{
 									if ((gi16_HotOutSensor.DEGREE > Z_TEMP50) || (gi16_HeaterSensor.DEGREE > Z_TEMP53))
 									{
-										P_HEATER_RELAY = OFF;				//			45µµ ¼³Á¤¿ë ¸±·¹ÀÌ OFF
+										P_HEATER_RELAY = OFF;				//			45ë„ ì„¤ì •ìš© ë¦´ë ˆì´ OFF
 									}
 									else if ((gi16_HotOutSensor.DEGREE <= Z_TEMP45) && (gi16_HeaterSensor.DEGREE <= Z_TEMP46))
 									{
-										P_HEATER_RELAY = ON;				//			45µµ ¼³Á¤¿ë ¸±·¹ÀÌ ON
+										P_HEATER_RELAY = ON;				//			45ë„ ì„¤ì •ìš© ë¦´ë ˆì´ ON
 									}
 									else
 									{
-										//	È÷½ºÅ×¸®½Ã½º
+										//	íˆìŠ¤í…Œë¦¬ì‹œìŠ¤
 									}
 								}
 								else if((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR70_JP70)
 									&& ((gi16_HotInSensor.DEGREE <= Z_TEMP15)
 									|| ((gi16_HotInSensor.DEGREE > Z_TEMP15)
-									&& (gu8_Heater_PowerLevel == Z_HEATER_POWER_LEVEL_HIGH))))	//°íÀü·Â ¸±·¹ÀÌ¸¸ »ó½Ã on ½Ã(1776w) Æ®¶óÀÌ¾Ç Á¦¾î ºÒ°¡·Î ¿Âµµ °ú¿­ -> ¸±·¹ÀÌ Á¦¾î ÇÊ¿ä
+									&& (gu8_Heater_PowerLevel == Z_HEATER_POWER_LEVEL_HIGH))))	//ê³ ì „ë ¥ ë¦´ë ˆì´ë§Œ ìƒì‹œ on ì‹œ(1776w) íŠ¸ë¼ì´ì•… ì œì–´ ë¶ˆê°€ë¡œ ì˜¨ë„ ê³¼ì—´ -> ë¦´ë ˆì´ ì œì–´ í•„ìš”
 								{
 									if ((gi16_HotOutSensor.DEGREE > Z_TEMP92) || (gi16_HeaterSensor.DEGREE > Z_TEMP93))
 									{
@@ -971,10 +971,10 @@ static void Output_Heater(void)
 									}
 									else
 									{
-										//	È÷½ºÅ×¸®½Ã½º
+										//	íˆìŠ¤í…Œë¦¬ì‹œìŠ¤
 									}
 								}
-								else if((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__65)				//65µµ ¿¹¿­ ÈÄ ¸±·¹ÀÌ¸¸ ÄÑµµ °ú¿­ -> ¸±·¹ÀÌ off ÇÊ¿ä
+								else if((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__65)				//65ë„ ì˜ˆì—´ í›„ ë¦´ë ˆì´ë§Œ ì¼œë„ ê³¼ì—´ -> ë¦´ë ˆì´ off í•„ìš”
 									&& (gi16_HotInSensor.DEGREE > Z_TEMP25))
 								{
 									if ((gi16_HotOutSensor.DEGREE > Z_TEMP85) || (gi16_HeaterSensor.DEGREE > Z_TEMP88))
@@ -987,22 +987,22 @@ static void Output_Heater(void)
 									}
 									else
 									{
-										//	È÷½ºÅ×¸®½Ã½º
+										//	íˆìŠ¤í…Œë¦¬ì‹œìŠ¤
 									}
 								}
-								else  // ´Ù¸¥ ¿Âµµ ¼³Á¤
+								else  // ë‹¤ë¥¸ ì˜¨ë„ ì„¤ì •
 								{
 									if ((gi16_HotOutSensor.DEGREE > Z_TEMP103_5) || (gi16_HeaterSensor.DEGREE > Z_TEMP105))		//cbr_test 2025-09-15
 									{
-										P_HEATER_RELAY = OFF;				//			È÷ÅÍ RELAY OFF
+										P_HEATER_RELAY = OFF;				//			íˆí„° RELAY OFF
 									}
 									else if ((gi16_HotOutSensor.DEGREE <= Z_TEMP100) && (gi16_HeaterSensor.DEGREE <= Z_TEMP103))	//cbr_test 2025-09-15
 									{
-										P_HEATER_RELAY = ON;				//			È÷ÅÍ RELAY
+										P_HEATER_RELAY = ON;				//			íˆí„° RELAY
 									}
 									else
 									{
-										//	È÷½ºÅ×¸®½Ã½º
+										//	íˆìŠ¤í…Œë¦¬ì‹œìŠ¤
 									}
 								}
 							// }
@@ -1063,9 +1063,9 @@ static void Output_Heater(void)
 			}
 			else
 			{
-				switch (gu8_HeaterTriac_CMD)		//	È÷ÅÍ PWM Áö½Ã
+				switch (gu8_HeaterTriac_CMD)		//	íˆí„° PWM ì§€ì‹œ
 				{
-					case HEATER_OFF:				//		OFF Áö½Ã
+					case HEATER_OFF:				//		OFF ì§€ì‹œ
 					default:
 						P_HEATER_PWM_TDR = 0x0000;	//			TDR CLEAR
 						P_HEATER_TRIAC = OFF;		//			PORT OFF (Default)
@@ -1081,15 +1081,15 @@ static void Output_Heater(void)
 							P_HEATER_PWM_TDR = 0x0000;		//			TDR CLEAR
 						}
 						break;
-					case HEATER_ON:							//		100% ON Áö½Ã
+					case HEATER_ON:							//		100% ON ì§€ì‹œ
 						P_HEATER_TRIAC = ON;
 						//@030 P_HEATER_PWM_TDR = (_DABF_TAU_TDR02_VALUE+1);
 						P_HEATER_PWM_TDR = (mu16_HeaterPWM_MaxTDR+1);	//@030
 #ifdef _EFF_Continue_Heater_OFF
                         if(F_Eff_Continue_Heater_Off == SET){
-                            P_HEATER_RELAY = OFF;                           //  È÷ÅÍ Relay Off
-                            P_HEATER_TRIAC = OFF;                           //  È÷ÅÍ Æ®¸®¾Ç Off
-                            P_HEATER_PWM_TDR = 0x0000U;                     //  È÷ÅÍ Æ®¸®¾Ç PWM Off
+                            P_HEATER_RELAY = OFF;                           //  íˆí„° Relay Off
+                            P_HEATER_TRIAC = OFF;                           //  íˆí„° íŠ¸ë¦¬ì•… Off
+                            P_HEATER_PWM_TDR = 0x0000U;                     //  íˆí„° íŠ¸ë¦¬ì•… PWM Off
                             return;
                         }
 
@@ -1098,23 +1098,23 @@ static void Output_Heater(void)
 					case HEATER_PRE:
 #ifdef _EFF_Continue_Heater_OFF
                         if(F_Eff_Continue_Heater_Off == SET){
-                            P_HEATER_RELAY = OFF;                           //  È÷ÅÍ Relay Off
-                            P_HEATER_TRIAC = OFF;                           //  È÷ÅÍ Æ®¸®¾Ç Off
-                            P_HEATER_PWM_TDR = 0x0000U;                     //  È÷ÅÍ Æ®¸®¾Ç PWM Off
+                            P_HEATER_RELAY = OFF;                           //  íˆí„° Relay Off
+                            P_HEATER_TRIAC = OFF;                           //  íˆí„° íŠ¸ë¦¬ì•… Off
+                            P_HEATER_PWM_TDR = 0x0000U;                     //  íˆí„° íŠ¸ë¦¬ì•… PWM Off
                             return;
                         }
 #endif
 						if (gu8_ModelType_forNational == MODEL_KOREA)
 						{
-							if (F_2ndHot_Effluent_HeaterDown == SET)	//	µÎ¹øÂ°ÀÜ È÷ÅÍ ¿¹¿­ ¾àÇÏ°Ô
+							if (F_2ndHot_Effluent_HeaterDown == SET)	//	ë‘ë²ˆì§¸ì” íˆí„° ì˜ˆì—´ ì•½í•˜ê²Œ
 							{
 								P_HEATER_TRIAC = OFF;
 								if ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__95) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__90)
 								|| ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR85_JP80) && (gu8_Heater_PowerLevel == Z_HEATER_POWER_LEVEL_HIGH)))
 								{
-									if (F_LatentHeat_Clear == SET)		//	Àá¿­Á¦°Å ÇÑ °æ¿ì
+									if (F_LatentHeat_Clear == SET)		//	ì ì—´ì œê±° í•œ ê²½ìš°
 									{
-										//cbr_test 2025-09-17 ÀúÀü·Â ½Ã·á °úÇÔ
+										//cbr_test 2025-09-17 ì €ì „ë ¥ ì‹œë£Œ ê³¼í•¨
 										if(gu8_Heater_PowerLevel == Z_HEATER_POWER_LEVEL_LOW)
 										{//2026-01-05
 											//@030 P_HEATER_PWM_TDR = (U16)((U32)((_DABF_TAU_TDR02_VALUE+1)/10) * HEATER_FULL_WATT_KOR / gu16_HeaterFull_WATT);
@@ -1161,41 +1161,41 @@ static void Output_Heater(void)
 							P_HEATER_PWM_TDR = (mu16_HeaterPWM_MaxTDR+1);           //@030
 						}
 						break;
-					case HEATER_PWM:				//		PWM Áö½Ã
+					case HEATER_PWM:				//		PWM ì§€ì‹œ
 #ifndef _HEATER_CURRENT_CHECK_
 #ifdef _EFF_Continue_Heater_OFF
                         if(F_Eff_Continue_Heater_Off == SET){
-                            P_HEATER_RELAY = OFF;                           //  È÷ÅÍ Relay Off
-                            P_HEATER_TRIAC = OFF;                           //  È÷ÅÍ Æ®¸®¾Ç Off
-                            P_HEATER_PWM_TDR = 0x0000U;                     //  È÷ÅÍ Æ®¸®¾Ç PWM Off
+                            P_HEATER_RELAY = OFF;                           //  íˆí„° Relay Off
+                            P_HEATER_TRIAC = OFF;                           //  íˆí„° íŠ¸ë¦¬ì•… Off
+                            P_HEATER_PWM_TDR = 0x0000U;                     //  íˆí„° íŠ¸ë¦¬ì•… PWM Off
                             return;
                         }
 
 #endif
 						P_HEATER_TRIAC = OFF;		//			PORT OFF (Default)
 
-						if (gu16_HeaterFull_WATT >= gu16_HeaterRELAY_WATT)	//		È÷ÅÍ ÃÖ´ëÀü·ÂÄ¡°¡ RELAYº¸´Ù Å« °æ¿ì (¾ÈÀüÃ³¸®)
+						if (gu16_HeaterFull_WATT >= gu16_HeaterRELAY_WATT)	//		íˆí„° ìµœëŒ€ì „ë ¥ì¹˜ê°€ RELAYë³´ë‹¤ í° ê²½ìš° (ì•ˆì „ì²˜ë¦¬)
 						{
-							mu16_Heater_work1 = gu16_HeaterFull_WATT - gu16_HeaterRELAY_WATT;	//			RELAY WATT¼ö¸¸Å­ »©ÁÜ (PWM ÃÖ´ë WATT Ãëµæ)
+							mu16_Heater_work1 = gu16_HeaterFull_WATT - gu16_HeaterRELAY_WATT;	//			RELAY WATTìˆ˜ë§Œí¼ ë¹¼ì¤Œ (PWM ìµœëŒ€ WATT ì·¨ë“)
 						}
 
-						if ((F_HeaterPWM_SingleControl == SET))	//	Single Control Á¦¾î°Å³ª ºĞÀ¯ and ¿¹¿­ ¶Ç´Â ÃßÃâ ÁßÀÎ °æ¿ì
+						if ((F_HeaterPWM_SingleControl == SET))	//	Single Control ì œì–´ê±°ë‚˜ ë¶„ìœ  and ì˜ˆì—´ ë˜ëŠ” ì¶”ì¶œ ì¤‘ì¸ ê²½ìš°
 						{
-							mu16_Heater_work2 = gu16_HeaterWATT;	//		ÇÊ¿ä WATT Ãëµæ
-							if ((gu16_HeaterFull_WATT >= gu16_HeaterRELAY_WATT) && (mu16_Heater_work2 >= (gu16_HeaterFull_WATT - gu16_HeaterRELAY_WATT)))	//		È÷ÅÍ ÃÖ´ëÀü·ÂÄ¡-RELAY Àü·ÂÄ¡¸¦ ÃÖ´ëÄ¡·Î ¼³Á¤ (RELAY¸¦ OFFÇÏ´Ï)
+							mu16_Heater_work2 = gu16_HeaterWATT;	//		í•„ìš” WATT ì·¨ë“
+							if ((gu16_HeaterFull_WATT >= gu16_HeaterRELAY_WATT) && (mu16_Heater_work2 >= (gu16_HeaterFull_WATT - gu16_HeaterRELAY_WATT)))	//		íˆí„° ìµœëŒ€ì „ë ¥ì¹˜-RELAY ì „ë ¥ì¹˜ë¥¼ ìµœëŒ€ì¹˜ë¡œ ì„¤ì • (RELAYë¥¼ OFFí•˜ë‹ˆ)
 							{
-								mu16_Heater_work2 = gu16_HeaterFull_WATT - gu16_HeaterRELAY_WATT;	//	PWM ÇÊ¿ä Àü·ÂÄ¡ Ãëµæ
+								mu16_Heater_work2 = gu16_HeaterFull_WATT - gu16_HeaterRELAY_WATT;	//	PWM í•„ìš” ì „ë ¥ì¹˜ ì·¨ë“
 							}
 //							else
 //							{
 //								mu16_Heater_work2 = gu16_HeaterFull_WATT;
 //							}
 						}
-						else								//		»ó±â ¿Ü
+						else								//		ìƒê¸° ì™¸
 						{
-							if (gu16_HeaterWATT >= gu16_HeaterRELAY_WATT)	//			È÷ÅÍÇÊ¿ä WATT°¡ RELAY WATTº¸´Ù Å« °æ¿ì (¾ÈÀüÃ³¸®)
+							if (gu16_HeaterWATT >= gu16_HeaterRELAY_WATT)	//			íˆí„°í•„ìš” WATTê°€ RELAY WATTë³´ë‹¤ í° ê²½ìš° (ì•ˆì „ì²˜ë¦¬)
 							{
-								mu16_Heater_work2 = gu16_HeaterWATT - gu16_HeaterRELAY_WATT;	//	PWM ÇÊ¿ä Àü·ÂÄ¡
+								mu16_Heater_work2 = gu16_HeaterWATT - gu16_HeaterRELAY_WATT;	//	PWM í•„ìš” ì „ë ¥ì¹˜
 							}
 						}
 
@@ -1203,7 +1203,7 @@ static void Output_Heater(void)
 						mi16_Buf2 = (I16)gu16_FlowDecide_W - (I16)70;
 						mi16_Buf2 *= 2;
 
-						gu16_HotOut_ClearMilkHot = Z_TEMP60 + mi16_Buf1 + mi16_Buf2;    //  ±âÁØ¿Âµµ + ÀÔ¼ö¿Âµµ º¸Á¤ + À¯·® º¸Á¤
+						gu16_HotOut_ClearMilkHot = Z_TEMP60 + mi16_Buf1 + mi16_Buf2;    //  ê¸°ì¤€ì˜¨ë„ + ì…ìˆ˜ì˜¨ë„ ë³´ì • + ìœ ëŸ‰ ë³´ì •
 
 						if ((F_MilkEff_MoreHot == SET) && (gu8_TimerHeaterControl_AfterEff == 0))
 						{
@@ -1222,13 +1222,13 @@ static void Output_Heater(void)
                         }
 
 						if ((gu8_TimerHeaterSafety_AfterEff == 0)
-						&& (gu16_FlowDecide_W < (gu16_FlowTarget_W*10/11)))	//	À¯·®ÀÌ ¸ñÇ¥À¯·®¸¸Å­ ¾È³ª¿À´Â °æ¿ì
+						&& (gu16_FlowDecide_W < (gu16_FlowTarget_W*10/11)))	//	ìœ ëŸ‰ì´ ëª©í‘œìœ ëŸ‰ë§Œí¼ ì•ˆë‚˜ì˜¤ëŠ” ê²½ìš°
 						{
 							if((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90)
 							|| (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__95)
 							|| (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__90)
-							|| ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR85_JP80) && (gu8_Heater_PowerLevel == Z_HEATER_POWER_LEVEL_HIGH))	//cbr_test 2025-09-26 198v 30µµ °ú¿­
-							// || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR85_JP80)	//cbr_test 2025-09-25 242v 30µµ ¹Ì´Ş
+							|| ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR85_JP80) && (gu8_Heater_PowerLevel == Z_HEATER_POWER_LEVEL_HIGH))	//cbr_test 2025-09-26 198v 30ë„ ê³¼ì—´
+							// || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR85_JP80)	//cbr_test 2025-09-25 242v 30ë„ ë¯¸ë‹¬
 							)
 							{
 								mi16_Buf1 = gu16_FlowTarget_W - gu16_FlowDecide_W;
@@ -1274,11 +1274,11 @@ static void Output_Heater(void)
 								}
 								else if ((gi16_HotOutSensor.DEGREE <= (Z_TEMP95-mi16_Buf1-Z_TEMP2)) && (gi16_HeaterSensor.DEGREE <= (Z_TEMP95-mi16_Buf1-Z_TEMP2)))
 								{
-									//	°¨¼Ò ¾øÀ½. Á¤»ó Ãâ·Â
+									//	ê°ì†Œ ì—†ìŒ. ì •ìƒ ì¶œë ¥
 								}
 								else
 								{
-									// mu16_Heater_work2 = mu16_Heater_work2 / 3;	//	(È÷½ºÅ×¸® ½Ã½º ¾øÀ½)
+									// mu16_Heater_work2 = mu16_Heater_work2 / 3;	//	(íˆìŠ¤í…Œë¦¬ ì‹œìŠ¤ ì—†ìŒ)
 									// mu16_Heater_work2 = mu16_Heater_work2 / 4;		//cbr_test 2025-09-17		
 									if(gi16_HotInSensor.DEGREE > Z_TEMP25)
 									{
@@ -1326,11 +1326,11 @@ static void Output_Heater(void)
 									}
 									else if ((gi16_HotOutSensor.DEGREE <= (gu16_TargetDegree-Z_TEMP5)) && (gi16_HeaterSensor.DEGREE <= (gu16_TargetDegree-Z_TEMP5)))
 									{
-										//	°¨¼Ò ¾øÀ½. Á¤»ó Ãâ·Â
+										//	ê°ì†Œ ì—†ìŒ. ì •ìƒ ì¶œë ¥
 									}
 									else
 									{
-										mu16_Heater_work2 = mu16_Heater_work2 / 10;	//	(È÷½ºÅ×¸® ½Ã½º ¾øÀ½)
+										mu16_Heater_work2 = mu16_Heater_work2 / 10;	//	(íˆìŠ¤í…Œë¦¬ ì‹œìŠ¤ ì—†ìŒ)
 									}
 								}
 								else
@@ -1342,11 +1342,11 @@ static void Output_Heater(void)
 									}
 									else if ((gi16_HotOutSensor.DEGREE <= (gu16_TargetDegree-Z_TEMP5)) && (gi16_HeaterSensor.DEGREE <= (gu16_TargetDegree-Z_TEMP5)))
 									{
-										//	°¨¼Ò ¾øÀ½. Á¤»ó Ãâ·Â
+										//	ê°ì†Œ ì—†ìŒ. ì •ìƒ ì¶œë ¥
 									}
 									else
 									{
-										mu16_Heater_work2 = mu16_Heater_work2 / 50;	//	(È÷½ºÅ×¸® ½Ã½º ¾øÀ½)
+										mu16_Heater_work2 = mu16_Heater_work2 / 50;	//	(íˆìŠ¤í…Œë¦¬ ì‹œìŠ¤ ì—†ìŒ)
 									}
 								}
 							}
@@ -1360,7 +1360,7 @@ static void Output_Heater(void)
 						{
 							if (((gu8_ModelType_forNational == MODEL_KOREA)
                                 && ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__95) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__90))
-                                && (gu8_TimerHeaterSafety_AfterEff != 0))	//ÃßÃâ 0.7ÃÊ pwmÃÖ´ëÄ¡ Àı¹İ
+                                && (gu8_TimerHeaterSafety_AfterEff != 0))	//ì¶”ì¶œ 0.7ì´ˆ pwmìµœëŒ€ì¹˜ ì ˆë°˜
                                 && ((gi16_HotInSensor.DEGREE <= Z_TEMP25)					//cbr_test 2025-11-25
 								&& (gu8_Heater_PowerLevel != Z_HEATER_POWER_LEVEL_HIGH)))	//cbr_test 2025-11-25
 							{
@@ -1369,18 +1369,18 @@ static void Output_Heater(void)
 							}
 							else
 							{
-								/*	ÇÊ¿ä TDR ¿¬»ê : ÃÖ´ëTDR / È÷ÅÍÇÊ¿äÀü·ÂÄ¡ * È÷ÅÍPWMÃÖ´ëÀü·ÂÄ¡			*/
+								/*	í•„ìš” TDR ì—°ì‚° : ìµœëŒ€TDR / íˆí„°í•„ìš”ì „ë ¥ì¹˜ * íˆí„°PWMìµœëŒ€ì „ë ¥ì¹˜			*/
 								//@030 gu16_HeaterPWM_TDR = (U16)(((((((U32)_DABF_TAU_TDR02_VALUE+1) * 10) / mu16_Heater_work1) + 1) * mu16_Heater_work2) / 10);
 								gu16_HeaterPWM_TDR = (U16)(((((((U32)mu16_HeaterPWM_MaxTDR+1) * 10) / mu16_Heater_work1) + 1) * mu16_Heater_work2) / 10);      //@030
-								if ((F_Flow_Rapidly_Decrease == SET)) 		//	±Ş À¯·®°¨¼Ò
-								// || ((gu8_ModelType_forNational == MODEL_KOREA) && ((gi16_HotOutSensor.DEGREE >= Z_TEMP101)	|| (gi16_HeaterSensor.DEGREE >= Z_TEMP102))))     //	¿Â¼öÃâ¼ö ¶Ç´Â È÷ÅÍTH°¡ ±âÁØ¿Âµµ ÀÌ»óÀÎ °æ¿ì (°ú¿­ ¾ÈÀü Â÷´Ü)
+								if ((F_Flow_Rapidly_Decrease == SET)) 		//	ê¸‰ ìœ ëŸ‰ê°ì†Œ
+								// || ((gu8_ModelType_forNational == MODEL_KOREA) && ((gi16_HotOutSensor.DEGREE >= Z_TEMP101)	|| (gi16_HeaterSensor.DEGREE >= Z_TEMP102))))     //	ì˜¨ìˆ˜ì¶œìˆ˜ ë˜ëŠ” íˆí„°THê°€ ê¸°ì¤€ì˜¨ë„ ì´ìƒì¸ ê²½ìš° (ê³¼ì—´ ì•ˆì „ ì°¨ë‹¨)
 								{
 									P_HEATER_PWM_TDR = (U16)((U32)gu16_HeaterPWM_TDR * 4 / 6);	//
 								}
                                 else if (((gu8_ModelType_forNational == MODEL_KOREA)
                                 && ((gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__95) || (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR__90))
-                                && (gu8_TimerFlowControl_AfterEff != 0))	//°í¿Â¼ö ÃßÃâ ÈÄ 0.3ÃÊ(0.7ÃÊ´Â Àı¹İ) or °ú¿­ ½Ã, ÇÊ¿äTDR Á¦ÇÑ
-								|| ((gu8_ModelType_forNational == MODEL_KOREA) && ((gi16_HotOutSensor.DEGREE >= Z_TEMP97) || (gi16_HeaterSensor.DEGREE >= Z_TEMP97))))     //	¿Â¼öÃâ¼ö ¶Ç´Â È÷ÅÍTH°¡ ±âÁØ¿Âµµ ÀÌ»óÀÎ °æ¿ì (°ú¿­ ¾ÈÀü Â÷´Ü)
+                                && (gu8_TimerFlowControl_AfterEff != 0))	//ê³ ì˜¨ìˆ˜ ì¶”ì¶œ í›„ 0.3ì´ˆ(0.7ì´ˆëŠ” ì ˆë°˜) or ê³¼ì—´ ì‹œ, í•„ìš”TDR ì œí•œ
+								|| ((gu8_ModelType_forNational == MODEL_KOREA) && ((gi16_HotOutSensor.DEGREE >= Z_TEMP97) || (gi16_HeaterSensor.DEGREE >= Z_TEMP97))))     //	ì˜¨ìˆ˜ì¶œìˆ˜ ë˜ëŠ” íˆí„°THê°€ ê¸°ì¤€ì˜¨ë„ ì´ìƒì¸ ê²½ìš° (ê³¼ì—´ ì•ˆì „ ì°¨ë‹¨)
 								{
 									if ((gi16_HotOutSensor.DEGREE >= Z_TEMP101) || (gi16_HeaterSensor.DEGREE >= Z_TEMP101))
 									{
@@ -1403,12 +1403,12 @@ static void Output_Heater(void)
 										P_HEATER_PWM_TDR = (U16)((U32)gu16_HeaterPWM_TDR * 3 / 10);		//cbr_test 2025-09-24
 									}
 								}
-								//cbr_test 2025-09-17 ¿¹¿­4ÃÊ & ÃßÃâ 4ÃÊ µ¿¾È µé¾î¿Í¼­ ½ºÆÀ 
+								//cbr_test 2025-09-17 ì˜ˆì—´4ì´ˆ & ì¶”ì¶œ 4ì´ˆ ë™ì•ˆ ë“¤ì–´ì™€ì„œ ìŠ¤íŒ€ 
 								// else if (gu8_TimerHeaterLimit != 0)
 								// {
 								// 	P_HEATER_PWM_TDR = (U16)((U32)gu16_HeaterPWM_TDR * 4 / 7);	//57%
 								// }
-								else						//	ÀÏ¹İÁ¦¾î
+								else						//	ì¼ë°˜ì œì–´
 								{
 #ifdef _FOR_DEVELOP_
 									if (gu16_HeaterPWM_TDR_Test != 0) gu16_HeaterPWM_TDR = gu16_HeaterPWM_TDR_Test;
@@ -1537,7 +1537,7 @@ static void Output_Heater(void)
 	}
 }
 
-/// @brief    TEM Á¦¾î
+/// @brief    TEM ì œì–´
 /// @param    void
 /// @return   void
 static void Output_TEM(void)
@@ -1644,16 +1644,16 @@ static void Output_TEM(void)
                     gu16_TEM_Voltage = 0;
                     break;
                 case TEM_PWM_RAPID:
-                    /*  12¡ÉÀÌ»ó : 24v Ãâ·Â
-                     *  6¡É ÀÌ»ó ~ 12¡É ¹Ì¸¸ : 12VÃâ·Â
-                     *  ¿Ü±â¿Âµµ¼¾¼­ ¿¡·¯ : 12¡É ÀÌ»ó ~ 30¡É¹Ì¸¸ Á¶°ÇÀ¸·Î Ãâ·Â
+                    /*  12â„ƒì´ìƒ : 24v ì¶œë ¥
+                     *  6â„ƒ ì´ìƒ ~ 12â„ƒ ë¯¸ë§Œ : 12Vì¶œë ¥
+                     *  ì™¸ê¸°ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ : 12â„ƒ ì´ìƒ ~ 30â„ƒë¯¸ë§Œ ì¡°ê±´ìœ¼ë¡œ ì¶œë ¥
                      */
 
 					#if 0
-                    //  ¾ß°£¸ğµåÀÎ°æ¿ì´Â ¾à¸ğµå µé¾î°¡±â À§ÇØ FLAG ºÁ¾ßÇÔ
+                    //  ì•¼ê°„ëª¨ë“œì¸ê²½ìš°ëŠ” ì•½ëª¨ë“œ ë“¤ì–´ê°€ê¸° ìœ„í•´ FLAG ë´ì•¼í•¨
                     if(F_ColdTemp == COLD_TEMP_HIGH)
                     {
-                        //  ¿Ü±â¿Âµµ¼¾¼­ ¾Æ´Ñ°æ¿ì,
+                        //  ì™¸ê¸°ì˜¨ë„ì„¼ì„œ ì•„ë‹Œê²½ìš°,
                         if(F_Err43_OutDoorAirTH == CLEAR)
                         {
                             if (gi16_OutDoorAirSensor.DEGREE >= Z_TEMP12)
@@ -1667,13 +1667,13 @@ static void Output_TEM(void)
                         }
                         else
                         {
-                            //  ¿Ü±â¿Âµµ¼¾¼­ÀÎ°æ¿ì, 24v °íÁ¤.
+                            //  ì™¸ê¸°ì˜¨ë„ì„¼ì„œì¸ê²½ìš°, 24v ê³ ì •.
                             gu16_TEM_Voltage = Z_Cooling_Voltage_24V;
                         }
                     }
-                    else        /***************³Ã¼ö ¾à¸ğµå*******************/
+                    else        /***************ëƒ‰ìˆ˜ ì•½ëª¨ë“œ*******************/
                     {
-                        //  ¿Ü±â¿Âµµ¼¾¼­ ¾Æ´Ñ°æ¿ì,
+                        //  ì™¸ê¸°ì˜¨ë„ì„¼ì„œ ì•„ë‹Œê²½ìš°,
                         if(F_Err43_OutDoorAirTH == CLEAR)
                         {
                             if (gi16_OutDoorAirSensor.DEGREE >= Z_TEMP12)
@@ -1687,12 +1687,12 @@ static void Output_TEM(void)
                         }
                         else
                         {
-                            //  ¿Ü±â¿Âµµ¼¾¼­ÀÎ°æ¿ì, 24v °íÁ¤.
+                            //  ì™¸ê¸°ì˜¨ë„ì„¼ì„œì¸ê²½ìš°, 24v ê³ ì •.
                             gu16_TEM_Voltage = Z_Cooling_Voltage_24V;
                         }
                     }
 					#endif
-					//  ¿Ü±â¿Âµµ¼¾¼­ ¾Æ´Ñ°æ¿ì,
+					//  ì™¸ê¸°ì˜¨ë„ì„¼ì„œ ì•„ë‹Œê²½ìš°,
 					if(F_Err43_OutDoorAirTH == CLEAR)
 					{
 						if (gi16_OutDoorAirSensor.DEGREE >= Z_TEMP12)
@@ -1706,17 +1706,17 @@ static void Output_TEM(void)
 					}
 					else
 					{
-						//  ¿Ü±â¿Âµµ¼¾¼­ÀÎ°æ¿ì, 24v °íÁ¤.
+						//  ì™¸ê¸°ì˜¨ë„ì„¼ì„œì¸ê²½ìš°, 24v ê³ ì •.
 						gu16_TEM_Voltage = Z_Cooling_Voltage_24V;
 					}					
 
-                    //	±Ş¼Ó¸ğµå ÁøÀÔ ÈÄ, 5ºĞ°£Àº 12v Ãâ·Â
+                    //	ê¸‰ì†ëª¨ë“œ ì§„ì… í›„, 5ë¶„ê°„ì€ 12v ì¶œë ¥
                     if(gu16_Timer_CoolingRapid_12V != 0)
                     {
                     	gu16_TEM_Voltage = Z_Cooling_Voltage_12V;
                     }
 
-                    //  Voltage¿¡ µû¸¥, TDR °ª ¼¼ÆÃ.
+                    //  Voltageì— ë”°ë¥¸, TDR ê°’ ì„¸íŒ….
                     for (i = 0 ; i < Z_TEM_Voltage_Data_Max ; i++)
                     {
                         if (gu16_TEM_Voltage == TEM_Voltage_DataTable[i].TEM_Volt)
@@ -1726,11 +1726,11 @@ static void Output_TEM(void)
                         }
                     }
                     break;
-                case TEM_PWM_RETAIN:                //  À¯Áö¸ğµå
+                case TEM_PWM_RETAIN:                //  ìœ ì§€ëª¨ë“œ
 
 					#if 0
-                    //  ³Ã¼ö °­¸ğµå
-                    //  ¾ß°£¸ğµåÀÎ°æ¿ì´Â ¾à¸ğµå µé¾î°¡±â À§ÇØ FLAG ºÁ¾ßÇÔ
+                    //  ëƒ‰ìˆ˜ ê°•ëª¨ë“œ
+                    //  ì•¼ê°„ëª¨ë“œì¸ê²½ìš°ëŠ” ì•½ëª¨ë“œ ë“¤ì–´ê°€ê¸° ìœ„í•´ FLAG ë´ì•¼í•¨
                     if(F_ColdTemp == COLD_TEMP_HIGH) 
                     {
                         if(gi16_ColdSensor.DEGREE >= Z_TEMP5)
@@ -1742,7 +1742,7 @@ static void Output_TEM(void)
                             gu16_TEM_Voltage = Z_Cooling_Voltage_5V;
                         }
                     }   
-                    else        //  ³Ã¼ö ¾à¸ğµå
+                    else        //  ëƒ‰ìˆ˜ ì•½ëª¨ë“œ
                     {
                         if(gi16_ColdSensor.DEGREE >= Z_TEMP10_5)
 						{
@@ -1763,7 +1763,7 @@ static void Output_TEM(void)
 						gu16_TEM_Voltage = Z_Cooling_Voltage_5V;
 					}					
 
-                    //  Voltage¿¡ µû¸¥, TDR °ª ¼¼ÆÃ.
+                    //  Voltageì— ë”°ë¥¸, TDR ê°’ ì„¸íŒ….
                     for (i = 0 ; i < Z_TEM_Voltage_Data_Max ; i++)
                     {
                         if (gu16_TEM_Voltage == TEM_Voltage_DataTable[i].TEM_Volt)
@@ -1787,7 +1787,7 @@ static void Output_TEM(void)
                         gu16_TEM_Voltage = Z_Cooling_Voltage_6V;
                     }
 
-                    //  Voltage¿¡ µû¸¥, TDR °ª ¼¼ÆÃ.
+                    //  Voltageì— ë”°ë¥¸, TDR ê°’ ì„¸íŒ….
                     for (i = 0 ; i < Z_TEM_Voltage_Data_Max ; i++)
                     {
                         if (gu16_TEM_Voltage == TEM_Voltage_DataTable[i].TEM_Volt)
@@ -1810,7 +1810,7 @@ static void Output_TEM(void)
 					#endif
 					gu16_TEM_Voltage = Z_Cooling_Voltage_9V;
 
-                    if (F_Cooling_Up == SET)            //  Æ¯¼ö¸ğµå ³Ã°¢¼º´É Up
+                    if (F_Cooling_Up == SET)            //  íŠ¹ìˆ˜ëª¨ë“œ ëƒ‰ê°ì„±ëŠ¥ Up
                     {
                         gu16_TEM_Voltage += Z_CoolingUp_Volatage;
                     }
@@ -1832,11 +1832,11 @@ static void Output_TEM(void)
 
     //    	  gu16_TEM_Voltage =  gu16_TEM_Voltage_Test;
 
-            /*  1) 24V ¡æ 5 ~ 12V PWM Ãâ·Â ÀüÈ¯
-            *  2) 5 ~ 12V ~ 24V Ãâ·Â ÀüÈ¯
-            *    ¡æ »ó±â 2°¡Áö Á¶°Ç¿¡¼­ ÀÏ °æ¿ì, ÃÖ¼Ò 1ms Ãâ·Â µô·¹ÀÌ ÇÊ¿ä(ÀüÀåÈ¸·Î°³¹ßÆÀ È®ÀÎ)
+            /*  1) 24V â†’ 5 ~ 12V PWM ì¶œë ¥ ì „í™˜
+            *  2) 5 ~ 12V ~ 24V ì¶œë ¥ ì „í™˜
+            *    â†’ ìƒê¸° 2ê°€ì§€ ì¡°ê±´ì—ì„œ ì¼ ê²½ìš°, ìµœì†Œ 1ms ì¶œë ¥ ë”œë ˆì´ í•„ìš”(ì „ì¥íšŒë¡œê°œë°œíŒ€ í™•ì¸)
             */
-            //  Ãâ·Â °ª ÃÖ¼Ò 1ºĞ À¯Áö.
+            //  ì¶œë ¥ ê°’ ìµœì†Œ 1ë¶„ ìœ ì§€.
             if((gu8_CoolingStep >= Z_CoolingStep_20) && (gu8_CoolingStep <= Z_CoolingStep_24))
             {
                 if(gu16_TEM_Voltage != gu16_TEM_Voltage_Backup)
@@ -1852,7 +1852,7 @@ static void Output_TEM(void)
                     }
                 }
 
-                gu16_TEM_Voltage_Backup = gu16_TEM_Voltage;                     //  Ãâ·Â Àü¾Ğ °ª backup
+                gu16_TEM_Voltage_Backup = gu16_TEM_Voltage;                     //  ì¶œë ¥ ì „ì•• ê°’ backup
                 gu16_TEM_TDR_Data_Backup = TEM_TDR_Data;
             }
             else
@@ -1862,10 +1862,10 @@ static void Output_TEM(void)
                 gu16_TEM_Voltage_Backup = 0;
                 gu16_TEM_TDR_Data_Backup = 0;
             }
-            //  Voltage¿¡ µû¸¥, ¿­Àü¸ğµâ Ãâ·Â
-            /*  1) 24V Ãâ·Â :
-            *       - TEM ON/OFF Æ÷Æ® : ON
-            *       - TEM 12V ON/OFF Æ÷Æ® : OFF
+            //  Voltageì— ë”°ë¥¸, ì—´ì „ëª¨ë“ˆ ì¶œë ¥
+            /*  1) 24V ì¶œë ¥ :
+            *       - TEM ON/OFF í¬íŠ¸ : ON
+            *       - TEM 12V ON/OFF í¬íŠ¸ : OFF
             *  2) 5 ~ 12V PWM :
             *
             *
@@ -1907,7 +1907,7 @@ static void Output_TEM(void)
 	}
 }
 
-/// @brief    ´©¼ö¼¾¼­ Pulse Ãâ·Â (1ms ÁÖ±â)
+/// @brief    ëˆ„ìˆ˜ì„¼ì„œ Pulse ì¶œë ¥ (1ms ì£¼ê¸°)
 /// @param    void
 /// @return   void
 static void Output_LeakSensor(void)
@@ -1935,17 +1935,17 @@ static void Output_LeakSensor(void)
 //	{
 //		P_LEAKSENSOR_ONOFF = OFF;
 //	}
-//	P_LEAKSENSOR_ONOFF ^= 1;						//	1ms ¸¶´Ù ¹İÀü Ãâ·Â (¡Ø ½ºÄÉÀÏ¸µ?)
+//	P_LEAKSENSOR_ONOFF ^= 1;						//	1ms ë§ˆë‹¤ ë°˜ì „ ì¶œë ¥ (â€» ìŠ¤ì¼€ì¼ë§?)
 }
 
 
-/// @brief    FAN Á¦¾î
+/// @brief    FAN ì œì–´
 /// @param    void
 /// @return   void
 static void Output_FAN(void)
 {
     U8 mu8_temp = 0;
-    static U8 flag_PL_Prevent = CLEAR;  //  SMPS FET ¼îÆ®·Î ÀÎÇÑ TEM°ú¿­ ¹æÁö¸¦ À§ÇØ Fan °¡µ¿ ÇÃ·¡±× 220929
+    static U8 flag_PL_Prevent = CLEAR;  //  SMPS FET ì‡¼íŠ¸ë¡œ ì¸í•œ TEMê³¼ì—´ ë°©ì§€ë¥¼ ìœ„í•´ Fan ê°€ë™ í”Œë˜ê·¸ 220929
 
     if (F_TestMode_PBA == SET)
     {
@@ -1984,7 +1984,7 @@ static void Output_FAN(void)
     }
     else if (F_TestMode_LineTest2 == SET)
     {
-        if (F_LineTest2_CoolingResult_OK == SET)    //  ³Ã°¢ °Ë»ç°¡ ¿Ï·áµÇ¸é ÆÒ °¡µ¿
+        if (F_LineTest2_CoolingResult_OK == SET)    //  ëƒ‰ê° ê²€ì‚¬ê°€ ì™„ë£Œë˜ë©´ íŒ¬ ê°€ë™
         {
             P_FAN_18V = OFF;
             P_FAN_21V = ON;
@@ -2117,9 +2117,9 @@ static void Output_FAN(void)
                 case FAN_21V_ON:
                     if (gu8_TimerFanDelay == 0)
                     {
-                        if (F_FAN_NoiseClear == SET)    //  Æ¯¼ö¸ğµå ÆÒ Àü¾Ğ ÇÏ°­
+                        if (F_FAN_NoiseClear == SET)    //  íŠ¹ìˆ˜ëª¨ë“œ íŒ¬ ì „ì•• í•˜ê°•
                         {
-                            P_FAN_18V = ON;         //      Æ¯¼ö¸ğµå ¼³Á¤ °æ¿ì ±Ş¼Ó¸ğµåµµ 18V·Î º¯°æ
+                            P_FAN_18V = ON;         //      íŠ¹ìˆ˜ëª¨ë“œ ì„¤ì • ê²½ìš° ê¸‰ì†ëª¨ë“œë„ 18Vë¡œ ë³€ê²½
                             P_FAN_21V = ON;
                         }
                         else
@@ -2139,29 +2139,29 @@ static void Output_FAN(void)
 /// @return   void
 static void Output_ColdSensor_ONOFF(void)
 {
-	if ((F_TestMode.byte != 0x00) || (F_Err44_ColdTH == SET) || ((gu8_SmartCheckStep & 0xF0) == 0x20))		//	½º¸¶Æ®Áø´ÜÀÏ¶§µµ »ó½Ã ON
+	if ((F_TestMode.byte != 0x00) || (F_Err44_ColdTH == SET) || ((gu8_SmartCheckStep & 0xF0) == 0x20))		//	ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì¼ë•Œë„ ìƒì‹œ ON
 	{
-		F_ColdSensor_OFF = CLEAR;					//		»ó½Ã ON
+		F_ColdSensor_OFF = CLEAR;					//		ìƒì‹œ ON
 		gu16_TimerColdSensor_ON = Z_TimerColdSensor_ON;
 	}
 
-	if ((F_ColdSensor_OFF == CLEAR) && (gu16_TimerColdSensor_ON == 0))	//	ON»óÅÂ ¹× ¼¾¼­ON Å¸ÀÌ¸Ó °æ°ú µÈ °æ¿ì
+	if ((F_ColdSensor_OFF == CLEAR) && (gu16_TimerColdSensor_ON == 0))	//	ONìƒíƒœ ë° ì„¼ì„œON íƒ€ì´ë¨¸ ê²½ê³¼ ëœ ê²½ìš°
 	{
-		gu16_TimerColdSensor_OFF = Z_TimerColdSensor_OFF;	//		OFF Å¸ÀÌ¸Ó set
-		F_ColdSensor_OFF = SET;							//		¼¾¼­ ÀĞ±â OFF
+		gu16_TimerColdSensor_OFF = Z_TimerColdSensor_OFF;	//		OFF íƒ€ì´ë¨¸ set
+		F_ColdSensor_OFF = SET;							//		ì„¼ì„œ ì½ê¸° OFF
 	}
 
-	if ((F_ColdSensor_OFF == SET) && (gu16_TimerColdSensor_OFF == 0) && (F_ColdOff == CLEAR))	//	OFF»óÅÂ ¹× ¼¾¼­OFF Å¸ÀÌ¸Ó °æ°ú µÈ °æ¿ì ¹× ³Ã°¢ON»óÅÂ¸¸
+	if ((F_ColdSensor_OFF == SET) && (gu16_TimerColdSensor_OFF == 0) && (F_ColdOff == CLEAR))	//	OFFìƒíƒœ ë° ì„¼ì„œOFF íƒ€ì´ë¨¸ ê²½ê³¼ ëœ ê²½ìš° ë° ëƒ‰ê°ONìƒíƒœë§Œ
 	{
-		gu16_TimerColdSensor_ON = Z_TimerColdSensor_ON;		//		ON Å¸ÀÌ¸Ó set
+		gu16_TimerColdSensor_ON = Z_TimerColdSensor_ON;		//		ON íƒ€ì´ë¨¸ set
 		if (F_TestMode.byte == 0x00)
 		{
 			gu8_TimerColdSensor_Sensing = Z_TimerColdSensor_Sensing;
 		}
-		F_ColdSensor_OFF = CLEAR;							//		¼¾¼­ ÀĞ±â ON
+		F_ColdSensor_OFF = CLEAR;							//		ì„¼ì„œ ì½ê¸° ON
 	}
 
-	if (F_TestMode_PBA == SET)						//	PBAÁ¦Á¶¾÷Ã¼ °Ë»ç¸ğµå ÀÎ °æ¿ì
+	if (F_TestMode_PBA == SET)						//	PBAì œì¡°ì—…ì²´ ê²€ì‚¬ëª¨ë“œ ì¸ ê²½ìš°
 	{
 		if (F_PBATest_ColdSensorOFF == SET)
 		{
@@ -2172,9 +2172,9 @@ static void Output_ColdSensor_ONOFF(void)
 			P_COLDSENSOR_ON = HIGH;
 		}
 	}
-	else											//	ÀÏ¹İ ¸ğµå or °øÀåÀÚµ¿È­
+	else											//	ì¼ë°˜ ëª¨ë“œ or ê³µì¥ìë™í™”
 	{
-		if (F_ColdSensor_OFF == CLEAR)				//		¼¾¼­ ÀĞ±â ON »óÅÂÀÎ °æ¿ì
+		if (F_ColdSensor_OFF == CLEAR)				//		ì„¼ì„œ ì½ê¸° ON ìƒíƒœì¸ ê²½ìš°
 		{
 			P_COLDSENSOR_ON = HIGH;
 		}

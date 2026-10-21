@@ -1,7 +1,7 @@
 /// @file   adc.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  AD Converter Ã³¸® °ü·Ã Çì´õ file
+/// @brief  AD Converter ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef ADC_C
 	#define 	EXTERN
@@ -13,22 +13,22 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_ADC()			{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_ADC()			{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_ADC()			{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_ADC()			{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerAdcheck);		\
 								}
-#define	TDEC_100ms_ADC()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_ADC()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_ADC()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_ADC()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_ADC()			{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_ADC()			{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_ADC()			{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_ADC()			{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_ADC()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_ADC()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_ADC()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_ADC()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 /*==============================================================================
@@ -46,7 +46,7 @@ typedef struct {
 #define	ZT_Adcheck			(200)					/*	ad check time						<2s/10ms>	*/
 
 #define Z_HotInTemp_Table_Max	(862)
-EXTERN const I16 HotInTemp_Table[Z_HotInTemp_Table_Max]	//	¿Â¼ö ÀÔ¼ö TH µ¥ÀÌÅÍ
+EXTERN const I16 HotInTemp_Table[Z_HotInTemp_Table_Max]	//	ì˜¨ìˆ˜ ì…ìˆ˜ TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 = {
 	1310,
@@ -206,7 +206,7 @@ EXTERN const I16 HotInTemp_Table[Z_HotInTemp_Table_Max]	//	¿Â¼ö ÀÔ¼ö TH µ¥ÀÌÅÍ
 ;
 
 #define Z_HotOutTemp_Table_Max	(804)
-EXTERN const I16 HotOutTemp_Table[Z_HotOutTemp_Table_Max]	//	¿Â¼ö Ãâ¼ö  TH µ¥ÀÌÅÍ
+EXTERN const I16 HotOutTemp_Table[Z_HotOutTemp_Table_Max]	//	ì˜¨ìˆ˜ ì¶œìˆ˜  TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 = {
 	1450, 1447, 1444,
@@ -380,7 +380,7 @@ EXTERN const I16 HotOutTemp_Table[Z_HotOutTemp_Table_Max]	//	¿Â¼ö Ãâ¼ö  TH µ¥ÀÌÅ
 ;
 
 #define Z_HeaterTemp_Table_Max	(804)
-EXTERN const I16 HeaterTemp_Table[Z_HeaterTemp_Table_Max]	//	È÷ÅÍ  TH µ¥ÀÌÅÍ
+EXTERN const I16 HeaterTemp_Table[Z_HeaterTemp_Table_Max]	//	íˆí„°  TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 = {
 	1450, 1447, 1444,
@@ -554,7 +554,7 @@ EXTERN const I16 HeaterTemp_Table[Z_HeaterTemp_Table_Max]	//	È÷ÅÍ  TH µ¥ÀÌÅÍ
 ;
 
 #define Z_ColdTemp_Table_Max	(641)
-EXTERN const I16 ColdTemp_Table[Z_ColdTemp_Table_Max]	//	³Ã¼ö  TH µ¥ÀÌÅÍ
+EXTERN const I16 ColdTemp_Table[Z_ColdTemp_Table_Max]	//	ëƒ‰ìˆ˜  TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 = {
 	400,	398,	397,	395,	393,	392,
@@ -623,7 +623,7 @@ EXTERN const I16 ColdTemp_Table[Z_ColdTemp_Table_Max]	//	³Ã¼ö  TH µ¥ÀÌÅÍ
 ;
 
 //#define Z_HeatSinkTemp_Table_Max	(898)
-//EXTERN const I16 HeatSinkTemp_Table[Z_HeatSinkTemp_Table_Max]	//	HEAT SINK TH µ¥ÀÌÅÍ
+//EXTERN const I16 HeatSinkTemp_Table[Z_HeatSinkTemp_Table_Max]	//	HEAT SINK TH ë°ì´í„°
 //#ifdef GLOBAL_VARIABLE_DEFINE
 //= {
 //	1190,
@@ -771,7 +771,7 @@ EXTERN const I16 ColdTemp_Table[Z_ColdTemp_Table_Max]	//	³Ã¼ö  TH µ¥ÀÌÅÍ
 //;
 
 #define Z_HeatSinkTemp_Table_Max	(880)
-EXTERN const I16 HeatSinkTemp_Table[Z_HeatSinkTemp_Table_Max]	//	HEAT SINK TH µ¥ÀÌÅÍ
+EXTERN const I16 HeatSinkTemp_Table[Z_HeatSinkTemp_Table_Max]	//	HEAT SINK TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 = {
 	1050,	1045,
@@ -906,7 +906,7 @@ EXTERN const I16 HeatSinkTemp_Table[Z_HeatSinkTemp_Table_Max]	//	HEAT SINK TH µ¥
 
 
 #define Z_OutDoorAirTemp_Table_Max	(817)
-EXTERN const I16 OutDoorAirTemp_Table[Z_OutDoorAirTemp_Table_Max]	//	HEAT SINK TH µ¥ÀÌÅÍ
+EXTERN const I16 OutDoorAirTemp_Table[Z_OutDoorAirTemp_Table_Max]	//	HEAT SINK TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 = {
 	800, 797, 793,
@@ -1078,7 +1078,7 @@ EXTERN const I16 MCUTemp_Table[Z_MCUTemp_Table_Max]
 #endif
 ;
 
-#define ZC_Adchannel			(13)				//	ADC Ã¤³Î °¹¼ö
+#define ZC_Adchannel			(13)				//	ADC ì±„ë„ ê°¯ìˆ˜
 
 #define HEATSINK_TEMP_OPEN		(1000) 				//
 #define HEATSINK_TEMP_SHORT		(20)				//
@@ -1110,19 +1110,19 @@ EXTERN const I16 MCUTemp_Table[Z_MCUTemp_Table_Max]
 
 
 //cbr_hot_pro 2025-09-02 10:34:13
-#define Z_HEATER_POWER_LEVEL_LOW		(0)			//	ÀúÀü¾Ğ
-#define Z_HEATER_POWER_LEVEL_RATED		(1)			//	Á¤°İ
-#define Z_HEATER_POWER_LEVEL_HIGH		(2)			//	°íÀü¾Ğ
+#define Z_HEATER_POWER_LEVEL_LOW		(0)			//	ì €ì „ì••
+#define Z_HEATER_POWER_LEVEL_RATED		(1)			//	ì •ê²©
+#define Z_HEATER_POWER_LEVEL_HIGH		(2)			//	ê³ ì „ì••
 
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN volatile U16 gu16_AdcAverage[ZC_Adchannel];			//	ADC Æò±Õ °ª
-	#define ADC_RESULT_24V_FB				(gu16_AdcAverage[0])    //	[0] ANI0-¿Â¼öÅÊÅ© ¿Âµµ ¼¾¼­
-	#define ADC_RESULT_TEM_FB				(gu16_AdcAverage[1])    //	[1] ANI1-³Ã¼ö ¿Âµµ ¼¾¼­
-	#define ADC_RESULT_OUTDOORAIRTH			(gu16_AdcAverage[2])    //	[2] ANI3-¿Ü±â ¿Âµµ ¼¾¼­
-	#define ADC_RESULT_HOTINTH				(gu16_AdcAverage[3])    //	[3] ANI4-¿Â¼öÅÊÅ© ¼öÀ§1
-	#define ADC_RESULT_HOTOUTTH				(gu16_AdcAverage[4])	//	[4] ANI5-¿Â¼öÅÊÅ© ¼öÀ§2
+EXTERN volatile U16 gu16_AdcAverage[ZC_Adchannel];			//	ADC í‰ê·  ê°’
+	#define ADC_RESULT_24V_FB				(gu16_AdcAverage[0])    //	[0] ANI0-ì˜¨ìˆ˜íƒ±í¬ ì˜¨ë„ ì„¼ì„œ
+	#define ADC_RESULT_TEM_FB				(gu16_AdcAverage[1])    //	[1] ANI1-ëƒ‰ìˆ˜ ì˜¨ë„ ì„¼ì„œ
+	#define ADC_RESULT_OUTDOORAIRTH			(gu16_AdcAverage[2])    //	[2] ANI3-ì™¸ê¸° ì˜¨ë„ ì„¼ì„œ
+	#define ADC_RESULT_HOTINTH				(gu16_AdcAverage[3])    //	[3] ANI4-ì˜¨ìˆ˜íƒ±í¬ ìˆ˜ìœ„1
+	#define ADC_RESULT_HOTOUTTH				(gu16_AdcAverage[4])	//	[4] ANI5-ì˜¨ìˆ˜íƒ±í¬ ìˆ˜ìœ„2
 	#define ADC_RESULT_HEATSINKTH			(gu16_AdcAverage[5])	//	[5] ANI6-AC H
 	#define ADC_RESULT_COLDTH				(gu16_AdcAverage[6])    //	[6] ANI7-AC L
 	#define ADC_RESULT_HEATERTH				(gu16_AdcAverage[7])    //	[7] ANI8-DC H
@@ -1147,17 +1147,17 @@ EXTERN TH_DataTable gi16_HeaterSensor					//
 	= {&ADC_RESULT_HEATERTH, 	0,	HEATER_TEMP_SHORT, 	HEATER_TEMP_OPEN		}
 #endif
 ;
-EXTERN TH_DataTable gi16_ColdSensor					//	³Ã¼ö  TH ÇÏ´Ü µ¥ÀÌÅÍ
+EXTERN TH_DataTable gi16_ColdSensor					//	ëƒ‰ìˆ˜  TH í•˜ë‹¨ ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 	= {&ADC_RESULT_COLDTH, 	0,	COLD_TEMP_SHORT,	COLD_TEMP_OPEN		}
 #endif
 ;
-EXTERN TH_DataTable gi16_HeatSinkSensor					//	³Ã¼ö  TH ÇÏ´Ü µ¥ÀÌÅÍ
+EXTERN TH_DataTable gi16_HeatSinkSensor					//	ëƒ‰ìˆ˜  TH í•˜ë‹¨ ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 	= {&ADC_RESULT_HEATSINKTH, 	0,	HEATSINK_TEMP_SHORT,	HEATSINK_TEMP_OPEN		}
 #endif
 ;
-EXTERN TH_DataTable gi16_OutDoorAirSensor				//	¿Ü±â¿Âµµ TH µ¥ÀÌÅÍ
+EXTERN TH_DataTable gi16_OutDoorAirSensor				//	ì™¸ê¸°ì˜¨ë„ TH ë°ì´í„°
 #ifdef GLOBAL_VARIABLE_DEFINE
 	= {&ADC_RESULT_OUTDOORAIRTH, 	0,	OUTDOORAIR_TEMP_SHORT,	OUTDOORAIR_TEMP_OPEN	}
 #endif
@@ -1173,7 +1173,7 @@ EXTERN TH_DataTable gi16_MCUSensor
 
 #define DEGREE_SENSOR_NUM	(6)
 
-EXTERN TH_DataTable* TH_DataArray[DEGREE_SENSOR_NUM]			//	TH ¾î·¹ÀÌ
+EXTERN TH_DataTable* TH_DataArray[DEGREE_SENSOR_NUM]			//	TH ì–´ë ˆì´
 #ifdef GLOBAL_VARIABLE_DEFINE
  = {
 		 &gi16_ColdSensor,
@@ -1186,13 +1186,13 @@ EXTERN TH_DataTable* TH_DataArray[DEGREE_SENSOR_NUM]			//	TH ¾î·¹ÀÌ
 #endif
 ;
 
-EXTERN volatile U8 gu8_CounterAdchannel;				//	ADÃ¤³Î Ä«¿îÆ®
-EXTERN volatile U8 gu8_AdcRepeat;						//	ADÀÔ·Â °¡»ê
-EXTERN volatile U8 gu8_TimerAdcheck;					//	ADÃ¼Å© Å¸ÀÌ¸Ó 	<2s/10ms>
-EXTERN volatile U16 gu16_NowAdc[ZC_Adchannel];			//	ADC ÇöÀç °ª
-EXTERN volatile U16 gu16_SumAdc[ZC_Adchannel];			//	ADC ÇÕ»ê °ª
+EXTERN volatile U8 gu8_CounterAdchannel;				//	ADì±„ë„ ì¹´ìš´íŠ¸
+EXTERN volatile U8 gu8_AdcRepeat;						//	ADì…ë ¥ ê°€ì‚°
+EXTERN volatile U8 gu8_TimerAdcheck;					//	ADì²´í¬ íƒ€ì´ë¨¸ 	<2s/10ms>
+EXTERN volatile U16 gu16_NowAdc[ZC_Adchannel];			//	ADC í˜„ì¬ ê°’
+EXTERN volatile U16 gu16_SumAdc[ZC_Adchannel];			//	ADC í•©ì‚° ê°’
 EXTERN volatile U8 gu8_CounterAdc[ZC_Adchannel];
-EXTERN volatile U16 gu16_ADCBackValue[ZC_Adchannel];	//	ADC ÀÌÀü °ª (3bit Èçµé¸² ³ëÀÌÁî Ã³¸®)
+EXTERN volatile U16 gu16_ADCBackValue[ZC_Adchannel];	//	ADC ì´ì „ ê°’ (3bit í”ë“¤ë¦¼ ë…¸ì´ì¦ˆ ì²˜ë¦¬)
 
 EXTERN U32 gu32_HotOut_Degree_Total;
 EXTERN U16 gu16_HotOut_Degree_Cnt;
@@ -1209,23 +1209,23 @@ EXTERN U32 gu32_AC_mA_Result;						//	[1/1mA]
 EXTERN U16 gu16_TEM_mA_Result;						//	[1/1mA]
 EXTERN U32 gu32_Total_mA_Result;					//	[1/1mA]
 EXTERN U32 gu32_Watt_Result;						//	[1/100W]
-EXTERN U32 gu32_Watt_per_Min_Result;				//	Wi-Fi·Î ¿Ã·ÁÁÖ´Â µ¥ÀÌÅÍ [1W/min]
+EXTERN U32 gu32_Watt_per_Min_Result;				//	Wi-Fië¡œ ì˜¬ë ¤ì£¼ëŠ” ë°ì´í„° [1W/min]
 EXTERN U16 gu16_24V_mA_Result;						//	[1/1mA]
 EXTERN U16 gu16_SMPS_Voltage_Feedback_Result;				//	[1/100V]
-EXTERN U16 gu16_ad_feedback_mode_tem_mA_Result;				//	[1/1mA] TEM °­Á¦ Ãâ·Â¿¡ ´ëÇÑ°ª
-EXTERN U16 gu16_ad_feedback_mode_smps_voltage_Result;				//	[1/100V] SMPS Àü¾Ğ °­Á¦ Ãâ·Â¿¡ ´ëÇÑ°ª
+EXTERN U16 gu16_ad_feedback_mode_tem_mA_Result;				//	[1/1mA] TEM ê°•ì œ ì¶œë ¥ì— ëŒ€í•œê°’
+EXTERN U16 gu16_ad_feedback_mode_smps_voltage_Result;				//	[1/100V] SMPS ì „ì•• ê°•ì œ ì¶œë ¥ì— ëŒ€í•œê°’
 
-EXTERN U16 gu16_UV_mA_Result;						//	[1/1mA] UV Ãâ·Â¿¡ ´ëÇÑ°ª
-EXTERN U8 gu8_F_UV_First_On;					//	UV Ãâ·Â Ã¹ ¿Â ¿©ºÎ ÇÃ·¡±×
+EXTERN U16 gu16_UV_mA_Result;						//	[1/1mA] UV ì¶œë ¥ì— ëŒ€í•œê°’
+EXTERN U8 gu8_F_UV_First_On;					//	UV ì¶œë ¥ ì²« ì˜¨ ì—¬ë¶€ í”Œë˜ê·¸
 
-EXTERN U8 gu8_F_AlwaysDiagnosis_forWifi;		//	tem ¸¶Áö¸· Ãâ·ÂÀÇ Àü¾Ğ °ª ¹é¾÷ ÇÃ·¡±×(ÇÑ¹øÀÌ¶óµµ »ó½ÃÁø´Ü Àü¼Û¾ÈÇÏ¸é ¿¡·¯·Î °¡±â¶§¹®¿¡ FLAG º¸°í SETµÉ¶§±îÁö Á¤»óÀ¸·Î Àü¼ÛÇÏ±â À§ÇÔ.)
+EXTERN U8 gu8_F_AlwaysDiagnosis_forWifi;		//	tem ë§ˆì§€ë§‰ ì¶œë ¥ì˜ ì „ì•• ê°’ ë°±ì—… í”Œë˜ê·¸(í•œë²ˆì´ë¼ë„ ìƒì‹œì§„ë‹¨ ì „ì†¡ì•ˆí•˜ë©´ ì—ëŸ¬ë¡œ ê°€ê¸°ë•Œë¬¸ì— FLAG ë³´ê³  SETë ë•Œê¹Œì§€ ì •ìƒìœ¼ë¡œ ì „ì†¡í•˜ê¸° ìœ„í•¨.)
 
 //cbr_hot_pro 2025-09-02 10:35:53
-EXTERN U8 gu8_Heater_PowerLevel;					//	¿Â¼ö ÃßÃâ ½Ã, ¿­·® º¸Á¤À» À§ÇÑ ÀÔ·ÂÀü¾Ğ ·¹º§(ÀúÀü¾Ğ, Á¤°İ, °íÀü¾Ğ) - ÃøÁ¤Ä¡
-EXTERN U16 gu16_Heater_PowerLevel_test;				//	¿Â¼ö ÃßÃâ ½Ã, ¿­·® º¸Á¤À» À§ÇÑ ÀÔ·ÂÀü¾Ğ ·¹º§(ÀúÀü¾Ğ, Á¤°İ, °íÀü¾Ğ) - Ã¹ÀÜÇÃ·¯½Ì ÃøÁ¤Ä¡
-EXTERN U8 gu8_Heater__PowerLevel_forEEPROM;			//@035	¿Â¼ö ÃßÃâ ½Ã, ¿­·® º¸Á¤À» À§ÇÑ ÀÔ·ÂÀü¾Ğ ·¹º§(ÀúÀü¾Ğ, Á¤°İ, °íÀü¾Ğ) - EEPROM ÀúÀå°ª
+EXTERN U8 gu8_Heater_PowerLevel;					//	ì˜¨ìˆ˜ ì¶”ì¶œ ì‹œ, ì—´ëŸ‰ ë³´ì •ì„ ìœ„í•œ ì…ë ¥ì „ì•• ë ˆë²¨(ì €ì „ì••, ì •ê²©, ê³ ì „ì••) - ì¸¡ì •ì¹˜
+EXTERN U16 gu16_Heater_PowerLevel_test;				//	ì˜¨ìˆ˜ ì¶”ì¶œ ì‹œ, ì—´ëŸ‰ ë³´ì •ì„ ìœ„í•œ ì…ë ¥ì „ì•• ë ˆë²¨(ì €ì „ì••, ì •ê²©, ê³ ì „ì••) - ì²«ì”í”ŒëŸ¬ì‹± ì¸¡ì •ì¹˜
+EXTERN U8 gu8_Heater__PowerLevel_forEEPROM;			//@035	ì˜¨ìˆ˜ ì¶”ì¶œ ì‹œ, ì—´ëŸ‰ ë³´ì •ì„ ìœ„í•œ ì…ë ¥ì „ì•• ë ˆë²¨(ì €ì „ì••, ì •ê²©, ê³ ì „ì••) - EEPROM ì €ì¥ê°’
 
-/* LJH : µğ¹ö±ë ÄÚµå */
+/* LJH : ë””ë²„ê¹… ì½”ë“œ */
 EXTERN U8 gu8_F_TH_Manual_Control_Test;
 EXTERN U8 gu8_F_Heater_Control_Test;
 EXTERN I16 gi16_HotOutSensorDegree_ForcedSet_Test;
@@ -1243,22 +1243,22 @@ EXTERN U8 gu8_F_HeaterTriacFirst_Check;
 /*==============================================================================
  function Definition
  ==============================================================================*/
-void Input_AD_Change(void);							//	ADC Ã³¸®
-void ADC_Initialize(void);							//	ADC ÃÊ±âÈ­
-void Temperature_Change(void);						//	THµ¥ÀÌÅÍ ¿Âµµº¯È¯ Ã³¸®
-void HeaterFullCurrent_Decide(void);				//	È÷ÅÍ Àü·ÂÃ¼Å©
-void Effluent_Degree_Average(void);					//	ÃßÃâ ¿Âµµ Æò±Õ
+void Input_AD_Change(void);							//	ADC ì²˜ë¦¬
+void ADC_Initialize(void);							//	ADC ì´ˆê¸°í™”
+void Temperature_Change(void);						//	THë°ì´í„° ì˜¨ë„ë³€í™˜ ì²˜ë¦¬
+void HeaterFullCurrent_Decide(void);				//	íˆí„° ì „ë ¥ì²´í¬
+void Effluent_Degree_Average(void);					//	ì¶”ì¶œ ì˜¨ë„ í‰ê· 
 void Get_WattCheck(void);
 U32 HeaterWattCalculation(void);
 
-//	Àü·ù °è»ê
+//	ì „ë¥˜ ê³„ì‚°
 U16 calculate_uv_current( U16 mu16_ad );
 U16 calculate_tem_current( U16 mu16_ad );
 U16 calculate_fan_current( U16 mu16_ad );
 U16 calculate_dc_current( U16 mu16_ad );
 U16 calculate_smps_voltage_feedback( U16 mu16_ad );
 
-//	¹üÀ§ È®ÀÎ ÇÔ¼ö
+//	ë²”ìœ„ í™•ì¸ í•¨ìˆ˜
 U8 check_smps_voltage_range( U16 mu16_value );
 U8 check_tem_current_range( U16 mu16_value );
 

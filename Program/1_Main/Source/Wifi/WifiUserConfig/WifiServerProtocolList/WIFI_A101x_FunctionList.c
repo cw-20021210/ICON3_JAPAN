@@ -292,7 +292,7 @@ U16 GetUserSystemFunction ( U16 mu16Func )
         	}            
         break;
         case WIFI_FUNC_000D_WATER_OUTQUANTITY : 
-            if(gu8_F_Effluent_Complete_After == SET)	// ???? ???? ??¿¡¸¸ ?????? ????
+            if(gu8_F_Effluent_Complete_After == SET)	// ???? ???? ??ì—ë§Œ ?????? ????
             {
                 gu8_F_Effluent_Complete_After = CLEAR;
                 mu16Data = (U16)((U32)gu16_Effluent_Hz_Amount_forWIFI * gu16_FlowMeter_Standard / 10000);
@@ -307,7 +307,7 @@ U16 GetUserSystemFunction ( U16 mu16Func )
                 mu16Data = 0;	// ???? ??? ?????? 0
             }
 
-            // ???? ???? ??¿¡¸¸ ?????? (???? ?ß¿¡´? ????)
+            // ???? ???? ??ì—ë§Œ ?????? (???? ?å‚·ã€ˆ? ????)
             if((gu8_OperationStep != Z_OperationStep_50) && (gu8_F_Effluent_Complete_After == CLEAR))
             {
                 gu16_Effluent_Hz_Amount_forWIFI = 0;	//  
@@ -1076,7 +1076,7 @@ void SetUserSystemFunction ( U16 mu16Func, U16 mData )
                 }    
                 else
                 {
-                    //  ¿Â¼ö ¼±ÅÃµÈ »óÅÂ¿¡¼± À¯Áö..
+                    //  ì˜¨ìˆ˜ ì„ íƒëœ ìƒíƒœì—ì„  ìœ ì§€..
                 }
         		Play_Voice(VOICE_COLD_OFF_SETTING);
             }

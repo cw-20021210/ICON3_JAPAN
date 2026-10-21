@@ -1,18 +1,18 @@
 /// @file     stepmotor.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Step Motor µ¿ÀÛ Á¦¾î file
+/// @brief    Step Motor ë™ì‘ ì œì–´ file
 #define STEPMOTOR_C
 #include "include/_include.h"
 
-#define Z_SteppingMotor_TorqueUp_Count	(5)			//	PPSÁ¶Àı Ä«¿îÆ®
-#define Z_OpenClose_Min		(8)						//	½ºÅ×ÇÎ¸ğÅÍ ÃÖÀú Á¦¾î
+#define Z_SteppingMotor_TorqueUp_Count	(5)			//	PPSì¡°ì ˆ ì¹´ìš´íŠ¸
+#define Z_OpenClose_Min		(8)						//	ìŠ¤í…Œí•‘ëª¨í„° ìµœì € ì œì–´
 
-CI8 au8Step_Open[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };	//	OPEN ½ºÅÜ ·çÆ¾
-CI8 au8Step_Close[8] = { 8, 7, 6, 5, 4, 3, 2, 1 };	//	CLOSE ½ºÅÜ ·çÆ¾
+CI8 au8Step_Open[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };	//	OPEN ìŠ¤í… ë£¨í‹´
+CI8 au8Step_Close[8] = { 8, 7, 6, 5, 4, 3, 2, 1 };	//	CLOSE ìŠ¤í… ë£¨í‹´
 
 
-/// @brief    ºÎÆÃÈÄ Step Motor À§Ä¡ ÃÊ±âÈ­
+/// @brief    ë¶€íŒ…í›„ Step Motor ìœ„ì¹˜ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void StepMotor_Initialize(void)
@@ -20,105 +20,105 @@ void StepMotor_Initialize(void)
 
 }
 
-/// @brief    À¯·® Á¦¾î ÇÔ¼ö
+/// @brief    ìœ ëŸ‰ ì œì–´ í•¨ìˆ˜
 /// @param    void
 /// @return   void
 void FlowControl(void)
 {
-	U8 mu8_StepControl_Value = 0;					//	½ºÅÜ Á¦ÇÑ
-	U8 mu8_StepDelta = 0;							//	¸ñÇ¥À¯·®/ÇöÀçÀ¯·® ´ëºñ ½ºÅÜ Á¦ÇÑ
+	U8 mu8_StepControl_Value = 0;					//	ìŠ¤í… ì œí•œ
+	U8 mu8_StepDelta = 0;							//	ëª©í‘œìœ ëŸ‰/í˜„ì¬ìœ ëŸ‰ ëŒ€ë¹„ ìŠ¤í… ì œí•œ
 
-	/*	¸ñÇ¥À¯·® º¯°æ	*/
-//	if (F_3s_for_FlowControl == SET)				//	¸ñÇ¥À¯·® º¯°æ Flag (3ÃÊ¸¶´Ù) (È÷ÅÍ Àü·ÂÀÌ ³·Àºµ¥µµ ¿Âµµ°¡ ³Ê¹« ³ôÀº°æ¿ì¸¸ ÇØ´ç)
+	/*	ëª©í‘œìœ ëŸ‰ ë³€ê²½	*/
+//	if (F_3s_for_FlowControl == SET)				//	ëª©í‘œìœ ëŸ‰ ë³€ê²½ Flag (3ì´ˆë§ˆë‹¤) (íˆí„° ì „ë ¥ì´ ë‚®ì€ë°ë„ ì˜¨ë„ê°€ ë„ˆë¬´ ë†’ì€ê²½ìš°ë§Œ í•´ë‹¹)
 //	{
 //		F_3s_for_FlowControl = CLEAR;				//		Flag Clear
-//		if ((gu8_WaterSelect == HOT_WATER) && (gu8_HotStep == Z_HotStep_35))	//		¿Â¼ö»óÅÂÀÌ°í ¿Â¼öÃßÃâÁßÀÎ °æ¿ì
+//		if ((gu8_WaterSelect == HOT_WATER) && (gu8_HotStep == Z_HotStep_35))	//		ì˜¨ìˆ˜ìƒíƒœì´ê³  ì˜¨ìˆ˜ì¶”ì¶œì¤‘ì¸ ê²½ìš°
 //		{
 //#ifdef _HOT_TEMP_4STEP_
-//			if (((gu8_HotTempSetup == HOT_TEMP_SETUP_90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_80) || (gu8_HotTempSetup == HOT_TEMP_SETUP_70))	//		COFFEE ¹× TEA¸¸
+//			if (((gu8_HotTempSetup == HOT_TEMP_SETUP_90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_80) || (gu8_HotTempSetup == HOT_TEMP_SETUP_70))	//		COFFEE ë° TEAë§Œ
 //#else
-//			if (((gu8_HotTempSetup == HOT_TEMP_SETUP_90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_70))	//		COFFEE ¹× TEA¸¸
+//			if (((gu8_HotTempSetup == HOT_TEMP_SETUP_90) || (gu8_HotTempSetup == HOT_TEMP_SETUP_70))	//		COFFEE ë° TEAë§Œ
 //#endif
-//				&& (gu16_HeaterWATT < gu16_HeaterRELAY_WATT) && (gi16_HotOutSensor.DEGREE > gu16_TargetDegree))	//		È÷ÅÍ Áö½ÃÀü·ÂÀÌ RELAY WATTº¸´Ù ³·Àºµ¥ ¸ñÇ¥¿Âµµº¸´Ù ³ôÀº°æ¿ì
+//				&& (gu16_HeaterWATT < gu16_HeaterRELAY_WATT) && (gi16_HotOutSensor.DEGREE > gu16_TargetDegree))	//		íˆí„° ì§€ì‹œì „ë ¥ì´ RELAY WATTë³´ë‹¤ ë‚®ì€ë° ëª©í‘œì˜¨ë„ë³´ë‹¤ ë†’ì€ê²½ìš°
 //			{
-//				if (gu16_FlowTarget_W < 80)			//				¸ñÇ¥À¯·®ÀÌ 0.8LPMº¸´Ù ³·Àº °æ¿ì (½ÇÇèÄ¡)
+//				if (gu16_FlowTarget_W < 80)			//				ëª©í‘œìœ ëŸ‰ì´ 0.8LPMë³´ë‹¤ ë‚®ì€ ê²½ìš° (ì‹¤í—˜ì¹˜)
 //				{
-//					gu16_FlowTarget_W++;			//				¸ñÇ¥À¯·® Áõ°¡ (3ÃÊ¸¶´Ù 0.1LPM¾¿)
+//					gu16_FlowTarget_W++;			//				ëª©í‘œìœ ëŸ‰ ì¦ê°€ (3ì´ˆë§ˆë‹¤ 0.1LPMì”©)
 //				}
 //			}
 //		}
 //	}
 	/*	...		*/
-	if (((F_TestMode_PBA == SET) && (F_PBATest_SteppingMotor == SET))	//	PBA Test and ½ºÅ×ÇÎ¸ğÅÍ°Ë»ç ÁßÀÎ °æ¿ì
-		|| ((F_TestMode_LineFront == SET) && (F_LineFrontTest_SteppingMotor_Oper == SET))	//	¶óÀÎ Test
+	if (((F_TestMode_PBA == SET) && (F_PBATest_SteppingMotor == SET))	//	PBA Test and ìŠ¤í…Œí•‘ëª¨í„°ê²€ì‚¬ ì¤‘ì¸ ê²½ìš°
+		|| ((F_TestMode_LineFront == SET) && (F_LineFrontTest_SteppingMotor_Oper == SET))	//	ë¼ì¸ Test
 		|| (F_SmartCheck_SteppingMotor == SET))
 	{
 		F_PBATest_SteppingMotor = CLEAR;
-		if ((gu16_StepMovingPulse == 0) || (gi16_StepCount < 1500) || (gi16_StepCount >= 2800))		//		½ºÅÜ Á¦¾î ¿Ï·áÀÎ °æ¿ì
+		if ((gu16_StepMovingPulse == 0) || (gi16_StepCount < 1500) || (gi16_StepCount >= 2800))		//		ìŠ¤í… ì œì–´ ì™„ë£Œì¸ ê²½ìš°
 		{
-			gu8_Stepping_ZeroBack = 0;				//			Á¦·Î¹é Flag Clear
-			if (gi16_StepCount >= 1500)				//			½ºÅ×ÇÎ¸ğÅÍ°¡ ¿­·ÁÀÖ´Â °æ¿ì
+			gu8_Stepping_ZeroBack = 0;				//			ì œë¡œë°± Flag Clear
+			if (gi16_StepCount >= 1500)				//			ìŠ¤í…Œí•‘ëª¨í„°ê°€ ì—´ë ¤ìˆëŠ” ê²½ìš°
 			{
-//				StepMotor_ZeroBack_Close();			//				´İÈû ÃÊ±âÈ­
+//				StepMotor_ZeroBack_Close();			//				ë‹«í˜ ì´ˆê¸°í™”
 				FlowControl_StepTarget(1400);
 			}
-			else									//			½ºÅ×ÇÎ¸ğÅÍ°¡ ´İÇôÀÖ´Â °æ¿ì
+			else									//			ìŠ¤í…Œí•‘ëª¨í„°ê°€ ë‹«í˜€ìˆëŠ” ê²½ìš°
 			{
-				StepMotor_ZeroBack_Open();			//				¿­¸² ÃÊ±âÈ­
+				StepMotor_ZeroBack_Open();			//				ì—´ë¦¼ ì´ˆê¸°í™”
 			}
 		}
 	}
-	else											//	ÀÏ¹İÁ¦¾î
+	else											//	ì¼ë°˜ì œì–´
 	{
-		if (F_100ms_for_FlowControl == SET)			//		100ms¸¶´Ù À¯·®Á¦¾î
+		if (F_100ms_for_FlowControl == SET)			//		100msë§ˆë‹¤ ìœ ëŸ‰ì œì–´
 		{
-			F_100ms_for_FlowControl = CLEAR;		//			100ms Å¸ÀÌ¸Ó flag clear
+			F_100ms_for_FlowControl = CLEAR;		//			100ms íƒ€ì´ë¨¸ flag clear
 			if ((gu8_HotStep == Z_HotStep_35) && (gu8_TimerFlowControl_AfterEff != 0) && (gu16_FlowDecide_W > gu16_FlowTarget_W))
 			{
 				gu8_TimerFlowControl_AfterEff = 0;
 			}
-			if (((gu8_WaterSelect == HOT_WATER) && (gu8_HotStep == Z_HotStep_35) && (gu8_TimerFlowControl_AfterEff == 0)	//	¿Â¼öÃßÃâ Áß and À¯·®Á¦¾î ½ÃÀÛ Å¸ÀÌ¸Ó °æ°ú and ½ºÅÜÁ¦¾î ¿Ï·á and ¸ñÇ¥À¯·®°ú ÇöÀçÀ¯·®ÀÌ ´Ù¸¥°æ¿ì
+			if (((gu8_WaterSelect == HOT_WATER) && (gu8_HotStep == Z_HotStep_35) && (gu8_TimerFlowControl_AfterEff == 0)	//	ì˜¨ìˆ˜ì¶”ì¶œ ì¤‘ and ìœ ëŸ‰ì œì–´ ì‹œì‘ íƒ€ì´ë¨¸ ê²½ê³¼ and ìŠ¤í…ì œì–´ ì™„ë£Œ and ëª©í‘œìœ ëŸ‰ê³¼ í˜„ì¬ìœ ëŸ‰ì´ ë‹¤ë¥¸ê²½ìš°
 //				&& (gu16_StepMovingPulse == 0) && (gu16_FlowTarget_W != 0) && (abs(gu16_FlowDecide_W-gu16_FlowTarget_W) > 1)))
 				&& (gu16_StepMovingPulse == 0) && (gu16_FlowTarget_W != 0) && (abs(gu16_FlowDecide_W-gu16_FlowTarget_W) >= 1)))
 			{
 				if ((gu8_ModelType_forNational == MODEL_KOREA)
 				&& (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR45_JPX)
 				&& (gi16_HotInSensor.DEGREE > Z_TEMP8)
-				&& (gu16_FlowTarget_W >= gu16_FlowDecide_W))	//	ºĞÀ¯´Â À¯·®ÀÌ ¸¹°Å³ª ÀÔ¼ö¿Âµµ°¡ ³·À» ¶§¿¡¸¸ À¯·®ÄÁÆ®·Ñ
+				&& (gu16_FlowTarget_W >= gu16_FlowDecide_W))	//	ë¶„ìœ ëŠ” ìœ ëŸ‰ì´ ë§ê±°ë‚˜ ì…ìˆ˜ì˜¨ë„ê°€ ë‚®ì„ ë•Œì—ë§Œ ìœ ëŸ‰ì»¨íŠ¸ë¡¤
 				{
 
 				}
-				else if (gu16_FlowDecide_W > gu16_FlowTarget_W)	//		ÇöÀçÀ¯·®ÀÌ ´õ Å« °æ¿ì
+				else if (gu16_FlowDecide_W > gu16_FlowTarget_W)	//		í˜„ì¬ìœ ëŸ‰ì´ ë” í° ê²½ìš°
 				{
-					mu8_StepControl_Value = (U8)((gu16_FlowDecide_W - gu16_FlowTarget_W) / 4);	//			½ºÅÜÁ¦ÇÑÄ¡ °è»ê
+					mu8_StepControl_Value = (U8)((gu16_FlowDecide_W - gu16_FlowTarget_W) / 4);	//			ìŠ¤í…ì œí•œì¹˜ ê³„ì‚°
 
-					if (mu8_StepControl_Value > 4)	//			½ºÅÜÁ¦ÇÑÄ¡°¡ 4º¸´Ù Å« °æ¿ì
+					if (mu8_StepControl_Value > 4)	//			ìŠ¤í…ì œí•œì¹˜ê°€ 4ë³´ë‹¤ í° ê²½ìš°
 					{
-						mu8_StepControl_Value = 4;	//				4·Î Á¦ÇÑ
+						mu8_StepControl_Value = 4;	//				4ë¡œ ì œí•œ
 					}
 
-					if ((gu16_FlowDecide_W - gu16_FlowTarget_W) >= 10)	//			À¯·® Delta·Î ½ºÅÜÁ¦ÇÑÄ¡ °è»ê
+					if ((gu16_FlowDecide_W - gu16_FlowTarget_W) >= 10)	//			ìœ ëŸ‰ Deltaë¡œ ìŠ¤í…ì œí•œì¹˜ ê³„ì‚°
 					{
-						mu8_StepDelta = 10;			//			10º¸´Ù Å«°æ¿ì 10À¸·Î Á¦ÇÑ
+						mu8_StepDelta = 10;			//			10ë³´ë‹¤ í°ê²½ìš° 10ìœ¼ë¡œ ì œí•œ
 					}
 					else
 					{
-						mu8_StepDelta = (U8)(gu16_FlowDecide_W - gu16_FlowTarget_W);	//			À¯·®Delta
+						mu8_StepDelta = (U8)(gu16_FlowDecide_W - gu16_FlowTarget_W);	//			ìœ ëŸ‰Delta
 					}
 
-					gu16_OpenCloseStep_Value = mu8_StepDelta + (5*mu8_StepControl_Value);	//			´İÀ» ½ºÅÜ ±¸ÇÔ
+					gu16_OpenCloseStep_Value = mu8_StepDelta + (5*mu8_StepControl_Value);	//			ë‹«ì„ ìŠ¤í… êµ¬í•¨
 
-					if (gu16_OpenCloseStep_Value < Z_OpenClose_Min)		//			´İÀ» ½ºÅÜÀÌ 4º¸´Ù ÀÛÀº °æ¿ì (½ÇÇèÄ¡, 4º¸´Ù ³·À¸¸é ¹İÀÀ¼Óµµ°¡ ³Ê¹« ´À¸²)
+					if (gu16_OpenCloseStep_Value < Z_OpenClose_Min)		//			ë‹«ì„ ìŠ¤í…ì´ 4ë³´ë‹¤ ì‘ì€ ê²½ìš° (ì‹¤í—˜ì¹˜, 4ë³´ë‹¤ ë‚®ìœ¼ë©´ ë°˜ì‘ì†ë„ê°€ ë„ˆë¬´ ëŠë¦¼)
 					{
-						gu16_OpenCloseStep_Value = Z_OpenClose_Min;		//				ÃÖ¼ÒÄ¡ 4·Î Á¦ÇÑ
+						gu16_OpenCloseStep_Value = Z_OpenClose_Min;		//				ìµœì†Œì¹˜ 4ë¡œ ì œí•œ
 					}
 
-					if (gi16_StepCount > 0)			//			´İÀ» ½ºÅÜÀÌ ÀÖÀ» °æ¿ì
+					if (gi16_StepCount > 0)			//			ë‹«ì„ ìŠ¤í…ì´ ìˆì„ ê²½ìš°
 					{
-						FlowControl_StepMove(STEP_MOTER_CLOSE, gu16_OpenCloseStep_Value);	//			½ºÅÜ Set
+						FlowControl_StepMove(STEP_MOTER_CLOSE, gu16_OpenCloseStep_Value);	//			ìŠ¤í… Set
 					}
 				}
-				else								//			¸ñÇ¥À¯·®ÀÌ ´õ Å« °æ¿ì
+				else								//			ëª©í‘œìœ ëŸ‰ì´ ë” í° ê²½ìš°
 				{
 					mu8_StepControl_Value = (U8)((gu16_FlowTarget_W - gu16_FlowDecide_W) / 4);
 
@@ -143,7 +143,7 @@ void FlowControl(void)
 						gu16_OpenCloseStep_Value = Z_OpenClose_Min;
 					}
 
-					if (gi16_StepCount < 2800)		//	´õ ¿­ ½ºÅÜÀÌ ÀÖÀ» °æ¿ì (¡Ø 3000ÀÌ ÃÊ±âÈ­ÀÌ³ª, ½ºÅ×ÇÎ¸ğÅÍ Æ¯¼º°î¼± »ó 2800Á¤µµ°¡ °¡Àå ÃÖ´ë¿­¸²Ä¡)
+					if (gi16_StepCount < 2800)		//	ë” ì—´ ìŠ¤í…ì´ ìˆì„ ê²½ìš° (â€» 3000ì´ ì´ˆê¸°í™”ì´ë‚˜, ìŠ¤í…Œí•‘ëª¨í„° íŠ¹ì„±ê³¡ì„  ìƒ 2800ì •ë„ê°€ ê°€ì¥ ìµœëŒ€ì—´ë¦¼ì¹˜)
 					{
 						FlowControl_StepMove(STEP_MOTER_OPEN, gu16_OpenCloseStep_Value);
 					}
@@ -151,10 +151,10 @@ void FlowControl(void)
 			}
 		}
 
-		/* ½ºÅÜ by À¯·® °è»ê	*/
+		/* ìŠ¤í… by ìœ ëŸ‰ ê³„ì‚°	*/
 		if ((gu8_WaterSelect == HOT_WATER)
-			&& ((gu8_HotStep == Z_HotStep_02) || ((gu8_TimerFlowCheck_AfterEff == 0) && (gu8_HotStep == Z_HotStep_35)))	//	¿Â¼ö»óÅÂ and À¯·®Ã¼Å©Å¸ÀÌ¸Ó °æ°ú and ÃßÃâ ÁßÀÎ °æ¿ì
-			/*|| (gu8_HotStep == Z_HotStep_02)*/ /*|| (gu8_HotStep == Z_HotStep_3E)*/)		//	ÀçÄ¶¸®ºê·¹ÀÌ¼Ç ¶Ç´Â ÃÊ±âµå·¹ÀÎ
+			&& ((gu8_HotStep == Z_HotStep_02) || ((gu8_TimerFlowCheck_AfterEff == 0) && (gu8_HotStep == Z_HotStep_35)))	//	ì˜¨ìˆ˜ìƒíƒœ and ìœ ëŸ‰ì²´í¬íƒ€ì´ë¨¸ ê²½ê³¼ and ì¶”ì¶œ ì¤‘ì¸ ê²½ìš°
+			/*|| (gu8_HotStep == Z_HotStep_02)*/ /*|| (gu8_HotStep == Z_HotStep_3E)*/)		//	ì¬ìº˜ë¦¬ë¸Œë ˆì´ì…˜ ë˜ëŠ” ì´ˆê¸°ë“œë ˆì¸
 		{
 			if (gi16_StepCount >= 2800)
 			{
@@ -165,14 +165,14 @@ void FlowControl(void)
 				}
 			}
 			if ((gi16_StepCount >= 0) && (gi16_StepCount <= 2800)
-				&& (gu16_FlowDecide_W_BeforeEff != gu16_FlowDecide_W) && (gu16_FlowDecide_W >= 10))	//		½ºÅÜÀÌ 0ÀÌ ¾Æ´Ï°í ÇöÀçÀ¯·®°ú ÀÌÀü À¯·®ÀÌ ´Ù¸¥ °æ¿ì
+				&& (gu16_FlowDecide_W_BeforeEff != gu16_FlowDecide_W) && (gu16_FlowDecide_W >= 10))	//		ìŠ¤í…ì´ 0ì´ ì•„ë‹ˆê³  í˜„ì¬ìœ ëŸ‰ê³¼ ì´ì „ ìœ ëŸ‰ì´ ë‹¤ë¥¸ ê²½ìš°
 			{
-				gu16_StepCount_BeforeEff = (U16)gi16_StepCount;	//			½ºÅÜÄ¡ ÀúÀå
-				if (gu16_StepCount_BeforeEff > 2800)			//			½ºÅÜÄ¡°¡ 3000º¸´Ù Å« °æ¿ì
+				gu16_StepCount_BeforeEff = (U16)gi16_StepCount;	//			ìŠ¤í…ì¹˜ ì €ì¥
+				if (gu16_StepCount_BeforeEff > 2800)			//			ìŠ¤í…ì¹˜ê°€ 3000ë³´ë‹¤ í° ê²½ìš°
 				{
-					gu16_StepCount_BeforeEff = 2800;			//				3000 Á¦ÇÑ
+					gu16_StepCount_BeforeEff = 2800;			//				3000 ì œí•œ
 				}
-				gu16_FlowDecide_W_BeforeEff = gu16_FlowDecide_W;//			ÇöÀçÀ¯·® ÀúÀå
+				gu16_FlowDecide_W_BeforeEff = gu16_FlowDecide_W;//			í˜„ì¬ìœ ëŸ‰ ì €ì¥
 				gu16_StepCount_BeforeEff_forEEPROM.word = gu16_StepCount_BeforeEff;			//@037
 				gu8_FlowDecide_W_BeforeEff_forEEPROM = (U8)gu16_FlowDecide_W_BeforeEff;	//@037
 			}
@@ -180,28 +180,28 @@ void FlowControl(void)
 	}
 }
 
-/// @brief    À¯·® Á¦¾î ÇÔ¼ö
-/// @param    mu8OpenClose : À¯·® Á¦¾î½Ã À¯·Î Open or Close ¹æÇâ
-///           mu16Pulse     : À¯·® Á¦¾î ¸ğÅÍ ÀÌµ¿ Pulse
+/// @brief    ìœ ëŸ‰ ì œì–´ í•¨ìˆ˜
+/// @param    mu8OpenClose : ìœ ëŸ‰ ì œì–´ì‹œ ìœ ë¡œ Open or Close ë°©í–¥
+///           mu16Pulse     : ìœ ëŸ‰ ì œì–´ ëª¨í„° ì´ë™ Pulse
 /// @return   void
 void FlowControl_StepMove(U8 mu8OpenClose, U16 mu16Pulse)
 {
-	if (gu8_Stepping_ZeroBack == 0)					//	½ºÅÜÃÊ±âÈ­ flag clearÀÎ °æ¿ì
+	if (gu8_Stepping_ZeroBack == 0)					//	ìŠ¤í…ì´ˆê¸°í™” flag clearì¸ ê²½ìš°
 	{
-		gu8_StepMotorWay = mu8OpenClose;				//		½ºÅ×ÇÎ¸ğÅÍ ¹æÇâ
-		gu16_StepMovingPulse = mu16Pulse;			//		½ºÅÜ Ä¡
-		gu8_Pps_Control = 0;							//		PPS ¼¼ÆÃ
-		gu8_Step_Cycle = 0;							//		½ºÅÜ ·çÆ¾ ÃÊ±âÈ­
+		gu8_StepMotorWay = mu8OpenClose;				//		ìŠ¤í…Œí•‘ëª¨í„° ë°©í–¥
+		gu16_StepMovingPulse = mu16Pulse;			//		ìŠ¤í… ì¹˜
+		gu8_Pps_Control = 0;							//		PPS ì„¸íŒ…
+		gu8_Step_Cycle = 0;							//		ìŠ¤í… ë£¨í‹´ ì´ˆê¸°í™”
 	}
-	else											//	½ºÅ×ÇÎ¸ğÅÍ ÃÊ±âÈ­ ÁßÀÎ °æ¿ì
+	else											//	ìŠ¤í…Œí•‘ëª¨í„° ì´ˆê¸°í™” ì¤‘ì¸ ê²½ìš°
 	{
-		gu8_StepMotorWay_Backup = mu8OpenClose;		//		µ¥ÀÌÅÍ back up (ÃÊ±âÈ­ ¿Ï·á ÈÄ ÀÌµ¿)
-		gu16_StepMovingPulse_Backup = mu16Pulse;	//		µ¥ÀÌÅÍ back up (ÃÊ±âÈ­ ¿Ï·á ÈÄ ÀÌµ¿)
+		gu8_StepMotorWay_Backup = mu8OpenClose;		//		ë°ì´í„° back up (ì´ˆê¸°í™” ì™„ë£Œ í›„ ì´ë™)
+		gu16_StepMovingPulse_Backup = mu16Pulse;	//		ë°ì´í„° back up (ì´ˆê¸°í™” ì™„ë£Œ í›„ ì´ë™)
 	}
 }
 
-/// @brief    ½ºÅÜ ¸ñÇ¥ Á¦¾î ÇÔ¼ö
-/// @param    mu16Pulse_Target : ÇöÀç ½ºÅÜ ´ëºñ ¸ñÇ¥ ½ºÅÜ °è»ê ¹× Áö½Ã
+/// @brief    ìŠ¤í… ëª©í‘œ ì œì–´ í•¨ìˆ˜
+/// @param    mu16Pulse_Target : í˜„ì¬ ìŠ¤í… ëŒ€ë¹„ ëª©í‘œ ìŠ¤í… ê³„ì‚° ë° ì§€ì‹œ
 /// @return   void
 void FlowControl_StepTarget(U16 mu16Pulse_Target)
 {
@@ -232,60 +232,60 @@ void FlowControl_StepTarget(U16 mu16Pulse_Target)
 	}
 }
 
-/// @brief    Step Motor À§Ä¡ º¯°æ(Move) ÇÔ¼ö(1ms)
+/// @brief    Step Motor ìœ„ì¹˜ ë³€ê²½(Move) í•¨ìˆ˜(1ms)
 /// @param    void
 /// @return   void
 void StepMotorMove(void)
 {
-	if ((gu8_Stepping_ZeroBack == 0) && (gu16_StepMovingPulse_Backup != 0))	//	½ºÅ×ÇÎ¸ğÅÍ ÃÊ±âÈ­ ¿Ï·á ÈÄ back up µ¥ÀÌÅÍ ÀÖÀ» °æ¿ì
+	if ((gu8_Stepping_ZeroBack == 0) && (gu16_StepMovingPulse_Backup != 0))	//	ìŠ¤í…Œí•‘ëª¨í„° ì´ˆê¸°í™” ì™„ë£Œ í›„ back up ë°ì´í„° ìˆì„ ê²½ìš°
 	{
-		gu8_StepMotorWay = gu8_StepMotorWay_Backup;             //		½ºÅ×ÇÎ¸ğÅÍ ¹æÇâ
-		gu16_StepMovingPulse = gu16_StepMovingPulse_Backup;   //		½ºÅÜ Ä¡
+		gu8_StepMotorWay = gu8_StepMotorWay_Backup;             //		ìŠ¤í…Œí•‘ëª¨í„° ë°©í–¥
+		gu16_StepMovingPulse = gu16_StepMovingPulse_Backup;   //		ìŠ¤í… ì¹˜
 		gu8_StepMotorWay_Backup = 0;                           //
 		gu16_StepMovingPulse_Backup = 0;                      //
 	}
 
-	if (gu16_StepMovingPulse != 0)					// 	Step MotorÀÇ ÀÌµ¿°ªÀÌ ÀÖ´Â °æ¿ì
+	if (gu16_StepMovingPulse != 0)					// 	Step Motorì˜ ì´ë™ê°’ì´ ìˆëŠ” ê²½ìš°
 	{
-		if (++gu8_Pps_Control < Z_SteppingMotor_TorqueUp_Count)   // 		PPS Á¶Àı (5È¸±îÁö´Â 2ms¸¶´Ù Á¦¾î, ±× ÀÌÈÄ 1ms¸¶´Ù Á¦¾î. ÅäÅ©¸¦ ³ôÀÌ±â À§ÇÔ)
+		if (++gu8_Pps_Control < Z_SteppingMotor_TorqueUp_Count)   // 		PPS ì¡°ì ˆ (5íšŒê¹Œì§€ëŠ” 2msë§ˆë‹¤ ì œì–´, ê·¸ ì´í›„ 1msë§ˆë‹¤ ì œì–´. í† í¬ë¥¼ ë†’ì´ê¸° ìœ„í•¨)
 		{
-			gu8Move_PPS = 2;						//			2ms¸¶´Ù Á¦¾î
+			gu8Move_PPS = 2;						//			2msë§ˆë‹¤ ì œì–´
 		}
 		else
 		{
 			gu8_Pps_Control = Z_SteppingMotor_TorqueUp_Count + 1;
-			gu8Move_PPS = 1;						//			1ms¸¶´Ù Á¦¾î
+			gu8Move_PPS = 1;						//			1msë§ˆë‹¤ ì œì–´
 		}
 
-		if (++gu8Cnt_PPS >= gu8Move_PPS)			//		PPS ¼º¸³ ½Ã
+		if (++gu8Cnt_PPS >= gu8Move_PPS)			//		PPS ì„±ë¦½ ì‹œ
 		{
-			gu8Cnt_PPS = 0;							//			Ä«¿îÆ® ÃÊ±âÈ­
+			gu8Cnt_PPS = 0;							//			ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
 
-			gu16_StepMovingPulse--;					//			¿òÁ÷ÀÏ ½ºÅÜ °¨¼Ò
-			StepMotor_Control();    				//			½ºÅ×ÇÎ¸ğÅÍ Á¦¾î
+			gu16_StepMovingPulse--;					//			ì›€ì§ì¼ ìŠ¤í… ê°ì†Œ
+			StepMotor_Control();    				//			ìŠ¤í…Œí•‘ëª¨í„° ì œì–´
 
-			if (++gu8_Step_Cycle >= 8)				//			8 Cycle ·çÆ¾ ÃÊ°úÀÎ °æ¿ì
+			if (++gu8_Step_Cycle >= 8)				//			8 Cycle ë£¨í‹´ ì´ˆê³¼ì¸ ê²½ìš°
 			{
-				gu8_Step_Cycle = 0;					//				·çÆ¾Ä«¿îÅÍ ÃÊ±âÈ­
+				gu8_Step_Cycle = 0;					//				ë£¨í‹´ì¹´ìš´í„° ì´ˆê¸°í™”
 			}
 		}
 	}
-	else											// 	Step MotorÀÇ ÀÌµ¿°ªÀÌ ¾ø´Â °æ¿ì
+	else											// 	Step Motorì˜ ì´ë™ê°’ì´ ì—†ëŠ” ê²½ìš°
 	{
-		gu16_StepMovingPulse = 0;					//		µ¥ÀÌÅÍ ÃÊ±âÈ­
-		gu8_Pps_Control = 0;							//		µ¥ÀÌÅÍ ÃÊ±âÈ­
-		gu8_Step_Cycle = 0;							//		µ¥ÀÌÅÍ ÃÊ±âÈ­
-		gu8_StepMotorWay = STEP_MOTER_OPEN;			//		OPENÀ¸·Î ¼ÂÆÃ
+		gu16_StepMovingPulse = 0;					//		ë°ì´í„° ì´ˆê¸°í™”
+		gu8_Pps_Control = 0;							//		ë°ì´í„° ì´ˆê¸°í™”
+		gu8_Step_Cycle = 0;							//		ë°ì´í„° ì´ˆê¸°í™”
+		gu8_StepMotorWay = STEP_MOTER_OPEN;			//		OPENìœ¼ë¡œ ì…‹íŒ…
 
-		if (gu8_Stepping_ZeroBack == 1)				//		OPEN ÃÊ±âÈ­ Áö½Ã ÀÖ´Â °æ¿ì
+		if (gu8_Stepping_ZeroBack == 1)				//		OPEN ì´ˆê¸°í™” ì§€ì‹œ ìˆëŠ” ê²½ìš°
 		{
 			gu8_Stepping_ZeroBack = 0;				//			Flag Clear
-			gi16_StepCount = ZERO_BACK;				//			½ºÅÜÄ¡ ÃÖ´ë OPENÄ¡·Î set
+			gi16_StepCount = ZERO_BACK;				//			ìŠ¤í…ì¹˜ ìµœëŒ€ OPENì¹˜ë¡œ set
 		}
-		else if (gu8_Stepping_ZeroBack == 2)          //		CLOSE ÃÊ±âÈ­ Áö½Ã ÀÖ´Â °æ¿ì
+		else if (gu8_Stepping_ZeroBack == 2)          //		CLOSE ì´ˆê¸°í™” ì§€ì‹œ ìˆëŠ” ê²½ìš°
 		{
 			gu8_Stepping_ZeroBack = 0;                //			Flag Clear
-			gi16_StepCount = 0;                     //			½ºÅÜÄ¡ ÃÖ´ë CLOSEÄ¡·Î set
+			gi16_StepCount = 0;                     //			ìŠ¤í…ì¹˜ ìµœëŒ€ CLOSEì¹˜ë¡œ set
 		}
 		else
 		{
@@ -295,24 +295,24 @@ void StepMotorMove(void)
 			}
 		}
 
-		StepMotor_Stop();							//		½ºÅÜÁ¦¾î Á¤Áö (¿©ÀÚ OFF)
+		StepMotor_Stop();							//		ìŠ¤í…ì œì–´ ì •ì§€ (ì—¬ì OFF)
 	}
 }
 
-/// @brief    Step Motor Á¦¾î ÇÔ¼ö
+/// @brief    Step Motor ì œì–´ í•¨ìˆ˜
 /// @param    void
 /// @return   void
 void StepMotor_Control(void)
 {
 	U8 mu8Step_Order = 0;
 
-	if (gu8_StepMotorWay == STEP_MOTER_CLOSE)		//	CLOSE Áö½Ã ÀÎ °æ¿ì
+	if (gu8_StepMotorWay == STEP_MOTER_CLOSE)		//	CLOSE ì§€ì‹œ ì¸ ê²½ìš°
 	{
-		mu8Step_Order = au8Step_Close[gu8_Step_Cycle];	//		CLOSE ·çÆ¾
+		mu8Step_Order = au8Step_Close[gu8_Step_Cycle];	//		CLOSE ë£¨í‹´
 	}
-	else											//	OPEN Áö½Ã
+	else											//	OPEN ì§€ì‹œ
 	{
-		mu8Step_Order = au8Step_Open[gu8_Step_Cycle];	//		OPEN ·çÆ¾
+		mu8Step_Order = au8Step_Open[gu8_Step_Cycle];	//		OPEN ë£¨í‹´
 	}
 
 	if (gu8_StepMotorWay == STEP_MOTER_CLOSE)

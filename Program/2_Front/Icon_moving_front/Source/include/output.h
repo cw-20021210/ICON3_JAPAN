@@ -1,7 +1,7 @@
 /// @file   output.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Ãâ·Â Ã³¸® file
+/// @brief  ì¶œë ¥ ì²˜ë¦¬ file
 
 #ifdef OUTPUT_C
 	#define 	EXTERN
@@ -13,21 +13,21 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_OUTPUT()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_OUTPUT()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_OUTPUT()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_OUTPUT()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_OUTPUT()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_OUTPUT()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_OUTPUT()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_OUTPUT()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_OUTPUT()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_OUTPUT()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_OUTPUT()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_OUTPUT()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_OUTPUT()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_OUTPUT()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_OUTPUT()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_OUTPUT()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 

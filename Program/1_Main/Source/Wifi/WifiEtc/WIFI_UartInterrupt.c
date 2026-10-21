@@ -59,7 +59,7 @@ void InitializeWifiUart ( void )
 
 void IntWifiUartRx ( U8 mu8RxData )
 {
-    if ( GetWifiControlStatus( STATUS_CON_POWER ) != ON ) //serial 湲덉�?
+    if ( GetWifiControlStatus( STATUS_CON_POWER ) != ON ) //serial 疫뀀뜆占?
     {   /* WIFI ON $)C?!88 RxC38. */
         return;
     }

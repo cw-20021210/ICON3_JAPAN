@@ -1,7 +1,7 @@
 /// @file   display.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Ç¥½Ã µ¿ÀÛ Á¦¾î °ü·Ã Çì´õ file
+/// @brief  í‘œì‹œ ë™ì‘ ì œì–´ ê´€ë ¨ í—¤ë” file
 
 #ifdef DISPLAY_C
 	#define 	EXTERN
@@ -13,24 +13,24 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_DISPLAY()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1ms_DISPLAY()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10ms_DISPLAY()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_DISPLAY()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerFlic);		\
 									TDEC(gu8_TimerFlic_S2);		\
 								}
-#define	TDEC_100ms_DISPLAY()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_DISPLAY()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerFOTA_Display);	\
 								}
-#define	TDEC_1s_DISPLAY()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_DISPLAY()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_DISPLAY()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10s_DISPLAY()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1min_DISPLAY()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_DISPLAY()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_DISPLAY()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_DISPLAY()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_DISPLAY()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_DISPLAY()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -38,9 +38,9 @@
  Constant Definition
  ==============================================================================*/
 #ifndef _FRONT_LED_UP_
-#define Z_SOURCE_NUM 		(7)						//	Source °¹¼ö
+#define Z_SOURCE_NUM 		(7)						//	Source ê°¯ìˆ˜
 #else
-#define Z_SOURCE_NUM 		(3)						//	Source °¹¼ö
+#define Z_SOURCE_NUM 		(3)						//	Source ê°¯ìˆ˜
 #endif
 
 #define Z_DisplayPWM		(50)
@@ -155,7 +155,7 @@ EXTERN    const U8 DT_7seg[]							//	7segment
 	0x6D,                                               // 'S' 23 110 1101
 	0x78,                                               // 't' 24 111 1000
 	0x3E,                                               // 'U' 25 011 1110
-	0x80,                                               // 'DOT' 26 ¹Ì»ç¿ë (Dot ¾øÀ½)
+	0x80,                                               // 'DOT' 26 ë¯¸ì‚¬ìš© (Dot ì—†ìŒ)
 	0x40,                                               // 'BAR' 27 100 0000
 	0x00,                                               // 'X' 28
 	0x39,                                               // 'C' 29
@@ -217,7 +217,7 @@ EXTERN    const U8 DT_7seg[]							//	7segment
 #define Z_NUM_SEG_g (40)
 
 
-EXTERN    const U8 DT_Cont_OXX[20]						//	7-Segment ¿¬¼ÓÃßÃâ ¶Ç´Â ÁøÇà»óÅ× Cycle
+EXTERN    const U8 DT_Cont_OXX[20]						//	7-Segment ì—°ì†ì¶”ì¶œ ë˜ëŠ” ì§„í–‰ìƒí…Œ Cycle
 #ifdef    GLOBAL_VARIABLE_DEFINE
 = {
 	0b00000000,			//	1
@@ -244,7 +244,7 @@ EXTERN    const U8 DT_Cont_OXX[20]						//	7-Segment ¿¬¼ÓÃßÃâ ¶Ç´Â ÁøÇà»óÅ× Cycl
 #endif
 ;
 
-EXTERN    const U8 DT_Cont_XOX[20]						//	7-Segment ¿¬¼ÓÃßÃâ ¶Ç´Â ÁøÇà»óÅ× Cycle
+EXTERN    const U8 DT_Cont_XOX[20]						//	7-Segment ì—°ì†ì¶”ì¶œ ë˜ëŠ” ì§„í–‰ìƒí…Œ Cycle
 #ifdef    GLOBAL_VARIABLE_DEFINE
 = {
 	0b00000000,			//	1
@@ -271,7 +271,7 @@ EXTERN    const U8 DT_Cont_XOX[20]						//	7-Segment ¿¬¼ÓÃßÃâ ¶Ç´Â ÁøÇà»óÅ× Cycl
 #endif
 ;
 
-EXTERN    const U8 DT_Cont_XXO[20]						//	7-Segment ¿¬¼ÓÃßÃâ ¶Ç´Â ÁøÇà»óÅ× Cycle
+EXTERN    const U8 DT_Cont_XXO[20]						//	7-Segment ì—°ì†ì¶”ì¶œ ë˜ëŠ” ì§„í–‰ìƒí…Œ Cycle
 #ifdef    GLOBAL_VARIABLE_DEFINE
 = {
 	0b00000000,			//	1
@@ -298,11 +298,11 @@ EXTERN    const U8 DT_Cont_XXO[20]						//	7-Segment ¿¬¼ÓÃßÃâ ¶Ç´Â ÁøÇà»óÅ× Cycl
 #endif
 ;
 
-EXTERN volatile U8 gu8_TimerFlic;					//	Á¡¸ê Å¸ÀÌ¸Ó	<1s/10ms>
-EXTERN volatile U8 gu8_TimerFlic_S2;				//	Á¡¸ê Å¸ÀÌ¸Ó	<1.5s/10ms>
+EXTERN volatile U8 gu8_TimerFlic;					//	ì ë©¸ íƒ€ì´ë¨¸	<1s/10ms>
+EXTERN volatile U8 gu8_TimerFlic_S2;				//	ì ë©¸ íƒ€ì´ë¨¸	<1.5s/10ms>
 
-EXTERN volatile U8 F_LED_Flicker;					//	LED Á¡¸ê ÇÊ¿ä flag
-EXTERN volatile U8 F_LED_Flicker_S2;				//	LED Á¡¸ê ÇÊ¿ä flag
+EXTERN volatile U8 F_LED_Flicker;					//	LED ì ë©¸ í•„ìš” flag
+EXTERN volatile U8 F_LED_Flicker_S2;				//	LED ì ë©¸ í•„ìš” flag
 
 EXTERN U8 gu8_DisplayPWM_Count_1ms;
 
@@ -361,13 +361,13 @@ EXTERN Display_Control DisplayControl_Data[DisplayNum_Max]
 #endif
 ;
 
-EXTERN volatile U8 gu8_ComPortChange;				//	MATRIX COM ÀıÃ¼ µ¥ÀÌÅÍ
-EXTERN volatile BYTE_BIT gu8_SegData[3];			//	MATRIX µ¥ÀÌÅÍ
+EXTERN volatile U8 gu8_ComPortChange;				//	MATRIX COM ì ˆì²´ ë°ì´í„°
+EXTERN volatile BYTE_BIT gu8_SegData[3];			//	MATRIX ë°ì´í„°
 	#define SEG_OXX (gu8_SegData[0])
 	#define SEG_XOX (gu8_SegData[1])
 	#define SEG_XXO (gu8_SegData[2])
 
-EXTERN volatile BYTE_BIT gu8_NewSegData[Z_SOURCE_NUM];			//	MATRIX µ¥ÀÌÅÍ
+EXTERN volatile BYTE_BIT gu8_NewSegData[Z_SOURCE_NUM];			//	MATRIX ë°ì´í„°
 
 /*==============================================================================
  function Definition

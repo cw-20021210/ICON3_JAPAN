@@ -18,60 +18,60 @@
 #define DEFAULT_VOICE_VOLUME_LEVEL 1
 
 #define SOUND_TYPE_0           0   // Type 0 - Sound Type 1, Beep x
-#define SOUND_TYPE_1           1   // Type 1 - Sound Type 1, Beep x (¹«À½)
-#define SOUND_TYPE_2           2   // Type 2 - Sound Type 1, Beep O (È¿°úÀ½)
-#define SOUND_TYPE_3           3   // Type 3 - Sound Type 2, Beep O (¾È³»¸ðµå)
+#define SOUND_TYPE_1           1   // Type 1 - Sound Type 1, Beep x (ë¬´ìŒ)
+#define SOUND_TYPE_2           2   // Type 2 - Sound Type 1, Beep O (íš¨ê³¼ìŒ)
+#define SOUND_TYPE_3           3   // Type 3 - Sound Type 2, Beep O (ì•ˆë‚´ëª¨ë“œ)
 
 #define MK_COMMAND 0x8000
 
 /*NXD Command*/
 #define VOICE_COMMAND_ADDRESS_0 0xE000
 
-// À½¼º¾È³»
-#define VOICE_COMMAND_VOLUME_5  0x0024  /* 36 */        // ¢º NUVOTON Volume 7
-#define VOICE_COMMAND_VOLUME_4  0x0027  /* 39 */        // ¢º NUVOTON Volume 6
-#define VOICE_COMMAND_VOLUME_3  0x002A  /* 42 */        // ¢º NUVOTON Volume 5
-#define VOICE_COMMAND_VOLUME_2  0x0030  /* 48 */        // ¢º NUVOTON Volume 4
-#define VOICE_COMMAND_VOLUME_1  0x0036  /* 54 */        // ¢º NUVOTON Volume 3
+// ìŒì„±ì•ˆë‚´
+#define VOICE_COMMAND_VOLUME_5  0x0024  /* 36 */        // â–¶ NUVOTON Volume 7
+#define VOICE_COMMAND_VOLUME_4  0x0027  /* 39 */        // â–¶ NUVOTON Volume 6
+#define VOICE_COMMAND_VOLUME_3  0x002A  /* 42 */        // â–¶ NUVOTON Volume 5
+#define VOICE_COMMAND_VOLUME_2  0x0030  /* 48 */        // â–¶ NUVOTON Volume 4
+#define VOICE_COMMAND_VOLUME_1  0x0036  /* 54 */        // â–¶ NUVOTON Volume 3
 
-// È¿°úÀ½
-#define BEEP_COMMAND_VOLUME_5  0x0024  /* 36 */        // ¢º NUVOTON Volume 7
-#define BEEP_COMMAND_VOLUME_4  0x0027  /* 39 */        // ¢º NUVOTON Volume 6
-#define BEEP_COMMAND_VOLUME_3  0x002A  /* 42 */        // ¢º NUVOTON Volume 5
-#define BEEP_COMMAND_VOLUME_2  0x0030  /* 48 */        // ¢º NUVOTON Volume 4
-#define BEEP_COMMAND_VOLUME_1  0x0036  /* 54 */        // ¢º NUVOTON Volume 3
+// íš¨ê³¼ìŒ
+#define BEEP_COMMAND_VOLUME_5  0x0024  /* 36 */        // â–¶ NUVOTON Volume 7
+#define BEEP_COMMAND_VOLUME_4  0x0027  /* 39 */        // â–¶ NUVOTON Volume 6
+#define BEEP_COMMAND_VOLUME_3  0x002A  /* 42 */        // â–¶ NUVOTON Volume 5
+#define BEEP_COMMAND_VOLUME_2  0x0030  /* 48 */        // â–¶ NUVOTON Volume 4
+#define BEEP_COMMAND_VOLUME_1  0x0036  /* 54 */        // â–¶ NUVOTON Volume 3
 
-//// À½¼º¾È³»
-//#define VOICE_COMMAND_VOLUME_5  0x001F  /* 31 */       // ¢º NUVOTON Volume 9
-//#define VOICE_COMMAND_VOLUME_4  0x0021  /* 33 */       // ¢º NUVOTON Volume 8
-//#define VOICE_COMMAND_VOLUME_3  0x0024  /* 36 */       // ¢º NUVOTON Volume 7
-//#define VOICE_COMMAND_VOLUME_2  0x0027  /* 39 */       // ¢º NUVOTON Volume 6
-//#define VOICE_COMMAND_VOLUME_1  0x002A  /* 42 */       // ¢º NUVOTON Volume 5
+//// ìŒì„±ì•ˆë‚´
+//#define VOICE_COMMAND_VOLUME_5  0x001F  /* 31 */       // â–¶ NUVOTON Volume 9
+//#define VOICE_COMMAND_VOLUME_4  0x0021  /* 33 */       // â–¶ NUVOTON Volume 8
+//#define VOICE_COMMAND_VOLUME_3  0x0024  /* 36 */       // â–¶ NUVOTON Volume 7
+//#define VOICE_COMMAND_VOLUME_2  0x0027  /* 39 */       // â–¶ NUVOTON Volume 6
+//#define VOICE_COMMAND_VOLUME_1  0x002A  /* 42 */       // â–¶ NUVOTON Volume 5
 //
-//// È¿°úÀ½
-//#define BEEP_COMMAND_VOLUME_5  0x001F  /* 31 */        // ¢º NUVOTON Volume 9
-//#define BEEP_COMMAND_VOLUME_4  0x0024  /* 36 */        // ¢º NUVOTON Volume 7
-//#define BEEP_COMMAND_VOLUME_3  0x002A  /* 42 */        // ¢º NUVOTON Volume 5
-//#define BEEP_COMMAND_VOLUME_2  0x0030  /* 48 */        // ¢º NUVOTON Volume 4
-//#define BEEP_COMMAND_VOLUME_1  0x0036  /* 54 */        // ¢º NUVOTON Volume 3
+//// íš¨ê³¼ìŒ
+//#define BEEP_COMMAND_VOLUME_5  0x001F  /* 31 */        // â–¶ NUVOTON Volume 9
+//#define BEEP_COMMAND_VOLUME_4  0x0024  /* 36 */        // â–¶ NUVOTON Volume 7
+//#define BEEP_COMMAND_VOLUME_3  0x002A  /* 42 */        // â–¶ NUVOTON Volume 5
+//#define BEEP_COMMAND_VOLUME_2  0x0030  /* 48 */        // â–¶ NUVOTON Volume 4
+//#define BEEP_COMMAND_VOLUME_1  0x0036  /* 54 */        // â–¶ NUVOTON Volume 3
 
-//// À½¼º¾È³»
-//#define VOICE_COMMAND_VOLUME_5  0x0019  /* -9 dB */       // ¢º NUVOTON Volume 8
-//#define VOICE_COMMAND_VOLUME_4  0x0023  /* -12 dB */      // ¢º NUVOTON Volume 7
-//#define VOICE_COMMAND_VOLUME_3  0x002D  /* -15 dB */      // ¢º NUVOTON Volume 6
-//#define VOICE_COMMAND_VOLUME_2  0x0037  /* -18 dB */      // ¢º NUVOTON Volume 5
-//#define VOICE_COMMAND_VOLUME_1  0x0041  /* -18 dB */      // ¢º NUVOTON Volume 4
-////#define VOICE_COMMAND_VOLUME_1  0x004B  /* -18 dB */      // ¢º NUVOTON Volume 3
-////#define VOICE_COMMAND_VOLUME_1  0x0055  /* -18 dB */      // ¢º NUVOTON Volume 4
+//// ìŒì„±ì•ˆë‚´
+//#define VOICE_COMMAND_VOLUME_5  0x0019  /* -9 dB */       // â–¶ NUVOTON Volume 8
+//#define VOICE_COMMAND_VOLUME_4  0x0023  /* -12 dB */      // â–¶ NUVOTON Volume 7
+//#define VOICE_COMMAND_VOLUME_3  0x002D  /* -15 dB */      // â–¶ NUVOTON Volume 6
+//#define VOICE_COMMAND_VOLUME_2  0x0037  /* -18 dB */      // â–¶ NUVOTON Volume 5
+//#define VOICE_COMMAND_VOLUME_1  0x0041  /* -18 dB */      // â–¶ NUVOTON Volume 4
+////#define VOICE_COMMAND_VOLUME_1  0x004B  /* -18 dB */      // â–¶ NUVOTON Volume 3
+////#define VOICE_COMMAND_VOLUME_1  0x0055  /* -18 dB */      // â–¶ NUVOTON Volume 4
 //
-//// È¿°úÀ½
-//#define BEEP_COMMAND_VOLUME_5  0x0023  /* -12 dB */       // ¢º NUVOTON Volume 7
-//#define BEEP_COMMAND_VOLUME_4  0x002D  /* -18 dB */       // ¢º NUVOTON Volume 6
-//#define BEEP_COMMAND_VOLUME_3  0x0037  /* -24 dB */       // ¢º NUVOTON Volume 5
-//#define BEEP_COMMAND_VOLUME_2  0x0041  /* -30 dB */       // ¢º NUVOTON Volume 4
-//#define BEEP_COMMAND_VOLUME_1  0x004B  /* -30 dB */       // ¢º NUVOTON Volume 3
-////#define BEEP_COMMAND_VOLUME_1  0x0055  /* -30 dB */       // ¢º NUVOTON Volume 2
-////#define BEEP_COMMAND_VOLUME_1  0x005F  /* -30 dB */       // ¢º NUVOTON Volume 1
+//// íš¨ê³¼ìŒ
+//#define BEEP_COMMAND_VOLUME_5  0x0023  /* -12 dB */       // â–¶ NUVOTON Volume 7
+//#define BEEP_COMMAND_VOLUME_4  0x002D  /* -18 dB */       // â–¶ NUVOTON Volume 6
+//#define BEEP_COMMAND_VOLUME_3  0x0037  /* -24 dB */       // â–¶ NUVOTON Volume 5
+//#define BEEP_COMMAND_VOLUME_2  0x0041  /* -30 dB */       // â–¶ NUVOTON Volume 4
+//#define BEEP_COMMAND_VOLUME_1  0x004B  /* -30 dB */       // â–¶ NUVOTON Volume 3
+////#define BEEP_COMMAND_VOLUME_1  0x0055  /* -30 dB */       // â–¶ NUVOTON Volume 2
+////#define BEEP_COMMAND_VOLUME_1  0x005F  /* -30 dB */       // â–¶ NUVOTON Volume 1
 
 #define VOICE_COMMAND_VOLUME_INITIAL    0xE121     /* -9 dB */
 #define VOICE_COMMAND_VOLUME_MINIUM     0xE100
@@ -81,7 +81,7 @@
 /*Repeat: 1 time play*/
 #define VOICE_COMMAND_STOP 0xE210
 
-#define VOICE_COMMAND_CONTROL3 0xE305 /*Disable, ºñµ¿±â, 18bit, disable*/
+#define VOICE_COMMAND_CONTROL3 0xE305 /*Disable, ë¹„ë™ê¸°, 18bit, disable*/
 
 #define VOICE_COMMAND_ADDRESS_256 0xE400
 #define VOICE_COMMAND_ADDRESS_512 0xE401
@@ -91,108 +91,108 @@
 
 
 //==============================================================
-//	À½¼º ¸®½ºÆ®
+//	ìŒì„± ë¦¬ìŠ¤íŠ¸
 //==============================================================
 
 
-#define VOICE_CUP_SENSOR_ERROR        		(0x39)      // ÄÅ °¨Áö ¼¾¼­ ÀÌ»óÀÌ °¨ÁöµÇ¾ú½À´Ï´Ù. ¾ÆÀÌ¿ÀÄÉ¾î ¾Û°¡ÀÌµå¸¦ È®ÀÎÇØÁÖ½Ã°Å³ª Áõ»óÀÌ ¹Ýº¹µÇ½Ã¸é ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä.
+#define VOICE_CUP_SENSOR_ERROR        		(0x39)      // ì»µ ê°ì§€ ì„¼ì„œ ì´ìƒì´ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì•„ì´ì˜¤ì¼€ì–´ ì•±ê°€ì´ë“œë¥¼ í™•ì¸í•´ì£¼ì‹œê±°ë‚˜ ì¦ìƒì´ ë°˜ë³µë˜ì‹œë©´ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”.
 
-#define VOICE_EW_START                		(0x58)      // ÄÚ¿þÀÌ »ì±Õ ½Ã½ºÅÛÀ¸·Î À¯·Î¸¦ ±ú²ýÇÏ°í ¾ÈÀüÇÏ°Ô »ì±Õ ÁßÀÔ´Ï´Ù.
+#define VOICE_EW_START                		(0x58)      // ì½”ì›¨ì´ ì‚´ê·  ì‹œìŠ¤í…œìœ¼ë¡œ ìœ ë¡œë¥¼ ê¹¨ë—í•˜ê³  ì•ˆì „í•˜ê²Œ ì‚´ê·  ì¤‘ìž…ë‹ˆë‹¤.
 
-// Ãß°¡
-#define VOICE_PRE_HEATING             		(0x3F)      // 	(¡Ø±¹³»Çâ¿£ ¾øÀ½ ÁÖÀÇ)¿Â¼ö ¿Âµµ¸¦ ¸ÂÃß°í ÀÖ½À´Ï´Ù. Àá½Ã¸¸ ±â´Ù·ÁÁÖ¼¼¿ä.
-#define VOICE_FILTER_OFF			   		(0x8A)      //  (¡Ø±¹³»Çâ¿£ ¾øÀ½ ÁÖÀÇ) ÇÊÅÍ°¡ ºüÁ³½À´Ï´Ù.
-#define VOICE_FILTER_ON			   			(0x8B)      //  (¡Ø±¹³»Çâ¿£ ¾øÀ½ ÁÖÀÇ) ÇÊÅÍ°¡ °áÇÕµÇ¾ú½À´Ï´Ù.
-#define VOICE_FLOWFAUCET_OFF		   		(0x8C)      //  (¡Ø±¹³»Çâ¿£ ¾øÀ½ ÁÖÀÇ) À¯·Î¸ðµâÀÌ ºüÁ³½À´Ï´Ù.
-#define VOICE_FLOWFAUCET_ON			   		(0x8D)      //  (¡Ø±¹³»Çâ¿£ ¾øÀ½ ÁÖÀÇ) À¯·Î¸ðµâÀÌ °áÇÕµÇ¾ú½À´Ï´Ù.
+// ì¶”ê°€
+#define VOICE_PRE_HEATING             		(0x3F)      // 	(â€»êµ­ë‚´í–¥ì—” ì—†ìŒ ì£¼ì˜)ì˜¨ìˆ˜ ì˜¨ë„ë¥¼ ë§žì¶”ê³  ìžˆìŠµë‹ˆë‹¤. ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.
+#define VOICE_FILTER_OFF			   		(0x8A)      //  (â€»êµ­ë‚´í–¥ì—” ì—†ìŒ ì£¼ì˜) í•„í„°ê°€ ë¹ ì¡ŒìŠµë‹ˆë‹¤.
+#define VOICE_FILTER_ON			   			(0x8B)      //  (â€»êµ­ë‚´í–¥ì—” ì—†ìŒ ì£¼ì˜) í•„í„°ê°€ ê²°í•©ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_FLOWFAUCET_OFF		   		(0x8C)      //  (â€»êµ­ë‚´í–¥ì—” ì—†ìŒ ì£¼ì˜) ìœ ë¡œëª¨ë“ˆì´ ë¹ ì¡ŒìŠµë‹ˆë‹¤.
+#define VOICE_FLOWFAUCET_ON			   		(0x8D)      //  (â€»êµ­ë‚´í–¥ì—” ì—†ìŒ ì£¼ì˜) ìœ ë¡œëª¨ë“ˆì´ ê²°í•©ë˜ì—ˆìŠµë‹ˆë‹¤.
 
-/*	icon 2.0 Ãß°¡	³¡		*/
-
-
-
-#define VOICE_INSTALL           		  	(211)      // ¾È³çÇÏ¼¼¿ä. °í°´´Ô. ÄÚ¿þÀÌ Á¤¼ö±âÀÇ ¼³Ä¡¸¦ µµ¿Íµå¸®°Ú½À´Ï´Ù. ÃßÃâ ¹öÆ°À» ´©¸£½Ã¸é ¼³Ä¡¸¦ ½ÃÀÛÇÏ°Ú½À´Ï´Ù.
-#define VOICE_FLUSHING_START     		  	(212)      // »õ Á¤¼ö±â Á¦Ç°¿¡ ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇØ ÁØºñÁßÀÔ´Ï´Ù.
-#define VOICE_FLUSHING_COMPLETE  		  	(213)      // ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇÑ ÁØºñ°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.
-#define VOICE_CHANGE_FILTER           		(214)      //	ÇÊÅÍ¸¦ ±³Ã¼ÇÏ¼Ì³ª¿ä? ±³Ã¼ÇÏ¼Ì´Ù¸é ¹è¼öÈ£½º¸¦ ¿¬°áÇÏ½Ã°Å³ª ¾à 5¸®ÅÍÀÇ Å«±×¸©À» ÁØºñÇØÁÖ¼¼¿ä. ÃßÃâ¹öÆ°À» ´©¸£½Ã¸é ±ú²ýÇÑ ¹°À» À§ÇÑ ÁØºñ °úÁ¤ÀÌ ½ÃÀÛµË´Ï´Ù. ±³Ã¼ÇÏÁö ¾ÊÀ¸¼Ì´Ù¸é '³Ã¼ö' ¹öÆ°À» ´­·¯ ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_FILTER_FLUSHING				(215)		//	±³Ã¼ÇÏ½Å »õ ÇÊÅÍ·Î ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇØ ÁØºñ Áß¿¡ ÀÖ½À´Ï´Ù. Àá½Ã¸¸ ±â´Ù·Á ÁÖ¼¼¿ä.
-#define VOICE_FILTER_FLOWFAUCET_FLUSHING	(216)		//	±³Ã¼ÇÏ½Å »õ ÇÊÅÍ¿Í À¯·ÎÆÄ¿ì¼ÂÀ¸·Î ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇØ ÁØºñ Áß¿¡ ÀÖ½À´Ï´Ù. Àá½Ã¸¸ ±â´Ù·Á ÁÖ¼¼¿ä.
-#define VOICE_CHANGE_FLOWFAUCET           	(217)		//	À¯·ÎÆÄ¿ì¼ÂÀ» ±³Ã¼ÇÏ¼Ì³ª¿ä? ±³Ã¼ÇÏ¼Ì´Ù¸é ÃßÃâ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä. ±³Ã¼ÇÏÁö ¾ÊÀ¸¼Ì´Ù¸é '³Ã¼ö' ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-#define VOICE_CHANGE_FILTER_FLOWFAUCET     	(218)		//	ÇÊÅÍ¿Í À¯·ÎÆÄ¿ì¼ÂÀ» ±³Ã¼ÇÏ¼Ì³ª¿ä? ±³Ã¼ÇÏ¼Ì´Ù¸é ¹è¼öÈ£½º¸¦ ¿¬°áÇÏ½Ã°Å³ª ¾à 5¸®ÅÍÀÇ Å«±×¸©À» ÁØºñÇØÁÖ¼¼¿ä. ÃßÃâ¹öÆ°À» ´©¸£½Ã¸é ±ú²ýÇÑ ¹°À» À§ÇÑ ÁØºñ °úÁ¤ÀÌ ½ÃÀÛµË´Ï´Ù. ±³Ã¼ÇÏÁö ¾ÊÀ¸¼Ì´Ù¸é '³Ã¼ö' ¹öÆ°À» ´­·¯ ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_ALL_LOCK_SETTING_A      		(219)      // ¸ðµç ¹öÆ°ÀÌ Àá°å½À´Ï´Ù.
-#define VOICE_ALL_LOCK_CLEAR          		(220)      // ¸ðµç ¹öÆ°À» »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_ALL_LOCK_ICON22				(221)		//	¸ðµç ¹öÆ°ÀÌ Àá°ÜÀÖ½À´Ï´Ù. ¿Â¼ö¿Í Á¤¼ö ¹öÆ°À» µ¿½Ã¿¡ 3ÃÊ ´©¸£½Ã¸é ¸ðµç ±â´ÉÀ» ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_ALL_LOCK_CHECK_CP       		(222)      // ¸ðµç ¹öÆ°ÀÌ Àá°ÜÀÖ½À´Ï´Ù. ÀüÃ¼ Àá±Ý ¹öÆ°À» 3ÃÊ ´©¸£½Ã¸é ¸ðµç ±â´ÉÀ» ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_HOTWATER_FIRST			   	(223)      //  ¿Â¼ö Ã¹ ÀÜÀº ¶ß°ÌÁö ¾ÊÀ» ¼ö ÀÖ½À´Ï´Ù. Ã¹ ÀÜÀ» ¹ö¸° ÈÄ »ç¿ëÇØÁÖ¼¼¿ä.
-#define VOICE_HOTWATER_EFFLUENT_A   		(224)      // ¿Â¼ö°¡ ¶ß°Å¿ì´Ï ÁÖÀÇÇÏ¼¼¿ä.
-#define VOICE_HIGH_HOTTEMP_EFFLUENT_1   	(225)      //  °í¿Â¼ö°¡ ÃßÃâ µË´Ï´Ù. ÄÅÀ» ÃßÃâ±¸¿¡ °¡±îÀÌ ÇØÁÖ¼¼¿ä.
-#define VOICE_HOT_LOCK_SETTING        		(226)      // ¿Â¼ö ¹öÆ°ÀÌ Àá°å½À´Ï´Ù.
-#define VOICE_HOT_LOCK_CLEAR          		(227)      // ¿Â¼ö ¹öÆ°À» »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_HOT_LOCK_CHECK          		(228)      // ¿Â¼ö ¹öÆ°ÀÌ Àá°ÜÀÖ½À´Ï´Ù. ¿Â¼ö ¹öÆ°À» 3ÃÊ ´©¸£½Ã¸é ¼±ÅÃÇÏ½Å ¿Â¼ö¸¦ ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_COLD_OFF_CHECK          		(229)      // ³Ã¼ö°¡ ²¨Á®ÀÖ½À´Ï´Ù. ³Ã¼ö ¹öÆ°À» 3ÃÊ ´©¸£½Ã¸é ¼±ÅÃÇÏ½Å ³Ã¼ö¸¦ ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_COLD_OFF_SETTING        		(230)      // ³Ã¼ö ±â´ÉÀÌ ²¨Á³½À´Ï´Ù.
-#define VOICE_COLD_ON_SETTING         		(231)		//	³Ã¼ö ±â´ÉÀÌ ÄÑÁ³½À´Ï´Ù. ÀûÁ¤ ¿Âµµ µµ´Þ±îÁö ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù.
-#define VOICE_LEAKAGE_ERROR           		(232)      // ´©¼ö°¡ °¨ÁöµÇ¾ú½À´Ï´Ù. ¾ÈÀüÀ» À§ÇØ ¿ø¼ö°ø±Þ¹ëºê¸¦ ´Ý¾ÆÁÖ¼¼¿ä. Áõ»óÀÌ ¹Ýº¹µÇ¸é ¾ÆÀÌ¿ÀÄÉ¾î¾Û °¡ÀÌµå¿¡ µû¶ó È®ÀÎÇØÁÖ½Ã°Å³ª ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä.
-#define VOICE_SHORTAGE_ERROR          		(233)      // ¹° °ø±Þ¿¡ ÀÌ»óÀÌ °¨ÁöµÇ¾ú½À´Ï´Ù. ¿ø¼ö°ø±Þ¹ëºê°¡ ¿­·Á ÀÖ´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä. Áõ»óÀÌ ¹Ýº¹µÇ¸é ¾ÆÀÌ¿ÀÄÉ¾î¾Û °¡ÀÌµå¿¡ µû¶ó È®ÀÎÇØÁÖ½Ã°Å³ª ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä.
-#define VOICE_HOT_WATER_ERROR         		(234)      // ¿Â¼ö ±â´É¿¡ ÀÌ»óÀÌ °¨ÁöµÇ¾ú½À´Ï´Ù. Áõ»óÀÌ ¹Ýº¹µÇ¸é ¾ÆÀÌ¿ÀÄÉ¾î¾Û °¡ÀÌµå¿¡ µû¶ó È®ÀÎÇØÁÖ½Ã°Å³ª ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä.
-#define VOICE_COLD_WATER_ERROR        		(235)      // ³Ã¼ö ±â´É¿¡ ÀÌ»óÀÌ °¨ÁöµÇ¾ú½À´Ï´Ù. Áõ»óÀÌ ¹Ýº¹µÇ¸é ¾ÆÀÌ¿ÀÄÉ¾î¾Û °¡ÀÌµå¿¡ µû¶ó È®ÀÎÇØÁÖ½Ã°Å³ª ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä.
-#define VOICE_FRONT_COVER_WARNING_B     	(236)      // Á¦Ç° Àü¸é Ä¿¹ö°¡ ¿­·È½À´Ï´Ù. ¾ÈÀüÀ» À§ÇØ ¹° °ø±ÞÀ» ÀÚµ¿À¸·Î Â÷´ÜÇÕ´Ï´Ù.
-#define VOICE_FRONT_COVER_CHECK         	(237)      // Á¦Ç°ÀÇ Ä¿¹ö°¡ ¿­·ÁÀÖ½À´Ï´Ù. Ä¿¹ö¸¦ ´Ý¾ÆÁÖ¼¼¿ä.
-#define VOICE_FILTER_CONNECT_CHECK_B  		(238)      // ÇÊÅÍ°¡ ¿Ã¹Ù¸£°Ô °áÇÕµÇÁö ¾ÊÀº °ÍÀ¸·Î °¨Áö µÇ¾ú½À´Ï´Ù. ´Ù½ÃÇÑ¹ø È®ÀÎÇØÁÖ¼¼¿ä.
-#define VOICE_FLOWFAUCET_CONNECT_CHECK		(239)		//	À¯·ÎÆÄ¿ì¼ÂÀÌ ¿Ã¹Ù¸£°Ô °áÇÕµÇÁö ¾ÊÀº °ÍÀ¸·Î °¨ÁöµÇ¾ú½À´Ï´Ù. Á¦Ç° Ä¿¹ö¸¦ ¿­¾î ´Ù½Ã ÇÑ ¹ø È®ÀÎÇØÁÖ¼¼¿ä
+/*	icon 2.0 ì¶”ê°€	ë		*/
 
 
 
-#define VOICE_INFORM_WIFI_ON                 (242)                // 'Á¦Ç°ÀÇ Wi-Fi°¡ ÄÑÁ³½À´Ï´Ù.'
-#define VOICE_INFORM_WIFI_OFF                (243)                // 'Á¦Ç°ÀÇ Wi-Fi°¡ ²¨Á³½À´Ï´Ù.' ¿ÍÀÌÆÄÀÌ¸¦ ´Ù½Ã ¿¬°áÇÏ·Á¸é ³Ã¼ö¿Í ¿ë·®¹öÆ°À» µ¿½Ã¿¡ 3ÃÊ ´­·¯ÁÖ¼¼¿ä
-#define VOICE_INFORM_WIFI_MODE_ACTIVATED	 (244)                // 'Wi-Fi ¿¬°á ¸ðµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù. '
-#define VOICE_WIFI_COMPLETE_IOCARE         	(245)      /* Á¦Ç°°ú ¾ÛÀÌ ¼º°øÀûÀ¸·Î ¿¬°á µÇ¾ú½À´Ï´Ù. ÀÌÁ¦ºÎÅÍ ¾ÆÀÌ¿ÀÄÉ¾î ¾ÛÀ» ÅëÇØ ½º¸¶Æ®ÇÑ °ü¸®¸¦ ¹ÞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù..*/
-#define VOICE_NEW_VOICE_WIFI_FAIL_A          (246)      /* Á¦Ç°°ú ¾ÛÀÇ ¿¬°áÀÌ ½ÇÆÐÇÏ¿´½À´Ï´Ù. ÀÎÅÍ³Ý °øÀ¯±â¸¦ È®ÀÎÇØÁÖ¼¼¿ä. ¹®Á¦°¡ ¹Ýº¹µÇ¸é ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÁÖ¼¼¿ä..*/
-#define VOICE_INFORM_BLE_MODE_ACTIVATED      (247)      // 'ºí·çÅõ½º ¿¬°á ¸ðµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù. '
-#define VOICE_INFORM_APP_PAIRING_SUCCESS		(248)     // 'Á¦Ç°°ú ¾ÛÀÌ ¼º°øÀûÀ¸·Î ¿¬°áµÇ¾ú½À´Ï´Ù.' ÀÌÁ¦ºÎÅÍ ¾ÆÀÌ¿ÀÄÉ¾î ÇÃ·¯½º ¾ÛÀ» ÅëÇØ ½º¸¶Æ®ÇÑ °ü¸®¸¦ ¹ÞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_INFORM_BLE_MODE_DEACTIVATED 	(249)             // 'ºí·çÅõ½º ¿¬°á ¸ðµå°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù.'
-#define VOICE_PRESS_BUTTON_ACCORDING_TO_APP_GUIDE 	(250)          // '"Á¦Ç° ÀÎÁõÀ» ÁøÇà ÁßÀÔ´Ï´Ù. ¾Û¿¡¼­ °¡ÀÌµåÇÏ´Â ¹öÆ°À» ´­·¯ ÁÖ¼¼¿ä." 
-#define VOICE_STERIZATION_START_ICON22		(251)		//	ÄÚ¿þÀÌÀÇ »ì±Õ¼ö·Î À¯·Î »ì±Õ ¼­ºñ½º¸¦ ½ÃÀÛÇÕ´Ï´Ù.
-#define VOICE_STERIZATION_RINSE_ICON22		(252)		//	À¯·Î Çó±ÀÀ» ½ÃÀÛÇÕ´Ï´Ù.
-#define VOICE_STERIZATION_END_ICON22		(253)		//	À¯·Î »ì±Õ ¼­ºñ½º¸¦ ¿Ï·áÇß½À´Ï´Ù.
-#define VOICE_SETTING_VOICE           		(254)		// À½¼º¾È³» ¸ðµåÀÔ´Ï´Ù.
-#define VOICE_SETTING_MELODY          		(255)		// È¿°úÀ½ ¸ðµåÀÔ´Ï´Ù.
-#define VOICE_SETTING_SILENT          		(256)		// ¹«À½ ¸ðµåÀÔ´Ï´Ù.
-#define VOICE_SMART_CHECK_START      		(257)   	//  Á¦Ç°ÀÇ »óÅÂ¸¦ ÆÄ¾ÇÇÏ±â À§ÇØ ½º¸¶Æ® Áø´ÜÀ» ½ÃÀÛÇÕ´Ï´Ù.Àá½Ã¸¸ ±â´Ù·ÁÁÖ¼¼¿ä.
-#define VOICE_SMART_CHECK_OK	      		(258)      //  ½º¸¶Æ®Áø´ÜÀÌ ¿Ï·áµÇ¾î Á¦Ç°À» »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_SMART_CHECK_ERROR       		(259)      // ½º¸¶Æ® Áø´Ü °á°ú ÀÌ»óÀÌ °¨ÁöµÇ¾ú½À´Ï´Ù. ¾ÆÀÌ¿ÀÄÉ¾î ¾ÛÀ» ÅëÇØ »ó¼¼ ³»¿ëÀ» È®ÀÎÇØÁÖ¼¼¿ä.
-#define VOICE_MYCUP_SET						(260)		//	°í°´´ÔÀÇ ¿ë·®ÀÌ ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_MYTEMP_SET					(261)		//	°í°´´ÔÀÇ ¿ë·®ÀÌ ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_SPECIAL_FUNCTION        		(262)      // Æ¯¼ö ¸ðµå¿¡ ÁøÀÔÇÏ¿´½À´Ï´Ù.
-#define VOICE_FAUCET_FLOW_DISCONNECT_FOR_HOT (263)		//	ÆÄ¿ì¼Â À¯·Î°¡ Ã¼°áµÇÁö ¾Ê¾Æ ¾ÈÀüÀ» À§ÇØ ¿Â¼ö¸¦ Â÷´ÜÇÏ¿´½À´Ï´Ù. ÆÄ¿ì¼Â À¯·Î¸¦ Ã¼°áÇØÁÖ¼¼¿ä
-//@042 #define VOICE_GUIDE_FAUCET_FLOW_CONNECTION  (264)		//	ÆÄ¿ì¼Â À¯·Î°¡ Ã¼°áµÇÁö ¾Ê¾Æ ¾ÈÀüÀ» À§ÇØ ¿Â¼ö¸¦ Â÷´ÜÇÏ¿´½À´Ï´Ù. ÆÄ¿ì¼Â À¯·Î¸¦ Ã¼°áÇØÁÖ¼¼¿ä
-#define VOICE_CHECK_THE_FAUCET_BE_CAREFUL_HOT_WATER__IS_HOT_2 (264)    //@042 ¾ÈÀüÇÑ ¿Â¼ö »ç¿ëÀ» À§ÇØ ÆÄ¿ì¼Â À¯·Î°¡ Á¤È®È÷ Ã¼°áµÇ¾ú´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä. ¿Â¼ö°¡ ¶ß°Å¿ì´Ï ÁÖÀÇÇÏ¼¼¿ä.
+#define VOICE_INSTALL           		  	(211)      // ì•ˆë…•í•˜ì„¸ìš”. ê³ ê°ë‹˜. ì½”ì›¨ì´ ì •ìˆ˜ê¸°ì˜ ì„¤ì¹˜ë¥¼ ë„ì™€ë“œë¦¬ê² ìŠµë‹ˆë‹¤. ì¶”ì¶œ ë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ì„¤ì¹˜ë¥¼ ì‹œìž‘í•˜ê² ìŠµë‹ˆë‹¤.
+#define VOICE_FLUSHING_START     		  	(212)      // ìƒˆ ì •ìˆ˜ê¸° ì œí’ˆì— ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•´ ì¤€ë¹„ì¤‘ìž…ë‹ˆë‹¤.
+#define VOICE_FLUSHING_COMPLETE  		  	(213)      // ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•œ ì¤€ë¹„ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_CHANGE_FILTER           		(214)      //	í•„í„°ë¥¼ êµì²´í•˜ì…¨ë‚˜ìš”? êµì²´í•˜ì…¨ë‹¤ë©´ ë°°ìˆ˜í˜¸ìŠ¤ë¥¼ ì—°ê²°í•˜ì‹œê±°ë‚˜ ì•½ 5ë¦¬í„°ì˜ í°ê·¸ë¦‡ì„ ì¤€ë¹„í•´ì£¼ì„¸ìš”. ì¶”ì¶œë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ê¹¨ë—í•œ ë¬¼ì„ ìœ„í•œ ì¤€ë¹„ ê³¼ì •ì´ ì‹œìž‘ë©ë‹ˆë‹¤. êµì²´í•˜ì§€ ì•Šìœ¼ì…¨ë‹¤ë©´ 'ëƒ‰ìˆ˜' ë²„íŠ¼ì„ ëˆŒëŸ¬ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_FILTER_FLUSHING				(215)		//	êµì²´í•˜ì‹  ìƒˆ í•„í„°ë¡œ ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•´ ì¤€ë¹„ ì¤‘ì— ìžˆìŠµë‹ˆë‹¤. ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ ì£¼ì„¸ìš”.
+#define VOICE_FILTER_FLOWFAUCET_FLUSHING	(216)		//	êµì²´í•˜ì‹  ìƒˆ í•„í„°ì™€ ìœ ë¡œíŒŒìš°ì…‹ìœ¼ë¡œ ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•´ ì¤€ë¹„ ì¤‘ì— ìžˆìŠµë‹ˆë‹¤. ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ ì£¼ì„¸ìš”.
+#define VOICE_CHANGE_FLOWFAUCET           	(217)		//	ìœ ë¡œíŒŒìš°ì…‹ì„ êµì²´í•˜ì…¨ë‚˜ìš”? êµì²´í•˜ì…¨ë‹¤ë©´ ì¶”ì¶œë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”. êµì²´í•˜ì§€ ì•Šìœ¼ì…¨ë‹¤ë©´ 'ëƒ‰ìˆ˜' ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define VOICE_CHANGE_FILTER_FLOWFAUCET     	(218)		//	í•„í„°ì™€ ìœ ë¡œíŒŒìš°ì…‹ì„ êµì²´í•˜ì…¨ë‚˜ìš”? êµì²´í•˜ì…¨ë‹¤ë©´ ë°°ìˆ˜í˜¸ìŠ¤ë¥¼ ì—°ê²°í•˜ì‹œê±°ë‚˜ ì•½ 5ë¦¬í„°ì˜ í°ê·¸ë¦‡ì„ ì¤€ë¹„í•´ì£¼ì„¸ìš”. ì¶”ì¶œë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ê¹¨ë—í•œ ë¬¼ì„ ìœ„í•œ ì¤€ë¹„ ê³¼ì •ì´ ì‹œìž‘ë©ë‹ˆë‹¤. êµì²´í•˜ì§€ ì•Šìœ¼ì…¨ë‹¤ë©´ 'ëƒ‰ìˆ˜' ë²„íŠ¼ì„ ëˆŒëŸ¬ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_ALL_LOCK_SETTING_A      		(219)      // ëª¨ë“  ë²„íŠ¼ì´ ìž ê²¼ìŠµë‹ˆë‹¤.
+#define VOICE_ALL_LOCK_CLEAR          		(220)      // ëª¨ë“  ë²„íŠ¼ì„ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_ALL_LOCK_ICON22				(221)		//	ëª¨ë“  ë²„íŠ¼ì´ ìž ê²¨ìžˆìŠµë‹ˆë‹¤. ì˜¨ìˆ˜ì™€ ì •ìˆ˜ ë²„íŠ¼ì„ ë™ì‹œì— 3ì´ˆ ëˆ„ë¥´ì‹œë©´ ëª¨ë“  ê¸°ëŠ¥ì„ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_ALL_LOCK_CHECK_CP       		(222)      // ëª¨ë“  ë²„íŠ¼ì´ ìž ê²¨ìžˆìŠµë‹ˆë‹¤. ì „ì²´ ìž ê¸ˆ ë²„íŠ¼ì„ 3ì´ˆ ëˆ„ë¥´ì‹œë©´ ëª¨ë“  ê¸°ëŠ¥ì„ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_HOTWATER_FIRST			   	(223)      //  ì˜¨ìˆ˜ ì²« ìž”ì€ ëœ¨ê²ì§€ ì•Šì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì²« ìž”ì„ ë²„ë¦° í›„ ì‚¬ìš©í•´ì£¼ì„¸ìš”.
+#define VOICE_HOTWATER_EFFLUENT_A   		(224)      // ì˜¨ìˆ˜ê°€ ëœ¨ê±°ìš°ë‹ˆ ì£¼ì˜í•˜ì„¸ìš”.
+#define VOICE_HIGH_HOTTEMP_EFFLUENT_1   	(225)      //  ê³ ì˜¨ìˆ˜ê°€ ì¶”ì¶œ ë©ë‹ˆë‹¤. ì»µì„ ì¶”ì¶œêµ¬ì— ê°€ê¹Œì´ í•´ì£¼ì„¸ìš”.
+#define VOICE_HOT_LOCK_SETTING        		(226)      // ì˜¨ìˆ˜ ë²„íŠ¼ì´ ìž ê²¼ìŠµë‹ˆë‹¤.
+#define VOICE_HOT_LOCK_CLEAR          		(227)      // ì˜¨ìˆ˜ ë²„íŠ¼ì„ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_HOT_LOCK_CHECK          		(228)      // ì˜¨ìˆ˜ ë²„íŠ¼ì´ ìž ê²¨ìžˆìŠµë‹ˆë‹¤. ì˜¨ìˆ˜ ë²„íŠ¼ì„ 3ì´ˆ ëˆ„ë¥´ì‹œë©´ ì„ íƒí•˜ì‹  ì˜¨ìˆ˜ë¥¼ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_COLD_OFF_CHECK          		(229)      // ëƒ‰ìˆ˜ê°€ êº¼ì ¸ìžˆìŠµë‹ˆë‹¤. ëƒ‰ìˆ˜ ë²„íŠ¼ì„ 3ì´ˆ ëˆ„ë¥´ì‹œë©´ ì„ íƒí•˜ì‹  ëƒ‰ìˆ˜ë¥¼ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_COLD_OFF_SETTING        		(230)      // ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ êº¼ì¡ŒìŠµë‹ˆë‹¤.
+#define VOICE_COLD_ON_SETTING         		(231)		//	ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ ì¼œì¡ŒìŠµë‹ˆë‹¤. ì ì • ì˜¨ë„ ë„ë‹¬ê¹Œì§€ ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤.
+#define VOICE_LEAKAGE_ERROR           		(232)      // ëˆ„ìˆ˜ê°€ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì•ˆì „ì„ ìœ„í•´ ì›ìˆ˜ê³µê¸‰ë°¸ë¸Œë¥¼ ë‹«ì•„ì£¼ì„¸ìš”. ì¦ìƒì´ ë°˜ë³µë˜ë©´ ì•„ì´ì˜¤ì¼€ì–´ì•± ê°€ì´ë“œì— ë”°ë¼ í™•ì¸í•´ì£¼ì‹œê±°ë‚˜ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”.
+#define VOICE_SHORTAGE_ERROR          		(233)      // ë¬¼ ê³µê¸‰ì— ì´ìƒì´ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì›ìˆ˜ê³µê¸‰ë°¸ë¸Œê°€ ì—´ë ¤ ìžˆëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”. ì¦ìƒì´ ë°˜ë³µë˜ë©´ ì•„ì´ì˜¤ì¼€ì–´ì•± ê°€ì´ë“œì— ë”°ë¼ í™•ì¸í•´ì£¼ì‹œê±°ë‚˜ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”.
+#define VOICE_HOT_WATER_ERROR         		(234)      // ì˜¨ìˆ˜ ê¸°ëŠ¥ì— ì´ìƒì´ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì¦ìƒì´ ë°˜ë³µë˜ë©´ ì•„ì´ì˜¤ì¼€ì–´ì•± ê°€ì´ë“œì— ë”°ë¼ í™•ì¸í•´ì£¼ì‹œê±°ë‚˜ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”.
+#define VOICE_COLD_WATER_ERROR        		(235)      // ëƒ‰ìˆ˜ ê¸°ëŠ¥ì— ì´ìƒì´ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì¦ìƒì´ ë°˜ë³µë˜ë©´ ì•„ì´ì˜¤ì¼€ì–´ì•± ê°€ì´ë“œì— ë”°ë¼ í™•ì¸í•´ì£¼ì‹œê±°ë‚˜ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”.
+#define VOICE_FRONT_COVER_WARNING_B     	(236)      // ì œí’ˆ ì „ë©´ ì»¤ë²„ê°€ ì—´ë ¸ìŠµë‹ˆë‹¤. ì•ˆì „ì„ ìœ„í•´ ë¬¼ ê³µê¸‰ì„ ìžë™ìœ¼ë¡œ ì°¨ë‹¨í•©ë‹ˆë‹¤.
+#define VOICE_FRONT_COVER_CHECK         	(237)      // ì œí’ˆì˜ ì»¤ë²„ê°€ ì—´ë ¤ìžˆìŠµë‹ˆë‹¤. ì»¤ë²„ë¥¼ ë‹«ì•„ì£¼ì„¸ìš”.
+#define VOICE_FILTER_CONNECT_CHECK_B  		(238)      // í•„í„°ê°€ ì˜¬ë°”ë¥´ê²Œ ê²°í•©ë˜ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ ê°ì§€ ë˜ì—ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œí•œë²ˆ í™•ì¸í•´ì£¼ì„¸ìš”.
+#define VOICE_FLOWFAUCET_CONNECT_CHECK		(239)		//	ìœ ë¡œíŒŒìš°ì…‹ì´ ì˜¬ë°”ë¥´ê²Œ ê²°í•©ë˜ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì œí’ˆ ì»¤ë²„ë¥¼ ì—´ì–´ ë‹¤ì‹œ í•œ ë²ˆ í™•ì¸í•´ì£¼ì„¸ìš”
 
-#define VOICE_ENTER_FAUCET_MOVING_SET_MODE	(265)		//	ÆÄ¿ì¼Â ¹«ºù ¼³Á¤¸ðµå¿¡ ÁøÀÔÇÏ¿´½À´Ï´Ù.
-#define VOICE_FAUCET_MOVING_POSITION_FIXED	(266)		//	ÆÄ¿ì¼Â À§Ä¡°¡ °íÁ¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_FAUCET_SET_AUTO_MOVING		(267)		//	ÆÄ¿ì¼Â ÀÚµ¿¹«ºùÀ¸·Î ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_ADJUSTING_THE_FAUCET_FOR_FILTER_CHANGE	(268)		//	ÇÊÅÍ ±³Ã¼¸¦ À§ÇØ ÆÄ¿ì¼ÂÀ» Á¶Á¤ÇÏ°í ÀÖ½À´Ï´Ù.
-#define VOICE_START_FILTER_CHANGE_MODE	(269)		//	ÇÊÅÍ±³Ã¼¸ðµå¸¦ ½ÃÀÛÇÕ´Ï´Ù.
-#define VOICE_PLACE_CUP_FOR_RESIDUAL_WATER_REMOVAL	(270)		//	ÀÜ¼ö Á¦°Å¸¦ À§ÇØ ÃßÃâ±¸¿¡ ÄÅÀ» ³õ°í ÃßÃâ ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-#define VOICE_RESIDUAL_WATER_REMOVAL_COMPLETE	(271)		//	ÀÜ¼ö Á¦°Å°¡ ¿Ï·á µÇ¾ú½À´Ï´Ù. ÇÊÅÍ ±³Ã¼¸¦ ÁøÇàÇØ ÁÖ¼¼¿ä.
-#define VOICE_CHECK_THE_FAUCET_BE_CAREFUL_HOT_WATER_IS_HOT (272)    //@034 ¾ÈÀüÇÑ ¿Â¼ö »ç¿ëÀ» À§ÇØ ÆÄ¿ì¼Â À¯·Î°¡ Á¤È®È÷ Ã¼°áµÇ¾ú´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä. ¿Â¼ö°¡ ¶ß°Å¿ì´Ï ÁÖÀÇÇÏ¼¼¿ä.
-#define VOICE_CHECK_THE_FAUCET_HOTWATER_EFFLUENT_PLACE_THE_CUP  (273) //@034 ¾ÈÀüÇÑ ¿Â¼ö»ç¿ëÀ» À§ÇØ ÆÄ¿ì¼Â À¯·Î°¡ Á¤È®È÷ Ã¼°áµÇ¾ú´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä. °í¿Â¼ö°¡ ÃßÃâµË´Ï´Ù. ÄÅÀ» ÃßÃâ±¸ °¡±îÀÌ ³õ¾ÆÁÖ¼¼¿ä.
-#define VOICE_CHANGE__FILTER_NO_HOSE            (274)    //@034 ÇÊÅÍ¸¦ ±³Ã¼ÇÏ¼Ì³ª¿ä? ±³Ã¼ÇÏ¼Ì´Ù¸é ¾à 5¸®ÅÍÀÇ Å« ±×¸©À» ÁØºñÇØÁÖ¼¼¿ä. ÃßÃâ ¹öÆ°À» ´©¸£½Ã¸é ±ú²ýÇÑ ¹°À» À§ÇÑ ÁØºñ°úÁ¤ÀÌ ½ÃÀÛµË´Ï´Ù. ±³Ã¼ÇÏÁö ¾ÊÀ¸¼Ì´Ù¸é ³Ã¼ö ¹öÆ°À» ´­·¯ ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_CHANGE__FILTER_FLOWFAUCET_NO_HOSE (275)    //@034 ÇÊÅÍ¿Í ÆÄ¿ì¼Â À¯·Î¸¦ ±³Ã¼ÇÏ¼Ì³ª¿ä? ±³Ã¼ÇÏ¼Ì´Ù¸é, ¾à 5¸®ÅÍÀÇ Å« ±×¸©À» ÁØºñÇÏ¼¼¿ä. ÃßÃâ¹öÆ°À» ´©¸£½Ã¸é ±ú²ýÇÑ ¹°À» À§ÇÑ ÁØºñ°úÁ¤ÀÌ ½ÃÀÛµË´Ï´Ù. ±³Ã¼ÇÏÁö ¾ÊÀ¸¼Ì´Ù¸é ³Ã¼ö¹öÆ°À» ´­·¯ ´Ù½Ã »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
 
-#define VOICE_CONTIUNE_EFFLUENT     		(0x64)      // ¿¬¼ÓÃßÃâ
-#define VOICE_EFFLUENT_START        		(0x65)      // ÃßÃâÀ½
-#define VOICE_EFFLUENT_COMPLETE     		(0x66)      // ÃßÃâÁ¾·áÀ½
-#define VOICE_POWER_ON                		(0x67)      // Àü¿ø ÀÎ°¡½Ã(ÇÃ·¯±×ÀÎ) ´ç´ç´ç´ç´ç~~´ç. ÄÚ¿þÀÌ~~
-#define VOICE_BEEP_SELECT             		(0x68)      // ¹öÆ°¼±ÅÃÀ½(¶ò)
-#define VOICE_BEEP_WARNING            		(0x69)      // ºÒ°¡À½(¶ò±ø¶ò±ø)
-#define VOICE_BEEP_ON                 		(0x6A)      // ¼³Á¤( ¶òµ¿ ¢Ö)
-#define VOICE_BEEP_OFF                		(0x6B)      // ÇØÁ¦( ¶òµ¿ ¢Ù)
+
+#define VOICE_INFORM_WIFI_ON                 (242)                // 'ì œí’ˆì˜ Wi-Fiê°€ ì¼œì¡ŒìŠµë‹ˆë‹¤.'
+#define VOICE_INFORM_WIFI_OFF                (243)                // 'ì œí’ˆì˜ Wi-Fiê°€ êº¼ì¡ŒìŠµë‹ˆë‹¤.' ì™€ì´íŒŒì´ë¥¼ ë‹¤ì‹œ ì—°ê²°í•˜ë ¤ë©´ ëƒ‰ìˆ˜ì™€ ìš©ëŸ‰ë²„íŠ¼ì„ ë™ì‹œì— 3ì´ˆ ëˆŒëŸ¬ì£¼ì„¸ìš”
+#define VOICE_INFORM_WIFI_MODE_ACTIVATED	 (244)                // 'Wi-Fi ì—°ê²° ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤. '
+#define VOICE_WIFI_COMPLETE_IOCARE         	(245)      /* ì œí’ˆê³¼ ì•±ì´ ì„±ê³µì ìœ¼ë¡œ ì—°ê²° ë˜ì—ˆìŠµë‹ˆë‹¤. ì´ì œë¶€í„° ì•„ì´ì˜¤ì¼€ì–´ ì•±ì„ í†µí•´ ìŠ¤ë§ˆíŠ¸í•œ ê´€ë¦¬ë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤..*/
+#define VOICE_NEW_VOICE_WIFI_FAIL_A          (246)      /* ì œí’ˆê³¼ ì•±ì˜ ì—°ê²°ì´ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤. ì¸í„°ë„· ê³µìœ ê¸°ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”. ë¬¸ì œê°€ ë°˜ë³µë˜ë©´ ì½œì„¼í„°ì— ì—°ë½ì£¼ì„¸ìš”..*/
+#define VOICE_INFORM_BLE_MODE_ACTIVATED      (247)      // 'ë¸”ë£¨íˆ¬ìŠ¤ ì—°ê²° ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤. '
+#define VOICE_INFORM_APP_PAIRING_SUCCESS		(248)     // 'ì œí’ˆê³¼ ì•±ì´ ì„±ê³µì ìœ¼ë¡œ ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.' ì´ì œë¶€í„° ì•„ì´ì˜¤ì¼€ì–´ í”ŒëŸ¬ìŠ¤ ì•±ì„ í†µí•´ ìŠ¤ë§ˆíŠ¸í•œ ê´€ë¦¬ë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_INFORM_BLE_MODE_DEACTIVATED 	(249)             // 'ë¸”ë£¨íˆ¬ìŠ¤ ì—°ê²° ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.'
+#define VOICE_PRESS_BUTTON_ACCORDING_TO_APP_GUIDE 	(250)          // '"ì œí’ˆ ì¸ì¦ì„ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤. ì•±ì—ì„œ ê°€ì´ë“œí•˜ëŠ” ë²„íŠ¼ì„ ëˆŒëŸ¬ ì£¼ì„¸ìš”." 
+#define VOICE_STERIZATION_START_ICON22		(251)		//	ì½”ì›¨ì´ì˜ ì‚´ê· ìˆ˜ë¡œ ìœ ë¡œ ì‚´ê·  ì„œë¹„ìŠ¤ë¥¼ ì‹œìž‘í•©ë‹ˆë‹¤.
+#define VOICE_STERIZATION_RINSE_ICON22		(252)		//	ìœ ë¡œ í—¹êµ¼ì„ ì‹œìž‘í•©ë‹ˆë‹¤.
+#define VOICE_STERIZATION_END_ICON22		(253)		//	ìœ ë¡œ ì‚´ê·  ì„œë¹„ìŠ¤ë¥¼ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.
+#define VOICE_SETTING_VOICE           		(254)		// ìŒì„±ì•ˆë‚´ ëª¨ë“œìž…ë‹ˆë‹¤.
+#define VOICE_SETTING_MELODY          		(255)		// íš¨ê³¼ìŒ ëª¨ë“œìž…ë‹ˆë‹¤.
+#define VOICE_SETTING_SILENT          		(256)		// ë¬´ìŒ ëª¨ë“œìž…ë‹ˆë‹¤.
+#define VOICE_SMART_CHECK_START      		(257)   	//  ì œí’ˆì˜ ìƒíƒœë¥¼ íŒŒì•…í•˜ê¸° ìœ„í•´ ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì„ ì‹œìž‘í•©ë‹ˆë‹¤.ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.
+#define VOICE_SMART_CHECK_OK	      		(258)      //  ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì´ ì™„ë£Œë˜ì–´ ì œí’ˆì„ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_SMART_CHECK_ERROR       		(259)      // ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ ê²°ê³¼ ì´ìƒì´ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì•„ì´ì˜¤ì¼€ì–´ ì•±ì„ í†µí•´ ìƒì„¸ ë‚´ìš©ì„ í™•ì¸í•´ì£¼ì„¸ìš”.
+#define VOICE_MYCUP_SET						(260)		//	ê³ ê°ë‹˜ì˜ ìš©ëŸ‰ì´ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_MYTEMP_SET					(261)		//	ê³ ê°ë‹˜ì˜ ìš©ëŸ‰ì´ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_SPECIAL_FUNCTION        		(262)      // íŠ¹ìˆ˜ ëª¨ë“œì— ì§„ìž…í•˜ì˜€ìŠµë‹ˆë‹¤.
+#define VOICE_FAUCET_FLOW_DISCONNECT_FOR_HOT (263)		//	íŒŒìš°ì…‹ ìœ ë¡œê°€ ì²´ê²°ë˜ì§€ ì•Šì•„ ì•ˆì „ì„ ìœ„í•´ ì˜¨ìˆ˜ë¥¼ ì°¨ë‹¨í•˜ì˜€ìŠµë‹ˆë‹¤. íŒŒìš°ì…‹ ìœ ë¡œë¥¼ ì²´ê²°í•´ì£¼ì„¸ìš”
+//@042 #define VOICE_GUIDE_FAUCET_FLOW_CONNECTION  (264)		//	íŒŒìš°ì…‹ ìœ ë¡œê°€ ì²´ê²°ë˜ì§€ ì•Šì•„ ì•ˆì „ì„ ìœ„í•´ ì˜¨ìˆ˜ë¥¼ ì°¨ë‹¨í•˜ì˜€ìŠµë‹ˆë‹¤. íŒŒìš°ì…‹ ìœ ë¡œë¥¼ ì²´ê²°í•´ì£¼ì„¸ìš”
+#define VOICE_CHECK_THE_FAUCET_BE_CAREFUL_HOT_WATER__IS_HOT_2 (264)    //@042 ì•ˆì „í•œ ì˜¨ìˆ˜ ì‚¬ìš©ì„ ìœ„í•´ íŒŒìš°ì…‹ ìœ ë¡œê°€ ì •í™•ížˆ ì²´ê²°ë˜ì—ˆëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”. ì˜¨ìˆ˜ê°€ ëœ¨ê±°ìš°ë‹ˆ ì£¼ì˜í•˜ì„¸ìš”.
+
+#define VOICE_ENTER_FAUCET_MOVING_SET_MODE	(265)		//	íŒŒìš°ì…‹ ë¬´ë¹™ ì„¤ì •ëª¨ë“œì— ì§„ìž…í•˜ì˜€ìŠµë‹ˆë‹¤.
+#define VOICE_FAUCET_MOVING_POSITION_FIXED	(266)		//	íŒŒìš°ì…‹ ìœ„ì¹˜ê°€ ê³ ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_FAUCET_SET_AUTO_MOVING		(267)		//	íŒŒìš°ì…‹ ìžë™ë¬´ë¹™ìœ¼ë¡œ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_ADJUSTING_THE_FAUCET_FOR_FILTER_CHANGE	(268)		//	í•„í„° êµì²´ë¥¼ ìœ„í•´ íŒŒìš°ì…‹ì„ ì¡°ì •í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_START_FILTER_CHANGE_MODE	(269)		//	í•„í„°êµì²´ëª¨ë“œë¥¼ ì‹œìž‘í•©ë‹ˆë‹¤.
+#define VOICE_PLACE_CUP_FOR_RESIDUAL_WATER_REMOVAL	(270)		//	ìž”ìˆ˜ ì œê±°ë¥¼ ìœ„í•´ ì¶”ì¶œêµ¬ì— ì»µì„ ë†“ê³  ì¶”ì¶œ ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define VOICE_RESIDUAL_WATER_REMOVAL_COMPLETE	(271)		//	ìž”ìˆ˜ ì œê±°ê°€ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤. í•„í„° êµì²´ë¥¼ ì§„í–‰í•´ ì£¼ì„¸ìš”.
+#define VOICE_CHECK_THE_FAUCET_BE_CAREFUL_HOT_WATER_IS_HOT (272)    //@034 ì•ˆì „í•œ ì˜¨ìˆ˜ ì‚¬ìš©ì„ ìœ„í•´ íŒŒìš°ì…‹ ìœ ë¡œê°€ ì •í™•ížˆ ì²´ê²°ë˜ì—ˆëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”. ì˜¨ìˆ˜ê°€ ëœ¨ê±°ìš°ë‹ˆ ì£¼ì˜í•˜ì„¸ìš”.
+#define VOICE_CHECK_THE_FAUCET_HOTWATER_EFFLUENT_PLACE_THE_CUP  (273) //@034 ì•ˆì „í•œ ì˜¨ìˆ˜ì‚¬ìš©ì„ ìœ„í•´ íŒŒìš°ì…‹ ìœ ë¡œê°€ ì •í™•ížˆ ì²´ê²°ë˜ì—ˆëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”. ê³ ì˜¨ìˆ˜ê°€ ì¶”ì¶œë©ë‹ˆë‹¤. ì»µì„ ì¶”ì¶œêµ¬ ê°€ê¹Œì´ ë†“ì•„ì£¼ì„¸ìš”.
+#define VOICE_CHANGE__FILTER_NO_HOSE            (274)    //@034 í•„í„°ë¥¼ êµì²´í•˜ì…¨ë‚˜ìš”? êµì²´í•˜ì…¨ë‹¤ë©´ ì•½ 5ë¦¬í„°ì˜ í° ê·¸ë¦‡ì„ ì¤€ë¹„í•´ì£¼ì„¸ìš”. ì¶”ì¶œ ë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ê¹¨ë—í•œ ë¬¼ì„ ìœ„í•œ ì¤€ë¹„ê³¼ì •ì´ ì‹œìž‘ë©ë‹ˆë‹¤. êµì²´í•˜ì§€ ì•Šìœ¼ì…¨ë‹¤ë©´ ëƒ‰ìˆ˜ ë²„íŠ¼ì„ ëˆŒëŸ¬ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_CHANGE__FILTER_FLOWFAUCET_NO_HOSE (275)    //@034 í•„í„°ì™€ íŒŒìš°ì…‹ ìœ ë¡œë¥¼ êµì²´í•˜ì…¨ë‚˜ìš”? êµì²´í•˜ì…¨ë‹¤ë©´, ì•½ 5ë¦¬í„°ì˜ í° ê·¸ë¦‡ì„ ì¤€ë¹„í•˜ì„¸ìš”. ì¶”ì¶œë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ê¹¨ë—í•œ ë¬¼ì„ ìœ„í•œ ì¤€ë¹„ê³¼ì •ì´ ì‹œìž‘ë©ë‹ˆë‹¤. êµì²´í•˜ì§€ ì•Šìœ¼ì…¨ë‹¤ë©´ ëƒ‰ìˆ˜ë²„íŠ¼ì„ ëˆŒëŸ¬ ë‹¤ì‹œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+
+#define VOICE_CONTIUNE_EFFLUENT     		(0x64)      // ì—°ì†ì¶”ì¶œ
+#define VOICE_EFFLUENT_START        		(0x65)      // ì¶”ì¶œìŒ
+#define VOICE_EFFLUENT_COMPLETE     		(0x66)      // ì¶”ì¶œì¢…ë£ŒìŒ
+#define VOICE_POWER_ON                		(0x67)      // ì „ì› ì¸ê°€ì‹œ(í”ŒëŸ¬ê·¸ì¸) ë‹¹ë‹¹ë‹¹ë‹¹ë‹¹~~ë‹¹. ì½”ì›¨ì´~~
+#define VOICE_BEEP_SELECT             		(0x68)      // ë²„íŠ¼ì„ íƒìŒ(ëµ)
+#define VOICE_BEEP_WARNING            		(0x69)      // ë¶ˆê°€ìŒ(ëµê¹¡ëµê¹¡)
+#define VOICE_BEEP_ON                 		(0x6A)      // ì„¤ì •( ëµë™ â†—)
+#define VOICE_BEEP_OFF                		(0x6B)      // í•´ì œ( ëµë™ â†˜)
 
 
 #define VOICE_CLEAN_DUST_FILTER				(0x35)
 //==============================================================
 
-#define VOICE_ACTOR            0					// ¼º¿ì
+#define VOICE_ACTOR            0					// ì„±ìš°
 #define VOICE_CELEB            1					// BTS
 
 
@@ -201,10 +201,10 @@
  ==============================================================================*/
 EXTERN U16 COMMAND;
 
-EXTERN U8 gu8_Sound_Type;						// À½¼º¾È³» ¸ðµå (0,1:¹«À½¸ðµå / 2:È¿°úÀ½¸ðµå / 3:À½¼º¾È³»¸ðµå)
+EXTERN U8 gu8_Sound_Type;						// ìŒì„±ì•ˆë‚´ ëª¨ë“œ (0,1:ë¬´ìŒëª¨ë“œ / 2:íš¨ê³¼ìŒëª¨ë“œ / 3:ìŒì„±ì•ˆë‚´ëª¨ë“œ)
 //EXTERN U8 gu8SoundTypeAlarm_Time;
 EXTERN U8 gu8PlayVoice_Count;
-EXTERN U8 gu8_VoiceVolumeLevel;					//	0~4:5´Ü°è
+EXTERN U8 gu8_VoiceVolumeLevel;					//	0~4:5ë‹¨ê³„
 EXTERN U8 gu8Voice_Actor;
 
 EXTERN U16 gu16_Voice_Address;
@@ -214,7 +214,7 @@ EXTERN U16 gu16VoiceDelay;
 
 EXTERN U8 F_OneMoreSound;
 EXTERN U8 F_Beep_Sound;
-EXTERN U8 F_PlayVoice; 								/*Sound Level¿¡ µû¸¥ Address ¹ÞÀ¸¸é SET ÇÏ¿© À½¼º Ãâ·Â*/
+EXTERN U8 F_PlayVoice; 								/*Sound Levelì— ë”°ë¥¸ Address ë°›ìœ¼ë©´ SET í•˜ì—¬ ìŒì„± ì¶œë ¥*/
 //EXTERN U8 F_Initial_Voice;
  
 //EXTERN U8 F_New_Voice;

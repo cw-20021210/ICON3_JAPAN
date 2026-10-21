@@ -1,16 +1,16 @@
 /// @file     adc.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    °¢ ¼¾¼­·ù  µ¿ÀÛ Á¦¾î file
+/// @brief    ê° ì„¼ì„œë¥˜  ë™ì‘ ì œì–´ file
 #define ADC_C
 #include "include/_include.h"
 
 void ADC_Channel_Increase(void);
 
-#define ADC_Resolution 	(50000/1024)				//	5V * 10000¹è / 1024bit
-#define Z_HeaterWATT_Revise			(30)			//	È÷ÅÍ WATT °¨»ê º¸Á¤
+#define ADC_Resolution 	(50000/1024)				//	5V * 10000ë°° / 1024bit
+#define Z_HeaterWATT_Revise			(30)			//	íˆí„° WATT ê°ì‚° ë³´ì •
 
-/*	ADC Ã¤³Î	*/
+/*	ADC ì±„ë„	*/
 #define Z_ADC_ANI0_24V_FB			(0)
 #define Z_ADC_ANI1_TEM_FB			(1)
 #define Z_ADC_ANI2_OUTDOORAIRTH	    (2)
@@ -27,7 +27,7 @@ void ADC_Channel_Increase(void);
 #define Z_ADC_MCU_VOLTAGE_FB        (20)
 
 ADC_Data ADC_Data_Table[ZC_Adchannel] =
-{//	ADC Ã¤³Î						ADC Æò±Õ					ADC ÇöÀç°ª			ADC ÇÕ°è				ADC Ä«¿îÅÍ				ADC Ä«¿îÅÍ ±âÁØ È½¼ö
+{//	ADC ì±„ë„						ADC í‰ê· 					ADC í˜„ì¬ê°’			ADC í•©ê³„				ADC ì¹´ìš´í„°				ADC ì¹´ìš´í„° ê¸°ì¤€ íšŸìˆ˜
 	{Z_ADC_ANI0_24V_FB,			&gu16_AdcAverage[0],	&gu16_NowAdc[0],	&gu16_SumAdc[0],	&gu8_CounterAdc[0],		8},
 	{Z_ADC_ANI1_TEM_FB,			&gu16_AdcAverage[1],	&gu16_NowAdc[1],	&gu16_SumAdc[1],	&gu8_CounterAdc[1],		50},
 	{Z_ADC_ANI2_OUTDOORAIRTH,	&gu16_AdcAverage[2],	&gu16_NowAdc[2],	&gu16_SumAdc[2],	&gu8_CounterAdc[2],		32},
@@ -52,7 +52,7 @@ void ADC_Initialize(void)
 	gu8_F_AlwaysDiagnosis_forWifi = CLEAR;
 }
 
-/// @brief   ADC Ã³¸®(1ms)
+/// @brief   ADC ì²˜ë¦¬(1ms)
 /// @param    void
 /// @return   void
 void Input_AD_Change(void)
@@ -60,12 +60,12 @@ void Input_AD_Change(void)
 	U8 mu8_Check = 0;
 
 	/*------------------------------------------------*/
-	if (ADIF == 0)									//	adc interrupt ¿ä±¸ ¾ø´Â °æ¿ì
+	if (ADIF == 0)									//	adc interrupt ìš”êµ¬ ì—†ëŠ” ê²½ìš°
 	{
 		NOP();										//		nop
 		NOP();										//		nop
 		NOP();										//		nop
-		if (gu8_TimerAdcheck <= 0)					//		AD check timer upÀÎ °æ¿ì
+		if (gu8_TimerAdcheck <= 0)					//		AD check timer upì¸ ê²½ìš°
 		{
 			SafetyLoop();							//			Reset
 		}
@@ -73,13 +73,13 @@ void Input_AD_Change(void)
 	}
 	gu8_TimerAdcheck = ZT_Adcheck;					//	AD check timer set
 
-	ADIF = 0;										// 	AD º¯È¯ ÀÎÅÍ·´Æ® ¿äÃ» ÇÃ·¡±× ºñÆ® Å¬¸®¾î
-	ADCS = 0;										// 	AD º¯È¯ µ¿ÀÛ Á¤Áö
-	ADCE = 0;										// 	AD µ¿ÀÛ Á¤Áö
+	ADIF = 0;										// 	AD ë³€í™˜ ì¸í„°ëŸ½íŠ¸ ìš”ì²­ í”Œë˜ê·¸ ë¹„íŠ¸ í´ë¦¬ì–´
+	ADCS = 0;										// 	AD ë³€í™˜ ë™ì‘ ì •ì§€
+	ADCE = 0;										// 	AD ë™ì‘ ì •ì§€
 
 	if (ADC_Data_Table[gu8_CounterAdchannel].channel == Z_ADC_ANI6_COLDTH)
 	{
-		if (P_COLDSENSOR_ON == HIGH)				//	¼¾¼­ ON
+		if (P_COLDSENSOR_ON == HIGH)				//	ì„¼ì„œ ON
 		{
 			if (gu8_TimerColdSensor_Sensing == 0)
 			{
@@ -105,25 +105,25 @@ void Input_AD_Change(void)
 		mu8_Check = SET;
 	}
 
-	if (mu8_Check == SET)							//	ADCÀĞ±â Çã¿ë ÀÏ ¶§
+	if (mu8_Check == SET)							//	ADCì½ê¸° í—ˆìš© ì¼ ë•Œ
 	{
-		*ADC_Data_Table[gu8_CounterAdchannel].now = (U16)(ADCR >> 6);	//		ÇöÀç°ª ÀúÀå
-		*ADC_Data_Table[gu8_CounterAdchannel].sum += *ADC_Data_Table[gu8_CounterAdchannel].now;	//		Sum ÀúÀå
-		(*ADC_Data_Table[gu8_CounterAdchannel].counter)++;	//		Ä«¿îÅÍ Áõ°¡
+		*ADC_Data_Table[gu8_CounterAdchannel].now = (U16)(ADCR >> 6);	//		í˜„ì¬ê°’ ì €ì¥
+		*ADC_Data_Table[gu8_CounterAdchannel].sum += *ADC_Data_Table[gu8_CounterAdchannel].now;	//		Sum ì €ì¥
+		(*ADC_Data_Table[gu8_CounterAdchannel].counter)++;	//		ì¹´ìš´í„° ì¦ê°€
 
-		if (*ADC_Data_Table[gu8_CounterAdchannel].counter >= ADC_Data_Table[gu8_CounterAdchannel].average_counter)	//		ÀĞ±â È½¼ö Ä«¿îÅÍ ¿Ï·á ÀÏ ¶§
+		if (*ADC_Data_Table[gu8_CounterAdchannel].counter >= ADC_Data_Table[gu8_CounterAdchannel].average_counter)	//		ì½ê¸° íšŸìˆ˜ ì¹´ìš´í„° ì™„ë£Œ ì¼ ë•Œ
 		{
-			*ADC_Data_Table[gu8_CounterAdchannel].average = *ADC_Data_Table[gu8_CounterAdchannel].sum / *ADC_Data_Table[gu8_CounterAdchannel].counter;	//		Æò±Õ°ª °è»ê
-			*ADC_Data_Table[gu8_CounterAdchannel].sum = 0;	//	Sum ÃÊ±âÈ­
-			*ADC_Data_Table[gu8_CounterAdchannel].counter = 0;	//	 Ä«¿îÅÍ ÃÊ±âÈ­
+			*ADC_Data_Table[gu8_CounterAdchannel].average = *ADC_Data_Table[gu8_CounterAdchannel].sum / *ADC_Data_Table[gu8_CounterAdchannel].counter;	//		í‰ê· ê°’ ê³„ì‚°
+			*ADC_Data_Table[gu8_CounterAdchannel].sum = 0;	//	Sum ì´ˆê¸°í™”
+			*ADC_Data_Table[gu8_CounterAdchannel].counter = 0;	//	 ì¹´ìš´í„° ì´ˆê¸°í™”
 		}
 	}
 
-	ADC_Channel_Increase();							//	ADC Ã¤³Î Áõ°¡
+	ADC_Channel_Increase();							//	ADC ì±„ë„ ì¦ê°€
 
 	if (ADC_Data_Table[gu8_CounterAdchannel].channel == Z_ADC_ANI6_COLDTH)
 	{
-		if ((F_TestMode_PBA == CLEAR) && (P_COLDSENSOR_ON == LOW))				//	¼¾¼­ OFFÀÌ¸é
+		if ((F_TestMode_PBA == CLEAR) && (P_COLDSENSOR_ON == LOW))				//	ì„¼ì„œ OFFì´ë©´
 		{
 			gu8_CounterAdc[Z_ADC_ANI6_COLDTH] = 0;
 			gu16_SumAdc[Z_ADC_ANI6_COLDTH] = 0;
@@ -140,12 +140,12 @@ void Input_AD_Change(void)
 	}
 	ADCE = 1;										//	AD Enable
 	ADS = ADC_Data_Table[gu8_CounterAdchannel].channel;			//	AD channel change
-	NOP();											// 	Áö¿¬
-	NOP();											// 	Áö¿¬
-	ADCS = 1;										// 	AD º¯È¯ µ¿ÀÛ ½ÃÀÛ
-	ADIF = 0;										// 	AD º¯È¯ ÀÎÅÍ·´Æ® ¿äÃ» ÇÃ·¡±× ºñÆ® Å¬¸®¾î(¸¸ÀÏÀ» À§ÇØ)
+	NOP();											// 	ì§€ì—°
+	NOP();											// 	ì§€ì—°
+	ADCS = 1;										// 	AD ë³€í™˜ ë™ì‘ ì‹œì‘
+	ADIF = 0;										// 	AD ë³€í™˜ ì¸í„°ëŸ½íŠ¸ ìš”ì²­ í”Œë˜ê·¸ ë¹„íŠ¸ í´ë¦¬ì–´(ë§Œì¼ì„ ìœ„í•´)
 
-	if (F_TestMode_LineFront == SET)				//	°øÀå °Ë»ç Áß
+	if (F_TestMode_LineFront == SET)				//	ê³µì¥ ê²€ì‚¬ ì¤‘
 	{
 		if (ADC_RESULT_FAN_FB > gu16_FAN_FB_forLineTest)
 		{
@@ -160,7 +160,7 @@ void Input_AD_Change(void)
 //			}
 //		}
 //
-//		if ((gu8_TimerLineTest_Heater != 0) && (gu8_TimerLineTest_Heater <= ((Z_TimerLineTest_Heater/2)-70)))	//	70ÀÎ ÀÌÀ¯´Â ¸±·¹ÀÌÀÇ ÀÜÀü·ù°¡ ÀÖ±â¶§¹®¿¡
+//		if ((gu8_TimerLineTest_Heater != 0) && (gu8_TimerLineTest_Heater <= ((Z_TimerLineTest_Heater/2)-70)))	//	70ì¸ ì´ìœ ëŠ” ë¦´ë ˆì´ì˜ ì”ì „ë¥˜ê°€ ìˆê¸°ë•Œë¬¸ì—
 //		{
 //			if (ADC_RESULT_HEATER_FB > gu16_Heater_FB_Triac_forLineTest)
 //			{
@@ -170,11 +170,11 @@ void Input_AD_Change(void)
 	}
 }
 
-#ifdef _HEATER_SENSOR_MAX_DEGREE_UPDATE_		//cbr 2025-12-16 È÷ÅÍ¿Âµµ¼¾¼­ max ´©Àû °»½Å
+#ifdef _HEATER_SENSOR_MAX_DEGREE_UPDATE_		//cbr 2025-12-16 íˆí„°ì˜¨ë„ì„¼ì„œ max ëˆ„ì  ê°±ì‹ 
 	I16 gi16_HeaterSensor_MaxDegree = 0;
 #endif
 
-/// @brief    ¿Âµµµ¥ÀÌÅÍ º¯È¯ (Main Loop)
+/// @brief    ì˜¨ë„ë°ì´í„° ë³€í™˜ (Main Loop)
 /// @param    void
 /// @return   void
 void Temperature_Change(void)
@@ -360,7 +360,7 @@ void Temperature_Change(void)
 	{
 		gi16_HeaterSensor.DEGREE = HeaterTemp_Table[*gi16_HeaterSensor.TH_ADC_AVERAGE - 201];
 	}
-#ifdef _HEATER_SENSOR_MAX_DEGREE_UPDATE_		//cbr 2025-12-16 È÷ÅÍ¿Âµµ¼¾¼­ max ´©Àû °»½Å
+#ifdef _HEATER_SENSOR_MAX_DEGREE_UPDATE_		//cbr 2025-12-16 íˆí„°ì˜¨ë„ì„¼ì„œ max ëˆ„ì  ê°±ì‹ 
 	// I16 gi16_HeaterSensor_MaxDegree = 0;
 	if((gi16_HeaterSensor.DEGREE >= gi16_HeaterSensor_MaxDegree)
 	|| (F_Eff_Continue_Heater_Off == SET))
@@ -429,17 +429,17 @@ void Temperature_Change(void)
 	}
 }
 
-/// @brief    È÷ÅÍ ÃÖ´ëÃâ·Â Àü·ÂÄ¡ ÀúÀå
+/// @brief    íˆí„° ìµœëŒ€ì¶œë ¥ ì „ë ¥ì¹˜ ì €ì¥
 /// @param    void
 /// @return   void
 void HeaterFullCurrent_Decide(void)
 {
 	U32 mu32_buf1, mu32_buf2;
 #ifdef _FOR_HEATER_ENDURANCE_TEST_
-	if ((P_HEATER_RELAY == ON) && ((P_HEATER_TRIAC == ON) || (P_HEATER_PWM_TDR > _DABF_TAU_TDR02_VALUE))	// È÷ÅÍ µÎ°³°¡ ´Ù ÄÑÁø °æ¿ì¿¡¸¸ Ã¼Å©
+	if ((P_HEATER_RELAY == ON) && ((P_HEATER_TRIAC == ON) || (P_HEATER_PWM_TDR > _DABF_TAU_TDR02_VALUE))	// íˆí„° ë‘ê°œê°€ ë‹¤ ì¼œì§„ ê²½ìš°ì—ë§Œ ì²´í¬
 		&& ((gu8_HotStep == Z_HotStep_02) || (gu8_HotStep == Z_HotStep_33) || (gu8_HotStep == Z_HotStep_35) /*|| ((gu8_HotStep == Z_HotStep_35) && (gu8_TimerHeaterControl_AfterEff == 0))*/))
 #else
-	if ((P_HEATER_RELAY == ON) && ((P_HEATER_TRIAC == ON) || (P_HEATER_PWM_TDR > _DABF_TAU_TDR02_VALUE))	// È÷ÅÍ µÎ°³°¡ ´Ù ÄÑÁø °æ¿ì¿¡¸¸ Ã¼Å©
+	if ((P_HEATER_RELAY == ON) && ((P_HEATER_TRIAC == ON) || (P_HEATER_PWM_TDR > _DABF_TAU_TDR02_VALUE))	// íˆí„° ë‘ê°œê°€ ë‹¤ ì¼œì§„ ê²½ìš°ì—ë§Œ ì²´í¬
 //		&& ((gu8_HotStep == Z_HotStep_02) || (gu8_HotStep == Z_HotStep_33) /*|| ((gu8_HotStep == Z_HotStep_35) && (gu8_TimerHeaterControl_AfterEff == 0))*/))
 		&& ((gu8_TimerLineTest_Heater != 0) || (gu8_HotStep == Z_HotStep_02) || (gu8_HotStep == Z_HotStep_33) /*|| ((gu8_HotStep == Z_HotStep_35) && (gu8_TimerHeaterControl_AfterEff == 0))*/))
 #endif
@@ -469,7 +469,7 @@ void HeaterFullCurrent_Decide(void)
 					{
 						gu16_Heater_FB_forLineTest = gu16_HeaterFull_WATT;
 					}
-					if (gu16_HeaterFull_WATT < 1500)	//	(È÷ÅÍ Ä¿³ØÅÍ°¡ 1°³ ºüÁ®¼­ ³·°Ô ÀÔ·ÂµÇ´Â °æ¿ì ³Ê¹« ³·¾Æ À¯·®ÀÌ ÀûÀº °æ¿ì°¡ ÀÖ¾î¼­ Limit)
+					if (gu16_HeaterFull_WATT < 1500)	//	(íˆí„° ì»¤ë„¥í„°ê°€ 1ê°œ ë¹ ì ¸ì„œ ë‚®ê²Œ ì…ë ¥ë˜ëŠ” ê²½ìš° ë„ˆë¬´ ë‚®ì•„ ìœ ëŸ‰ì´ ì ì€ ê²½ìš°ê°€ ìˆì–´ì„œ Limit)
 					{
 						gu16_HeaterFull_WATT = 1500;
 					}
@@ -487,19 +487,19 @@ void HeaterFullCurrent_Decide(void)
 				gu16_HeaterRELAY_WATT = HEATER_RELAY_WATT_KOR;
 			}
 			//cbr_test 2025-09-15
-			//	ÀúÀü¾Ğ, Á¤°İ, °íÀü¾Ğ ±¸º°
+			//	ì €ì „ì••, ì •ê²©, ê³ ì „ì•• êµ¬ë³„
 			if(gu16_HeaterFull_WATT <= 2400)
 			{
 				gu8_Heater_PowerLevel = Z_HEATER_POWER_LEVEL_LOW;
 			}
 			//@030 else if(gu16_HeaterFull_WATT <= 2800)
-			//@030 else if(gu16_HeaterFull_WATT <= 3000)  //@030       ¿øº¹....
+			//@030 else if(gu16_HeaterFull_WATT <= 3000)  //@030       ì›ë³µ....
 			else if(gu16_HeaterFull_WATT <= 2800)      
 			{
 				gu8_Heater_PowerLevel = Z_HEATER_POWER_LEVEL_RATED;
 			}
 			else if((gu16_HeaterFull_WATT <= 3000)            //@030
-			&& (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR__90))  //@030 90µµ ÀÌ»ó¿¡¼­¸¸ RATED ¹üÀ§ È®Àå
+			&& (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR__90))  //@030 90ë„ ì´ìƒì—ì„œë§Œ RATED ë²”ìœ„ í™•ì¥
 			{                                                 //@030
 				gu8_Heater_PowerLevel = Z_HEATER_POWER_LEVEL_RATED;   //@030
 			}                                                         //@030			
@@ -508,10 +508,10 @@ void HeaterFullCurrent_Decide(void)
 				gu8_Heater_PowerLevel = Z_HEATER_POWER_LEVEL_HIGH;
 			}
 
-			gu8_Heater__PowerLevel_forEEPROM = gu8_Heater_PowerLevel;   //@035 ÆÄ¿ö·¹º§ ¹é¾÷
-			gu16_HeaterFull_WATT_forEEPROM.word = gu16_HeaterFull_WATT; //@036 È÷ÅÍ ÃÖ´ë WATT ¹é¾÷
+			gu8_Heater__PowerLevel_forEEPROM = gu8_Heater_PowerLevel;   //@035 íŒŒì›Œë ˆë²¨ ë°±ì—…
+			gu16_HeaterFull_WATT_forEEPROM.word = gu16_HeaterFull_WATT; //@036 íˆí„° ìµœëŒ€ WATT ë°±ì—…
 		}
-		else										//	ÀÏº»Çâ
+		else										//	ì¼ë³¸í–¥
 		{
 			if ((ADC_RESULT_HEATER_FB >= 80) && (ADC_RESULT_HEATER_FB <= 900))
 			{
@@ -533,7 +533,7 @@ void HeaterFullCurrent_Decide(void)
 					{
 						gu16_Heater_FB_forLineTest = gu16_HeaterFull_WATT;
 					}
-					if (gu16_HeaterFull_WATT < 700)		//	(È÷ÅÍ Ä¿³ØÅÍ°¡ 1°³ ºüÁ®¼­ ³·°Ô ÀÔ·ÂµÇ´Â °æ¿ì ³Ê¹« ³·¾Æ À¯·®ÀÌ ÀûÀº °æ¿ì°¡ ÀÖ¾î¼­ Limit)
+					if (gu16_HeaterFull_WATT < 700)		//	(íˆí„° ì»¤ë„¥í„°ê°€ 1ê°œ ë¹ ì ¸ì„œ ë‚®ê²Œ ì…ë ¥ë˜ëŠ” ê²½ìš° ë„ˆë¬´ ë‚®ì•„ ìœ ëŸ‰ì´ ì ì€ ê²½ìš°ê°€ ìˆì–´ì„œ Limit)
 					{
 						gu16_HeaterFull_WATT = 700;
 					}
@@ -550,7 +550,7 @@ void HeaterFullCurrent_Decide(void)
 				gu16_HeaterFull_WATT = HEATER_FULL_WATT_JP;
 				gu16_HeaterRELAY_WATT = HEATER_RELAY_WATT_JP;
 			}
-			gu16_HeaterFull_WATT_forEEPROM.word = gu16_HeaterFull_WATT; //@036 È÷ÅÍ ÃÖ´ë WATT ¹é¾÷
+			gu16_HeaterFull_WATT_forEEPROM.word = gu16_HeaterFull_WATT; //@036 íˆí„° ìµœëŒ€ WATT ë°±ì—…
 		}
 	}
 
@@ -570,7 +570,7 @@ void HeaterFullCurrent_Decide(void)
 #endif
 }
 
-/// @brief    ¼öÀ§ È®Á¤
+/// @brief    ìˆ˜ìœ„ í™•ì •
 /// @param    void
 /// @return   void
 void WaterLevel_Decide(void)
@@ -578,7 +578,7 @@ void WaterLevel_Decide(void)
 
 }
 
-/// @brief    ADC Ã¤³Î Áõ°¡
+/// @brief    ADC ì±„ë„ ì¦ê°€
 /// @param    void
 /// @return   void
 void ADC_Channel_Increase(void)
@@ -589,7 +589,7 @@ void ADC_Channel_Increase(void)
 	}
 }
 
-/// @brief    Àü·ù °è»ê
+/// @brief    ì „ë¥˜ ê³„ì‚°
 /// @param    void
 /// @return   void
 void Get_WattCheck(void)
@@ -608,8 +608,8 @@ void Get_WattCheck(void)
 	U16 j = 0;
 
 
-	//	[»ó½ÃÁø´Ü Àü¿ë, ½º¸¶Æ®Áø´ÜÀº wifi¿¡¼­ Ã³¸®]
-	//	tem µ¿ÀÛ Áß, ¸¶Áö¸· °ª ±â¾ïÇÏ±â À§ÇÔ.
+	//	[ìƒì‹œì§„ë‹¨ ì „ìš©, ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì€ wifiì—ì„œ ì²˜ë¦¬]
+	//	tem ë™ì‘ ì¤‘, ë§ˆì§€ë§‰ ê°’ ê¸°ì–µí•˜ê¸° ìœ„í•¨.
 	if((gu16_TEM_Voltage >= Z_Cooling_Voltage_24V) && (F_SmartCheck == CLEAR))
 	{
 		gu8_F_AlwaysDiagnosis_forWifi = SET;
@@ -617,38 +617,38 @@ void Get_WattCheck(void)
 		gu16_SMPS_Voltage_Feedback_Result = calculate_smps_voltage_feedback(ADC_RESULT_VOLTAGE_FB);
 	}
 
-	//	[»ó½ÃÁø´Ü Àü¿ë, ½º¸¶Æ®Áø´ÜÀº wifi¿¡¼­ Ã³¸®]
+	//	[ìƒì‹œì§„ë‹¨ ì „ìš©, ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì€ wifiì—ì„œ ì²˜ë¦¬]
 	HeaterRelay_Measurement();
 	HeaterTriac_Measurement();
 
-	//	[»ó½ÃÁø´Ü Àü¿ë, ½º¸¶Æ®Áø´ÜÀº wifi¿¡¼­ Ã³¸®] UV Àü·ù °è»ê
-	//	P_UV = 1 ÀÎ °æ¿ì¸¸ °è»ê 
-	//	Ã¹ ¿Â ¿©ºÎ ÇÃ·¡±× Ã¼Å©ÇØ¼­, ÇÑ¹øÀÌ¶óµµ ON ¾ÈµÆÀ¸¸é 65535Àü¼Û
-	//  ±× ÀÌÈÄºÎÅÍ´Â UV µ¿ÀÛÇÒ¶§¸¸ Ã¼Å©ÇÏ¿©, ¸¶Áö¸· °ª °¡Áö°í ÀÖÀº ÈÄ, Àü¼Û
+	//	[ìƒì‹œì§„ë‹¨ ì „ìš©, ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì€ wifiì—ì„œ ì²˜ë¦¬] UV ì „ë¥˜ ê³„ì‚°
+	//	P_UV = 1 ì¸ ê²½ìš°ë§Œ ê³„ì‚° 
+	//	ì²« ì˜¨ ì—¬ë¶€ í”Œë˜ê·¸ ì²´í¬í•´ì„œ, í•œë²ˆì´ë¼ë„ ON ì•ˆëìœ¼ë©´ 65535ì „ì†¡
+	//  ê·¸ ì´í›„ë¶€í„°ëŠ” UV ë™ì‘í• ë•Œë§Œ ì²´í¬í•˜ì—¬, ë§ˆì§€ë§‰ ê°’ ê°€ì§€ê³  ìˆì€ í›„, ì „ì†¡
 	if(P_UV == SET)
 	{
 		gu16_UV_mA_Result = calculate_uv_current(ADC_RESULT_UV_FB);
 	}
 
 
-	//	[Àü·Â ÃøÁ¤...]
-	if (ADC_RESULT_24V_FB != 0)					//	Àü·ù °ªÀÌ ÀÖ´Â °æ¿ì
+	//	[ì „ë ¥ ì¸¡ì •...]
+	if (ADC_RESULT_24V_FB != 0)					//	ì „ë¥˜ ê°’ì´ ìˆëŠ” ê²½ìš°
 	{
 		DC_voltage = ADC_Resolution * ADC_RESULT_24V_FB / 100;	//	[1/100V]
 		DC_mA = DC_voltage * 4;						//	[1/100V] * [1/10] = [1/1000A]
-		DC_Watt = DC_mA * 24 / 10;					//	24V °öÇÏ±â [1/100W]
+		DC_Watt = DC_mA * 24 / 10;					//	24V ê³±í•˜ê¸° [1/100W]
 	}
 	
-	/*	TEM mA °è»ê	*/
-	if (ADC_RESULT_TEM_FB >= 10)					//	Àü·ù °ªÀÌ ÀÖ´Â °æ¿ì
+	/*	TEM mA ê³„ì‚°	*/
+	if (ADC_RESULT_TEM_FB >= 10)					//	ì „ë¥˜ ê°’ì´ ìˆëŠ” ê²½ìš°
 	{
 		#if 1
 		TEM_voltage = ADC_Resolution * ADC_RESULT_TEM_FB / 100;
 		TEM_mA = (TEM_voltage * 156 + 4291) / 10;		//	(([1/100V] * [1/100]) + [1/10000] / 10)= [1/1000A]
-		TEM_Watt = TEM_mA * 24 / 10;				//	24V °öÇÏ±â [1/100W]
+		TEM_Watt = TEM_mA * 24 / 10;				//	24V ê³±í•˜ê¸° [1/100W]
 		#endif
 		// TEM_mA = (U16)(((U32)ADC_RESULT_TEM_FB * 50000) / 7900);
-		// TEM_Watt = TEM_mA * 24 / 10;				//	24V °öÇÏ±â [1/100W]
+		// TEM_Watt = TEM_mA * 24 / 10;				//	24V ê³±í•˜ê¸° [1/100W]
 	}
 
 	if (gu8_ModelType_forCHP == MODEL_CHP)
@@ -671,22 +671,22 @@ void Get_WattCheck(void)
 	gu32_Watt_Result = (U32)(DC_Watt + AC_Watt + TEM_Watt);		//	[1/100W]
 }
 
-/// @brief    È÷ÅÍ ¸±·¹ÀÌ ÃøÁ¤ (85µµ ÀÌ»ó ÃßÃâ ÁßÀÌ°Å³ª ½º¸¶Æ®Áø´ÜÀÏ ¶§¸¸)
+/// @brief    íˆí„° ë¦´ë ˆì´ ì¸¡ì • (85ë„ ì´ìƒ ì¶”ì¶œ ì¤‘ì´ê±°ë‚˜ ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì¼ ë•Œë§Œ)
 /// @param    void
 /// @return   void
 void HeaterRelay_Measurement(void)
 {
-	//	85µµ ÀÌ»ó ÃßÃâ ÁßÀÌ°Å³ª ½º¸¶Æ®Áø´ÜÀÏ ¶§¸¸ ÃøÁ¤
+	//	85ë„ ì´ìƒ ì¶”ì¶œ ì¤‘ì´ê±°ë‚˜ ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì¼ ë•Œë§Œ ì¸¡ì •
 	if((gu8_OperationStep == Z_OperationStep_50) && (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR85_JP80))
 	{
 		if (gu8_ModelType_forCHP == MODEL_CHP)
 		{
-			//	Æ®¶óÀÌ¾Ç°ú ¸±·¹ÀÌ µÑ ´Ù ONÀÌ°í, PWM Ãâ·ÂÀÌ ÀÖÀ» ¶§¸¸ ÃøÁ¤
+			//	íŠ¸ë¼ì´ì•…ê³¼ ë¦´ë ˆì´ ë‘˜ ë‹¤ ONì´ê³ , PWM ì¶œë ¥ì´ ìˆì„ ë•Œë§Œ ì¸¡ì •
 			if (gu8_HeaterRelay_CMD == HEATER_ON)
 			{
 				gu8_F_HeaterRelayFirst_Check = SET;
 
-				//	È÷ÅÍ ¸±·¹ÀÌ ÃøÁ¤
+				//	íˆí„° ë¦´ë ˆì´ ì¸¡ì •
 				TEST____RELAY++;
 				
 				if (ADC_RESULT_HEATER_FB > gu16_SmartCheck_Result_HeaterRelay_ADC)
@@ -702,22 +702,22 @@ void HeaterRelay_Measurement(void)
 	}
 }
 
-/// @brief    È÷ÅÍ Æ®¶óÀÌ¾Ç ÃøÁ¤ (85µµ ÀÌ»ó ÃßÃâ ÁßÀÌ°Å³ª ½º¸¶Æ®Áø´ÜÀÏ ¶§¸¸)
+/// @brief    íˆí„° íŠ¸ë¼ì´ì•… ì¸¡ì • (85ë„ ì´ìƒ ì¶”ì¶œ ì¤‘ì´ê±°ë‚˜ ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì¼ ë•Œë§Œ)
 /// @param    void
 /// @return   void
 void HeaterTriac_Measurement(void)
 {
-	//	85µµ ÀÌ»ó ÃßÃâ ÁßÀÌ°Å³ª ½º¸¶Æ®Áø´ÜÀÏ ¶§¸¸ ÃøÁ¤
+	//	85ë„ ì´ìƒ ì¶”ì¶œ ì¤‘ì´ê±°ë‚˜ ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ì¼ ë•Œë§Œ ì¸¡ì •
 	if((gu8_OperationStep == Z_OperationStep_50) && (gu8_HotTempSetup >= HOT_TEMP_SETUP_KOR85_JP80))
 	{
 		if (gu8_ModelType_forCHP == MODEL_CHP)
 		{
-			//	Æ®¶óÀÌ¾Ç°ú ¸±·¹ÀÌ µÑ ´Ù ONÀÌ°í, PWM Ãâ·ÂÀÌ ÀÖÀ» ¶§¸¸ ÃøÁ¤
+			//	íŠ¸ë¼ì´ì•…ê³¼ ë¦´ë ˆì´ ë‘˜ ë‹¤ ONì´ê³ , PWM ì¶œë ¥ì´ ìˆì„ ë•Œë§Œ ì¸¡ì •
 			if ((gu8_HeaterTriac_CMD == HEATER_PWM) && (P_HEATER_PWM_TDR > 0))
 			{
 				gu8_F_HeaterTriacFirst_Check = SET;
 
-				//	È÷ÅÍ Æ®¶óÀÌ¾Ç ÃøÁ¤
+				//	íˆí„° íŠ¸ë¼ì´ì•… ì¸¡ì •
 				if (ADC_RESULT_HEATER_FB > gu16_SmartCheck_Result_HeaterTriac_ADC)
 				{
 					gu16_SmartCheck_Result_HeaterTriac_ADC = ADC_RESULT_HEATER_FB;
@@ -731,7 +731,7 @@ void HeaterTriac_Measurement(void)
 	}
 }
 
-/// @brief    ÃßÃâ ¿Âµµ Æò±Õ
+/// @brief    ì¶”ì¶œ ì˜¨ë„ í‰ê· 
 /// @param    void
 /// @return   void
 void Effluent_Degree_Average(void)
@@ -739,41 +739,41 @@ void Effluent_Degree_Average(void)
 	if (F_100ms_for_Degree_Average == SET)
 	{
 		F_100ms_for_Degree_Average = CLEAR;
-		/*	¿Â¼ö Ãâ¼ö	*/
-		if ((gu8_HotStep == Z_HotStep_35) && (gu16_FlowDecide_W != 0))	//	¿Â¼ö Ãâ¼ö ÁßÀÌ°í À¯·®ÀÌ ÀÖ´Â °æ¿ì
+		/*	ì˜¨ìˆ˜ ì¶œìˆ˜	*/
+		if ((gu8_HotStep == Z_HotStep_35) && (gu16_FlowDecide_W != 0))	//	ì˜¨ìˆ˜ ì¶œìˆ˜ ì¤‘ì´ê³  ìœ ëŸ‰ì´ ìˆëŠ” ê²½ìš°
 		{
-			gu32_HotOut_Degree_Total += gi16_HotOutSensor.DEGREE;	//		¿Â¼ö Ãâ¼ö¿Âµµ ´©Àû
-			gu16_HotOut_Degree_Cnt++;					//		Ä«¿îÆ® ´©Àû
+			gu32_HotOut_Degree_Total += gi16_HotOutSensor.DEGREE;	//		ì˜¨ìˆ˜ ì¶œìˆ˜ì˜¨ë„ ëˆ„ì 
+			gu16_HotOut_Degree_Cnt++;					//		ì¹´ìš´íŠ¸ ëˆ„ì 
 
-			if ((gu32_HotOut_Degree_Total != 0) && (gu16_HotOut_Degree_Cnt != 0))	//		µ¥ÀÌÅÍ°¡ ÀÖ´Â °æ¿ì
+			if ((gu32_HotOut_Degree_Total != 0) && (gu16_HotOut_Degree_Cnt != 0))	//		ë°ì´í„°ê°€ ìˆëŠ” ê²½ìš°
 			{
-				gu16_HotOut_Degree_Ave = (U16)(gu32_HotOut_Degree_Total / gu16_HotOut_Degree_Cnt);	//			Æò±Õ »êÃâ
+				gu16_HotOut_Degree_Ave = (U16)(gu32_HotOut_Degree_Total / gu16_HotOut_Degree_Cnt);	//			í‰ê·  ì‚°ì¶œ
 			}
 		}
-		else											//	»ó±â ¿Ü
+		else											//	ìƒê¸° ì™¸
 		{
 
 		}
 
-		/*	³Ã¼ö Ãâ¼ö	*/
-		if ((gu8_OperationStep == Z_OperationStep_50) && (gu8_WaterSelect == COLD_WATER) && (gu16_FlowDecide_W != 0))	//	³Ã¼ö Ãâ¼ö ÁßÀÌ°í À¯·®ÀÌ ÀÖ´Â °æ¿ì
+		/*	ëƒ‰ìˆ˜ ì¶œìˆ˜	*/
+		if ((gu8_OperationStep == Z_OperationStep_50) && (gu8_WaterSelect == COLD_WATER) && (gu16_FlowDecide_W != 0))	//	ëƒ‰ìˆ˜ ì¶œìˆ˜ ì¤‘ì´ê³  ìœ ëŸ‰ì´ ìˆëŠ” ê²½ìš°
 		{
-			gu32_Cold_Degree_Total += gi16_ColdSensor.DEGREE;	//		³Ã¼ö¿Âµµ ´©Àû
-			gu16_Cold_Degree_Cnt++;						//		Ä«¿îÆ® ´©Àû
+			gu32_Cold_Degree_Total += gi16_ColdSensor.DEGREE;	//		ëƒ‰ìˆ˜ì˜¨ë„ ëˆ„ì 
+			gu16_Cold_Degree_Cnt++;						//		ì¹´ìš´íŠ¸ ëˆ„ì 
 		}
-		else											//	»ó±â ¿Ü
+		else											//	ìƒê¸° ì™¸
 		{
-			if ((gu32_Cold_Degree_Total != 0) && (gu16_Cold_Degree_Cnt != 0))	//		µ¥ÀÌÅÍ°¡ ÀÖ´Â °æ¿ì
+			if ((gu32_Cold_Degree_Total != 0) && (gu16_Cold_Degree_Cnt != 0))	//		ë°ì´í„°ê°€ ìˆëŠ” ê²½ìš°
 			{
-				gu16_Cold_Degree_Ave = (U16)(gu32_Cold_Degree_Total / gu16_Cold_Degree_Cnt);	//			Æò±Õ »êÃâ
+				gu16_Cold_Degree_Ave = (U16)(gu32_Cold_Degree_Total / gu16_Cold_Degree_Cnt);	//			í‰ê·  ì‚°ì¶œ
 			}
-			gu32_Cold_Degree_Total = 0;					//		µ¥ÀÌÅÍ clr
-			gu16_Cold_Degree_Cnt = 0;					//		µ¥ÀÌÅÍ clr
+			gu32_Cold_Degree_Total = 0;					//		ë°ì´í„° clr
+			gu16_Cold_Degree_Cnt = 0;					//		ë°ì´í„° clr
 		}
 	}
 }
 
-/// @brief    È÷ÅÍ Àü·Â °è»ê
+/// @brief    íˆí„° ì „ë ¥ ê³„ì‚°
 /// @param    void
 /// @return   void
 U32 HeaterWattCalculation(void)
@@ -854,10 +854,10 @@ U16 calculate_dc_current( U16 mu16_ad )
 	U16 mu16_value = 0;
 	U16 i = 0;
 
-	//	LJH : 2025-12-11 10:00:00 Àü·ù°ª °è»ê ´Ù½Ã.
-	if (ADC_RESULT_24V_FB != 0)					//	Àü·ù °ªÀÌ ÀÖ´Â °æ¿ì
+	//	LJH : 2025-12-11 10:00:00 ì „ë¥˜ê°’ ê³„ì‚° ë‹¤ì‹œ.
+	if (ADC_RESULT_24V_FB != 0)					//	ì „ë¥˜ ê°’ì´ ìˆëŠ” ê²½ìš°
 	{
-		//@006 i = ADC_RESULT_24V_FB - 10;		//	ad°ªÀÌ Á» ¶°ÀÕ¾î¼­ º¸Á¤...
+		//@006 i = ADC_RESULT_24V_FB - 10;		//	adê°’ì´ ì¢€ ë– ì‡ì–´ì„œ ë³´ì •...
 		i = ADC_RESULT_24V_FB;					//@006
 		//@003mu16_value = (U16)(((((U32)i * 5000) / 1024) / 40) * 10);
 		mu16_value = (U16)(((((U32)i * (U32)5000) / (U32)1024) / (U32)40) * (U32)10);	//@003
@@ -883,17 +883,17 @@ U16 calculate_smps_voltage_feedback( U16 mu16_ad )
 
 /***********************************************************************************************************************
 * Function Name: check_smps_voltage_range
-* Description  : SMPS Àü¾Ğ MIN/MAX ¹üÀ§ È®ÀÎ (¡¾10%)
-* @param       : mu16_value - È®ÀÎÇÒ °ª
-*                mu16_min   - MIN °ª
-*                mu16_max   - MAX °ª
-* @return      : 0 - Á¤»ó ¹üÀ§ ³», 1 - ¹üÀ§ ÃÊ°ú (ERROR)
+* Description  : SMPS ì „ì•• MIN/MAX ë²”ìœ„ í™•ì¸ (Â±10%)
+* @param       : mu16_value - í™•ì¸í•  ê°’
+*                mu16_min   - MIN ê°’
+*                mu16_max   - MAX ê°’
+* @return      : 0 - ì •ìƒ ë²”ìœ„ ë‚´, 1 - ë²”ìœ„ ì´ˆê³¼ (ERROR)
 ***********************************************************************************************************************/
 U8 check_smps_voltage_range( U16 mu16_value )
 {
 	if(mu16_value >= SMPS_24V_FEEDBACK_VOLTAGE_MIN && mu16_value <= SMPS_24V_FEEDBACK_VOLTAGE_MAX)
 	{
-		return FEEDBACK_OK;  // Á¤»ó ¹üÀ§
+		return FEEDBACK_OK;  // ì •ìƒ ë²”ìœ„
 	}
 	else
 	{
@@ -903,17 +903,17 @@ U8 check_smps_voltage_range( U16 mu16_value )
 
 /***********************************************************************************************************************
 * Function Name: check_tem_current_range
-* Description  : TEM Àü·ù MIN/MAX ¹üÀ§ È®ÀÎ (¡¾10%)
-* @param       : mu16_value - È®ÀÎÇÒ °ª
-*                mu16_min   - MIN °ª
-*                mu16_max   - MAX °ª
-* @return      : 0 - Á¤»ó ¹üÀ§ ³», 1 - ¹üÀ§ ÃÊ°ú (ERROR)
+* Description  : TEM ì „ë¥˜ MIN/MAX ë²”ìœ„ í™•ì¸ (Â±10%)
+* @param       : mu16_value - í™•ì¸í•  ê°’
+*                mu16_min   - MIN ê°’
+*                mu16_max   - MAX ê°’
+* @return      : 0 - ì •ìƒ ë²”ìœ„ ë‚´, 1 - ë²”ìœ„ ì´ˆê³¼ (ERROR)
 ***********************************************************************************************************************/
 U8 check_tem_current_range( U16 mu16_value )
 {
 	if(mu16_value >= TEM_24V_FEEDBACK_CURRENT_MIN)
 	{
-		return FEEDBACK_OK;  // Á¤»ó ¹üÀ§
+		return FEEDBACK_OK;  // ì •ìƒ ë²”ìœ„
 	}
 	else
 	{
@@ -923,11 +923,11 @@ U8 check_tem_current_range( U16 mu16_value )
 
 /***********************************************************************************************************************
 * Function Name: check_tem_current_range
-* Description  : TEM Àü·ù MIN/MAX ¹üÀ§ È®ÀÎ (¡¾10%)
-* @param       : mu16_value - È®ÀÎÇÒ °ª
-*                mu16_min   - MIN °ª
-*                mu16_max   - MAX °ª
-* @return      : 0 - Á¤»ó ¹üÀ§ ³», 1 - ¹üÀ§ ÃÊ°ú (ERROR)
+* Description  : TEM ì „ë¥˜ MIN/MAX ë²”ìœ„ í™•ì¸ (Â±10%)
+* @param       : mu16_value - í™•ì¸í•  ê°’
+*                mu16_min   - MIN ê°’
+*                mu16_max   - MAX ê°’
+* @return      : 0 - ì •ìƒ ë²”ìœ„ ë‚´, 1 - ë²”ìœ„ ì´ˆê³¼ (ERROR)
 ***********************************************************************************************************************/
 void ad_feedback_mode_ad_sensing(void)
 {

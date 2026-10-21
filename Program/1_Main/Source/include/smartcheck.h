@@ -1,7 +1,7 @@
 /// @file   buzzer.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Buzzer ���� ���� ���� ���?? file
+/// @brief  Buzzer 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占?? file
 
 #ifdef SMARTCHECK_C
 	#define 	EXTERN
@@ -13,23 +13,23 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_SMARTCHECK()	{	/*	1ms Ÿ�̸� ����			*/	\
+#define	TDEC_1ms_SMARTCHECK()	{	/*	1ms 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
-#define	TDEC_10ms_SMARTCHECK()	{	/*	10ms Ÿ�̸� ����		*/	\
+#define	TDEC_10ms_SMARTCHECK()	{	/*	10ms 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									TDEC(gu8_TimerSmartCheck_10ms);	\
 								}
-#define	TDEC_100ms_SMARTCHECK()	{	/*	100ms Ÿ�̸� ����		*/	\
+#define	TDEC_100ms_SMARTCHECK()	{	/*	100ms 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									TDEC(gu8_TimerSmartCheck_100ms);	\
 								}
-#define	TDEC_1s_SMARTCHECK()	{	/*	1s Ÿ�̸� ����			*/	\
+#define	TDEC_1s_SMARTCHECK()	{	/*	1s 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
-#define	TDEC_10s_SMARTCHECK()	{	/*	10s Ÿ�̸� ����			*/	\
+#define	TDEC_10s_SMARTCHECK()	{	/*	10s 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
-#define	TDEC_1min_SMARTCHECK()	{	/*	1min Ÿ�̸� ����		*/	\
+#define	TDEC_1min_SMARTCHECK()	{	/*	1min 타占싱몌옙 占쏙옙占쏙옙		*/	\
 								}
-#define	TDEC_10min_SMARTCHECK()	{	/*	10min Ÿ�̸� ����		*/	\
+#define	TDEC_10min_SMARTCHECK()	{	/*	10min 타占싱몌옙 占쏙옙占쏙옙		*/	\
 								}
-#define	TDEC_1h_SMARTCHECK()	{	/*	1h Ÿ�̸� ����			*/	\
+#define	TDEC_1h_SMARTCHECK()	{	/*	1h 타占싱몌옙 占쏙옙占쏙옙			*/	\
 								}
 
 								
@@ -141,7 +141,7 @@ EXTERN U16 gu16_SmartCheck_Result_1stNos_VV_mA;
 EXTERN U16 gu16_SmartCheck_Result_Fan_mA;
 EXTERN U16 gu16_SmartCheck_Result_TEM_mA;
 EXTERN U16 gu16_SmartCheck_Result_TEM__mA_for_Wifi_041B;
-EXTERN U16 gu16_SmartCheck_Result_FlowMeter;		//	����[1/1ccpm] (cc/min)
+EXTERN U16 gu16_SmartCheck_Result_FlowMeter;		//	占쏙옙占쏙옙[1/1ccpm] (cc/min)
 EXTERN U16 gu16_SmartCheck_Result_UV_mA;
 EXTERN U16 gu16_SmartCheck_Result_SteppingMotor_mA;
 EXTERN U16 gu16_SmartCheck_Result_FaucetMoving_mA;
@@ -149,12 +149,12 @@ EXTERN U16 gu16_SmartCheck_Result_SMPS_Voltage_Feedback;
 EXTERN U16 gu16_SmartCheck_Result_CupDetection_MicroSW;
 EXTERN U16 gu16_SmartCheck_Result_Faucet_ReedDetected;
 
-EXTERN U8 F_SmartCheck;								//	����Ʈ �������� ���� flag
-EXTERN U8 F_SmartCheck_Stop;						//	����Ʈ �������� ���� flag
-EXTERN U8 F_SmartCheck_Complete;					//	����Ʈ �������� �Ϸ� flag
-EXTERN U8 F_SmartCheck_Complete_2;					//	����Ʈ �������� �Ϸ� flag (0040 cmd ���� ��)
-EXTERN U8 F_SmartCheck_Start;						//	����Ʈ �������� ���� �۽� flag
-EXTERN U8 F_SmartCheck_Prohibit;					//	����Ʈ �������� �Ұ� flag
+EXTERN U8 F_SmartCheck;								//	占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 flag
+EXTERN U8 F_SmartCheck_Stop;						//	占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 flag
+EXTERN U8 F_SmartCheck_Complete;					//	占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占쏙옙 占싹뤄옙 flag
+EXTERN U8 F_SmartCheck_Complete_2;					//	占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占쏙옙 占싹뤄옙 flag (0040 cmd 占쏙옙占쏙옙 占쏙옙)
+EXTERN U8 F_SmartCheck_Start;						//	占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쌜쏙옙 flag
+EXTERN U8 F_SmartCheck_Prohibit;					//	占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占쏙옙 占쌀곤옙 flag
 EXTERN U8 F_SmartCheck_Data;						//@004
 
 EXTERN U8 gu8_F_SmartCheck_Tem_Check;

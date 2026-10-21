@@ -1,18 +1,18 @@
 /// @file     main.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Main Ã³¸® file
+/// @brief    Main ì²˜ë¦¬ file
 #define MAIN_C
 #define FIX_RAM_C
 #include "include/_include.h"
 
 
-/// @brief    ¸ŞÀÎ ·çÇÁ
+/// @brief    ë©”ì¸ ë£¨í”„
 /// @param    void
 /// @return   void
 void MainLoop(void)
 {
-	RamClear();										//	º¯¼öÃÊ±âÈ­
+	RamClear();										//	ë³€ìˆ˜ì´ˆê¸°í™”
 
 	R_WDT_Restart();								//	WDT Reset
 
@@ -23,39 +23,39 @@ void MainLoop(void)
 	R_UART2_Start();								//	UART1 Start
 	R_WDT_Restart();								//	WDT Reset
 
-	gu8_TimerHWWait = Z_TimerHWWait;				//	ÇÏµå¿ş¾î ¾ÈÁ¤È­ Å¸ÀÓ
+	gu8_TimerHWWait = Z_TimerHWWait;				//	í•˜ë“œì›¨ì–´ ì•ˆì •í™” íƒ€ì„
 
-	while (gu8_TimerHWWait != 0)					//	ÇÏµå¿ş¾î ¾ÈÁ¤È­ ´ë±â
+	while (gu8_TimerHWWait != 0)					//	í•˜ë“œì›¨ì–´ ì•ˆì •í™” ëŒ€ê¸°
 	{
 		R_WDT_Restart();							//		WDT Reset
 
-		Timer_Process();							//		Timer Ã³¸®
+		Timer_Process();							//		Timer ì²˜ë¦¬
 
-		InputControl();								//		Digital Input Ã³¸®
+		InputControl();								//		Digital Input ì²˜ë¦¬
 	}
 
 	while (1)										//	Main Loop
 	{
 		R_WDT_Restart();							//		WDT Reset
 
-		Timer_Process();							//		Timer Ã³¸®
+		Timer_Process();							//		Timer ì²˜ë¦¬
 
-		//	ÀÔ·Â
-		InputControl();								//		Digital Input Ã³¸®
+		//	ì…ë ¥
+		InputControl();								//		Digital Input ì²˜ë¦¬
 
 		KeyDecide(&gu8_DigitalInput);
 
-		//	Ã³¸®
+		//	ì²˜ë¦¬
 		Operation();
 
-		//	Ãâ·Â
+		//	ì¶œë ¥
 		// OutputControl();
 
-		//	Åë½ÅÃ³¸®
-		CommunicationControl();						//		Main Åë½Å
+		//	í†µì‹ ì²˜ë¦¬
+		CommunicationControl();						//		Main í†µì‹ 
 
-		//	¾ÈÀüÃ³¸®
-		// Safety();									//		¾ÈÀüÃ³¸®
+		//	ì•ˆì „ì²˜ë¦¬
+		// Safety();									//		ì•ˆì „ì²˜ë¦¬
 		ProcessVoice();
 	}
 }

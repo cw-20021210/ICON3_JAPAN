@@ -1,7 +1,7 @@
 /// @file   watermeter.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  À¯·®¼¾¼­ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ìœ ëŸ‰ì„¼ì„œ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef OPERATION_C
 	#define 	EXTERN
@@ -13,9 +13,9 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_OPERATION()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_OPERATION()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_OPERATION()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_OPERATION()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerBootDisplay);	\
 									TDEC(gu16_TimerVersionDisplay);	\
 									TDEC(gu16_Timer_FrontTest_Seg);	\
@@ -29,7 +29,7 @@
 									TDEC(gu8_TimerReedSWCheck_forFaucetTip);	\
 									TDEC(gu8_Timer_Prohibit_Effluent_AfterEffluent);	\
 								}
-#define	TDEC_100ms_OPERATION()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_OPERATION()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerOperation_100ms);		\
 									TDEC(gu8_TimerCupSelect);	\
 									TDEC(gu8_TimerWaterSelect);	\
@@ -60,7 +60,7 @@
 									TDEC(gu8_Timer_Repeat_Eff_display);	\
 									TDEC(gu8_Timer_AdFeedback_Mode_Exit);	\
 								}
-#define	TDEC_1s_OPERATION()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_OPERATION()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu8_TimerPBATest_Join);	\
 									TDEC(gu16_Timer_Repeat_Eff);	\
 									TDEC(gu16_Timer_Repeat_Eff_forMP);	\
@@ -71,17 +71,17 @@
 									TDEC(gu8_Timer_WelcomeLed_On);	\
 									TDEC(gu8_Timer_EffluentDurabilityProgram);	\
 								}
-#define	TDEC_10s_OPERATION()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_OPERATION()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_OPERATION()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_OPERATION()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerSleepMode);	\
 									TDEC(gu8_TimerHotWater_DegreeDisplay);	\
 								}
-#define	TDEC_10min_OPERATION()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_OPERATION()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerUV_6h);	\
 									TDEC(gu16_TimerSilverCare);	\
 								}
-#define	TDEC_1h_OPERATION()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_OPERATION()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -134,42 +134,42 @@ enum {
 	Z_OperationStepNum_Max
 };
 
-#define Z_OperationStep_00			(0x00)          //	ºÎÆÃ
-#define Z_OperationStep_01			(0x01)          //	ÃÊ±âÈ­ Ç¥½Ã
-#define Z_OperationStep_02			(0x02)          //	ÃÊ±â ÇÃ·¯½Ì ¹Ì¿Ï·á
-#define Z_OperationStep_03			(0x03)          //	ÃÊ±â ÇÃ·¯½Ì Áß
-#define Z_OperationStep_04			(0x04)          //	È÷ÅÍ ¹° Ã¤¿ì±â ¹× Àü·ÂÃ¼Å©
-#define Z_OperationStep_05			(0x05)          //	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â
-#define Z_OperationStep_10			(0x10)          //	´ë±â
-#define Z_OperationStep_11			(0x11)			//	ÆÄ¿ì¼Â ¹«ºù ´ë½Ã
-#define Z_OperationStep_15			(0x15)          //	ON ¼³Á¤ Ç¥½Ã
-#define Z_OperationStep_16			(0x16)          //	³Ã°¢ OFF Ç¥½Ã
-#define Z_OperationStep_17			(0x17)          //	¹«ºù ON/OFF ¼³Á¤ Ç¥½Ã
-#define Z_OperationStep_18			(0x18)          //	OFF ¼³Á¤ Ç¥½Ã
-#define Z_OperationStep_20			(0x20)          //	½½¸³¸ğµå
-#define Z_OperationStep_30			(0x30)          //	UVÄÉ¾î
-#define Z_OperationStep_31			(0x31)          //	Á¤±â UVÄÉ¾î
-#define Z_OperationStep_40			(0x40)          //	ÀüÃ¼ Àá±İ
-#define Z_OperationStep_41			(0x41)          //	À½¼º Å¸ÀÔ
-#define Z_OperationStep_42			(0x42)          //	°ü¸® ¸ğµå ¼³Á¤
-#define Z_OperationStep_43			(0x43)          //	¹«ºù ON/OFF
-#define Z_OperationStep_50			(0x50)          //	ÃßÃâ Áß
-#define Z_OperationStep_60			(0x60)          //	WIFI¿¬°á Ç¥½Ã
+#define Z_OperationStep_00			(0x00)          //	ë¶€íŒ…
+#define Z_OperationStep_01			(0x01)          //	ì´ˆê¸°í™” í‘œì‹œ
+#define Z_OperationStep_02			(0x02)          //	ì´ˆê¸° í”ŒëŸ¬ì‹± ë¯¸ì™„ë£Œ
+#define Z_OperationStep_03			(0x03)          //	ì´ˆê¸° í”ŒëŸ¬ì‹± ì¤‘
+#define Z_OperationStep_04			(0x04)          //	íˆí„° ë¬¼ ì±„ìš°ê¸° ë° ì „ë ¥ì²´í¬
+#define Z_OperationStep_05			(0x05)          //	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸°
+#define Z_OperationStep_10			(0x10)          //	ëŒ€ê¸°
+#define Z_OperationStep_11			(0x11)			//	íŒŒìš°ì…‹ ë¬´ë¹™ ëŒ€ì‹œ
+#define Z_OperationStep_15			(0x15)          //	ON ì„¤ì • í‘œì‹œ
+#define Z_OperationStep_16			(0x16)          //	ëƒ‰ê° OFF í‘œì‹œ
+#define Z_OperationStep_17			(0x17)          //	ë¬´ë¹™ ON/OFF ì„¤ì • í‘œì‹œ
+#define Z_OperationStep_18			(0x18)          //	OFF ì„¤ì • í‘œì‹œ
+#define Z_OperationStep_20			(0x20)          //	ìŠ¬ë¦½ëª¨ë“œ
+#define Z_OperationStep_30			(0x30)          //	UVì¼€ì–´
+#define Z_OperationStep_31			(0x31)          //	ì •ê¸° UVì¼€ì–´
+#define Z_OperationStep_40			(0x40)          //	ì „ì²´ ì ê¸ˆ
+#define Z_OperationStep_41			(0x41)          //	ìŒì„± íƒ€ì…
+#define Z_OperationStep_42			(0x42)          //	ê´€ë¦¬ ëª¨ë“œ ì„¤ì •
+#define Z_OperationStep_43			(0x43)          //	ë¬´ë¹™ ON/OFF
+#define Z_OperationStep_50			(0x50)          //	ì¶”ì¶œ ì¤‘
+#define Z_OperationStep_60			(0x60)          //	WIFIì—°ê²° í‘œì‹œ
 #define Z_OperationStep_70			(0x70)          //	FOTA
-#define Z_OperationStep_80			(0x80)          //	½º¸¶Æ®Áø´Ü
-#define Z_OperationStep_90			(0x90)          //	°øÀåÀÚµ¿È­ Å×½ºÆ®
-#define Z_OperationStep_91			(0x91)          //	PBA Å×½ºÆ®
-#define Z_OperationStep_92			(0x92)          //	ÇÁ·ĞÆ® Å×½ºÆ®
-#define Z_OperationStep_93			(0x93)          //	°øÀå ´ÜÃà Å×½ºÆ®
-#define Z_OperationStep_A0			(0xA0)          //	³Ã°¢½Ã°£ º¯°æ ½ºÅÜ
-#define Z_OperationStep_B0			(0xB0)          //	Ä¿¹ö ¿­¸²
-#define Z_OperationStep_C0			(0xC0)          //	³Ã¼öÅÊÅ© Áø°ø ÇØÁ¦
-#define Z_OperationStep_D0			(0xD0)          //	TH È®ÀÎ
-#define Z_OperationStep_D1			(0xD1)          //	My¿ë·® º¯°æ
-#define Z_OperationStep_E0			(0xE0)          //	¿¡·¯
-#define Z_OperationStep_E1			(0xE1)          //	¿¡·¯ ÀÌ·Â
-#define Z_OperationStep_F0			(0xF0)			//	»ì±ÕÅ°Æ® ¸ğµå
-#define Z_OperationStep_F1			(0xF1)			//	Àü¾Ğ, Àü·ù ÇÇµå¹é È®ÀÎ ¸ğµå
+#define Z_OperationStep_80			(0x80)          //	ìŠ¤ë§ˆíŠ¸ì§„ë‹¨
+#define Z_OperationStep_90			(0x90)          //	ê³µì¥ìë™í™” í…ŒìŠ¤íŠ¸
+#define Z_OperationStep_91			(0x91)          //	PBA í…ŒìŠ¤íŠ¸
+#define Z_OperationStep_92			(0x92)          //	í”„ë¡ íŠ¸ í…ŒìŠ¤íŠ¸
+#define Z_OperationStep_93			(0x93)          //	ê³µì¥ ë‹¨ì¶• í…ŒìŠ¤íŠ¸
+#define Z_OperationStep_A0			(0xA0)          //	ëƒ‰ê°ì‹œê°„ ë³€ê²½ ìŠ¤í…
+#define Z_OperationStep_B0			(0xB0)          //	ì»¤ë²„ ì—´ë¦¼
+#define Z_OperationStep_C0			(0xC0)          //	ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µ í•´ì œ
+#define Z_OperationStep_D0			(0xD0)          //	TH í™•ì¸
+#define Z_OperationStep_D1			(0xD1)          //	Myìš©ëŸ‰ ë³€ê²½
+#define Z_OperationStep_E0			(0xE0)          //	ì—ëŸ¬
+#define Z_OperationStep_E1			(0xE1)          //	ì—ëŸ¬ ì´ë ¥
+#define Z_OperationStep_F0			(0xF0)			//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ
+#define Z_OperationStep_F1			(0xF1)			//	ì „ì••, ì „ë¥˜ í”¼ë“œë°± í™•ì¸ ëª¨ë“œ
 
 #define Z_TimerWaterSelect			(70)			//	<7s/100ms>
 #define Z_TimerCupSelect			(70)			//	<7s/100ms>
@@ -194,30 +194,30 @@ enum {
 
 #define Z_TimerPBATest_Join			(60)			//	<30s/1s>
 
-#define Z_TimerFCTSet			(10)				//	Å×½ºÆ®¸ğµå 1, 2 SegÇ¥½Ã Å¸ÀÌ¸Ó 	<1s/100ms>
-#define Z_TimerFlrushing_After_ColdTankFill	(10)	//	ÇÃ·¯½Ì ÈÄ ³Ã¼öÅÊÅ© ¹°Ã¤¿ì±â ´ë±â 	<1s/100ms>
-#define Z_TimerFlrushing_After_HeaterFill	(10)	//	ÇÃ·¯½Ì ÈÄ È÷ÅÍ ¹°Ã¤¿ì±â ´ë±â 	<1s/100ms>
+#define Z_TimerFCTSet			(10)				//	í…ŒìŠ¤íŠ¸ëª¨ë“œ 1, 2 Segí‘œì‹œ íƒ€ì´ë¨¸ 	<1s/100ms>
+#define Z_TimerFlrushing_After_ColdTankFill	(10)	//	í”ŒëŸ¬ì‹± í›„ ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ì±„ìš°ê¸° ëŒ€ê¸° 	<1s/100ms>
+#define Z_TimerFlrushing_After_HeaterFill	(10)	//	í”ŒëŸ¬ì‹± í›„ íˆí„° ë¬¼ì±„ìš°ê¸° ëŒ€ê¸° 	<1s/100ms>
 
 #define Z_TimerBuzzerDelay		(50)				//		<500ms/10ms>
 
-#define Z_TimerEffluentAmount_Display	(20)		//	2ÃÊ Á¡µî		<2s/100ms>
+#define Z_TimerEffluentAmount_Display	(20)		//	2ì´ˆ ì ë“±		<2s/100ms>
 
-#define Z_TimerKITMode			(300)				//	»ì±ÕÅ°Æ® ¸ğµå Å¸ÀÌ¸Ó	<300s/1s>
+#define Z_TimerKITMode			(300)				//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ íƒ€ì´ë¨¸	<300s/1s>
 
 #define Z_Flushing_Litter		(3000+100)			//	3,000cc
-#define Z_Flushing_Litter_FirstSet	(2000+100)		//	2,000cc	³Ã¼öÅÊÅ© Çâ Á¦°Å¸¦ À§ÇØ ÇÊÅÍ ÇÃ·¯½Ì ¿ë·®Àº ÁÙÀÌ°í ³Ã¼öÅÊÅ© ¿ë·®À» Áõ´ë
+#define Z_Flushing_Litter_FirstSet	(2000+100)		//	2,000cc	ëƒ‰ìˆ˜íƒ±í¬ í–¥ ì œê±°ë¥¼ ìœ„í•´ í•„í„° í”ŒëŸ¬ì‹± ìš©ëŸ‰ì€ ì¤„ì´ê³  ëƒ‰ìˆ˜íƒ±í¬ ìš©ëŸ‰ì„ ì¦ëŒ€
 #define Z_HeaterFill_Litter		(150)				//	150cc
-#define Z_ColdTankFill_Litter_JP	(4000+100)			//	4,000cc(ÀÏº»Çâ)
-#define Z_ColdTankFill_Litter_KR	(5000+100)			//	5,000cc(±¹³»Çâ)
+#define Z_ColdTankFill_Litter_JP	(4000+100)			//	4,000cc(ì¼ë³¸í–¥)
+#define Z_ColdTankFill_Litter_KR	(5000+100)			//	5,000cc(êµ­ë‚´í–¥)
 
 #define Z_TimerHotLock_Display	(20)				//	<2s/100ms>
 
 #define Z_Timer_FrontTest_Seg	(360)				//	8x3x150ms <3600ms/10ms>
 
-#define Z_TimerUV_Oper			(100)				//	UV µ¿ÀÛ½Ã°£			<1s/100ms>
-#define Z_TimerUV_Oper_15min	(9000)				//	½½¸³¸ğµå UV µ¿ÀÛ½Ã°£		<15min/100ms>
-#define Z_TimerUV_Delay			(70)				//	ÃßÃâ ÈÄ UV µ¿ÀÛ Áö¿¬½Ã°£	<7s/100ms>
-#define Z_TimerUV_6h			(36)				//	½½¸³¸ğµå UV µ¿ÀÛ ÁÖ±â	<6h/10min>
+#define Z_TimerUV_Oper			(100)				//	UV ë™ì‘ì‹œê°„			<1s/100ms>
+#define Z_TimerUV_Oper_15min	(9000)				//	ìŠ¬ë¦½ëª¨ë“œ UV ë™ì‘ì‹œê°„		<15min/100ms>
+#define Z_TimerUV_Delay			(70)				//	ì¶”ì¶œ í›„ UV ë™ì‘ ì§€ì—°ì‹œê°„	<7s/100ms>
+#define Z_TimerUV_6h			(36)				//	ìŠ¬ë¦½ëª¨ë“œ UV ë™ì‘ ì£¼ê¸°	<6h/10min>
 
 #define Z_TimerSleepMode		(60)				//	<60min/1min>
 
@@ -269,10 +269,10 @@ enum {
 #define Z_TimerPIOff_Display		(30)		//	<3s/100ms>
 
 
-#define Z_FLUSHING_PROGRESS_OFF_FOR_WIFI			(0)			//	ÇÃ·¯½Ì ¾ÈÇÔ
-#define Z_FLUSHING_PROGRESS_ON_FOR_WIFI				(1)			//	ÇÃ·¯½Ì µ¿ÀÛÁß(1È¸Àü¼Û)
-#define Z_FLUSHING_PROGRESS_GOING_FOR_WIFI			(2)			//	ÇÃ·¯½Ì ½ÃÀÛ(ÀÏ½ÃÁ¤Áö ½Ã¿¡µµ À¯Áö)
-#define Z_FLUSHING_PROGRESS_DONE_FOR_WIFI			(3)			//	ÇÃ·¯½Ì ¿Ï·á »óÅÂ(1È¸Àü¼Û)
+#define Z_FLUSHING_PROGRESS_OFF_FOR_WIFI			(0)			//	í”ŒëŸ¬ì‹± ì•ˆí•¨
+#define Z_FLUSHING_PROGRESS_ON_FOR_WIFI				(1)			//	í”ŒëŸ¬ì‹± ë™ì‘ì¤‘(1íšŒì „ì†¡)
+#define Z_FLUSHING_PROGRESS_GOING_FOR_WIFI			(2)			//	í”ŒëŸ¬ì‹± ì‹œì‘(ì¼ì‹œì •ì§€ ì‹œì—ë„ ìœ ì§€)
+#define Z_FLUSHING_PROGRESS_DONE_FOR_WIFI			(3)			//	í”ŒëŸ¬ì‹± ì™„ë£Œ ìƒíƒœ(1íšŒì „ì†¡)
 
 #define WIFI_PAIRING_STEP1_25_PERCENT    1
 #define WIFI_PAIRING_STEP2_50_PERCENT    2
@@ -287,7 +287,7 @@ enum {
 #define Z_CUP_SIZE_ARRAY_CONTINUE	(4)
 
 
-#define Z_TIMER_PROHIBIT_EFFLUENT_AFTER_EFFLUENT	(30)		// ÃßÃâ ¿Ï·á ÈÄ ÃßÃâ ¹æÁö Å¸ÀÌ¸Ó <10s/100ms>
+#define Z_TIMER_PROHIBIT_EFFLUENT_AFTER_EFFLUENT	(30)		// ì¶”ì¶œ ì™„ë£Œ í›„ ì¶”ì¶œ ë°©ì§€ íƒ€ì´ë¨¸ <10s/100ms>
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
@@ -304,20 +304,20 @@ EXTERN U8 gu8_ModelType_forCHP;
 
 EXTERN U8 F_Boot_forBuzzer;
 
-//EXTERN U8 gu8_Flushing_Percent;						//	ÇÃ·¯½Ì ÁøÇà·ü Ç¥½Ã [1%]
-//EXTERN U8 gu8_HotFirstEff_Percent;					//	¿Â¼ö Ã¹È¸ ÃßÃâ ÁøÇà·ü Ç¥½Ã [1%]
-EXTERN U8 F_Eff_Continue_Heater_Off;				//È÷ÅÍ ½ÄÈû ÇÃ·¡±×
+//EXTERN U8 gu8_Flushing_Percent;						//	í”ŒëŸ¬ì‹± ì§„í–‰ë¥  í‘œì‹œ [1%]
+//EXTERN U8 gu8_HotFirstEff_Percent;					//	ì˜¨ìˆ˜ ì²«íšŒ ì¶”ì¶œ ì§„í–‰ë¥  í‘œì‹œ [1%]
+EXTERN U8 F_Eff_Continue_Heater_Off;				//íˆí„° ì‹í˜ í”Œë˜ê·¸
 
-EXTERN U8 gu8_TimerPBATest_Join;					//	PBA °Ë»ç ÁøÀÔ °¡´É Å¸ÀÌ¸Ó 	<30s/1s>
+EXTERN U8 gu8_TimerPBATest_Join;					//	PBA ê²€ì‚¬ ì§„ì… ê°€ëŠ¥ íƒ€ì´ë¨¸ 	<30s/1s>
 
-EXTERN U8 gu8_TimerFCTSet;							//	Å×½ºÆ®¸ğµå 1, 2 SegÇ¥½Ã Å¸ÀÌ¸Ó 	<1s/100ms>
+EXTERN U8 gu8_TimerFCTSet;							//	í…ŒìŠ¤íŠ¸ëª¨ë“œ 1, 2 Segí‘œì‹œ íƒ€ì´ë¨¸ 	<1s/100ms>
 
-EXTERN U16 gu16_Effluent_Count[3];					// 	³Ã¼ö : 0, Á¤¼ö : 1, ¿Â¼ö : 2
-EXTERN U16 gu16_Effluent_Amount[3];					// 	[1L´ÜÀ§] ³Ã¼ö : 0, Á¤¼ö : 1, ¿Â¼ö : 2
+EXTERN U16 gu16_Effluent_Count[3];					// 	ëƒ‰ìˆ˜ : 0, ì •ìˆ˜ : 1, ì˜¨ìˆ˜ : 2
+EXTERN U16 gu16_Effluent_Amount[3];					// 	[1Lë‹¨ìœ„] ëƒ‰ìˆ˜ : 0, ì •ìˆ˜ : 1, ì˜¨ìˆ˜ : 2
 
 EXTERN U8 gu8_TimerSleepMode;						//	<60min/1min>
 
-/*	¹İº¹ÃßÃâ ³»±¸½ÃÇè ¿ë	*/
+/*	ë°˜ë³µì¶”ì¶œ ë‚´êµ¬ì‹œí—˜ ìš©	*/
 EXTERN U8 F_Repeat_Eff;
 EXTERN U16 gu16_Timer_Repeat_Eff;
 EXTERN U16 gu16_Timer_Repeat_Delay;
@@ -329,22 +329,22 @@ EXTERN U8 gu8_Count_EffluentDurabilityProgram;
 EXTERN U8 gu8_F_EffluentDurabilityProgram;
 /*	...		*/
 
-/*	¾ç»ê¿ë ÇÁ·Î±×·¥ ÃâÇÏÅ×½ºÆ® ¹İº¹ ³»±¸½ÃÇè ¿ë	*/
-EXTERN U8 Mode_Repeat_Eff_Mode_forMP;				//¹İº¹ÃßÃâ ¸ğµå ¼³Á¤ flag
-EXTERN U8 F_Repeat_Eff_forMP;					//¹İº¹ÃßÃâ ½ÃÀÛ flag
-EXTERN U16 gu16_Timer_Repeat_Eff_forMP;			//ÃßÃâ ´ë±â µô·¹ÀÌ
-EXTERN U16 gu16_Timer_Repeat_Delay_forMP;		//ÃßÃâ Àü ¼±ÅÃ ¹öÆ° µô·¹ÀÌ
+/*	ì–‘ì‚°ìš© í”„ë¡œê·¸ë¨ ì¶œí•˜í…ŒìŠ¤íŠ¸ ë°˜ë³µ ë‚´êµ¬ì‹œí—˜ ìš©	*/
+EXTERN U8 Mode_Repeat_Eff_Mode_forMP;				//ë°˜ë³µì¶”ì¶œ ëª¨ë“œ ì„¤ì • flag
+EXTERN U8 F_Repeat_Eff_forMP;					//ë°˜ë³µì¶”ì¶œ ì‹œì‘ flag
+EXTERN U16 gu16_Timer_Repeat_Eff_forMP;			//ì¶”ì¶œ ëŒ€ê¸° ë”œë ˆì´
+EXTERN U16 gu16_Timer_Repeat_Delay_forMP;		//ì¶”ì¶œ ì „ ì„ íƒ ë²„íŠ¼ ë”œë ˆì´
 EXTERN U8 F_Repeat_StepChange_forMP;			
 EXTERN U8 gu8_Counter_Repeat_Eff_forMP;			
 EXTERN U8 gu8_Cycle_Repeat_Eff_forMP;
 EXTERN U8 gu8_Timer_Repeat_Eff_display;
 /*	...		*/
 
-EXTERN U8 gu8_TimerEffluentAmount_Display;			//	ÃßÃâ Áßµµ Á¤Áö ½Ã, ¾ó¸¶³ª ÃßÃâ µÇ¾ú´ÂÁö Á¡¸ê Ç¥½ÃÇÏ±â À§ÇÔ
+EXTERN U8 gu8_TimerEffluentAmount_Display;			//	ì¶”ì¶œ ì¤‘ë„ ì •ì§€ ì‹œ, ì–¼ë§ˆë‚˜ ì¶”ì¶œ ë˜ì—ˆëŠ”ì§€ ì ë©¸ í‘œì‹œí•˜ê¸° ìœ„í•¨
 
-EXTERN U16 gu16_TimerKITMode;						//	»ì±ÕÅ°Æ® ¸ğµå Å¸ÀÌ¸Ó
-EXTERN U8 F_KITMode;								//	»ì±ÕÅ°Æ® ¸ğµå ÁøÀÔ ½Ã ÇÊÅÍ ±³Ã¼ °¨Áö set¾ÈµÇµµ·Ï
-EXTERN U8 F_KITMode_VoiceRinse;						//	»ì±ÕÅ°Æ® ¸ğµå Áß Çó±ÀÀÌ ½ÃÀÛµË´Ï´Ù À½¼º Ãâ·Â ¿©ºÎ ÇÃ·¡±×
+EXTERN U16 gu16_TimerKITMode;						//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ íƒ€ì´ë¨¸
+EXTERN U8 F_KITMode;								//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ ì§„ì… ì‹œ í•„í„° êµì²´ ê°ì§€ setì•ˆë˜ë„ë¡
+EXTERN U8 F_KITMode_VoiceRinse;						//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ ì¤‘ í—¹êµ¼ì´ ì‹œì‘ë©ë‹ˆë‹¤ ìŒì„± ì¶œë ¥ ì—¬ë¶€ í”Œë˜ê·¸
 
 EXTERN U8 gu8_TimerOperation_10ms;
 EXTERN U8 gu8_TimerOperation_100ms;
@@ -356,14 +356,14 @@ EXTERN U16 gu16_Timer_FrontTest_Seg;				//	<?s/100ms>
 
 EXTERN U16 gu16_TimerUV_Oper;						//	<?s/100ms>
 EXTERN U8 gu8_TimerUV_6h;							//	<6h/10min>
-EXTERN U8 F_UVCare_Oper;							//	ÃßÃâ Á¾·á ÈÄ UVÄ³¾î µ¿ÀÛ flag
+EXTERN U8 F_UVCare_Oper;							//	ì¶”ì¶œ ì¢…ë£Œ í›„ UVìºì–´ ë™ì‘ flag
 EXTERN U8 F_UVCare_Start_forWIFI;
 
 EXTERN U16 gu16_TimerMoveDisplay;					//	<?s/10ms>
 
 EXTERN U8 F_LineTest_Heater;
 EXTERN U8 gu8_TimerLineTest_Heater;					//	<?/10ms>
-EXTERN U8 gu8_TimerLineTest_Heater_Delay;			//	3È¸ Retry Delay 	<2s/100ms>
+EXTERN U8 gu8_TimerLineTest_Heater_Delay;			//	3íšŒ Retry Delay 	<2s/100ms>
 //EXTERN U8 gu8_TimerHeaterFeedBack_Delay;			//	<?/10ms>
 //EXTERN U8 gu8_TimerLineTest_HeaterTriac;
 EXTERN U8 F_LineTest_UV_FBError;
@@ -394,16 +394,16 @@ EXTERN U8 gu8_TimerOverHeatDisplay;					//	<3s/100ms>
 EXTERN U8 gu8_TimerSoundChange;						//	<3s/100ms>
 
 EXTERN U16 gu16_TimerSilverCare;					//	<48h/10min>
-EXTERN U8 F_SilverCare_Detect;						//	WIFI ½Ç¹öÄÉ¾î »óÅÂ
-EXTERN U8 F_SilverCare_Notice;						//	WIFI ½Ç¹öÄÉ¾î ¾Ë¸²
+EXTERN U8 F_SilverCare_Detect;						//	WIFI ì‹¤ë²„ì¼€ì–´ ìƒíƒœ
+EXTERN U8 F_SilverCare_Notice;						//	WIFI ì‹¤ë²„ì¼€ì–´ ì•Œë¦¼
 
 EXTERN U8 gu8_TimerReedSWCheck;						//	<500ms/10ms>
 EXTERN U8 gu8_TimerReedSWCheck_B0;
 EXTERN U8 gu8_TimerReedSWCheck_forFaucetTip;						//	<500ms/10ms>
 EXTERN U8 gu8_F_ReedSWCheck_forFaucetTip_Voice;						//	<500ms/10ms>
 
-EXTERN U8 gu8_F_FaucetTip_Undetected_Voice_Done ;			//@022 1È¸Ãâ·Â flag »óÅÂ ¹Ù²ğ¶§¸¶´Ù ÇØ¾ßÈû..
-EXTERN U8 gu8_F_FaucetTip_Undetected_Display_Done ;			//@022 1È¸Ãâ·Â flag »óÅÂ ¹Ù²ğ¶§¸¶´Ù ÇØ¾ßÈû..
+EXTERN U8 gu8_F_FaucetTip_Undetected_Voice_Done ;			//@022 1íšŒì¶œë ¥ flag ìƒíƒœ ë°”ë€”ë•Œë§ˆë‹¤ í•´ì•¼í˜..
+EXTERN U8 gu8_F_FaucetTip_Undetected_Display_Done ;			//@022 1íšŒì¶œë ¥ flag ìƒíƒœ ë°”ë€”ë•Œë§ˆë‹¤ í•´ì•¼í˜..
 
 EXTERN U8 F_LineTest2_HeaterResult_OK;
 EXTERN U8 F_LineTest2_HeaterResult_NG;
@@ -419,33 +419,33 @@ EXTERN U8 F_LineTest2_FaucetMoving;
 EXTERN U8 gu8_TimerLineTest2_Cooling;				//	<105s/1s>
 EXTERN U8 gu8_TimerLineTest2_Heater;				//	<300ms/10ms>
 
-EXTERN U16 gu16_HeartServiceTime;					//	ÇÏÆ®¼­ºñ½º ½Ã°£ <1s>
+EXTERN U16 gu16_HeartServiceTime;					//	í•˜íŠ¸ì„œë¹„ìŠ¤ ì‹œê°„ <1s>
 
-EXTERN U8 gu8_TimerEffluent_After_2s;				//	ÃßÃâ½ÃÀÛ ÈÄ 2ÃÊ	<2s/100ms>
+EXTERN U8 gu8_TimerEffluent_After_2s;				//	ì¶”ì¶œì‹œì‘ í›„ 2ì´ˆ	<2s/100ms>
 
 EXTERN U8 gu8_WifiError;
 EXTERN U8 gu8_TimerWifiErrorDisplay;				//	<3s/100ms>
 EXTERN U8 gu8_TimerWifiPairingErrorDisplay;
-EXTERN U8 gu8_TimerWifiCompleteDisplay;				//	Æä¾î¸µ ¿Ï·á µğ½ºÇÃ·¹ÀÌ
-EXTERN U8 gu8_Wifi_Pairing_State;					//	Æä¾î¸µ µ¿ÀÛ ÇöÀç »óÅÂ
-EXTERN U8 gu8_F_Wifi_Pairing_Start;					//	Æä¾î¸µ ½ºÅ¸Æ® ÇÃ·¡±×(wifi/ble ´­·µ´ÂÁö ¾È´­·¶´ÂÁö È®ÀÎ)
+EXTERN U8 gu8_TimerWifiCompleteDisplay;				//	í˜ì–´ë§ ì™„ë£Œ ë””ìŠ¤í”Œë ˆì´
+EXTERN U8 gu8_Wifi_Pairing_State;					//	í˜ì–´ë§ ë™ì‘ í˜„ì¬ ìƒíƒœ
+EXTERN U8 gu8_F_Wifi_Pairing_Start;					//	í˜ì–´ë§ ìŠ¤íƒ€íŠ¸ í”Œë˜ê·¸(wifi/ble ëˆŒëŸ¿ëŠ”ì§€ ì•ˆëˆŒë €ëŠ”ì§€ í™•ì¸)
 
-EXTERN U8 gu8_Timer10sAfter_WifiConnect_forFlushing;	//	ÇÃ·¯½Ì ½ÃÀÛ ÈÄ 10ÃÊ ÈÄ¿¡ ¿ÍÀÌÆÄÀÌ ¿¬°á ½ÃÀÛ <10s/1s>
+EXTERN U8 gu8_Timer10sAfter_WifiConnect_forFlushing;	//	í”ŒëŸ¬ì‹± ì‹œì‘ í›„ 10ì´ˆ í›„ì— ì™€ì´íŒŒì´ ì—°ê²° ì‹œì‘ <10s/1s>
 EXTERN U8 gu8_TimerHotWater_DegreeDisplay;			//	<60min/1min>
 
-EXTERN U8 gu8_TimerFirstFlushing_AirPurge;			//	ÃÊ±â ¼³Ä¡ ÇÃ·¯½Ì ½Ã, ³»ºÎ ÀÜ¿© Áú¼Ò·Î ÀÎÇØ ¼ö¾ĞÀÌ ¹Ğ¾î³»¸é¼­ À¯·®¼¾¼­°¡ ºü¸£°Ô Èê·¯ 20%°¡ ±×³É PassµÇ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÔ	<5s/100ms>
+EXTERN U8 gu8_TimerFirstFlushing_AirPurge;			//	ì´ˆê¸° ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì‹œ, ë‚´ë¶€ ì”ì—¬ ì§ˆì†Œë¡œ ì¸í•´ ìˆ˜ì••ì´ ë°€ì–´ë‚´ë©´ì„œ ìœ ëŸ‰ì„¼ì„œê°€ ë¹ ë¥´ê²Œ í˜ëŸ¬ 20%ê°€ ê·¸ëƒ¥ Passë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•¨	<5s/100ms>
 
-EXTERN U8 gu8_TimerChangeDisplay;					//	ÆÄ¿ì¼Â/ÇÊÅÍ±³Ã¼ ¾Ë¶÷ Á¡¸ê Ç¥½Ã, ÃßÃâ Á¾·á ÈÄ 7ÃÊ °£ Ç¥½Ã À¯Áö <7s/100ms>
+EXTERN U8 gu8_TimerChangeDisplay;					//	íŒŒìš°ì…‹/í•„í„°êµì²´ ì•ŒëŒ ì ë©¸ í‘œì‹œ, ì¶”ì¶œ ì¢…ë£Œ í›„ 7ì´ˆ ê°„ í‘œì‹œ ìœ ì§€ <7s/100ms>
 
 EXTERN U16 gu16_TimerFCT_Incomplete_Display;			
 EXTERN U16 gu16_TimerFCT_Incomplete_Display_forPASECO;	
 EXTERN U8 gu8_F_LineAuto_CheckMode1_Ng_Voice;
 
 
-EXTERN U8 F_WIFI_First_Connecting;					//	ÇÃ·¯½Ì Áß wifi ÃÖÃÊ 1È¸ ÀÚµ¿ ¿¬°á ½Ãµµ ¿©ºÎ Flag [Clear : ¹Ì½Ãµµ / Set : 1È¸ ½Ãµµ ¿Ï·á]
+EXTERN U8 F_WIFI_First_Connecting;					//	í”ŒëŸ¬ì‹± ì¤‘ wifi ìµœì´ˆ 1íšŒ ìë™ ì—°ê²° ì‹œë„ ì—¬ë¶€ Flag [Clear : ë¯¸ì‹œë„ / Set : 1íšŒ ì‹œë„ ì™„ë£Œ]
 
 EXTERN U8 gu8_F_WelcomeLed_Enable;
-EXTERN U8 gu8_Timer_WelcomeLed_On;				//	À£Ä¿ led 1ºĞ on
+EXTERN U8 gu8_Timer_WelcomeLed_On;				//	ì›°ì»¤ led 1ë¶„ on
 
 EXTERN U8 gu8_Timer_Moving_OnOff_Display;		
 
@@ -453,7 +453,7 @@ EXTERN U8 gu8_hot_water_select_index;		//cbr_test
 EXTERN U8 gu8_Timer_LineTest_UV_FB;
 
 
-EXTERN U8 gu8_FlushingProgress_forWifi;				//	ÇÃ·¯½Ì »óÅÂ ¼­¹ö Àü¼ÛÀ§ÇÑ »óÅÂ
+EXTERN U8 gu8_FlushingProgress_forWifi;				//	í”ŒëŸ¬ì‹± ìƒíƒœ ì„œë²„ ì „ì†¡ìœ„í•œ ìƒíƒœ
 
 #ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
 EXTERN U8 gu8_F_gu16_reliability_test;
@@ -470,93 +470,93 @@ EXTERN U8 gu8_F_CupSize_FineAdjust;
 EXTERN U8 gu8_f_instruction_mode_start;
 
 EXTERN U8 gu8_F_Effluent_Complete;
-EXTERN U8 gu8_F_Effluent_Complete_After;	// ÃßÃâ ¿Ï·á ÈÄ ÇÃ·¡±×
+EXTERN U8 gu8_F_Effluent_Complete_After;	// ì¶”ì¶œ ì™„ë£Œ í›„ í”Œë˜ê·¸
 
 EXTERN U8 gu8_Timer_AdFeedback_Mode_Exit;
 
-EXTERN U8 gu8_Timer_Prohibit_Effluent_AfterEffluent;		// ÃßÃâ ¿Ï·á ÈÄ ÃßÃâ ¹æÁö Å¸ÀÌ¸Ó <10s/100ms>
+EXTERN U8 gu8_Timer_Prohibit_Effluent_AfterEffluent;		// ì¶”ì¶œ ì™„ë£Œ í›„ ì¶”ì¶œ ë°©ì§€ íƒ€ì´ë¨¸ <10s/100ms>
 
 EXTERN U8 gu8_F_Continue_Effluent_Animation ;			//@009
-EXTERN U8 gu8_F_Step43_Entered_With_Faucet_Detected;  /*@026 43 ÁøÀÔ ½Ã ¸®µå °¨ÁöµÊ=SET
+EXTERN U8 gu8_F_Step43_Entered_With_Faucet_Detected;  /*@026 43 ì§„ì… ì‹œ ë¦¬ë“œ ê°ì§€ë¨=SET
 /*==============================================================================
  function Definition
  ==============================================================================*/
 void Operation_Initialize(void);
 void Operation(void);
 
-void Ini_OperationStep_00(void);     				//	ºÎÆÃ
-void Ini_OperationStep_01(void);     				//	ÃÊ±âÈ­ Ç¥½Ã
-void Ini_OperationStep_02(void);     				//	ÃÊ±â ÇÃ·¯½Ì ¹Ì¿Ï·á
-void Ini_OperationStep_03(void);     				//	ÃÊ±â ÇÃ·¯½Ì Áß
-void Ini_OperationStep_04(void);     				//	È÷ÅÍ ¹° Ã¤¿ì±â ¹× Àü·ÂÃ¼Å©
-void Ini_OperationStep_05(void);     				//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â
-void Ini_OperationStep_10(void);     				//	´ë±â
-void Ini_OperationStep_11(void);     				//ÆÄ¿ì¼Â ¹«ºù ´ë±â
-void Ini_OperationStep_15(void);     				//	ON ¼³Á¤ Ç¥½Ã
-void Ini_OperationStep_16(void);     				//	³Ã°¢ OFF Ç¥½Ã
-void Ini_OperationStep_17(void);     				//	¹«ºù ON/OFF ¼³Á¤ Ç¥½Ã
-void Ini_OperationStep_18(void);     				//	OFF ¼³Á¤ Ç¥½Ã
-void Ini_OperationStep_20(void);     				//	½½¸³¸ğµå
-void Ini_OperationStep_30(void);     				//	UVÄÉ¾î
-void Ini_OperationStep_31(void);     				//	Á¤±â UVÄÉ¾î
-void Ini_OperationStep_40(void);     				//	ÀüÃ¼ Àá±İ
-void Ini_OperationStep_41(void);     				//	À½¼º Å¸ÀÔ
-void Ini_OperationStep_42(void);     				//	°ü¸® ¸ğµå ¼³Á¤
-void Ini_OperationStep_43(void);     				//	¹«ºù ÆÄ¿ì¼Â ON/OFF
-void Ini_OperationStep_50(void);     				//	ÃßÃâ Áß
-void Ini_OperationStep_60(void);     				//	WIFI¿¬°á Ç¥½Ã
+void Ini_OperationStep_00(void);     				//	ë¶€íŒ…
+void Ini_OperationStep_01(void);     				//	ì´ˆê¸°í™” í‘œì‹œ
+void Ini_OperationStep_02(void);     				//	ì´ˆê¸° í”ŒëŸ¬ì‹± ë¯¸ì™„ë£Œ
+void Ini_OperationStep_03(void);     				//	ì´ˆê¸° í”ŒëŸ¬ì‹± ì¤‘
+void Ini_OperationStep_04(void);     				//	íˆí„° ë¬¼ ì±„ìš°ê¸° ë° ì „ë ¥ì²´í¬
+void Ini_OperationStep_05(void);     				//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸°
+void Ini_OperationStep_10(void);     				//	ëŒ€ê¸°
+void Ini_OperationStep_11(void);     				//íŒŒìš°ì…‹ ë¬´ë¹™ ëŒ€ê¸°
+void Ini_OperationStep_15(void);     				//	ON ì„¤ì • í‘œì‹œ
+void Ini_OperationStep_16(void);     				//	ëƒ‰ê° OFF í‘œì‹œ
+void Ini_OperationStep_17(void);     				//	ë¬´ë¹™ ON/OFF ì„¤ì • í‘œì‹œ
+void Ini_OperationStep_18(void);     				//	OFF ì„¤ì • í‘œì‹œ
+void Ini_OperationStep_20(void);     				//	ìŠ¬ë¦½ëª¨ë“œ
+void Ini_OperationStep_30(void);     				//	UVì¼€ì–´
+void Ini_OperationStep_31(void);     				//	ì •ê¸° UVì¼€ì–´
+void Ini_OperationStep_40(void);     				//	ì „ì²´ ì ê¸ˆ
+void Ini_OperationStep_41(void);     				//	ìŒì„± íƒ€ì…
+void Ini_OperationStep_42(void);     				//	ê´€ë¦¬ ëª¨ë“œ ì„¤ì •
+void Ini_OperationStep_43(void);     				//	ë¬´ë¹™ íŒŒìš°ì…‹ ON/OFF
+void Ini_OperationStep_50(void);     				//	ì¶”ì¶œ ì¤‘
+void Ini_OperationStep_60(void);     				//	WIFIì—°ê²° í‘œì‹œ
 void Ini_OperationStep_70(void);     				//	FOTA
-void Ini_OperationStep_80(void);     				//	½º¸¶Æ®Áø´Ü
-void Ini_OperationStep_90(void);     				//	°øÀåÀÚµ¿È­ Å×½ºÆ®
-void Ini_OperationStep_91(void);     				//	PBA Å×½ºÆ®
-void Ini_OperationStep_92(void);     				//	ÇÁ·ĞÆ® Å×½ºÆ®
-void Ini_OperationStep_93(void);     				//	°øÀå ´ÜÃà Å×½ºÆ®
-void Ini_OperationStep_A0(void);     				//	³Ã°¢½Ã°£ º¯°æ ½ºÅÜ
-void Ini_OperationStep_B0(void);     				//	Ä¿¹ö ¿­¸²
-void Ini_OperationStep_C0(void);     				//	³Ã¼öÅÊÅ© Áø°ø ÇØÁ¦
-void Ini_OperationStep_D0(void);     				//	TH È®ÀÎ
-void Ini_OperationStep_D1(void);                	//	My¿ë·® º¯°æ
-void Ini_OperationStep_E0(void);     				//	¿¡·¯
-void Ini_OperationStep_E1(void);     				//	¿¡·¯ ÀÌ·Â
-void Ini_OperationStep_F0(void);     				//	»ì±ÕÅ°Æ® ¸ğµå
-void Ini_OperationStep_F1(void);     				//	Àü¾Ğ, Àü·ù ÇÇµå¹é È®ÀÎ ¸ğµå
+void Ini_OperationStep_80(void);     				//	ìŠ¤ë§ˆíŠ¸ì§„ë‹¨
+void Ini_OperationStep_90(void);     				//	ê³µì¥ìë™í™” í…ŒìŠ¤íŠ¸
+void Ini_OperationStep_91(void);     				//	PBA í…ŒìŠ¤íŠ¸
+void Ini_OperationStep_92(void);     				//	í”„ë¡ íŠ¸ í…ŒìŠ¤íŠ¸
+void Ini_OperationStep_93(void);     				//	ê³µì¥ ë‹¨ì¶• í…ŒìŠ¤íŠ¸
+void Ini_OperationStep_A0(void);     				//	ëƒ‰ê°ì‹œê°„ ë³€ê²½ ìŠ¤í…
+void Ini_OperationStep_B0(void);     				//	ì»¤ë²„ ì—´ë¦¼
+void Ini_OperationStep_C0(void);     				//	ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µ í•´ì œ
+void Ini_OperationStep_D0(void);     				//	TH í™•ì¸
+void Ini_OperationStep_D1(void);                	//	Myìš©ëŸ‰ ë³€ê²½
+void Ini_OperationStep_E0(void);     				//	ì—ëŸ¬
+void Ini_OperationStep_E1(void);     				//	ì—ëŸ¬ ì´ë ¥
+void Ini_OperationStep_F0(void);     				//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ
+void Ini_OperationStep_F1(void);     				//	ì „ì••, ì „ë¥˜ í”¼ë“œë°± í™•ì¸ ëª¨ë“œ
 
-void OperationStep_00(void);                 		//	ºÎÆÃ
-void OperationStep_01(void);                 		//	ÃÊ±âÈ­ Ç¥½Ã
-void OperationStep_02(void);                 		//	ÃÊ±â ÇÃ·¯½Ì ¹Ì¿Ï·á
-void OperationStep_03(void);                 		//	ÃÊ±â ÇÃ·¯½Ì Áß
-void OperationStep_04(void);                 		//	È÷ÅÍ ¹° Ã¤¿ì±â ¹× Àü·ÂÃ¼Å©
-void OperationStep_05(void);                 		//	³Ã¼öÅÊÅ© ¹° Ã¤¿ì±â
-void OperationStep_10(void);                 		//	´ë±â
-void OperationStep_11(void);                 		//	ÆÄ¿ì¼Â ¹«ºù´ë±â
-void OperationStep_15(void);                 		//	ON ¼³Á¤ Ç¥½Ã
-void OperationStep_16(void);                 		//	³Ã°¢ OFF Ç¥½Ã
-void OperationStep_17(void);                 		//	¹«ºù ON/OFF ¼³Á¤ Ç¥½Ã
-void OperationStep_18(void);                 		//	OFF ¼³Á¤ Ç¥½Ã
-void OperationStep_20(void);                 		//	½½¸³¸ğµå
-void OperationStep_30(void);                 		//	UVÄÉ¾î
-void OperationStep_31(void);                 		//	Á¤±â UVÄÉ¾î
-void OperationStep_40(void);                 		//	ÀüÃ¼ Àá±İ
-void OperationStep_41(void);                 		//	À½¼º Å¸ÀÔ
-void OperationStep_42(void);                 		//	°ü¸® ¸ğµå ¼³Á¤
-void OperationStep_43(void);     				//	¹«ºù ÆÄ¿ì¼Â ON/OFF
-void OperationStep_50(void);                 		//	ÃßÃâ Áß
-void OperationStep_60(void);     					//	WIFI¿¬°á Ç¥½Ã
+void OperationStep_00(void);                 		//	ë¶€íŒ…
+void OperationStep_01(void);                 		//	ì´ˆê¸°í™” í‘œì‹œ
+void OperationStep_02(void);                 		//	ì´ˆê¸° í”ŒëŸ¬ì‹± ë¯¸ì™„ë£Œ
+void OperationStep_03(void);                 		//	ì´ˆê¸° í”ŒëŸ¬ì‹± ì¤‘
+void OperationStep_04(void);                 		//	íˆí„° ë¬¼ ì±„ìš°ê¸° ë° ì „ë ¥ì²´í¬
+void OperationStep_05(void);                 		//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ê¸°
+void OperationStep_10(void);                 		//	ëŒ€ê¸°
+void OperationStep_11(void);                 		//	íŒŒìš°ì…‹ ë¬´ë¹™ëŒ€ê¸°
+void OperationStep_15(void);                 		//	ON ì„¤ì • í‘œì‹œ
+void OperationStep_16(void);                 		//	ëƒ‰ê° OFF í‘œì‹œ
+void OperationStep_17(void);                 		//	ë¬´ë¹™ ON/OFF ì„¤ì • í‘œì‹œ
+void OperationStep_18(void);                 		//	OFF ì„¤ì • í‘œì‹œ
+void OperationStep_20(void);                 		//	ìŠ¬ë¦½ëª¨ë“œ
+void OperationStep_30(void);                 		//	UVì¼€ì–´
+void OperationStep_31(void);                 		//	ì •ê¸° UVì¼€ì–´
+void OperationStep_40(void);                 		//	ì „ì²´ ì ê¸ˆ
+void OperationStep_41(void);                 		//	ìŒì„± íƒ€ì…
+void OperationStep_42(void);                 		//	ê´€ë¦¬ ëª¨ë“œ ì„¤ì •
+void OperationStep_43(void);     				//	ë¬´ë¹™ íŒŒìš°ì…‹ ON/OFF
+void OperationStep_50(void);                 		//	ì¶”ì¶œ ì¤‘
+void OperationStep_60(void);     					//	WIFIì—°ê²° í‘œì‹œ
 void OperationStep_70(void);     					//	FOTA
-void OperationStep_80(void);     					//	½º¸¶Æ®Áø´Ü
-void OperationStep_90(void);     					//	°øÀåÀÚµ¿È­ Å×½ºÆ®
-void OperationStep_91(void);     					//	PBA Å×½ºÆ®
-void OperationStep_92(void);     					//	ÇÁ·ĞÆ® Å×½ºÆ®
-void OperationStep_93(void);     					//	°øÀå ´ÜÃà Å×½ºÆ®
-void OperationStep_A0(void);                 		//	³Ã°¢PI Å¸°Ù¿Âµµ º¯°æ
-void OperationStep_B0(void);                 		//	Ä¿¹ö ¿­¸²
-void OperationStep_C0(void);						//	³Ã¼öÅÊÅ© Áø°ø ÇØÁ¦
-void OperationStep_D0(void);                		//	TH È®ÀÎ
-void OperationStep_D1(void);                		//	My¿ë·® º¯°æ
-void OperationStep_E0(void);                		//	¿¡·¯
-void OperationStep_E1(void);                		//	¿¡·¯ ÀÌ·Â
-void OperationStep_F0(void);                		//	»ì±ÕÅ°Æ® ¸ğµå
-void OperationStep_F1(void);                		//	Àü¾Ğ, Àü·ù ÇÇµå¹é È®ÀÎ ¸ğµå
+void OperationStep_80(void);     					//	ìŠ¤ë§ˆíŠ¸ì§„ë‹¨
+void OperationStep_90(void);     					//	ê³µì¥ìë™í™” í…ŒìŠ¤íŠ¸
+void OperationStep_91(void);     					//	PBA í…ŒìŠ¤íŠ¸
+void OperationStep_92(void);     					//	í”„ë¡ íŠ¸ í…ŒìŠ¤íŠ¸
+void OperationStep_93(void);     					//	ê³µì¥ ë‹¨ì¶• í…ŒìŠ¤íŠ¸
+void OperationStep_A0(void);                 		//	ëƒ‰ê°PI íƒ€ê²Ÿì˜¨ë„ ë³€ê²½
+void OperationStep_B0(void);                 		//	ì»¤ë²„ ì—´ë¦¼
+void OperationStep_C0(void);						//	ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µ í•´ì œ
+void OperationStep_D0(void);                		//	TH í™•ì¸
+void OperationStep_D1(void);                		//	Myìš©ëŸ‰ ë³€ê²½
+void OperationStep_E0(void);                		//	ì—ëŸ¬
+void OperationStep_E1(void);                		//	ì—ëŸ¬ ì´ë ¥
+void OperationStep_F0(void);                		//	ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ
+void OperationStep_F1(void);                		//	ì „ì••, ì „ë¥˜ í”¼ë“œë°± í™•ì¸ ëª¨ë“œ
 
 void OperationStepNoSet(U8 data);
 

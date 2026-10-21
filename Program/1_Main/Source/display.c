@@ -1,17 +1,17 @@
 /// @file     display.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ǥ�� ���� ���� file
+/// @brief    표占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 file
 #define DISPLAY_C
 #include "include/_include.h"
 
-#define Z_SOURCE_NUM 		(3)						//	Source ����
+#define Z_SOURCE_NUM 		(3)						//	Source 占쏙옙占쏙옙
 
 //#define Z_Fade_Select			(10)				//	Fade Timer 100ms
 #define Z_Fade_Select			(8)					//	Fade Timer 80ms
 #define Z_ON_DimmingPercent		(100)				//	ON Dimming
-#define Z_DimmingPercent		(40)				//	���ϰ� ON
-#define Z_DimmingPercent_Low	(10)				//	�� ���ϰ�
+#define Z_DimmingPercent		(40)				//	占쏙옙占싹곤옙 ON
+#define Z_DimmingPercent_Low	(10)				//	占쏙옙 占쏙옙占싹곤옙
 
 static void Operation_Display(void);
 
@@ -35,18 +35,18 @@ static void LED_HOTBAR(void);
 static void SegDataSet(void);
 static void SegDataClear(void);
 
-/// @brief    ǥ�ú� �ʱ�ȭ
+/// @brief    표占시븝옙 占십깍옙화
 /// @param    void
 /// @return   void
 void Display_Initialize(void)
 {
-	gu8_Fade_Select = Z_Fade_Select;				//	Fade Timer �ʱⰪ
+	gu8_Fade_Select = Z_Fade_Select;				//	Fade Timer 占십기값
 	gu8_ON_DimmingPercent = Z_ON_DimmingPercent;
-	gu8_DimmingPercent = Z_DimmingPercent;			//	Dimming Percent �ʱⰪ
-	gu8_DimmingPercent_Low = Z_DimmingPercent_Low;	//	Dimming Percent �ʱⰪ
+	gu8_DimmingPercent = Z_DimmingPercent;			//	Dimming Percent 占십기값
+	gu8_DimmingPercent_Low = Z_DimmingPercent_Low;	//	Dimming Percent 占십기값
 }
 
-/// @brief    ǥ�ú� ����
+/// @brief    표占시븝옙 占쏙옙占쏙옙
 /// @param    void
 /// @return   void
 void DisplayControl(void)
@@ -55,19 +55,19 @@ void DisplayControl(void)
 
 	for (i = 0 ; i < DisplayNum_Max ; i++)
 	{
-		DisplayControl_Data[i].Display_CMD = LED_OFF;	//		ǥ�� CMD �ʱ�ȭ
+		DisplayControl_Data[i].Display_CMD = LED_OFF;	//		표占쏙옙 CMD 占십깍옙화
 	}
 
 	SegDataClear();
-	Operation_Display();							//	�������¿� ���� ǥ�� ����
+	Operation_Display();							//	占쏙옙占쏙옙占쏙옙占승울옙 占쏙옙占쏙옙 표占쏙옙 占쏙옙占쏙옙
 
 	for (i = 0 ; i < DisplayNum_Max ; i++)
 	{
-		if (DisplayControl_Data[i].Display_CMD != DisplayControl_Data[i].Display_CMD_Before)	//	ǥ�� ���°� ���ϴ� ���???????
+		if (DisplayControl_Data[i].Display_CMD != DisplayControl_Data[i].Display_CMD_Before)	//	표占쏙옙 占쏙옙占승곤옙 占쏙옙占싹댐옙 占쏙옙占???????
 		{
-			F_CommunicationCMD = SET;				//		���??????? ���??????? �۽�
+			F_CommunicationCMD = SET;				//		占쏙옙占??????? 占쏙옙占??????? 占쌜쏙옙
 		}
-		DisplayControl_Data[i].Display_CMD_Before = DisplayControl_Data[i].Display_CMD;		//	���� ���� ����
+		DisplayControl_Data[i].Display_CMD_Before = DisplayControl_Data[i].Display_CMD;		//	占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 	}
 }
 
@@ -78,18 +78,18 @@ static void SegDataClear(void)
 {
 	U8 mu8_i;
 
-	for (mu8_i = 0 ; mu8_i < Z_SOURCE_NUM ; mu8_i++)	//	Seg ������ ������ ����
+	for (mu8_i = 0 ; mu8_i < Z_SOURCE_NUM ; mu8_i++)	//	Seg 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
 	{
 		gu8_SegData[mu8_i].byte = 0x00;					//		clr
 	}
 }
 
-/// @brief    �������� ǥ��Data ó��
+/// @brief    占쏙옙占쏙옙占쏙옙占쏙옙 표占쏙옙Data 처占쏙옙
 /// @param    void
 /// @return   void
 static void Operation_Display(void)
 {
-	SegDataSet();									//	7-Segment ������ set
+	SegDataSet();									//	7-Segment 占쏙옙占쏙옙占쏙옙 set
 
 	LED_EFFLUENT();
 	LED_HOT();
@@ -130,30 +130,30 @@ static void SegDataSet(void)
 	U16 mu16_temp = 0;
 	U16 mu16_FrontTest = 0;
 
-	static U8 mu8_AdFeedback_State = 0;      // ���� (0:VOL �ؽ�Ʈ, 1:VOL ��, 2:TEM �ؽ�Ʈ, 3:TEM ��)    
-    U16 mu16_TemValue = 0;   // TEM ��
-    U16 mu16_VolValue = 0;  // VOL ��
+	static U8 mu8_AdFeedback_State = 0;      // 상태 (0:VOL 텍스트, 1:VOL 값, 2:TEM 텍스트, 3:TEM 값)    
+    U16 mu16_TemValue = 0;   // TEM 값
+    U16 mu16_VolValue = 0;  // VOL 값
     U8 mu8_Thousands = 0;
     U8 mu8_Hundreds = 0;
     U8 mu8_Tens = 0;
     U8 mu8_Ones = 0;
 
-	switch (DisplayControl_Data[Z_SEGMENT].Operation_CMD)	//	7-Segment ���ÿ� ����
+	switch (DisplayControl_Data[Z_SEGMENT].Operation_CMD)	//	7-Segment 占쏙옙占시울옙 占쏙옙占쏙옙
 	{
-		case SEG_OFF:								//		OFF ����
+		case SEG_OFF:								//		OFF 占쏙옙占쏙옙
 			break;
-		case SEG_ON_FLIC:							//		`ON` ���� ����
+		case SEG_ON_FLIC:							//		`ON` 占쏙옙占쏙옙 占쏙옙占쏙옙
 			SEG_OXX = DT_7seg[Z_NUM_O];
 			SEG_XOX = DT_7seg[Z_NUM_n];
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_FADE_F;
 			break;
-		case SEG_OFF_FLIC:							//		`OFF` ���� ����
+		case SEG_OFF_FLIC:							//		`OFF` 占쏙옙占쏙옙 占쏙옙占쏙옙
 			SEG_OXX = DT_7seg[Z_NUM_O];
 			SEG_XOX = DT_7seg[Z_NUM_F];
 			SEG_XXO = DT_7seg[Z_NUM_F];
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_FADE_F;
 			break;
-		case SEG_OFF_DISP:							//		`OFF` ����
+		case SEG_OFF_DISP:							//		`OFF` 占쏙옙占쏙옙
 			SEG_OXX = DT_7seg[Z_NUM_O];
 			SEG_XOX = DT_7seg[Z_NUM_F];
 			SEG_XXO = DT_7seg[Z_NUM_F];
@@ -354,7 +354,7 @@ static void SegDataSet(void)
 
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 			break;
-		case SEG_ERR_FLIC:						//		����ǥ��
+		case SEG_ERR_FLIC:						//		占쏙옙占쏙옙표占쏙옙
 			SEG_OXX = DT_7seg[Z_NUM_E];
 			SEG_XOX = DT_7seg[(gu8_ErrorCode & 0xf0)>>4];
 			SEG_XXO = DT_7seg[(gu8_ErrorCode & 0x0f)];
@@ -362,23 +362,23 @@ static void SegDataSet(void)
 			break;
 		case SEG_FLUSHING:
 			mu8_buf = (U8)((U32)gu16_Flushing_Hz_forDisplay * 90 / gu16_Flushing_TotalHz_forDisplay);
-																	//	0 ~ 100% ǥ�ø� ���� % ���???????
+																	//	0 ~ 100% 표占시몌옙 占쏙옙占쏙옙 % 占쏙옙占???????
 			if (mu8_buf <= 100)
 			{
-				mu8_TotalPercent = (U8)(100-mu8_buf);				//	[0 -> 100] ǥ��
+				mu8_TotalPercent = (U8)(100-mu8_buf);				//	[0 -> 100] 표占쏙옙
 
 			}
 
-			/*	1% ���� ǥ�� (����) */
+			/*	1% 占쏙옙占쏙옙 표占쏙옙 (占쏙옙占쏙옙) */
 			if (mu8_TotalPercent >= 100)
 			{
-				SEG_OXX = DT_7seg[(mu8_TotalPercent / 100) % 10];	//	SEG 100�ڸ� ǥ��
+				SEG_OXX = DT_7seg[(mu8_TotalPercent / 100) % 10];	//	SEG 100占쌘몌옙 표占쏙옙
 				SEG_XOX = DT_7seg[Z_NUM_0];
 				SEG_XXO = DT_7seg[Z_NUM_0];				
 			}
 			if (mu8_TotalPercent >= 10)
 			{
-				SEG_XOX = DT_7seg[(mu8_TotalPercent / 10) % 10];	//	SEG 10�ڸ� ǥ��
+				SEG_XOX = DT_7seg[(mu8_TotalPercent / 10) % 10];	//	SEG 10占쌘몌옙 표占쏙옙
 				SEG_XXO = DT_7seg[Z_NUM_0];	
 			}
 
@@ -402,8 +402,8 @@ static void SegDataSet(void)
 			}
 #endif
 			break;
-		case SEG_ERR_HIS:							//		�����̷�
-			if (gu8_TimerErrorHistory == 0)			//			ǥ�� Ÿ�̸� ���??????? ��
+		case SEG_ERR_HIS:							//		占쏙옙占쏙옙占싱뤄옙
+			if (gu8_TimerErrorHistory == 0)			//			표占쏙옙 타占싱몌옙 占쏙옙占??????? 占쏙옙
 			{
 				gu8_TimerErrorHistory = Z_TimerErrorHistory;
 				if (++gu8_CounterErrorHistory >= Z_ErrorHistory)
@@ -411,7 +411,7 @@ static void SegDataSet(void)
 					gu8_CounterErrorHistory = 0;
 				}
 			}
-			if (gu8_TimerErrorHistory < (Z_TimerErrorHistory-10))	//	�̷� ǥ�� Ÿ�̸� ��, 1�ʴ� SEG OFF�� �Ͽ� ���� ����
+			if (gu8_TimerErrorHistory < (Z_TimerErrorHistory-10))	//	占싱뤄옙 표占쏙옙 타占싱몌옙 占쏙옙, 1占십댐옙 SEG OFF占쏙옙 占싹울옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 			{
 				if (gu8_ErrorHistory[gu8_CounterErrorHistory] == 0x00)
 				{
@@ -436,13 +436,13 @@ static void SegDataSet(void)
 		case SEG_VER:
 			if (F_TestMode_PBA == SET)
 			{
-				if (gu16_TimerVersionDisplay <= (Z_TimerPBATestDisplay/2))	//	�׽�Ʈ���??????? 1 ǥ��
+				if (gu16_TimerVersionDisplay <= (Z_TimerPBATestDisplay/2))	//	占쌓쏙옙트占쏙옙占??????? 1 표占쏙옙
 				{
 					SEG_OXX = DT_7seg[Z_NUM_t];
 					SEG_XOX = DT_7seg[Z_NUM_E];
 					SEG_XXO = DT_7seg[Z_NUM_1];
 				}
-				else								//	���� ǥ��
+				else								//	占쏙옙占쏙옙 표占쏙옙
 				{
 					if (INPUT_MODEL_NATIONAL == MODEL_KOREA)
 					{
@@ -458,23 +458,23 @@ static void SegDataSet(void)
 			}
 			else
 			{
-				if (gu16_TimerVersionDisplay <= 50)		//			?�� �̳� ����ǥ��
+				if (gu16_TimerVersionDisplay <= 50)		//			?占쏙옙 占싱놂옙 占쏙옙占쏙옙표占쏙옙
 				{
 #ifdef _FOR_DEVELOP_
-					SEG_OXX = DT_7seg[(gu16_Front_ProgramVer & 0x0F00) >> 8];	//	DPP or LPP �ܰ� ǥ��
+					SEG_OXX = DT_7seg[(gu16_Front_ProgramVer & 0x0F00) >> 8];	//	DPP or LPP 占쌤곤옙 표占쏙옙
 #endif
 					SEG_XOX = DT_7seg[(gu16_Front_ProgramVer & 0x00F0) >> 4];
 					SEG_XXO = DT_7seg[(gu16_Front_ProgramVer & 0x000F)];
 
 				}
-				if (gu16_TimerVersionDisplay <= 100)				//			�ҵ�
+				if (gu16_TimerVersionDisplay <= 100)				//			占쌀듸옙
 				{
 
 				}
-				else if (gu16_TimerVersionDisplay <= 150)		//			?�� �̳� ����ǥ��
+				else if (gu16_TimerVersionDisplay <= 150)		//			?占쏙옙 占싱놂옙 占쏙옙占쏙옙표占쏙옙
 				{
 #ifdef _FOR_DEVELOP_
-					SEG_OXX = DT_7seg[(PROGRAM_VERSION_NO & 0x0F00) >> 8];	//	DPP or LPP �ܰ� ǥ��
+					SEG_OXX = DT_7seg[(PROGRAM_VERSION_NO & 0x0F00) >> 8];	//	DPP or LPP 占쌤곤옙 표占쏙옙
 #endif
 					SEG_XOX = DT_7seg[(PROGRAM_VERSION_NO & 0x00F0) >> 4];
 					SEG_XXO = DT_7seg[(PROGRAM_VERSION_NO & 0x000F)];
@@ -495,7 +495,7 @@ static void SegDataSet(void)
 							SEG_XOX = DT_7seg[Z_NUM_P];
 						}
 					}
-					else							//	�Ϻ���
+					else							//	占싹븝옙占쏙옙
 					{
 						SEG_OXX = DT_7seg[Z_NUM_J];
 						SEG_XOX = DT_7seg[Z_NUM_P];
@@ -504,7 +504,7 @@ static void SegDataSet(void)
 			}
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 			break;
-		case SEG_BOOT:							//		���� ǥ��
+		case SEG_BOOT:							//		占쏙옙占쏙옙 표占쏙옙
 //			temp = (U8)((Z_TimerBootDisplay - gu16_TimerBootDisplay));
 //			if (temp <= 50)
 //			{
@@ -532,15 +532,15 @@ static void SegDataSet(void)
 			SEG_XXO = DT_7seg[Z_NUM_8];
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_FADE_F;
 			break;
-		case SEG_EFF:								//	���� ǥ��
-			if ((gu8_WaterSelect == HOT_WATER) && (gu8_HotStep >= Z_HotStep_20) && (gu8_HotStep < Z_HotStep_35) && (gu8_HotStep != Z_HotStep_02))		//	���� ���� ���??????? ���÷� ǥ��
+		case SEG_EFF:								//	占쏙옙占쏙옙 표占쏙옙
+			if ((gu8_WaterSelect == HOT_WATER) && (gu8_HotStep >= Z_HotStep_20) && (gu8_HotStep < Z_HotStep_35) && (gu8_HotStep != Z_HotStep_02))		//	占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占??????? 占쏙옙占시뤄옙 표占쏙옙
 			{
 				if (gu16_HotEffStart_DeltaT != 0)
 				{
 					if ((gu16_HotEffStart_Standard >= gu16_HotEffStart_First) && (gi16_HeaterSensor.DEGREE < gi16_EffStartTargetTemp ))
 					{
-						if(gi16_HeaterSensor.DEGREE >= gu16_HotEff_HeaterSensor_BakUp )			/*** ���� ������ �µ��� ���??????? �������??????? �ʰ� �ĵ�ó�� �ⷷ�̰� ����ϴ�??????? ���??????? ǥ�� Display % ǥ�ð�  40% > 30% > 40% > 50% ������ ���� ***/
-						{																		/*** ���???????�� ǥ�õǴ� ���??????? �߻�/ �̿� ���� ǥ������ ���� ���� �µ��� ���??????? �����??????? �µ��� ���� ������ ���??????? �ϵ��� �Ͽ� ���??????? ������ ������. 	  ***/
+						if(gi16_HeaterSensor.DEGREE >= gu16_HotEff_HeaterSensor_BakUp )			/*** 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占승듸옙占쏙옙 占쏙옙占??????? 占쏙옙占쏙옙占쏙옙占??????? 占십곤옙 占식듸옙처占쏙옙 占썩렁占싱곤옙 占쏙옙占쏙옙求占??????? 占쏙옙占??????? 표占쏙옙 Display % 표占시곤옙  40% > 30% > 40% > 50% 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 ***/
+						{																		/*** 占쏙옙占???????占쏙옙 표占시되댐옙 占쏙옙占??????? 占쌩삼옙/ 占싱울옙 占쏙옙占쏙옙 표占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占승듸옙占쏙옙 占쏙옙占??????? 占쏙옙占쏙옙占??????? 占승듸옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占??????? 占싹듸옙占쏙옙 占싹울옙 占쏙옙占??????? 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙. 	  ***/
 							gu32_Display_PreHeat_Percent = (U32)(((U32)(gu16_HotEffStart_DeltaT - (gu16_HotEffStart_Standard - gi16_HeaterSensor.DEGREE)) * 100) / (gu16_HotEffStart_DeltaT));
 							gu16_HotEff_HeaterSensor_BakUp = gi16_HeaterSensor.DEGREE;
 						}
@@ -587,7 +587,7 @@ static void SegDataSet(void)
 
 #endif
 				}
-				else								//	�¼� ���� ��, ���� ǥ�� ª�� ���??????? 0ml�� ǥ��
+				else								//	占승쇽옙 占쏙옙占쏙옙 占쏙옙, 占쏙옙占쏙옙 표占쏙옙 짧占쏙옙 占쏙옙占??????? 0ml占쏙옙 표占쏙옙
 				{
 					SEG_XXO = DT_7seg[Z_NUM_0];
 					DisplayControl_Data[Z_LED_mL].Display_CMD = LED_DIMM;
@@ -597,7 +597,7 @@ static void SegDataSet(void)
 #endif
 				}
 			}
-			else if (gu16_CupSize == CUPSIZE_CONTINUE)	//	 �������� (Rotation ǥ��)
+			else if (gu16_CupSize == CUPSIZE_CONTINUE)	//	 占쏙옙占쏙옙占쏙옙占쏙옙 (Rotation 표占쏙옙)
 			{
 #ifdef _HOT_TEST_
 				if (gu8_WaterSelect == HOT_WATER)
@@ -607,11 +607,11 @@ static void SegDataSet(void)
 						gu8_TimerSEG_TH_Limit = Z_TimerSEG_TH_Limit;
 						if (F_HotWater_DegreeDisplay_TH == CLEAR)
 						{
-							mi16_Seg_buf_forSEGTH =	gi16_HotOutSensor.DEGREE;	//	[1/10��]
+							mi16_Seg_buf_forSEGTH =	gi16_HotOutSensor.DEGREE;	//	[1/10占쏙옙]
 						}
 						else
 						{
-							mi16_Seg_buf_forSEGTH =	gi16_HeaterSensor.DEGREE;	//	[1/10��]
+							mi16_Seg_buf_forSEGTH =	gi16_HeaterSensor.DEGREE;	//	[1/10占쏙옙]
 						}
 					}
 
@@ -651,7 +651,7 @@ static void SegDataSet(void)
 				SEG_XXO = DT_Cont_XXO[gu8_CounterContSeg];
 #endif
 			}
-			else									//		������ ��
+			else									//		占쏙옙占쏙옙占쏙옙 占쏙옙
 			{
 #ifdef _HOT_TEST_
 				if (gu8_WaterSelect == HOT_WATER)
@@ -661,11 +661,11 @@ static void SegDataSet(void)
 						gu8_TimerSEG_TH_Limit = Z_TimerSEG_TH_Limit;
 						if (F_HotWater_DegreeDisplay_TH == CLEAR)
 						{
-							mi16_Seg_buf_forSEGTH =	gi16_HotOutSensor.DEGREE;	//	[1/10��]
+							mi16_Seg_buf_forSEGTH =	gi16_HotOutSensor.DEGREE;	//	[1/10占쏙옙]
 						}
 						else
 						{
-							mi16_Seg_buf_forSEGTH =	gi16_HeaterSensor.DEGREE;	//	[1/10��]
+							mi16_Seg_buf_forSEGTH =	gi16_HeaterSensor.DEGREE;	//	[1/10占쏙옙]
 						}
 					}
 
@@ -700,11 +700,11 @@ static void SegDataSet(void)
 						gu8_TimerSEG_TH_Limit = Z_TimerSEG_TH_Limit;
 						if (F_HotWater_DegreeDisplay_TH == CLEAR)
 						{
-							mi16_Seg_buf_forSEGTH =	gi16_HotOutSensor.DEGREE/10;	//	[1/1��]
+							mi16_Seg_buf_forSEGTH =	gi16_HotOutSensor.DEGREE/10;	//	[1/1占쏙옙]
 						}
 						else
 						{
-							mi16_Seg_buf_forSEGTH =	gi16_HeaterSensor.DEGREE/10;	//	[1/1��]
+							mi16_Seg_buf_forSEGTH =	gi16_HeaterSensor.DEGREE/10;	//	[1/1占쏙옙]
 						}
 					}
 
@@ -733,22 +733,22 @@ static void SegDataSet(void)
 #endif
 					mu16_Cup_buf = gu16_Effluent_CupLitter_forSegDisplay;
 
-					if (gu16_Effluent_Hz > 5)			//	?���?? 주파?���?? 5Hz ?��?��?�� ?�� 계산?�� Cup ?��?��?�� ?��?�� (?��?���?? else)
+					if (gu16_Effluent_Hz > 5)			//	?占쏙옙占?? 二쇳뙆?占쏙옙占?? 5Hz ?占쏙옙?占쏙옙?占쏙옙 ?占쏙옙 怨꾩궛?占쏙옙 Cup ?占쏙옙?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙 (?占쏙옙?占쏙옙占?? else)
 					{
 						if (gu16_Effluent_Hz_forSegDisplay >= gu16_Effluent_Hz)
 						{							
-							mu16_Seg_buf = (U16)((mu16_Cup_buf*(((U32)((U32)gu16_Effluent_Hz_forSegDisplay-gu16_Effluent_Hz) * 100) / gu16_Effluent_Hz_forSegDisplay))/100);	//	?��?�� 계산 공식
+							mu16_Seg_buf = (U16)((mu16_Cup_buf*(((U32)((U32)gu16_Effluent_Hz_forSegDisplay-gu16_Effluent_Hz) * 100) / gu16_Effluent_Hz_forSegDisplay))/100);	//	?占쏙옙?占쏙옙 怨꾩궛 怨듭떇
 						}
 					}
 					else
 					{
 						mu16_Seg_buf = mu16_Cup_buf;
 					}
-					gu16_Effluent_Amount_SegDisplay = mu16_Seg_buf;	//	?��그먼?�� ?��?�� �?? ?��?��
+					gu16_Effluent_Amount_SegDisplay = mu16_Seg_buf;	//	?占쏙옙洹몃㉫?占쏙옙 ?占쏙옙?占쏙옙 占?? ?占쏙옙?占쏙옙
 
 								
-					//	�ִ밪 990����
-					if(mu16_Seg_buf >= 1000)	//	최�?? ?��?�� ?��?��
+					//	占쌍대값 990占쏙옙占쏙옙
+					if(mu16_Seg_buf >= 1000)	//	理쒙옙?? ?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙
 					{
 						SEG_XOX = DT_7seg[Z_NUM_1];
 						SEG_XXO = DT_7seg[Z_NUM_L];
@@ -896,7 +896,7 @@ static void SegDataSet(void)
 #endif
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 			break;
-		case SEG_ML:								//		�� ���� ǥ��
+		case SEG_ML:								//		占쏙옙 占쏙옙占쏙옙 표占쏙옙
 #ifdef _FOR_REPEAT_EFF_ENDURANCE_TEST_
 			if (gu16_TimerMoveDisplay == 0)
 			{
@@ -990,10 +990,10 @@ static void SegDataSet(void)
 			}
 			else
 			{
-				if (gu8_Timer_SEG_TH == 0)				//			TH������ Ÿ�̸�
+				if (gu8_Timer_SEG_TH == 0)				//			TH占쏙옙占쏙옙占쏙옙 타占싱몌옙
 				{
 					gu8_Timer_SEG_TH = Z_Timer_SEG_TH;
-					if (gu8_Counter_SEG_TH == 2)		//			TH������ ī���Ϳ� ����
+					if (gu8_Counter_SEG_TH == 2)		//			TH占쏙옙占쏙옙占쏙옙 카占쏙옙占싶울옙 占쏙옙占쏙옙
 					{
 						gu8_Counter_SEG_TH = 0;
 					}
@@ -1003,7 +1003,7 @@ static void SegDataSet(void)
 					}
 				}
 
-				if (gu8_Timer_SEG_TH >= 30)				//			4�� �� 1�ʴ� TH���� ǥ��
+				if (gu8_Timer_SEG_TH >= 30)				//			4占쏙옙 占쏙옙 1占십댐옙 TH占쏙옙占쏙옙 표占쏙옙
 				{
 					switch (gu8_Counter_SEG_TH)
 					{
@@ -1021,10 +1021,10 @@ static void SegDataSet(void)
 							break;
 					}
 				}
-				else								//			4�� �� 3�ʴ� TH������ ǥ��
+				else								//			4占쏙옙 占쏙옙 3占십댐옙 TH占쏙옙占쏙옙占쏙옙 표占쏙옙
 				{
 					mu8_OPENSHORT_Error = TH_Open_Short_Check(TH_DataArray[gu8_Counter_SEG_TH]->TH_ADC_AVERAGE);
-					if (mu8_OPENSHORT_Error == 0)			//	�������???????
+					if (mu8_OPENSHORT_Error == 0)			//	占쏙옙占쏙옙占쏙옙占???????
 					{
 						if (gu8_TimerSEG_TH_Limit == 0)		//
 						{
@@ -1097,7 +1097,7 @@ static void SegDataSet(void)
 				SEG_XXO = DT_7seg[gu8_WifiError % 10];
 				DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_FADE_F;
 			}
-			else if ((gu8_WaterSelect == HOT_WATER) && (F_HotWater_DegreeDisplay == SET) && (gu8_TimerHotTest_DegreeDisplay != 0))	//	���� ���� �� ��տµ�??????? ǥ��
+			else if ((gu8_WaterSelect == HOT_WATER) && (F_HotWater_DegreeDisplay == SET) && (gu8_TimerHotTest_DegreeDisplay != 0))	//	占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙纜쨉占??????? 표占쏙옙
 			{
 				if (gu16_HotOut_Degree_Ave >= 1000)
 				{
@@ -1130,7 +1130,7 @@ static void SegDataSet(void)
 				DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_FADE_F;
 				DisplayControl_Data[Z_LED_mL].Display_CMD = LED_FADE_F;
 			}
-			else if (gu8_TimerEffluentAmount_Display != 0)	//		Ÿ�̸� �������� ���� ��
+			else if (gu8_TimerEffluentAmount_Display != 0)	//		타占싱몌옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙
 			{
 				if(gu16_Effluent_Amount_SegDisplay >= 1000)
 				{
@@ -1251,7 +1251,7 @@ static void SegDataSet(void)
 								}		
 								else
 								{
-									//	����ó����...�������� �ڵ忡��..
+									//	占쏙옙占쏙옙처占쏙옙占쏙옙...占쏙옙占쏙옙占쏙옙占쏙옙 占쌘드에占쏙옙..
 								}																																																																																						
 							}
 							else if (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90)
@@ -1316,7 +1316,7 @@ static void SegDataSet(void)
 								SEG_XXO = DT_7seg[Z_NUM_5];
 							}
 						}
-						else							//	�Ϻ���
+						else							//	占싹븝옙占쏙옙
 						{
 							if (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90)
 							{
@@ -1409,7 +1409,7 @@ static void SegDataSet(void)
 							SEG_XOX = DT_7seg[Z_NUM_1];
 							SEG_XXO = DT_7seg[Z_NUM_L];
 						}
-						else if (gu16_CupSize == CUPSIZE_CONTINUE)    //			��������
+						else if (gu16_CupSize == CUPSIZE_CONTINUE)    //			占쏙옙占쏙옙占쏙옙占쏙옙
 						{
 							SEG_OXX = (U8)(DT_7seg[Z_NUM_SEG_a] | DT_7seg[Z_NUM_SEG_d] | DT_7seg[Z_NUM_SEG_e] | DT_7seg[Z_NUM_SEG_f]);
 							SEG_XOX = (U8)(DT_7seg[Z_NUM_SEG_a] | DT_7seg[Z_NUM_SEG_d]);
@@ -1457,8 +1457,8 @@ static void SegDataSet(void)
 							SEG_XOX = DT_7seg[Z_NUM_1];
 							SEG_XXO = DT_7seg[Z_NUM_L];
 						}
-						else if ((gu16_CupSize == CUPSIZE_CONTINUE)    //			��������
-						&& (gu8_CupIndex == CUPSIZE_FIVE))			//	�Ż����� 170ml�� �����̶� ���� ������ index ���ǰɾ������(������ ������ 4��°��)
+						else if ((gu16_CupSize == CUPSIZE_CONTINUE)    //			占쏙옙占쏙옙占쏙옙占쏙옙
+						&& (gu8_CupIndex == CUPSIZE_FIVE))			//	컵사이즈 170ml랑 연속이랑 같기 때문에 index 조건걸어줘야함(연속은 무조건 4번째임)
 						{
 							SEG_OXX = (U8)(DT_7seg[Z_NUM_SEG_a] | DT_7seg[Z_NUM_SEG_d] | DT_7seg[Z_NUM_SEG_e] | DT_7seg[Z_NUM_SEG_f]);
 							SEG_XOX = (U8)(DT_7seg[Z_NUM_SEG_a] | DT_7seg[Z_NUM_SEG_d]);
@@ -1467,7 +1467,7 @@ static void SegDataSet(void)
 						else if ((gu16_CupSize == CUPSIZE_CONTINUE)      //009
 						&& (gu8_F_Continue_Effluent_Animation == SET))   //009
 						{                                                //009
-							// �������� �ִϸ��̼� ǥ�� (600-653�ٰ� ������ ����)	//009
+							// 연속추출 애니메이션 표시 (600-653줄과 동일한 로직)	//009
 							if (gu8_TimerContSeg == 0)					//@009
 							{											//@009
 								gu8_TimerContSeg = Z_TimerContSeg;		//@009
@@ -1501,12 +1501,12 @@ static void SegDataSet(void)
 			}
 #endif
 			break;
-		case SEG_FL_FLIC:						//		�ʱ��÷��� �ʿ� ǥ��
+		case SEG_FL_FLIC:						//		占십깍옙占시뤄옙占쏙옙 占십울옙 표占쏙옙
 			SEG_XOX = DT_7seg[Z_NUM_F];
 			SEG_XXO = DT_7seg[Z_NUM_L];
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_FADE_F;
 			break;
-		case SEG_COLDTIME:							//		�ð��ð�����
+		case SEG_COLDTIME:							//		占시곤옙占시곤옙占쏙옙占쏙옙
 //#ifdef _FOR_DEVELOP_
 			if (gu16_Cooling_TargetDegree >= 10)							
 			{                                                               
@@ -1527,7 +1527,7 @@ static void SegDataSet(void)
 //			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 //#endif
 			break;
-		case SEG_TH:								//		TH������ ǥ��							
+		case SEG_TH:								//		TH占쏙옙占쏙옙占쏙옙 표占쏙옙							
 			if (gu8_TimerDisplayEcoMode != 0)                               
 			{                                                               
 				if (F_CoolingEcoMode_Disable == SET)                        
@@ -1606,16 +1606,16 @@ static void SegDataSet(void)
 			}
 			else                                                            
 			{																
-				if (gu8_Timer_SEG_TH == 0)				//			TH������ Ÿ�̸�
+				if (gu8_Timer_SEG_TH == 0)				//			TH占쏙옙占쏙옙占쏙옙 타占싱몌옙
 				{
 					gu8_Timer_SEG_TH = Z_Timer_SEG_TH;
-					if (++gu8_Counter_SEG_TH >= 6)		//			TH������ ī���Ϳ� ����
+					if (++gu8_Counter_SEG_TH >= 6)		//			TH占쏙옙占쏙옙占쏙옙 카占쏙옙占싶울옙 占쏙옙占쏙옙
 					{
 						gu8_Counter_SEG_TH = 0;
 					}
 				}
 
-				if (gu8_Timer_SEG_TH >= 30)				//			4�� �� 1�ʴ� TH���� ǥ��
+				if (gu8_Timer_SEG_TH >= 30)				//			4占쏙옙 占쏙옙 1占십댐옙 TH占쏙옙占쏙옙 표占쏙옙
 				{
 					switch (gu8_Counter_SEG_TH)
 					{
@@ -1653,10 +1653,10 @@ static void SegDataSet(void)
 							break;
 					}
 				}
-				else									//			4�� �� 3�ʴ� TH������ ǥ��
+				else									//			4占쏙옙 占쏙옙 3占십댐옙 TH占쏙옙占쏙옙占쏙옙 표占쏙옙
 				{
 					mu8_OPENSHORT_Error = TH_Open_Short_Check(TH_DataArray[gu8_Counter_SEG_TH]->TH_ADC_AVERAGE);
-					if (mu8_OPENSHORT_Error == 0)			//	�������???????
+					if (mu8_OPENSHORT_Error == 0)			//	占쏙옙占쏙옙占쏙옙占???????
 					{
 						if (gu8_TimerSEG_TH_Limit == 0)		//
 						{
@@ -1694,17 +1694,17 @@ static void SegDataSet(void)
 				DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 			}
 			break;
-		case SEG_MONITOR:							//		���� Ƚ�� �� ���ⷮ ǥ��
-			if (gu8_Timer_SEG_MONITOR == 0)			//			Ÿ�̸�
+		case SEG_MONITOR:							//		占쏙옙占쏙옙 횟占쏙옙 占쏙옙 占쏙옙占썩량 표占쏙옙
+			if (gu8_Timer_SEG_MONITOR == 0)			//			타占싱몌옙
 			{
 				gu8_Timer_SEG_MONITOR = Z_Timer_SEG_MONITOR;
-				if (++gu8_Counter_SEG_MONITOR >= 3)	//			�� ���� ī���Ϳ� ����
+				if (++gu8_Counter_SEG_MONITOR >= 3)	//			占쏙옙 占쏙옙占쏙옙 카占쏙옙占싶울옙 占쏙옙占쏙옙
 				{
 					gu8_Counter_SEG_MONITOR = 0;
 				}
 			}
 
-			if (gu8_Timer_SEG_MONITOR >= 60)		//			7�� �� 1�ʴ� �� ���� ǥ��
+			if (gu8_Timer_SEG_MONITOR >= 60)		//			7占쏙옙 占쏙옙 1占십댐옙 占쏙옙 占쏙옙占쏙옙 표占쏙옙
 			{
 				switch (gu8_Counter_SEG_MONITOR)
 				{
@@ -1727,7 +1727,7 @@ static void SegDataSet(void)
 						break;
 				}
 			}
-			else if (gu8_Timer_SEG_MONITOR >= 30)	//			7�� �� 3~6�ʴ� ���� Ƚ��
+			else if (gu8_Timer_SEG_MONITOR >= 30)	//			7占쏙옙 占쏙옙 3~6占십댐옙 占쏙옙占쏙옙 횟占쏙옙
 			{
 				if (gu16_Effluent_Count[gu8_Counter_SEG_MONITOR] >= 100)
 				{
@@ -1739,7 +1739,7 @@ static void SegDataSet(void)
 				}
 				SEG_XXO = DT_7seg[gu16_Effluent_Count[gu8_Counter_SEG_MONITOR] % 10];
 			}
-			else									//		0~2�ʴ� ���ⷮ. 1L ���� ����
+			else									//		0~2占십댐옙 占쏙옙占썩량. 1L 占쏙옙占쏙옙 占쏙옙占쏙옙
 			{
 				if (gu16_Effluent_Amount[gu8_Counter_SEG_MONITOR] >= 100)
 				{
@@ -1754,7 +1754,7 @@ static void SegDataSet(void)
 			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 			break;
 		case SEG_FRONTTEST:
-			/*	������	*/
+			/*	占쏙옙占쏙옙占쏙옙	*/
 //			if (PSM5 == CLEAR)
 //			{
 //				SEG_OXX = DT_7seg[Z_NUM_E];
@@ -1769,7 +1769,7 @@ static void SegDataSet(void)
 //			}
 //			DisplayControl_Data[Z_SEGMENT].Display_CMD = LED_ON;
 //			return;
-			/*	������ ��	*/
+			/*	占쏙옙占쏙옙占쏙옙 占쏙옙	*/
 			if (F_FrontTest_EffluentButton == SET)
 			{
 				if (gu16_Timer_FrontTest_Seg != 0)
@@ -1955,9 +1955,9 @@ static void SegDataSet(void)
 						{
 							gu16_LineTest_Seg = gu16_FlowDecide_Hz / 10;
 						}
-						else						//	�Ϻ���
+						else						//	占싹븝옙占쏙옙
 						{
-							gu16_LineTest_Seg = gu16_FlowDecide_Hz / 10 / 2;	//	�Ϻ����� �����������̹Ƿ� �� ���� Hz�� �ԷµǾ� ������2
+							gu16_LineTest_Seg = gu16_FlowDecide_Hz / 10 / 2;	//	占싹븝옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占싱므뤄옙 占쏙옙 占쏙옙占쏙옙 Hz占쏙옙 占쌉력되억옙 占쏙옙占쏙옙占쏙옙2
 						}
 					}
 
@@ -1980,7 +1980,7 @@ static void SegDataSet(void)
 			}
 			else
 			{
-				//  �ڵ�ȭ�˻��� �Ϸ� ��, �Ŀ�� �� �̰��� �� ��ü ���� / ���� �� �ҵ�
+				//  자동화검사모드 완료 후, 파우셋 팁 미감지 시 전체 점멸 / 감지 시 소등
 				if(F_LineTest_Complete == SET)
 				{
 					if(INPUT_REED_SW_FAUCET == SET)	
@@ -2003,7 +2003,7 @@ static void SegDataSet(void)
 						SEG_XOX = DT_7seg[Z_NUM_O];
 						SEG_XXO = DT_7seg[Z_NUM_r];
 					}
-					else								//	�Ϻ���
+					else								//	占싹븝옙占쏙옙
 					{
 						SEG_OXX = DT_7seg[Z_NUM_J];
 						SEG_XOX = DT_7seg[Z_NUM_P];
@@ -2014,15 +2014,15 @@ static void SegDataSet(void)
 			}
 			break;
 		case SEG_PBATEST:
-			if (gu8_TimerFCTSet != 0)				//			�׽�Ʈ���???????1,2 ��ȯ ǥ�� Ÿ�̸� ���� ���???????
+			if (gu8_TimerFCTSet != 0)				//			占쌓쏙옙트占쏙옙占???????1,2 占쏙옙환 표占쏙옙 타占싱몌옙 占쏙옙占쏙옙 占쏙옙占???????
 			{
-				if (F_TestMode_PBA_2 == SET)		//				�׽�Ʈ���???????2
+				if (F_TestMode_PBA_2 == SET)		//				占쌓쏙옙트占쏙옙占???????2
 				{
 					SEG_OXX = DT_7seg[Z_NUM_t];
 					SEG_XOX = DT_7seg[Z_NUM_E];
 					SEG_XXO = DT_7seg[Z_NUM_2];
 				}
-				else								//				�׽�Ʈ���???????1
+				else								//				占쌓쏙옙트占쏙옙占???????1
 				{
 					SEG_OXX = DT_7seg[Z_NUM_t];
 					SEG_XOX = DT_7seg[Z_NUM_E];
@@ -2215,7 +2215,7 @@ static void SegDataSet(void)
 			break;
 		case SEG_AD_FEEDBACK:
 			
-			// Ÿ�̸Ӱ� 0�� �Ǹ� ���� ��ȯ
+			// 타이머가 0이 되면 상태 전환
 			if (gu8_Timer_AdFeedback_Loading != 0)
 			{
 				if(gu8_Timer_AdFeedback_Loading >= 20)
@@ -2229,7 +2229,7 @@ static void SegDataSet(void)
 				}
 				else
 				{
-					// ����
+					// 켜짐
 					SEG_OXX = DT_7seg[Z_NUM_BAR];
 					SEG_XOX = DT_7seg[Z_NUM_BAR];
 					SEG_XXO = DT_7seg[Z_NUM_BAR];
@@ -2241,7 +2241,7 @@ static void SegDataSet(void)
 			else
 			{
 				#ifdef SMPS_VOLTAGE_AND_TEM_CURRENT_DISPLAY
-				// 1�� �ֱ�� ���� ��ȯ (0 �� 1 �� 2 �� 3 �� 0)
+				// 1초 주기로 상태 전환 (0 → 1 → 2 → 3 → 0)
 				if(gu8_Timer_Smps_Feedback_Display == 0)
 				{
 					gu8_Timer_Smps_Feedback_Display = Z_TIMER_SMPS_FEEDBACK_DISPLAY;
@@ -2258,18 +2258,18 @@ static void SegDataSet(void)
 
 				}
 
-				// ���¿� ���� ǥ��
+				// 상태에 따라 표시
 				switch (mu8_AdFeedback_State)
 				{
-					case 0:  // VOL �ؽ�Ʈ ǥ��
-						SEG_OXX = DT_7seg[Z_NUM_U];  // V (V�� ������ �ٸ� ���� ���)
+					case 0:  // VOL 텍스트 표시
+						SEG_OXX = DT_7seg[Z_NUM_U];  // V (V가 없으면 다른 문자 사용)
 						SEG_XOX = DT_7seg[Z_NUM_O];  // O
 						SEG_XXO = DT_7seg[Z_NUM_L];  // L
 						break;
 						
-					case 1:  // VOL �� ǥ��
+					case 1:  // VOL 값 표시
 
-						mu16_VolValue = calculate_smps_voltage_feedback(ADC_RESULT_VOLTAGE_FB);  // VOL ��
+						mu16_VolValue = calculate_smps_voltage_feedback(ADC_RESULT_VOLTAGE_FB);  // VOL 값
 						mu8_Thousands = (U8)((mu16_VolValue / 1000) % 10);
 						mu8_Hundreds = (U8)((mu16_VolValue / 100) % 10);
 						mu8_Tens = (U8)((mu16_VolValue / 10) % 10);
@@ -2280,7 +2280,7 @@ static void SegDataSet(void)
 						}
 						else
 						{
-							SEG_OXX = DT_7seg[Z_NUM_X];  // ��ĭ
+							SEG_OXX = DT_7seg[Z_NUM_X];  // 빈칸
 						}
 						
 						if (mu16_VolValue >= 100)
@@ -2289,7 +2289,7 @@ static void SegDataSet(void)
 						}
 						else
 						{
-							SEG_XOX = DT_7seg[Z_NUM_X];  // ��ĭ
+							SEG_XOX = DT_7seg[Z_NUM_X];  // 빈칸
 						}
 						
 						if (mu16_VolValue >= 10)
@@ -2298,17 +2298,17 @@ static void SegDataSet(void)
 						}
 						else
 						{
-							SEG_XXO = DT_7seg[Z_NUM_X];  // ��ĭ
+							SEG_XXO = DT_7seg[Z_NUM_X];  // 빈칸
 						}
 						break;
 						
-					case 2:  // TEM �ؽ�Ʈ ǥ��
+					case 2:  // TEM 텍스트 표시
 						SEG_OXX = DT_7seg[Z_NUM_t];  // T
 						SEG_XOX = DT_7seg[Z_NUM_E];  // E
-						SEG_XXO = DT_7seg[Z_NUM_n];  // M (n ��� �ٸ� ���� ��� ����)
+						SEG_XXO = DT_7seg[Z_NUM_n];  // M (n 대신 다른 문자 사용 가능)
 						break;
 						
-					case 3:  // TEM �� ǥ��
+					case 3:  // TEM 값 표시
 
 						mu16_TemValue = calculate_tem_current(ADC_RESULT_TEM_FB);
 
@@ -2322,7 +2322,7 @@ static void SegDataSet(void)
 						}
 						else
 						{
-							SEG_OXX = DT_7seg[Z_NUM_X];  // ��ĭ
+							SEG_OXX = DT_7seg[Z_NUM_X];  // 빈칸
 						}
 						
 						if (mu16_TemValue >= 100)
@@ -2331,7 +2331,7 @@ static void SegDataSet(void)
 						}
 						else
 						{
-							SEG_XOX = DT_7seg[Z_NUM_X];  // ��ĭ
+							SEG_XOX = DT_7seg[Z_NUM_X];  // 빈칸
 						}
 						
 						if (mu16_TemValue >= 10)
@@ -2340,7 +2340,7 @@ static void SegDataSet(void)
 						}
 						else
 						{
-							SEG_XXO = DT_7seg[Z_NUM_X];  // ��ĭ
+							SEG_XXO = DT_7seg[Z_NUM_X];  // 빈칸
 						}
 						break;
 						
@@ -2354,13 +2354,13 @@ static void SegDataSet(void)
 					break;
 				#else
 				
-				// MIN/MAX ���� Ȯ�� (��10%)
-				// VOL �� ���� Ȯ��
+				// MIN/MAX 범위 확인 (±10%)
+				// VOL 값 범위 확인
 				if (check_smps_voltage_range(gu16_ad_feedback_mode_smps_voltage_Result) != 0)
 				{
 					SEG_XXO = DT_7seg[Z_NUM_1];
 				}					
-				// TEM �� ���� Ȯ��
+				// TEM 값 범위 확인
 				else if (check_tem_current_range(gu16_ad_feedback_mode_tem_mA_Result) != 0)
 				{
 					SEG_XXO = DT_7seg[Z_NUM_2];
@@ -2388,7 +2388,7 @@ static void SegDataSet(void)
 
 
 
-	/********���� �ŷڼ������� ���α׷�*******/
+	/********추출 신뢰성내구성 프로그램*******/
 	#ifdef _FOR_HOTWATER_1CUP_EFF_30s_DELAY_
 	if(gu8_F_EffluentDurabilityProgram == SET)
 	{
@@ -2746,7 +2746,7 @@ static void LED_COLD(void)
 			#if 0
 			if ((F_FilterChange_Detect == SET) || (F_FaucetChange_Detect == SET))
 			#endif
-			if (F_FilterChange_Detect == SET)			//	�����Ŀ���� �÷��� ����.
+			if (F_FilterChange_Detect == SET)			//	유로파우셋은 플러싱 없음.
 			{
 				DisplayControl_Data[Z_LED_COLD].Display_CMD = LED_DIMM;
 			}
@@ -2805,7 +2805,7 @@ static void LED_HOT(void)
 				{
 					if (F_HotLock == CLEAR)
 					{
-						DisplayControl_Data[Z_LED_HOT].Display_CMD = LED_FADE_F_S;	//	�¼� ���� �����ϴٴ� ǥ��
+						DisplayControl_Data[Z_LED_HOT].Display_CMD = LED_FADE_F_S;	//	占승쇽옙 占쏙옙占쏙옙 占쏙옙占쏙옙占싹다댐옙 표占쏙옙
 					}
 					else
 					{
@@ -2944,7 +2944,7 @@ static void LED_HOTBAR(void)
 		case LED_STATUS:
 			if(gu8_WaterSelect == HOT_WATER)
 			{
-				if(F_FirstHotEffluent == SET)			//	ù�ܿϷ��ΰ��??????? ǥ��..
+				if(F_FirstHotEffluent == SET)			//	첫占쌤완뤄옙占싸곤옙占??????? 표占쏙옙..
 				{
 					if (gu8_hot_water_select_index == 0)
 					{
@@ -2991,7 +2991,7 @@ static void LED_HOTBAR(void)
 
 					}
 					
-					//	Ȱ��ȭ �ȵȳ��� off...
+					//	활성화 안된놈은 off...
 					if(gu8_select_hot_temp_total_count == 1)
 					{
 						DisplayControl_Data[Z_LED_HOT_BAR_2].Display_CMD = LED_OFF;
@@ -3158,7 +3158,7 @@ static void LED_EFFLUENT(void)
 			DisplayControl_Data[Z_LED_EFFLUENT].Display_CMD = LED_FADE_F;
 			break;
 		case LED_DIMM:
-			if ((gu8_OperationStep_hi == 0x10) || (gu8_OperationStep_hi == 0x20)	//	���???????/����/����/UV ����
+			if ((gu8_OperationStep_hi == 0x10) || (gu8_OperationStep_hi == 0x20)	//	占쏙옙占???????/占쏙옙占쏙옙/占쏙옙占쏙옙/UV 占쏙옙占쏙옙
 			|| (gu8_OperationStep_hi == 0x30) || (gu8_OperationStep_hi == 0x40))
 			{
 				if (F_EffluentLED_OFF == CLEAR)
@@ -3172,7 +3172,7 @@ static void LED_EFFLUENT(void)
 			}
 			break;
 		case LED_ON:
-			if ((gu8_OperationStep_hi == 0x10) || (gu8_OperationStep_hi == 0x20)	//	���???????/����/����/UV ����
+			if ((gu8_OperationStep_hi == 0x10) || (gu8_OperationStep_hi == 0x20)	//	占쏙옙占???????/占쏙옙占쏙옙/占쏙옙占쏙옙/UV 占쏙옙占쏙옙
 			|| (gu8_OperationStep_hi == 0x30) || (gu8_OperationStep_hi == 0x40))
 			{
 				if (F_EffluentLED_OFF == CLEAR)
@@ -3196,14 +3196,14 @@ static void LED_EFFLUENT(void)
 			}
 			break;
 		case LED_TOPCOVER:
-    		// ���� ��ư LED ����
+    		// 추출 버튼 LED 제어
 			if (F_ColdEffStep_B0_Request == CLEAR)
 			{
-				DisplayControl_Data[Z_LED_EFFLUENT].Display_CMD = LED_FADE_F;  // ����
+				DisplayControl_Data[Z_LED_EFFLUENT].Display_CMD = LED_FADE_F;  // 점멸
 			}
 			else
 			{
-				DisplayControl_Data[Z_LED_EFFLUENT].Display_CMD = LED_OFF;  // �ҵ�
+				DisplayControl_Data[Z_LED_EFFLUENT].Display_CMD = LED_OFF;  // 소등
 			}		
 			break;
 		case LED_FRONTTEST:
@@ -3828,7 +3828,7 @@ static void LED_COLD_TEMP(void)
 		case LED_EFF:
 			if (F_ColdOff == CLEAR)
 			{
-				if ((F_Err25_HeatSinkTH == SET) || (F_Err44_ColdTH == SET) || (F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET))		//	�ܼ��ܶ��� �ִ� ���??????? or TEM ������ �ִ� ���???????
+				if ((F_Err25_HeatSinkTH == SET) || (F_Err44_ColdTH == SET) || (F_Err29_TEM_OverDrive1 == SET) || (F_Err29_TEM_OverDrive2 == SET))		//	占쌤쇽옙占쌤띰옙占쏙옙 占쌍댐옙 占쏙옙占??????? or TEM 占쏙옙占쏙옙占쏙옙 占쌍댐옙 占쏙옙占???????
 				{
 					DisplayControl_Data[Z_LED_COLD_WHITE].Display_CMD = LED_FADE_F;
 				}
@@ -3970,11 +3970,11 @@ static void LED_FAUCET(void)
 				DisplayControl_Data[Z_LED_FAUCET].Display_CMD = LED_ON;
 			}
 #else	
-			//	�Ŀ�� ��....�������� ���� ��� �߰�
+			//	파우셋 팁....빠졌을때 점멸 사양 추가
 			//@022 if(gu8_TimerReedSWCheck_forFaucetTip == 0)
 			if((gu8_TimerReedSWCheck_forFaucetTip == 0)
-			&& (gu8_WaterSelect == HOT_WATER)                                    //@022 �¼��϶���
-			&& (gu8_F_FaucetTip_Undetected_Display_Done == CLEAR)                 //@022 1ȸ��
+			&& (gu8_WaterSelect == HOT_WATER)                                    //@022 온수일때만
+			&& (gu8_F_FaucetTip_Undetected_Display_Done == CLEAR)                 //@022 1회만
 			&& (F_FirstHotEffluent  == SET))                                  //@022
 			{
 				if((gu8_OperationStep == Z_OperationStep_11)                      //@017
@@ -3987,7 +3987,7 @@ static void LED_FAUCET(void)
 					DisplayControl_Data[Z_LED_FAUCET].Display_CMD = LED_OFF;       //@017
 				}                                                                 //@017
 			}
-			// if (F_FaucetChange_Display == SET)			//	���� if�� ó���� �������� �Ϻη� else if ó�� ����
+			// if (F_FaucetChange_Display == SET)			//	占쏙옙占쏙옙 if占쏙옙 처占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占싹부뤄옙 else if 처占쏙옙 占쏙옙占쏙옙
 			else if (F_FaucetChange_Display == SET)
 			{
 //				DisplayControl_Data[Z_LED_FAUCET].Display_CMD = LED_ON;
@@ -4117,7 +4117,7 @@ static void LED_WIFI(void)
 				case WIFI_DISP_CONNECT:
 					if ((gu8_OperationStep == Z_OperationStep_10) && (gu8_TimerSleepMode == 0))
 					{
-						//	�������??????? 1�ð� ���??????? �ô� ������
+						//	占쏙옙占쏙옙占쏙옙占??????? 1占시곤옙 占쏙옙占??????? 占시댐옙 占쏙옙占쏙옙占쏙옙
 					}
 					else
 					{
@@ -4159,7 +4159,7 @@ static void LED_WIFI(void)
 					DisplayControl_Data[Z_LED_WIFI].Display_CMD = LED_FADE_F;
 				}
 			}
-			else									//	�Ϻ����� % LED ����
+			else									//	占싹븝옙占쏙옙占쏙옙 % LED 占쏙옙占쏙옙
 			{
 				DisplayControl_Data[Z_LED_WIFI].Display_CMD = LED_ON;
 			}
@@ -4184,7 +4184,7 @@ static void LED_WIFI(void)
 			}
 			break;
 		case LED_forSEG:
-			//	SEG Data ó������ ó����
+			//	SEG Data 처占쏙옙占쏙옙占쏙옙 처占쏙옙占쏙옙
 			break;
 		default:
 			DisplayControl_Data[Z_LED_WIFI].Display_CMD = DisplayControl_Data[Z_LED_WIFI].Operation_CMD;
@@ -4213,7 +4213,7 @@ static void LED_FILTER_CHANGE(void)
 		case LED_STATUS:
 #ifdef _AFTER_LPP_IMDCHANGE_
 
-			if (F_FilterChange_Display == SET)	//	���� if�� ó���� �������� �Ϻη� else if ó�� ����
+			if (F_FilterChange_Display == SET)	//	占쏙옙占쏙옙 if占쏙옙 처占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占싹부뤄옙 else if 처占쏙옙 占쏙옙占쏙옙
 			{
 				#if 0
 				if (gu8_TimerChangeDisplay != 0)
@@ -4293,7 +4293,7 @@ static void LED_ML(void)
 		case LED_STATUS:
 			break;
 		case LED_forSEG:
-			//	SEG Data ó������ ó����
+			//	SEG Data 처占쏙옙占쏙옙占쏙옙 처占쏙옙占쏙옙
 			break;
 		case LED_BOOT:
 			DisplayControl_Data[Z_LED_mL].Display_CMD = LED_FADE_F;
@@ -4371,7 +4371,7 @@ static void LED_DEGREE(void)
 		case LED_STATUS:
 			break;
 		case LED_forSEG:
-			//	SEG Data ó������ ó����
+			//	SEG Data 처占쏙옙占쏙옙占쏙옙 처占쏙옙占쏙옙
 			break;
 		case LED_BOOT:
 			DisplayControl_Data[Z_LED_DEGREE].Display_CMD = LED_FADE_F;
@@ -4609,7 +4609,7 @@ static void LED_UV(void)
 //			}
 			break;
 
-		#if 0		//	UV����
+		#if 0		//	UV占쏙옙占쏙옙
 		case LED_UVCARE1:
 			if (gu16_TimerUV_Oper > ((Z_TimerUV_Oper/5)*4))
 			{
@@ -5267,7 +5267,7 @@ static void LED_HOTLOCK(void)
 
 
 	#ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
-		//	�ŷڼ� ��� ���α׷�
+		//	신뢰성 결로 프로그램
 		if(gu8_F_gu16_reliability_test == SET)
 		{
 			DisplayControl_Data[Z_LED_UV1].Display_CMD = LED_FADE_F;
@@ -5337,7 +5337,7 @@ static void LED_PERCENT(void)
 			break;
 
 		case LED_STATUS:
-			if(gu8_Wifi_Pairing_State != WIFI_PAIRING_STEP_ERROR)					//	���� �߻� ���Ѱ�쿡�� %ǥ��
+			if(gu8_Wifi_Pairing_State != WIFI_PAIRING_STEP_ERROR)					//	에러 발생 안한경우에만 %표시
 			{
 				DisplayControl_Data[Z_LED_PERCENT].Display_CMD = LED_ON;
 			}

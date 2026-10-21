@@ -1,7 +1,7 @@
 /// @file   watermeter.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  À¯·®¼¾¼­ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ìœ ëŸ‰ì„¼ì„œ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef COMMAND_C
 	#define 	EXTERN
@@ -13,22 +13,22 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_COMMAND()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_COMMAND()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_COMMAND()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_COMMAND()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_COMMAND()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_COMMAND()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_COMMAND()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_COMMAND()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_COMMAND()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_COMMAND()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_COMMAND()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_COMMAND()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerTestMode);	\
 								}
-#define	TDEC_10min_COMMAND()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_COMMAND()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_COMMAND()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_COMMAND()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -36,12 +36,12 @@
  Constant Definition
  ==============================================================================*/
 #define	Z_endcode			(0xff)						//
-#define	Z_eepEndAddress		(0xFF)						/*	EEPROMÀÇ ÃÖÁ¾ Address*/
-#define	Z_eepB121Data		(0x55)						/*	SerialCommand[B1+20]¿¡ ´ëÀÀÇÑ, EEPROM Ã¼Å©¿ëÀÇ Data*/
+#define	Z_eepEndAddress		(0xFF)						/*	EEPROMì˜ ìµœì¢… Address*/
+#define	Z_eepB121Data		(0x55)						/*	SerialCommand[B1+20]ì— ëŒ€ì‘í•œ, EEPROM ì²´í¬ìš©ì˜ Data*/
 #define ZT_TestMode			(30)
 
-#define Z_asciihi		(0)					/*	ASCII º¯È¯ »óÀ§4bit ÁöÁ¤*/
-#define Z_asciilo		(1)					/*	ASCII º¯È¯ ÇÏÀ§4bit ÁöÁ¤*/
+#define Z_asciihi		(0)					/*	ASCII ë³€í™˜ ìƒìœ„4bit ì§€ì •*/
+#define Z_asciilo		(1)					/*	ASCII ë³€í™˜ í•˜ìœ„4bit ì§€ì •*/
 
 
 /*==============================================================================
@@ -51,30 +51,30 @@
 
 EXTERN const U8 gu8_RomNum[4]							//
 #ifdef	GLOBAL_VARIABLE_DEFINE							//
- = {													//	ÇÁ·Î±×·¥ ½Äº° CODE
-	0x03,												//		ºĞ·ù No
-	0x10,												//		±â±¸Á¾·ù,Çü½ÄNo(»óÀ§)
-	0x17,												//		Çü½ÄNo(ÁßÀ§/ÇÏÀ§)
-	Z_VerNo												// 		ÇÁ·Î±×·¥ Ver
+ = {													//	í”„ë¡œê·¸ë¨ ì‹ë³„ CODE
+	0x03,												//		ë¶„ë¥˜ No
+	0x10,												//		ê¸°êµ¬ì¢…ë¥˜,í˜•ì‹No(ìƒìœ„)
+	0x17,												//		í˜•ì‹No(ì¤‘ìœ„/í•˜ìœ„)
+	Z_VerNo												// 		í”„ë¡œê·¸ë¨ Ver
 }														//
 #endif													//
 ;														//
 
-//EXTERN U8		gu8_SerialNo[6];							//	Á¦Á¶¹øÈ£(6Btye DATA)
+//EXTERN U8		gu8_SerialNo[6];							//	ì œì¡°ë²ˆí˜¸(6Btye DATA)
 
-EXTERN BYTE_BIT F_Command;								//	SERIAL COMMAND °ü°è FLAG
-	#define	f_F7cmd			(F_Command.Bit.b2)				//		F7 CMD ¼ö½Å FLAG [0:F7CMD¹«È¿,1:F7CMDÀ¯È¿]
-	#define	f_50cmd			(F_Command.Bit.b1)				//		F50 CMD ¼ö½Å FLAG [0:50CMD¹Ì¼ö½Å,1:50CMD¼ö½Å]
+EXTERN BYTE_BIT F_Command;								//	SERIAL COMMAND ê´€ê³„ FLAG
+	#define	f_F7cmd			(F_Command.Bit.b2)				//		F7 CMD ìˆ˜ì‹  FLAG [0:F7CMDë¬´íš¨,1:F7CMDìœ íš¨]
+	#define	f_50cmd			(F_Command.Bit.b1)				//		F50 CMD ìˆ˜ì‹  FLAG [0:50CMDë¯¸ìˆ˜ì‹ ,1:50CMDìˆ˜ì‹ ]
 
-//EXTERN U8	D_SerialF3Address;							/*	½Ã¸®¾ó F3Command EEPROM Address*/
-//EXTERN U8	DE_Serial[2];								/*	½Ã¸®¾óÀĞ±â Data*/
+//EXTERN U8	D_SerialF3Address;							/*	ì‹œë¦¬ì–¼ F3Command EEPROM Address*/
+//EXTERN U8	DE_Serial[2];								/*	ì‹œë¦¬ì–¼ì½ê¸° Data*/
 
-EXTERN BYTE_BIT	F_TestOutput[1];						/*	TEST MODE½Ã Ãâ·ÂÁö½Ã¿ë FLAG*/
-	#define	f_BuzzerOutput			(F_TestOutput[0].Bit.b0)	/*		9140: ºÎÀú*/
-	#define	f_DisplayTest1			(F_TestOutput[0].Bit.b1)	/*		91B0: Display °Ë»ç*/
-	#define	f_DisplayTest2			(F_TestOutput[0].Bit.b2)	/*		91B1: Display °Ë»ç*/
-	#define	f_DisplayTest3			(F_TestOutput[0].Bit.b3)	/*		91B2: Display °Ë»ç*/
-	#define	f_TxPinTest				(F_TestOutput[0].Bit.b4)	/*		9160: Tx Pin °Ë»ç*/
+EXTERN BYTE_BIT	F_TestOutput[1];						/*	TEST MODEì‹œ ì¶œë ¥ì§€ì‹œìš© FLAG*/
+	#define	f_BuzzerOutput			(F_TestOutput[0].Bit.b0)	/*		9140: ë¶€ì €*/
+	#define	f_DisplayTest1			(F_TestOutput[0].Bit.b1)	/*		91B0: Display ê²€ì‚¬*/
+	#define	f_DisplayTest2			(F_TestOutput[0].Bit.b2)	/*		91B1: Display ê²€ì‚¬*/
+	#define	f_DisplayTest3			(F_TestOutput[0].Bit.b3)	/*		91B2: Display ê²€ì‚¬*/
+	#define	f_TxPinTest				(F_TestOutput[0].Bit.b4)	/*		9160: Tx Pin ê²€ì‚¬*/
 
 EXTERN U8 gu8_TimerDisplayTest;
 EXTERN U8 gu8_CounterDisplayTest;
@@ -86,7 +86,7 @@ EXTERN U8 gu8_TimerTestMode;
  function Definition
  ==============================================================================*/
 void Command_Initialize(void);
-U8 Command(void);									// Ç¥ÁØ SERIAL COMMAND Ã³¸®
+U8 Command(void);									// í‘œì¤€ SERIAL COMMAND ì²˜ë¦¬
 
 
 //=============================================================================

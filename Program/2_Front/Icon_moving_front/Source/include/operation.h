@@ -1,7 +1,7 @@
 /// @file   watermeter.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  À¯·®¼¾¼­ Ã³¸® °ü·Ã Çì´õ file
+/// @brief  ìœ ëŸ‰ì„¼ì„œ ì²˜ë¦¬ ê´€ë ¨ í—¤ë” file
 
 #ifdef OPERATION_C
 	#define 	EXTERN
@@ -13,22 +13,22 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_OPERATION()	{	/*	1ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1ms_OPERATION()	{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10ms_OPERATION()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_OPERATION()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_OPERATION()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_OPERATION()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_OPERATION()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_OPERATION()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu16_TimerOper_1s);	\
 								}
-#define	TDEC_10s_OPERATION()	{	/*	10s Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10s_OPERATION()	{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1min_OPERATION()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_OPERATION()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_OPERATION()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_OPERATION()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_OPERATION()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_OPERATION()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 

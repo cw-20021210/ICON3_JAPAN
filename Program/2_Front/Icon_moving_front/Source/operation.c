@@ -5,10 +5,10 @@
 #define OPERATION_C
 #include "include/_include.h"
 
-static void Ini_OperationStep_00(void);     //	ºÎÆÃ
-static void Ini_OperationStep_01(void);     //	ÃÊ±âÈ­ Ç¥½Ã
-static void Ini_OperationStep_02(void);     //	Åë½Å ºÒ°¡ Ç¥½Ã
-static void Ini_OperationStep_10(void);     //	by ¸ŞÀÎ Áö½Ã¿¡ ÀÇÇÑ Ç¥½Ã
+static void Ini_OperationStep_00(void);     //	ë¶€íŒ…
+static void Ini_OperationStep_01(void);     //	ì´ˆê¸°í™” í‘œì‹œ
+static void Ini_OperationStep_02(void);     //	í†µì‹  ë¶ˆê°€ í‘œì‹œ
+static void Ini_OperationStep_10(void);     //	by ë©”ì¸ ì§€ì‹œì— ì˜í•œ í‘œì‹œ
 static void Ini_OperationStep_D0(void);     //	FOTA
 
 static void OperationStep_00(void);
@@ -21,12 +21,12 @@ static void OperationStepNoSet(U8 data);
 
 Operation_StepTable Operation_Step[Z_OperationStepNum_Max] =
 {
-	//	½ºÅÜ No			 	µğ½ºÇÃ·¹ÀÌ	Áö½Ã		Step Func.
-	{ Z_OperationStep_00,	CMD_BY_MAIN,	OperationStep_00 },     	//	ºÎÆÃ
-	{ Z_OperationStep_01, 	CMD_BY_MAIN,	OperationStep_01 },     	//	ÃÊ±âÈ­ Ç¥½Ã
-	{ Z_OperationStep_02, 	CMD_COMM_ER,	OperationStep_02 },     	//	Åë½Å ºÒ°¡ Ç¥½Ã
-	{ Z_OperationStep_10, 	CMD_BY_MAIN,	OperationStep_10 },     	//	by ¸ŞÀÎ Áö½Ã¿¡ ÀÇÇÑ Ç¥½Ã
-	{ Z_OperationStep_D0, 	CMD_FOTA,		OperationStep_D0 },     	//	FOTA Áß Ç¥½Ã
+	//	ìŠ¤í… No			 	ë””ìŠ¤í”Œë ˆì´	ì§€ì‹œ		Step Func.
+	{ Z_OperationStep_00,	CMD_BY_MAIN,	OperationStep_00 },     	//	ë¶€íŒ…
+	{ Z_OperationStep_01, 	CMD_BY_MAIN,	OperationStep_01 },     	//	ì´ˆê¸°í™” í‘œì‹œ
+	{ Z_OperationStep_02, 	CMD_COMM_ER,	OperationStep_02 },     	//	í†µì‹  ë¶ˆê°€ í‘œì‹œ
+	{ Z_OperationStep_10, 	CMD_BY_MAIN,	OperationStep_10 },     	//	by ë©”ì¸ ì§€ì‹œì— ì˜í•œ í‘œì‹œ
+	{ Z_OperationStep_D0, 	CMD_FOTA,		OperationStep_D0 },     	//	FOTA ì¤‘ í‘œì‹œ
 };
 
 /// @brief
@@ -42,9 +42,9 @@ void Operation_Initialize(void)
 /// @return   void
 void Operation(void)
 {
-	if (gu8_OperationStepNum < Z_OperationStepNum_Max)	//	½ºÅÜ Çã¿ë ¹üÀ§ ÀÌ³»
+	if (gu8_OperationStepNum < Z_OperationStepNum_Max)	//	ìŠ¤í… í—ˆìš© ë²”ìœ„ ì´ë‚´
 	{
-		(Operation_Step[gu8_OperationStepNum].exe)();	//		ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
+		(Operation_Step[gu8_OperationStepNum].exe)();	//		í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
 
 		DisplayControl_Data[Z_SEGMENT].Operation_CMD = Operation_Step[gu8_OperationStepNum].Display_CMD;
 		DisplayControl_Data[Z_LED_EFFLUENT].Operation_CMD = Operation_Step[gu8_OperationStepNum].Display_CMD;
@@ -82,13 +82,13 @@ void Operation(void)
 		DisplayControl_Data[Z_LED_PERCENT].Operation_CMD = Operation_Step[gu8_OperationStepNum].Display_CMD;											
 
 	}
-	else											//	½ºÅÜ Çã¿ë¹üÀ§ ¿Ü
+	else											//	ìŠ¤í… í—ˆìš©ë²”ìœ„ ì™¸
 	{
-		SafetyLoop();								//		¾ÈÀüÁ¤Áö ·çÇÁ
+		SafetyLoop();								//		ì•ˆì „ì •ì§€ ë£¨í”„
 	}
 }
 
-/// @brief    ÃÊ±â Àü¿ø ÀÎ°¡ ºÎÆÃ Ç¥½Ã
+/// @brief    ì´ˆê¸° ì „ì› ì¸ê°€ ë¶€íŒ… í‘œì‹œ
 /// @param    void
 /// @return   void
 static void OperationStep_00(void)
@@ -104,12 +104,12 @@ static void Ini_OperationStep_00(void)
 	OperationStepNoSet(Z_OperationStepNum_00);
 }
 
-/// @brief    ¹öÀü Ç¥½Ã
+/// @brief    ë²„ì „ í‘œì‹œ
 /// @param    void
 /// @return   void
 static void OperationStep_01(void)
 {
-	if ((gu8_TimerVersionDisplay == 0) && (F_FirstCommunication == SET))	//	0~2ÃÊ : Á¡¸ê 2È¸ / 2~3ÃÊ : ¹öÀü Ç¥½Ã
+	if ((gu8_TimerVersionDisplay == 0) && (F_FirstCommunication == SET))	//	0~2ì´ˆ : ì ë©¸ 2íšŒ / 2~3ì´ˆ : ë²„ì „ í‘œì‹œ
 	{
 		Ini_OperationStep_10();
 	}
@@ -123,7 +123,7 @@ static void Ini_OperationStep_01(void)
 	OperationStepNoSet(Z_OperationStepNum_01);
 }
 
-/// @brief    Åë½Å ¿¡·¯
+/// @brief    í†µì‹  ì—ëŸ¬
 /// @param    void
 /// @return   void
 static void OperationStep_02(void)
@@ -188,7 +188,7 @@ static void Ini_OperationStep_D0(void)
 	OperationStepNoSet(Z_OperationStepNum_D0);
 }
 
-/// @brief    ¿îÀü½ºÅÜ ¼³Á¤
+/// @brief    ìš´ì „ìŠ¤í… ì„¤ì •
 /// @param    void
 /// @return   void
 static void OperationStepNoSet(U8 data)
@@ -201,9 +201,9 @@ static void OperationStepNoSet(U8 data)
 		Z_OperationStep_10,
 	};
 	/************************************************/
-	gu8_OperationStepNum = data; /*	ÀÏ·Ã ¹øÈ£ set*/
+	gu8_OperationStepNum = data; /*	ì¼ë ¨ ë²ˆí˜¸ set*/
 
 	F_CommunicationCMD = SET;
 
-	gu8_OperationStep = DT_OperationNumber[gu8_OperationStepNum]; /*	»óÅÂ mode No. set*/
+	gu8_OperationStep = DT_OperationNumber[gu8_OperationStepNum]; /*	ìƒíƒœ mode No. set*/
 }

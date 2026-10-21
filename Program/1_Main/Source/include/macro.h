@@ -1,7 +1,7 @@
 /// @file   macro.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  °ø¿ë Macro Ã³¸® file
+/// @brief  ê³µìš© Macro ì²˜ë¦¬ file
 
 #ifdef MACRO_C
 	#define 	EXTERN
@@ -13,21 +13,21 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_MACRO()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_MACRO()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_MACRO()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_MACRO()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_MACRO()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_MACRO()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1s_MACRO()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_MACRO()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_MACRO()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_MACRO()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_MACRO()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_MACRO()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_MACRO()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_MACRO()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_MACRO()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_MACRO()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -51,10 +51,10 @@ U8 HEX2DEC(U8 mu8HexData);
 U8 DEC2HEX(U8 mu8DecData);
 U16 DEC2HEX_16BIT(U16 mu16DecData);
 
-U8 DisAsciiNibble(U8 *pBuffer, U8 *pNibbleDat);/*	NIBBLE DATA ¿ªASCII º¯È¯ */
-U8 Ascii(U8 data, U8 hilo); 						/*	ASCII º¯È¯ 			*/
-U8 DisAsciiByte(U8 *pBuffer, U8 *pByteDat);	/*	1byte ¿ªASCII º¯È¯	*/
-U8 DisAsciiWord(U8 *pBuffer, U16 *pWordDat);	/*	2byte ¿ªASCII º¯È¯	*/
+U8 DisAsciiNibble(U8 *pBuffer, U8 *pNibbleDat);/*	NIBBLE DATA ì—­ASCII ë³€í™˜ */
+U8 Ascii(U8 data, U8 hilo); 						/*	ASCII ë³€í™˜ 			*/
+U8 DisAsciiByte(U8 *pBuffer, U8 *pByteDat);	/*	1byte ì—­ASCII ë³€í™˜	*/
+U8 DisAsciiWord(U8 *pBuffer, U16 *pWordDat);	/*	2byte ì—­ASCII ë³€í™˜	*/
 
 //=============================================================================
 #undef 	EXTERN

@@ -1,7 +1,7 @@
 /// @file     watermeter.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    À¯·®¼¾¼­ µ¿ÀÛ Á¦¾î file
+/// @brief    ìœ ëŸ‰ì„¼ì„œ ë™ì‘ ì œì–´ file
 #define OPERATION_C
 #include "include/_include.h"
 
@@ -26,7 +26,7 @@ static void HeaterRelayWatt_FromFullWatt(void);           //@036
  
 Operation_StepTable Operation_Step[Z_OperationStepNum_Max] =
 {
-	//	½ºÅÜ No			 	Segment			ÃßÃâLED			¿Â¼öLED			Á¤¼öLED			³Ã¼öLED			¿ë·®LED			¿Â¼öÀá±İLED		CUP LED			³Ã¼ö¿ÂµµLED		WIFI LED		ÆÄ¿ì¼Â LED		ÇÊÅÍ ±³Ã¼ LED		mL LED			¡É LED			PERCENT LED      UV LED			HOT BAR			Step Func.
+	//	ìŠ¤í… No			 	Segment			ì¶”ì¶œLED			ì˜¨ìˆ˜LED			ì •ìˆ˜LED			ëƒ‰ìˆ˜LED			ìš©ëŸ‰LED			ì˜¨ìˆ˜ì ê¸ˆLED		CUP LED			ëƒ‰ìˆ˜ì˜¨ë„LED		WIFI LED		íŒŒìš°ì…‹ LED		í•„í„° êµì²´ LED		mL LED			â„ƒ LED			PERCENT LED      UV LED			HOT BAR			Step Func.
 	{ Z_OperationStep_00, 	SEG_BOOT,		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT,		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT, 		LED_BOOT,		LED_BOOT,		LED_BOOT,		OperationStep_00},
 	{ Z_OperationStep_01, 	SEG_VER,		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF,		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF, 		LED_OFF,		LED_OFF,		LED_OFF,		OperationStep_01},
 #ifndef _AFTER_LPP_IMDCHANGE_
@@ -88,7 +88,7 @@ void Operation_Initialize(void)
 		gu8_HotTempSetup = HOT_TEMP_SETUP_KOR100_JP90;
 		gu8_DefaultHotTempSetup = HOT_TEMP_SETUP_KOR100_JP90;
 	}
-	else											//	ÀÏº»Çâ
+	else											//	ì¼ë³¸í–¥
 	{
 		gu8_HotTempSetup = HOT_TEMP_SETUP_KOR70_JP70;
 		gu8_DefaultHotTempSetup = HOT_TEMP_SETUP_KOR70_JP70;
@@ -108,12 +108,12 @@ void Operation_Initialize(void)
 	F_FirstFlushing = CLEAR;
 	F_AllLock = CLEAR;
 	F_HotLock = CLEAR;
-	F_WIFI_First_Connecting = CLEAR;		// ÇÃ·¯½Ì Áß wifi ÃÖÃÊ 1È¸ ÀÚµ¿ ¿¬°á ½Ãµµ ¿©ºÎ Flag CLear(¹Ì½Ãµµ)
-	gu8_F_Effluent_Complete_After = CLEAR;	// ÃßÃâ ¿Ï·á ÈÄ ÇÃ·¡±× ÃÊ±âÈ­
+	F_WIFI_First_Connecting = CLEAR;		// í”ŒëŸ¬ì‹± ì¤‘ wifi ìµœì´ˆ 1íšŒ ìë™ ì—°ê²° ì‹œë„ ì—¬ë¶€ Flag CLear(ë¯¸ì‹œë„)
+	gu8_F_Effluent_Complete_After = CLEAR;	// ì¶”ì¶œ ì™„ë£Œ í›„ í”Œë˜ê·¸ ì´ˆê¸°í™”
 
 	gu8_TimerSleepMode = Z_TimerSleepMode;
 	gu8_TimerReedSWCheck = Z_TimerReedSWCheck;
-	gu16_TimerSilverCare = Z_TimerSilverCare;		//	½Ç¹öÄÉ¾î 48½Ã°£
+	gu16_TimerSilverCare = Z_TimerSilverCare;		//	ì‹¤ë²„ì¼€ì–´ 48ì‹œê°„
 
 	gu8_Sound_Type = SOUND_TYPE_3;
 
@@ -138,10 +138,10 @@ void Operation_Initialize(void)
 /// @return   void
 void Operation(void)
 {
-	if (gu8_OperationStepNum < Z_OperationStepNum_Max)	//	½ºÅÜ Çã¿ë ¹üÀ§ ÀÌ³»
+	if (gu8_OperationStepNum < Z_OperationStepNum_Max)	//	ìŠ¤í… í—ˆìš© ë²”ìœ„ ì´ë‚´
 	{
 
-		/********ÃßÃâ ½Å·Ú¼º³»±¸¼º ÇÁ·Î±×·¥*******/
+		/********ì¶”ì¶œ ì‹ ë¢°ì„±ë‚´êµ¬ì„± í”„ë¡œê·¸ë¨*******/
 		#ifdef _FOR_HOTWATER_1CUP_EFF_30s_DELAY_
 		if ((gu8_ErrorCode == 0) && (KEY_EFFLUENT_SHORT == SET))
 		{
@@ -264,7 +264,7 @@ void Operation(void)
 			{
 				if (gu8_ModelType_forCHP == MODEL_CHP)
 				{
-					if (++gu8_Counter_Repeat_Eff > 2)		//	0:³Ã¼ö 1:Á¤¼ö 2:¿Â¼ö
+					if (++gu8_Counter_Repeat_Eff > 2)		//	0:ëƒ‰ìˆ˜ 1:ì •ìˆ˜ 2:ì˜¨ìˆ˜
 					{
 #ifdef _FOR_COLD_ONOFF_TEST_
 						if (gu8_CoolingStep >= Z_CoolingStep_21)
@@ -282,7 +282,7 @@ void Operation(void)
 				}
 				else
 				{
-					if (++gu8_Counter_Repeat_Eff > 1)		//	0:³Ã¼ö 1:Á¤¼ö
+					if (++gu8_Counter_Repeat_Eff > 1)		//	0:ëƒ‰ìˆ˜ 1:ì •ìˆ˜
 					{
 #ifdef _FOR_COLD_ONOFF_TEST_
 						if (gu8_CoolingStep >= Z_CoolingStep_21)
@@ -300,21 +300,21 @@ void Operation(void)
 				}
 				switch (gu8_Counter_Repeat_Eff)
 				{
-					case 0:								//	³Ã¼ö
-//					case 1:								//	³Ã¼ö
+					case 0:								//	ëƒ‰ìˆ˜
+//					case 1:								//	ëƒ‰ìˆ˜
 						KEY_COLDWATER_SHORT = SET;
 						break;
-					case 2:								//	¿Â¼ö
+					case 2:								//	ì˜¨ìˆ˜
 						KEY_HOTWATER_SHORT = SET;
 						break;
-					case 1:								//	Á¤¼ö
-//					case 4:								//	Á¤¼ö
+					case 1:								//	ì •ìˆ˜
+//					case 4:								//	ì •ìˆ˜
 						KEY_PUREWATER_SHORT = SET;
 						break;
 					default:
 						break;
 				}
-				gu16_Timer_Repeat_Delay = 10;	//	1ÃÊ
+				gu16_Timer_Repeat_Delay = 10;	//	1ì´ˆ
 				F_Repeat_StepChange = SET;
 			}
 
@@ -325,21 +325,21 @@ void Operation(void)
 			}
 		}
 #endif
-		(Operation_Step[gu8_OperationStepNum].exe)();	//		ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
+		(Operation_Step[gu8_OperationStepNum].exe)();	//		í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
 		
 #ifndef _FRONT_JIG_PROGRAM_
-		if ((F_TestMode.byte == 0x00) && (gu8_TimerPBATest_Join != 0))	//		Å×½ºÆ®¸ğµå°¡ ¾Æ´Ï°í Àü¿ø ÀÎ°¡ ÈÄ 30ÃÊ ÀÌ³»
+		if ((F_TestMode.byte == 0x00) && (gu8_TimerPBATest_Join != 0))	//		í…ŒìŠ¤íŠ¸ëª¨ë“œê°€ ì•„ë‹ˆê³  ì „ì› ì¸ê°€ í›„ 30ì´ˆ ì´ë‚´
 		{
             if ((F_LineAuto_CommunicationConnect == SET) && (INPUT_REED_SW_COVER == CLEAR))
             {
                 if (ADC_RESULT_LEAKSENSOR > Z_LeakSensor_Error)
                 {
-					F_EEPROM_Forced_Initialize = SET;	//		EEPROM ÃÊ±âÈ­ (¶óÀÎ °Ë»ç Áß¿¡ Àß¸ø Á¶ÀÛÀ¸·Î °Ë»ç¸ğµå ¾Æ´Ñ °æ¿ì¿¡ ¿¡·¯ ¹ß»ıÇÑ °æ¿ì¿¡ ¿¡·¯ÀÌ·Â ÀúÀåÇÑ °ÍÀ» Áö¿ì±â À§ÇÔ)
+					F_EEPROM_Forced_Initialize = SET;	//		EEPROM ì´ˆê¸°í™” (ë¼ì¸ ê²€ì‚¬ ì¤‘ì— ì˜ëª» ì¡°ì‘ìœ¼ë¡œ ê²€ì‚¬ëª¨ë“œ ì•„ë‹Œ ê²½ìš°ì— ì—ëŸ¬ ë°œìƒí•œ ê²½ìš°ì— ì—ëŸ¬ì´ë ¥ ì €ì¥í•œ ê²ƒì„ ì§€ìš°ê¸° ìœ„í•¨)
 					gu8_TimerPBATest_Join = 0;			//		Timer Clr
-					F_TestMode_LineFront = SET;			//		Å×½ºÆ®¸ğµå ¼³Á¤
+					F_TestMode_LineFront = SET;			//		í…ŒìŠ¤íŠ¸ëª¨ë“œ ì„¤ì •
 					gu16_TimerUV_Oper = Z_TimerUV_Oper;
 					Play_Voice(VOICE_SPECIAL_FUNCTION);
-					Ini_OperationStep_00();				//		ºÎÆÃ½ºÅÜ
+					Ini_OperationStep_00();				//		ë¶€íŒ…ìŠ¤í…
 					WifiControlProcess(WIFI_TIME_FACTORY);
 				}
 				else
@@ -349,31 +349,31 @@ void Operation(void)
 			}
 			else if ((KEY_MOVING_SET_MODE_PBA_TEST == SET) && (INPUT_REED_SW_COVER == CLEAR))
 			{
-				F_EEPROM_Forced_Initialize = SET;	//		EEPROM ÃÊ±âÈ­ (¶óÀÎ °Ë»ç Áß¿¡ Àß¸ø Á¶ÀÛÀ¸·Î °Ë»ç¸ğµå ¾Æ´Ñ °æ¿ì¿¡ ¿¡·¯ ¹ß»ıÇÑ °æ¿ì¿¡ ¿¡·¯ÀÌ·Â ÀúÀåÇÑ °ÍÀ» Áö¿ì±â À§ÇÔ)
+				F_EEPROM_Forced_Initialize = SET;	//		EEPROM ì´ˆê¸°í™” (ë¼ì¸ ê²€ì‚¬ ì¤‘ì— ì˜ëª» ì¡°ì‘ìœ¼ë¡œ ê²€ì‚¬ëª¨ë“œ ì•„ë‹Œ ê²½ìš°ì— ì—ëŸ¬ ë°œìƒí•œ ê²½ìš°ì— ì—ëŸ¬ì´ë ¥ ì €ì¥í•œ ê²ƒì„ ì§€ìš°ê¸° ìœ„í•¨)
 				gu8_TimerPBATest_Join = 0;			//		Timer Clr
-				F_TestMode_PBA = SET;				//		Å×½ºÆ®¸ğµå ¼³Á¤
+				F_TestMode_PBA = SET;				//		í…ŒìŠ¤íŠ¸ëª¨ë“œ ì„¤ì •
 				Play_Voice(VOICE_SPECIAL_FUNCTION);
-				Ini_OperationStep_00();				//		ºÎÆÃ½ºÅÜ
+				Ini_OperationStep_00();				//		ë¶€íŒ…ìŠ¤í…
 				WifiControlProcess(WIFI_TIME_FACTORY);
 			}
-			else if (KEY_ERROR_HIS_LONG == SET)	//	¿¡·¯ ÀÌ·Â
+			else if (KEY_ERROR_HIS_LONG == SET)	//	ì—ëŸ¬ ì´ë ¥
 			{
 				gu8_TimerPBATest_Join = 0;			//		Timer Clr
 				Play_Voice(VOICE_SPECIAL_FUNCTION);
 				Ini_OperationStep_E1();
 			}
-			//	´ÜÃà°Ë»ç¸ğµå ÁøÀÔ Å°(¿Â¼ö+¿ë·®¿Í ´©¼ö°¨Áö), ¿Â¼ö+¿ë·®Àº °ü¸®¸ğµå ¼³Á¤ ±â´ÉÀÌ³ª -> Àü¿øÀÎ°¡ 30ÃÊ Á¶°Ç ¹× ´©¼ö°¨Áö·Î ÃÊ¹İ¿¡¸¸ º¸µµ·Ï Àû¿ë(Å°°¡ ¾ø¾î¼­..)
-			//	´ÜÃà°Ë»ç¸ğµå ÁøÀÔ Å°(¿Â¼ö+¿ë·®)+ ÇÁ·ĞÆ® Ä¿¹ö ¹Ì°¨Áö·Î º¯°æ.....2025.09.30 °Ë»ç±â¼úÆÀ ¿äÃ»
+			//	ë‹¨ì¶•ê²€ì‚¬ëª¨ë“œ ì§„ì… í‚¤(ì˜¨ìˆ˜+ìš©ëŸ‰ì™€ ëˆ„ìˆ˜ê°ì§€), ì˜¨ìˆ˜+ìš©ëŸ‰ì€ ê´€ë¦¬ëª¨ë“œ ì„¤ì • ê¸°ëŠ¥ì´ë‚˜ -> ì „ì›ì¸ê°€ 30ì´ˆ ì¡°ê±´ ë° ëˆ„ìˆ˜ê°ì§€ë¡œ ì´ˆë°˜ì—ë§Œ ë³´ë„ë¡ ì ìš©(í‚¤ê°€ ì—†ì–´ì„œ..)
+			//	ë‹¨ì¶•ê²€ì‚¬ëª¨ë“œ ì§„ì… í‚¤(ì˜¨ìˆ˜+ìš©ëŸ‰)+ í”„ë¡ íŠ¸ ì»¤ë²„ ë¯¸ê°ì§€ë¡œ ë³€ê²½.....2025.09.30 ê²€ì‚¬ê¸°ìˆ íŒ€ ìš”ì²­
 			#if 0
 			else if((KEY_LINETEST_MANAGE_LONG == SET) && (ADC_RESULT_LEAKSENSOR > Z_LeakSensor_Error))	
 			#endif
 			else if((KEY_LINETEST_MANAGE_LONG == SET) && (INPUT_REED_SW_COVER == CLEAR))
 			{
-				F_EEPROM_Forced_Initialize = SET;	//		EEPROM ÃÊ±âÈ­ (¶óÀÎ °Ë»ç Áß¿¡ Àß¸ø Á¶ÀÛÀ¸·Î °Ë»ç¸ğµå ¾Æ´Ñ °æ¿ì¿¡ ¿¡·¯ ¹ß»ıÇÑ °æ¿ì¿¡ ¿¡·¯ÀÌ·Â ÀúÀåÇÑ °ÍÀ» Áö¿ì±â À§ÇÔ)
+				F_EEPROM_Forced_Initialize = SET;	//		EEPROM ì´ˆê¸°í™” (ë¼ì¸ ê²€ì‚¬ ì¤‘ì— ì˜ëª» ì¡°ì‘ìœ¼ë¡œ ê²€ì‚¬ëª¨ë“œ ì•„ë‹Œ ê²½ìš°ì— ì—ëŸ¬ ë°œìƒí•œ ê²½ìš°ì— ì—ëŸ¬ì´ë ¥ ì €ì¥í•œ ê²ƒì„ ì§€ìš°ê¸° ìœ„í•¨)
 				gu8_TimerPBATest_Join = 0;			//		Timer Clr
 				F_TestMode_LineTest2 = SET;
 				Play_Voice(VOICE_SPECIAL_FUNCTION);
-				Ini_OperationStep_00();				//		ºÎÆÃ½ºÅÜ
+				Ini_OperationStep_00();				//		ë¶€íŒ…ìŠ¤í…
 			}
 			else
 			{
@@ -387,19 +387,19 @@ void Operation(void)
 				gu8_TimerReedSWCheck = Z_TimerReedSWCheck;
 			}
 
-			//	ÆÄ¿ì¼Â ÆÁ º°µµ ºĞ¸®.
+			//	íŒŒìš°ì…‹ íŒ ë³„ë„ ë¶„ë¦¬.
 			if(gu8_F_FaucetTip_Reed_Detected == SET)
 			{
 				if(gu8_F_ReedSWCheck_forFaucetTip_Voice == SET)
 				{
-					Play_Voice(VOICE_BEEP_ON);			//	Ã¼°á°¨Áö À½¼º
+					Play_Voice(VOICE_BEEP_ON);			//	ì²´ê²°ê°ì§€ ìŒì„±
 				}
 				gu8_F_ReedSWCheck_forFaucetTip_Voice = CLEAR;
 				gu8_TimerReedSWCheck_forFaucetTip = Z_TimerReedSWCheck_forFaucetTip;
 			}
 
 
-			if ((F_SmartCheck == SET) && (gu8_OperationStep != Z_OperationStep_80)) 	//	ÀÚ°¡Áø´Ü
+			if ((F_SmartCheck == SET) && (gu8_OperationStep != Z_OperationStep_80)) 	//	ìê°€ì§„ë‹¨
 			{
 				if ((gu8_OperationStep != Z_OperationStep_03) && (gu8_OperationStep != Z_OperationStep_04) && (gu8_OperationStep != Z_OperationStep_05)
 					&& (gu8_OperationStep_hi != 0x50))
@@ -413,18 +413,18 @@ void Operation(void)
 					Play_Voice(VOICE_BEEP_WARNING);
 				}
 			}
-			else if ((gu8_OperationStep != Z_OperationStep_B0)	//	Ä¿¹ö ¿­¸² »óÅÂ
-				&& (gu8_OperationStep != Z_OperationStep_70)	//	Æ÷Å¸ »óÅÂ
-				&& (F_FOTA_Display == SET))						//	Æ÷Å¸ »óÅÂ ÀÎ °æ¿ì
+			else if ((gu8_OperationStep != Z_OperationStep_B0)	//	ì»¤ë²„ ì—´ë¦¼ ìƒíƒœ
+				&& (gu8_OperationStep != Z_OperationStep_70)	//	í¬íƒ€ ìƒíƒœ
+				&& (F_FOTA_Display == SET))						//	í¬íƒ€ ìƒíƒœ ì¸ ê²½ìš°
 			{
 				Ini_OperationStep_70();
 			}
 			else if ((gu8_OperationStep >= Z_OperationStep_02)
 				&& (gu8_OperationStep != Z_OperationStep_80)
 				&& (gu8_OperationStep != Z_OperationStep_B0)
-				&& (gu8_OperationStep != Z_OperationStep_E0)	// »èÁ¦ÇØ¾ßÇÏ³ª ¸»¾Æ¾ßÇÏ³ª
+				&& (gu8_OperationStep != Z_OperationStep_E0)	// ì‚­ì œí•´ì•¼í•˜ë‚˜ ë§ì•„ì•¼í•˜ë‚˜
 				&& (gu8_OperationStep != Z_OperationStep_F0)
-				&& (gu8_OperationStep_hi != 0x90)	//	Å×½ºÆ®¸ğµå
+				&& (gu8_OperationStep_hi != 0x90)	//	í…ŒìŠ¤íŠ¸ëª¨ë“œ
 				&& (gu8_TimerReedSWCheck == 0))
 			{
 				if (INPUT_REED_SW_COVER == CLEAR)
@@ -445,7 +445,7 @@ void Operation(void)
 				Ini_OperationStep_B0();
 				gu16_HeartServiceTime = 0;
 			}
-			else if(gu8_F_FaucetTip_Reed_Undetected == SET)		//	À¯·Î ÆÄ¿ì¼Â ¹ÌÃ¼°á È®ÀÎ
+			else if(gu8_F_FaucetTip_Reed_Undetected == SET)		//	ìœ ë¡œ íŒŒìš°ì…‹ ë¯¸ì²´ê²° í™•ì¸
 			{
 				if(gu8_F_ReedSWCheck_forFaucetTip_Voice == CLEAR)
 				{
@@ -471,7 +471,7 @@ void Operation(void)
 		}
 #endif
 
-		// ÀÏ¹İ ¸ğµå·Î ¿À¸é ÇÃ·¯½Ì »óÅÂ´Â ¹«Á¶°Ç off·Î...¿¡·¯¹ß»ı µî..¿¹¿Ü»óÈ²¿¡ ´ëÇÑ Ã³¸®
+		// ì¼ë°˜ ëª¨ë“œë¡œ ì˜¤ë©´ í”ŒëŸ¬ì‹± ìƒíƒœëŠ” ë¬´ì¡°ê±´ offë¡œ...ì—ëŸ¬ë°œìƒ ë“±..ì˜ˆì™¸ìƒí™©ì— ëŒ€í•œ ì²˜ë¦¬
 		#if 0
 		if(gu8_OperationStep >= Z_OperationStep_10)
 		{
@@ -494,7 +494,7 @@ void Operation(void)
 			DisplayControl_Data[Z_LED_1CUP].Operation_CMD = Operation_Step[gu8_OperationStepNum].CUP_LED;
 			DisplayControl_Data[Z_LED_CON].Operation_CMD = Operation_Step[gu8_OperationStepNum].CUP_LED;
 			DisplayControl_Data[Z_LED_HALFCUP].Operation_CMD = Operation_Step[gu8_OperationStepNum].CUP_LED;
-			if (gu8_ModelType_forNational == MODEL_JAPAN)	//	ÀÏº»ÇâÀº %·Î »ç¿ë
+			if (gu8_ModelType_forNational == MODEL_JAPAN)	//	ì¼ë³¸í–¥ì€ %ë¡œ ì‚¬ìš©
 			{
 				if ((gu8_OperationStep >= Z_OperationStep_03) && (gu8_OperationStep <= Z_OperationStep_05))
 				{
@@ -548,13 +548,13 @@ void Operation(void)
 		welcome_led_output();
 
 	}
-	else											//	½ºÅÜ Çã¿ë¹üÀ§ ¿Ü
+	else											//	ìŠ¤í… í—ˆìš©ë²”ìœ„ ì™¸
 	{
-		SafetyLoop();								//		¾ÈÀüÁ¤Áö ·çÇÁ
+		SafetyLoop();								//		ì•ˆì „ì •ì§€ ë£¨í”„
 	}
 }
 
-/// @brief    HeaterFull_WATT¿¡¼­ RELAY WATT °è»ê   @036
+/// @brief    HeaterFull_WATTì—ì„œ RELAY WATT ê³„ì‚°   @036
 /// @param    void
 /// @return   void
 static void HeaterRelayWatt_FromFullWatt(void)
@@ -565,7 +565,7 @@ static void HeaterRelayWatt_FromFullWatt(void)
 	}
 }
 
-/// @brief    FOTA EEPROM ?¨ù? ?¬ß??? ??? (0=???¬ß? ?? ???)
+/// @brief    FOTA EEPROM ?Â¼? ?Ğ½??? ??? (0=???Ğ½? ?? ???)
 /// @param    void
 /// @return   SET: ??? / CLEAR: ???(??? ???)
 // static U8 Is_HotCalData_Valid_forEEPROM(void)
@@ -581,7 +581,7 @@ static void HeaterRelayWatt_FromFullWatt(void)
 // 	return SET;																//@038
 // }
 
-/// @brief    ÃÊ±â Àü¿ø ÀÎ°¡ (EEPROM ´ë±â ¹× ÀüÃ¼ Á¡¸ê)
+/// @brief    ì´ˆê¸° ì „ì› ì¸ê°€ (EEPROM ëŒ€ê¸° ë° ì „ì²´ ì ë©¸)
 /// @param    void
 /// @return   void
 void OperationStep_00(void)
@@ -598,14 +598,14 @@ void OperationStep_00(void)
 		{
 			Play_Voice(VOICE_POWER_ON);
 		}
-		else if (F_FOTA_Setup == SET)              //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
-		{                                          //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
-			// if (Is_HotCalData_Valid_forEEPROM() == SET)		//@038 EEPROM ?¬ß??? ??? ?? ??? SKIP
+		else if (F_FOTA_Setup == SET)              //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
+		{                                          //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
+			// if (Is_HotCalData_Valid_forEEPROM() == SET)		//@038 EEPROM ?Ğ½??? ??? ?? ??? SKIP
 			// {
-				F_FirstHotEffluent = SET;   			//@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë
-				gu8_Heater_PowerLevel = gu8_Heater__PowerLevel_forEEPROM;	//@035 È÷ÅÍ Àü·Â ·¹º§ ÀúÀå
+				F_FirstHotEffluent = SET;   			//@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©
+				gu8_Heater_PowerLevel = gu8_Heater__PowerLevel_forEEPROM;	//@035 íˆí„° ì „ë ¥ ë ˆë²¨ ì €ì¥
 
-				gu16_HeaterFull_WATT = gu16_HeaterFull_WATT_forEEPROM.word;	//@036 È÷ÅÍ ÃÖ´ë WATT º¹¿ø
+				gu16_HeaterFull_WATT = gu16_HeaterFull_WATT_forEEPROM.word;	//@036 íˆí„° ìµœëŒ€ WATT ë³µì›
 				HeaterRelayWatt_FromFullWatt();                         //@036
 
 				gu16_StepCount_BeforeEff = gu16_StepCount_BeforeEff_forEEPROM.word;				//@037
@@ -614,13 +614,13 @@ void OperationStep_00(void)
 			// }
 			// else												//@038
 			// {                                                   //@038
-			// 	F_FirstHotEffluent = CLEAR;						//@038 ?¬ß??? 0/??? ?? ???
+			// 	F_FirstHotEffluent = CLEAR;						//@038 ?Ğ½??? 0/??? ?? ???
 			// }                                                   //@038
-		}                                          //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
-		else                                       //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
-		{                                          //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
-												   //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
-		}                                          //@035 FOTA ¿Ï·á ÈÄ¿¡´Â Ã¹ÀÜ ¾ÈÇÏµµ·Ï Àû¿ë.
+		}                                          //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
+		else                                       //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
+		{                                          //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
+												   //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
+		}                                          //@035 FOTA ì™„ë£Œ í›„ì—ëŠ” ì²«ì” ì•ˆí•˜ë„ë¡ ì ìš©.
 
 		F_Boot_forBuzzer = SET;
 		F_FOTA_Setup = CLEAR;
@@ -653,22 +653,22 @@ void Ini_OperationStep_00(void)
 {
 	if ((F_TestMode_LineFront == SET) || (F_TestMode_PBA == SET))
 	{
-		gu16_TimerBootDisplay = (Z_TimerBootDisplay/2);		//	ºÎÆÃ Å¸ÀÌ¸Ó ¼³Á¤
+		gu16_TimerBootDisplay = (Z_TimerBootDisplay/2);		//	ë¶€íŒ… íƒ€ì´ë¨¸ ì„¤ì •
 	}
 	else
 	{
-		gu16_TimerBootDisplay = Z_TimerBootDisplay;		//	ºÎÆÃ Å¸ÀÌ¸Ó ¼³Á¤
+		gu16_TimerBootDisplay = Z_TimerBootDisplay;		//	ë¶€íŒ… íƒ€ì´ë¨¸ ì„¤ì •
 	}
 
 	OperationStepNoSet(Z_OperationStepNum_00);
 }
 
-/// @brief    ºÎÆÃ Áß  (¹öÀü Ç¥½Ã)
+/// @brief    ë¶€íŒ… ì¤‘  (ë²„ì „ í‘œì‹œ)
 /// @param    void
 /// @return   void
 void OperationStep_01(void)
 {
-	if (gu16_TimerVersionDisplay == 0)					//	ºÎÆÃÅ¸ÀÌ¸Ó °æ°ú ½Ã
+	if (gu16_TimerVersionDisplay == 0)					//	ë¶€íŒ…íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 	{
 		if (F_TestMode_PBA == SET)
 		{
@@ -682,14 +682,14 @@ void OperationStep_01(void)
 			F_ColdTank_Fill = SET;
 #endif
 			//@016 #if 0
-			if ((F_FirstFlushing == CLEAR) || (F_Heater_Fill == CLEAR) || (F_ColdTank_Fill == CLEAR))			//		ÇÃ·¯½Ì ÇÊ¿ä ¶ó¸é
+			if ((F_FirstFlushing == CLEAR) || (F_Heater_Fill == CLEAR) || (F_ColdTank_Fill == CLEAR))			//		í”ŒëŸ¬ì‹± í•„ìš” ë¼ë©´
 			{
 				F_FirstFlushing = CLEAR;
 				F_Heater_Fill = CLEAR;
 				F_ColdTank_Fill = CLEAR;
 				F_First_Set = CLEAR;
 				Play_Voice(VOICE_INSTALL);
-				Ini_OperationStep_02();				//			??¡¤?¨ö? ¢¥?¡¾?
+				Ini_OperationStep_02();				//			??Â·?Â½? Â´?Â±?
 			}
 			//@016 #endif
 
@@ -718,9 +718,9 @@ void OperationStep_01(void)
 //				F_Heater_Fill = CLEAR;
 //				F_ColdTank_Fill = CLEAR;
 //				Play_Voice(VOICE_INSTALL);
-//				Ini_OperationStep_02();				//			ÇÃ·¯½Ì ´ë±â
+//				Ini_OperationStep_02();				//			í”ŒëŸ¬ì‹± ëŒ€ê¸°
 //			}
-			else									//		ÇÃ·¯½Ì ¿Ï·á¶ó¸é
+			else									//		í”ŒëŸ¬ì‹± ì™„ë£Œë¼ë©´
 			{
 				if (F_AllLock == SET)
 				{
@@ -761,7 +761,7 @@ void Ini_OperationStep_01(void)
 	OperationStepNoSet(Z_OperationStepNum_01);
 }
 
-/// @brief    'FL'Ç¥½Ã
+/// @brief    'FL'í‘œì‹œ
 /// @param    void
 /// @return   void
 void OperationStep_02(void)
@@ -786,7 +786,7 @@ void OperationStep_02(void)
 		gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_DONE_FOR_WIFI;
 		Play_Voice(VOICE_FLUSHING_COMPLETE);
 	}
-	else if (gu8_ErrorCode != 0)							//	¿¡·¯ ¹ß»ı ½Ã
+	else if (gu8_ErrorCode != 0)							//	ì—ëŸ¬ ë°œìƒ ì‹œ
 	{
 		Ini_OperationStep_E0();						//
 	}
@@ -794,7 +794,7 @@ void OperationStep_02(void)
 			#if 0
 			&& (F_FilterChange_Detect == CLEAR) && (F_FaucetChange_Detect == CLEAR))
 			#endif
-			&& (F_FilterChange_Detect == CLEAR))		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½.
+			&& (F_FilterChange_Detect == CLEAR))		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ.
 	{
 		Ini_OperationStep_10();						//
 	}
@@ -818,9 +818,9 @@ void OperationStep_02(void)
 				}
 				else
 				{
-				#endif		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½.
+				#endif		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ.
 					Play_Voice(VOICE_FILTER_FLUSHING);
-				#if 0		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½.
+				#if 0		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ.
 				}
 				#endif
 			}
@@ -854,13 +854,13 @@ void OperationStep_02(void)
 			Ini_OperationStep_10();
 		}
 
-		#if 0			//	À¯·Î ÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾ø¾îÁ³À¸¹Ç·Î, °è¼Ó È®ÀÎ ÇÏ°í ÀÖ¾î¾ßÇÔ.
+		#if 0			//	ìœ ë¡œ íŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ì–´ì¡Œìœ¼ë¯€ë¡œ, ê³„ì† í™•ì¸ í•˜ê³  ìˆì–´ì•¼í•¨.
 		if (F_FaucetChange_Detect == SET)
 		{
 			F_FaucetChange_Detect = CLEAR;
 			gu16_DayCount_forFaucet = CLEAR;
 			F_FaucetChange_Display = CLEAR;
-			mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ¿¬°á»óÅÂ È®ÀÎ
+			mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ì—°ê²°ìƒíƒœ í™•ì¸
 			if (mu8_WifiDisp == WIFI_DISP_CONNECT)
 			{
 				F_Faucet_Reset = SET;
@@ -871,17 +871,17 @@ void OperationStep_02(void)
 	#if 0
 	else if (((F_FilterChange_Detect == SET) && (F_FaucetChange_Detect == SET)) && (KEY_COLDWATER_SHORT == SET))
 	#endif
-	else if ((F_FilterChange_Detect == SET) && (KEY_COLDWATER_SHORT == SET))           //	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½.
+	else if ((F_FilterChange_Detect == SET) && (KEY_COLDWATER_SHORT == SET))           //	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ.
 	{
-		if (F_First_Set == SET)						//	ÃÊ±â ¼³Ä¡°¡ ¿Ï·á µÈ °æ¿ì¸¸ set
+		if (F_First_Set == SET)						//	ì´ˆê¸° ì„¤ì¹˜ê°€ ì™„ë£Œ ëœ ê²½ìš°ë§Œ set
 		{
 			F_FirstFlushing = SET;
 		}
 		F_FilterChange_Detect = CLEAR;
 		#if 0
-		F_FaucetChange_Detect = CLEAR;		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½.
+		F_FaucetChange_Detect = CLEAR;		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ.
 		#endif
-		gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_OFF_FOR_WIFI;		//	ÇÃ·¯½Ì Ãë¼Ò½Ã.......Ç×»ó ¼Û½Å.
+		gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_OFF_FOR_WIFI;		//	í”ŒëŸ¬ì‹± ì·¨ì†Œì‹œ.......í•­ìƒ ì†¡ì‹ .
 		Ini_OperationStep_10();
 		Play_Voice(VOICE_BEEP_ON);
 
@@ -901,7 +901,7 @@ void OperationStep_02(void)
 			// Play_Voice(VOICE_CHANGE__FILTER_NO_HOSE);   //@033
 			Play_Voice(VOICE_CHANGE_FILTER); // @040
 		}
-		#if 0		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½..
+		#if 0		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ..
 		else if (F_FaucetChange_Detect == SET)
 		{
 			Play_Voice(VOICE_CHANGE_FLOWFAUCET);
@@ -922,10 +922,10 @@ void Ini_OperationStep_02(void)
 	gu8_WaterSelect = PURE_WATER;
 	OperationStepNoSet(Z_OperationStepNum_02);
 
-	gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_ON_FOR_WIFI;     //	ÇÃ·¯½Ì ´ë±â¿¡¼­µµ ON Àü¼Û
+	gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_ON_FOR_WIFI;     //	í”ŒëŸ¬ì‹± ëŒ€ê¸°ì—ì„œë„ ON ì „ì†¡
 }
 
-/// @brief    ÇÃ·¯½Ì Áß
+/// @brief    í”ŒëŸ¬ì‹± ì¤‘
 /// @param    void
 /// @return   void
 void OperationStep_03(void)
@@ -940,17 +940,17 @@ void OperationStep_03(void)
 	}
 
 	if ( (gu8_ModelType_forNational == MODEL_KOREA) && (gu8_Timer10sAfter_WifiConnect_forFlushing == 0) &&
-	     (F_First_Set == CLEAR) && (GetWifiStatusValue(WIFI_STATUS_DISP) == WIFI_DISP_OFF) && (F_WIFI_First_Connecting == CLEAR) )	//	¹Ì¿¬°á »óÅÂ
+	     (F_First_Set == CLEAR) && (GetWifiStatusValue(WIFI_STATUS_DISP) == WIFI_DISP_OFF) && (F_WIFI_First_Connecting == CLEAR) )	//	ë¯¸ì—°ê²° ìƒíƒœ
 	{
 		WifiKey(WIFI_KEY_BLE);
-		F_WIFI_First_Connecting = SET;	// ÇÃ·¯½Ì Áß wifi ÃÖÃÊ 1È¸ ÀÚµ¿ ¿¬°á ½Ãµµ ¿©ºÎ Flag Set(1È¸ ½Ãµµ ¿Ï·á)
+		F_WIFI_First_Connecting = SET;	// í”ŒëŸ¬ì‹± ì¤‘ wifi ìµœì´ˆ 1íšŒ ìë™ ì—°ê²° ì‹œë„ ì—¬ë¶€ Flag Set(1íšŒ ì‹œë„ ì™„ë£Œ)
 	}
 
 	if (F_First_Set == CLEAR)
 	{
-		if ((gu8_TimerFirstFlushing_AirPurge != 0) && (F_FirstFlushing_AirPurge == CLEAR))	//	ÃÊ±â ¼³Ä¡ ÇÃ·¯½Ì ½Ã, ³»ºÎ ÀÜ¿© Áú¼Ò·Î ÀÎÇØ ¼ö¾ĞÀÌ ¹Ğ¾î³»¸é¼­ À¯·®¼¾¼­°¡ ºü¸£°Ô Èê·¯ 20%°¡ ±×³É PassµÇ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÔ
+		if ((gu8_TimerFirstFlushing_AirPurge != 0) && (F_FirstFlushing_AirPurge == CLEAR))	//	ì´ˆê¸° ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì‹œ, ë‚´ë¶€ ì”ì—¬ ì§ˆì†Œë¡œ ì¸í•´ ìˆ˜ì••ì´ ë°€ì–´ë‚´ë©´ì„œ ìœ ëŸ‰ì„¼ì„œê°€ ë¹ ë¥´ê²Œ í˜ëŸ¬ 20%ê°€ ê·¸ëƒ¥ Passë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•¨
 		{
-//			gu16_Effluent_Hz = (U16)((U32)Z_Flushing_Litter * 10000 / gu16_FlowMeter_Standard);	//	3L (ÇÃ·¯½Ì ¿ë·®)
+//			gu16_Effluent_Hz = (U16)((U32)Z_Flushing_Litter * 10000 / gu16_FlowMeter_Standard);	//	3L (í”ŒëŸ¬ì‹± ìš©ëŸ‰)
 //			gu16_Flushing_Hz_forDisplay = gu16_Flushing_TotalHz_forDisplay;
 		}
 		else
@@ -959,7 +959,7 @@ void OperationStep_03(void)
 		}
 	}
 
-	if (gu16_Flushing_Hz_forDisplay <= (gu16_Flushing_TotalHz_forDisplay/2))	//	ÇÃ·¯½Ì ÁøÇà 50% ÀÌ»ó °æ°ú ½Ã
+	if (gu16_Flushing_Hz_forDisplay <= (gu16_Flushing_TotalHz_forDisplay/2))	//	í”ŒëŸ¬ì‹± ì§„í–‰ 50% ì´ìƒ ê²½ê³¼ ì‹œ
 	{
 		if (mu8_FlusingVoice == CLEAR)
 		{
@@ -979,7 +979,7 @@ void OperationStep_03(void)
 		mu8_FlusingVoice = CLEAR;
 	}
 
-	if (gu16_Effluent_Hz == 0)						//	ÇÃ·¯½Ì ¿Ï·á
+	if (gu16_Effluent_Hz == 0)						//	í”ŒëŸ¬ì‹± ì™„ë£Œ
 	{
 		F_FirstFlushing = SET;
 		if ((gu8_ModelType_forCHP == MODEL_CHP) && (F_Heater_Fill == CLEAR))
@@ -1019,11 +1019,11 @@ void OperationStep_03(void)
 	}
 	else if (KEY_PUREWATER_SHORT == SET)												
 	{                                                                       			
-	/* ÇÏ±â Wifi Æä¾î¸µÀ» À§ÇÑ Å° ÀÔ·Â½Ã Play_Voice(VOICE_BEEP_WARNING) Ãâ·Â ¹æÁö¸¦ À§ÇØ Á¶°Ç¹® Ãß°¡ */ 	
+	/* í•˜ê¸° Wifi í˜ì–´ë§ì„ ìœ„í•œ í‚¤ ì…ë ¥ì‹œ Play_Voice(VOICE_BEEP_WARNING) ì¶œë ¥ ë°©ì§€ë¥¼ ìœ„í•´ ì¡°ê±´ë¬¸ ì¶”ê°€ */ 	
 	}                                                                      	 			
 	else if (KEY_COLDWATER_SHORT == SET)                                    			
 	{                                                                       			
-	/* ÇÏ±â Wifi Æä¾î¸µÀ» À§ÇÑ Å° ÀÔ·Â½Ã Play_Voice(VOICE_BEEP_WARNING) Ãâ·Â ¹æÁö¸¦ À§ÇØ Á¶°Ç¹® Ãß°¡ */	
+	/* í•˜ê¸° Wifi í˜ì–´ë§ì„ ìœ„í•œ í‚¤ ì…ë ¥ì‹œ Play_Voice(VOICE_BEEP_WARNING) ì¶œë ¥ ë°©ì§€ë¥¼ ìœ„í•´ ì¡°ê±´ë¬¸ ì¶”ê°€ */	
 	}                                                                       		
 	else if (KEY_WIFI_AP_PAIRING_LONG == SET)								
 	{                                                                       
@@ -1063,7 +1063,7 @@ void OperationStep_03(void)
 	{
 		Play_Voice(VOICE_BEEP_WARNING);
 	}
-	else if (gu8_ErrorCode != 0)					//	¿¡·¯ ÁßÀÎ °æ¿ì
+	else if (gu8_ErrorCode != 0)					//	ì—ëŸ¬ ì¤‘ì¸ ê²½ìš°
 	{
 		Ini_OperationStep_E0();
 	}
@@ -1083,46 +1083,46 @@ void Ini_OperationStep_03(void)
 		&& ((F_Heater_Fill == CLEAR)
 		|| (F_ColdTank_Fill == CLEAR)))
 		{
-			gu16_Effluent_Hz = (U16)((U32)Z_Flushing_Litter_FirstSet * 10000 / gu16_FlowMeter_Standard);	//	2L (ÇÃ·¯½Ì ¿ë·®)
+			gu16_Effluent_Hz = (U16)((U32)Z_Flushing_Litter_FirstSet * 10000 / gu16_FlowMeter_Standard);	//	2L (í”ŒëŸ¬ì‹± ìš©ëŸ‰)
 
 			if (gu8_ModelType_forCHP == MODEL_CHP)
 			{
-				if(gu8_ModelType_forNational == MODEL_KOREA ){																														// ±¹³»ÇâÀÎ °æ¿ì
-					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_HeaterFill_Litter + Z_ColdTankFill_Litter_KR) * 10000 / gu16_FlowMeter_Standard);	// ÃÑ ÇÃ·¯½Ì ¿ë·® °è»ê (³Ã¼öÅÊÅ©5L)
+				if(gu8_ModelType_forNational == MODEL_KOREA ){																														// êµ­ë‚´í–¥ì¸ ê²½ìš°
+					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_HeaterFill_Litter + Z_ColdTankFill_Litter_KR) * 10000 / gu16_FlowMeter_Standard);	// ì´ í”ŒëŸ¬ì‹± ìš©ëŸ‰ ê³„ì‚° (ëƒ‰ìˆ˜íƒ±í¬5L)
 				}																																									//
-				else{																																								// ÀÏº»ÇâÀÎ °æ¿ì
-					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_HeaterFill_Litter + Z_ColdTankFill_Litter_JP) * 10000 / gu16_FlowMeter_Standard);	// ÃÑ ÇÃ·¯½Ì ¿ë·® °è»ê (³Ã¼öÅÊÅ©4L)
+				else{																																								// ì¼ë³¸í–¥ì¸ ê²½ìš°
+					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_HeaterFill_Litter + Z_ColdTankFill_Litter_JP) * 10000 / gu16_FlowMeter_Standard);	// ì´ í”ŒëŸ¬ì‹± ìš©ëŸ‰ ê³„ì‚° (ëƒ‰ìˆ˜íƒ±í¬4L)
 				}																																									//
 			}
 			else
 			{
-				if(gu8_ModelType_forNational == MODEL_KOREA ){																									// ±¹³»ÇâÀÎ °æ¿ì
-					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_ColdTankFill_Litter_KR) * 10000 / gu16_FlowMeter_Standard);	// ÃÑ ÇÃ·¯½Ì ¿ë·® °è»ê (³Ã¼öÅÊÅ©5L)
+				if(gu8_ModelType_forNational == MODEL_KOREA ){																									// êµ­ë‚´í–¥ì¸ ê²½ìš°
+					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_ColdTankFill_Litter_KR) * 10000 / gu16_FlowMeter_Standard);	// ì´ í”ŒëŸ¬ì‹± ìš©ëŸ‰ ê³„ì‚° (ëƒ‰ìˆ˜íƒ±í¬5L)
 				}																																				//
-				else{																																			// ÀÏº»ÇâÀÎ °æ¿ì
-					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_ColdTankFill_Litter_JP) * 10000 / gu16_FlowMeter_Standard);	// ÃÑ ÇÃ·¯½Ì ¿ë·® °è»ê (³Ã¼öÅÊÅ©4L)
+				else{																																			// ì¼ë³¸í–¥ì¸ ê²½ìš°
+					gu16_Flushing_TotalHz_forDisplay = (U16)((U32)(Z_Flushing_Litter_FirstSet + Z_ColdTankFill_Litter_JP) * 10000 / gu16_FlowMeter_Standard);	// ì´ í”ŒëŸ¬ì‹± ìš©ëŸ‰ ê³„ì‚° (ëƒ‰ìˆ˜íƒ±í¬4L)
 				}																																				//
 			}
 		}
-		else										//	ÇÊÅÍ ±³Ã¼·Î ÁøÀÔ µÈ °æ¿ì
+		else										//	í•„í„° êµì²´ë¡œ ì§„ì… ëœ ê²½ìš°
 		{
-			gu16_Effluent_Hz = (U16)((U32)Z_Flushing_Litter * 10000 / gu16_FlowMeter_Standard);	//	3L (ÇÃ·¯½Ì ¿ë·®)
-			gu16_Flushing_TotalHz_forDisplay = gu16_Effluent_Hz;	//	 ÇÃ·¯½Ì ¿ë·®¸¸ ÀúÀå
+			gu16_Effluent_Hz = (U16)((U32)Z_Flushing_Litter * 10000 / gu16_FlowMeter_Standard);	//	3L (í”ŒëŸ¬ì‹± ìš©ëŸ‰)
+			gu16_Flushing_TotalHz_forDisplay = gu16_Effluent_Hz;	//	 í”ŒëŸ¬ì‹± ìš©ëŸ‰ë§Œ ì €ì¥
 		}
 		gu16_Flushing_Hz_forDisplay = gu16_Flushing_TotalHz_forDisplay;
 	}
-	gu8_TimerFirstFlushing_AirPurge = Z_TimerFirstFlushing_AirPurge;	//	ÃÊ±â ¼³Ä¡ ÇÃ·¯½Ì ½Ã, ³»ºÎ ÀÜ¿© Áú¼Ò·Î ÀÎÇØ ¼ö¾ĞÀÌ ¹Ğ¾î³»¸é¼­ À¯·®¼¾¼­°¡ ºü¸£°Ô Èê·¯ 20%°¡ ±×³É PassµÇ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÔ
+	gu8_TimerFirstFlushing_AirPurge = Z_TimerFirstFlushing_AirPurge;	//	ì´ˆê¸° ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì‹œ, ë‚´ë¶€ ì”ì—¬ ì§ˆì†Œë¡œ ì¸í•´ ìˆ˜ì••ì´ ë°€ì–´ë‚´ë©´ì„œ ìœ ëŸ‰ì„¼ì„œê°€ ë¹ ë¥´ê²Œ í˜ëŸ¬ 20%ê°€ ê·¸ëƒ¥ Passë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•¨
 	gu8_WaterSelect = PURE_WATER;
 	gu8_Timer10sAfter_WifiConnect_forFlushing = Z_Timer10sAfter_WifiConnect_forFlushing;
 	OperationStepNoSet(Z_OperationStepNum_03);
 }
 
-/// @brief    È÷ÅÍ ¹° Ã¤¿ì±â ¹× Àü·ÂÃ¼Å©
+/// @brief    íˆí„° ë¬¼ ì±„ìš°ê¸° ë° ì „ë ¥ì²´í¬
 /// @param    void
 /// @return   void
 void OperationStep_04(void)
 {
-	if (gu16_Effluent_Hz == 0)		//	È÷ÅÍ ¹°Ã¤¿ì±â ¿Ï·á
+	if (gu16_Effluent_Hz == 0)		//	íˆí„° ë¬¼ì±„ìš°ê¸° ì™„ë£Œ
 	{
 		F_Heater_Fill = SET;
 		F_FirstHotEffluent = SET;
@@ -1141,11 +1141,11 @@ void OperationStep_04(void)
 	}
 	else if (KEY_PUREWATER_SHORT == SET)												
 	{                                                                       			
-	/* ÇÏ±â Wifi Æä¾î¸µÀ» À§ÇÑ Å° ÀÔ·Â½Ã Play_Voice(VOICE_BEEP_WARNING) Ãâ·Â ¹æÁö¸¦ À§ÇØ Á¶°Ç¹® Ãß°¡ */ 	
+	/* í•˜ê¸° Wifi í˜ì–´ë§ì„ ìœ„í•œ í‚¤ ì…ë ¥ì‹œ Play_Voice(VOICE_BEEP_WARNING) ì¶œë ¥ ë°©ì§€ë¥¼ ìœ„í•´ ì¡°ê±´ë¬¸ ì¶”ê°€ */ 	
 	}                                                                      	 			
 	else if (KEY_COLDWATER_SHORT == SET)                                    			
 	{                                                                       			
-	/* ÇÏ±â Wifi Æä¾î¸µÀ» À§ÇÑ Å° ÀÔ·Â½Ã Play_Voice(VOICE_BEEP_WARNING) Ãâ·Â ¹æÁö¸¦ À§ÇØ Á¶°Ç¹® Ãß°¡ */	
+	/* í•˜ê¸° Wifi í˜ì–´ë§ì„ ìœ„í•œ í‚¤ ì…ë ¥ì‹œ Play_Voice(VOICE_BEEP_WARNING) ì¶œë ¥ ë°©ì§€ë¥¼ ìœ„í•´ ì¡°ê±´ë¬¸ ì¶”ê°€ */	
 	}                                                                       			
 	else if (KEY_WIFI_AP_PAIRING_LONG == SET)								
 	{                                                                       
@@ -1185,7 +1185,7 @@ void OperationStep_04(void)
 	{
 		Play_Voice(VOICE_BEEP_WARNING);
 	}
-	else if (gu8_ErrorCode != 0)					//	¿¡·¯ ÁßÀÎ °æ¿ì
+	else if (gu8_ErrorCode != 0)					//	ì—ëŸ¬ ì¤‘ì¸ ê²½ìš°
 	{
 		Ini_OperationStep_E0();
 	}
@@ -1205,23 +1205,23 @@ void Ini_OperationStep_04(void)
 	gu8_WaterSelect = HOT_WATER;
 	gu16_Effluent_Hz = (U16)((U32)Z_HeaterFill_Litter * 10000 / gu16_FlowMeter_Standard);	//
 
-	F_WIFI_First_Connecting = CLEAR;	// ÇÃ·¯½Ì Áß wifi ÃÖÃÊ 1È¸ ÀÚµ¿ ¿¬°á ½Ãµµ ¿©ºÎ Flag CLear(¹Ì½Ãµµ)
+	F_WIFI_First_Connecting = CLEAR;	// í”ŒëŸ¬ì‹± ì¤‘ wifi ìµœì´ˆ 1íšŒ ìë™ ì—°ê²° ì‹œë„ ì—¬ë¶€ Flag CLear(ë¯¸ì‹œë„)
 
 	OperationStepNoSet(Z_OperationStepNum_04);
 }
 
-/// @brief    ³Ã¼ö ÅÊÅ© ¹° Ã¤¿ì±â
+/// @brief    ëƒ‰ìˆ˜ íƒ±í¬ ë¬¼ ì±„ìš°ê¸°
 /// @param    void
 /// @return   void
 void OperationStep_05(void)
 {
-	if (gu16_Effluent_Hz == 0)		//	³Ã¼öÅÊÅ© ¹°Ã¤¿ì±â ¿Ï·á
+	if (gu16_Effluent_Hz == 0)		//	ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ì±„ìš°ê¸° ì™„ë£Œ
 	{
 		F_ColdTank_Fill = SET;
 		Ini_OperationStep_10();
 		Play_Voice(VOICE_FLUSHING_COMPLETE);
 
-		gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_DONE_FOR_WIFI;   //  @004    ¼³Ä¡ ÇÃ·¯½Ì ¿Ï·á
+		gu8_FlushingProgress_forWifi = Z_FLUSHING_PROGRESS_DONE_FOR_WIFI;   //  @004    ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì™„ë£Œ
 	}
 	else if (F_ColdTank_Fill == SET)
 	{
@@ -1237,11 +1237,11 @@ void OperationStep_05(void)
 	}
 	else if (KEY_PUREWATER_SHORT == SET)												
 	{                                                                       			
-	/* ÇÏ±â Wifi Æä¾î¸µÀ» À§ÇÑ Å° ÀÔ·Â½Ã Play_Voice(VOICE_BEEP_WARNING) Ãâ·Â ¹æÁö¸¦ À§ÇØ Á¶°Ç¹® Ãß°¡ */ 	
+	/* í•˜ê¸° Wifi í˜ì–´ë§ì„ ìœ„í•œ í‚¤ ì…ë ¥ì‹œ Play_Voice(VOICE_BEEP_WARNING) ì¶œë ¥ ë°©ì§€ë¥¼ ìœ„í•´ ì¡°ê±´ë¬¸ ì¶”ê°€ */ 	
 	}                                                                      	 			
 	else if (KEY_COLDWATER_SHORT == SET)                                    			
 	{                                                                       			
-	/* ÇÏ±â Wifi Æä¾î¸µÀ» À§ÇÑ Å° ÀÔ·Â½Ã Play_Voice(VOICE_BEEP_WARNING) Ãâ·Â ¹æÁö¸¦ À§ÇØ Á¶°Ç¹® Ãß°¡ */	
+	/* í•˜ê¸° Wifi í˜ì–´ë§ì„ ìœ„í•œ í‚¤ ì…ë ¥ì‹œ Play_Voice(VOICE_BEEP_WARNING) ì¶œë ¥ ë°©ì§€ë¥¼ ìœ„í•´ ì¡°ê±´ë¬¸ ì¶”ê°€ */	
 	}                                                                       			
 	else if (KEY_WIFI_AP_PAIRING_LONG == SET)								
 	{                                                                       
@@ -1281,7 +1281,7 @@ void OperationStep_05(void)
 	{
 		Play_Voice(VOICE_BEEP_WARNING);
 	}
-	else if (gu8_ErrorCode != 0)					//	¿¡·¯ ÁßÀÎ °æ¿ì
+	else if (gu8_ErrorCode != 0)					//	ì—ëŸ¬ ì¤‘ì¸ ê²½ìš°
 	{
 		Ini_OperationStep_E0();
 	}
@@ -1302,17 +1302,17 @@ void Ini_OperationStep_05(void)
 	if (gu16_Effluent_Hz == 0)
 	{
 
-		if(gu8_ModelType_forNational == MODEL_KOREA ){													// ±¹³»ÇâÀÎ °æ¿ì
-			gu16_Effluent_Hz = (U16)((U32)Z_ColdTankFill_Litter_KR * 10000 / gu16_FlowMeter_Standard);	// ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ¿ë·® (5L) È®Á¤
+		if(gu8_ModelType_forNational == MODEL_KOREA ){													// êµ­ë‚´í–¥ì¸ ê²½ìš°
+			gu16_Effluent_Hz = (U16)((U32)Z_ColdTankFill_Litter_KR * 10000 / gu16_FlowMeter_Standard);	// ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ìš©ëŸ‰ (5L) í™•ì •
 		}																								
-		else{																							// ÀÏº»ÇâÀÎ °æ¿ì
-			gu16_Effluent_Hz = (U16)((U32)Z_ColdTankFill_Litter_JP * 10000 / gu16_FlowMeter_Standard);	// ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ¿ë·® (4L) È®Á¤
+		else{																							// ì¼ë³¸í–¥ì¸ ê²½ìš°
+			gu16_Effluent_Hz = (U16)((U32)Z_ColdTankFill_Litter_JP * 10000 / gu16_FlowMeter_Standard);	// ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ìš©ëŸ‰ (4L) í™•ì •
 		}
 	}
 	OperationStepNoSet(Z_OperationStepNum_05);
 }
 
-/// @brief    Á¤¼ö ¼±ÅÃ
+/// @brief    ì •ìˆ˜ ì„ íƒ
 /// @param    void
 /// @return   void
 void OperationStep_10(void)
@@ -1324,7 +1324,7 @@ void Ini_OperationStep_10(void)
 	F_First_Set = SET;
 	F_KITMode = CLEAR;
 //#ifndef _FOR_JAPAN_90DEGREE_CONTINUE
-//	if ((gu8_ModelType_forNational == MODEL_JAPAN) && (gu8_WaterSelect == HOT_WATER) && (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90))	//	ÀÏº»Çâ 90µµ´Â ¹İÄÅ¸¸ ¼³Á¤ °¡´É
+//	if ((gu8_ModelType_forNational == MODEL_JAPAN) && (gu8_WaterSelect == HOT_WATER) && (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90))	//	ì¼ë³¸í–¥ 90ë„ëŠ” ë°˜ì»µë§Œ ì„¤ì • ê°€ëŠ¥
 //	{
 //		gu16_CupSize = CUPSIZE_HALFCUP;
 //	}
@@ -1335,12 +1335,12 @@ void Ini_OperationStep_10(void)
 	gu8_F_Continue_Effluent_Animation = CLEAR;       //@009
 }
 
-/// @brief    ÆÄ¿ì¼Â ¹«ºù ´ë±â
+/// @brief    íŒŒìš°ì…‹ ë¬´ë¹™ ëŒ€ê¸°
 /// @param    void
 /// @return   void
 void OperationStep_11(void)
 {
-	//	¹«ºù ¿Ï·á?
+	//	ë¬´ë¹™ ì™„ë£Œ?
 	if(gu8_F_Finish_Faucet_Down == SET)
 	{			
 		gu8_F_Finish_Faucet_Down = CLEAR;					//	finish close...
@@ -1355,7 +1355,7 @@ void OperationStep_11(void)
 	{																//@009
 		gu16_CupSize = CUPSIZE_CONTINUE;                            //@009
 		Effluent_Hz_Decide();                                       //@009
-		gu8_TimerContSeg = Z_TimerContSeg;			//	¿¬¼Ó ÃßÃâ ÈÙ Å¸ÀÌ¸Ó    //@009
+		gu8_TimerContSeg = Z_TimerContSeg;			//	ì—°ì† ì¶”ì¶œ íœ  íƒ€ì´ë¨¸    //@009
 		gu8_CounterContSeg = 0;                                     //@009
 		Play_Voice(VOICE_CONTIUNE_EFFLUENT);     //@009
 		gu8_F_Continue_Effluent_Animation = SET;       //@009
@@ -1371,7 +1371,7 @@ void Ini_OperationStep_11(void)
 	OperationStepNoSet(Z_OperationStepNum_11);
 }
 
-/// @brief    ON Ç¥½Ã
+/// @brief    ON í‘œì‹œ
 /// @param    void
 /// @return   void
 void OperationStep_15(void)
@@ -1395,7 +1395,7 @@ void Ini_OperationStep_15(void)
 	OperationStepNoSet(Z_OperationStepNum_15);
 }
 
-/// @brief    OFF Ç¥½Ã
+/// @brief    OFF í‘œì‹œ
 /// @param    void
 /// @return   void
 void OperationStep_16(void)
@@ -1429,7 +1429,7 @@ void Ini_OperationStep_16(void)
 	OperationStepNoSet(Z_OperationStepNum_16);
 }
 
-/// @brief    ¹«ºê ON/OFF ¼³Á¤ Ç¥½Ã
+/// @brief    ë¬´ë¸Œ ON/OFF ì„¤ì • í‘œì‹œ
 /// @param    void
 /// @return   void
 void OperationStep_17(void)
@@ -1451,7 +1451,7 @@ void Ini_OperationStep_17(void)
 	OperationStepNoSet(Z_OperationStepNum_17);
 }
 
-/// @brief    OFF Ç¥½Ã
+/// @brief    OFF í‘œì‹œ
 /// @param    void
 /// @return   void
 void OperationStep_18(void)
@@ -1475,7 +1475,7 @@ void Ini_OperationStep_18(void)
 	OperationStepNoSet(Z_OperationStepNum_18);
 }
 
-/// @brief    ½½¸³¸ğµå
+/// @brief    ìŠ¬ë¦½ëª¨ë“œ
 /// @param    void
 /// @return   void
 void OperationStep_20(void)
@@ -1500,7 +1500,7 @@ void Ini_OperationStep_20(void)
 	OperationStepNoSet(Z_OperationStepNum_20);
 }
 
-/// @brief    UVÄÉ¾î
+/// @brief    UVì¼€ì–´
 /// @param    void
 /// @return   void
 void OperationStep_30(void)
@@ -1549,7 +1549,7 @@ void OperationStep_30(void)
 //		}
 //		else
 //		{
-//			if (gu16_CupSize == CUPSIZE_CONTINUE)	//		¿¬¼Ó ÃßÃâ ÀÎ °æ¿ì
+//			if (gu16_CupSize == CUPSIZE_CONTINUE)	//		ì—°ì† ì¶”ì¶œ ì¸ ê²½ìš°
 //			{
 //				Play_Voice(VOICE_CONTIUNE_EFFLUENT);
 //			}
@@ -1596,7 +1596,7 @@ void Ini_OperationStep_30(void)
 	F_UVCare_Start_forWIFI = SET;
 }
 
-/// @brief    UV µ¿ÀÛ 15ºĞ
+/// @brief    UV ë™ì‘ 15ë¶„
 /// @param    void
 /// @return   void
 void OperationStep_31(void)
@@ -1638,7 +1638,7 @@ void Ini_OperationStep_31(void)
 	F_UVCare_Start_forWIFI = SET;
 }
 
-/// @brief    ÀüÃ¼ Àá±İ
+/// @brief    ì „ì²´ ì ê¸ˆ
 /// @param    void
 /// @return   void
 void OperationStep_40(void)
@@ -1650,7 +1650,7 @@ void OperationStep_40(void)
 	else if (((gu8_ModelType_forCHP == MODEL_CHP) && (KEY_ALL_LOCK_LONG == SET))
 			|| ((gu8_ModelType_forCHP == MODEL_CP) && (KEY_HOTWATER_LONG == SET)))
 	{
-		gu8_TimerSleepMode = Z_TimerSleepMode;  			//	Å°ÀÔ·Â ÀÇ»ç ÀÖÀ¸´Ï, ÀüÃ¼Àá±İ»óÅÂ¿¡¼­µµ Å¸ÀÌ¸Ó ÃÊ±âÈ­
+		gu8_TimerSleepMode = Z_TimerSleepMode;  			//	í‚¤ì…ë ¥ ì˜ì‚¬ ìˆìœ¼ë‹ˆ, ì „ì²´ì ê¸ˆìƒíƒœì—ì„œë„ íƒ€ì´ë¨¸ ì´ˆê¸°í™”
 		F_VeryLongKey_Rejection = SET;
 		F_AllLock = CLEAR;
 		Play_Voice(VOICE_ALL_LOCK_CLEAR);
@@ -1658,7 +1658,7 @@ void OperationStep_40(void)
 	}
 	else if (gu8_Key_Short.byte != 0x00)
 	{
-		gu8_TimerSleepMode = Z_TimerSleepMode;  			//	Å°ÀÔ·Â ÀÇ»ç ÀÖÀ¸´Ï, ÀüÃ¼Àá±İ»óÅÂ¿¡¼­µµ Å¸ÀÌ¸Ó ÃÊ±âÈ­
+		gu8_TimerSleepMode = Z_TimerSleepMode;  			//	í‚¤ì…ë ¥ ì˜ì‚¬ ìˆìœ¼ë‹ˆ, ì „ì²´ì ê¸ˆìƒíƒœì—ì„œë„ íƒ€ì´ë¨¸ ì´ˆê¸°í™”
 
 		gu8_TimerAllLockDisplay = Z_TimerAllLockDisplay;
 		if (gu8_ModelType_forCHP == MODEL_CHP)
@@ -1689,7 +1689,7 @@ void Ini_OperationStep_40(void)
 	OperationStepNoSet(Z_OperationStepNum_40);
 }
 
-/// @brief    À½¼º º¯°æ
+/// @brief    ìŒì„± ë³€ê²½
 /// @param    void
 /// @return   void
 void OperationStep_41(void)
@@ -1797,7 +1797,7 @@ void Ini_OperationStep_41(void)
 	OperationStepNoSet(Z_OperationStepNum_41);
 }
 
-/// @brief    °ü¸®¸ğµå º¯°æ ¹× Ç¥½Ã
+/// @brief    ê´€ë¦¬ëª¨ë“œ ë³€ê²½ ë° í‘œì‹œ
 /// @param    void
 /// @return   void
 void OperationStep_42(void)
@@ -1823,7 +1823,7 @@ void OperationStep_42(void)
 }
 void Ini_OperationStep_42(void)
 {
-	F_SelfService ^= 1;								//	°ü¸®¸ğµå ÀüÈ¯
+	F_SelfService ^= 1;								//	ê´€ë¦¬ëª¨ë“œ ì „í™˜
 	if (F_SelfService == CLEAR)
 	{
 		F_FilterChange_Display = CLEAR;
@@ -1834,13 +1834,13 @@ void Ini_OperationStep_42(void)
 }
 
 
-/// @brief    ¹«ºù ÆÄ¿ì¼Â ON/OFF
+/// @brief    ë¬´ë¹™ íŒŒìš°ì…‹ ON/OFF
 /// @param    void
 /// @return   void
 void OperationStep_43(void)
 {
 	if((gu8_Timer_Moving_OnOff_Display == 0) 
-	|| (KEY_MOVING_SET_MODE_PBA_TEST == SET))	//	ÁøÀÔ º¹ÇÕÅ° ÀÔ·ÂÇÏ¸é ºüÁ®³ª°¡µµ·Ï..
+	|| (KEY_MOVING_SET_MODE_PBA_TEST == SET))	//	ì§„ì… ë³µí•©í‚¤ ì…ë ¥í•˜ë©´ ë¹ ì ¸ë‚˜ê°€ë„ë¡..
 	{
 		if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)
 		{
@@ -1892,7 +1892,7 @@ void OperationStep_43(void)
 		}			
 	}	
 	#if 0  //@020
-	else if(gu8_F_FaucetTip_Reed_Undetected == SET)		//	ÆÄ¿ì¼Â À¯·Î Á¦°Å½Ã, ¿øÁ¡¶§¹®¿¡ ¸ğµå Á¾·áÇÏ´Â°Ô ³ªÀ»µí..
+	else if(gu8_F_FaucetTip_Reed_Undetected == SET)		//	íŒŒìš°ì…‹ ìœ ë¡œ ì œê±°ì‹œ, ì›ì ë•Œë¬¸ì— ëª¨ë“œ ì¢…ë£Œí•˜ëŠ”ê²Œ ë‚˜ì„ë“¯..
 	{
 		Ini_OperationStep_10();
 	}
@@ -1911,7 +1911,7 @@ void OperationStep_43(void)
 }
 void Ini_OperationStep_43(void)
 {
-	/*@026 ¹Ì°¨Áö·Î ÁøÀÔ ¡æ ÀÌÅ»ÇØµµ 43 À¯Áö. °¨Áö·Î ÁøÀÔ ¡æ ÀÌÈÄ ÀÌÅ» ½Ã Á¾·á */
+	/*@026 ë¯¸ê°ì§€ë¡œ ì§„ì… â†’ ì´íƒˆí•´ë„ 43 ìœ ì§€. ê°ì§€ë¡œ ì§„ì… â†’ ì´í›„ ì´íƒˆ ì‹œ ì¢…ë£Œ */
 	if (gu8_F_FaucetTip_Reed_Undetected == SET)                 //@026
 	{               											//@026
 		gu8_F_Step43_Entered_With_Faucet_Detected = CLEAR;        //@026
@@ -1922,14 +1922,14 @@ void Ini_OperationStep_43(void)
 	}															//@026
 
 	gu8_Timer_Faucet_Set_Mode_Display = 120;
-	// Àü¿ø ÀÎ°¡ ½Ã ¹é¾÷ º¯¼ö¸¦ ÇöÀç ·¹º§·Î ÃÊ±âÈ­ (ÃÊ±â ÁøÀÔ ½Ã ¹«ÇÑ ·çÇÁ ¹æÁö)
+	// ì „ì› ì¸ê°€ ì‹œ ë°±ì—… ë³€ìˆ˜ë¥¼ í˜„ì¬ ë ˆë²¨ë¡œ ì´ˆê¸°í™” (ì´ˆê¸° ì§„ì… ì‹œ ë¬´í•œ ë£¨í”„ ë°©ì§€)
 	gu8_FaucetMoving_Set_Level_Backup = gu8_FaucetMoving_Set_Level;
 	Play_Voice(VOICE_ENTER_FAUCET_MOVING_SET_MODE);
 	gu8_Timer_Moving_OnOff_Display = 70;
 	OperationStepNoSet(Z_OperationStepNum_43);
 }
 
-/// @brief    ÃßÃâ Áß
+/// @brief    ì¶”ì¶œ ì¤‘
 /// @param    void
 /// @return   void
 void OperationStep_50(void)
@@ -1941,38 +1941,38 @@ void OperationStep_50(void)
 	Water_Cup_SelectTimer(&gu8_TimerWaterSelect);
 	gu8_TimerChangeDisplay = Z_TimerChangeDisplay;
 
-	if (gu8_ErrorCode != 0)							//	¿¡·¯¹ß»ıÇÑ °æ¿ì
+	if (gu8_ErrorCode != 0)							//	ì—ëŸ¬ë°œìƒí•œ ê²½ìš°
 	{
-		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		¿¬¼Ó ÃßÃâÀÎ °æ¿ì
+		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		ì—°ì† ì¶”ì¶œì¸ ê²½ìš°
 		{
 			return_default_cup();		//			Default Cup
 		}
-		Ini_OperationStep_E0();						//		¿¡·¯Ç¥½Ã½ºÅÜ ÀÌÇà
+		Ini_OperationStep_E0();						//		ì—ëŸ¬í‘œì‹œìŠ¤í… ì´í–‰
 	}
-	else if (KEY_EFFLUENT_SHORT == SET)				//	ÃßÃâ ¹öÆ°
+	else if (KEY_EFFLUENT_SHORT == SET)				//	ì¶”ì¶œ ë²„íŠ¼
 	{
 #ifdef _FOR_REPEAT_EFF_ENDURANCE_TEST_
 		F_Repeat_Eff = CLEAR;
 #endif
 
-		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		¿¬¼Ó ÃßÃâÀÎ °æ¿ì
+		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		ì—°ì† ì¶”ì¶œì¸ ê²½ìš°
 		{
 			return_default_cup();		//			Default Cup
 		}
 		else
 		{
-			if (gu16_Effluent_Amount_SegDisplay >= 10)//		ÃßÃâ µÈ ¹°¾çÀÌ 10ml ÀÌ»ó
+			if (gu16_Effluent_Amount_SegDisplay >= 10)//		ì¶”ì¶œ ëœ ë¬¼ì–‘ì´ 10ml ì´ìƒ
 			{
 				if (gu8_HotStep != Z_HotStep_02)
 				{
-					gu8_TimerEffluentAmount_Display = Z_TimerEffluentAmount_Display;	//	2ÃÊ Á¡µî
+					gu8_TimerEffluentAmount_Display = Z_TimerEffluentAmount_Display;	//	2ì´ˆ ì ë“±
 				}
 			}
 		}
 		Play_Voice(VOICE_EFFLUENT_COMPLETE);
 		Ini_OperationStep_10();
 
-		//	³Ã¼ö off ÀÏ¶§´Â ÃßÃâ ¿Ï·á ÈÄ, deafult ¹°·Î ¹Ù·Î º¹±ÍÇÏµµ·Ï..
+		//	ëƒ‰ìˆ˜ off ì¼ë•ŒëŠ” ì¶”ì¶œ ì™„ë£Œ í›„, deafult ë¬¼ë¡œ ë°”ë¡œ ë³µê·€í•˜ë„ë¡..
 		if(F_ColdOff == SET)
 		{
 			gu8_TimerWaterSelect = 0;
@@ -1981,23 +1981,23 @@ void OperationStep_50(void)
 		{
 			
 		}
-		// ÃßÃâ ¿Ï·á ÈÄ ÃßÃâ ¹æÁö Å¸ÀÌ¸Ó ¼³Á¤
+		// ì¶”ì¶œ ì™„ë£Œ í›„ ì¶”ì¶œ ë°©ì§€ íƒ€ì´ë¨¸ ì„¤ì •
 		gu8_Timer_Prohibit_Effluent_AfterEffluent = Z_TIMER_PROHIBIT_EFFLUENT_AFTER_EFFLUENT;
 		
-		Water_Cup_SelectTimer(&gu8_TimerCupSelect);		//	¹°·® ¼±ÅÃ 7ÃÊ Ç¥½Ã Å¸ÀÌ¸Ó
+		Water_Cup_SelectTimer(&gu8_TimerCupSelect);		//	ë¬¼ëŸ‰ ì„ íƒ 7ì´ˆ í‘œì‹œ íƒ€ì´ë¨¸
 	}
 	else if ((gu8_ModelType_forNational == MODEL_KOREA) && (KEY_EFFLUENT_LONG == SET) && (gu16_CupSize != CUPSIZE_CONTINUE) && (gu8_HotStep != Z_HotStep_02))
 	{
 		gu16_CupSize = CUPSIZE_CONTINUE;
 		Effluent_Hz_Decide();
-		gu8_TimerContSeg = Z_TimerContSeg;			//	¿¬¼Ó ÃßÃâ ÈÙ Å¸ÀÌ¸Ó
+		gu8_TimerContSeg = Z_TimerContSeg;			//	ì—°ì† ì¶”ì¶œ íœ  íƒ€ì´ë¨¸
 		gu8_CounterContSeg = 0;
 		Play_Voice(VOICE_CONTIUNE_EFFLUENT);
 	}
-	else if ((gu8_ModelType_forNational == MODEL_KOREA) && (KEY_EFFLUENT_VERYLONG == SET))			//	ÃßÃâ ¹öÆ° 8ÃÊ ¿¬¼Ó ÀÔ·Â ½Ã °­Á¦ ÃßÃâ Á¾·á
+	else if ((gu8_ModelType_forNational == MODEL_KOREA) && (KEY_EFFLUENT_VERYLONG == SET))			//	ì¶”ì¶œ ë²„íŠ¼ 8ì´ˆ ì—°ì† ì…ë ¥ ì‹œ ê°•ì œ ì¶”ì¶œ ì¢…ë£Œ
 	{
-		Play_Voice(VOICE_BEEP_WARNING);		//	ºÒ°¡À½..
-		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		¿¬¼Ó ÃßÃâÀÎ °æ¿ì
+		Play_Voice(VOICE_BEEP_WARNING);		//	ë¶ˆê°€ìŒ..
+		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		ì—°ì† ì¶”ì¶œì¸ ê²½ìš°
 		{
 			return_default_cup();		//			Default Cup
 		}
@@ -2009,7 +2009,7 @@ void OperationStep_50(void)
 	//@018 	Ini_OperationStep_10();
 	//@018 }
 	else if (((gu16_CupSize != CUPSIZE_CONTINUE) && (gu16_Effluent_Hz == 0))
-			|| ((gu16_CupSize == CUPSIZE_CONTINUE) && (gu16_TimerEffluent == 0)))	//	ÃßÃâ ¿Ï·á
+			|| ((gu16_CupSize == CUPSIZE_CONTINUE) && (gu16_TimerEffluent == 0)))	//	ì¶”ì¶œ ì™„ë£Œ
 	{
 //		if (gu16_CupSize == CUPSIZE_CONTINUE)
 //		{
@@ -2019,17 +2019,17 @@ void OperationStep_50(void)
 #ifndef _FOR_WQA_
 		switch (gu8_Counter_Repeat_Eff)
 		{
-			case 0:								//	³Ã¼ö ³¡³ª°í
-				gu16_Timer_Repeat_Eff = 10;		//	´ÜÀ§ 1ÃÊ
+			case 0:								//	ëƒ‰ìˆ˜ ëë‚˜ê³ 
+				gu16_Timer_Repeat_Eff = 10;		//	ë‹¨ìœ„ 1ì´ˆ
 				break;
-			case 1:								//	Á¤¼ö ³¡³ª°í
+			case 1:								//	ì •ìˆ˜ ëë‚˜ê³ 
 				gu16_Timer_Repeat_Eff = 10;
 				break;
-			case 2:								//	¿Â¼ö ³¡³ª°í
+			case 2:								//	ì˜¨ìˆ˜ ëë‚˜ê³ 
 				gu16_Timer_Repeat_Eff = 10;
 				break;
-//			case 3:								//	Á¤¼ö ³¡³ª°í
-//			case 4:								//	Á¤¼ö ³¡³ª°í
+//			case 3:								//	ì •ìˆ˜ ëë‚˜ê³ 
+//			case 4:								//	ì •ìˆ˜ ëë‚˜ê³ 
 //				gu16_Timer_Repeat_Eff = 10;
 //				break;
 			default:
@@ -2038,13 +2038,13 @@ void OperationStep_50(void)
 #else
 		switch (gu8_Counter_Repeat_Eff)
 		{
-			case 0:								//	³Ã¼ö ³¡³ª°í
-				gu16_Timer_Repeat_Eff = 2;		//	´ÜÀ§ 1ÃÊ
+			case 0:								//	ëƒ‰ìˆ˜ ëë‚˜ê³ 
+				gu16_Timer_Repeat_Eff = 2;		//	ë‹¨ìœ„ 1ì´ˆ
 				break;
-			case 1:								//	Á¤¼ö ³¡³ª°í
+			case 1:								//	ì •ìˆ˜ ëë‚˜ê³ 
 				gu16_Timer_Repeat_Eff = 2;
 				break;
-			case 2:								//	¿Â¼ö ³¡³ª°í
+			case 2:								//	ì˜¨ìˆ˜ ëë‚˜ê³ 
 				gu16_Timer_Repeat_Eff = 2;
 				break;
 			default:
@@ -2054,14 +2054,14 @@ void OperationStep_50(void)
 #endif
 
 		/*******************************************/
-		//	¾ç»ê Å×½ºÆ®¸ğµå
+		//	ì–‘ì‚° í…ŒìŠ¤íŠ¸ëª¨ë“œ
 		if (Mode_Repeat_Eff_Mode_forMP != 0)
 		{		
 			if(Mode_Repeat_Eff_Mode_forMP == 1)
 			{	
 				if (gu8_ModelType_forCHP == MODEL_CHP)
 				{
-					if (++gu8_Counter_Repeat_Eff_forMP > 2)		//	0:³Ã¼ö 1:Á¤¼ö 2:¿Â¼ö
+					if (++gu8_Counter_Repeat_Eff_forMP > 2)		//	0:ëƒ‰ìˆ˜ 1:ì •ìˆ˜ 2:ì˜¨ìˆ˜
 					{
 						gu8_Counter_Repeat_Eff_forMP = 0;
 					}
@@ -2069,7 +2069,7 @@ void OperationStep_50(void)
 				}
 				else
 				{
-					if (++gu8_Counter_Repeat_Eff_forMP > 1)		//	0:³Ã¼ö 1:Á¤¼ö
+					if (++gu8_Counter_Repeat_Eff_forMP > 1)		//	0:ëƒ‰ìˆ˜ 1:ì •ìˆ˜
 					{
 						gu8_Counter_Repeat_Eff_forMP = 0;
 					}
@@ -2089,24 +2089,24 @@ void OperationStep_50(void)
 		}
 		/*******************************************/		
 
-		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		¿¬¼Ó ÃßÃâÀÎ °æ¿ì
+		if (gu16_CupSize == CUPSIZE_CONTINUE)		//		ì—°ì† ì¶”ì¶œì¸ ê²½ìš°
 		{
 			return_default_cup();		//			Default Cup
 		}
 		else
 		{
-			if (gu16_Effluent_Amount_SegDisplay >= 10)//		ÃßÃâ µÈ ¹°¾çÀÌ 10ml ÀÌ»ó
+			if (gu16_Effluent_Amount_SegDisplay >= 10)//		ì¶”ì¶œ ëœ ë¬¼ì–‘ì´ 10ml ì´ìƒ
 			{
 				if (gu8_HotStep != Z_HotStep_02)
 				{
-					gu8_TimerEffluentAmount_Display = Z_TimerEffluentAmount_Display;	//	2ÃÊ Á¡µî
+					gu8_TimerEffluentAmount_Display = Z_TimerEffluentAmount_Display;	//	2ì´ˆ ì ë“±
 				}
 			}
 		}
 		Play_Voice(VOICE_EFFLUENT_COMPLETE);
 		Ini_OperationStep_10();
 
-		//	³Ã¼ö off ÀÏ¶§´Â ÃßÃâ ¿Ï·á ÈÄ, deafult ¹°·Î ¹Ù·Î º¹±ÍÇÏµµ·Ï..
+		//	ëƒ‰ìˆ˜ off ì¼ë•ŒëŠ” ì¶”ì¶œ ì™„ë£Œ í›„, deafult ë¬¼ë¡œ ë°”ë¡œ ë³µê·€í•˜ë„ë¡..
 		if(F_ColdOff == SET)
 		{
 			gu8_TimerWaterSelect = 0;
@@ -2116,13 +2116,13 @@ void OperationStep_50(void)
 			
 		}
 
-		Water_Cup_SelectTimer(&gu8_TimerCupSelect);		//	¹°·® ¼±ÅÃ 7ÃÊ Ç¥½Ã Å¸ÀÌ¸Ó
+		Water_Cup_SelectTimer(&gu8_TimerCupSelect);		//	ë¬¼ëŸ‰ ì„ íƒ 7ì´ˆ í‘œì‹œ íƒ€ì´ë¨¸
 
-		// ÃßÃâ ¿Ï·á ÈÄ ÃßÃâ ¹æÁö Å¸ÀÌ¸Ó ¼³Á¤
+		// ì¶”ì¶œ ì™„ë£Œ í›„ ì¶”ì¶œ ë°©ì§€ íƒ€ì´ë¨¸ ì„¤ì •
 		gu8_Timer_Prohibit_Effluent_AfterEffluent = Z_TIMER_PROHIBIT_EFFLUENT_AFTER_EFFLUENT;
 
 		/*******************************************/
-		//	½Å·Ú¼º °á·Î ÇÁ·Î±×·¥
+		//	ì‹ ë¢°ì„± ê²°ë¡œ í”„ë¡œê·¸ë¨
 		#ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
 		reliability_condenstation_test_program(1);
 		#endif
@@ -2154,7 +2154,7 @@ void Ini_OperationStep_50(void)
 
 	F_SmartCheck_Prohibit = SET;
 
-	Effluent_Hz_Decide();					//	(´Ù¸¥½ºÅÜ¿¡¼­ ÁØºñ°úÁ¤‹š¹®¿¡ Hz°áÁ¤ÀÌ ¾ÈµÉ ¶§)	ÃßÃâÀ¯·® °áÁ¤
+	Effluent_Hz_Decide();					//	(ë‹¤ë¥¸ìŠ¤í…ì—ì„œ ì¤€ë¹„ê³¼ì •ë–„ë¬¸ì— Hzê²°ì •ì´ ì•ˆë  ë•Œ)	ì¶”ì¶œìœ ëŸ‰ ê²°ì •
 
 #ifdef _AVATAR_
 	gu16_Effluent_Count_forAVATAR[gu8_WaterSelect]++;
@@ -2164,7 +2164,7 @@ void Ini_OperationStep_50(void)
 	if (gu16_Effluent_Count[gu8_WaterSelect] < 1999)
 	{
 		gu16_Effluent_Count[gu8_WaterSelect]++;
-		if ((gu16_Effluent_Count[gu8_WaterSelect] == 1999) || ((gu16_Effluent_Count[gu8_WaterSelect] % 10) == 0))		//	EEPROM ¼ö¸íÀ¸·Î 10È¸¸¶´Ù ÀúÀå
+		if ((gu16_Effluent_Count[gu8_WaterSelect] == 1999) || ((gu16_Effluent_Count[gu8_WaterSelect] % 10) == 0))		//	EEPROM ìˆ˜ëª…ìœ¼ë¡œ 10íšŒë§ˆë‹¤ ì €ì¥
 		{
 			switch (gu8_WaterSelect)
 			{
@@ -2199,7 +2199,7 @@ void Ini_OperationStep_50(void)
 	gu8_F_Continue_Effluent_Animation = CLEAR;       //@009
 }
 
-/// @brief	  FOTA Ç¥½Ã
+/// @brief	  FOTA í‘œì‹œ
 /// @param    void
 /// @return   void
 static void OperationStep_70(void)
@@ -2226,7 +2226,7 @@ void OperationStep_60(void)
 
     //	?? ?, ????? ??
     // Operation_Common();
-	if (gu8_Key_Short.byte != 0x00)					//	Àû¿ë ´ë±â
+	if (gu8_Key_Short.byte != 0x00)					//	ì ìš© ëŒ€ê¸°
 	{
 		Play_Voice(VOICE_BEEP_SELECT);
 		Ini_OperationStep_10();
@@ -2293,28 +2293,28 @@ void Ini_OperationStep_60(void)
 	OperationStepNoSet(Z_OperationStepNum_60);
 }
 
-/// @brief    ÀÚ°¡Áø´Ü
+/// @brief    ìê°€ì§„ë‹¨
 /// @param    void
 /// @return   void
 void OperationStep_80(void)
 {
 	U8 mu8_WifiDisp;
 
-	if (gu8_Key_Short.byte != 0x00)					//	Àû¿ë ´ë±â
+	if (gu8_Key_Short.byte != 0x00)					//	ì ìš© ëŒ€ê¸°
 	{
 		Play_Voice(VOICE_BEEP_WARNING);
 	}
 	else if (F_SmartCheck_Complete == SET)
 	{
 		Ini_OperationStep_10();
-		mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ¿¬°á»óÅÂ È®ÀÎ
+		mu8_WifiDisp = GetWifiStatusValue(WIFI_STATUS_DISP);	//	Wi-Fi ì—°ê²°ìƒíƒœ í™•ì¸
 
 		if (mu8_WifiDisp != WIFI_DISP_CONNECT)
 		{
 			Play_Voice(VOICE_BEEP_OFF);
 		}
 	}
-	else if (F_SmartCheck == CLEAR)					//	¼­¹ö¿¡¼­ Á¤Áö ½ÅÈ£ ½Ã
+	else if (F_SmartCheck == CLEAR)					//	ì„œë²„ì—ì„œ ì •ì§€ ì‹ í˜¸ ì‹œ
 	{
 		Ini_OperationStep_10();
 		gu16_SmartCheck_Result_Pure_VV_mA = 0xFFFFU;
@@ -2424,12 +2424,12 @@ void OperationStep_90(void)
 			SetWifiSystemStatus(WIFI_FACTORY_STATUS, SET);
 		}
 	}
-//	else											//	ÀÏº»Çâ
+//	else											//	ì¼ë³¸í–¥
 //	{
 //@024		if ((F_LineFrontTest_Effluent_Oper == SET) && (gu8_TimerLineFrontTest_EffLimit == 0)
 //@024		&& ((F_LineFrontTest_Cold_Select == SET) || (F_LineFrontTest_Pure_Select == SET)))
 //@024		{
-//@024			F_LineFrontTest_Effluent_Oper = CLEAR;	//	ÀúÀ¯·®¼¾¼­ °í¼Ó È¸Àü(¿­¹ß»ı)À¸·Î ÃßÃâ xÃÊ Á¦ÇÑ
+//@024			F_LineFrontTest_Effluent_Oper = CLEAR;	//	ì €ìœ ëŸ‰ì„¼ì„œ ê³ ì† íšŒì „(ì—´ë°œìƒ)ìœ¼ë¡œ ì¶”ì¶œ xì´ˆ ì œí•œ
 //@024			F_LineFrontTest_1stNos_VV = CLEAR;		
 //@024			Play_Voice(VOICE_EFFLUENT_COMPLETE);
 //@024		}
@@ -2465,7 +2465,7 @@ void OperationStep_90(void)
 		Play_Voice(VOICE_BEEP_OFF);                                             
 	}                                                                           
 
-	if ((gu8_ModelType_forCHP == MODEL_CHP) && (F_LineTest_Heater == SET) && (gu16_Heater_FB_forLineTest < 800)	//	È÷ÅÍ °Ë»ç ¿Ï·á ½Ã¿¡ FB Data°¡ ±âÁØÄ¡ ¹Ì´ŞÀÎ °æ¿ì
+	if ((gu8_ModelType_forCHP == MODEL_CHP) && (F_LineTest_Heater == SET) && (gu16_Heater_FB_forLineTest < 800)	//	íˆí„° ê²€ì‚¬ ì™„ë£Œ ì‹œì— FB Dataê°€ ê¸°ì¤€ì¹˜ ë¯¸ë‹¬ì¸ ê²½ìš°
 		&& (gu8_TimerLineTest_Heater_Delay == 0) && (gu8_TimerLineTest_Heater == 0)	&& (gu8_HeaterRetry < 3))
 	{
 		gu8_HeaterRetry++;
@@ -2582,7 +2582,7 @@ void OperationStep_90(void)
 			//@031 if(F_LineFrontTest_AMount_Select == 0)
 			//@031 {
 			//@031 	F_LineFrontTest_AMount_Select = 1;
-			//@031 	F_LineFrontTest_Amount_Complete = SET;		///	¿ë·®Å° ´Ü¹ß¼ºÀ¸·Î 1È¸¸¸ ´­·Áµµ Á¶°Ç¸¸Á·ÇÏµµ·Ï º¯°æ..(°Ë»ç±â¼úÆÀ ¿äÃ»)
+			//@031 	F_LineFrontTest_Amount_Complete = SET;		///	ìš©ëŸ‰í‚¤ ë‹¨ë°œì„±ìœ¼ë¡œ 1íšŒë§Œ ëˆŒë ¤ë„ ì¡°ê±´ë§Œì¡±í•˜ë„ë¡ ë³€ê²½..(ê²€ì‚¬ê¸°ìˆ íŒ€ ìš”ì²­)
 			//@031 }
 			//@031 else
 			//@031 {
@@ -2682,7 +2682,7 @@ void OperationStep_90(void)
 				if (F_LineFrontTest_Hot_Select == SET)
 				{
 					F_LineFrontTest_SteppingMotor_Oper = CLEAR;
-					StepMotor_ZeroBack_Open();			//				¿­¸² ÃÊ±âÈ­
+					StepMotor_ZeroBack_Open();			//				ì—´ë¦¼ ì´ˆê¸°í™”
 				}
 				Play_Voice(VOICE_EFFLUENT_COMPLETE);
 			}
@@ -2753,8 +2753,8 @@ void OperationStep_90(void)
 	INPUT_REED_SW_FAUCET_Before = INPUT_REED_SW_FAUCET;
 
 
-	//	UV ÇÇµå¹é
-	if(gu8_Timer_LineTest_UV_FB != 0)		//	3ÃÊµ¿¾È max°ª ÀúÀå
+	//	UV í”¼ë“œë°±
+	if(gu8_Timer_LineTest_UV_FB != 0)		//	3ì´ˆë™ì•ˆ maxê°’ ì €ì¥
 	{
 		if(ADC_RESULT_UV_FB > gu16_UV_MAX_FB_forLineTest)
 		{
@@ -2799,7 +2799,7 @@ void Ini_OperationStep_91(void)
 	OperationStepNoSet(Z_OperationStepNum_91);
 }
  
-/// @brief    ÇÁ·ĞÆ® Å×½ºÆ®
+/// @brief    í”„ë¡ íŠ¸ í…ŒìŠ¤íŠ¸
 /// @param    void
 /// @return   void
 void OperationStep_92(void)
@@ -2847,7 +2847,7 @@ void OperationStep_92(void)
 }
 void Ini_OperationStep_92(void)
 {
-//	Play_Voice(VOICE_SPECIAL_FUNCTION);				//	±¹³»Çâ/ÀÏº»Çâ ±¸ºĞÀ» À§ÇØ À½¼º Ãâ·Â
+//	Play_Voice(VOICE_SPECIAL_FUNCTION);				//	êµ­ë‚´í–¥/ì¼ë³¸í–¥ êµ¬ë¶„ì„ ìœ„í•´ ìŒì„± ì¶œë ¥
 	gu8_VoiceVolumeLevel = 4;
 
 	if (gu8_ModelType_forCHP == MODEL_CHP)
@@ -2861,7 +2861,7 @@ void Ini_OperationStep_92(void)
 	OperationStepNoSet(Z_OperationStepNum_92);
 }
 
-/// @brief    °øÀå ´ÜÃà °Ë»ç
+/// @brief    ê³µì¥ ë‹¨ì¶• ê²€ì‚¬
 /// @param    void
 /// @return   void
 void OperationStep_93(void)
@@ -3013,7 +3013,7 @@ void Ini_OperationStep_93(void)
 	OperationStepNoSet(Z_OperationStepNum_93);
 }
 
-/// @brief    ³Ã°¢PI Á¦¾î º¯°æ Àû¿ë 
+/// @brief    ëƒ‰ê°PI ì œì–´ ë³€ê²½ ì ìš© 
 /// @param    void
 /// @return   void
 void OperationStep_A0(void)
@@ -3037,7 +3037,7 @@ void OperationStep_A0(void)
 
 //		if (gu16_ColdTimeData > 60)
 //		{
-//			gu16_ColdTimeData = gu16_ColdTimeData - 60; 		//	1ºĞ °¨¼Ò
+//			gu16_ColdTimeData = gu16_ColdTimeData - 60; 		//	1ë¶„ ê°ì†Œ
 //			Play_Voice(VOICE_BEEP_SELECT);
 //		}
 //		else
@@ -3059,7 +3059,7 @@ void OperationStep_A0(void)
 
 //		if (gu16_ColdTimeData < 59000)
 //		{
-//			gu16_ColdTimeData = gu16_ColdTimeData + 60; 		//	1ºĞ Áõ°¡
+//			gu16_ColdTimeData = gu16_ColdTimeData + 60; 		//	1ë¶„ ì¦ê°€
 //			Play_Voice(VOICE_BEEP_SELECT);
 //		}
 //		else
@@ -3089,17 +3089,17 @@ void Ini_OperationStep_A0(void)
 /// @return   void
 void OperationStep_B0(void)
 {
-	// ÀÜ¾ĞÁ¦°Å ¿Ï·á Ã¼Å© ¹× À½¼º Ãâ·Â
+	// ì”ì••ì œê±° ì™„ë£Œ ì²´í¬ ë° ìŒì„± ì¶œë ¥
 	if(F_ColdEffStep_B0_Request == SET)
 	{
-		if((gu8_TimerPressureClear_ColdVV == 0)  // 3ÃÊ Å¸ÀÌ¸Ó ¿Ï·á
+		if((gu8_TimerPressureClear_ColdVV == 0)  // 3ì´ˆ íƒ€ì´ë¨¸ ì™„ë£Œ
 		&& (gu8_TimerPressureClear_ColdVV_Delay == 0))
 		{
-			// Ã¹ ¿Ï·á ½ÃÁ¡¿¡¸¸ À½¼º Ãâ·Â (Áßº¹ ¹æÁö)
+			// ì²« ì™„ë£Œ ì‹œì ì—ë§Œ ìŒì„± ì¶œë ¥ (ì¤‘ë³µ ë°©ì§€)
 			if(F_ColdEffStep_B0_PressureClearComplete == CLEAR)
 			{
 				F_ColdEffStep_B0_PressureClearComplete = SET;
-				Play_Voice(VOICE_RESIDUAL_WATER_REMOVAL_COMPLETE);  // 271¹ø À½¼º
+				Play_Voice(VOICE_RESIDUAL_WATER_REMOVAL_COMPLETE);  // 271ë²ˆ ìŒì„±
 			}
 		}
 	}
@@ -3109,7 +3109,7 @@ void OperationStep_B0(void)
 		gu8_TimerFilterChange = Z_TimerFilterChange;
 	}
 
-	if ((gu8_TimerFilterChange == 0) && (F_First_Set == SET))	//	ÃÊ±â ¼³Ä¡ ÀÌÈÄ¿¡ ÇÊÅÍ ±³Ã¼°¡ ÀÌ·ç¾îÁø °æ¿ì
+	if ((gu8_TimerFilterChange == 0) && (F_First_Set == SET))	//	ì´ˆê¸° ì„¤ì¹˜ ì´í›„ì— í•„í„° êµì²´ê°€ ì´ë£¨ì–´ì§„ ê²½ìš°
 	{
 		gu16_Effluent_Hz = 0;
 		F_FilterChange_Detect = SET;	
@@ -3129,7 +3129,7 @@ void OperationStep_B0(void)
 		}
 		#if 0
 		else if ((F_FilterChange_Detect == SET) && (F_FaucetChange_Detect == SET))
-		else if (F_FilterChange_Detect == SET)		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½..
+		else if (F_FilterChange_Detect == SET)		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ..
 		{
 			Play_Voice(VOICE_CHANGE_FILTER_FLOWFAUCET);
 			Ini_OperationStep_02();
@@ -3143,7 +3143,7 @@ void OperationStep_B0(void)
 			Play_Voice(VOICE_CHANGE_FILTER); // @040
 			Ini_OperationStep_02();
 		}
-		#if 0		//	À¯·ÎÆÄ¿ì¼ÂÀº ÇÃ·¯½Ì ¾øÀ½..
+		#if 0		//	ìœ ë¡œíŒŒìš°ì…‹ì€ í”ŒëŸ¬ì‹± ì—†ìŒ..
 		else if (F_FaucetChange_Detect == SET)
 		{
 			Play_Voice(VOICE_CHANGE_FLOWFAUCET);
@@ -3174,11 +3174,11 @@ void OperationStep_B0(void)
 			Play_Voice(VOICE_FLOWFAUCET_CONNECT_CHECK);
 		}
 	}
-	else if (KEY_EFFLUENT_SHORT == SET)  // 2986¹ø ¶óÀÎ Àü¿¡ Ãß°¡
+	else if (KEY_EFFLUENT_SHORT == SET)  // 2986ë²ˆ ë¼ì¸ ì „ì— ì¶”ê°€
 	{
-		if (INPUT_REED_SW_COVER == CLEAR)  // ÇÁ·ĞÆ® Ä¿¹ö ¿­¸² »óÅÂ
+		if (INPUT_REED_SW_COVER == CLEAR)  // í”„ë¡ íŠ¸ ì»¤ë²„ ì—´ë¦¼ ìƒíƒœ
 		{			
-			F_ColdEffStep_B0_Request = SET;  // ÀÜ¾Ğ Á¦°Å ¿äÃ»
+			F_ColdEffStep_B0_Request = SET;  // ì”ì•• ì œê±° ìš”ì²­
 		}
 	}	
 	else if (KEY_STE_KITMODE_LONG == SET)
@@ -3209,13 +3209,13 @@ void OperationStep_B0(void)
 	}
 	else if ((INPUT_REED_SW_FILTER_Before != INPUT_REED_SW_FILTER))
 	{
-		if (INPUT_REED_SW_FILTER == SET)			//	ÇÊÅÍ °áÇÕ ÇàÀ§
+		if (INPUT_REED_SW_FILTER == SET)			//	í•„í„° ê²°í•© í–‰ìœ„
 		{
 			if (gu8_ModelType_forNational == MODEL_KOREA)
 			{
 				Play_Voice(VOICE_BEEP_ON);
 			}
-			else									//	ÀÏº»Çâ
+			else									//	ì¼ë³¸í–¥
 			{
 				Play_Voice(VOICE_FILTER_ON);
 			}
@@ -3226,7 +3226,7 @@ void OperationStep_B0(void)
 			{
 				Play_Voice(VOICE_BEEP_OFF);
 			}
-			else									//	ÀÏº»Çâ
+			else									//	ì¼ë³¸í–¥
 			{
 				Play_Voice(VOICE_FILTER_OFF);
 			}
@@ -3242,7 +3242,7 @@ void OperationStep_B0(void)
 }
 void Ini_OperationStep_B0(void)
 {
-	F_ColdEffStep_B0_Request = CLEAR;	// ÀÜ¾Ğ Á¦°Å ¿äÃ» ÃÊ±âÈ­
+	F_ColdEffStep_B0_Request = CLEAR;	// ì”ì•• ì œê±° ìš”ì²­ ì´ˆê¸°í™”
 	F_ColdEffStep_B0_PressureClearComplete = CLEAR;
 
 	gu8_TimerSleepMode = Z_TimerSleepMode;
@@ -3255,7 +3255,7 @@ void Ini_OperationStep_B0(void)
 	OperationStepNoSet(Z_OperationStepNum_B0);
 }
 
-/// @brief    ³Ã¼öÅÊÅ© Áø°øÇØÁ¦
+/// @brief    ëƒ‰ìˆ˜íƒ±í¬ ì§„ê³µí•´ì œ
 /// @param    void
 /// @return   void
 void OperationStep_C0(void)
@@ -3281,7 +3281,7 @@ void Ini_OperationStep_C0(void)
 	OperationStepNoSet(Z_OperationStepNum_C0);
 }
 
-/// @brief    TH È®ÀÎ
+/// @brief    TH í™•ì¸
 /// @param    void
 /// @return   void
 void OperationStep_D0(void)
@@ -3291,7 +3291,7 @@ void OperationStep_D0(void)
 		Ini_OperationStep_10();
 		Play_Voice(VOICE_BEEP_ON);
 	}
-	else if (KEY_FLU_CAN_TH_CON_LONG == SET)		//	³Ã°¢½Ã°£ º¯°æ
+	else if (KEY_FLU_CAN_TH_CON_LONG == SET)		//	ëƒ‰ê°ì‹œê°„ ë³€ê²½
 	{
 		F_TEMP_A_SMPS_Voltage_Display ^= 1;
 		if(F_TEMP_A_SMPS_Voltage_Display == SET)                                         
@@ -3306,7 +3306,7 @@ void OperationStep_D0(void)
 	}
 	else if (KEY_COLDWATER_LONG == SET)
 	{
-		//	fan Àü¾Ğ °¡º¯ Å°º¯°æ
+		//	fan ì „ì•• ê°€ë³€ í‚¤ë³€ê²½
 		F_FAN_NoiseClear ^= 1;                      
 		if (F_FAN_NoiseClear == SET)                
 		{                                           
@@ -3360,7 +3360,7 @@ void OperationStep_D0(void)
 	else if (KEY_ALL_LOCK_LONG == SET)
 	{
 		F_HotWater_DegreeDisplay ^= 1;
-		gu8_TimerHotWater_DegreeDisplay = 60;			//	60ºĞ
+		gu8_TimerHotWater_DegreeDisplay = 60;			//	60ë¶„
 		if (F_HotWater_DegreeDisplay == SET)
 		{
 			Play_Voice(VOICE_BEEP_ON);
@@ -3499,7 +3499,7 @@ void Ini_OperationStep_D0(void)
 	OperationStepNoSet(Z_OperationStepNum_D0);
 }
 
-/// @brief    My¿ë·® º¯°æ
+/// @brief    Myìš©ëŸ‰ ë³€ê²½
 /// @param    void
 /// @return   void
 void OperationStep_D1(void)
@@ -3586,29 +3586,29 @@ void Ini_OperationStep_D1(void)
 	OperationStepNoSet(Z_OperationStepNum_D1);
 }
 
-/// @brief    ¿¡·¯
+/// @brief    ì—ëŸ¬
 /// @param    void
 /// @return   void
 void OperationStep_E0(void)
 {
-	if (gu8_Key_Short.byte != 0x00)					//	Å° ÀÔ·ÂÀÌ ÀÖÀ» °æ¿ì
+	if (gu8_Key_Short.byte != 0x00)					//	í‚¤ ì…ë ¥ì´ ìˆì„ ê²½ìš°
 	{
 		gu8_TimerSleepMode = Z_TimerSleepMode;
 	}
 
-	if (((gu8_ErrorCode == Z_Ecode01)			//	´©¼ö¿¡·¯ (ADC)
-		|| (gu8_ErrorCode == Z_Ecode02))		//	´©¼ö¿¡·¯ (Flow Sensor)
+	if (((gu8_ErrorCode == Z_Ecode01)			//	ëˆ„ìˆ˜ì—ëŸ¬ (ADC)
+		|| (gu8_ErrorCode == Z_Ecode02))		//	ëˆ„ìˆ˜ì—ëŸ¬ (Flow Sensor)
 		&& (F_TestMode_PBA == CLEAR)
-		&& (gu8_Key_Short.byte != 0x00))		//	Å×½ºÆ®¸ğµå¿¡¼­´Â ÇØÁ¦ °¡´É
+		&& (gu8_Key_Short.byte != 0x00))		//	í…ŒìŠ¤íŠ¸ëª¨ë“œì—ì„œëŠ” í•´ì œ ê°€ëŠ¥
 	{
-		Play_Voice(VOICE_BEEP_WARNING);			//			¿¡·¯À½ ¹ß»ı
+		Play_Voice(VOICE_BEEP_WARNING);			//			ì—ëŸ¬ìŒ ë°œìƒ
 	}
 	else if ((F_TestMode_PBA == SET) && (gu8_ErrorCode != 0x00)
 			&& (gu8_ErrorCode != Z_Ecode08) && (gu8_ErrorCode != Z_Ecode09)
 			&& (gu8_ErrorCode != Z_Ecode01) && (gu8_ErrorCode != Z_Ecode02)
-			&& (gu8_Key_Short.byte != 0x00))	//	°Ë»ç¸ğµå¿¡¼­ ¿¡·¯¹ß»ı ½Ã ¿¡·¯ ÇØÁ¦ ºÒ°¡´É (´©¼ö,´Ü¼ö¿¡·¯¸¸ ¿¹¿Ü)
+			&& (gu8_Key_Short.byte != 0x00))	//	ê²€ì‚¬ëª¨ë“œì—ì„œ ì—ëŸ¬ë°œìƒ ì‹œ ì—ëŸ¬ í•´ì œ ë¶ˆê°€ëŠ¥ (ëˆ„ìˆ˜,ë‹¨ìˆ˜ì—ëŸ¬ë§Œ ì˜ˆì™¸)
 	{												//
-		Play_Voice(VOICE_BEEP_WARNING);				//			¿¡·¯À½ ¹ß»ı
+		Play_Voice(VOICE_BEEP_WARNING);				//			ì—ëŸ¬ìŒ ë°œìƒ
 	}												//
 	else
 	{
@@ -3617,12 +3617,12 @@ void OperationStep_E0(void)
 			Hot_Lock_Setting();
 		}
 		else if ((KEY_COLDWATER_VERYLONG == SET)
-		&& (F_ColdOff == CLEAR))					//	ON -> OFF 7ÃÊ
+		&& (F_ColdOff == CLEAR))					//	ON -> OFF 7ì´ˆ
 		{
 			Cold_ONOFF_Setting();
 		}	
 		else if ((KEY_COLDWATER_LONG == SET)
-		&& (F_ColdOff == SET))					//	OFF -> ON 3ÃÊ
+		&& (F_ColdOff == SET))					//	OFF -> ON 3ì´ˆ
 		{
 			Cold_ONOFF_Setting();
 		}	
@@ -3740,7 +3740,7 @@ void Ini_OperationStep_E0(void)
 	gu8_F_Continue_Effluent_Animation = CLEAR;       //@009
 }
 
-/// @brief    ¿¡·¯ÀÌ·Â
+/// @brief    ì—ëŸ¬ì´ë ¥
 /// @param    void
 /// @return   void
 void OperationStep_E1(void)
@@ -3787,7 +3787,7 @@ void Ini_OperationStep_E1(void)
 	OperationStepNoSet(Z_OperationStepNum_E1);
 }
 
-/// @brief    »ì±ÕÅ°Æ® ¸ğµå (Á¤¼ö»ì±Õ 30ÃÊ ¡æ ³Ã¼ö»ì±Õ 2ºĞ ¡æ ³Ã¼öÇó±À 2ºĞ ¡æ Á¤¼öÇó±À 30ÃÊ)
+/// @brief    ì‚´ê· í‚¤íŠ¸ ëª¨ë“œ (ì •ìˆ˜ì‚´ê·  30ì´ˆ â†’ ëƒ‰ìˆ˜ì‚´ê·  2ë¶„ â†’ ëƒ‰ìˆ˜í—¹êµ¼ 2ë¶„ â†’ ì •ìˆ˜í—¹êµ¼ 30ì´ˆ)
 /// @param    void
 /// @return   void
 void OperationStep_F0(void)
@@ -3830,7 +3830,7 @@ void Ini_OperationStep_F0(void)
 	OperationStepNoSet(Z_OperationStepNum_F0);
 }
 
-/// @brief    Àü¾Ğ, Àü·ù ÇÇµå¹é È®ÀÎ ¸ğµå
+/// @brief    ì „ì••, ì „ë¥˜ í”¼ë“œë°± í™•ì¸ ëª¨ë“œ
 /// @param    void
 /// @return   void
 void OperationStep_F1(void)
@@ -3854,7 +3854,7 @@ void Ini_OperationStep_F1(void)
 	OperationStepNoSet(Z_OperationStepNum_F1);
 }
 
-/// @brief    ¿îÀü½ºÅÜ ¼³Á¤
+/// @brief    ìš´ì „ìŠ¤í… ì„¤ì •
 /// @param    void
 /// @return   void
 void OperationStepNoSet(U8 data)
@@ -3899,10 +3899,10 @@ void OperationStepNoSet(U8 data)
 		Z_OperationStep_F1,
 	};
 	/************************************************/
-	gu8_OperationStepNum = data; /*	ÀÏ·Ã ¹øÈ£ set*/
+	gu8_OperationStepNum = data; /*	ì¼ë ¨ ë²ˆí˜¸ set*/
 
 	#if 0
-	if (gu8_OperationStep == Z_OperationStep_50)	//	ÃßÃâ »óÅÂ¿¡¼­ ´Ù¸¥ »óÅÂ·Î ÀÌÇàÇÏ´Â °æ¿ì (½º¸¶Æ®Ã¼Å© °¡´É Àü¼Û)
+	if (gu8_OperationStep == Z_OperationStep_50)	//	ì¶”ì¶œ ìƒíƒœì—ì„œ ë‹¤ë¥¸ ìƒíƒœë¡œ ì´í–‰í•˜ëŠ” ê²½ìš° (ìŠ¤ë§ˆíŠ¸ì²´í¬ ê°€ëŠ¥ ì „ì†¡)
 	{
 		WifiSendData(WIFI_DATA_FUNCTION);
 	}
@@ -3910,8 +3910,8 @@ void OperationStepNoSet(U8 data)
 
 	#if 0
 	if (((gu8_OperationStep == Z_OperationStep_03) || (gu8_OperationStep == Z_OperationStep_04) || (gu8_OperationStep == Z_OperationStep_05))
-		&& ((gu8_OperationStepNum == Z_OperationStepNum_02) || (gu8_OperationStepNum == Z_OperationStepNum_10) || (gu8_OperationStepNum == Z_OperationStepNum_E0)))	//	ÇÃ·¯½Ì »óÅÂ¿¡¼­ ´Ù¸¥ »óÅÂ·Î ÀÌÇàÇÏ´Â °æ¿ì
-	{												//	 (½º¸¶Æ®Ã¼Å© °¡´É Àü¼Û)
+		&& ((gu8_OperationStepNum == Z_OperationStepNum_02) || (gu8_OperationStepNum == Z_OperationStepNum_10) || (gu8_OperationStepNum == Z_OperationStepNum_E0)))	//	í”ŒëŸ¬ì‹± ìƒíƒœì—ì„œ ë‹¤ë¥¸ ìƒíƒœë¡œ ì´í–‰í•˜ëŠ” ê²½ìš°
+	{												//	 (ìŠ¤ë§ˆíŠ¸ì²´í¬ ê°€ëŠ¥ ì „ì†¡)
 		WifiSendData(WIFI_DATA_FUNCTION);
 	}
 	#endif
@@ -3919,34 +3919,34 @@ void OperationStepNoSet(U8 data)
 	if(gu8_OperationStep == Z_OperationStep_50)    //@022
 	{   																	//@022
 		if((gu8_TimerReedSWCheck_forFaucetTip == 0)                         //@022
-		&& (gu8_WaterSelect == HOT_WATER)                                    //@022 ¿Â¼öÀÏ¶§¸¸
-		&& (gu8_F_FaucetTip_Undetected_Display_Done == CLEAR)                 //@022 1È¸¸¸
+		&& (gu8_WaterSelect == HOT_WATER)                                    //@022 ì˜¨ìˆ˜ì¼ë•Œë§Œ
+		&& (gu8_F_FaucetTip_Undetected_Display_Done == CLEAR)                 //@022 1íšŒë§Œ
 		&& (F_FirstHotEffluent  == SET))                                  //@022
 		{
-			gu8_F_FaucetTip_Undetected_Display_Done = SET;	              //@022 µğ½ºÇÃ·¹ÀÌ 1È¸ ÇÃ·¡±× ¸®¼Â
-			gu8_F_FaucetTip_Undetected_Voice_Done = SET;					      //@022 1È¸Ãâ·Â flag »óÅÂ ¹Ù²ğ¶§¸¶´Ù ÇØ¾ßÈû..					
+			gu8_F_FaucetTip_Undetected_Display_Done = SET;	              //@022 ë””ìŠ¤í”Œë ˆì´ 1íšŒ í”Œë˜ê·¸ ë¦¬ì…‹
+			gu8_F_FaucetTip_Undetected_Voice_Done = SET;					      //@022 1íšŒì¶œë ¥ flag ìƒíƒœ ë°”ë€”ë•Œë§ˆë‹¤ í•´ì•¼í˜..					
 		}                        										//@022
 	}                                                        			//@022
 
-	if ((gu8_OperationStep == Z_OperationStep_50) && (DT_OperationNumber[gu8_OperationStepNum] == Z_OperationStep_10))	//	ÃßÃâ »óÅÂ¿¡¼­ ´ë±â¸ğµå·Î °¡´Â °æ¿ì
+	if ((gu8_OperationStep == Z_OperationStep_50) && (DT_OperationNumber[gu8_OperationStepNum] == Z_OperationStep_10))	//	ì¶”ì¶œ ìƒíƒœì—ì„œ ëŒ€ê¸°ëª¨ë“œë¡œ ê°€ëŠ” ê²½ìš°
 	{
-		gu8_F_Effluent_Complete_After = SET;	// ÃßÃâ ¿Ï·á ÇÃ·¡±× SET
+		gu8_F_Effluent_Complete_After = SET;	// ì¶”ì¶œ ì™„ë£Œ í”Œë˜ê·¸ SET
 		F_UVCare_Oper = SET;
 
 		gu8_TimerEcode43_Display = Z_TimerEcode43_Display;
 	}
 	
 	if ((gu8_OperationStep == Z_OperationStep_10) 
-	&& ((DT_OperationNumber[gu8_OperationStepNum] == Z_OperationStep_50) || (DT_OperationNumber[gu8_OperationStepNum] == Z_OperationStep_11)))	//	ÃßÃâ »óÅÂ·Î ÀÌÇàÇÏ´Â °æ¿ì
+	&& ((DT_OperationNumber[gu8_OperationStepNum] == Z_OperationStep_50) || (DT_OperationNumber[gu8_OperationStepNum] == Z_OperationStep_11)))	//	ì¶”ì¶œ ìƒíƒœë¡œ ì´í–‰í•˜ëŠ” ê²½ìš°
 	{
 		gu16_Effluent_Hz_Amount_forWIFI = 0;
 //		gu16_Effluent_Hz_Amount = 0;
-		gu8_F_Effluent_Complete_After = CLEAR;	// ÃßÃâ ½ÃÀÛ ½Ã ÇÃ·¡±× CLEAR
-		gu16_TimerSilverCare = Z_TimerSilverCare;	//	½Ç¹öÄÉ¾î 48½Ã°£
+		gu8_F_Effluent_Complete_After = CLEAR;	// ì¶”ì¶œ ì‹œì‘ ì‹œ í”Œë˜ê·¸ CLEAR
+		gu16_TimerSilverCare = Z_TimerSilverCare;	//	ì‹¤ë²„ì¼€ì–´ 48ì‹œê°„
 		F_SilverCare_Detect = CLEAR;
 	}
 
-	if ((gu8_OperationStep == Z_OperationStep_10) && (DT_OperationNumber[gu8_OperationStepNum] != Z_OperationStep_10))	//	´ë±â »óÅÂ¿¡¼­ ´Ù¸¥ »óÅÂ·Î ÀÌÇàÇÏ´Â °æ¿ì
+	if ((gu8_OperationStep == Z_OperationStep_10) && (DT_OperationNumber[gu8_OperationStepNum] != Z_OperationStep_10))	//	ëŒ€ê¸° ìƒíƒœì—ì„œ ë‹¤ë¥¸ ìƒíƒœë¡œ ì´í–‰í•˜ëŠ” ê²½ìš°
 	{
 		F_UVCare_Oper = CLEAR;
 	}
@@ -3960,17 +3960,17 @@ void OperationStepNoSet(U8 data)
 		gu8_F_Effluent_Complete = CLEAR;
 	}
 
-	gu8_OperationStep = DT_OperationNumber[gu8_OperationStepNum]; /*	»óÅÂ mode No. set*/
+	gu8_OperationStep = DT_OperationNumber[gu8_OperationStepNum]; /*	ìƒíƒœ mode No. set*/
 }
 
-/// @brief	   Àü¿ø ÀÎ°¡½Ã ÃÖÃÊ ¹° ¼±ÅÃ
+/// @brief	   ì „ì› ì¸ê°€ì‹œ ìµœì´ˆ ë¬¼ ì„ íƒ
 /// @param    void
 /// @return   void
 static void FirstWaterSelectOperation(void)
 {
-	if (F_ColdOff == CLEAR)						//	³Ã°¢ ONÀÎ °æ¿ì
+	if (F_ColdOff == CLEAR)						//	ëƒ‰ê° ONì¸ ê²½ìš°
 	{
-		gu8_WaterSelect = COLD_WATER;			//		³Ã¼ö
+		gu8_WaterSelect = COLD_WATER;			//		ëƒ‰ìˆ˜
 		gu8_DefaultWaterSelect = COLD_WATER;
 	}
 	else
@@ -3981,7 +3981,7 @@ static void FirstWaterSelectOperation(void)
 	Ini_OperationStep_10();
 }
 
-/// @brief	  ¼³Á¤µÈ ¿öÅÍ·Î ÀÌÇà
+/// @brief	  ì„¤ì •ëœ ì›Œí„°ë¡œ ì´í–‰
 /// @param    void
 /// @return   void
 //static void WaterSelectOperation(void)
@@ -3989,7 +3989,7 @@ static void FirstWaterSelectOperation(void)
 //
 //}
 
-/// @brief	  ¿îÀü»óÅÂ °øÅëÃ³¸®
+/// @brief	  ìš´ì „ìƒíƒœ ê³µí†µì²˜ë¦¬
 /// @param    void
 /// @return   void
 static void Operation_Common(void)
@@ -4000,14 +4000,14 @@ static void Operation_Common(void)
 	U8 mu8_WifiDisp = 0;
 
 	/*******************************************/
-	//	½Å·Ú¼º °á·Î ÇÁ·Î±×·¥
+	//	ì‹ ë¢°ì„± ê²°ë¡œ í”„ë¡œê·¸ë¨
 	#ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
 	reliability_condenstation_test_program(0);
 	#endif
 	/*******************************************/
 
 	/*******************************************/
-	//	¾ç»ê Å×½ºÆ®¸ğµå
+	//	ì–‘ì‚° í…ŒìŠ¤íŠ¸ëª¨ë“œ
 	repeat_effluent_test_mode();
 	/*******************************************/
 
@@ -4052,32 +4052,32 @@ static void Operation_Common(void)
 		{
 			if ((gu8_CoolingStep == Z_CoolingStep_20) && (gu8_TimerTestColdOff == 0) && (F_CoolingRapid_Complete == CLEAR))
 			{
-				gu8_TimerTestColdOff = 300;	//	300ÃÊ
-				gu8_TimerTestColdOn = 10;	//	10ÃÊ
-				KEY_COLDWATER_LONG = SET;	//	³Ã°¢ OFF
+				gu8_TimerTestColdOff = 300;	//	300ì´ˆ
+				gu8_TimerTestColdOn = 10;	//	10ì´ˆ
+				KEY_COLDWATER_LONG = SET;	//	ëƒ‰ê° OFF
 			}
 		}
 		else
 		{
 			if (gu8_TimerTestColdOn == 0)
 			{
-				KEY_COLDWATER_LONG = SET;	//	³Ã°¢ ON
+				KEY_COLDWATER_LONG = SET;	//	ëƒ‰ê° ON
 			}
 		}
 	}
 	else
 	{
-		gu8_TimerTestColdOff = 300;	//	300ÃÊ
+		gu8_TimerTestColdOff = 300;	//	300ì´ˆ
 	}
 #endif
 
-	if (gu16_TimerSilverCare == 0)					//	½Ç¹öÄÉ¾î Å¸ÀÌ¸Ó °æ°ú ½Ã
+	if (gu16_TimerSilverCare == 0)					//	ì‹¤ë²„ì¼€ì–´ íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 	{
-		if (F_SilverCare_Detect == CLEAR)			//		½Ç¹öÄÉ¾î °¨Áö unsetÀÎ °æ¿ì
+		if (F_SilverCare_Detect == CLEAR)			//		ì‹¤ë²„ì¼€ì–´ ê°ì§€ unsetì¸ ê²½ìš°
 		{
-			F_SilverCare_Notice = SET;				//			WIFI ½Ç¹öÄÉ¾î ¾Ë¸²
+			F_SilverCare_Notice = SET;				//			WIFI ì‹¤ë²„ì¼€ì–´ ì•Œë¦¼
 		}
-		F_SilverCare_Detect = SET;					//			½Ç¹öÄÉ¾î »óÅÂ flag set
+		F_SilverCare_Detect = SET;					//			ì‹¤ë²„ì¼€ì–´ ìƒíƒœ flag set
 	}
  
 	if (KEY_FLU_CAN_TH_CON_LONG == SET)
@@ -4085,15 +4085,15 @@ static void Operation_Common(void)
 		Ini_OperationStep_D0();
 		Play_Voice(VOICE_SPECIAL_FUNCTION);
 	}
-	else if (gu8_ErrorCode != 0)					//	¿¡·¯ ¹ß»ıÀÎ °æ¿ì
+	else if (gu8_ErrorCode != 0)					//	ì—ëŸ¬ ë°œìƒì¸ ê²½ìš°
 	{
 		Ini_OperationStep_E0();
 	}
-	else if (F_AllLock == SET)						//	ÀüÃ¼Àá±İ ÀÎ °æ¿ì
+	else if (F_AllLock == SET)						//	ì „ì²´ì ê¸ˆ ì¸ ê²½ìš°
 	{
 		Ini_OperationStep_40();
 	}
-	else if ((KEY_EFFLUENT_SHORT == SET)				//	 	ÃßÃâ¹öÆ°
+	else if ((KEY_EFFLUENT_SHORT == SET)				//	 	ì¶”ì¶œë²„íŠ¼
 	&& (gu8_Timer_Prohibit_Effluent_AfterEffluent == 0))
 	{
 #ifdef _FOR_REPEAT_EFF_ENDURANCE_TEST_
@@ -4121,7 +4121,7 @@ static void Operation_Common(void)
 		gu16_CupSize = CUPSIZE_1CUP;
 		gu8_WaterSelect = HOT_WATER;
 #endif
-		//¹«ºù ±â´É autoµÇ¾îÀÖÀ¸¸é, ¹«ºù ´ë±â ½ºÅÜÀ¸·Î / ¾Æ´Ï¸é °Á ÃßÃâ °í°í.
+		//ë¬´ë¹™ ê¸°ëŠ¥ autoë˜ì–´ìˆìœ¼ë©´, ë¬´ë¹™ ëŒ€ê¸° ìŠ¤í…ìœ¼ë¡œ / ì•„ë‹ˆë©´ ê± ì¶”ì¶œ ê³ ê³ .
 		#if 0
 		if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)
 		{
@@ -4138,8 +4138,8 @@ static void Operation_Common(void)
 		}
 		else
 		{
-			//	À¯·Î ÆÄ¿ì¼Â ¹ÌÃ¼°áÀÏ¶§, ÃßÃâÇÏ¸é...À½¼º ³»º¸³»´Â°Ô ¸Â³ª..?
-			//	³Ã, ¿Â, Á¤ ÃßÃâÇÒ¶§ ÀüºÎ À½¼º ³»º¸³»´Â°Ô ¸Â´ÂÁö..?¾Æ´Ï¸é ¿Â¼ö¸¸ ³»º¸³»´Â°Ô ¸Â´ÂÁö..?
+			//	ìœ ë¡œ íŒŒìš°ì…‹ ë¯¸ì²´ê²°ì¼ë•Œ, ì¶”ì¶œí•˜ë©´...ìŒì„± ë‚´ë³´ë‚´ëŠ”ê²Œ ë§ë‚˜..?
+			//	ëƒ‰, ì˜¨, ì • ì¶”ì¶œí• ë•Œ ì „ë¶€ ìŒì„± ë‚´ë³´ë‚´ëŠ”ê²Œ ë§ëŠ”ì§€..?ì•„ë‹ˆë©´ ì˜¨ìˆ˜ë§Œ ë‚´ë³´ë‚´ëŠ”ê²Œ ë§ëŠ”ì§€..?
 			if((gu8_TimerReedSWCheck_forFaucetTip == 0)
 			&& (gu8_WaterSelect == HOT_WATER))		
 			{				
@@ -4158,11 +4158,11 @@ static void Operation_Common(void)
 		{
 		#endif
 
-		// ÆÄ¿ì¼ÂÀÌ ¿òÁ÷ÀÌ´Â Áß¿¡´Â ÃßÃâ ¸·±â
-		if((gu16_FaucetMovingPulse != 0)  // ÆÄ¿ì¼ÂÀÌ ½ÇÁ¦·Î ¿òÁ÷ÀÌ´Â Áß
-		&& ((gu8_FaucetMoving_Step <= Z_FAUCET_MOVING__INITIAL_SET_LEVEL_COMPLETE)  // ÃÊ±âÈ­ Áß
-		|| (gu8_FaucetMoving_Step == Z_FAUCET_REED_UNDETECTED_MOVE_UP)  // ÆÁ ¹Ì°¨Áö »ó½Â
-		|| (gu8_FaucetMoving_Step == Z_FILTER_CHANGE_MODE)))  // ÇÊÅÍ ±³Ã¼ ¸ğµå
+		// íŒŒìš°ì…‹ì´ ì›€ì§ì´ëŠ” ì¤‘ì—ëŠ” ì¶”ì¶œ ë§‰ê¸°
+		if((gu16_FaucetMovingPulse != 0)  // íŒŒìš°ì…‹ì´ ì‹¤ì œë¡œ ì›€ì§ì´ëŠ” ì¤‘
+		&& ((gu8_FaucetMoving_Step <= Z_FAUCET_MOVING__INITIAL_SET_LEVEL_COMPLETE)  // ì´ˆê¸°í™” ì¤‘
+		|| (gu8_FaucetMoving_Step == Z_FAUCET_REED_UNDETECTED_MOVE_UP)  // íŒ ë¯¸ê°ì§€ ìƒìŠ¹
+		|| (gu8_FaucetMoving_Step == Z_FILTER_CHANGE_MODE)))  // í•„í„° êµì²´ ëª¨ë“œ
 		{
 			Play_Voice(VOICE_BEEP_WARNING);
 		}
@@ -4171,14 +4171,14 @@ static void Operation_Common(void)
 			#if 0 // @018
 			if(gu8_TimerReedSWCheck_forFaucetTip == 0)
 			{
-				//	¿Â¼ö´Â ÃßÃâ ºÒ°¡
+				//	ì˜¨ìˆ˜ëŠ” ì¶”ì¶œ ë¶ˆê°€
 				if(gu8_WaterSelect == HOT_WATER)		
 				{
 					Play_Voice(VOICE_FAUCET_FLOW_DISCONNECT_FOR_HOT);
 				}
 				else
 				{
-					//	³Ã¼ö/Á¤¼ö ÃßÃâ °¡´ÉÇÏ³ª, °æ°í À½¼º Ãâ·Â
+					//	ëƒ‰ìˆ˜/ì •ìˆ˜ ì¶”ì¶œ ê°€ëŠ¥í•˜ë‚˜, ê²½ê³  ìŒì„± ì¶œë ¥
 					#if 0	// @005
 					if(gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)
 					{
@@ -4197,7 +4197,7 @@ static void Operation_Common(void)
 			{
 			#endif // @018
 				//@027 if((gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)
-				//@027 || (gu8_FaucetMoving_Step == Z_FAUCET_REED_UNDETECTED_WAIT_TIP))  // @018 ÃÖ»ó´Ü ´ë±â ÁßÀÌ¸é ÀÌÀüÀ§Ä¡ ÀÌµ¿¿Ï·á ÈÄ ÃßÃâ½ÃÀÛ..
+				//@027 || (gu8_FaucetMoving_Step == Z_FAUCET_REED_UNDETECTED_WAIT_TIP))  // @018 ìµœìƒë‹¨ ëŒ€ê¸° ì¤‘ì´ë©´ ì´ì „ìœ„ì¹˜ ì´ë™ì™„ë£Œ í›„ ì¶”ì¶œì‹œì‘..
 
 				if((gu8_FaucetMoving_Set_Level == Z_FAUCET_MOVING_AUTO_LEVEL)          //@027
 				|| ((gu8_FaucetMoving_Step == Z_FAUCET_REED_UNDETECTED_WAIT_TIP)       //@027
@@ -4231,17 +4231,17 @@ static void Operation_Common(void)
 		}
 #endif
 	}
-	else if (KEY_COLDWATER_SHORT == SET)		//	³Ã¼ö¹öÆ°
+	else if (KEY_COLDWATER_SHORT == SET)		//	ëƒ‰ìˆ˜ë²„íŠ¼
 	{
 		ColdWater_Button();
 	}
 	else if ((KEY_COLDWATER_VERYLONG == SET)
-	&& (F_ColdOff == CLEAR))					//	ON -> OFF 7ÃÊ
+	&& (F_ColdOff == CLEAR))					//	ON -> OFF 7ì´ˆ
 	{
 		Cold_ONOFF_Setting();
 	}	
 	else if ((KEY_COLDWATER_LONG == SET)
-	&& (F_ColdOff == SET))					//	OFF -> ON 3ÃÊ
+	&& (F_ColdOff == SET))					//	OFF -> ON 3ì´ˆ
 	{
 		Cold_ONOFF_Setting();
 	}	
@@ -4274,7 +4274,7 @@ static void Operation_Common(void)
 	}
 	else if (KEY_AMOUNT_SHORT == SET)
 	{
-		gu8_TimerDefaultCupSize_Set_LEDFlic = 0;	//		µğÆúÆ®¼³Á¤ Á¡¸êÅ¸ÀÌ¸Ó clear
+		gu8_TimerDefaultCupSize_Set_LEDFlic = 0;	//		ë””í´íŠ¸ì„¤ì • ì ë©¸íƒ€ì´ë¨¸ clear
 
 		if (gu8_TimerSleepMode == 0)
 		{
@@ -4350,7 +4350,7 @@ static void Operation_Common(void)
 							// 	gu8_CupIndex = CUPSIZE_ONE;
 							// }
 							#if 0
-							for(mu8_i = 0; mu8_i < CUPSIZE_FIVE; mu8_i++)  // ÃÖ´ë 5¹ø¸¸ °Ë»ö
+							for(mu8_i = 0; mu8_i < CUPSIZE_FIVE; mu8_i++)  // ìµœëŒ€ 5ë²ˆë§Œ ê²€ìƒ‰
 							{
 								if (++gu8_CupIndex > CUPSIZE_FIVE)
 								{
@@ -4364,30 +4364,30 @@ static void Operation_Common(void)
 								}
 							}
 							#endif
-							// ¸ÕÀú Áõ°¡ (ÇöÀç °ª °Ç³Ê¶Ù±â)
+							// ë¨¼ì € ì¦ê°€ (í˜„ì¬ ê°’ ê±´ë„ˆë›°ê¸°)
 							if (++gu8_CupIndex > CUPSIZE_FIVE)
 							{
 								gu8_CupIndex = CUPSIZE_ONE;
 							}
-							mu8_start_index = gu8_CupIndex;  // ½ÃÀÛ ÀÎµ¦½º ÀúÀå
+							mu8_start_index = gu8_CupIndex;  // ì‹œì‘ ì¸ë±ìŠ¤ ì €ì¥
 
-							// 5¹ø ¼øÂ÷ Å½»ö
+							// 5ë²ˆ ìˆœì°¨ íƒìƒ‰
 							for(mu8_i = 0; mu8_i < CUPSIZE_FIVE; mu8_i++)
 							{
-								// ÇöÀç °ªÀÌ enableÀÎÁö Ã¼Å©
+								// í˜„ì¬ ê°’ì´ enableì¸ì§€ ì²´í¬
 								if(gu8_Cup_size_Array[gu8_CupIndex].enable == 1)
 								{
 									search_ok = 1;
 									break;
 								}
 								
-								// ´ÙÀ½ °ªÀ¸·Î ÀÌµ¿
+								// ë‹¤ìŒ ê°’ìœ¼ë¡œ ì´ë™
 								if (++gu8_CupIndex > CUPSIZE_FIVE)
 								{
 									gu8_CupIndex = CUPSIZE_ONE;
 								}
 								
-								// ½ÃÀÛÁ¡À¸·Î µ¹¾Æ¿ÔÀ¸¸é Á¾·á (5¹ø Ã¼Å© ¿Ï·á)
+								// ì‹œì‘ì ìœ¼ë¡œ ëŒì•„ì™”ìœ¼ë©´ ì¢…ë£Œ (5ë²ˆ ì²´í¬ ì™„ë£Œ)
 								if(gu8_CupIndex == mu8_start_index)
 								{
 									break;
@@ -4402,17 +4402,17 @@ static void Operation_Common(void)
 							#endif
 
 							
-							if(gu8_CupIndex != CUPSIZE_FIVE)		//	¿¬¼Ó ¾Æ´Ï¸é..
+							if(gu8_CupIndex != CUPSIZE_FIVE)		//	ì—°ì† ì•„ë‹ˆë©´..
 							{
 								gu16_CupSize = (U16)gu8_Cup_size_Array[gu8_CupIndex].amount_volume * 10;		//	x 10
 							}
 							else
 							{
-								gu16_CupSize = CUPSIZE_CONTINUE;			//	¿¬¼ÓÀº 0xAA·Î...
+								gu16_CupSize = CUPSIZE_CONTINUE;			//	ì—°ì†ì€ 0xAAë¡œ...
 							}
 
 							#if 0
-							//	flowmeter.c¿¡¼­ 120, 250, 500, 1000 Á¦¿Ü °è»êÇÏ±â À§ÇÔ...
+							//	flowmeter.cì—ì„œ 120, 250, 500, 1000 ì œì™¸ ê³„ì‚°í•˜ê¸° ìœ„í•¨...
 							if((gu16_CupSize != 120) && (gu16_CupSize != 250)
 							&& (gu16_CupSize != 500) && (gu16_CupSize != 1000))
 							{
@@ -4427,7 +4427,7 @@ static void Operation_Common(void)
 					}
 					Play_Voice(VOICE_BEEP_SELECT);
 				}
-				else										//	ÀÏº»Çâ
+				else										//	ì¼ë³¸í–¥
 				{
 //#ifndef _FOR_JAPAN_90DEGREE_CONTINUE
 //					if ((gu8_WaterSelect == HOT_WATER) && (gu8_HotTempSetup == HOT_TEMP_SETUP_KOR100_JP90))
@@ -4479,8 +4479,8 @@ static void Operation_Common(void)
 		if (gu16_CupSize != CUPSIZE_CONTINUE)
 		{
 			gu8_DefaultCupSize = gu8_CupIndex;
-			gu8_TimerDefaultCupSize_Set_LEDFlic = Z_TimerDefaultCupSize_Set_LEDFlic;	//			¹°¾ç ¼³Á¤ Á¡¸ê
-			gu8_TimerCupSelect = Z_TimerCupSelect;    //			¹°¾ç ¼³Á¤ ½Ã 7-Seg Á¡µîÀ» À§ÇÏ¿© Å¸ÀÌ¸Ó set
+			gu8_TimerDefaultCupSize_Set_LEDFlic = Z_TimerDefaultCupSize_Set_LEDFlic;	//			ë¬¼ì–‘ ì„¤ì • ì ë©¸
+			gu8_TimerCupSelect = Z_TimerCupSelect;    //			ë¬¼ì–‘ ì„¤ì • ì‹œ 7-Seg ì ë“±ì„ ìœ„í•˜ì—¬ íƒ€ì´ë¨¸ set
 			Play_Voice(VOICE_BEEP_ON);
 		}
 		else
@@ -4567,7 +4567,7 @@ static void Operation_Common(void)
 	}
 	else if (KEY_SLEEPMODE_LONG == SET)
 	{
-		//	½Å·Ú¼º °á·Î ÇÁ·Î±×·¥
+		//	ì‹ ë¢°ì„± ê²°ë¡œ í”„ë¡œê·¸ë¨
 		#ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
 
 			gu8_F_gu16_reliability_test ^= 1;
@@ -4608,17 +4608,17 @@ static void Operation_Common(void)
 			Play_Voice(VOICE_GUIDE_FAUCET_FLOW_CONNECTION);
 		}
 		#endif //@020
-		if(gu8_FaucetMoving_Step == Z_FILTER_CHANGE_MODE)		//	ÆÄ¿ì¼Â ±³Ã¼ ¸ğµåÀÏ¶§´Â...±×³É ¸øµé¾î°¡°ÔÇÏ´Â°Ô ¸ÂÀ»µí..²¿¿©¹ö¸² À§Ä¡°¡
+		if(gu8_FaucetMoving_Step == Z_FILTER_CHANGE_MODE)		//	íŒŒìš°ì…‹ êµì²´ ëª¨ë“œì¼ë•ŒëŠ”...ê·¸ëƒ¥ ëª»ë“¤ì–´ê°€ê²Œí•˜ëŠ”ê²Œ ë§ì„ë“¯..ê¼¬ì—¬ë²„ë¦¼ ìœ„ì¹˜ê°€
 		{
 			Play_Voice(VOICE_BEEP_WARNING);
 		}
 		else
 		{
-			if((gu8_F_FaucetTip_Reed_Undetected == SET)   // @021 ¹Ì°¨Áö(ÀÌÅ») ½Ã auto·Î º¯°æ ÈÄ ÁøÀÔ
+			if((gu8_F_FaucetTip_Reed_Undetected == SET)   // @021 ë¯¸ê°ì§€(ì´íƒˆ) ì‹œ autoë¡œ ë³€ê²½ í›„ ì§„ì…
 			&& (gu8_FaucetMoving_Step != Z_FAUCET_MOVING_WAIT))  //@022
-			{												// @021 ¹Ì°¨Áö(ÀÌÅ») ½Ã auto·Î º¯°æ ÈÄ ÁøÀÔ
-				gu8_FaucetMoving_Set_Level = Z_FAUCET_MOVING_AUTO_LEVEL;  // @021 ¹Ì°¨Áö(ÀÌÅ») ½Ã auto·Î º¯°æ ÈÄ ÁøÀÔ
-			}    															// @021 ¹Ì°¨Áö(ÀÌÅ») ½Ã auto·Î º¯°æ ÈÄ ÁøÀÔ
+			{												// @021 ë¯¸ê°ì§€(ì´íƒˆ) ì‹œ autoë¡œ ë³€ê²½ í›„ ì§„ì…
+				gu8_FaucetMoving_Set_Level = Z_FAUCET_MOVING_AUTO_LEVEL;  // @021 ë¯¸ê°ì§€(ì´íƒˆ) ì‹œ autoë¡œ ë³€ê²½ í›„ ì§„ì…
+			}    															// @021 ë¯¸ê°ì§€(ì´íƒˆ) ì‹œ autoë¡œ ë³€ê²½ í›„ ì§„ì…
 			Ini_OperationStep_43();
 		}
 	}
@@ -4627,16 +4627,16 @@ static void Operation_Common(void)
 
 	}
 
-	if (gu8_Key_Short.byte != 0x00)			//	Å° ÀÔ·ÂÀÌ ÀÖÀ» °æ¿ì ÃßÃâÀ¯·® Å¸ÀÌ¸Ó ÇØÁö
+	if (gu8_Key_Short.byte != 0x00)			//	í‚¤ ì…ë ¥ì´ ìˆì„ ê²½ìš° ì¶”ì¶œìœ ëŸ‰ íƒ€ì´ë¨¸ í•´ì§€
 	{
 		gu8_TimerEffluentAmount_Display = 0;
 		gu8_TimerSleepMode = Z_TimerSleepMode;
 
-		#if 0		//	UV»èÁ¦
+		#if 0		//	UVì‚­ì œ
 		gu8_TimerUV_6h = Z_TimerUV_6h;
 		#endif
 
-		#if 0		//	UV»èÁ¦
+		#if 0		//	UVì‚­ì œ
 		gu8_TimerUV_Delay = Z_TimerUV_Delay;
 		#endif
 
@@ -4649,11 +4649,11 @@ static void Operation_Common(void)
 	{
 		gu8_TimerSleepMode = Z_TimerSleepMode;
 
-		#if 0		//	UV»èÁ¦
+		#if 0		//	UVì‚­ì œ
 		gu8_TimerUV_6h = Z_TimerUV_6h;
 		#endif
 		
-		#if 0		//	UV»èÁ¦
+		#if 0		//	UVì‚­ì œ
 		gu8_TimerUV_Delay = Z_TimerUV_Delay;
 		#endif
 	}
@@ -4670,25 +4670,25 @@ static void Operation_Common(void)
 	}
 }
 
-/// @brief	    ¹° ¹× ÄÅ ¼³Á¤ Å¸ÀÌ¸Ó °ü¸®
+/// @brief	    ë¬¼ ë° ì»µ ì„¤ì • íƒ€ì´ë¨¸ ê´€ë¦¬
 /// @param    void
 /// @return   void
 static void Water_Cup_SelectTimer(U8* address)
 {
-	if (address == &gu8_TimerWaterSelect)			//	¹° ¼±ÅÃ Å¸ÀÌ¸ÓÀÎ °æ¿ì
+	if (address == &gu8_TimerWaterSelect)			//	ë¬¼ ì„ íƒ íƒ€ì´ë¨¸ì¸ ê²½ìš°
 	{
-		gu8_TimerWaterSelect = Z_TimerWaterSelect;	//		¹° ¼±ÅÃ Å¸ÀÌ¸Ó set
-		if (gu8_TimerCupSelect != 0)				//		ÄÅ ¼³Á¤ Áß 7ÃÊ ÀÌ³»ÀÎ °æ¿ì
+		gu8_TimerWaterSelect = Z_TimerWaterSelect;	//		ë¬¼ ì„ íƒ íƒ€ì´ë¨¸ set
+		if (gu8_TimerCupSelect != 0)				//		ì»µ ì„¤ì • ì¤‘ 7ì´ˆ ì´ë‚´ì¸ ê²½ìš°
 		{
-			gu8_TimerCupSelect = Z_TimerCupSelect;	//			7ÃÊ reset
+			gu8_TimerCupSelect = Z_TimerCupSelect;	//			7ì´ˆ reset
 		}
 	}
-	else											//	ÄÅ ¼±ÅÃ Å¸ÀÌ¸ÓÀÎ °æ¿ì
+	else											//	ì»µ ì„ íƒ íƒ€ì´ë¨¸ì¸ ê²½ìš°
 	{
-		gu8_TimerCupSelect = Z_TimerCupSelect;		//		ÄÅ ¼±ÅÃ Å¸ÀÌ¸Ó set
-		if (gu8_TimerWaterSelect != 0)				//		¹° ¼±ÅÃ Áß 7ÃÊ ÀÌ³»ÀÎ °æ¿ì
+		gu8_TimerCupSelect = Z_TimerCupSelect;		//		ì»µ ì„ íƒ íƒ€ì´ë¨¸ set
+		if (gu8_TimerWaterSelect != 0)				//		ë¬¼ ì„ íƒ ì¤‘ 7ì´ˆ ì´ë‚´ì¸ ê²½ìš°
 		{
-			gu8_TimerWaterSelect = Z_TimerWaterSelect;	//			7ÃÊ reset
+			gu8_TimerWaterSelect = Z_TimerWaterSelect;	//			7ì´ˆ reset
 		}
 	}
 }
@@ -4728,9 +4728,9 @@ static void Cold_ONOFF_Setting(void)
 void Hot_Lock_Setting(void)
 {
 	F_HotLock ^= 1;
-	if (F_HotLock == CLEAR)					//			¿Â¼ö Àá±İ»óÅÂ°¡ ¾Æ´Ï¸é
+	if (F_HotLock == CLEAR)					//			ì˜¨ìˆ˜ ì ê¸ˆìƒíƒœê°€ ì•„ë‹ˆë©´
 	{
-//		if (gu8_ModelType_forNational == MODEL_KOREA)	//	ÀÏº»ÇâÀº ÇØÁ¦ÇØµµ ¿Â¼ö¼±ÅÃ ¾ÈµÇµµ·Ï
+//		if (gu8_ModelType_forNational == MODEL_KOREA)	//	ì¼ë³¸í–¥ì€ í•´ì œí•´ë„ ì˜¨ìˆ˜ì„ íƒ ì•ˆë˜ë„ë¡
 //		{
 			gu8_WaterSelect = HOT_WATER;
 //		}
@@ -4747,7 +4747,7 @@ void Hot_Lock_Setting(void)
 
 		Play_Voice(VOICE_HOT_LOCK_SETTING);
 	}
-	Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			¹°¼±ÅÃ Å¸ÀÌ¸Ó set
+	Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			ë¬¼ì„ íƒ íƒ€ì´ë¨¸ set
 }
 
 /// @brief
@@ -4779,12 +4779,12 @@ static void HotWater_Button(void)
 				{
 					if (F_HotWater_100Degree == SET)
 					{
-						if(gu8_f_hot_temp_sorting == Z_HOT_TEMP_ASCENDING)				//	¿À¸§ Â÷¼ø		
+						if(gu8_f_hot_temp_sorting == Z_HOT_TEMP_ASCENDING)				//	ì˜¤ë¦„ ì°¨ìˆœ		
 						{
 							//cbr_hot_test 2025-09-03
 							gu8_hot_water_select_index++;
 
-							if(gu8_hot_water_select_index > (gu8_select_hot_temp_total_count - 1))		//	ÃÖ´ë °¹¼ö
+							if(gu8_hot_water_select_index > (gu8_select_hot_temp_total_count - 1))		//	ìµœëŒ€ ê°¯ìˆ˜
 							{
 								gu8_hot_water_select_index = 0;
 							}
@@ -4792,7 +4792,7 @@ static void HotWater_Button(void)
 
 							gu8_HotTempSetup = selected_hot_temp[gu8_hot_water_select_index];
 						}
-						else																//	³»¸²Â÷¼ø
+						else																//	ë‚´ë¦¼ì°¨ìˆœ
 						{
 							if(gu8_hot_water_select_index != 0)
 							{
@@ -4821,7 +4821,7 @@ static void HotWater_Button(void)
 #endif
 				Play_Voice(VOICE_BEEP_SELECT);
 			}
-			else									//	¿Â¼ö ¼±ÅÃ Áß¿¡ and Ã¹ÀÜ ¹Ì¿Ï·á »óÅÂ¿¡¼­ ¿Â¼ö¹öÆ° ´©¸¦ °æ¿ì
+			else									//	ì˜¨ìˆ˜ ì„ íƒ ì¤‘ì— and ì²«ì” ë¯¸ì™„ë£Œ ìƒíƒœì—ì„œ ì˜¨ìˆ˜ë²„íŠ¼ ëˆ„ë¥¼ ê²½ìš°
 			{
 #ifndef _KOREA_NEW_VOICE_
 				Play_Voice(VOICE_BEEP_WARNING);
@@ -4875,18 +4875,18 @@ static void PureWater_Button(void)
 static void ColdWater_Button(void)
 {
 	F_HotDegreeDisplay = CLEAR;
-	if (F_ColdOff == SET)					//		³Ã°¢ OFF¶ó¸é
+	if (F_ColdOff == SET)					//		ëƒ‰ê° OFFë¼ë©´
 	{
-		Ini_OperationStep_16();				//			OFFÇ¥½Ã
+		Ini_OperationStep_16();				//			OFFí‘œì‹œ
 		Play_Voice(VOICE_COLD_OFF_CHECK);
 	}
-	else									//		³Ã°¢ ON
+	else									//		ëƒ‰ê° ON
 	{
 		gu8_DefaultWaterSelect = COLD_WATER;
 		Play_Voice(VOICE_BEEP_SELECT);
 	}
 	gu8_WaterSelect = COLD_WATER;
-	Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			¹°¼±ÅÃ Å¸ÀÌ¸Ó set
+	Water_Cup_SelectTimer(&gu8_TimerWaterSelect);    //			ë¬¼ì„ íƒ íƒ€ì´ë¨¸ set
 }
 
 /// @brief
@@ -4935,31 +4935,31 @@ static void welcome_led_output(void)
 /// @return   void
 static void Effluent_Voice(void)
 {
-//@022	if(gu8_TimerReedSWCheck_forFaucetTip == 0)                             //@018 µ¥ÄÚÆÄ¿ì¼Â ÀÌÅ»½Ã, ³Ã/Á¤ ÀÌÅ» À½¼º Àû¿ë(¹«ºùµµ °¡´É)
-//@022	{                                                                      //@018 µ¥ÄÚÆÄ¿ì¼Â ÀÌÅ»½Ã, ³Ã/Á¤ ÀÌÅ» À½¼º Àû¿ë(¹«ºùµµ °¡´É)
-//@022		Play_Voice(VOICE_GUIDE_FAUCET_FLOW_CONNECTION); //@018 µ¥ÄÚÆÄ¿ì¼Â ÀÌÅ»½Ã, ³Ã/Á¤ ÀÌÅ» À½¼º Àû¿ë(¹«ºùµµ °¡´É)
-//@022	}                                                                      //@018 µ¥ÄÚÆÄ¿ì¼Â ÀÌÅ»½Ã, ³Ã/Á¤ ÀÌÅ» À½¼º Àû¿ë(¹«ºùµµ °¡´É)
-//@022	else                                                                  //@018 µ¥ÄÚÆÄ¿ì¼Â ÀÌÅ»½Ã, ³Ã/Á¤ ÀÌÅ» À½¼º Àû¿ë(¹«ºùµµ °¡´É)
+//@022	if(gu8_TimerReedSWCheck_forFaucetTip == 0)                             //@018 ë°ì½”íŒŒìš°ì…‹ ì´íƒˆì‹œ, ëƒ‰/ì • ì´íƒˆ ìŒì„± ì ìš©(ë¬´ë¹™ë„ ê°€ëŠ¥)
+//@022	{                                                                      //@018 ë°ì½”íŒŒìš°ì…‹ ì´íƒˆì‹œ, ëƒ‰/ì • ì´íƒˆ ìŒì„± ì ìš©(ë¬´ë¹™ë„ ê°€ëŠ¥)
+//@022		Play_Voice(VOICE_GUIDE_FAUCET_FLOW_CONNECTION); //@018 ë°ì½”íŒŒìš°ì…‹ ì´íƒˆì‹œ, ëƒ‰/ì • ì´íƒˆ ìŒì„± ì ìš©(ë¬´ë¹™ë„ ê°€ëŠ¥)
+//@022	}                                                                      //@018 ë°ì½”íŒŒìš°ì…‹ ì´íƒˆì‹œ, ëƒ‰/ì • ì´íƒˆ ìŒì„± ì ìš©(ë¬´ë¹™ë„ ê°€ëŠ¥)
+//@022	else                                                                  //@018 ë°ì½”íŒŒìš°ì…‹ ì´íƒˆì‹œ, ëƒ‰/ì • ì´íƒˆ ìŒì„± ì ìš©(ë¬´ë¹™ë„ ê°€ëŠ¥)
 //@022	{
 		if (gu8_WaterSelect == HOT_WATER)
 		{
-			if (F_FirstHotEffluent == CLEAR)		//	Ã¹ÀÜ ¹Ì ¿Ï·á ½Ã
+			if (F_FirstHotEffluent == CLEAR)		//	ì²«ì” ë¯¸ ì™„ë£Œ ì‹œ
 			{
 				Play_Voice(VOICE_HOTWATER_FIRST);	//
 			}
 			else 
 			{
 				if((gu8_TimerReedSWCheck_forFaucetTip == 0)
-				&& (gu8_F_FaucetTip_Undetected_Voice_Done == CLEAR))                      // @022 ¹Ì°¨Áö À½¼º 1È¸¸¸
+				&& (gu8_F_FaucetTip_Undetected_Voice_Done == CLEAR))                      // @022 ë¯¸ê°ì§€ ìŒì„± 1íšŒë§Œ
 				{	                                                                      // @022
-					// gu8_F_FaucetTip_Undetected_Voice_Done = SET;					      //@022 1È¸Ãâ·Â flag »óÅÂ ¹Ù²ğ¶§¸¶´Ù ÇØ¾ßÈû..
+					// gu8_F_FaucetTip_Undetected_Voice_Done = SET;					      //@022 1íšŒì¶œë ¥ flag ìƒíƒœ ë°”ë€”ë•Œë§ˆë‹¤ í•´ì•¼í˜..
 					// Play_Voice(VOICE_GUIDE_FAUCET_FLOW_CONNECTION);    //@022
 				}				                                                          // @022
 			}
 		}
 		else
 		{
-			if (gu16_CupSize == CUPSIZE_CONTINUE)	//		¿¬¼Ó ÃßÃâ ÀÎ °æ¿ì
+			if (gu16_CupSize == CUPSIZE_CONTINUE)	//		ì—°ì† ì¶”ì¶œ ì¸ ê²½ìš°
 			{
 				Play_Voice(VOICE_CONTIUNE_EFFLUENT);
 			}
@@ -4997,7 +4997,7 @@ void return_default_hot_temp_setup(void)
 	gu8_HotTempSetup = selected_hot_temp[gu8_hot_water_select_index];
 }
 
-/// @brief	WiFi¿¡¼­ ¼±ÅÃÇÑ ¿ë·®ÀÌ ºñÈ°¼ºÈ­µÈ °æ¿ì ´ÙÀ½ È°¼ºÈ­µÈ ¿ë·®À» Ã£¾Æ ¹İÈ¯ÇÏ´Â
+/// @brief	WiFiì—ì„œ ì„ íƒí•œ ìš©ëŸ‰ì´ ë¹„í™œì„±í™”ëœ ê²½ìš° ë‹¤ìŒ í™œì„±í™”ëœ ìš©ëŸ‰ì„ ì°¾ì•„ ë°˜í™˜í•˜ëŠ”
 /// @param    void
 /// @return   void
 void Update_DefaultCupSize_If_Disabled(void)
@@ -5007,32 +5007,32 @@ void Update_DefaultCupSize_If_Disabled(void)
     U8 min_volume_value = 0xFF;
     U8 found_active = 0;
 
-    // ¿¬¼Ó ¸ğµå(CUPSIZE_FIVE)´Â default ¹°¾çÀ¸·Î ¼±ÅÃµÇÁö ¾Êµµ·Ï Á¦¿Ü
+    // ì—°ì† ëª¨ë“œ(CUPSIZE_FIVE)ëŠ” default ë¬¼ì–‘ìœ¼ë¡œ ì„ íƒë˜ì§€ ì•Šë„ë¡ ì œì™¸
     if(gu8_DefaultCupSize == CUPSIZE_FIVE)
     {
-        // ¿¬¼Ó ¸ğµå·Î ¼³Á¤µÇ¾î ÀÖÀ¸¸é °¡Àå ÀÛÀº ¿ë·®À¸·Î º¯°æ
+        // ì—°ì† ëª¨ë“œë¡œ ì„¤ì •ë˜ì–´ ìˆìœ¼ë©´ ê°€ì¥ ì‘ì€ ìš©ëŸ‰ìœ¼ë¡œ ë³€ê²½
         found_active = 0;
     }
     else
     {
-        // ÇöÀç ±âº» ÄÅ»çÀÌÁî°¡ È°¼ºÈ­µÇ¾î ÀÖÀ¸¸é ±×´ë·Î À¯Áö
+        // í˜„ì¬ ê¸°ë³¸ ì»µì‚¬ì´ì¦ˆê°€ í™œì„±í™”ë˜ì–´ ìˆìœ¼ë©´ ê·¸ëŒ€ë¡œ ìœ ì§€
         if(gu8_Cup_size_Array[gu8_DefaultCupSize].enable == 1)
         {
-            return;  // º¯°æ ºÒÇÊ¿ä
+            return;  // ë³€ê²½ ë¶ˆí•„ìš”
         }
         
-        // ºñÈ°¼ºÈ­µÇ¾î ÀÖÀ¸¸é °¡Àå ÀÛÀº ¿ë·® Ã£±â
+        // ë¹„í™œì„±í™”ë˜ì–´ ìˆìœ¼ë©´ ê°€ì¥ ì‘ì€ ìš©ëŸ‰ ì°¾ê¸°
         found_active = 0;
     }
     
-    // È°¼ºÈ­µÈ ¿ë·® Áß °¡Àå ÀÛÀº ¿ë·® Ã£±â (¿¬¼Ó ¸ğµå Á¦¿Ü)
+    // í™œì„±í™”ëœ ìš©ëŸ‰ ì¤‘ ê°€ì¥ ì‘ì€ ìš©ëŸ‰ ì°¾ê¸° (ì—°ì† ëª¨ë“œ ì œì™¸)
     for(i = CUPSIZE_ONE; i <= CUPSIZE_FOUR; i++)
     {
-        // È°¼ºÈ­µÈ ¿ë·®ÀÌ°í ¿¬¼Ó ¸ğµå°¡ ¾Æ´Ï¸é
+        // í™œì„±í™”ëœ ìš©ëŸ‰ì´ê³  ì—°ì† ëª¨ë“œê°€ ì•„ë‹ˆë©´
         if((gu8_Cup_size_Array[i].enable == 1) && (i != CUPSIZE_FIVE))
         {
             found_active = 1;
-            // °¡Àå ÀÛÀº ¿ë·® Ã£±â
+            // ê°€ì¥ ì‘ì€ ìš©ëŸ‰ ì°¾ê¸°
             if(gu8_Cup_size_Array[i].amount_volume < min_volume_value)
             {
                 min_volume_value = gu8_Cup_size_Array[i].amount_volume;
@@ -5041,19 +5041,19 @@ void Update_DefaultCupSize_If_Disabled(void)
         }
     }
     
-    // È°¼ºÈ­µÈ ¿ë·®ÀÌ ÀÖÀ¸¸é °¡Àå ÀÛÀº ¿ë·®À¸·Î ¼³Á¤
+    // í™œì„±í™”ëœ ìš©ëŸ‰ì´ ìˆìœ¼ë©´ ê°€ì¥ ì‘ì€ ìš©ëŸ‰ìœ¼ë¡œ ì„¤ì •
     if(found_active == 1)
     {
         gu8_DefaultCupSize = min_volume_index;
     }
     else
     {
-        // ¸ğµç ¿ë·®ÀÌ ºñÈ°¼ºÈ­µÈ °æ¿ì ±âº»°ªÀ¸·Î
+        // ëª¨ë“  ìš©ëŸ‰ì´ ë¹„í™œì„±í™”ëœ ê²½ìš° ê¸°ë³¸ê°’ìœ¼ë¡œ
         gu8_DefaultCupSize = CUPSIZE_ONE;
     }
 }
 
-/// @brief    ÇöÀç ¼±ÅÃµÈ ¿ë·®ÀÌ ºñÈ°¼ºÈ­µÇ¾úÀ» ¶§ È°¼ºÈ­µÈ ´Ù¸¥ ¿ë·®À¸·Î º¯°æ
+/// @brief    í˜„ì¬ ì„ íƒëœ ìš©ëŸ‰ì´ ë¹„í™œì„±í™”ë˜ì—ˆì„ ë•Œ í™œì„±í™”ëœ ë‹¤ë¥¸ ìš©ëŸ‰ìœ¼ë¡œ ë³€ê²½
 /// @param    void
 /// @return   void
 void Update_CurrentCupSize_If_Disabled(void)
@@ -5063,40 +5063,40 @@ void Update_CurrentCupSize_If_Disabled(void)
     U8 mu8_i = 0;
     U8 search_ok = 0;
     
-    // ÇöÀç ¼±ÅÃµÈ ¿ë·®ÀÌ È°¼ºÈ­µÇ¾î ÀÖÀ¸¸é º¯°æ ºÒÇÊ¿ä
+    // í˜„ì¬ ì„ íƒëœ ìš©ëŸ‰ì´ í™œì„±í™”ë˜ì–´ ìˆìœ¼ë©´ ë³€ê²½ ë¶ˆí•„ìš”
     if(gu8_CupIndex <= CUPSIZE_FIVE)
     {
         if(gu8_Cup_size_Array[gu8_CupIndex].enable == 1)
         {
-            return;  // º¯°æ ºÒÇÊ¿ä
+            return;  // ë³€ê²½ ë¶ˆí•„ìš”
         }
     }
     
-    // ÇöÀç ¼±ÅÃµÈ ¿ë·®ÀÌ ºñÈ°¼ºÈ­µÇ¾ú°Å³ª ¹üÀ§¸¦ ¹ş¾î³µÀ¸¸é È°¼ºÈ­µÈ ¿ë·® Ã£±â
-    // ¸ÕÀú Áõ°¡ (ÇöÀç °ª °Ç³Ê¶Ù±â)
+    // í˜„ì¬ ì„ íƒëœ ìš©ëŸ‰ì´ ë¹„í™œì„±í™”ë˜ì—ˆê±°ë‚˜ ë²”ìœ„ë¥¼ ë²—ì–´ë‚¬ìœ¼ë©´ í™œì„±í™”ëœ ìš©ëŸ‰ ì°¾ê¸°
+    // ë¨¼ì € ì¦ê°€ (í˜„ì¬ ê°’ ê±´ë„ˆë›°ê¸°)
     if (++gu8_CupIndex > CUPSIZE_FIVE)
     {
         gu8_CupIndex = CUPSIZE_ONE;
     }
-    mu8_start_index = gu8_CupIndex;  // ½ÃÀÛ ÀÎµ¦½º ÀúÀå
+    mu8_start_index = gu8_CupIndex;  // ì‹œì‘ ì¸ë±ìŠ¤ ì €ì¥
 
-    // 5¹ø ¼øÂ÷ Å½»ö
+    // 5ë²ˆ ìˆœì°¨ íƒìƒ‰
     for(mu8_i = 0; mu8_i < CUPSIZE_FIVE; mu8_i++)
     {
-        // ÇöÀç °ªÀÌ enableÀÎÁö Ã¼Å©
+        // í˜„ì¬ ê°’ì´ enableì¸ì§€ ì²´í¬
         if(gu8_Cup_size_Array[gu8_CupIndex].enable == 1)
         {
             search_ok = 1;
             break;
         }
         
-        // ´ÙÀ½ °ªÀ¸·Î ÀÌµ¿
+        // ë‹¤ìŒ ê°’ìœ¼ë¡œ ì´ë™
         if (++gu8_CupIndex > CUPSIZE_FIVE)
         {
             gu8_CupIndex = CUPSIZE_ONE;
         }
         
-        // ½ÃÀÛÁ¡À¸·Î µ¹¾Æ¿ÔÀ¸¸é Á¾·á (5¹ø Ã¼Å© ¿Ï·á)
+        // ì‹œì‘ì ìœ¼ë¡œ ëŒì•„ì™”ìœ¼ë©´ ì¢…ë£Œ (5ë²ˆ ì²´í¬ ì™„ë£Œ)
         if(gu8_CupIndex == mu8_start_index)
         {
             break;
@@ -5108,28 +5108,28 @@ void Update_CurrentCupSize_If_Disabled(void)
         gu8_CupIndex = CUPSIZE_ONE;
     }
 
-    // gu16_CupSize ¾÷µ¥ÀÌÆ®
-    if(gu8_CupIndex != CUPSIZE_FIVE)		//	¿¬¼Ó ¾Æ´Ï¸é..
+    // gu16_CupSize ì—…ë°ì´íŠ¸
+    if(gu8_CupIndex != CUPSIZE_FIVE)		//	ì—°ì† ì•„ë‹ˆë©´..
     {
         gu16_CupSize = (U16)gu8_Cup_size_Array[gu8_CupIndex].amount_volume * 10;		//	x 10
     }
     else
     {
-        gu16_CupSize = CUPSIZE_CONTINUE;			//	¿¬¼ÓÀº 0xAA·Î...
+        gu16_CupSize = CUPSIZE_CONTINUE;			//	ì—°ì†ì€ 0xAAë¡œ...
     }
 }
 
-/// @brief    6½Ã°£ ÁÖ±â UV ÄÉ¾î Ã¼Å© ¹× ½ÃÀÛ
+/// @brief    6ì‹œê°„ ì£¼ê¸° UV ì¼€ì–´ ì²´í¬ ë° ì‹œì‘
 /// @param    void
 /// @return   void
 static void UV_Care_6h_Check(void)
 {
     if (gu8_TimerUV_6h == 0)
     {
-        gu8_TimerUV_6h = Z_TimerUV_6h;          // ´ÙÀ½ 6½Ã°£ ÁÖ±â ¸®¼Â
-        gu16_TimerUV_Oper = Z_TimerUV_Oper;     // 1ÃÊ UV µ¿ÀÛ Å¸ÀÌ¸Ó ¼³Á¤
-        F_UVCare_Start_forWIFI = SET;           // WiFi ¾Ë¸²
-		gu8_Timer_UV_Display = Z_TimerUVDisplay;   //	Ç¥½Ã ´Ù½Ã ½ÃÀÛÇÏ±â À§ÇÔ.
+        gu8_TimerUV_6h = Z_TimerUV_6h;          // ë‹¤ìŒ 6ì‹œê°„ ì£¼ê¸° ë¦¬ì…‹
+        gu16_TimerUV_Oper = Z_TimerUV_Oper;     // 1ì´ˆ UV ë™ì‘ íƒ€ì´ë¨¸ ì„¤ì •
+        F_UVCare_Start_forWIFI = SET;           // WiFi ì•Œë¦¼
+		gu8_Timer_UV_Display = Z_TimerUVDisplay;   //	í‘œì‹œ ë‹¤ì‹œ ì‹œì‘í•˜ê¸° ìœ„í•¨.
     }
 }
 
@@ -5146,14 +5146,14 @@ static void repeat_effluent_test_mode(void)
 			{
 				switch (gu8_Counter_Repeat_Eff_forMP)
 				{
-					case 0:								//	³Ã¼ö
+					case 0:								//	ëƒ‰ìˆ˜
 						gu8_WaterSelect = COLD_WATER;
 						break;
-					case 2:								//	¿Â¼ö
+					case 2:								//	ì˜¨ìˆ˜
 						gu8_WaterSelect = HOT_WATER;
 						gu8_HotTempSetup = HOT_TEMP_SETUP_KOR100_JP90;										
 						break;
-					case 1:								//	Á¤¼ö
+					case 1:								//	ì •ìˆ˜
 						gu8_WaterSelect = PURE_WATER;
 						break;
 					default:
@@ -5169,7 +5169,7 @@ static void repeat_effluent_test_mode(void)
 	}
 }
 
-/// @brief	  ½Å·Ú¼º °á·Î ÇÁ·Î±×·¥
+/// @brief	  ì‹ ë¢°ì„± ê²°ë¡œ í”„ë¡œê·¸ë¨
 /// @param    void
 /// @return   void
 #ifdef _FOR_RELIABILITY_CONDENSATION_PROGRAM_
@@ -5179,17 +5179,17 @@ static void reliability_condenstation_test_program(U8 mu8_status)
 	{
 		gu8_FaucetMoving_Set_Level = Z_FAUCET_MOVING_AUTO_LEVEL; 
 
-		if(mu8_status == 0)			//	ÃßÃâ ½ÃÀÛ
+		if(mu8_status == 0)			//	ì¶”ì¶œ ì‹œì‘
 		{
 			if(gu16_timer_gu16_reliability_test == 0)
 			{
-				if(gu8_count_gu16_reliability_test == 0)		//	³Ã¼ö
+				if(gu8_count_gu16_reliability_test == 0)		//	ëƒ‰ìˆ˜
 				{
 					gu16_CupSize = CUPSIZE_2CUP;
 					gu8_WaterSelect = COLD_WATER;
 					KEY_EFFLUENT_SHORT = SET;
 				}
-				else if(gu8_count_gu16_reliability_test == 1)		//	Á¤¼ö
+				else if(gu8_count_gu16_reliability_test == 1)		//	ì •ìˆ˜
 				{
 					gu16_CupSize = CUPSIZE_2CUP;
 					gu8_WaterSelect = PURE_WATER;
@@ -5206,7 +5206,7 @@ static void reliability_condenstation_test_program(U8 mu8_status)
 				Water_Cup_SelectTimer(&gu8_TimerCupSelect);
 			}		
 		}
-		else						//	ÃßÃâ ¿Ï·á
+		else						//	ì¶”ì¶œ ì™„ë£Œ
 		{
 			if(gu8_count_gu16_reliability_test > 2)
 			{

@@ -1,14 +1,14 @@
 /// @file     display.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ??¨ö? ??¨ú? ¡Æ?¡¤? file
+/// @brief    ??Â½? ??Â¾? Â°?Â·? file
 #define DISPLAY_C
 #include "include/_include.h"
 
 #define Z_Fade_Select			(10)				//	Fade Timer 150ms
 #define Z_ON_DimmingPercent		(100)				//	ON Dimming
-#define Z_DimmingPercent		(40)				//	¨ú???¡Æ? ON
-#define Z_DimmingPercent_Low	(10)				//	¢¥? ¨ú???¡Æ?
+#define Z_DimmingPercent		(40)				//	Â¾???Â°? ON
+#define Z_DimmingPercent_Low	(10)				//	Â´? Â¾???Â°?
 
 static void LED_COLD(void);
 static void LED_HOT(void);
@@ -32,7 +32,7 @@ static U8 LED_PWM(U8 led_data);
 
 static void FadeSet(Display_Control *DisplayPnt, U8 PWM_Target, U8 Timer);
 
-/// @brief    ??¨ö?¨¬? ??¡¾??¡©
+/// @brief    ??Â½?Âº? ??Â±??Â­
 /// @param    void
 /// @return   void
 void Display_Initialize(void)
@@ -43,7 +43,7 @@ void Display_Initialize(void)
 	gu8_DimmingPercent_Low = Z_DimmingPercent_Low;
 }
 
-/// @brief    ??¨ö?¨¬? ??¨ú?
+/// @brief    ??Â½?Âº? ??Â¾?
 /// @param    void
 /// @return   void
 void DisplayControl(void)
@@ -58,16 +58,16 @@ void DisplayControl(void)
 	OperationDisplay();
 }
 
-/// @brief    ??¨ö?¨¬? ??¨ú?
+/// @brief    ??Â½?Âº? ??Â¾?
 /// @param    void
 /// @return   void
 void Seg_Control(void)
 {
-	gu8_ComPortChange++;							//	Com ???¨ù ?????? ??¡Æ¢®
+	gu8_ComPortChange++;							//	Com ???Â¼ ?????? ??Â°Â¡
 
 	if (gu8_ComPortChange > Z_SOURCE_NUM)
 	{
-		gu8_ComPortChange = 1;						//		1¡¤? ??¡¾??¡©
+		gu8_ComPortChange = 1;						//		1Â·? ??Â±??Â­
 	}
 
 	SegAllOff();
@@ -77,7 +77,7 @@ void Seg_Control(void)
 
 #ifndef _FRONT_LED_UP_
 	switch (gu8_ComPortChange)
-	{												//	Com ???¨ù??????¢¯¢® ??¢Ò? Com On
+	{												//	Com ???Â¼??????Â¿Â¡ ??Â¶? Com On
 		case 1:
 			P_LED_SOURCE1 = 0;
 			break;
@@ -106,7 +106,7 @@ void Seg_Control(void)
 #else
 
 	switch (gu8_ComPortChange)
-	{												//	Com ???¨ù??????¢¯¢® ??¢Ò? Com On
+	{												//	Com ???Â¼??????Â¿Â¡ ??Â¶? Com On
 		case 1:
 			P_LED_SINK1 = 1;
 			P_LED_SINK2 = 0;
@@ -129,7 +129,7 @@ void Seg_Control(void)
 #endif
 }
 
-/// @brief    ??¨ö? ?????? ??¡¤? ?©ø¢¬¢ç
+/// @brief    ??Â½? ?????? ??Â·? ?Â³Â¸Â®
 /// @param    void
 /// @return   void
 void DisplayOut(void)
@@ -217,7 +217,7 @@ void DisplayOut(void)
 
 #endif
 
-	gu8_PWM_Count++;								//	PWM ??¢¯?¨¡¢ç ??¡Æ¢®
+	gu8_PWM_Count++;								//	PWM ??Â¿?Ã†Â® ??Â°Â¡
 }
 
 /// @brief    LED
@@ -235,7 +235,7 @@ U8 DisplayPWM(U8 PWM)
 	}
 }
 
-/// @brief    ??¡¤©ö?? (?ns)
+/// @brief    ??Â·Â¹?? (?ns)
 /// @param    void
 /// @return   void
 void Delay_Nop(U8 mu8_count)
@@ -245,12 +245,12 @@ void Delay_Nop(U8 mu8_count)
 	for (mu8_i = 0 ; mu8_i < mu8_count ; mu8_i++)
 	{
 	/****************************************************************************/
-		NOP();NOP();NOP();NOP();NOP();			// SEG ¹İºÒ Çö»ó¿¡ µû¸¥ NOP Ãß°¡ ½Ç½Ã												//
-		NOP();NOP();NOP();NOP();NOP();			// -> 3¹øÂ° SEG Ç¥½Ã°ªÀÌ 1¹øÂ° SEG¿¡ ¹İºÒ·Î Ç¥½ÃµÇ´Â Çö»óÀÌ ÀÖ¾úÀ½.							//
-		NOP();NOP();NOP();NOP();NOP();			//    Base ´ëºñ µğ¹ÖÃ³¸®ÇÏ´Â LED Ãß°¡ µîÀ¸·Î ÀÎÇÑ Å¸ÀÌ¹Ö Æ²¾îÁü ¹®Á¦¶ó º¸°í ÀÖÀ½.				//
-		NOP();NOP();NOP();NOP();NOP();			//    ÀÌ¿¡ µû¶ó SEG¿Í COM OFF ÈÄ, NOP()Ã³¸®¿Í										//
-		NOP();NOP();NOP();NOP();NOP();			//	  OperationDisplay() ÇÔ¼ö À§Ä¡ º¯°æÀ» ÅëÇÑ Ã³¸®Áö¿¬À» ÇÔ.							//
-		NOP();NOP();NOP();NOP();NOP();			//	  SEG¿Í COM OFF ÈÄ, ON »çÀÌÀÇ Ã³¸® Áö¿¬ ½Ã°£À» È®º¸ÇÔÀ¸·Î¼­ ÇØ´ç ¹®Á¦¸¦ ÇØ°áÇÔ.			//
+		NOP();NOP();NOP();NOP();NOP();			// SEG ë°˜ë¶ˆ í˜„ìƒì— ë”°ë¥¸ NOP ì¶”ê°€ ì‹¤ì‹œ												//
+		NOP();NOP();NOP();NOP();NOP();			// -> 3ë²ˆì§¸ SEG í‘œì‹œê°’ì´ 1ë²ˆì§¸ SEGì— ë°˜ë¶ˆë¡œ í‘œì‹œë˜ëŠ” í˜„ìƒì´ ìˆì—ˆìŒ.							//
+		NOP();NOP();NOP();NOP();NOP();			//    Base ëŒ€ë¹„ ë””ë°ì²˜ë¦¬í•˜ëŠ” LED ì¶”ê°€ ë“±ìœ¼ë¡œ ì¸í•œ íƒ€ì´ë° í‹€ì–´ì§ ë¬¸ì œë¼ ë³´ê³  ìˆìŒ.				//
+		NOP();NOP();NOP();NOP();NOP();			//    ì´ì— ë”°ë¼ SEGì™€ COM OFF í›„, NOP()ì²˜ë¦¬ì™€										//
+		NOP();NOP();NOP();NOP();NOP();			//	  OperationDisplay() í•¨ìˆ˜ ìœ„ì¹˜ ë³€ê²½ì„ í†µí•œ ì²˜ë¦¬ì§€ì—°ì„ í•¨.							//
+		NOP();NOP();NOP();NOP();NOP();			//	  SEGì™€ COM OFF í›„, ON ì‚¬ì´ì˜ ì²˜ë¦¬ ì§€ì—° ì‹œê°„ì„ í™•ë³´í•¨ìœ¼ë¡œì„œ í•´ë‹¹ ë¬¸ì œë¥¼ í•´ê²°í•¨.			//
 		NOP();NOP();NOP();NOP();NOP();			//																			//
 		NOP();NOP();NOP();NOP();NOP();			//																			//
 		NOP();NOP();NOP();NOP();NOP();			//																			//
@@ -295,12 +295,12 @@ void SegDataClear(void)
 {
 	U8 mu8_i;
 
-	for (mu8_i = 0 ; mu8_i < 3 ; mu8_i++)	//	Seg ?????? ¡Æ©ö¨ù?¢¯¢® ??¢Ò?
+	for (mu8_i = 0 ; mu8_i < 3 ; mu8_i++)	//	Seg ?????? Â°Â¹Â¼?Â¿Â¡ ??Â¶?
 	{
 		gu8_SegData[mu8_i].byte = 0x00;					//		clr
 	}
 
-	for (mu8_i = 0 ; mu8_i < Z_SOURCE_NUM ; mu8_i++)	//	Seg ?????? ¡Æ©ö¨ù?¢¯¢® ??¢Ò?
+	for (mu8_i = 0 ; mu8_i < Z_SOURCE_NUM ; mu8_i++)	//	Seg ?????? Â°Â¹Â¼?Â¿Â¡ ??Â¶?
 	{
 		gu8_NewSegData[mu8_i].byte = 0x00;					//		clr
 	}
@@ -477,15 +477,15 @@ static void LED_HOTLOCK(void)
 }
 
 /****************************************
-* Function Name : 	¢¯??? Bar LED ?©ø¢¬¢ç
+* Function Name : 	Â¿??? Bar LED ?Â³Â¸Â®
 * param    		:	void
 * return   		:	void
 *****************************************/
 static void LED_TEMP_BAR(void)
 {
-	switch (DisplayControl_Data[Z_LED_HOT_BAR_1].Operation_CMD)				//	¢¯???????¨¬¡Æ ¢¯??? Bar LED ??¨ö?¢¯¢® ??¢Ò?
+	switch (DisplayControl_Data[Z_LED_HOT_BAR_1].Operation_CMD)				//	Â¿???????ÂºÂ° Â¿??? Bar LED ??Â½?Â¿Â¡ ??Â¶?
 	{
-		case CMD_COMM_ER:													//	??¨ö? ¢¯¢®¡¤? ????
+		case CMD_COMM_ER:													//	??Â½? Â¿Â¡Â·? ????
 			DisplayControl_Data[Z_LED_HOT_BAR_5].Display_CMD = LED_OFF;
 			DisplayControl_Data[Z_LED_HOT_BAR_4].Display_CMD = LED_OFF;
 			DisplayControl_Data[Z_LED_HOT_BAR_3].Display_CMD = LED_OFF;
@@ -493,7 +493,7 @@ static void LED_TEMP_BAR(void)
 			DisplayControl_Data[Z_LED_HOT_BAR_1].Display_CMD = LED_OFF;
 			break;
 
-		case CMD_BY_MAIN:													//	¢¬¨­?? ??¨ö? ????
+		case CMD_BY_MAIN:													//	Â¸Ã?? ??Â½? ????
 			DisplayControl_Data[Z_LED_HOT_BAR_5].Display_CMD = gu8_Main_Hot_TempBar_5;
 			DisplayControl_Data[Z_LED_HOT_BAR_4].Display_CMD = gu8_Main_Hot_TempBar_4;
 			DisplayControl_Data[Z_LED_HOT_BAR_3].Display_CMD = gu8_Main_Hot_TempBar_3;
@@ -797,25 +797,25 @@ static void LED_MY(void)
 	}
 }
 
-/// @brief    LED PWM ?¢Ò??
+/// @brief    LED PWM ?Â¶??
 /// @param    void
 /// @return   void
 static U8 LED_PWM(U8 led_data)
 {
 	U8 mu8_ret = OFF;
 
-	if (gu8_PWM_Count >= 10)						//	LED PWM ??¢¥? 10ms
+	if (gu8_PWM_Count >= 10)						//	LED PWM ??Â´? 10ms
 	{
-		gu8_PWM_Count = 0;							//		PWM ??¢¯?¨¡¢ç clr
+		gu8_PWM_Count = 0;							//		PWM ??Â¿?Ã†Â® clr
 	}
 
-	if (led_data == 0)								//	LED OFF?? ¡Æ©¡¢¯?
+	if (led_data == 0)								//	LED OFF?? Â°Ã¦Â¿?
 	{
-		mu8_ret = OFF;								//		OFF ??¨ö?
+		mu8_ret = OFF;								//		OFF ??Â½?
 	}
 	else
 	{
-		if (gu8_PWM_Count < led_data)				//		??¨ö? ¨ù?¢¬¢¬?¡© PWM Duty ¨ù©ø?¢´	(0¨¬??? ¨ö?????©ö?¡¤? ¨¬????? < )
+		if (gu8_PWM_Count < led_data)				//		??Â½? Â¼?Â¸Â¸?Â­ PWM Duty Â¼Â³?Â¤	(0Âº??? Â½?????Â¹?Â·? Âº????? < )
 		{
 			mu8_ret = ON;
 		}
@@ -828,7 +828,7 @@ static U8 LED_PWM(U8 led_data)
 	return (mu8_ret);
 }
 
-/// @brief    ¢¯???????¢¯¢® ??¢¬? ??¨ö?
+/// @brief    Â¿???????Â¿Â¡ ??Â¸? ??Â½?
 /// @param    void
 /// @return   void
 void OperationDisplay(void)
@@ -838,13 +838,13 @@ void OperationDisplay(void)
 
 	if (gu8_TimerFlic <= 50)
 	{
-		gu8_Fade_F_PWM = (U8)(Z_DisplayPWM * (gu8_TimerFlic * 2) / 100);	//	¨ù¡©¨ù¡©?¡À ©÷¡§??¡Æ?
+		gu8_Fade_F_PWM = (U8)(Z_DisplayPWM * (gu8_TimerFlic * 2) / 100);	//	Â¼Â­Â¼Â­?Ã· Â²Â¨??Â°?
 	}
 	else
 	{
 		if (100 >= gu8_TimerFlic)
 		{
-			gu8_Fade_F_PWM = (U8)(Z_DisplayPWM * ((100 - gu8_TimerFlic) * 2) / 100);		//	¨ù¡©¨ù¡©?¡À ????¡Æ?
+			gu8_Fade_F_PWM = (U8)(Z_DisplayPWM * ((100 - gu8_TimerFlic) * 2) / 100);		//	Â¼Â­Â¼Â­?Ã· ????Â°?
 		}
 	}
 
@@ -856,48 +856,48 @@ void OperationDisplay(void)
 	{
 		if (100 >= gu8_TimerFlic)
 		{
-			gu8_Fade_F_PWM_Slow = (U8)(Z_DisplayPWM * (100 - gu8_TimerFlic) / 100);	//	¨ù¡©¨ù¡©?¡À ????¡Æ?
+			gu8_Fade_F_PWM_Slow = (U8)(Z_DisplayPWM * (100 - gu8_TimerFlic) / 100);	//	Â¼Â­Â¼Â­?Ã· ????Â°?
 		}
 	}
 	else
 	{
-		gu8_Fade_F_PWM_Slow = (U8)(Z_DisplayPWM * (gu8_TimerFlic) / 100);	//	¨ù¡©¨ù¡©?¡À ©÷¡§??¡Æ?
+		gu8_Fade_F_PWM_Slow = (U8)(Z_DisplayPWM * (gu8_TimerFlic) / 100);	//	Â¼Â­Â¼Â­?Ã· Â²Â¨??Â°?
 	}
 
-	if (F_LED_Flicker != SET)						//	?¢®¢¬? ??¨ö?¡Æ¢® ¨ú©ª¢¥? ¡Æ©¡¢¯?
+	if (F_LED_Flicker != SET)						//	?Â¡Â¸? ??Â½?Â°Â¡ Â¾Ã¸Â´? Â°Ã¦Â¿?
 	{
-		gu8_TimerFlic = 100;						//		?¢®¢¬? ?¢¬??¢¬? set
+		gu8_TimerFlic = 100;						//		?Â¡Â¸? ?Â¸??Â¸? set
 	}
-	else											//	?¢®¢¬? ??¨ö?¡Æ¢® ??¢¥? ¡Æ©¡¢¯?
+	else											//	?Â¡Â¸? ??Â½?Â°Â¡ ??Â´? Â°Ã¦Â¿?
 	{
-		if (gu8_TimerFlic == 0)						//		?¢®¢¬? ?¢¬??¢¬? ¡Æ©¡¡Æ? ¨ö?
+		if (gu8_TimerFlic == 0)						//		?Â¡Â¸? ?Â¸??Â¸? Â°Ã¦Â°? Â½?
 		{
-			gu8_TimerFlic = 100;					//			?¢®¢¬??¢¬??¢¬? ??¡¾??¡© (1??)
+			gu8_TimerFlic = 100;					//			?Â¡Â¸??Â¸??Â¸? ??Â±??Â­ (1??)
 		}
 	}
 
-	/*	1.5?? ??¡¾? ?¢®¢¬? ?¢¬??¢¬? ¡Æ?¢¬¢ç	*/
+	/*	1.5?? ??Â±? ?Â¡Â¸? ?Â¸??Â¸? Â°?Â¸Â®	*/
 	if (gu8_TimerFlic_S2 <= 75)
 	{
-		gu8_Fade_F_PWM_Slow_S2 = (U8)(10 * (gu8_TimerFlic_S2 * 2) / 150);	//	¨ù¡©¨ù¡©?¡À ©÷¡§??¡Æ?
+		gu8_Fade_F_PWM_Slow_S2 = (U8)(10 * (gu8_TimerFlic_S2 * 2) / 150);	//	Â¼Â­Â¼Â­?Ã· Â²Â¨??Â°?
 	}
 	else
 	{
 		if (150 >= gu8_TimerFlic_S2)
 		{
-			gu8_Fade_F_PWM_Slow_S2 = (U8)(10 * ((150 - gu8_TimerFlic_S2) * 2) / 150);	//	¨ù¡©¨ù¡©?¡À ????¡Æ?
+			gu8_Fade_F_PWM_Slow_S2 = (U8)(10 * ((150 - gu8_TimerFlic_S2) * 2) / 150);	//	Â¼Â­Â¼Â­?Ã· ????Â°?
 		}
 	}
 
-	if (F_LED_Flicker_S2 != SET)					//	?¢®¢¬? ??¨ö?¡Æ¢® ¨ú©ª¢¥? ¡Æ©¡¢¯?
+	if (F_LED_Flicker_S2 != SET)					//	?Â¡Â¸? ??Â½?Â°Â¡ Â¾Ã¸Â´? Â°Ã¦Â¿?
 	{
-		gu8_TimerFlic_S2 = 150;						//		?¢®¢¬? ?¢¬??¢¬? set
+		gu8_TimerFlic_S2 = 150;						//		?Â¡Â¸? ?Â¸??Â¸? set
 	}
-	else											//	?¢®¢¬? ??¨ö?¡Æ¢® ??¢¥? ¡Æ©¡¢¯?
+	else											//	?Â¡Â¸? ??Â½?Â°Â¡ ??Â´? Â°Ã¦Â¿?
 	{
-		if (gu8_TimerFlic_S2 == 0)					//		?¢®¢¬? ?¢¬??¢¬? ¡Æ©¡¡Æ? ¨ö?
+		if (gu8_TimerFlic_S2 == 0)					//		?Â¡Â¸? ?Â¸??Â¸? Â°Ã¦Â°? Â½?
 		{
-			gu8_TimerFlic_S2 = 150;					//			?¢®¢¬??¢¬??¢¬? ??¡¾??¡© (1.5??)
+			gu8_TimerFlic_S2 = 150;					//			?Â¡Â¸??Â¸??Â¸? ??Â±??Â­ (1.5??)
 		}
 	}
 	/*	...		*/
@@ -979,9 +979,9 @@ void OperationDisplay(void)
 		}
 		else if (DisplayControl_Data[i].Display_CMD == LED_OFF)
 		{
-			/*	¢¯?¡¾?¨¬??? ©ö¡Æ¨ú? ©ö???/????/???? LED ?¢¯¨ö?¢¯¢® ©÷¡§??¡Æ?©÷? ¡¾¢¬????¡¾? ?¡×??
-			 * (ex:100%¢®©¡0%¢Ò? 20%¢®©¡0%¡¤? ¢Ò©ø¨ú???¢¥? ¨ù???¡Æ¢® ¢¥¨­¢Ò?¨ù¡© ¢¥?¡Æ? ©÷¡§??¢¥? ¡Æ??©ø¡¤©ø ¨¬¢¬¢¯¢¥?¨ö)
-			 * ¡¾¡¿¡¤¢®¨ù¡© 100%??¢¬¢ç¡Æ¢® 20%¡¾??? ??¡¾?¡¾??? ©ø¨£¢¬??? 20%LED???¨¬ ¡¾?¢¥?¢¬©÷
+			/*	Â¿?Â±?Âº??? Â¹Â°Â¾? Â¹???/????/???? LED ?Â¿Â½?Â¿Â¡ Â²Â¨??Â°?Â²? Â±Â¸????Â±? ?Â§??
+			 * (ex:100%Â¡Ã¦0%Â¶? 20%Â¡Ã¦0%Â·? Â¶Â³Â¾???Â´? Â¼???Â°Â¡ Â´ÃÂ¶?Â¼Â­ Â´?Â°? Â²Â¨??Â´? Â°??Â³Â·Â³ ÂºÂ¸Â¿Â´?Â½)
+			 * Â±Ã—Â·Â¡Â¼Â­ 100%??Â¸Â®Â°Â¡ 20%Â±??? ??Â±?Â±??? Â³ÂªÂ¸??? 20%LED???Âº Â±?Â´?Â¸Â²
 			 * */
 			if (gu8_Main_OperationStep == 0x10)
 			{
@@ -994,7 +994,7 @@ void OperationDisplay(void)
 					if ((DisplayControl_Data[Z_LED_HALFCUP].Fade_PWM < Z_DisplayPWM)
 						&& (DisplayControl_Data[Z_LED_1CUP].Fade_PWM < Z_DisplayPWM)
 						&& (DisplayControl_Data[Z_LED_2CUP].Fade_PWM != 0)
-						&& (DisplayControl_Data[Z_LED_CON].Fade_PWM == 0))			//	MY ¨ú?¨ú? ??
+						&& (DisplayControl_Data[Z_LED_CON].Fade_PWM == 0))			//	MY Â¾?Â¾? ??
 					{
 						if (DisplayControl_Data[Z_LED_2CUP].Fade_PWM < mu8_DimmingPercent)
 						{
@@ -1013,7 +1013,7 @@ void OperationDisplay(void)
 					else if ((DisplayControl_Data[Z_LED_HALFCUP].Fade_PWM < Z_DisplayPWM)
 						&& (DisplayControl_Data[Z_LED_1CUP].Fade_PWM < Z_DisplayPWM)
 						&& (DisplayControl_Data[Z_LED_2CUP].Fade_PWM < Z_DisplayPWM)
-						&& (DisplayControl_Data[Z_LED_CON].Fade_PWM != 0))			//	MY ¨ú? ¢Ò¡×
+						&& (DisplayControl_Data[Z_LED_CON].Fade_PWM != 0))			//	MY Â¾? Â¶Â§
 					{
 
 						if (DisplayControl_Data[Z_LED_CON].Fade_PWM < mu8_DimmingPercent)
@@ -1036,9 +1036,9 @@ void OperationDisplay(void)
 					}
 				}
 			}			
-			/*	¢¯?¡¾?¡¾???	*/
+			/*	Â¿?Â±?Â±???	*/
 
-			if (gu8_Main_OperationStep == 0x92)			//	??¡¤¨¢¨¡¢ç ??¡¾¡¿ ?¡¿¨ö¨¬¨¡¢ç¢¬©£??
+			if (gu8_Main_OperationStep == 0x92)			//	??Â·ÃÃ†Â® ??Â±Ã— ?Ã—Â½ÂºÃ†Â®Â¸Ã°??
 			{
 				if (DisplayControl_Data[i].Display_CMD_Before == LED_ON)
 				{
@@ -1133,16 +1133,16 @@ void OperationDisplay(void)
 					break;
 				case LED_FADE_F_S:
 					F_LED_Flicker = SET;
-					DisplayControl_Data[i].Fade_PWM = gu8_Fade_F_PWM_Slow;	//	?????¡À ¨ù¡©¨ù¡©?¡À ????¡Æ?
+					DisplayControl_Data[i].Fade_PWM = gu8_Fade_F_PWM_Slow;	//	?????Ã· Â¼Â­Â¼Â­?Ã· ????Â°?
 					break;
 				case LED_FADE_F_S2:
 					F_LED_Flicker_S2 = SET;
-					DisplayControl_Data[i].Fade_PWM = gu8_Fade_F_PWM_Slow_S2;	//	?????¡À ¨ù¡©¨ù¡©?¡À ????¡Æ?
+					DisplayControl_Data[i].Fade_PWM = gu8_Fade_F_PWM_Slow_S2;	//	?????Ã· Â¼Â­Â¼Â­?Ã· ????Â°?
 					break;
 				case LED_FADE_F:
 				case LED_BOOT:
 					F_LED_Flicker = SET;
-					DisplayControl_Data[i].Fade_PWM = gu8_Fade_F_PWM;		//	¨ù¡©¨ù¡©?¡À ????¡Æ?
+					DisplayControl_Data[i].Fade_PWM = gu8_Fade_F_PWM;		//	Â¼Â­Â¼Â­?Ã· ????Â°?
 					break;
 				case LED_APMODE:
 					F_LED_Flicker = SET;
@@ -1172,7 +1172,7 @@ void OperationDisplay(void)
 	}
 }
 
-/// @brief    Fade ¨ù©ø?¢´
+/// @brief    Fade Â¼Â³?Â¤
 /// @param    void
 /// @return   void
 static void FadeSet(Display_Control *DisplayPnt, U8 PWM_Target, U8 Timer)
@@ -1184,7 +1184,7 @@ static void FadeSet(Display_Control *DisplayPnt, U8 PWM_Target, U8 Timer)
 	}
 }
 
-/// @brief    Fade ?©ø¢¬¢ç
+/// @brief    Fade ?Â³Â¸Â®
 /// @param    void
 /// @return   void
 void FadeProcess(void)

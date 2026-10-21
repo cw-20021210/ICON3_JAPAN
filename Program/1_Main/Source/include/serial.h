@@ -1,7 +1,7 @@
 /// @file   serial.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  Serial UARTÅë½Å µ¿ÀÛ °ü·Ã Çì´õ file
+/// @brief  Serial UARTí†µì‹  ë™ì‘ ê´€ë ¨ í—¤ë” file
 
 #ifdef SERIAL_C
 	#define 	EXTERN
@@ -13,60 +13,60 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_SERIAL()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_SERIAL()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu8_TimerSerTrNo);		\
 									TDEC(gu8_TimerSerTrIntvl);	\
 								}
-#define	TDEC_10ms_SERIAL()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_SERIAL()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_100ms_SERIAL()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_SERIAL()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerSerCmuSts);	\
 								}
-#define	TDEC_1s_SERIAL()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_SERIAL()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_SERIAL()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_SERIAL()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_SERIAL()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_SERIAL()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_SERIAL()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_SERIAL()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_SERIAL()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_SERIAL()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
 /*==============================================================================
  Constant Definition
  ==============================================================================*/
-#define Z_recbufmax		(32)						/*	SERIAL ¼ö½Å ¹öÆÛ ÃÖ´ë¼ö	*/
+#define Z_recbufmax		(32)						/*	SERIAL ìˆ˜ì‹  ë²„í¼ ìµœëŒ€ìˆ˜	*/
 
 
 /*==============================================================================
 	Variable Definition
 ==============================================================================*/
-EXTERN	U8	gu8_TimerSerTrNo;						/*	SERIAL ¼Û½Å±İÁö TIMER					<20ms/1ms>	*/
-EXTERN	U8	gu8_TimerSerTrIntvl;					/*	SERIAL CHARACTER ¼Û½Å°£°İ±İÁö TIMER		<3ms/1ms> 	*/
-EXTERN	U8	gu8_TimerSerCmuSts;						/*	SERIAL Åë½Å»óÅÂ °è¼Ó TIMER				<5s/100ms>	*/
+EXTERN	U8	gu8_TimerSerTrNo;						/*	SERIAL ì†¡ì‹ ê¸ˆì§€ TIMER					<20ms/1ms>	*/
+EXTERN	U8	gu8_TimerSerTrIntvl;					/*	SERIAL CHARACTER ì†¡ì‹ ê°„ê²©ê¸ˆì§€ TIMER		<3ms/1ms> 	*/
+EXTERN	U8	gu8_TimerSerCmuSts;						/*	SERIAL í†µì‹ ìƒíƒœ ê³„ì† TIMER				<5s/100ms>	*/
 EXTERN	union	adress_para	gu16_access;			/*	ADDRESS DATA*/
-EXTERN	union	adress_para	gu16_addr;				/*	ADDRESS DATA [50/51 command¿ë]*/
-EXTERN	U8	gu8_BufferSerData[Z_recbufmax];			/*	SERIAL ¼ö½Å BUFFER*/
-EXTERN	U8	gu8_DataMany;							/*	[DATA1~DATAn] ¼Û½Å DATA¼ö*/
-EXTERN	U8	gu8_CMDMany;							/*	[STX~CMD3] ¼Û½Å DATA¼ö*/
+EXTERN	union	adress_para	gu16_addr;				/*	ADDRESS DATA [50/51 commandìš©]*/
+EXTERN	U8	gu8_BufferSerData[Z_recbufmax];			/*	SERIAL ìˆ˜ì‹  BUFFER*/
+EXTERN	U8	gu8_DataMany;							/*	[DATA1~DATAn] ì†¡ì‹  DATAìˆ˜*/
+EXTERN	U8	gu8_CMDMany;							/*	[STX~CMD3] ì†¡ì‹  DATAìˆ˜*/
 EXTERN	U8	gu8_R_eepSerial;
 
-EXTERN U8 gu8_Serial;								/*	SERIAL Åë½Å			*/
-EXTERN U8 gu8_SerControl;							/*	SERIAL ¼Û¼ö½Å »óÅÂ 	*/
-EXTERN U8 gu8_CounterSerData;						/*	SERIAL Åë½Å COUNTER */
-EXTERN U8 gu8_BufferChecksum;						/*	CHECKSUM °¡»ê¿ë BUFFER */
-EXTERN U8 gu8_DataNum[256];							/*	SERIAL ¼Û¼ö½Å¿ë DATA BUFFER */
-EXTERN U8 F_ascii;									/*	ASCII »óÀ§ÇÏÀ§ ÁöÁ¤ FLAG */
+EXTERN U8 gu8_Serial;								/*	SERIAL í†µì‹ 			*/
+EXTERN U8 gu8_SerControl;							/*	SERIAL ì†¡ìˆ˜ì‹  ìƒíƒœ 	*/
+EXTERN U8 gu8_CounterSerData;						/*	SERIAL í†µì‹  COUNTER */
+EXTERN U8 gu8_BufferChecksum;						/*	CHECKSUM ê°€ì‚°ìš© BUFFER */
+EXTERN U8 gu8_DataNum[256];							/*	SERIAL ì†¡ìˆ˜ì‹ ìš© DATA BUFFER */
+EXTERN U8 F_ascii;									/*	ASCII ìƒìœ„í•˜ìœ„ ì§€ì • FLAG */
 
 EXTERN U8 gu8_B1cmdAns;
 
 /*==============================================================================
 	Function Definition
 ==============================================================================*/
-void Serial_Initialize(void);						/*	Ç¥ÁØ SERIAL Åë½Å:ÃÊ±â ¼³Á¤		*/
-void SerialControl(void);							/*	Ç¥ÁØ SERIAL Åë½Å:Åë½Å »óÅÂ ÃµÀÌ Ã³¸®*/
+void Serial_Initialize(void);						/*	í‘œì¤€ SERIAL í†µì‹ :ì´ˆê¸° ì„¤ì •		*/
+void SerialControl(void);							/*	í‘œì¤€ SERIAL í†µì‹ :í†µì‹  ìƒíƒœ ì²œì´ ì²˜ë¦¬*/
 void R_Serial_Interrupt(void);
 
 /*=============================================================================*/

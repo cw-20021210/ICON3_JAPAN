@@ -15,7 +15,7 @@
 //***************************************
 //*              display.c		        *
 //***************************************
-EXTERN U8 gu8_PWM_Count;							//	LED Duty Á¶ÀıÄ«¿îÅÍ
+EXTERN U8 gu8_PWM_Count;							//	LED Duty ì¡°ì ˆì¹´ìš´í„°
 
 //***************************************
 //*              input.c		        *
@@ -39,7 +39,7 @@ EXTERN U8 gu8_PWM_Count;							//	LED Duty Á¶ÀıÄ«¿îÅÍ
 //***************************************
 //*               operation.c           *
 //***************************************
-EXTERN U8 gu8_OperationStep;						//	¿îÀü»óÅÂ
+EXTERN U8 gu8_OperationStep;						//	ìš´ì „ìƒíƒœ
 	#define gu8_OperationStep_hi	(gu8_OperationStep & 0xf0)
 	#define gu8_OperationStep_lo	(gu8_OperationStep & 0x0f)
 
@@ -56,7 +56,7 @@ EXTERN U8 F_CommunicationCMD;
 
 
 //***************************************
-//*               Å×½ºÆ® ¿ë	            *
+//*               í…ŒìŠ¤íŠ¸ ìš©	            *
 //***************************************
 #ifdef _FOR_DEVELOP_
 EXTERN U8 PSM1;

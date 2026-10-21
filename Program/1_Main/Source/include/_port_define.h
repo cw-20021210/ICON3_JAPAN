@@ -12,12 +12,12 @@
 #define P_EEPROM_SDA_PIN_MODE	(PM6.1)   			//	I2C DAT Port IO Mode Select Register
 
 //	Valve
-#define P_NOS_V             (P5.1)  				//	NOS ¹ëºê (HIGH:Close / Low:Open (Normal Open))
+#define P_NOS_V             (P5.1)  				//	NOS ë°¸ë¸Œ (HIGH:Close / Low:Open (Normal Open))
 #define P_FEED_COLD_IN_V    (P5.3)  				//
 #define P_FEED_COLD_OUT_V   (P5.0)  				//
-#define P_FEED_HOTOUT_V    	(P3.0)  				//	¿Â¼ö ÃßÃâ ÇÇµå ¹ëºê (LOW:¿Â¼ö ÃßÃâ OFF / HIGH:¿Â¼ö ÃßÃâ)
-#define P_FEED_HOTIN_V      (P0.5)  				//	¿Â¼ö ÀÔ¼ö ÇÇµå ¹ëºê
-#define P_FEED_PURE_V       (P5.2)  				//	Á¤¼ö ÇÇµå ¹ëºê
+#define P_FEED_HOTOUT_V    	(P3.0)  				//	ì˜¨ìˆ˜ ì¶”ì¶œ í”¼ë“œ ë°¸ë¸Œ (LOW:ì˜¨ìˆ˜ ì¶”ì¶œ OFF / HIGH:ì˜¨ìˆ˜ ì¶”ì¶œ)
+#define P_FEED_HOTIN_V      (P0.5)  				//	ì˜¨ìˆ˜ ìž…ìˆ˜ í”¼ë“œ ë°¸ë¸Œ
+#define P_FEED_PURE_V       (P5.2)  				//	ì •ìˆ˜ í”¼ë“œ ë°¸ë¸Œ
 
 //	Stepping Motor
 #define P_STEPMOTOR1		(P0.6)
@@ -39,7 +39,7 @@
 
 
 
-#define P_FAN_18V			(P1.1)					//	18V 21V µÑ´Ù ONÇÏ¸é 18V
+#define P_FAN_18V			(P1.1)					//	18V 21V ë‘˜ë‹¤ ONí•˜ë©´ 18V
 #define P_FAN_21V			(P1.0)
 #ifndef _FAN_CIRCUIT_CHANGE_
 #define P_FAN_ONOFF			(P8.0)

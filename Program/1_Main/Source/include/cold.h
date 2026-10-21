@@ -1,7 +1,7 @@
 /// @file   cooler.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ³Ã°¢ µ¿ÀÛ Á¦¾î °ü·Ã Çì´õ file
+/// @brief  ëƒ‰ê° ë™ì‘ ì œì–´ ê´€ë ¨ í—¤ë” file
 
 #ifdef COLD_C
 	#define 	EXTERN
@@ -13,13 +13,13 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_COLD()			{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_COLD()			{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_COLD()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_COLD()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerPressureClear_ColdVV_Delay);	\
 									TDEC(gu8_TimerColdEffStep_10ms);	\
 								}
-#define	TDEC_100ms_COLD()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_COLD()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_TimerCoolingStep_100ms);	\
 									TDEC(gu8_TimerCoolingStep_100ms_2);	\
 									TDEC(gu8_TimerCoolingStep_100ms_3);	\
@@ -29,24 +29,24 @@
 									TDEC(gu8_TimerDisplayCoolingChange);	\
 									TDEC(gu8_TimerDisplayFanChange);	\
 								}
-#define	TDEC_1s_COLD()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_COLD()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									TDEC(gu16_TimerCoolingRapid);	\
 									TDEC(gu16_TimerCoolingStep_1s);	\
 									TDEC(gu8_TimerCooling_PID);	\
 									TDEC(gu16_TimerForced_RapidCooling);	\
 									TDEC(gu16_Timer_CoolingRapid_12V);	\
 								}
-#define	TDEC_10s_COLD()			{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_COLD()			{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_COLD()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_COLD()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu16_TimerColdEcoMode_24Hour);	\
 									TDEC(gu16_TimerColdEcoMode_14Hour);	\
 									TDEC(gu16_TimerColdEcoMode_10Hour);	\
 									TDEC(gu16_TimerCoolingRapid_6Hour);	\
 								}
-#define	TDEC_10min_COLD()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_COLD()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_COLD()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_COLD()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -116,14 +116,14 @@ enum {
 #define Z_CoolingStep_E0			(0xE0)
 
 
-#define COLD_COMPLETE_DEGREE_1		(Z_TEMP1)		//	³Ã°¢ ¿Ï·á ¿Âµµ(¿Ü±â 30µµ ÀÌ»ó)
-#define COLD_COMPLETE_DEGREE_2		(Z_TEMP2)		//	³Ã°¢ ¿Ï·á ¿Âµµ(¿Ü±â 30µµ ¹Ì¸¸)
-#define RETAIN_JOIN_DEGREE_1			(Z_TEMP1_5)		//	±Ş¼Ó¸ğµå Áß À¯Áö¸ğµå ÁøÀÔ ¿Âµµ(¿Ü±â 30µµÀÌ»ó)
-#define RETAIN_JOIN_DEGREE_2			(Z_TEMP2_5)		//	±Ş¼Ó¸ğµå Áß À¯Áö¸ğµå ÁøÀÔ ¿Âµµ(¿Ü±â 30µµ¹Ì¸¸)
-#define RAPID_COMPLETE_DEGREE		(Z_TEMP6_5)		//	±Ş¼Ó¸ğµå ¿Ï·á ¿Âµµ
-#define RAPID_OPERATE_DEGREE		(Z_TEMP7_2)		//	±Ş¼Ó¸ğµå ÁøÀÔ ¿Âµµ
-#define	COLD_REOPERATE_DEGREE_1		(Z_TEMP1)		//	³Ã°¢ Á¾·á Áß ³Ã°¢ Àç°¡µ¿ ¿Âµµ(¿Ü±â30µµ ÀÌ»ó)
-#define	COLD_REOPERATE_DEGREE_2		(Z_TEMP2)		//	³Ã°¢ Á¾·á Áß ³Ã°¢ Àç°¡µ¿ ¿Âµµ(¿Ü±â30µµ ¹Ì¸¸)
+#define COLD_COMPLETE_DEGREE_1		(Z_TEMP1)		//	ëƒ‰ê° ì™„ë£Œ ì˜¨ë„(ì™¸ê¸° 30ë„ ì´ìƒ)
+#define COLD_COMPLETE_DEGREE_2		(Z_TEMP2)		//	ëƒ‰ê° ì™„ë£Œ ì˜¨ë„(ì™¸ê¸° 30ë„ ë¯¸ë§Œ)
+#define RETAIN_JOIN_DEGREE_1			(Z_TEMP1_5)		//	ê¸‰ì†ëª¨ë“œ ì¤‘ ìœ ì§€ëª¨ë“œ ì§„ì… ì˜¨ë„(ì™¸ê¸° 30ë„ì´ìƒ)
+#define RETAIN_JOIN_DEGREE_2			(Z_TEMP2_5)		//	ê¸‰ì†ëª¨ë“œ ì¤‘ ìœ ì§€ëª¨ë“œ ì§„ì… ì˜¨ë„(ì™¸ê¸° 30ë„ë¯¸ë§Œ)
+#define RAPID_COMPLETE_DEGREE		(Z_TEMP6_5)		//	ê¸‰ì†ëª¨ë“œ ì™„ë£Œ ì˜¨ë„
+#define RAPID_OPERATE_DEGREE		(Z_TEMP7_2)		//	ê¸‰ì†ëª¨ë“œ ì§„ì… ì˜¨ë„
+#define	COLD_REOPERATE_DEGREE_1		(Z_TEMP1)		//	ëƒ‰ê° ì¢…ë£Œ ì¤‘ ëƒ‰ê° ì¬ê°€ë™ ì˜¨ë„(ì™¸ê¸°30ë„ ì´ìƒ)
+#define	COLD_REOPERATE_DEGREE_2		(Z_TEMP2)		//	ëƒ‰ê° ì¢…ë£Œ ì¤‘ ëƒ‰ê° ì¬ê°€ë™ ì˜¨ë„(ì™¸ê¸°30ë„ ë¯¸ë§Œ)
 
 #define Z_TimerColdEffStep_10ms_50ms	(5)		//	<10ms/10ms>
 #define Z_TimerColdEffStep_10ms_100ms	(10)		//	<100ms/10ms>
@@ -142,9 +142,9 @@ enum {
 
 #define Z_TimerCoolingStep_1s_600s	(600)			//	<600s/1s>
 
-#define Z_TimerColdEcoMode_24Hour	(1440)			//	24½Ã°£ <1440min/1min>
-#define Z_TimerColdEcoMode_14Hour	(840)			//	14½Ã°£ <840min/1min>
-#define Z_TimerColdEcoMode_10Hour	(600)			//	10½Ã°£ <600min/1min>
+#define Z_TimerColdEcoMode_24Hour	(1440)			//	24ì‹œê°„ <1440min/1min>
+#define Z_TimerColdEcoMode_14Hour	(840)			//	14ì‹œê°„ <840min/1min>
+#define Z_TimerColdEcoMode_10Hour	(600)			//	10ì‹œê°„ <600min/1min>
 
 #define Z_TimerDisplayEcoMode		(30)			
 #define Z_TimerDisplayCoolingChange	(30)           	
@@ -165,19 +165,19 @@ EXTERN U8 gu8_CoolingStep;
 EXTERN U8 gu8_CoolingStep_Before;
 
 EXTERN U8 gu8_ColdEffStepNum;						//
-EXTERN U8 gu8_ColdEffStepNum_Before;				//	³Ã°¢½ºÅÜ Num Before
+EXTERN U8 gu8_ColdEffStepNum_Before;				//	ëƒ‰ê°ìŠ¤í… Num Before
 
 EXTERN U8 gu8_CoolingStepNum;						//
 EXTERN U8 gu8_CoolingStepNum_Before;
 
 #ifdef _FOR_DEVELOP_
-EXTERN U16 gu16_ColdTimeData;						//	³Ã°¢ ½Ã°ß º¯°æ
+EXTERN U16 gu16_ColdTimeData;						//	ëƒ‰ê° ì‹œê²¬ ë³€ê²½
 #endif
 
 EXTERN U8 gu8_TimerColdEffStep_10ms;				//	<?/10ms>
 
-EXTERN U16 gu16_TimerCoolingRapid;					//	±Ş¼Ó¸ğµå Ãß°¡³Ã°¢ ½Ã°£ <?/1s>
-EXTERN U8 F_CoolingRapid_Complete;					//	±Ş¼Ó¸ğµå ¿Ï·á ¿Âµµ °¨Áö ÇÃ·¡±×
+EXTERN U16 gu16_TimerCoolingRapid;					//	ê¸‰ì†ëª¨ë“œ ì¶”ê°€ëƒ‰ê° ì‹œê°„ <?/1s>
+EXTERN U8 F_CoolingRapid_Complete;					//	ê¸‰ì†ëª¨ë“œ ì™„ë£Œ ì˜¨ë„ ê°ì§€ í”Œë˜ê·¸
 
 EXTERN U8 gu8_TimerCoolingStep_100ms;				//	<?/100ms>
 EXTERN U8 gu8_TimerCoolingStep_100ms_2;				//	<?/100ms>
@@ -186,13 +186,13 @@ EXTERN U8 gu8_TimerCoolingStep_100ms_4;				//	<?/100ms>
 
 EXTERN U16 gu16_TimerCoolingStep_1s;				//	<?/1s>
 
-EXTERN U8 gu8_TimerPressureClear_ColdVV;			//	ÀÜ¾ĞÁ¦°Å µ¿ÀÛ Å¸ÀÌ¸Ó <3s/100ms>
-EXTERN U8 gu8_TimerPressureClear_ColdVV_Delay;		//	ÀÜ¾ĞÁ¦°Å NOS¹ëºê ¼±CLOSE ÈÄ ³Ã¼ö¹ëºêOPEN µô·¹ÀÌ Å¸ÀÓ <200ms/10ms>
+EXTERN U8 gu8_TimerPressureClear_ColdVV;			//	ì”ì••ì œê±° ë™ì‘ íƒ€ì´ë¨¸ <3s/100ms>
+EXTERN U8 gu8_TimerPressureClear_ColdVV_Delay;		//	ì”ì••ì œê±° NOSë°¸ë¸Œ ì„ CLOSE í›„ ëƒ‰ìˆ˜ë°¸ë¸ŒOPEN ë”œë ˆì´ íƒ€ì„ <200ms/10ms>
 
 EXTERN U16 gu16_TimerCoolingRapid_6Hour;			//	<360min/1min>
-EXTERN U16 gu16_TimerColdEcoMode_24Hour;			//	24½Ã°£ <1440min/1min>
-EXTERN U16 gu16_TimerColdEcoMode_14Hour;			//	14½Ã°£ <840min/1min>
-EXTERN U16 gu16_TimerColdEcoMode_10Hour;			//	10½Ã°£ <600min/1min>
+EXTERN U16 gu16_TimerColdEcoMode_24Hour;			//	24ì‹œê°„ <1440min/1min>
+EXTERN U16 gu16_TimerColdEcoMode_14Hour;			//	14ì‹œê°„ <840min/1min>
+EXTERN U16 gu16_TimerColdEcoMode_10Hour;			//	10ì‹œê°„ <600min/1min>
 
 EXTERN U8 F_CoolingEcoMode_Disable;					
 
@@ -200,32 +200,32 @@ EXTERN U8 gu8_TimerDisplayEcoMode;
 EXTERN U8 gu8_TimerDisplayCoolingChange;            
 EXTERN U8 gu8_TimerDisplayFanChange;                
 
-EXTERN U8 F_ColdRetainMode_VoltMin;					//	³Ã°¢ À¯Áö¸ğµå¿¡¼­ ³Ã¼ö¿Âµµ 3µµ ¹Ì¸¸ °¨Áö ½Ã ÃÖÀúÀü¾Ğ °¡µ¿
+EXTERN U8 F_ColdRetainMode_VoltMin;					//	ëƒ‰ê° ìœ ì§€ëª¨ë“œì—ì„œ ëƒ‰ìˆ˜ì˜¨ë„ 3ë„ ë¯¸ë§Œ ê°ì§€ ì‹œ ìµœì €ì „ì•• ê°€ë™
 
-EXTERN I16 gi16_TEM_Volt_P;							//	³Ã°¢ PÁ¦¾î <1/10V>
-EXTERN I16 gi16_TEM_Volt_I;                         //	³Ã°¢ IÁ¦¾î <1/10V>
+EXTERN I16 gi16_TEM_Volt_P;							//	ëƒ‰ê° Pì œì–´ <1/10V>
+EXTERN I16 gi16_TEM_Volt_I;                         //	ëƒ‰ê° Iì œì–´ <1/10V>
 EXTERN I16 gi16_TEM_Volt_P_I;                       //	P+I <1/10V>
-EXTERN U16 gu16_TEM_Volt;                           //	ÃÖÁ¾ Á¦¾î °ª  <1/10V>
+EXTERN U16 gu16_TEM_Volt;                           //	ìµœì¢… ì œì–´ ê°’  <1/10V>
 EXTERN U16 gu16_Cooling_Dp1;                        //
 EXTERN U16 gu16_Cooling_Dp2;                        //
 EXTERN U16 gu16_Cooling_Di1;                        //
 
 EXTERN U8 gu8_TimerCooling_PID;						//	<?s/1s>
 
-EXTERN U16 gu16_Cooling_TargetDegree;               //	³Ã°¢ PIÁ¦¾î Å¸°Ù ¿Âµµ	<1/10¡É>
+EXTERN U16 gu16_Cooling_TargetDegree;               //	ëƒ‰ê° PIì œì–´ íƒ€ê²Ÿ ì˜¨ë„	<1/10â„ƒ>
 EXTERN U8 gu8_Cooling_TargetDegree_forEEPROM;		//
 EXTERN U16 gu16_ColdSensor_DEGREE_Backup;           //
 EXTERN U16 gu16_OutDoorSensor_DEGREE_Backup;        //
 EXTERN U16 gu16_HeatSinkSensor_DEGREE_Backup;       //
 
-EXTERN U16 gu16_TimerForced_RapidCooling;			//	³Ã¼ö ÃßÃâ ÈÄ À¯Áö¸ğµå¿¡¼­ °­Á¦ ±Ş¼Ó¸ğµå Àü¾Ğ µ¿ÀÛ Å¸ÀÌ¸Ó	<?s/1s>
-EXTERN U16 gu16_CountColdEff_Sec;					//	³Ã¼ö ÃßÃâ ½Ã°£ Ä«¿îÆ® <1s>
+EXTERN U16 gu16_TimerForced_RapidCooling;			//	ëƒ‰ìˆ˜ ì¶”ì¶œ í›„ ìœ ì§€ëª¨ë“œì—ì„œ ê°•ì œ ê¸‰ì†ëª¨ë“œ ì „ì•• ë™ì‘ íƒ€ì´ë¨¸	<?s/1s>
+EXTERN U16 gu16_CountColdEff_Sec;					//	ëƒ‰ìˆ˜ ì¶”ì¶œ ì‹œê°„ ì¹´ìš´íŠ¸ <1s>
 
-EXTERN U16 gu16_Timer_CoolingRapid_12V;				//	±Ş¼Ó¸ğµå ÁøÀÔ ½Ã, 12V 5ºĞ Ãâ·Â Å¸ÀÌ¸Ó
+EXTERN U16 gu16_Timer_CoolingRapid_12V;				//	ê¸‰ì†ëª¨ë“œ ì§„ì… ì‹œ, 12V 5ë¶„ ì¶œë ¥ íƒ€ì´ë¨¸
 
 
-EXTERN U8 F_ColdEffStep_B0_Request;  // ÇÁ·ĞÆ® Ä¿¹ö ¿­¸² ½Ã ÃßÃâ ¹öÆ°À¸·Î ÀÜ¾Ğ Á¦°Å ¿äÃ»
-EXTERN U8 F_ColdEffStep_B0_PressureClearComplete;  // ÇÁ·ĞÆ® Ä¿¹ö ¿­¸² ½Ã ÃßÃâ ¹öÆ°À¸·Î ÀÜ¾Ğ Á¦°Å ¿äÃ» ¿Ï·á ÇÃ·¡±×
+EXTERN U8 F_ColdEffStep_B0_Request;  // í”„ë¡ íŠ¸ ì»¤ë²„ ì—´ë¦¼ ì‹œ ì¶”ì¶œ ë²„íŠ¼ìœ¼ë¡œ ì”ì•• ì œê±° ìš”ì²­
+EXTERN U8 F_ColdEffStep_B0_PressureClearComplete;  // í”„ë¡ íŠ¸ ì»¤ë²„ ì—´ë¦¼ ì‹œ ì¶”ì¶œ ë²„íŠ¼ìœ¼ë¡œ ì”ì•• ì œê±° ìš”ì²­ ì™„ë£Œ í”Œë˜ê·¸
 /*==============================================================================
  function Definition
  ==============================================================================*/

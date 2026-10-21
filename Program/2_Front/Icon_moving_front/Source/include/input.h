@@ -1,7 +1,7 @@
 /// @file   input.h
 /// @date   2019.07.10
 /// @author PSM
-/// @brief  ÀÔ·Â Ã³¸® file
+/// @brief  ì…ë ¥ ì²˜ë¦¬ file
 
 #ifdef INPUT_C
 	#define 	EXTERN
@@ -13,24 +13,24 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_INPUT()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1ms_INPUT()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10ms_INPUT()		{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_INPUT()		{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_Timer_ProhibitSW);	\
 									TDEC(gu8_Timer_ShortSW);	\
 								}
-#define	TDEC_100ms_INPUT()		{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_INPUT()		{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									TDEC(gu8_Timer_LongSW);	\
 								}
-#define	TDEC_1s_INPUT()			{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_INPUT()			{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_10s_INPUT()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_10s_INPUT()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
-#define	TDEC_1min_INPUT()		{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_INPUT()		{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_10min_INPUT()		{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_INPUT()		{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 								}
-#define	TDEC_1h_INPUT()			{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_INPUT()			{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 								}
 
 
@@ -44,7 +44,7 @@
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN ITTI3 gu8_DigitalInput;						//	µğÁöÅĞ ÀÔ·Â µ¥ÀÌÅÍ
+EXTERN ITTI3 gu8_DigitalInput;						//	ë””ì§€í„¸ ì…ë ¥ ë°ì´í„°
 	#define KEY_HOTWATER_LEVEL			(gu8_DigitalInput.Level.Bit.b0)
 	#define KEY_HOTWATER_LOW_EDGE		(gu8_DigitalInput.OffEdge.Bit.b0)
 	#define KEY_HOTWATER_HIGH_EDGE		(gu8_DigitalInput.OnEdge.Bit.b0)
@@ -61,10 +61,10 @@ EXTERN ITTI3 gu8_DigitalInput;						//	µğÁöÅĞ ÀÔ·Â µ¥ÀÌÅÍ
 	#define KEY_AMOUNT_LOW_EDGE			(gu8_DigitalInput.OffEdge.Bit.b3)
 	#define KEY_AMOUNT_HIGH_EDGE		(gu8_DigitalInput.OnEdge.Bit.b3)
 
-EXTERN ITTI3 gu8_DigitalInput2;						//	µğÁöÅĞ ÀÔ·Â µ¥ÀÌÅÍ
+EXTERN ITTI3 gu8_DigitalInput2;						//	ë””ì§€í„¸ ì…ë ¥ ë°ì´í„°
 	#define MODEL_DECIDE				(gu8_DigitalInput2.Level.Bit.b0)
 
-EXTERN ITTI3 gu8_DigitalInput3;						//	µğÁöÅĞ ÀÔ·Â µ¥ÀÌÅÍ
+EXTERN ITTI3 gu8_DigitalInput3;						//	ë””ì§€í„¸ ì…ë ¥ ë°ì´í„°
 	#define KEY_EFFLUENT_LEVEL			(gu8_DigitalInput3.Level.Bit.b0)
 	#define KEY_EFFLUENT_LOW_EDGE		(gu8_DigitalInput3.OffEdge.Bit.b0)
 	#define KEY_EFFLUENT_HIGH_EDGE		(gu8_DigitalInput3.OnEdge.Bit.b0)

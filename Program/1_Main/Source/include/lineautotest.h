@@ -1,7 +1,7 @@
 /// @file   communication.h
 /// @date   2021.01.12
 /// @author PSM
-/// @brief  Åë½Å Ã³¸® file
+/// @brief  í†µì‹  ì²˜ë¦¬ file
 
 #ifdef LINEAUTOTEST_C
 	#define 	EXTERN
@@ -13,30 +13,30 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_LINEAUTOTEST()		{	/*	1ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1ms_LINEAUTOTEST()		{	/*	1ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 										TDEC(gu8_TimerLineRecWait);		\
 										TDEC(gu8_TimerLineTraWait);		\
 										TDEC(gu8_TimerLineTrahalt);		\
 										TDEC(gu8_TimerLineRecInt_Check);	\
 									}
-#define	TDEC_10ms_LINEAUTOTEST()	{	/*	10ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10ms_LINEAUTOTEST()	{	/*	10ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 										TDEC(gu8_TimerLineError_Time);		\
 									}
-#define	TDEC_100ms_LINEAUTOTEST()	{	/*	100ms Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_100ms_LINEAUTOTEST()	{	/*	100ms íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 										TDEC(gu8_TimerLineDataReceive);	\
 										TDEC(gu8_TimerLineTest_Complete);	\
 										TDEC(gu8_TimerLineFrontTest_EffLimit);	\
 										TDEC(gu8_TimerFrontTest_1stNosDisplay);	\
 									}
-#define	TDEC_1s_LINEAUTOTEST()		{	/*	1s Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1s_LINEAUTOTEST()		{	/*	1s íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									}
-#define	TDEC_10s_LINEAUTOTEST()		{	/*	10s Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10s_LINEAUTOTEST()		{	/*	10s íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									}
-#define	TDEC_1min_LINEAUTOTEST()	{	/*	1min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_1min_LINEAUTOTEST()	{	/*	1min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									}
-#define	TDEC_10min_LINEAUTOTEST()	{	/*	10min Å¸ÀÌ¸Ó °¨»ê		*/	\
+#define	TDEC_10min_LINEAUTOTEST()	{	/*	10min íƒ€ì´ë¨¸ ê°ì‚°		*/	\
 									}
-#define	TDEC_1h_LINEAUTOTEST()		{	/*	1h Å¸ÀÌ¸Ó °¨»ê			*/	\
+#define	TDEC_1h_LINEAUTOTEST()		{	/*	1h íƒ€ì´ë¨¸ ê°ì‚°			*/	\
 									}
 
 
@@ -44,18 +44,18 @@
  Constant Definition
  ==============================================================================*/
 #define Z_LineDataLen				(100)						/* Packet data  */
-#define Z_TimerLineError_Time		(200)						/* Åë½Å ¹Ì¼ö½Å ¿¡·¯ */
+#define Z_TimerLineError_Time		(200)						/* í†µì‹  ë¯¸ìˆ˜ì‹  ì—ëŸ¬ */
 #define Z_TimerLineRecInt_Check		(30)						//	Rec. Interrupt 30ms check
 
-#define Z_TimerLineRecWait			(20)						/* ¼ö½Å´ë±â Timer 20ms */
-#define Z_TimerLineTraWait			(10)						/* ¼Û½Å´ë±â Timer 10ms */
-#define Z_TimerLineTrahalt			(50)						//	Tx Á¤ÁöÃ¼Å© Timer 50ms
-#define Z_TimerLineDataReceive		(100)						//	Åë½Å ¹Ì¼ö½Å 10ÃÊ <10s/100ms>
+#define Z_TimerLineRecWait			(20)						/* ìˆ˜ì‹ ëŒ€ê¸° Timer 20ms */
+#define Z_TimerLineTraWait			(10)						/* ì†¡ì‹ ëŒ€ê¸° Timer 10ms */
+#define Z_TimerLineTrahalt			(50)						//	Tx ì •ì§€ì²´í¬ Timer 50ms
+#define Z_TimerLineDataReceive		(100)						//	í†µì‹  ë¯¸ìˆ˜ì‹  10ì´ˆ <10s/100ms>
 
 #define Z_Line_STX					(0x01)
 #define Z_Line_ETX					(0x04)
 
-/*	¶óÀÎÅ×½ºÆ® CMD	*/
+/*	ë¼ì¸í…ŒìŠ¤íŠ¸ CMD	*/
 #define LINETEST_TESTMODE			(0x2000)
 //#define LINETEST_MODEL_CHECK		(0x2001)
 #define LINETEST_SETTING_CHECK		(0x3000)
@@ -120,20 +120,20 @@
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
-EXTERN U8 gu8_TimerLineError_Time;								/* 	2ÃÊ ¹Ì¼ö½Å Å¸ÀÌ¸Ó <2s/10ms>	*/
+EXTERN U8 gu8_TimerLineError_Time;								/* 	2ì´ˆ ë¯¸ìˆ˜ì‹  íƒ€ì´ë¨¸ <2s/10ms>	*/
 EXTERN U8 gu8_CounterLineRXDError;
 EXTERN U8 F_LineAutoTest_Commu_Error;
-EXTERN U8 gu8_TimerLineDataReceive;								//	Åë½Å ¹Ì¼ö½Å 10ÃÊ	<10s/100ms>
-EXTERN BYTE_BIT gu8_LineUartState;							//	Åë½Å»óÅÂ º¯¼ö
-	#define	f_LineRec_End			(gu8_LineUartState.Bit.b1)	//		¼ö½Å ³¡
-	#define	f_LineRec_Start			(gu8_LineUartState.Bit.b2)	//		¼ö½Å ½ÃÀÛ
-	#define	f_Tra_LineDataMake		(gu8_LineUartState.Bit.b3)	//		¼Û½Å µ¥ÀÌÅÍ »ı¼º
-	#define	f_Tra_LineStart			(gu8_LineUartState.Bit.b4)	//		¼Û½Å ½ÃÀÛ
+EXTERN U8 gu8_TimerLineDataReceive;								//	í†µì‹  ë¯¸ìˆ˜ì‹  10ì´ˆ	<10s/100ms>
+EXTERN BYTE_BIT gu8_LineUartState;							//	í†µì‹ ìƒíƒœ ë³€ìˆ˜
+	#define	f_LineRec_End			(gu8_LineUartState.Bit.b1)	//		ìˆ˜ì‹  ë
+	#define	f_LineRec_Start			(gu8_LineUartState.Bit.b2)	//		ìˆ˜ì‹  ì‹œì‘
+	#define	f_Tra_LineDataMake		(gu8_LineUartState.Bit.b3)	//		ì†¡ì‹  ë°ì´í„° ìƒì„±
+	#define	f_Tra_LineStart			(gu8_LineUartState.Bit.b4)	//		ì†¡ì‹  ì‹œì‘
 
-EXTERN U8 gu8_CounterLineRecvCount;								/* 	¼ö½Å µ¥ÀÌÅÍ ±æÀÌ Ä«¿îÅÍ	*/
-EXTERN U8 gu8_CounterLineTraDataCount;								/* 	¼Û½Å µ¥ÀÌÅÍ Ä«¿îÅÍ	*/
-EXTERN BYTE_BIT	gu8_Buffer_Line_RecData[Z_LineDataLen];				/* 	¼ö½Å µ¥ÀÌÅÍ ¹öÆÛ	*/
-EXTERN BYTE_BIT	gu8_Buffer_Line_TraData[Z_LineDataLen];				/* 	¼Û½Å µ¥ÀÌÅÍ ¹öÆÛ	*/
+EXTERN U8 gu8_CounterLineRecvCount;								/* 	ìˆ˜ì‹  ë°ì´í„° ê¸¸ì´ ì¹´ìš´í„°	*/
+EXTERN U8 gu8_CounterLineTraDataCount;								/* 	ì†¡ì‹  ë°ì´í„° ì¹´ìš´í„°	*/
+EXTERN BYTE_BIT	gu8_Buffer_Line_RecData[Z_LineDataLen];				/* 	ìˆ˜ì‹  ë°ì´í„° ë²„í¼	*/
+EXTERN BYTE_BIT	gu8_Buffer_Line_TraData[Z_LineDataLen];				/* 	ì†¡ì‹  ë°ì´í„° ë²„í¼	*/
 
 EXTERN WORD_BIT gu16_LineTest_LoadCMD;
 	#define F_LineTest_SteppingMotor	(gu16_LineTest_LoadCMD.Bit.b0)
@@ -159,10 +159,10 @@ EXTERN BYTE_BIT F_LineFrontTest_Operation;
 	#define F_LineFrontTest_Effluent_Oper	(F_LineFrontTest_Operation.Bit.b4)
 	#define F_LineFrontTest_Amount_Select 	(F_LineFrontTest_Operation.Bit.b5)
 
-EXTERN U8 F_LineFrontTest_1stNos_VV;		//	ÆÄ¼¼ÄÚ ¼öµ¿°Ë»ç¿¡¼­ ³ë½º¹ëºê °Ë»ç¸¦ À§ÇÑ ÇÃ·¡±×
+EXTERN U8 F_LineFrontTest_1stNos_VV;		//	íŒŒì„¸ì½” ìˆ˜ë™ê²€ì‚¬ì—ì„œ ë…¸ìŠ¤ë°¸ë¸Œ ê²€ì‚¬ë¥¼ ìœ„í•œ í”Œë˜ê·¸
 
-EXTERN U8 gu8_TimerLineFrontTest_EffLimit;			//	ÀúÀ¯·®¼¾¼­ °í¼Ó È¸Àü(¿­¹ß»ı)À¸·Î ÃßÃâ XÃÊ Á¦ÇÑ	<1.5s/100ms>
-EXTERN U8 gu8_TimerFrontTest_1stNosDisplay;	//	Nos¹ëºê Open/Close »óÅÂ µğ½ºÇÃ·¹ÀÌ
+EXTERN U8 gu8_TimerLineFrontTest_EffLimit;			//	ì €ìœ ëŸ‰ì„¼ì„œ ê³ ì† íšŒì „(ì—´ë°œìƒ)ìœ¼ë¡œ ì¶”ì¶œ Xì´ˆ ì œí•œ	<1.5s/100ms>
+EXTERN U8 gu8_TimerFrontTest_1stNosDisplay;	//	Nosë°¸ë¸Œ Open/Close ìƒíƒœ ë””ìŠ¤í”Œë ˆì´
 
 EXTERN U8 gu8_LineFrontTest_Amount;
 
@@ -184,14 +184,14 @@ EXTERN U8 gu8_Line_RecData_Data2;
 EXTERN U8 gu8_Line_RecData_Data3;
 EXTERN U8 gu8_Line_RecData_Data4;
 
-EXTERN U16 gu8_TimerLineRecWait;									/* 	¼ö½Å ´ë±â Å¸ÀÌ¸Ó		<20ms/1ms> */
-EXTERN U16 gu8_TimerLineTraWait;									/* 	¼Û½Å ´ë±â Å¸ÀÌ¸Ó		<20ms/1ms> */
+EXTERN U16 gu8_TimerLineRecWait;									/* 	ìˆ˜ì‹  ëŒ€ê¸° íƒ€ì´ë¨¸		<20ms/1ms> */
+EXTERN U16 gu8_TimerLineTraWait;									/* 	ì†¡ì‹  ëŒ€ê¸° íƒ€ì´ë¨¸		<20ms/1ms> */
 
-EXTERN U8 gu8_TimerLineTrahalt;						//	Tx Ã¼Å©		<50ms/1ms>
-EXTERN U8 gu8_TimerLineRecInt_Check;				//	Rx Ã¼Å©		<30ms/1ms>
+EXTERN U8 gu8_TimerLineTrahalt;						//	Tx ì²´í¬		<50ms/1ms>
+EXTERN U8 gu8_TimerLineRecInt_Check;				//	Rx ì²´í¬		<30ms/1ms>
 
-EXTERN U8 F_LineRx_Complete;						//	¼ö½Å¼º°ø flag
-EXTERN U8 F_LineRx_Exp;								//	¼ö½Å °æÇè
+EXTERN U8 F_LineRx_Complete;						//	ìˆ˜ì‹ ì„±ê³µ flag
+EXTERN U8 F_LineRx_Exp;								//	ìˆ˜ì‹  ê²½í—˜
 
 EXTERN U8 F_NACK_Tx;
 
@@ -222,15 +222,15 @@ EXTERN U16 gu16_UV_No_Oper_FB_forLineTest;
 void LineAutoTest_Initialize(void);
 void LineAutoTestControl(void);
 
-void Line_UartInitial(void);						//	Åë½ÅÃÊ±âÈ­
-void Line_UartReceive(U8 recdata);					//	RxÃ³¸® ÇÔ¼ö (ÀÎÅÍ·´Æ® ³»)
-void Line_UartControl(void);						//	Åë½ÅÃ³¸® ÇÔ¼ö
-void Line_TXControl(void);							//	TxÃ³¸®ÇÔ¼ö
-void Line_RXControl(void);							//	RxÃ³¸®ÇÔ¼ö
-void Line_TraCrcCheck(void);						//	Tx CRC Ã¼Å©
-void Line_Data_Parsing(void);						//	¼ö½Åµ¥ÀÌÅÍ ºĞ¼®
-void Line_Send_Data(void);							//	¼Û½Å µ¥ÀÌÅÍ »ı¼º
-void Line_Uart_SFR_Refresh(void);					//	Åë½Å°ü·Ã SFR refresh
+void Line_UartInitial(void);						//	í†µì‹ ì´ˆê¸°í™”
+void Line_UartReceive(U8 recdata);					//	Rxì²˜ë¦¬ í•¨ìˆ˜ (ì¸í„°ëŸ½íŠ¸ ë‚´)
+void Line_UartControl(void);						//	í†µì‹ ì²˜ë¦¬ í•¨ìˆ˜
+void Line_TXControl(void);							//	Txì²˜ë¦¬í•¨ìˆ˜
+void Line_RXControl(void);							//	Rxì²˜ë¦¬í•¨ìˆ˜
+void Line_TraCrcCheck(void);						//	Tx CRC ì²´í¬
+void Line_Data_Parsing(void);						//	ìˆ˜ì‹ ë°ì´í„° ë¶„ì„
+void Line_Send_Data(void);							//	ì†¡ì‹  ë°ì´í„° ìƒì„±
+void Line_Uart_SFR_Refresh(void);					//	í†µì‹ ê´€ë ¨ SFR refresh
 __interrupt void Line_IntUartTx(void);				//	Tx interrupt
 __interrupt void Line_IntUartRx(void);				//	Rx interrupt
 

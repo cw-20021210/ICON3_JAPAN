@@ -1,7 +1,7 @@
 /// @file     keycontrol.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    Å°ÀÔ·Â Á¦¾î °ü·Ã file
+/// @brief    í‚¤ì…ë ¥ ì œì–´ ê´€ë ¨ file
 #define KEYCONTROL_C
 #include "include/_include.h"
 
@@ -50,8 +50,8 @@ enum
 //#define KEY_VALUE_ALTITUDE_MODE		(KEY_VALUE_HOTWATER | KEY_VALUE_HOTLOCK)
 //#define KEY_VALUE_HOTTANK_CLEAR		(KEY_VALUE_HOTLOCK | KEY_VALUE_AMOUNT)
 
-//	¡Ø ·ÕÅ° ¹× Á¶ÇÕÅ°´Â ¸ŞÀÎ¿¡¼­ Á¤ÀÇ
-KeyTable KeyArray[enum_KEY_MAX] = {															//¡Ø	Long key´Â Main ÇÁ·Î±×·¥¿¡¼­ Ã³¸®ÇÔ. ±×·¯³ª µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é OFF Edge µ¿ÀÛÀÌ °è¼Ó ´©¸£°í ÀÖ¾îµµ µ¿ÀÛÀÌ µÇ±â¶§¹®¿¡ µ¥ÀÌÅÍ¸¦ ³ÖÀ½
+//	â€» ë¡±í‚¤ ë° ì¡°í•©í‚¤ëŠ” ë©”ì¸ì—ì„œ ì •ì˜
+KeyTable KeyArray[enum_KEY_MAX] = {															//â€»	Long keyëŠ” Main í”„ë¡œê·¸ë¨ì—ì„œ ì²˜ë¦¬í•¨. ê·¸ëŸ¬ë‚˜ ë°ì´í„°ê°€ ì—†ìœ¼ë©´ OFF Edge ë™ì‘ì´ ê³„ì† ëˆ„ë¥´ê³  ìˆì–´ë„ ë™ì‘ì´ ë˜ê¸°ë•Œë¬¸ì— ë°ì´í„°ë¥¼ ë„£ìŒ
 //	Key Value					Key Number					Short Time		Short Type		Long Time		Long Type		V_Long Time		V_Long Type		FCT Long Time	FCT Long Type	On Break
 	{KEY_VALUE_HOTWATER, 		enum_KEY_HOTWATER, 			5, 				LEVEL, 			100, 			LEVEL,			KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE,	OFF },
 	{KEY_VALUE_COLDWATER, 		enum_KEY_COLDWATER, 		5, 				LEVEL, 			100, 			LEVEL,			KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE,	OFF },
@@ -69,7 +69,7 @@ KeyTable KeyArray[enum_KEY_MAX] = {															//¡Ø	Long key´Â Main ÇÁ·Î±×·¥¿
 //	{KEY_VALUE_HOTTANK_CLEAR,	enum_KEY_HOTTANK_CLEAR,		KEY_UNDEFINE,	KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE,	KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE, 	KEY_UNDEFINE, 	OFF },
 };
 
-/// @brief    Key ÀÔ·Â Ã³¸® ÃÊ±âÈ­
+/// @brief    Key ì…ë ¥ ì²˜ë¦¬ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void KeyControl_Initialize(void)
@@ -77,7 +77,7 @@ void KeyControl_Initialize(void)
 	gu8_KeyControlStep = 0;
 }
 
-///// @brief    Key ÀÔ·Â Ã³¸®
+///// @brief    Key ì…ë ¥ ì²˜ë¦¬
 ///// @param    void
 ///// @return   void
 //void KeyControl(void)
@@ -99,7 +99,7 @@ void KeyControl_Initialize(void)
 //	}
 //}
 
-/// @brief    Key È®Á¤
+/// @brief    Key í™•ì •
 /// @param    void
 /// @return   void
 void EffluentKey_Decide(void)
@@ -141,59 +141,59 @@ void EffluentKey_Decide(void)
 	}
 }
 
-/// @brief    Key È®Á¤
+/// @brief    Key í™•ì •
 /// @param    void
 /// @return   void
 void KeyDecide(ITTI3* p)
 {
 	U8 i = 0;
-	U8 data = p->Level.byte;						//	3È¸ ÀÏÄ¡¸ğµâÀÇ µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ¼­
-	static U8 buf = 0;								//	Å° ¹öÆÛ ÀúÀå
-	static KeyTable *KeyPnt = NULL;					//	ÇØ´ç KeyTable Æ÷ÀÎÅÍ
+	U8 data = p->Level.byte;						//	3íšŒ ì¼ì¹˜ëª¨ë“ˆì˜ ë°ì´í„°ë¥¼ ë°›ì•„ì„œ
+	static U8 buf = 0;								//	í‚¤ ë²„í¼ ì €ì¥
+	static KeyTable *KeyPnt = NULL;					//	í•´ë‹¹ KeyTable í¬ì¸í„°
 
-//	gu16_ShortKeyArray.WORD = 0x0000U;				//	µ¥ÀÌÅÍ CLEAR
-//	gu16_LongKeyArray.WORD = 0x0000U;				//	µ¥ÀÌÅÍ CLEAR
-//	gu16_VeryLongKeyArray.WORD = 0x0000U;           //	µ¥ÀÌÅÍ CLEAR
-//	gu16_FCTLongKeyArray.WORD = 0x0000U;            //	µ¥ÀÌÅÍ CLEAR
+//	gu16_ShortKeyArray.WORD = 0x0000U;				//	ë°ì´í„° CLEAR
+//	gu16_LongKeyArray.WORD = 0x0000U;				//	ë°ì´í„° CLEAR
+//	gu16_VeryLongKeyArray.WORD = 0x0000U;           //	ë°ì´í„° CLEAR
+//	gu16_FCTLongKeyArray.WORD = 0x0000U;            //	ë°ì´í„° CLEAR
 
-	switch (gu8_KeyControlStep)						//		step¿¡ µû¶ó
+	switch (gu8_KeyControlStep)						//		stepì— ë”°ë¼
 	{
-		case 0:										//			´ë±â ½ºÅÜ
-			gu8_TimerKeyOnBreak = 100;				//				¿Â°íÀå È®ÀÎ Å¸ÀÌ¸Ó
-			F_VeryLongKey_Rejection = CLEAR;		//				º£¸®·ÕÅ° ±İÁö ÇÃ·¡±× CLEAR
-			if (data != 0)							//				Key ÀÔ·ÂÀÌ ÀÖÀ¸¸é
+		case 0:										//			ëŒ€ê¸° ìŠ¤í…
+			gu8_TimerKeyOnBreak = 100;				//				ì˜¨ê³ ì¥ í™•ì¸ íƒ€ì´ë¨¸
+			F_VeryLongKey_Rejection = CLEAR;		//				ë² ë¦¬ë¡±í‚¤ ê¸ˆì§€ í”Œë˜ê·¸ CLEAR
+			if (data != 0)							//				Key ì…ë ¥ì´ ìˆìœ¼ë©´
 			{
-				for (i = 0; i < enum_KEY_MAX; i++)	//				ÇØ´çÇÏ´Â Key °Ë»ö
+				for (i = 0; i < enum_KEY_MAX; i++)	//				í•´ë‹¹í•˜ëŠ” Key ê²€ìƒ‰
 				{
-					if (data == KeyArray[i].KeyData)//				Key°¡ ÀÏÄ¡ ÇÒ ½Ã
+					if (data == KeyArray[i].KeyData)//				Keyê°€ ì¼ì¹˜ í•  ì‹œ
 					{
-						if ((KeyArray[i].OnBreak == ON) && (gu8_KeyOnBreak == KeyArray[i].KeyData))	//			¿Â°íÀå ÇØ´çÅ° and Àü¿øºÎÆÃ µ¥ÀÌÅÍ ºñ±³
+						if ((KeyArray[i].OnBreak == ON) && (gu8_KeyOnBreak == KeyArray[i].KeyData))	//			ì˜¨ê³ ì¥ í•´ë‹¹í‚¤ and ì „ì›ë¶€íŒ… ë°ì´í„° ë¹„êµ
 						{
 							break;
 						}
-						buf = data;					//					¹öÆÛ ÀúÀå
-						KeyPnt = &KeyArray[i];		//					Key Æ÷ÀÎÅÍ
-						if (KeyPnt->ShortKeyTime != 0)	 //			Short Key µ¥ÀÌÅÍ°¡ ÀÖÀ» °æ¿ì
+						buf = data;					//					ë²„í¼ ì €ì¥
+						KeyPnt = &KeyArray[i];		//					Key í¬ì¸í„°
+						if (KeyPnt->ShortKeyTime != 0)	 //			Short Key ë°ì´í„°ê°€ ìˆì„ ê²½ìš°
 						{
-							gu8_KeyControlStep = 1;	//					Short Key È®Á¤ ½ºÅÜ
-							gu16_TimerKeyDecide = KeyPnt->ShortKeyTime;     //				Short Timer ¼³Á¤
+							gu8_KeyControlStep = 1;	//					Short Key í™•ì • ìŠ¤í…
+							gu16_TimerKeyDecide = KeyPnt->ShortKeyTime;     //				Short Timer ì„¤ì •
 						}
-						else						//			Short Key µ¥ÀÌÅÍ°¡ ¾øÀ» °æ¿ì
+						else						//			Short Key ë°ì´í„°ê°€ ì—†ì„ ê²½ìš°
 						{
-//							if (F_TestMode == SET)	//			Å×½ºÆ®¸ğµåÀÎ °æ¿ì
+//							if (F_TestMode == SET)	//			í…ŒìŠ¤íŠ¸ëª¨ë“œì¸ ê²½ìš°
 //							{
-//								if (KeyPnt->FCTLongKeyTime != 0)	//				Å×½ºÆ®Àü¿ë ·ÕÅ° À¯¹« È®ÀÎ
+//								if (KeyPnt->FCTLongKeyTime != 0)	//				í…ŒìŠ¤íŠ¸ì „ìš© ë¡±í‚¤ ìœ ë¬´ í™•ì¸
 //								{
-//									gu8_KeyControlStep = 10;	//					Å×½ºÆ®Àü¿ë ·ÕÅ° ½ºÅÜ
-//									gu16_TimerKeyDecide = KeyPnt->FCTLongKeyTime;     //				Short Timer ¼³Á¤
+//									gu8_KeyControlStep = 10;	//					í…ŒìŠ¤íŠ¸ì „ìš© ë¡±í‚¤ ìŠ¤í…
+//									gu16_TimerKeyDecide = KeyPnt->FCTLongKeyTime;     //				Short Timer ì„¤ì •
 //								}
 //							}
-//							else					//			ÀÏ¹İ¸ğµå °æ¿ì
+//							else					//			ì¼ë°˜ëª¨ë“œ ê²½ìš°
 //							{
-								if (KeyPnt->LongKeyTime != 0)	//			Long Key µ¥ÀÌÅÍ°¡ ÀÖÀ» °æ¿ì
+								if (KeyPnt->LongKeyTime != 0)	//			Long Key ë°ì´í„°ê°€ ìˆì„ ê²½ìš°
 								{
 									gu8_KeyControlStep = 2;		//					2-Step
-									gu16_TimerKeyDecide = KeyPnt->LongKeyTime;     //				Short Timer ¼³Á¤
+									gu16_TimerKeyDecide = KeyPnt->LongKeyTime;     //				Short Timer ì„¤ì •
 								}
 //							}
 						}
@@ -201,45 +201,45 @@ void KeyDecide(ITTI3* p)
 				}
 			}
 			break;
-		case 1:										//		Short Key È®Á¤
-			if ((gu16_TimerKeyDecide <= 0)) 		//			Short Timer °æ°ú ½Ã
+		case 1:										//		Short Key í™•ì •
+			if ((gu16_TimerKeyDecide <= 0)) 		//			Short Timer ê²½ê³¼ ì‹œ
 			{
 				if ((F_ShortKeyProhibit == CLEAR)
 					&& ((KeyPnt->ShortKeyType == LEVEL)
-					|| ((KeyPnt->ShortKeyType == OFFEDGE) && (buf == p->OffEdge.byte))))	//				Short Key°¡ OFF edge °ËÃâÀÌ ¾Æ´Ò ½Ã
+					|| ((KeyPnt->ShortKeyType == OFFEDGE) && (buf == p->OffEdge.byte))))	//				Short Keyê°€ OFF edge ê²€ì¶œì´ ì•„ë‹ ì‹œ
 				{
 					gu16_ShortKeyArray.WORD = 1 << KeyPnt->KeyNum;
-					gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					Á¢¼ö±İÁö
+					gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					ì ‘ìˆ˜ê¸ˆì§€
 					gu8_KeyControlStep = 0xFF;
-					if (KeyPnt->ShortKeyType == OFFEDGE)	//				OFF Edge Å°¸é
+					if (KeyPnt->ShortKeyType == OFFEDGE)	//				OFF Edge í‚¤ë©´
 					{
-						break;						//				switch ±¸Á¶¹® Å»Ãâ (ÇÏ±â if¹®¿¡¼­ ½ºÅÜ2(·ÕÅ°)·Î ³Ñ¾î°¡Áö ¾Ê°Ô²û)
+						break;						//				switch êµ¬ì¡°ë¬¸ íƒˆì¶œ (í•˜ê¸° ifë¬¸ì—ì„œ ìŠ¤í…2(ë¡±í‚¤)ë¡œ ë„˜ì–´ê°€ì§€ ì•Šê²Œë”)
 					}
 				}
 
-//				if (F_TestMode == SET)			//			Å×½ºÆ®¸ğµåÀÎ °æ¿ì
+//				if (F_TestMode == SET)			//			í…ŒìŠ¤íŠ¸ëª¨ë“œì¸ ê²½ìš°
 //				{
-//					if (KeyPnt->FCTLongKeyTime != 0)	//			Å×½ºÆ® Àü¿ë Long Key µ¥ÀÌÅÍ°¡ ÀÖÀ» °æ¿ì
+//					if (KeyPnt->FCTLongKeyTime != 0)	//			í…ŒìŠ¤íŠ¸ ì „ìš© Long Key ë°ì´í„°ê°€ ìˆì„ ê²½ìš°
 //					{
-//						gu16_TimerKeyDecide = KeyPnt->FCTLongKeyTime - KeyPnt->ShortKeyTime;     //				Timer ¼³Á¤
-//						gu8_KeyControlStep = 10;    //					Å×½ºÆ® Àü¿ë Long Key È®Á¤ ½ºÅÜ
+//						gu16_TimerKeyDecide = KeyPnt->FCTLongKeyTime - KeyPnt->ShortKeyTime;     //				Timer ì„¤ì •
+//						gu8_KeyControlStep = 10;    //					í…ŒìŠ¤íŠ¸ ì „ìš© Long Key í™•ì • ìŠ¤í…
 //					}
 //				}
-//				else								//			ÀÏ¹İ¸ğµåÀÎ °æ¿ì
+//				else								//			ì¼ë°˜ëª¨ë“œì¸ ê²½ìš°
 //				{
-					if (KeyPnt->LongKeyTime != 0)	//			Long Key µ¥ÀÌÅÍ°¡ ÀÖÀ» °æ¿ì
+					if (KeyPnt->LongKeyTime != 0)	//			Long Key ë°ì´í„°ê°€ ìˆì„ ê²½ìš°
 					{
-						gu16_TimerKeyDecide = KeyPnt->LongKeyTime - KeyPnt->ShortKeyTime;     //				Timer ¼³Á¤
-						gu8_KeyControlStep = 2;		//					Long Key È®Á¤ ½ºÅÜ
+						gu16_TimerKeyDecide = KeyPnt->LongKeyTime - KeyPnt->ShortKeyTime;     //				Timer ì„¤ì •
+						gu8_KeyControlStep = 2;		//					Long Key í™•ì • ìŠ¤í…
 					}
-					else if (data == 0x00)					//		ÇöÀçÅ°°¡ ¸ğµÎ ¾È´­·ÁÁ®ÀÖ´Â »óÅÂ
+					else if (data == 0x00)					//		í˜„ì¬í‚¤ê°€ ëª¨ë‘ ì•ˆëˆŒë ¤ì ¸ìˆëŠ” ìƒíƒœ
 					{
-						gu8_TimerKeyProhibit = Z_TimerKeyProhibit;    //					Á¢¼ö±İÁö
-						gu8_KeyControlStep = 0xFF;			//					Á¢¼ö±İÁö
+						gu8_TimerKeyProhibit = Z_TimerKeyProhibit;    //					ì ‘ìˆ˜ê¸ˆì§€
+						gu8_KeyControlStep = 0xFF;			//					ì ‘ìˆ˜ê¸ˆì§€
 					}
-					else if (buf != data)					//				µ¥ÀÌÅÍ°¡ ´Ù¸¦ ½Ã
+					else if (buf != data)					//				ë°ì´í„°ê°€ ë‹¤ë¥¼ ì‹œ
 					{
-						gu8_KeyControlStep = 0;				//				º¹ÇÕÅ° ÆÇ´Ü
+						gu8_KeyControlStep = 0;				//				ë³µí•©í‚¤ íŒë‹¨
 					}
 					else
 					{
@@ -247,139 +247,139 @@ void KeyDecide(ITTI3* p)
 					}
 //				}
 			}
-			else if (data == 0x00)					//		ÇöÀçÅ°°¡ ¸ğµÎ ¾È´­·ÁÁ®ÀÖ´Â »óÅÂ
+			else if (data == 0x00)					//		í˜„ì¬í‚¤ê°€ ëª¨ë‘ ì•ˆëˆŒë ¤ì ¸ìˆëŠ” ìƒíƒœ
 			{
-				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;    //					Á¢¼ö±İÁö
-				gu8_KeyControlStep = 0xFF;			//					Á¢¼ö±İÁö
+				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;    //					ì ‘ìˆ˜ê¸ˆì§€
+				gu8_KeyControlStep = 0xFF;			//					ì ‘ìˆ˜ê¸ˆì§€
 			}
-			else if (buf != data)					//				µ¥ÀÌÅÍ°¡ ´Ù¸¦ ½Ã
+			else if (buf != data)					//				ë°ì´í„°ê°€ ë‹¤ë¥¼ ì‹œ
 			{
-				gu8_KeyControlStep = 0;				//				º¹ÇÕÅ° ÆÇ´Ü
+				gu8_KeyControlStep = 0;				//				ë³µí•©í‚¤ íŒë‹¨
 			}
 			else
 			{
 
 			}
 			break;
-		case 2:										//	Long Key È®Á¤
+		case 2:										//	Long Key í™•ì •
 			if ((gu16_TimerKeyDecide <= 0))
 			{			//
 				if ((KeyPnt->LongKeyType == LEVEL) || ((KeyPnt->LongKeyType == OFFEDGE) && (buf == p->OffEdge.byte)))
 				{
 //					gu16_LongKeyArray.WORD = 1 << KeyPnt->KeyNum;
-					gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					Á¢¼ö±İÁö
-					gu8_KeyControlStep = 0xFF;		//					Á¢¼ö±İÁö
+					gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					ì ‘ìˆ˜ê¸ˆì§€
+					gu8_KeyControlStep = 0xFF;		//					ì ‘ìˆ˜ê¸ˆì§€
 				}
-				if (KeyPnt->VeryLongKeyTime != 0)	//			Very Long Key µ¥ÀÌÅÍ°¡ ÀÖÀ» °æ¿ì
+				if (KeyPnt->VeryLongKeyTime != 0)	//			Very Long Key ë°ì´í„°ê°€ ìˆì„ ê²½ìš°
 				{
-					gu16_TimerKeyDecide = KeyPnt->VeryLongKeyTime - KeyPnt->LongKeyTime - KeyPnt->ShortKeyTime;     //				Timer ¼³Á¤
+					gu16_TimerKeyDecide = KeyPnt->VeryLongKeyTime - KeyPnt->LongKeyTime - KeyPnt->ShortKeyTime;     //				Timer ì„¤ì •
 					gu8_KeyControlStep = 3;			//					4-Step
 				}
 			}
-			else if ((KeyPnt->ShortKeyType == OFFEDGE) && (buf == p->OffEdge.byte))	//		Short Key°¡ OffEdge Å¸ÀÔÀÎ °æ¿ì
+			else if ((KeyPnt->ShortKeyType == OFFEDGE) && (buf == p->OffEdge.byte))	//		Short Keyê°€ OffEdge íƒ€ì…ì¸ ê²½ìš°
 			{
-				gu16_ShortKeyArray.WORD = 1 << KeyPnt->KeyNum;	//			Short Key È®Á¤
-				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					Á¢¼ö±İÁö
-				gu8_KeyControlStep = 0xFF;			//					Á¢¼ö±İÁö
+				gu16_ShortKeyArray.WORD = 1 << KeyPnt->KeyNum;	//			Short Key í™•ì •
+				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					ì ‘ìˆ˜ê¸ˆì§€
+				gu8_KeyControlStep = 0xFF;			//					ì ‘ìˆ˜ê¸ˆì§€
 			}
-			else if (data == 0x00)					//		ÇöÀçÅ°°¡ ¸ğµÎ ¾È´­·ÁÁ®ÀÖ´Â »óÅÂ
+			else if (data == 0x00)					//		í˜„ì¬í‚¤ê°€ ëª¨ë‘ ì•ˆëˆŒë ¤ì ¸ìˆëŠ” ìƒíƒœ
 			{
-				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;     //					Á¢¼ö±İÁö
-				gu8_KeyControlStep = 0xFF;			//					Á¢¼ö±İÁö
+				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;     //					ì ‘ìˆ˜ê¸ˆì§€
+				gu8_KeyControlStep = 0xFF;			//					ì ‘ìˆ˜ê¸ˆì§€
 			}
 			else if (buf != data)
-			{										//				µ¥ÀÌÅÍ°¡ ´Ù¸¦ ½Ã
-//				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					Á¢¼ö±İÁö
-//				gu8_KeyControlStep = 0xFF;						//					Á¢¼ö±İÁö
-				F_ShortKeyProhibit = SET;			//				´ÜÅ° Áßº¹ ±İÁö
-				gu8_KeyControlStep = 0;				//				º¹ÇÕÅ° ÆÇ´Ü
+			{										//				ë°ì´í„°ê°€ ë‹¤ë¥¼ ì‹œ
+//				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					ì ‘ìˆ˜ê¸ˆì§€
+//				gu8_KeyControlStep = 0xFF;						//					ì ‘ìˆ˜ê¸ˆì§€
+				F_ShortKeyProhibit = SET;			//				ë‹¨í‚¤ ì¤‘ë³µ ê¸ˆì§€
+				gu8_KeyControlStep = 0;				//				ë³µí•©í‚¤ íŒë‹¨
 			}
 			else
 			{
 
 			}
 			break;
-		case 3:										//		Very Long Key È®Á¤ ½ºÅÜ
-			if ((gu16_TimerKeyDecide <= 0))			//			Å¸ÀÌ¸Ó °æ°úÀÎ °æ¿ì
+		case 3:										//		Very Long Key í™•ì • ìŠ¤í…
+			if ((gu16_TimerKeyDecide <= 0))			//			íƒ€ì´ë¨¸ ê²½ê³¼ì¸ ê²½ìš°
 			{										//
-				if ((KeyPnt->VeryLongKeyType == LEVEL)	//				LevelÀÌ ON»óÅÂ
-					|| ((KeyPnt->VeryLongKeyType == OFFEDGE) && (buf == p->OffEdge.byte)))		//				OFFEdge »óÅÂ
+				if ((KeyPnt->VeryLongKeyType == LEVEL)	//				Levelì´ ONìƒíƒœ
+					|| ((KeyPnt->VeryLongKeyType == OFFEDGE) && (buf == p->OffEdge.byte)))		//				OFFEdge ìƒíƒœ
 				{
-					if (F_VeryLongKey_Rejection == CLEAR)	//			VeryLongKey °ÅºÎ flag CLEARÀÎ °æ¿ì
+					if (F_VeryLongKey_Rejection == CLEAR)	//			VeryLongKey ê±°ë¶€ flag CLEARì¸ ê²½ìš°
 					{
 //						gu16_VeryLongKeyArray.WORD = 1 << KeyPnt->KeyNum;
-						gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					Á¢¼ö±İÁö
+						gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					ì ‘ìˆ˜ê¸ˆì§€
 					}
-					gu8_KeyControlStep = 0xFF;		//					Á¢¼ö±İÁö
+					gu8_KeyControlStep = 0xFF;		//					ì ‘ìˆ˜ê¸ˆì§€
 				}
 			}
-			else if (data == 0x00)					//		ÇöÀçÅ°°¡ ¸ğµÎ ¾È´­·ÁÁ®ÀÖ´Â »óÅÂ
+			else if (data == 0x00)					//		í˜„ì¬í‚¤ê°€ ëª¨ë‘ ì•ˆëˆŒë ¤ì ¸ìˆëŠ” ìƒíƒœ
 			{
-				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					Á¢¼ö±İÁö
-				gu8_KeyControlStep = 0xFF;			//					Á¢¼ö±İÁö
+				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					ì ‘ìˆ˜ê¸ˆì§€
+				gu8_KeyControlStep = 0xFF;			//					ì ‘ìˆ˜ê¸ˆì§€
 			}
-			else if (buf != data)					//				µ¥ÀÌÅÍ°¡ ´Ù¸¦ ½Ã
+			else if (buf != data)					//				ë°ì´í„°ê°€ ë‹¤ë¥¼ ì‹œ
 			{
-//				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					Á¢¼ö±İÁö
-//				gu8_KeyControlStep = 0xFF;						//					Á¢¼ö±İÁö
-				F_ShortKeyProhibit = SET;			//				´ÜÅ° Áßº¹ ±İÁö
-				gu8_KeyControlStep = 0;				//				º¹ÇÕÅ° ÆÇ´Ü
+//				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					ì ‘ìˆ˜ê¸ˆì§€
+//				gu8_KeyControlStep = 0xFF;						//					ì ‘ìˆ˜ê¸ˆì§€
+				F_ShortKeyProhibit = SET;			//				ë‹¨í‚¤ ì¤‘ë³µ ê¸ˆì§€
+				gu8_KeyControlStep = 0;				//				ë³µí•©í‚¤ íŒë‹¨
 			}
 			else
 			{
 
 			}
 			break;
-		case 10:									//	FCT Àü¿ë Long Key
-			if ((gu16_TimerKeyDecide <= 0))			//		Å¸ÀÌ¸Ó °æ°ú ½Ã
+		case 10:									//	FCT ì „ìš© Long Key
+			if ((gu16_TimerKeyDecide <= 0))			//		íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 			{
 				if ((KeyPnt->FCTLongKeyType == LEVEL)
 				|| ((KeyPnt->FCTLongKeyType == OFFEDGE) && (buf == p->OffEdge.byte)))
 				{
 //					gu16_FCTLongKeyArray.WORD = 1 << KeyPnt->KeyNum;
-					gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					Á¢¼ö±İÁö
-					gu8_KeyControlStep = 0xFF;		//					Á¢¼ö±İÁö
+					gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					ì ‘ìˆ˜ê¸ˆì§€
+					gu8_KeyControlStep = 0xFF;		//					ì ‘ìˆ˜ê¸ˆì§€
 				}
 			}
 			else if ((KeyPnt->ShortKeyType == OFFEDGE) && (buf == p->OffEdge.byte))
 			{
 				gu16_ShortKeyArray.WORD = 1 << KeyPnt->KeyNum;
-				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					Á¢¼ö±İÁö
-				gu8_KeyControlStep = 0xFF;						//					Á¢¼ö±İÁö
+				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;		//					ì ‘ìˆ˜ê¸ˆì§€
+				gu8_KeyControlStep = 0xFF;						//					ì ‘ìˆ˜ê¸ˆì§€
 			}
-			else if (data == 0x00)					//		ÇöÀçÅ°°¡ ¸ğµÎ ¾È´­·ÁÁ®ÀÖ´Â »óÅÂ
+			else if (data == 0x00)					//		í˜„ì¬í‚¤ê°€ ëª¨ë‘ ì•ˆëˆŒë ¤ì ¸ìˆëŠ” ìƒíƒœ
 			{
-				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;     //					Á¢¼ö±İÁö
-				gu8_KeyControlStep = 0xFF;			//					Á¢¼ö±İÁö
+				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;     //					ì ‘ìˆ˜ê¸ˆì§€
+				gu8_KeyControlStep = 0xFF;			//					ì ‘ìˆ˜ê¸ˆì§€
 			}
 			else if (buf != data)
-			{										//				µ¥ÀÌÅÍ°¡ ´Ù¸¦ ½Ã
-//				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					Á¢¼ö±İÁö
-//				gu8_KeyControlStep = 0xFF;						//					Á¢¼ö±İÁö
-				F_ShortKeyProhibit = SET;			//				´ÜÅ° Áßº¹ ±İÁö
-				gu8_KeyControlStep = 0;				//				º¹ÇÕÅ° ÆÇ´Ü
+			{										//				ë°ì´í„°ê°€ ë‹¤ë¥¼ ì‹œ
+//				gu8_TimerKeyProhibit = Z_TimerKeyProhibit;	//					ì ‘ìˆ˜ê¸ˆì§€
+//				gu8_KeyControlStep = 0xFF;						//					ì ‘ìˆ˜ê¸ˆì§€
+				F_ShortKeyProhibit = SET;			//				ë‹¨í‚¤ ì¤‘ë³µ ê¸ˆì§€
+				gu8_KeyControlStep = 0;				//				ë³µí•©í‚¤ íŒë‹¨
 			}
 			else
 			{
 
 			}
 			break;
-		case 0xFF:									//		ÀÔ·Â±İÁö seq
+		case 0xFF:									//		ì…ë ¥ê¸ˆì§€ seq
 			F_ShortKeyProhibit = CLEAR;
-			if ((data == 0x00) && (gu8_TimerKeyProhibit == 0))     //			Å° µ¥ÀÌÅÍ clear and ÀÔ·Â±İÁö Å¸ÀÌ¸Ó °æ°ú ½Ã
+			if ((data == 0x00) && (gu8_TimerKeyProhibit == 0))     //			í‚¤ ë°ì´í„° clear and ì…ë ¥ê¸ˆì§€ íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 			{
-				gu8_KeyControlStep = 0;				//		´ë±â seq
+				gu8_KeyControlStep = 0;				//		ëŒ€ê¸° seq
 			}
 
-			/*	¿Â°íÀå Ã³¸®	*/
-			for (i = 0; i < enum_KEY_MAX; i++)		//				ÇØ´çÇÏ´Â Key °Ë»ö
+			/*	ì˜¨ê³ ì¥ ì²˜ë¦¬	*/
+			for (i = 0; i < enum_KEY_MAX; i++)		//				í•´ë‹¹í•˜ëŠ” Key ê²€ìƒ‰
 			{
-				if (data == KeyArray[i].KeyData)	//				Key°¡ ÀÏÄ¡ ÇÒ ½Ã
+				if (data == KeyArray[i].KeyData)	//				Keyê°€ ì¼ì¹˜ í•  ì‹œ
 				{
-					if ((KeyArray[i].OnBreak == ON) && (gu8_TimerKeyOnBreak == 0))     //			¿Â°íÀå È®ÀÎ KeyÀÎ °æ¿ì and ¿Â°íÀå Å¸ÀÌ¸Ó °æ°ú ½Ã
+					if ((KeyArray[i].OnBreak == ON) && (gu8_TimerKeyOnBreak == 0))     //			ì˜¨ê³ ì¥ í™•ì¸ Keyì¸ ê²½ìš° and ì˜¨ê³ ì¥ íƒ€ì´ë¨¸ ê²½ê³¼ ì‹œ
 					{
 //						WDTE = 0xFFU;
-						//	¡Ø ¿Â°íÀå ½Ã¿¡ Àü¿øÀ» ºÎÆÃÇÏ´Â °ÍÀº »ç¿ëÀÚ¿¡°Ô º¸ÀÌ´Â °ÍÀÌ´Ï ±İÁö. Â÷ È¸¸¸ ÀÔ·Â ¾È¹Şµµ·Ï ¼³°è
+						//	â€» ì˜¨ê³ ì¥ ì‹œì— ì „ì›ì„ ë¶€íŒ…í•˜ëŠ” ê²ƒì€ ì‚¬ìš©ìì—ê²Œ ë³´ì´ëŠ” ê²ƒì´ë‹ˆ ê¸ˆì§€. ì°¨ íšŒë§Œ ì…ë ¥ ì•ˆë°›ë„ë¡ ì„¤ê³„
 					}
 				}
 			}
@@ -390,10 +390,10 @@ void KeyDecide(ITTI3* p)
 
 	EffluentKey_Decide();
 
-	if (gu8_KeyControlStep == 0)					//	´ë±â½ºÅÜÀÎ °æ¿ì
+	if (gu8_KeyControlStep == 0)					//	ëŒ€ê¸°ìŠ¤í…ì¸ ê²½ìš°
 	{
-		buf = 0;									//		¹öÆÛ CLEAR
-		KeyPnt = NULL;								//		Æ÷ÀÎÅÍ ÇØÁ¦
+		buf = 0;									//		ë²„í¼ CLEAR
+		KeyPnt = NULL;								//		í¬ì¸í„° í•´ì œ
 	}
 
 //	if ((gu16_ShortKeyArray.WORD != 0x0000U) || (gu16_LongKeyArray.WORD != 0x0000U) || (gu16_VeryLongKeyArray.WORD != 0x0000U) || (gu16_FCTLongKeyArray.WORD == 0x0000U))

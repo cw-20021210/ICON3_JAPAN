@@ -1,23 +1,23 @@
 /// @file     pure.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ÃßÃâ Á¦¾î °ü·Ã file
+/// @brief    ì¶”ì¶œ ì œì–´ ê´€ë ¨ file
 #define PURE_C
 #include "include/_include.h"
 
-static void Ini_PureStep_00(void);					//	ºÎÆÃ
-static void Ini_PureStep_01(void);					//	ÇÊÅÍ ÇÃ·¯½Ì ´ë±â
-static void Ini_PureStep_02(void);					//	ÇÊÅÍ ÇÃ·¯½Ì Áß
-static void Ini_PureStep_10(void);					//	Á¤¼ö ¹Ì¼±ÅÃ
-static void Ini_PureStep_20(void);					//	Á¤¼ö ¼±ÅÃ (¹ÌÃßÃâ)
-static void Ini_PureStep_22(void);					//	ÃßÃâ Áß
+static void Ini_PureStep_00(void);					//	ë¶€íŒ…
+static void Ini_PureStep_01(void);					//	í•„í„° í”ŒëŸ¬ì‹± ëŒ€ê¸°
+static void Ini_PureStep_02(void);					//	í•„í„° í”ŒëŸ¬ì‹± ì¤‘
+static void Ini_PureStep_10(void);					//	ì •ìˆ˜ ë¯¸ì„ íƒ
+static void Ini_PureStep_20(void);					//	ì •ìˆ˜ ì„ íƒ (ë¯¸ì¶”ì¶œ)
+static void Ini_PureStep_22(void);					//	ì¶”ì¶œ ì¤‘
 
-static void PureStep_00(void);						//	ºÎÆÃ
+static void PureStep_00(void);						//	ë¶€íŒ…
 static void PureStep_01(void);						//
 static void PureStep_02(void);						//
-static void PureStep_10(void);						//	Á¤¼ö ¹Ì¼±ÅÃ
-static void PureStep_20(void);						//	Á¤¼ö ¼±ÅÃ (¹ÌÃßÃâ)
-static void PureStep_22(void);						//	ÃßÃâ Áß
+static void PureStep_10(void);						//	ì •ìˆ˜ ë¯¸ì„ íƒ
+static void PureStep_20(void);						//	ì •ìˆ˜ ì„ íƒ (ë¯¸ì¶”ì¶œ)
+static void PureStep_22(void);						//	ì¶”ì¶œ ì¤‘
 
 static void PureStepNoSet(U8 data);
 
@@ -25,23 +25,23 @@ static void Pure_WaterFlow_Average_Calculation(void);
 
 Pure_StepTable Pure_Step[Z_PureStepNum_Max] =
 {
-	//	½ºÅÜ No			Á¤¼ö ¹ëºê			Step Func.
-	{Z_PureStep_00,		VALVE_OFF,		PureStep_00},	//	ºÎÆÃ
+	//	ìŠ¤í… No			ì •ìˆ˜ ë°¸ë¸Œ			Step Func.
+	{Z_PureStep_00,		VALVE_OFF,		PureStep_00},	//	ë¶€íŒ…
 	{Z_PureStep_01,		VALVE_OFF,		PureStep_01},	//
 	{Z_PureStep_02,		VALVE_ON,		PureStep_02},	//
-	{Z_PureStep_10,		VALVE_OFF,		PureStep_10},	//	Á¤¼ö ¹Ì¼±ÅÃ
-	{Z_PureStep_20,   	VALVE_OFF,		PureStep_20},	//	Á¤¼ö ¼±ÅÃ (¹ÌÃßÃâ)
-	{Z_PureStep_22,		VALVE_ON,		PureStep_22},	//	ÃßÃâ Áß
-//	{Z_PureStep_B0,		VALVE_ON,		PureStep_B0},	//	³»ºÎ ÀÜ¾Ğ Á¦°Å
+	{Z_PureStep_10,		VALVE_OFF,		PureStep_10},	//	ì •ìˆ˜ ë¯¸ì„ íƒ
+	{Z_PureStep_20,   	VALVE_OFF,		PureStep_20},	//	ì •ìˆ˜ ì„ íƒ (ë¯¸ì¶”ì¶œ)
+	{Z_PureStep_22,		VALVE_ON,		PureStep_22},	//	ì¶”ì¶œ ì¤‘
+//	{Z_PureStep_B0,		VALVE_ON,		PureStep_B0},	//	ë‚´ë¶€ ì”ì•• ì œê±°
 };
 
 
-/// @brief    ÃßÃâ ½ÃÄö½º ÃÊ±âÈ­
+/// @brief    ì¶”ì¶œ ì‹œí€€ìŠ¤ ì´ˆê¸°í™”
 /// @param    void
 /// @return   void
 void Pure_Initialize(void)
 {
-	F_Pure_First = CLEAR;							//	ºÎÆÃ ÈÄ Ã¹È¸ ÃßÃâ ÀÌÈÄ ÀÎ °æ¿ì (À¯·®º¯È­ 20%ÀÌ»ó Ã¼Å©¸¦ À§ÇÔ)
+	F_Pure_First = CLEAR;							//	ë¶€íŒ… í›„ ì²«íšŒ ì¶”ì¶œ ì´í›„ ì¸ ê²½ìš° (ìœ ëŸ‰ë³€í™” 20%ì´ìƒ ì²´í¬ë¥¼ ìœ„í•¨)
 	gu16_FlowDecide_W_Ave_Pure_Standard = 100;		//	1LPM
 
 	Ini_PureStep_00();
@@ -52,9 +52,9 @@ void Pure_Initialize(void)
 /// @return   void
 void PureControl(void)
 {
-	if (gu8_PureStepNum < Z_PureStepNum_Max)		//	½ºÅÜ Çã¿ë¹üÀ§ ÀÌ³»
+	if (gu8_PureStepNum < Z_PureStepNum_Max)		//	ìŠ¤í… í—ˆìš©ë²”ìœ„ ì´ë‚´
 	{
-		(Pure_Step[gu8_PureStepNum].exe)();			//	ÇØ´ç ½ºÅÜ ÇÔ¼ö ½ÇÇà
+		(Pure_Step[gu8_PureStepNum].exe)();			//	í•´ë‹¹ ìŠ¤í… í•¨ìˆ˜ ì‹¤í–‰
 
 //		if ((gu8_PureStep != Z_PureStep_B0) && (gu8_OperationStep == Z_OperationStep_B0) && (INPUT_REED_SW_COVER == CLEAR))
 //		{
@@ -63,13 +63,13 @@ void PureControl(void)
 
 		gu8_PureValve_CMD = Pure_Step[gu8_PureStepNum].PURE_V;
 	}
-	else											//	½ºÅÜ Çã¿ë ¹üÀ§ ¿Ü
+	else											//	ìŠ¤í… í—ˆìš© ë²”ìœ„ ì™¸
 	{
-		SafetyLoop();								//		¾ÈÀüÁ¤Áö ·çÇÁ
+		SafetyLoop();								//		ì•ˆì „ì •ì§€ ë£¨í”„
 	}
 }
 
-/// @brief    ºÎÆÃ
+/// @brief    ë¶€íŒ…
 /// @param    void
 /// @return   void
 static void PureStep_00(void)
@@ -88,7 +88,7 @@ static void Ini_PureStep_00(void)
 	PureStepNoSet(Z_PureStepNum_00);
 }
 
-/// @brief    ÇÃ·¯½Ì ´ë±â
+/// @brief    í”ŒëŸ¬ì‹± ëŒ€ê¸°
 /// @param    void
 /// @return   void
 static void PureStep_01(void)
@@ -133,14 +133,14 @@ static void Ini_PureStep_02(void)
 	PureStepNoSet(Z_PureStepNum_02);
 }
 
-/// @brief    Á¤¼ö ¹Ì¼±ÅÃ
+/// @brief    ì •ìˆ˜ ë¯¸ì„ íƒ
 /// @param    void
 /// @return   void
 static void PureStep_10(void)
 {
-	if (gu8_WaterSelect == PURE_WATER)				//	Á¤¼ö ¼±ÅÃÀÇ °æ¿ì
+	if (gu8_WaterSelect == PURE_WATER)				//	ì •ìˆ˜ ì„ íƒì˜ ê²½ìš°
 	{
-		Ini_PureStep_20();							//		Á¤¼ö¼±ÅÃ ¹ÌÃßÃâ
+		Ini_PureStep_20();							//		ì •ìˆ˜ì„ íƒ ë¯¸ì¶”ì¶œ
 	}
 	else if (F_FirstFlushing == CLEAR)
 	{
@@ -156,18 +156,18 @@ static void Ini_PureStep_10(void)
 	PureStepNoSet(Z_PureStepNum_10);
 }
 
-/// @brief    Á¤¼ö¼±ÅÃ (¹ÌÃßÃâ)
+/// @brief    ì •ìˆ˜ì„ íƒ (ë¯¸ì¶”ì¶œ)
 /// @param    void
 /// @return   void
 static void PureStep_20(void)
 {
-	if (gu8_OperationStep == Z_OperationStep_50)	//	 ÃßÃâ Áß ÀÎ°æ¿ì
+	if (gu8_OperationStep == Z_OperationStep_50)	//	 ì¶”ì¶œ ì¤‘ ì¸ê²½ìš°
 	{
-		Ini_PureStep_22();						//		Á¤¼ö ¼±ÅÃ (ÃßÃâÁß)À¸·Î ÀÌÇà
+		Ini_PureStep_22();						//		ì •ìˆ˜ ì„ íƒ (ì¶”ì¶œì¤‘)ìœ¼ë¡œ ì´í–‰
 	}
-	else if (gu8_WaterSelect != PURE_WATER)	//	Á¤¼ö ¹Ì¼±ÅÃÀÇ °æ¿ì
+	else if (gu8_WaterSelect != PURE_WATER)	//	ì •ìˆ˜ ë¯¸ì„ íƒì˜ ê²½ìš°
 	{
-		Ini_PureStep_10();						//		Á¤¼ö ¹Ì¼±ÅÃÀ¸·Î ÀÌÇà
+		Ini_PureStep_10();						//		ì •ìˆ˜ ë¯¸ì„ íƒìœ¼ë¡œ ì´í–‰
 	}
 	else if (F_FirstFlushing == CLEAR)
 	{
@@ -183,22 +183,22 @@ static void Ini_PureStep_20(void)
 	PureStepNoSet(Z_PureStepNum_20);
 }
 
-/// @brief    Á¤¼ö ÃßÃâ Áß
+/// @brief    ì •ìˆ˜ ì¶”ì¶œ ì¤‘
 /// @param    void
 /// @return   void
 static void PureStep_22(void)
 {
 	if (gu8_OperationStep != Z_OperationStep_50)
 	{
-		Ini_PureStep_20();							//		Á¤¼ö¼±ÅÃ ÀÌÇà
-		if (gu8_Timer_PureWaterFlow_Average_Start == 0)	//	Á¤¼ö ÃßÃâ ÈÄ 3ÃÊ°¡ Áö³­ µÚ(À¯·®°è»êÀÌ ¾ÈÁ¤È­ µÈ µÚ)ºÎÅÍ À¯·® Àç°è»ê È®Á¤
+		Ini_PureStep_20();							//		ì •ìˆ˜ì„ íƒ ì´í–‰
+		if (gu8_Timer_PureWaterFlow_Average_Start == 0)	//	ì •ìˆ˜ ì¶”ì¶œ í›„ 3ì´ˆê°€ ì§€ë‚œ ë’¤(ìœ ëŸ‰ê³„ì‚°ì´ ì•ˆì •í™” ëœ ë’¤)ë¶€í„° ìœ ëŸ‰ ì¬ê³„ì‚° í™•ì •
 		{
-			Pure_WaterFlow_Average_Calculation();	//		Æò±ÕÀ¯·® ±âÁØ°ª °áÁ¤ ¹× Àç¼¼ÆÃ ÇÊ¿ä ÆÇ´Ü
+			Pure_WaterFlow_Average_Calculation();	//		í‰ê· ìœ ëŸ‰ ê¸°ì¤€ê°’ ê²°ì • ë° ì¬ì„¸íŒ… í•„ìš” íŒë‹¨
 		}
 	}
-	else if (gu8_WaterSelect != PURE_WATER)		//	Á¤¼ö ¹Ì¼±ÅÃÀÇ °æ¿ì
+	else if (gu8_WaterSelect != PURE_WATER)		//	ì •ìˆ˜ ë¯¸ì„ íƒì˜ ê²½ìš°
 	{
-		Ini_PureStep_10();							//		Á¤¼ö ¹Ì¼±ÅÃÀ¸·Î ÀÌÇà
+		Ini_PureStep_10();							//		ì •ìˆ˜ ë¯¸ì„ íƒìœ¼ë¡œ ì´í–‰
 	}
 	else
 	{
@@ -208,11 +208,11 @@ static void PureStep_22(void)
 static void Ini_PureStep_22(void)
 {
 	PureStepNoSet(Z_PureStepNum_22);
-	gu8_Timer_PureWaterFlow_Average_Start = Z_Timer_PureWaterFlow_Average_Start;	//	Á¤¼ö ÃßÃâ ÈÄ 3ÃÊ°¡ Áö³­ µÚ(À¯·®°è»êÀÌ ¾ÈÁ¤È­ µÈ µÚ)ºÎÅÍ À¯·® Àç°è»ê È®Á¤
-	Effluent_Hz_Decide();				//	Á¤¼öÃßÃâ À¯·® ¼±ÅÃ
+	gu8_Timer_PureWaterFlow_Average_Start = Z_Timer_PureWaterFlow_Average_Start;	//	ì •ìˆ˜ ì¶”ì¶œ í›„ 3ì´ˆê°€ ì§€ë‚œ ë’¤(ìœ ëŸ‰ê³„ì‚°ì´ ì•ˆì •í™” ëœ ë’¤)ë¶€í„° ìœ ëŸ‰ ì¬ê³„ì‚° í™•ì •
+	Effluent_Hz_Decide();				//	ì •ìˆ˜ì¶”ì¶œ ìœ ëŸ‰ ì„ íƒ
 }
 
-/// @brief    Á¤¼ö ½ºÅÜ ¼³Á¤
+/// @brief    ì •ìˆ˜ ìŠ¤í… ì„¤ì •
 /// @param    void
 /// @return   void
 static void PureStepNoSet(U8 data)
@@ -227,31 +227,31 @@ static void PureStepNoSet(U8 data)
 		Z_PureStep_22,
 	};
 	/************************************************/
-	gu8_PureStepNum = data; 						/*	ÀÏ·Ã ¹øÈ£ set*/
+	gu8_PureStepNum = data; 						/*	ì¼ë ¨ ë²ˆí˜¸ set*/
 
-	gu8_PureStep = DT_PureNumber[gu8_PureStepNum];	/*	»óÅÂ mode No. set*/
+	gu8_PureStep = DT_PureNumber[gu8_PureStepNum];	/*	ìƒíƒœ mode No. set*/
 }
 
-/// @brief    Á¤¼ö Æò±ÕÀ¯·® °è»ê
+/// @brief    ì •ìˆ˜ í‰ê· ìœ ëŸ‰ ê³„ì‚°
 /// @param    void
 /// @return   void
 static void Pure_WaterFlow_Average_Calculation(void)
 {
 	U16 mu16_FirstFlowDelta = 0;
 
-	if (F_Pure_First == SET)						//		ºÎÆÃ ÈÄ Ã¹È¸ ÃßÃâ ÀÌÈÄ ÀÎ °æ¿ì (À¯·®º¯È­ 20%ÀÌ»ó Ã¼Å©)
+	if (F_Pure_First == SET)						//		ë¶€íŒ… í›„ ì²«íšŒ ì¶”ì¶œ ì´í›„ ì¸ ê²½ìš° (ìœ ëŸ‰ë³€í™” 20%ì´ìƒ ì²´í¬)
 	{
-		mu16_FirstFlowDelta = abs(gu16_FlowDecide_W_Ave_Pure_Standard - gu16_FlowDecide_W_Ave);	//		Ã¹È¸ ÃßÃâ Æò±ÕÀ¯·®°ú ÇöÀç ÃßÃâ Æò±ÕÀ¯·® Delta
-		if (mu16_FirstFlowDelta > (gu16_FlowDecide_W_Ave_Pure_Standard - ((gu16_FlowDecide_W_Ave_Pure_Standard * 8) / 10)))	//		20% ÃÊ°ú Â÷ÀÌ³ª´Â °æ¿ì
+		mu16_FirstFlowDelta = abs(gu16_FlowDecide_W_Ave_Pure_Standard - gu16_FlowDecide_W_Ave);	//		ì²«íšŒ ì¶”ì¶œ í‰ê· ìœ ëŸ‰ê³¼ í˜„ì¬ ì¶”ì¶œ í‰ê· ìœ ëŸ‰ Delta
+		if (mu16_FirstFlowDelta > (gu16_FlowDecide_W_Ave_Pure_Standard - ((gu16_FlowDecide_W_Ave_Pure_Standard * 8) / 10)))	//		20% ì´ˆê³¼ ì°¨ì´ë‚˜ëŠ” ê²½ìš°
 		{
-//			F_StartFlow_ReCalibration = SET;		//			À¯·® Recalibration ÇÊ¿ä
-			gu16_FlowDecide_W_Ave_Pure_Standard = gu16_FlowDecide_W_Ave;	//		±âÁØ À¯·® Àç¼³Á¤
+//			F_StartFlow_ReCalibration = SET;		//			ìœ ëŸ‰ Recalibration í•„ìš”
+			gu16_FlowDecide_W_Ave_Pure_Standard = gu16_FlowDecide_W_Ave;	//		ê¸°ì¤€ ìœ ëŸ‰ ì¬ì„¤ì •
 		}
 	}
 
-	if (F_Pure_First == CLEAR)						//		ÃÖÃÊÃßÃâ
+	if (F_Pure_First == CLEAR)						//		ìµœì´ˆì¶”ì¶œ
 	{
 		F_Pure_First = SET;							//			flag set
-		gu16_FlowDecide_W_Ave_Pure_Standard = gu16_FlowDecide_W_Ave;	//			Æò±ÕÀ¯·® ±âÁØÀ¯·®À¸·Î ÀúÀå
+		gu16_FlowDecide_W_Ave_Pure_Standard = gu16_FlowDecide_W_Ave;	//			í‰ê· ìœ ëŸ‰ ê¸°ì¤€ìœ ëŸ‰ìœ¼ë¡œ ì €ì¥
 	}
 }

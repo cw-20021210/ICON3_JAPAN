@@ -1,7 +1,7 @@
 /// @file   faucet_moving.h
 /// @date   2025.07.03
 /// @author LJH
-/// @brief  Faucet moving ó��
+/// @brief  Faucet moving 처占쏙옙
 
 #ifdef _FAUCET_MOVING_
 	#define 	EXTERN
@@ -13,27 +13,27 @@
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_1ms_FAUCET_MOVING()	{	/*	1ms Ÿ�̸� ����			*/	\
+#define	TDEC_1ms_FAUCET_MOVING()	{	/*	1ms 타占싱몌옙 占쏙옙占쏙옙			*/	\
 									}
-#define	TDEC_10ms_FAUCET_MOVING()	{	/*	10ms Ÿ�̸� ����		*/	\
+#define	TDEC_10ms_FAUCET_MOVING()	{	/*	10ms 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									}
-#define	TDEC_100ms_FAUCET_MOVING()	{	/*	100ms Ÿ�̸� ����		*/	\
+#define	TDEC_100ms_FAUCET_MOVING()	{	/*	100ms 타이머 감산		*/	\
 										TDEC(gu8_Timer_LineAuto_Faucet_DownReed);	\
 										TDEC(gu8_Timer_FaucetDown_WaitingTime);	\
 										TDEC(gu8_Timer_Display_Moving_Durability);	\
 										TDEC(gu8_Timer_SmartCheck_Faucet_Moving);	\
 									}
-#define	TDEC_1s_FAUCET_MOVING()		{	/*	1s Ÿ�̸� ����			*/	\
+#define	TDEC_1s_FAUCET_MOVING()		{	/*	1s 타占싱몌옙 占쏙옙占쏙옙			*/	\
 										TDEC(gu8_timer_faucet_durability);	\
 										TDEC(gu8_Timer_Faucet_Up_forFrontCover_Open);	\
 									}
-#define	TDEC_10s_FAUCET_MOVING()	{	/*	10s Ÿ�̸� ����			*/	\
+#define	TDEC_10s_FAUCET_MOVING()	{	/*	10s 타占싱몌옙 占쏙옙占쏙옙			*/	\
 									}
-#define	TDEC_1min_FAUCET_MOVING()	{	/*	1min Ÿ�̸� ����		*/	\
+#define	TDEC_1min_FAUCET_MOVING()	{	/*	1min 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									}
-#define	TDEC_10min_FAUCET_MOVING()	{	/*	10min Ÿ�̸� ����		*/	\
+#define	TDEC_10min_FAUCET_MOVING()	{	/*	10min 타占싱몌옙 占쏙옙占쏙옙		*/	\
 									}
-#define	TDEC_1h_FAUCET_MOVING()		{	/*	1h Ÿ�̸� ����			*/	\
+#define	TDEC_1h_FAUCET_MOVING()		{	/*	1h 타占싱몌옙 占쏙옙占쏙옙			*/	\
 									}
 
 
@@ -45,7 +45,7 @@
 #define FAUCET_STEP_MOTOR_MICRO_SW_DETECTION   (2)			//	???? ??? ??
 
 #if 0
-#define FAUCET_STEP_ZERO_BACK         (3500)					//	�ʱ�ȭ ��
+#define FAUCET_STEP_ZERO_BACK         (3500)					//	占십깍옙화 占쏙옙
 #define FAUCET_MICO_SW_INPUT_DETECTION_STEP 	(700)
 
 
@@ -53,8 +53,8 @@
 #define FAUCET_INPUT_DOWN_REED_SW_DETECTION_ADD_PULSE	(400)
 #endif
 
-// �ӵ� �̽��� ��� �������� ����, �޽��� ����
-#define FAUCET_STEP_ZERO_BACK         (2000)					//	�ʱ�ȭ ��
+// 속도 이슈로 기어 변경으로 인한, 펄스값 변경
+#define FAUCET_STEP_ZERO_BACK         (2000)					//	占십깍옙화 占쏙옙
 #define FAUCET_MICO_SW_INPUT_DETECTION_STEP 	(350)
 
 
@@ -129,8 +129,8 @@ enum{
 	Z_FAUCET_MOVING_SMARTCHECK,
 	Z_FAUCET_LEVEL_SETTING,
 	Z_FILTER_CHANGE_MODE,
-	Z_FAUCET_REED_UNDETECTED_MOVE_UP,  // ���彺��ġ �̰��� �� �ֻ�� �̵�
-	Z_FAUCET_REED_UNDETECTED_WAIT_TIP,  // ���彺��ġ �̰��� �� �� ���彺��ġ ���� ���
+	Z_FAUCET_REED_UNDETECTED_MOVE_UP,  // 리드스위치 미감지 시 최상단 이동
+	Z_FAUCET_REED_UNDETECTED_WAIT_TIP,  // 리드스위치 미감지 시 팁 리드스위치 감지 대기
 };
 
 
@@ -148,16 +148,16 @@ enum{
 
 #define Z_FAUCET_UP_FOR_FRONT_COVER_OPEN		(60)
 
-// �� ���� ��ȯ ���� ���� (faucet_moving�� ���)
+// 팁 리드 전환 감지 전용 (faucet_moving만 사용)
 #define F_FAUCET_REED_EDGE_NONE           0u   // @018
-#define F_FAUCET_REED_EDGE_TO_UNDETECTED 1u   // @018���� -> �̰���
-#define F_FAUCET_REED_EDGE_TO_DETECTED   2u   // @018�̰��� -> ����
+#define F_FAUCET_REED_EDGE_TO_UNDETECTED 1u   // @018감지 -> 미감지
+#define F_FAUCET_REED_EDGE_TO_DETECTED   2u   // @018미감지 -> 감지
 /*==============================================================================
  Variable Definition
  ==============================================================================*/
 EXTERN U8 gu8_FaucetMoving_Step; 
 
-EXTERN U8 gu8_F_FaucetMoving_Initialize;			//	�Ŀ��? �ʱ�ȭ flag.......1~5�ܰ� �����Ǿ������� �ش��ڸ��� ��������.
+EXTERN U8 gu8_F_FaucetMoving_Initialize;			//	占식울옙占? 占십깍옙화 flag.......1~5占쌤곤옙 占쏙옙占쏙옙占실억옙占쏙옙占쏙옙占쏙옙 占쌔댐옙占쌘몌옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙.
 EXTERN U8 gu8_F_FaucetMoving_Set_Init;
 
 EXTERN U8 gu8_FaucetStepMotorWay;
@@ -174,11 +174,11 @@ EXTERN U16 gu16_FaucetMoving_DecelCount;    // ?? ??? (100ms ??)
 
 EXTERN U8 gu8_FaucetMoving_ZeroBack;
 
-EXTERN U8 gu8_F_ResetAccel_ForAddPulse;  // �߰� �޽� �� ���� �ܰ� �ʱ�ȭ �÷���
+EXTERN U8 gu8_F_ResetAccel_ForAddPulse;  // 추가 펄스 시 가속 단계 초기화 플래그
 
 EXTERN U8 gu8_F_Finish_Faucet_Down;
 EXTERN U8 gu8_F_Finish_Faucet_Up;
-EXTERN U8 gu8_F_MicroSW_LateDetection;			//	�ٿ�� ���� ��, ����ũ�� ����ġ �����Ҷ�...pulse �Ϸ� ��������
+EXTERN U8 gu8_F_MicroSW_LateDetection;			//	占쌕운리占쏙옙 占쏙옙占쏙옙 占쏙옙, 占쏙옙占쏙옙크占쏙옙 占쏙옙占쏙옙치 占쏙옙占쏙옙占쌀띰옙...pulse 占싹뤄옙 占쏙옙占쏙옙占쏙옙占쏙옙
 
 
 EXTERN U8 gu8_Timer_FaucetDown_WaitingTime;
@@ -190,7 +190,7 @@ EXTERN U16 gu16_Faucet_Current_Location;
 EXTERN U8 gu8_FaucetMoving_Set_Level;
 EXTERN U8 gu8_FaucetMoving_Set_Level_Backup;
 EXTERN U8 gu8_F_FaucetMoving_Set_Level_Way;
-EXTERN U8 gu8_F_Faucet_Fast_Return_for_Reed_Detected;		//	�Ŀ�� �� �̰��� -> ���� ��, ���� ���ֱ� ����.
+EXTERN U8 gu8_F_Faucet_Fast_Return_for_Reed_Detected;		//	파우셋 팁 미감지 -> 감지 시, 감속 안주기 위함.
 
 
 EXTERN U8 gu8_Faucet_Level_Set_Step;
@@ -208,33 +208,33 @@ EXTERN U8 gu8_F_LineAuto_Faucet_UpReed;
 EXTERN U8 gu8_F_LineAuto_Faucet_MicroSW;
 EXTERN U8 gu8_Timer_LineAuto_Faucet_DownReed;
 
-EXTERN U8 gu8_LineAuto_CupMicroSW_Step;    // @022 ����ũ�ν���ġ �̰����氨����̰��� ���� ����
+EXTERN U8 gu8_LineAuto_CupMicroSW_Step;    // @022 마이크로스위치 미감지→감지→미감지 패턴 추적
 
 
 
-/*********Ư�����?**********/
+/*********특占쏙옙占쏙옙占?**********/
 EXTERN U8 gu8_F_Moving_Durability;
 EXTERN U8 gu8_Timer_Display_Moving_Durability;
 EXTERN U8 gu8_faucet_durability_step;
 EXTERN U8 gu8_timer_faucet_durability;
 /**************************/
 
-/*********SmartCheck �Ŀ��? ����**********/
+/*********SmartCheck 占식울옙占? 占쏙옙占쏙옙**********/
 EXTERN U8 gu8_SmartCheck_Faucet_Moving_Step;
-EXTERN U8 F_SmartCheck_Faucet_CMD;			// SmartCheck �Ŀ��? �׽�Ʈ ����
-EXTERN U8 F_SmartCheck_Faucet_Complete;		// SmartCheck �Ŀ��? �׽�Ʈ �Ϸ�
+EXTERN U8 F_SmartCheck_Faucet_CMD;			// SmartCheck 占식울옙占? 占쌓쏙옙트 占쏙옙占쏙옙
+EXTERN U8 F_SmartCheck_Faucet_Complete;		// SmartCheck 占식울옙占? 占쌓쏙옙트 占싹뤄옙
 EXTERN U8 gu8_Timer_SmartCheck_Faucet_Moving;
 EXTERN U8 gu8_F_Fuacet_UpReed_AddPulse_X_afterSmartCheck;
 
-// EXTERN U16 gu16_SmartCheck_Result_FaucetUp_Reed;	// �Ŀ��? UP ���彺��ġ ���?
-// EXTERN U16 gu16_SmartCheck_Result_FaucetDown_Reed;	// �Ŀ��? DOWN ���彺��ġ ���?
-// EXTERN U16 gu16_SmartCheck_Result_MicroSW;			// ����ũ�� ����ġ ���?
+// EXTERN U16 gu16_SmartCheck_Result_FaucetUp_Reed;	// 占식울옙占? UP 占쏙옙占썲스占쏙옙치 占쏙옙占?
+// EXTERN U16 gu16_SmartCheck_Result_FaucetDown_Reed;	// 占식울옙占? DOWN 占쏙옙占썲스占쏙옙치 占쏙옙占?
+// EXTERN U16 gu16_SmartCheck_Result_MicroSW;			// 占쏙옙占쏙옙크占쏙옙 占쏙옙占쏙옙치 占쏙옙占?
 /*******************************************/
 
-EXTERN U8 F_SmartCheck_UpReed_Detected;  // ��� ���彺��ġ ���� �̷� �÷���
-EXTERN U8 gu8_F_Came_From_Wait_Tip_To_Level;      //@018  �̰��� -> �ֻ���̵� -> ���� �Ҷ� �ι� �Դٰ��� ��.
+EXTERN U8 F_SmartCheck_UpReed_Detected;  // 상승 리드스위치 감지 이력 플래그
+EXTERN U8 gu8_F_Came_From_Wait_Tip_To_Level;      //@018  미감지 -> 최상단이동 -> 감지 할때 두번 왔다갓다 함.
 
-EXTERN U8 gu8_F_Skip_First_ReedUndet_MoveUp;   // @025 ���� �� �������� ���� �� ù ��Ż�� �ֻ�� ��ŵ
+EXTERN U8 gu8_F_Skip_First_ReedUndet_MoveUp;   // @025 부팅 후 설정레벨 도착 뒤 첫 이탈만 최상단 스킵
 /*==============================================================================
  function Definition
  ==============================================================================*/

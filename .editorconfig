@@ -1,0 +1,5 @@
+root = true
+
+# 소스 인코딩은 UTF-8(BOM 없음)로 통일
+[*.{c,h,asm,inc,dr,md,html}]
+charset = utf-8

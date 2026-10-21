@@ -1,7 +1,7 @@
 /// @file     timer.c
 /// @date     2019.07.10
 /// @author   PSM
-/// @brief    ≈∏¿Ã∏” ¿Œ≈Õ∑¥∆Æ √≥∏Æ file
+/// @brief    ÌÉÄÏù¥Î®∏ Ïù∏ÌÑ∞ÎüΩÌä∏ Ï≤òÎ¶¨ file
 #define TIMER_C
 #include "include/_include.h"
 
@@ -22,7 +22,7 @@ void Timer_Base_Timer(void)
 	static U16 count = 0;
 	static U8 count_1ms = 0;
 
-	EI();											//	¥Ÿ¡ﬂ¿Œ≈Õ∑¥∆Æ «„øÎ
+	EI();											//	Îã§Ï§ëÏù∏ÌÑ∞ÎüΩÌä∏ ÌóàÏö©
 
 	if (++gu8_DisplayPWM_Count_1ms > Z_DisplayPWM)							//
 	{
@@ -30,7 +30,7 @@ void Timer_Base_Timer(void)
 	}
 
 	if((gu8_Main_SEGMENT_CMD != LED_ON) || (gu8_OperationStep == Z_OperationStep_02 )){
-		Seg_Control();									//	SEG ¡¶æÓ (200us ¡÷±‚)		/*Fade ¡°∏Í µø¿€Ω√ SEG ∂≥∏≤ «ˆªÛ πﬂª˝ ¿Ãø° µ˚∂Û ¡∂∞«ø° µ˚∂Û SEG ¡¶æÓ ¡÷±‚∏¶ ¥ﬁ∏Æ«œø© «ÿ¥Á πÆ¡¶¡° «ÿ∞·«‘.*/
+		Seg_Control();									//	SEG Ï†úÏñ¥ (200us Ï£ºÍ∏∞)		/*Fade Ï†êÎ©∏ ÎèôÏûëÏãú SEG Îñ®Î¶º ÌòÑÏÉÅ Î∞úÏÉù Ïù¥Ïóê Îî∞Îùº Ï°∞Í±¥Ïóê Îî∞Îùº SEG Ï†úÏñ¥ Ï£ºÍ∏∞Î•º Îã¨Î¶¨ÌïòÏó¨ Ìï¥Îãπ Î¨∏Ï†úÏ†ê Ìï¥Í≤∞Ìï®.*/
 	}
 
 	DisplayOut();
@@ -39,39 +39,39 @@ void Timer_Base_Timer(void)
 	if (++count_1ms >= (Z_DisplayPWM/10))
 	{
 		if((gu8_Main_SEGMENT_CMD == LED_ON) && (gu8_OperationStep != Z_OperationStep_02 )){
-			Seg_Control();								//	SEG ¡¶æÓ (1ms ¡÷±‚)		/*Fade ¡°∏Í µø¿€Ω√ SEG ∂≥∏≤ «ˆªÛ πﬂª˝ ¿Ãø° µ˚∂Û ¡∂∞«ø° µ˚∂Û SEG ¡¶æÓ ¡÷±‚∏¶ ¥ﬁ∏Æ«œø© «ÿ¥Á πÆ¡¶¡° «ÿ∞·«‘.*/
+			Seg_Control();								//	SEG Ï†úÏñ¥ (1ms Ï£ºÍ∏∞)		/*Fade Ï†êÎ©∏ ÎèôÏûëÏãú SEG Îñ®Î¶º ÌòÑÏÉÅ Î∞úÏÉù Ïù¥Ïóê Îî∞Îùº Ï°∞Í±¥Ïóê Îî∞Îùº SEG Ï†úÏñ¥ Ï£ºÍ∏∞Î•º Îã¨Î¶¨ÌïòÏó¨ Ìï¥Îãπ Î¨∏Ï†úÏ†ê Ìï¥Í≤∞Ìï®.*/
 		}
 		count_1ms = 0;
 
-		DisplayControl();								//	«•Ω√¡¶æÓ
+		DisplayControl();								//	ÌëúÏãúÏ†úÏñ¥
 
-		Time1ms(); 										/*	1ms TIMER ∞®ªÍ			*/
+		Time1ms(); 										/*	1ms TIMER Í∞êÏÇ∞			*/
 
 		gu8_Counter10ms++; 								/*	10ms COUNTER +1			*/
-		if (gu8_Counter10ms >= 10)						/*	10ms ∞Ê∞˙«— ∞ÊøÏ		*/
+		if (gu8_Counter10ms >= 10)						/*	10ms Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞		*/
 		{
 			F_10ms_for_InputDigital = SET;
 			gu8_Counter10ms = 0; 						/*		10ms COUTNER CLR	*/
-			Time10ms(); 								/*		10ms TIMER ∞®ªÍ		*/
+			Time10ms(); 								/*		10ms TIMER Í∞êÏÇ∞		*/
 			gu8_Counter100ms++; 						/*		100ms COUNTER +1	*/
-			if (gu8_Counter100ms >= 10)					/*		100ms ∞Ê∞˙«— ∞ÊøÏ	*/
+			if (gu8_Counter100ms >= 10)					/*		100ms Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞	*/
 			{
 				gu8_Counter100ms = 0; 					/*			100ms COUNTER CLR*/
-				gu8_FlagTime100ms = 1; 					/*			100ms ∞Ê∞˙ FLAG SET*/
+				gu8_FlagTime100ms = 1; 					/*			100ms Í≤ΩÍ≥º FLAG SET*/
 			}
 		}
 		gu8_Counter_1msTimerCheck = 0xFF; 				/*	1ms timer interrupt check counter clr */
 
 		gu8_Counter_MainLoopCheck--;
 
-		if (gu8_Counter_MainLoopCheck == 0)				//	∏ﬁ¿Œ √º≈© ƒ´øÓ≈Õ resetµ«¡ˆ æ ¥¬ ∞ÊøÏ
+		if (gu8_Counter_MainLoopCheck == 0)				//	Î©îÏù∏ Ï≤¥ÌÅ¨ Ïπ¥Ïö¥ÌÑ∞ resetÎêòÏßÄ ÏïäÎäî Í≤ΩÏö∞
 		{
 			SafetyLoop();
 		}
 	}
 }
 
-/// @brief    Timer √≥∏Æ
+/// @brief    Timer Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Timer_Process(void)
@@ -82,41 +82,41 @@ void Timer_Process(void)
 	static U8 mu8_Counter10min; 					/*	10min COUNTER			*/
 	static U8 mu8_Counter1h; 						/*	1h COUNTER				*/
 	/********************************************/
-	if (gu8_FlagTime100ms == 1)						/*	100ms ∞Ê∞˙ FLAG SET¿Œ ∞ÊøÏ	*/
+	if (gu8_FlagTime100ms == 1)						/*	100ms Í≤ΩÍ≥º FLAG SETÏù∏ Í≤ΩÏö∞	*/
 	{
-		gu8_FlagTime100ms = 0; 						/*		100ms ∞Ê∞˙ FLAG CLR		*/
-		Time100ms(); 								/*		100ms TIMER ∞®ªÍ		*/
+		gu8_FlagTime100ms = 0; 						/*		100ms Í≤ΩÍ≥º FLAG CLR		*/
+		Time100ms(); 								/*		100ms TIMER Í∞êÏÇ∞		*/
 
 		mu8_Counter1s++; 							/*		1s COUNTER +1			*/
-		if (mu8_Counter1s >= 10)					/*		1s ∞Ê∞˙«— ∞ÊøÏ			*/
+		if (mu8_Counter1s >= 10)					/*		1s Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞			*/
 		{
 			mu8_Counter1s = 0; 						/*			1s COUNTER CLR		*/
-			gu8_FlagTime1000ms = 1; 				/*			1s ∞Ê∞˙ FLAG SET	*/
-			Time1s(); 								/*			1s TIMER ∞®ªÍ		*/
+			gu8_FlagTime1000ms = 1; 				/*			1s Í≤ΩÍ≥º FLAG SET	*/
+			Time1s(); 								/*			1s TIMER Í∞êÏÇ∞		*/
 
 			mu8_Counter10s++; 						/*			10s COUNTER +1		*/
 			if (mu8_Counter10s >= 10)
-			{ 										/*			10s ∞Ê∞˙«— ∞ÊøÏ		*/
+			{ 										/*			10s Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞		*/
 				mu8_Counter10s = 0; 				/*				10s COUNTER CLR	*/
-				Time10s(); 							/*				10s TIMER ∞®ªÍ	*/
+				Time10s(); 							/*				10s TIMER Í∞êÏÇ∞	*/
 
 				mu8_Counter1min++; 					/*				1min COUNTER +1	*/
-				if (mu8_Counter1min >= 6)			/*				1min ∞Ê∞˙«— ∞ÊøÏ			*/
+				if (mu8_Counter1min >= 6)			/*				1min Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞			*/
 				{
 					mu8_Counter1min = 0; 			/*					1min COUNTER CLR		*/
-					Time1min(); 					/*					1min TIMER ∞®ªÍ			*/
+					Time1min(); 					/*					1min TIMER Í∞êÏÇ∞			*/
 
 					mu8_Counter10min++; 			/*					10min COUNTER +1		*/
-					if (mu8_Counter10min >= 10)		/*					10min ∞Ê∞˙«— ∞ÊøÏ		*/
+					if (mu8_Counter10min >= 10)		/*					10min Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞		*/
 					{
 						mu8_Counter10min = 0; 		/*						10min COUNTER CLR	*/
-						Time10min(); 				/*						10min TIMER ∞®ªÍ	*/
+						Time10min(); 				/*						10min TIMER Í∞êÏÇ∞	*/
 
 						mu8_Counter1h++; 			/*						1h COUNTER +1		*/
-						if (mu8_Counter1h >= 6)		/*						1h ∞Ê∞˙«— ∞ÊøÏ		*/
+						if (mu8_Counter1h >= 6)		/*						1h Í≤ΩÍ≥ºÌïú Í≤ΩÏö∞		*/
 						{
 							mu8_Counter1h = 0; 		/*							1h COUNTER CLR	*/
-							Time1h(); 				/*							1h TIMER ∞®ªÍ	*/
+							Time1h(); 				/*							1h TIMER Í∞êÏÇ∞	*/
 						}
 					}
 				}
@@ -125,7 +125,7 @@ void Timer_Process(void)
 	}
 }
 
-/// @brief    1ms √≥∏Æ
+/// @brief    1ms Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time1ms(void)
@@ -133,13 +133,13 @@ void Time1ms(void)
 	U8 i;
 //	static U8 mu8_Timer11ms;
 //	/********************************************/
-//	if (mu8_Timer11ms == 0)							/*	DIGITAL ¿‘∑¬ TIMER UP¿Œ ∞ÊøÏ	*/
+//	if (mu8_Timer11ms == 0)							/*	DIGITAL ÏûÖÎ†• TIMER UPÏù∏ Í≤ΩÏö∞	*/
 //	{
-//		mu8_Timer11ms = ZT_11ms; 					/*		DIGITAL ¿‘∑¬ TIMER SET		*/
+//		mu8_Timer11ms = ZT_11ms; 					/*		DIGITAL ÏûÖÎ†• TIMER SET		*/
 //	}
-//	else											/*	ªÛ±‚ ¿Ãø‹						*/
+//	else											/*	ÏÉÅÍ∏∞ Ïù¥Ïô∏						*/
 //	{
-//		mu8_Timer11ms--; 							/*		TIMER ∞®ªÍ					*/
+//		mu8_Timer11ms--; 							/*		TIMER Í∞êÏÇ∞					*/
 //	}
 	/*------------------------------------------*/
 
@@ -161,7 +161,7 @@ void Time1ms(void)
 	}
 }
 
-/// @brief    10ms √≥∏Æ
+/// @brief    10ms Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time10ms(void)								//
@@ -178,7 +178,7 @@ void Time10ms(void)								//
 	TDEC_10ms_OUTPUT();
 }
 
-/// @brief    100ms √≥∏Æ
+/// @brief    100ms Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time100ms(void)							//
@@ -195,7 +195,7 @@ void Time100ms(void)							//
 	TDEC_100ms_OUTPUT();
 }
 
-/// @brief    1sec √≥∏Æ
+/// @brief    1sec Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time1s(void)
@@ -212,7 +212,7 @@ void Time1s(void)
 	TDEC_1s_OUTPUT();
 }
 
-/// @brief    10sec √≥∏Æ
+/// @brief    10sec Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time10s(void)								//
@@ -229,7 +229,7 @@ void Time10s(void)								//
 	TDEC_10s_OUTPUT();
 }												//
 
-/// @brief    1min √≥∏Æ
+/// @brief    1min Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time1min(void)								//
@@ -246,7 +246,7 @@ void Time1min(void)								//
 	TDEC_1min_OUTPUT();
 }
 
-/// @brief    10min √≥∏Æ
+/// @brief    10min Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time10min(void)							//
@@ -263,7 +263,7 @@ void Time10min(void)							//
 	TDEC_10min_OUTPUT();
 }
 
-/// @brief    1h √≥∏Æ
+/// @brief    1h Ï≤òÎ¶¨
 /// @param    void
 /// @return   void
 void Time1h(void)								//

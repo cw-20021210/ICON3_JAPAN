@@ -5,13 +5,13 @@
 /***** Variable ***************************************************************/
 typedef struct _wifirx_
 {
-    U8  u8State;        // RxºĞ¼® (0:Rx°¡´É / 1:ºĞ¼®Áß)
-    U8	u8Wait;         // ´ë±âÁßÀÎ µ¥ÀÌÅÍ (0:¾øÀ½ / 1: ÀÖÀ½)
-    U8  u8CheckModem;   // °øÀ¯±â Ã¹ ¿¬°áÈ®ÀÎ
-    U8  u8CheckServer;  // ¼­¹ö Ã¹ ¿¬°áÈ®ÀÎ
-    U8  u8ConnectCheck; // Uart ¼ö½ÅÈ®ÀÎ
-    U16 u16ConnectCheckCount;  // ¸ğµâ°úÀÇ ¿¬°áÈ®ÀÎ (5ºĞÄ«¿îÆ®)
-    U8  u8DisplayConnectCount; // 0: Clear, 1 : SET(¿¬°á²÷±è 1ºĞ Ä«¿îÆ® Áß),  2: Done (BLEÀÚµ¿È°¼ºÈ­ ¿Ï·á- ¿¬°á²÷±è ÈÄ, ÃÊ±âÆä¾î¸µ ½Ã)
+    U8  u8State;        // Rxë¶„ì„ (0:Rxê°€ëŠ¥ / 1:ë¶„ì„ì¤‘)
+    U8	u8Wait;         // ëŒ€ê¸°ì¤‘ì¸ ë°ì´í„° (0:ì—†ìŒ / 1: ìˆìŒ)
+    U8  u8CheckModem;   // ê³µìœ ê¸° ì²« ì—°ê²°í™•ì¸
+    U8  u8CheckServer;  // ì„œë²„ ì²« ì—°ê²°í™•ì¸
+    U8  u8ConnectCheck; // Uart ìˆ˜ì‹ í™•ì¸
+    U16 u16ConnectCheckCount;  // ëª¨ë“ˆê³¼ì˜ ì—°ê²°í™•ì¸ (5ë¶„ì¹´ìš´íŠ¸)
+    U8  u8DisplayConnectCount; // 0: Clear, 1 : SET(ì—°ê²°ëŠê¹€ 1ë¶„ ì¹´ìš´íŠ¸ ì¤‘),  2: Done (BLEìë™í™œì„±í™” ì™„ë£Œ- ì—°ê²°ëŠê¹€ í›„, ì´ˆê¸°í˜ì–´ë§ ì‹œ)
 } WifiRx_T;
 
 typedef U8 (*WifiRxAtFun_T)(void);
