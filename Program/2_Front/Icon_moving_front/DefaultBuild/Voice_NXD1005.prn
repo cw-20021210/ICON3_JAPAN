@@ -1,0 +1,1560 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\Voice_NXD1005.asm -_msg
+          off -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\Voice_NXD1005.asm
+Obj-file: DefaultBuild\Voice_NXD1005.rel
+Prn-file: DefaultBuild\Voice_NXD1005.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:58
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile Source\Voice_NXD1005.c -oDefaultBuild -_msgo
+    5     5                      ;             ff -nq -i. -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild
+    6     6                      ;              -no -g2
+    7     7                      ; In-file   : Source\Voice_NXD1005.c
+    8     8                      ; Asm-file  : DefaultBuild\Voice_NXD1005.asm
+    9     9                      ; Para-file : 
+   10    10                      
+   11    11                      $PROCESSOR(F100PG)
+   12    12                      $DEBUG
+   13    13                      $NODEBUGA
+   14    14                      $KANJICODE NONE
+   15    15                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   16    16                      
+   17    17                      $DGS    FIL_NAM, .file,         094H,   0FFFEH, 03FH,   067H,   01H,    00H
+   18    18                      $DGS    AUX_FIL, Voice_NXD1005.c
+   19    19                      $DGS    MOD_NAM, Voice_NXD1005, 00H,    0FFFEH, 00H,    077H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@FIX,         U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   36    36                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   37    37                      $DGS    GLV_SYM, _Initial_Voice,        U,      U,      01H,    026H,   01H,    02H
+   38    38                      $DGS    AUX_FUN, 00H,           U,      U,      01AH,   01H,    00H
+   39    39                      $DGS    BEG_FUN, ??bf_Initial_Voice,    U,      U,      00H,    065H,   01H,    00H
+   40    40                      $DGS    AUX_BEG, 022H,          00H,    01AH
+   41    41                      $DGS    END_FUN, ??ef_Initial_Voice,    U,      U,      00H,    065H,   01H,    00H
+   42    42                      $DGS    AUX_END, 010H
+   43    43                      $DGS    GLV_SYM, _SetVoiceLevel,        U,      U,      01H,    026H,   01H,    02H
+   44    44                      $DGS    AUX_FUN, 00H,           U,      U,      025H,   01H,    00H
+   45    45                      $DGS    BEG_FUN, ??bf_SetVoiceLevel,    U,      U,      00H,    065H,   01H,    00H
+   46    46                      $DGS    AUX_BEG, 036H,          02H,    01FH
+   47    47                      $DGS    FUN_ARG, _mu8Val,       00H,    0FFFFH, 0CH,    09H,    00H,    00H
+   48    48                      $DGS    BEG_BLK, ??bb00_SetVoiceLevel,  U,      U,      00H,    064H,   01H,    00H
+   49    49                      $DGS    AUX_BEG, 04H,           00H,    00H
+   50    50                      $DGS    END_BLK, ??eb00_SetVoiceLevel,  U,      U,      00H,    064H,   01H,    00H
+   51    51                      $DGS    AUX_END, 06H
+   52    52                      $DGS    END_FUN, ??ef_SetVoiceLevel,    U,      U,      00H,    065H,   01H,    00H
+   53    53                      $DGS    AUX_END, 07H
+   54    54                      $DGS    GLV_SYM, _Get_Sound_Type,       U,      U,      0CH,    026H,   01H,    02H
+   55    55                      $DGS    AUX_FUN, 00H,           U,      U,      02BH,   01H,    00H
+   56    56                      $DGS    BEG_FUN, ??bf_Get_Sound_Type,   U,      U,      00H,    065H,   01H,    00H
+   57    57                      $DGS    AUX_BEG, 041H,          00H,    02BH
+   58    58                      $DGS    END_FUN, ??ef_Get_Sound_Type,   U,      U,      00H,    065H,   01H,    00H
+   59    59                      $DGS    AUX_END, 03H
+   60    60                      $DGS    GLV_SYM, _VoiceStop,    U,      U,      01H,    026H,   01H,    02H
+   61    61                      $DGS    AUX_FUN, 00H,           U,      U,      031H,   01H,    00H
+   62    62                      $DGS    BEG_FUN, ??bf_VoiceStop,        U,      U,      00H,    065H,   01H,    00H
+   63    63                      $DGS    AUX_BEG, 049H,          00H,    031H
+   64    64                      $DGS    END_FUN, ??ef_VoiceStop,        U,      U,      00H,    065H,   01H,    00H
+   65    65                      $DGS    AUX_END, 04H
+   66    66                      $DGS    GLV_SYM, _Play_Voice,   U,      U,      01H,    026H,   01H,    02H
+   67    67                      $DGS    AUX_FUN, 00H,           U,      U,      038H,   01H,    00H
+   68    68                      $DGS    BEG_FUN, ??bf_Play_Voice,       U,      U,      00H,    065H,   01H,    00H
+   69    69                      $DGS    AUX_BEG, 052H,          02H,    038H
+   70    70                      $DGS    FUN_ARG, _mu16MemoryAddress,    00H,    0FFFFH, 0EH,    09H,    00H,    00H
+   71    71                      $DGS    END_FUN, ??ef_Play_Voice,       U,      U,      00H,    065H,   01H,    00H
+   72    72                      $DGS    AUX_END, 05H
+   73    73                      $DGS    GLV_SYM, _ProcessVoice, U,      U,      01H,    026H,   01H,    02H
+   74    74                      $DGS    AUX_FUN, 00H,           U,      U,      06EH,   01H,    00H
+   75    75                      $DGS    BEG_FUN, ??bf_ProcessVoice,     U,      U,      00H,    065H,   01H,    00H
+   76    76                      $DGS    AUX_BEG, 05CH,          00H,    03CH
+   77    77                      $DGS    BEG_BLK, ??bb00_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   78    78                      $DGS    AUX_BEG, 09H,           00H,    040H
+   79    79                      $DGS    END_BLK, ??eb00_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   80    80                      $DGS    AUX_END, 0BH
+   81    81                      $DGS    BEG_BLK, ??bb01_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   82    82                      $DGS    AUX_BEG, 010H,          00H,    042H
+   83    83                      $DGS    BEG_BLK, ??bb02_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   84    84                      $DGS    AUX_BEG, 057H,          00H,    046H
+   85    85                      $DGS    END_BLK, ??eb02_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   86    86                      $DGS    AUX_END, 05EH
+   87    87                      $DGS    BEG_BLK, ??bb03_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   88    88                      $DGS    AUX_BEG, 061H,          00H,    04AH
+   89    89                      $DGS    END_BLK, ??eb03_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   90    90                      $DGS    AUX_END, 068H
+   91    91                      $DGS    BEG_BLK, ??bb04_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   92    92                      $DGS    AUX_BEG, 06DH,          00H,    04EH
+   93    93                      $DGS    END_BLK, ??eb04_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   94    94                      $DGS    AUX_END, 074H
+   95    95                      $DGS    BEG_BLK, ??bb05_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   96    96                      $DGS    AUX_BEG, 077H,          00H,    052H
+   97    97                      $DGS    END_BLK, ??eb05_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+   98    98                      $DGS    AUX_END, 07EH
+   99    99                      $DGS    BEG_BLK, ??bb06_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  100   100                      $DGS    AUX_BEG, 081H,          00H,    056H
+  101   101                      $DGS    END_BLK, ??eb06_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  102   102                      $DGS    AUX_END, 088H
+  103   103                      $DGS    BEG_BLK, ??bb07_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  104   104                      $DGS    AUX_BEG, 08BH,          00H,    05AH
+  105   105                      $DGS    END_BLK, ??eb07_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  106   106                      $DGS    AUX_END, 092H
+  107   107                      $DGS    BEG_BLK, ??bb08_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  108   108                      $DGS    AUX_BEG, 095H,          00H,    05EH
+  109   109                      $DGS    END_BLK, ??eb08_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  110   110                      $DGS    AUX_END, 09CH
+  111   111                      $DGS    BEG_BLK, ??bb09_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  112   112                      $DGS    AUX_BEG, 09FH,          00H,    062H
+  113   113                      $DGS    END_BLK, ??eb09_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  114   114                      $DGS    AUX_END, 0A6H
+  115   115                      $DGS    BEG_BLK, ??bb0A_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  116   116                      $DGS    AUX_BEG, 0A8H,          00H,    068H
+  117   117                      $DGS    END_BLK, ??eb0A_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  118   118                      $DGS    AUX_END, 0AAH
+  119   119                      $DGS    END_BLK, ??eb01_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  120   120                      $DGS    AUX_END, 0ACH
+  121   121                      $DGS    BEG_BLK, ??bb0B_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  122   122                      $DGS    AUX_BEG, 0B0H,          00H,    00H
+  123   123                      $DGS    END_BLK, ??eb0B_ProcessVoice,   U,      U,      00H,    064H,   01H,    00H
+  124   124                      $DGS    AUX_END, 0B3H
+  125   125                      $DGS    END_FUN, ??ef_ProcessVoice,     U,      U,      00H,    065H,   01H,    00H
+  126   126                      $DGS    AUX_END, 0B9H
+  127   127                      $DGS    GLV_SYM, _SEND_SPI_COMMAND,     U,      U,      01H,    026H,   01H,    02H
+  128   128                      $DGS    AUX_FUN, 00H,           U,      U,      089H,   01H,    00H
+  129   129                      $DGS    BEG_FUN, ??bf_SEND_SPI_COMMAND, U,      U,      00H,    065H,   01H,    00H
+  130   130                      $DGS    AUX_BEG, 011AH,         02H,    073H
+  131   131                      $DGS    AUT_VAR, _i,            00H,    0FFFFH, 04H,    01H,    00H,    00H
+  132   132                      $DGS    BEG_BLK, ??bb00_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  133   133                      $DGS    AUX_BEG, 011H,          00H,    075H
+  134   134                      $DGS    BEG_BLK, ??bb01_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  135   135                      $DGS    AUX_BEG, 017H,          00H,    079H
+  136   136                      $DGS    END_BLK, ??eb01_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  137   137                      $DGS    AUX_END, 019H
+  138   138                      $DGS    BEG_BLK, ??bb02_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  139   139                      $DGS    AUX_BEG, 01BH,          00H,    07DH
+  140   140                      $DGS    END_BLK, ??eb02_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  141   141                      $DGS    AUX_END, 01DH
+  142   142                      $DGS    BEG_BLK, ??bb03_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  143   143                      $DGS    AUX_BEG, 027H,          00H,    081H
+  144   144                      $DGS    END_BLK, ??eb03_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  145   145                      $DGS    AUX_END, 029H
+  146   146                      $DGS    BEG_BLK, ??bb04_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  147   147                      $DGS    AUX_BEG, 02BH,          00H,    00H
+  148   148                      $DGS    END_BLK, ??eb04_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  149   149                      $DGS    AUX_END, 02DH
+  150   150                      $DGS    END_BLK, ??eb00_SEND_SPI_COMMAND,       U,      U,      00H,    064H,   01H,    00H
+  151   151                      $DGS    AUX_END, 02EH
+  152   152                      $DGS    END_FUN, ??ef_SEND_SPI_COMMAND, U,      U,      00H,    065H,   01H,    00H
+  153   153                      $DGS    AUX_END, 036H
+  154   154                      $DGS    GLV_SYM, _Delay,        U,      U,      01H,    026H,   01H,    02H
+  155   155                      $DGS    AUX_FUN, 00H,           U,      U,      094H,   01H,    00H
+  156   156                      $DGS    BEG_FUN, ??bf_Delay,    U,      U,      00H,    065H,   01H,    00H
+  157   157                      $DGS    AUX_BEG, 0155H,         02H,    08EH
+  158   158                      $DGS    FUN_ARG, _mu8Time,      00H,    0FFFFH, 0EH,    09H,    00H,    00H
+  159   159                      $DGS    BEG_BLK, ??bb00_Delay,  U,      U,      00H,    064H,   01H,    00H
+  160   160                      $DGS    AUX_BEG, 03H,           00H,    00H
+  161   161                      $DGS    END_BLK, ??eb00_Delay,  U,      U,      00H,    064H,   01H,    00H
+  162   162                      $DGS    AUX_END, 02DH
+  163   163                      $DGS    END_FUN, ??ef_Delay,    U,      U,      00H,    065H,   01H,    00H
+  164   164                      $DGS    AUX_END, 02EH
+  165   165                      $DGS    GLV_SYM, _COMMAND,      U,      U,      0EH,    026H,   00H,    00H
+  166   166                      $DGS    GLV_SYM, _gu8_Sound_Type,       U,      U,      0CH,    026H,   00H,    00H
+  167   167                      $DGS    GLV_SYM, _gu8PlayVoice_Count,   U,      U,      0CH,    026H,   00H,    00H
+  168   168                      $DGS    GLV_SYM, _gu8_VoiceVolumeLevel, U,      U,      0CH,    026H,   00H,    00H
+  169   169                      $DGS    GLV_SYM, _gu8Voice_Actor,       U,      U,      0CH,    026H,   00H,    00H
+  170   170                      $DGS    GLV_SYM, _gu16_Voice_Address,   U,      U,      0EH,    026H,   00H,    00H
+  171   171                      $DGS    GLV_SYM, _gu16VoiceDelay,       U,      U,      0EH,    026H,   00H,    00H
+  172   172                      $DGS    GLV_SYM, _F_OneMoreSound,       U,      U,      0CH,    026H,   00H,    00H
+  173   173                      $DGS    GLV_SYM, _F_Beep_Sound, U,      U,      0CH,    026H,   00H,    00H
+  174   174                      $DGS    GLV_SYM, _F_PlayVoice,  U,      U,      0CH,    026H,   00H,    00H
+  175   175                      $DGS    GLV_SYM, _gu8_F_Voice_Play_ForCommu,    U,      U,      0CH,    026H,   00H,    00H
+  176   176                      $DGS    GLV_SYM, _gu16_Voice_Address_ForCommu,  U,      U,      0EH,    026H,   00H,    00H
+  177   177                      $DGS    GLV_SYM, _gu8_Voice_VolumeLevel_ForCommu,       U,      U,      0CH,    026H,   00H,    00H
+  178   178                      $DGS    GLV_SYM, _gu8_VoiceTestttt,     U,      U,      0CH,    026H,   00H,    00H
+  179   179                      $DGS    GLV_SYM, _gu32_Count_VoiceTest, U,      U,      0FH,    026H,   00H,    00H
+  180   180                      $DGS    GLV_SYM, _gu16VoiceVolumeRegList,       U,      U,      0EH,    026H,   01H,    03H
+  181   181                      $DGS    AUX_STR, 00H,           00H,    0AH,    05H,    00H,    00H,    00H,    00H
+  182   182                      $DGS    GLV_SYM, _gu16BeepVolumeRegList,        U,      U,      0EH,    026H,   01H,    03H
+  183   183                      $DGS    AUX_STR, 00H,           00H,    0AH,    05H,    00H,    00H,    00H,    00H
+  184   184                      
+  185   185                              PUBLIC  _COMMAND
+  186   186                              PUBLIC  _gu8_Sound_Type
+  187   187                              PUBLIC  _gu8PlayVoice_Count
+  188   188                              PUBLIC  _gu8_VoiceVolumeLevel
+  189   189                              PUBLIC  _gu8Voice_Actor
+  190   190                              PUBLIC  _gu16_Voice_Address
+  191   191                              PUBLIC  _gu16VoiceDelay
+  192   192                              PUBLIC  _F_OneMoreSound
+  193   193                              PUBLIC  _F_Beep_Sound
+  194   194                              PUBLIC  _F_PlayVoice
+  195   195                              PUBLIC  _gu8_F_Voice_Play_ForCommu
+  196   196                              PUBLIC  _gu16_Voice_Address_ForCommu
+  197   197                              PUBLIC  _gu8_Voice_VolumeLevel_ForCommu
+  198   198                              PUBLIC  _gu8_VoiceTestttt
+  199   199                              PUBLIC  _gu32_Count_VoiceTest
+  200   200                              PUBLIC  _gu16VoiceVolumeRegList
+  201   201                              PUBLIC  _gu16BeepVolumeRegList
+  202   202                              PUBLIC  _Initial_Voice
+  203   203                              PUBLIC  _SetVoiceLevel
+  204   204                              PUBLIC  _Get_Sound_Type
+  205   205                              PUBLIC  _VoiceStop
+  206   206                              PUBLIC  _Play_Voice
+  207   207                              PUBLIC  _ProcessVoice
+  208   208                              PUBLIC  _SEND_SPI_COMMAND
+  209   209                              PUBLIC  _Delay
+  210   210                      
+  211   211 -----                @@BITS  BSEG
+  212   212                      
+  213   213 -----                @@CNST  CSEG    MIRRORP
+  214   214                      
+  215   215 -----                @@R_INIT        CSEG    UNIT64KP
+  216   216 00000  2A00                  DW      02AH    ; 42
+  217   217 00002  2700                  DW      027H    ; 39
+  218   218 00004  2400                  DW      024H    ; 36
+  219   219 00006  2100                  DW      021H    ; 33
+  220   220 00008  1F00                  DW      01FH    ; 31
+  221   221 0000A  3600                  DW      036H    ; 54
+  222   222 0000C  3000                  DW      030H    ; 48
+  223   223 0000E  2A00                  DW      02AH    ; 42
+  224   224 00010  2400                  DW      024H    ; 36
+  225   225 00012  1F00                  DW      01FH    ; 31
+  226   226                      
+  227   227 -----                @@INIT  DSEG    BASEP
+  228   228 00000                _gu16VoiceVolumeRegList:        DS      (10)
+  229   229 0000A                _gu16BeepVolumeRegList: DS      (10)
+  230   230                      
+  231   231 -----                @@DATA  DSEG    BASEP
+  232   232 00000                _COMMAND:       DS      (2)
+  233   233 00002                _gu8_Sound_Type:        DS      (1)
+  234   234 00003                _gu8PlayVoice_Count:    DS      (1)
+  235   235 00004                _gu8_VoiceVolumeLevel:  DS      (1)
+  236   236 00005                _gu8Voice_Actor:        DS      (1)
+  237   237 00006                _gu16_Voice_Address:    DS      (2)
+  238   238 00008                _gu16VoiceDelay:        DS      (2)
+  239   239 0000A                _F_OneMoreSound:        DS      (1)
+  240   240 0000B                _F_Beep_Sound:  DS      (1)
+  241   241 0000C                _F_PlayVoice:   DS      (1)
+  242   242 0000D                _gu8_F_Voice_Play_ForCommu:     DS      (1)
+  243   243 0000E                _gu16_Voice_Address_ForCommu:   DS      (2)
+  244   244 00010                _gu8_Voice_VolumeLevel_ForCommu:        DS      (1)
+  245   245 00011                _gu8_VoiceTestttt:      DS      (1)
+  246   246 00012                _gu32_Count_VoiceTest:  DS      (4)
+  247   247                      
+  248   248 -----                @@R_INIS        CSEG    UNIT64KP
+  249   249                      
+  250   250 -----                @@INIS  DSEG    SADDRP
+  251   251                      
+  252   252 -----                @@DATS  DSEG    SADDRP
+  253   253                      
+  254   254 -----                @@CNSTL CSEG    PAGE64KP
+  255   255                      
+  256   256 -----                @@RLINIT        CSEG    UNIT64KP
+  257   257                      
+  258   258 -----                @@INITL DSEG    UNIT64KP
+  259   259                      
+  260   260 -----                @@DATAL DSEG    UNIT64KP
+  261   261                      
+  262   262 -----                @@CALT  CSEG    CALLT0
+  263   263                      
+  264   264                      ; line    72
+  265   265                      ; line    73
+  266   266                      ; line    74
+  267   267                      ; line    75
+  268   268                      ; line    76
+  269   269                      ; line    77
+  270   270                      ; line    78
+  271   271                      ; line   161
+  272   272                      ; line   166
+  273   273                      ; line   167
+  274   274                      ; line   211
+  275   275                      ; line   411
+  276   276                      ; line   412
+  277   277                      ; line   413
+  278   278                      ; line    47
+  279   279                      ; line    48
+  280   280                      ; line   386
+  281   281                      ; line   387
+  282   282                      ; line   388
+  283   283                      ; line   389
+  284   284                      ; line   390
+  285   285                      ; line   391
+  286   286                      ; line   392
+  287   287                      ; line   393
+  288   288                      ; line   394
+  289   289                      ; line   395
+  290   290                      ; line     7
+  291   291                      ; line     8
+  292   292                      ; line     9
+  293   293                      ; line    10
+  294   294                      ; line    11
+  295   295                      ; line    12
+  296   296                      ; line    13
+  297   297                      ; line    14
+  298   298                      ; line    15
+  299   299                      ; line    16
+  300   300                      ; line    17
+  301   301                      ; line    28
+  302   302                      ; line    40
+  303   303                      ; line    60
+  304   304                      ; line    66
+  305   305                      ; line    73
+  306   306                      ; line   112
+  307   307                      ; line   160
+  308   308                      ; line   176
+  309   309                      ; line   186
+  310   310                      ; line   192
+  311   311                      ; line   199
+  312   312                      ; line   206
+  313   313                      ; line   218
+  314   314                      ; line   230
+  315   315                      ; line   236
+  316   316                      ; line   256
+  317   317                      ; line   266
+  318   318                      ; line   273
+  319   319                      ; line   279
+  320   320                      ; line   287
+  321   321                      ; line   296
+  322   322                      ; line   304
+  323   323                      ; line    18
+  324   324                      ; line    42
+  325   325                      ; line    46
+  326   326                      ; line   129
+  327   327                      ; line   220
+  328   328                      ; line   247
+  329   329                      ; line   274
+  330   330                      ; line   301
+  331   331                      ; line   302
+  332   332                      ; line   304
+  333   333                      ; line   305
+  334   334                      ; line   307
+  335   335                      ; line   309
+  336   336                      ; line   310
+  337   337                      ; line   311
+  338   338                      ; line   313
+  339   339                      ; line   315
+  340   340                      ; line   316
+  341   341                      ; line   317
+  342   342                      ; line   318
+  343   343                      ; line   320
+  344   344                      ; line   321
+  345   345                      ; line   323
+  346   346                      ; line   364
+  347   347                      ; line   365
+  348   348                      ; line   370
+  349   349                      ; line   375
+  350   350                      ; line   376
+  351   351                      ; line   377
+  352   352                      ; line   378
+  353   353                      ; line   379
+  354   354                      ; line   380
+  355   355                      ; line   382
+  356   356                      ; line    60
+  357   357                      ; line    62
+  358   358                      ; line    63
+  359   359                      ; line    68
+  360   360                      ; line    69
+  361   361                      ; line    47
+  362   362                      ; line    64
+  363   363                      ; line    67
+  364   364                      ; line    72
+  365   365                      ; line    73
+  366   366                      ; line    74
+  367   367                      ; line    79
+  368   368                      ; line    84
+  369   369                      ; line    85
+  370   370                      ; line    86
+  371   371                      ; line    47
+  372   372                      ; line    49
+  373   373                      ; line   115
+  374   374                      ; line   116
+  375   375                      ; line   118
+  376   376                      ; line   119
+  377   377                      ; line   120
+  378   378                      ; line   121
+  379   379                      ; line   126
+  380   380                      ; line   127
+  381   381                      ; line   128
+  382   382                      ; line   129
+  383   383                      ; line   130
+  384   384                      ; line   131
+  385   385                      ; line   132
+  386   386                      ; line   133
+  387   387                      ; line    71
+  388   388                      ; line    73
+  389   389                      ; line    78
+  390   390                      ; line    79
+  391   391                      ; line    48
+  392   392                      ; line    49
+  393   393                      ; line    50
+  394   394                      ; line    51
+  395   395                      ; line    42
+  396   396                      ; line    43
+  397   397                      ; line    44
+  398   398                      ; line    45
+  399   399                      ; line    47
+  400   400                      ; line    48
+  401   401                      ; line    50
+  402   402                      ; line    51
+  403   403                      ; line    57
+  404   404                      ; line    58
+  405   405                      ; line    59
+  406   406                      ; line    60
+  407   407                      ; line    61
+  408   408                      ; line    62
+  409   409                      ; line    63
+  410   410                      ; line    64
+  411   411                      ; line    65
+  412   412                      ; line    66
+  413   413                      ; line    67
+  414   414                      ; line    65
+  415   415                      ; line    66
+  416   416                      ; line    72
+  417   417                      ; line    73
+  418   418                      ; line    74
+  419   419                      ; line    75
+  420   420                      ; line    79
+  421   421                      ; line    80
+  422   422                      ; line    81
+  423   423                      ; line    83
+  424   424                      ; line    84
+  425   425                      ; line    86
+  426   426                      ; line    87
+  427   427                      ; line    89
+  428   428                      ; line    91
+  429   429                      ; line    92
+  430   430                      ; line    94
+  431   431                      ; line    95
+  432   432                      ; line    96
+  433   433                      ; line    98
+  434   434                      ; line   100
+  435   435                      ; line   101
+  436   436                      ; line   102
+  437   437                      ; line   103
+  438   438                      ; line   104
+  439   439                      ; line   105
+  440   440                      ; line   106
+  441   441                      ; line   107
+  442   442                      ; line   108
+  443   443                      ; line   109
+  444   444                      ; line   110
+  445   445                      ; line   111
+  446   446                      ; line   112
+  447   447                      ; line   113
+  448   448                      ; line   114
+  449   449                      ; line   115
+  450   450                      ; line   116
+  451   451                      ; line   117
+  452   452                      ; line   118
+  453   453                      ; line   119
+  454   454                      ; line   120
+  455   455                      ; line   121
+  456   456                      ; line   122
+  457   457                      ; line   123
+  458   458                      ; line   124
+  459   459                      ; line   125
+  460   460                      ; line   126
+  461   461                      ; line   127
+  462   462                      ; line   128
+  463   463                      ; line   129
+  464   464                      ; line   130
+  465   465                      ; line   131
+  466   466                      ; line   132
+  467   467                      ; line   133
+  468   468                      ; line   134
+  469   469                      ; line   135
+  470   470                      ; line   136
+  471   471                      ; line   139
+  472   472                      ; line   141
+  473   473                      ; line   142
+  474   474                      ; line   145
+  475   475                      ; line   149
+  476   476                      ; line   150
+  477   477                      ; line   151
+  478   478                      ; line   152
+  479   479                      ; line   153
+  480   480                      ; line   154
+  481   481                      ; line   155
+  482   482                      ; line   156
+  483   483                      ; line   157
+  484   484                      ; line   158
+  485   485                      ; line   159
+  486   486                      ; line   160
+  487   487                      ; line   162
+  488   488                      ; line   166
+  489   489                      ; line   208
+  490   490                      ; line   209
+  491   491                      ; line   211
+  492   492                      ; line   212
+  493   493                      ; line   213
+  494   494                      ; line   214
+  495   495                      ; line   215
+  496   496                      ; line   216
+  497   497                      ; line   217
+  498   498                      ; line   218
+  499   499                      ; line   219
+  500   500                      ; line   220
+  501   501                      ; line   221
+  502   502                      ; line   222
+  503   503                      ; line    42
+  504   504                      ; line    47
+  505   505                      ; line    48
+  506   506                      ; line   306
+  507   507                      ; line   308
+  508   508                      ; line   310
+  509   509                      ; line   311
+  510   510                      ; line   312
+  511   511                      ; line   314
+  512   512                      ; line   315
+  513   513                      ; line   319
+  514   514                      ; line   320
+  515   515                      ; line   321
+  516   516                      ; line   325
+  517   517                      ; line   326
+  518   518                      ; line   327
+  519   519                      ; line   330
+  520   520                      ; line   331
+  521   521                      ; line   347
+  522   522                      ; line   348
+  523   523                      ; line   349
+  524   524                      ; line   350
+  525   525                      ; line   351
+  526   526                      ; line    13
+  527   527                      ; line    14
+  528   528                      ; line    13
+  529   529                      ; line    14
+  530   530                      ; line    15
+  531   531                      ; line    17
+  532   532                      ; line    18
+  533   533                      ; line    19
+  534   534                      ; line    20
+  535   535                      ; line    21
+  536   536                      ; line    22
+  537   537                      ; line    23
+  538   538                      ; line    24
+  539   539                      ; line    25
+  540   540                      ; line    26
+  541   541                      ; line    27
+  542   542                      ; line    29
+  543   543                      ; line    30
+  544   544                      ; line    31
+  545   545                      ; line    32
+  546   546                      ; line    33
+  547   547                      ; line    34
+  548   548                      ; line    35
+  549   549                      ; line    36
+  550   550                      ; line    37
+  551   551                      ; line    39
+  552   552                      ; line    40
+  553   553                      ; line    41
+  554   554                      ; line    42
+  555   555                      ; line    43
+  556   556                      ; line    44
+  557   557                      ; line    45
+  558   558                      ; line    46
+  559   559                      ; line    47
+  560   560                      ; line    20
+  561   561                      ; line    25
+  562   562                      ; line    29
+  563   563                      ; line    30
+  564   564                      ; line    31
+  565   565                      ; line    32
+  566   566                      ; line    33
+  567   567                      ; line    34
+  568   568                      ; line    35
+  569   569                      ; line    36
+  570   570                      ; line    37
+  571   571                      ; line    38
+  572   572                      ; line    39
+  573   573                      ; line    40
+  574   574                      ; line    41
+  575   575                      ; line    42
+  576   576                      ; line    43
+  577   577                      ; line    45
+  578   578                      ; line    46
+  579   579                      ; line    51
+  580   580                      ; line    52
+  581   581                      ; line    54
+  582   582                      ; line    59
+  583   583                      ; line    60
+  584   584                      ; line    65
+  585   585                      ; line    66
+  586   586                      ; line    67
+  587   587                      ; line    68
+  588   588                      ; line    70
+  589   589                      ; line    71
+  590   590                      ; line    72
+  591   591                      ; line    73
+  592   592                      ; line    74
+  593   593                      ; line    75
+  594   594                      ; line    76
+  595   595                      ; line    78
+  596   596                      ; line    83
+  597   597                      ; line    84
+  598   598                      ; line    89
+  599   599                      ; line    90
+  600   600                      ; line    92
+  601   601                      ; line    93
+  602   602                      ; line    94
+  603   603                      ; line    95
+  604   604                      ; line    96
+  605   605                      ; line    97
+  606   606                      ; line    98
+  607   607                      ; line   100
+  608   608                      ; line   105
+  609   609                      ; line   106
+  610   610                      ; line   111
+  611   611                      ; line   112
+  612   612                      ; line    16
+  613   613                      ; line    18
+  614   614                      ; line    19
+  615   615                      ; line    20
+  616   616                      ; line    21
+  617   617                      ; line    22
+  618   618                      ; line    23
+  619   619                      ; line    24
+  620   620                      ; line    25
+  621   621                      ; line    26
+  622   622                      ; line    27
+  623   623                      ; line    28
+  624   624                      ; line    29
+  625   625                      ; line    30
+  626   626                      ; line    31
+  627   627                      ; line    32
+  628   628                      ; line    33
+  629   629                      ; line    35
+  630   630                      ; line    37
+  631   631                      ; line    38
+  632   632                      ; line    39
+  633   633                      ; line    40
+  634   634                      ; line    43
+  635   635                      ; line    45
+  636   636                      ; line    46
+  637   637                      ; line    47
+  638   638                      ; line    48
+  639   639                      ; line    49
+  640   640                      ; line    50
+  641   641                      ; line    51
+  642   642                      ; line    52
+  643   643                      ; line    53
+  644   644                      ; line    54
+  645   645                      ; line    55
+  646   646                      ; line    56
+  647   647                      ; line    57
+  648   648                      ; line    58
+  649   649                      ; line    59
+  650   650                      ; line    60
+  651   651                      ; line    62
+  652   652                      ; line    64
+  653   653                      ; line    65
+  654   654                      ; line    66
+  655   655                      ; line    69
+  656   656                      ; line    71
+  657   657                      ; line    72
+  658   658                      ; line    73
+  659   659                      ; line    74
+  660   660                      ; line    75
+  661   661                      ; line    76
+  662   662                      ; line    77
+  663   663                      ; line    78
+  664   664                      ; line    79
+  665   665                      ; line    80
+  666   666                      ; line    81
+  667   667                      ; line    82
+  668   668                      ; line    83
+  669   669                      ; line    84
+  670   670                      ; line    85
+  671   671                      ; line    86
+  672   672                      ; line    88
+  673   673                      ; line    90
+  674   674                      ; line    91
+  675   675                      ; line    92
+  676   676                      ; line    13
+  677   677                      ; line    21
+  678   678                      ; line    22
+  679   679                      ; line    23
+  680   680                      ; line    24
+  681   681                      ; line    25
+  682   682                      ; line    26
+  683   683                      ; line    27
+  684   684                      ; line    28
+  685   685                      ; line    29
+  686   686                      ; line    30
+  687   687                      ; line    31
+  688   688                      ; line    32
+  689   689                      ; line    33
+  690   690                      ; line    34
+  691   691                      ; line    35
+  692   692                      ; line    36
+  693   693                      ; line    37
+  694   694                      ; line    38
+  695   695                      ; line    39
+  696   696                      ; line    40
+  697   697                      ; line    41
+  698   698                      ; line    42
+  699   699                      ; line    43
+  700   700                      ; line    44
+  701   701                      ; line    45
+  702   702                      ; line    46
+  703   703                      ; line    47
+  704   704                      ; line    48
+  705   705                      ; line    49
+  706   706                      ; line    50
+  707   707                      ; line    51
+  708   708                      ; line    52
+  709   709                      ; line    53
+  710   710                      ; line    54
+  711   711                      ; line    55
+  712   712                      ; line    56
+  713   713                      ; line    57
+  714   714                      ; line    58
+  715   715                      ; line    59
+  716   716                      ; line    60
+  717   717                      ; line    61
+  718   718                      ; line    62
+  719   719                      ; line    63
+  720   720                      ; line    64
+  721   721                      ; line    65
+  722   722                      ; line    67
+  723   723                      ; line    68
+  724   724                      ; line    69
+  725   725                      ; line    70
+  726   726                      ; line    72
+  727   727                      ; line    73
+  728   728                      ; line    74
+  729   729                      ; line    75
+  730   730                      ; line     8
+  731   731                      ; line     9
+  732   732                      ; line    10
+  733   733                      ; line    15
+  734   734                      ; line    17
+  735   735                      ; line    18
+  736   736                      ; line    19
+  737   737                      ; line    20
+  738   738                      ; line    21
+  739   739                      ; line    22
+  740   740                      ; line    24
+  741   741                      ; line    25
+  742   742                      ; line    26
+  743   743                      ; line    27
+  744   744                      ; line    28
+  745   745                      ; line    34
+  746   746                      
+  747   747 -----                @@CODEL CSEG
+  748   748 00000                _Initial_Voice:
+  749   749                      $DGL    1,20
+  750   750 00000                ??bf_Initial_Voice:
+  751   751                      ; line    36
+  752   752                      $DGL    0,3
+  753   753 00000  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+  754   754 00003 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  755   755                      ; line    37
+  756   756                      $DGL    0,4
+  757   757 00007  711300                clr1    P0.1                                            ;[INF] 3, 2
+  758   758                      ; line    39
+  759   759                      $DGL    0,6
+  760   760 0000A  3060EA                movw    ax,#0EA60H      ; -5536                         ;[INF] 3, 1
+  761   761 0000D RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  762   762                      ; line    40
+  763   763                      $DGL    0,7
+  764   764 00011  711200                set1    P0.1                                            ;[INF] 3, 2
+  765   765                      ; line    43
+  766   766                      $DGL    0,10
+  767   767 00014  3060E2                movw    ax,#0E260H      ; -7584                         ;[INF] 3, 1
+  768   768 00017 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  769   769                      ; line    44
+  770   770                      $DGL    0,11
+  771   771 0001A RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  772   772                      ; line    47
+  773   773                      $DGL    0,14
+  774   774 0001E  3005E3                movw    ax,#0E305H      ; -7419                         ;[INF] 3, 1
+  775   775 00021 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  776   776                      ; line    48
+  777   777                      $DGL    0,15
+  778   778 00024 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  779   779                      ; line    49
+  780   780                      $DGL    0,16
+  781   781 00028                ??ef_Initial_Voice:
+  782   782 00028  D7                    ret                                                     ;[INF] 1, 6
+  783   783 00029                ??ee_Initial_Voice:
+  784   784                      ; line    54
+  785   785 00029                _SetVoiceLevel:
+  786   786                      $DGL    1,26
+  787   787 00029  C7                    push    hl                                              ;[INF] 1, 1
+  788   788 0002A  C1                    push    ax                                              ;[INF] 1, 1
+  789   789 0002B  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  790   790 0002E                ??bf_SetVoiceLevel:
+  791   791                      ; line    55
+  792   792                      $DGL    0,2
+  793   793 0002E  8B                    mov     a,[hl]  ; mu8Val                                ;[INF] 1, 1
+  794   794 0002F R9F0200                mov     !_gu8_Sound_Type,a                              ;[INF] 3, 1
+  795   795                      ; line    56
+  796   796                      $DGL    0,3
+  797   797 00032 RD50200                cmp0    !_gu8_Sound_Type                                ;[INF] 3, 1
+  798   798 00035  61F8                  sknz                                                    ;[INF] 2, 1
+  799   799                      ; line    57
+  800   800 00037                ??bb00_SetVoiceLevel:
+  801   801                      ; line    58
+  802   802                      $DGL    0,5
+  803   803 00037 RE50A00                oneb    !_F_OneMoreSound                                ;[INF] 3, 1
+  804   804 0003A                ??eb00_SetVoiceLevel:
+  805   805                      ; line    59
+  806   806 0003A                ?L0005:
+  807   807 0003A                ?L0006:
+  808   808                      ; line    60
+  809   809                      $DGL    0,7
+  810   810 0003A                ??ef_SetVoiceLevel:
+  811   811 0003A  C0                    pop     ax                                              ;[INF] 1, 1
+  812   812 0003B  C6                    pop     hl                                              ;[INF] 1, 1
+  813   813 0003C  D7                    ret                                                     ;[INF] 1, 6
+  814   814 0003D                ??ee_SetVoiceLevel:
+  815   815                      ; line    65
+  816   816 0003D                _Get_Sound_Type:
+  817   817                      $DGL    1,37
+  818   818 0003D                ??bf_Get_Sound_Type:
+  819   819                      ; line    66
+  820   820                      $DGL    0,2
+  821   821 0003D RD90200                mov     x,!_gu8_Sound_Type                              ;[INF] 3, 1
+  822   822 00040  F1                    clrb    a                                               ;[INF] 1, 1
+  823   823 00041  12                    movw    bc,ax                                           ;[INF] 1, 1
+  824   824                      ; line    67
+  825   825 00042                ?L0008:
+  826   826                      ; line    67
+  827   827                      $DGL    0,3
+  828   828 00042                ??ef_Get_Sound_Type:
+  829   829 00042  D7                    ret                                                     ;[INF] 1, 6
+  830   830 00043                ??ee_Get_Sound_Type:
+  831   831                      ; line    73
+  832   832 00043                _VoiceStop:
+  833   833                      $DGL    1,43
+  834   834 00043                ??bf_VoiceStop:
+  835   835                      ; line    74
+  836   836                      $DGL    0,2
+  837   837 00043  3010E2                movw    ax,#0E210H      ; -7664                         ;[INF] 3, 1
+  838   838 00046 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  839   839                      ; line    75
+  840   840                      $DGL    0,3
+  841   841 00049 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  842   842                      ; line    76
+  843   843                      $DGL    0,4
+  844   844 0004D                ??ef_VoiceStop:
+  845   845 0004D  D7                    ret                                                     ;[INF] 1, 6
+  846   846 0004E                ??ee_VoiceStop:
+  847   847                      ; line    82
+  848   848 0004E                _Play_Voice:
+  849   849                      $DGL    1,49
+  850   850 0004E  C7                    push    hl                                              ;[INF] 1, 1
+  851   851 0004F  C1                    push    ax                                              ;[INF] 1, 1
+  852   852 00050  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  853   853 00053                ??bf_Play_Voice:
+  854   854                      ; line    83
+  855   855                      $DGL    0,2
+  856   856 00053 RE50C00                oneb    !_F_PlayVoice                                   ;[INF] 3, 1
+  857   857                      ; line    84
+  858   858                      $DGL    0,3
+  859   859 00056  AB                    movw    ax,[hl] ; mu16MemoryAddress                     ;[INF] 1, 1
+  860   860 00057 RBF0600                movw    !_gu16_Voice_Address,ax                         ;[INF] 3, 1
+  861   861                      ; line    85
+  862   862                      $DGL    0,4
+  863   863 0005A RFC430000              call    !!_VoiceStop                                    ;[INF] 4, 3
+  864   864                      ; line    86
+  865   865                      $DGL    0,5
+  866   866 0005E                ??ef_Play_Voice:
+  867   867 0005E  C0                    pop     ax                                              ;[INF] 1, 1
+  868   868 0005F  C6                    pop     hl                                              ;[INF] 1, 1
+  869   869 00060  D7                    ret                                                     ;[INF] 1, 6
+  870   870 00061                ??ee_Play_Voice:
+  871   871                      ; line    92
+  872   872 00061                _ProcessVoice:
+  873   873                      $DGL    1,56
+  874   874 00061                ??bf_ProcessVoice:
+  875   875                      ; line    99
+  876   876                      $DGL    0,8
+  877   877 00061 R40110001              cmp     !_gu8_VoiceTestttt,#01H ; 1                     ;[INF] 4, 1
+  878   878 00065  61F8                  sknz                                                    ;[INF] 2, 1
+  879   879                      ; line   100
+  880   880 00067                ??bb00_ProcessVoice:
+  881   881                      ; line   101
+  882   882                      $DGL    0,10
+  883   883 00067  EE6F01                br      $!?L0014                                        ;[INF] 3, 3
+  884   884 0006A                ??eb00_ProcessVoice:
+  885   885                      ; line   102
+  886   886 0006A                ?L0015:
+  887   887 0006A                ?L0016:
+  888   888                      ; line   106
+  889   889                      $DGL    0,15
+  890   890 0006A RD50C00                cmp0    !_F_PlayVoice                                   ;[INF] 3, 1
+  891   891 0006D  61F8                  sknz                                                    ;[INF] 2, 1
+  892   892 0006F  EE6101                br      $!?L0017                                        ;[INF] 3, 3
+  893   893                      ; line   107
+  894   894 00072                ??bb01_ProcessVoice:
+  895   895                      ; line   164
+  896   896                      $DGL    0,73
+  897   897 00072 RD90400                mov     x,!_gu8_VoiceVolumeLevel                        ;[INF] 3, 1
+  898   898 00075  F1                    clrb    a                                               ;[INF] 1, 1
+  899   899 00076  01                    addw    ax,ax                                           ;[INF] 1, 1
+  900   900 00077 R040A00                addw    ax,#loww (_gu16BeepVolumeRegList)               ;[INF] 3, 1
+  901   901 0007A  14                    movw    de,ax                                           ;[INF] 1, 1
+  902   902 0007B  A9                    movw    ax,[de]                                         ;[INF] 1, 1
+  903   903 0007C  0CE1                  add     a,#0E1H ; 225                                   ;[INF] 2, 1
+  904   904 0007E RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  905   905                      ; line   166
+  906   906                      $DGL    0,75
+  907   907 00081 RF50C00                clrb    !_F_PlayVoice                                   ;[INF] 3, 1
+  908   908                      ; line   168
+  909   909                      $DGL    0,77
+  910   910 00084  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+  911   911 00087 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  912   912                      ; line   170
+  913   913                      $DGL    0,79
+  914   914 0008B RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  915   915                      ; line   171
+  916   916                      $DGL    0,80
+  917   917 0008F  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+  918   918 00092 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  919   919                      ; line   177
+  920   920                      $DGL    0,86
+  921   921 00096 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+  922   922 00099  440001                cmpw    ax,#0100H       ; 256                           ;[INF] 3, 1
+  923   923 0009C  DE20                  bnc     $?L0019                                         ;[INF] 2, 4
+  924   924                      ; line   178
+  925   925 0009E                ??bb02_ProcessVoice:
+  926   926                      ; line   179
+  927   927                      $DGL    0,88
+  928   928 0009E  3000E4                movw    ax,#0E400H      ; -7168                         ;[INF] 3, 1
+  929   929 000A1 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  930   930                      ; line   180
+  931   931                      $DGL    0,89
+  932   932 000A4 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  933   933                      ; line   182
+  934   934                      $DGL    0,91
+  935   935 000A8  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+  936   936 000AB RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  937   937                      ; line   183
+  938   938                      $DGL    0,92
+  939   939 000AF RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+  940   940 000B2  0CE0                  add     a,#0E0H ; 224                                   ;[INF] 2, 1
+  941   941 000B4 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  942   942                      ; line   184
+  943   943                      $DGL    0,93
+  944   944 000B7 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  945   945 000BB                ??eb02_ProcessVoice:
+  946   946                      ; line   187
+  947   947                      $DGL    0,96
+  948   948 000BB  EE1301                br      $!?L0020                                        ;[INF] 3, 3
+  949   949 000BE                ?L0019:
+  950   950 000BE RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+  951   951 000C1  440002                cmpw    ax,#0200H       ; 512                           ;[INF] 3, 1
+  952   952 000C4  DE21                  bnc     $?L0021                                         ;[INF] 2, 4
+  953   953                      ; line   188
+  954   954 000C6                ??bb03_ProcessVoice:
+  955   955                      ; line   189
+  956   956                      $DGL    0,98
+  957   957 000C6  3001E4                movw    ax,#0E401H      ; -7167                         ;[INF] 3, 1
+  958   958 000C9 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  959   959                      ; line   190
+  960   960                      $DGL    0,99
+  961   961 000CC RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  962   962                      ; line   192
+  963   963                      $DGL    0,101
+  964   964 000D0  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+  965   965 000D3 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  966   966                      ; line   193
+  967   967                      $DGL    0,102
+  968   968 000D7 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+  969   969 000DA  91                    dec     a                                               ;[INF] 1, 1
+  970   970 000DB  0CE0                  add     a,#0E0H ; 224                                   ;[INF] 2, 1
+  971   971 000DD RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  972   972                      ; line   194
+  973   973                      $DGL    0,103
+  974   974 000E0 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  975   975 000E4                ??eb03_ProcessVoice:
+  976   976                      ; line   199
+  977   977                      $DGL    0,108
+  978   978 000E4  EEEA00                br      $!?L0022                                        ;[INF] 3, 3
+  979   979 000E7                ?L0021:
+  980   980 000E7 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+  981   981 000EA  440003                cmpw    ax,#0300H       ; 768                           ;[INF] 3, 1
+  982   982 000ED  DE20                  bnc     $?L0023                                         ;[INF] 2, 4
+  983   983                      ; line   200
+  984   984 000EF                ??bb04_ProcessVoice:
+  985   985                      ; line   201
+  986   986                      $DGL    0,110
+  987   987 000EF  3002E4                movw    ax,#0E402H      ; -7166                         ;[INF] 3, 1
+  988   988 000F2 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+  989   989                      ; line   202
+  990   990                      $DGL    0,111
+  991   991 000F5 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+  992   992                      ; line   204
+  993   993                      $DGL    0,113
+  994   994 000F9  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+  995   995 000FC RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+  996   996                      ; line   205
+  997   997                      $DGL    0,114
+  998   998 00100 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+  999   999 00103  2C22                  sub     a,#022H ; 34                                    ;[INF] 2, 1
+ 1000  1000 00105 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1001  1001                      ; line   206
+ 1002  1002                      $DGL    0,115
+ 1003  1003 00108 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1004  1004 0010C                ??eb04_ProcessVoice:
+ 1005  1005                      ; line   209
+ 1006  1006                      $DGL    0,118
+ 1007  1007 0010C  EEC200                br      $!?L0024                                        ;[INF] 3, 3
+ 1008  1008 0010F                ?L0023:
+ 1009  1009 0010F RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1010  1010 00112  440004                cmpw    ax,#0400H       ; 1024                          ;[INF] 3, 1
+ 1011  1011 00115  DE20                  bnc     $?L0025                                         ;[INF] 2, 4
+ 1012  1012                      ; line   210
+ 1013  1013 00117                ??bb05_ProcessVoice:
+ 1014  1014                      ; line   211
+ 1015  1015                      $DGL    0,120
+ 1016  1016 00117  3003E4                movw    ax,#0E403H      ; -7165                         ;[INF] 3, 1
+ 1017  1017 0011A RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1018  1018                      ; line   212
+ 1019  1019                      $DGL    0,121
+ 1020  1020 0011D RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1021  1021                      ; line   214
+ 1022  1022                      $DGL    0,123
+ 1023  1023 00121  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+ 1024  1024 00124 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1025  1025                      ; line   215
+ 1026  1026                      $DGL    0,124
+ 1027  1027 00128 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1028  1028 0012B  2C23                  sub     a,#023H ; 35                                    ;[INF] 2, 1
+ 1029  1029 0012D RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1030  1030                      ; line   216
+ 1031  1031                      $DGL    0,125
+ 1032  1032 00130 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1033  1033 00134                ??eb05_ProcessVoice:
+ 1034  1034                      ; line   219
+ 1035  1035                      $DGL    0,128
+ 1036  1036 00134  EE9A00                br      $!?L0026                                        ;[INF] 3, 3
+ 1037  1037 00137                ?L0025:
+ 1038  1038 00137 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1039  1039 0013A  440005                cmpw    ax,#0500H       ; 1280                          ;[INF] 3, 1
+ 1040  1040 0013D  DE1F                  bnc     $?L0027                                         ;[INF] 2, 4
+ 1041  1041                      ; line   220
+ 1042  1042 0013F                ??bb06_ProcessVoice:
+ 1043  1043                      ; line   221
+ 1044  1044                      $DGL    0,130
+ 1045  1045 0013F  3004E4                movw    ax,#0E404H      ; -7164                         ;[INF] 3, 1
+ 1046  1046 00142 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1047  1047                      ; line   222
+ 1048  1048                      $DGL    0,131
+ 1049  1049 00145 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1050  1050                      ; line   224
+ 1051  1051                      $DGL    0,133
+ 1052  1052 00149  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+ 1053  1053 0014C RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1054  1054                      ; line   225
+ 1055  1055                      $DGL    0,134
+ 1056  1056 00150 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1057  1057 00153  2C24                  sub     a,#024H ; 36                                    ;[INF] 2, 1
+ 1058  1058 00155 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1059  1059                      ; line   226
+ 1060  1060                      $DGL    0,135
+ 1061  1061 00158 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1062  1062 0015C                ??eb06_ProcessVoice:
+ 1063  1063                      ; line   229
+ 1064  1064                      $DGL    0,138
+ 1065  1065 0015C  EF73                  br      $?L0028                                         ;[INF] 2, 3
+ 1066  1066 0015E                ?L0027:
+ 1067  1067 0015E RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1068  1068 00161  440006                cmpw    ax,#0600H       ; 1536                          ;[INF] 3, 1
+ 1069  1069 00164  DE1F                  bnc     $?L0029                                         ;[INF] 2, 4
+ 1070  1070                      ; line   230
+ 1071  1071 00166                ??bb07_ProcessVoice:
+ 1072  1072                      ; line   231
+ 1073  1073                      $DGL    0,140
+ 1074  1074 00166  3005E4                movw    ax,#0E405H      ; -7163                         ;[INF] 3, 1
+ 1075  1075 00169 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1076  1076                      ; line   232
+ 1077  1077                      $DGL    0,141
+ 1078  1078 0016C RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1079  1079                      ; line   234
+ 1080  1080                      $DGL    0,143
+ 1081  1081 00170  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+ 1082  1082 00173 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1083  1083                      ; line   235
+ 1084  1084                      $DGL    0,144
+ 1085  1085 00177 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1086  1086 0017A  2C25                  sub     a,#025H ; 37                                    ;[INF] 2, 1
+ 1087  1087 0017C RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1088  1088                      ; line   236
+ 1089  1089                      $DGL    0,145
+ 1090  1090 0017F RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1091  1091 00183                ??eb07_ProcessVoice:
+ 1092  1092                      ; line   239
+ 1093  1093                      $DGL    0,148
+ 1094  1094 00183  EF4C                  br      $?L0030                                         ;[INF] 2, 3
+ 1095  1095 00185                ?L0029:
+ 1096  1096 00185 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1097  1097 00188  440007                cmpw    ax,#0700H       ; 1792                          ;[INF] 3, 1
+ 1098  1098 0018B  DE1F                  bnc     $?L0031                                         ;[INF] 2, 4
+ 1099  1099                      ; line   240
+ 1100  1100 0018D                ??bb08_ProcessVoice:
+ 1101  1101                      ; line   241
+ 1102  1102                      $DGL    0,150
+ 1103  1103 0018D  3006E4                movw    ax,#0E406H      ; -7162                         ;[INF] 3, 1
+ 1104  1104 00190 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1105  1105                      ; line   242
+ 1106  1106                      $DGL    0,151
+ 1107  1107 00193 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1108  1108                      ; line   244
+ 1109  1109                      $DGL    0,153
+ 1110  1110 00197  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+ 1111  1111 0019A RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1112  1112                      ; line   245
+ 1113  1113                      $DGL    0,154
+ 1114  1114 0019E RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1115  1115 001A1  2C26                  sub     a,#026H ; 38                                    ;[INF] 2, 1
+ 1116  1116 001A3 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1117  1117                      ; line   246
+ 1118  1118                      $DGL    0,155
+ 1119  1119 001A6 RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1120  1120 001AA                ??eb08_ProcessVoice:
+ 1121  1121                      ; line   249
+ 1122  1122                      $DGL    0,158
+ 1123  1123 001AA  EF25                  br      $?L0032                                         ;[INF] 2, 3
+ 1124  1124 001AC                ?L0031:
+ 1125  1125 001AC RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1126  1126 001AF  440008                cmpw    ax,#0800H       ; 2048                          ;[INF] 3, 1
+ 1127  1127 001B2  DE1D                  bnc     $?L0033                                         ;[INF] 2, 4
+ 1128  1128                      ; line   250
+ 1129  1129 001B4                ??bb09_ProcessVoice:
+ 1130  1130                      ; line   251
+ 1131  1131                      $DGL    0,160
+ 1132  1132 001B4  3007E4                movw    ax,#0E407H      ; -7161                         ;[INF] 3, 1
+ 1133  1133 001B7 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1134  1134                      ; line   252
+ 1135  1135                      $DGL    0,161
+ 1136  1136 001BA RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1137  1137                      ; line   254
+ 1138  1138                      $DGL    0,163
+ 1139  1139 001BE  309001                movw    ax,#0190H       ; 400                           ;[INF] 3, 1
+ 1140  1140 001C1 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1141  1141                      ; line   255
+ 1142  1142                      $DGL    0,164
+ 1143  1143 001C5 RAF0600                movw    ax,!_gu16_Voice_Address                         ;[INF] 3, 1
+ 1144  1144 001C8  2C27                  sub     a,#027H ; 39                                    ;[INF] 2, 1
+ 1145  1145 001CA RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1146  1146                      ; line   256
+ 1147  1147                      $DGL    0,165
+ 1148  1148 001CD RFCDA0100              call    !!_SEND_SPI_COMMAND                             ;[INF] 4, 3
+ 1149  1149 001D1                ??eb09_ProcessVoice:
+ 1150  1150                      ; line   258
+ 1151  1151 001D1                ?L0033:
+ 1152  1152                      ; line   259
+ 1153  1153 001D1                ??bb0A_ProcessVoice:
+ 1154  1154 001D1                ??eb0A_ProcessVoice:
+ 1155  1155                      ; line   261
+ 1156  1156 001D1                ?L0034:
+ 1157  1157 001D1                ?L0032:
+ 1158  1158 001D1                ?L0030:
+ 1159  1159 001D1                ?L0028:
+ 1160  1160 001D1                ?L0026:
+ 1161  1161 001D1                ?L0024:
+ 1162  1162 001D1                ?L0022:
+ 1163  1163 001D1                ?L0020:
+ 1164  1164 001D1                ??eb01_ProcessVoice:
+ 1165  1165                      ; line   266
+ 1166  1166                      $DGL    0,175
+ 1167  1167 001D1  EF03                  br      $?L0018                                         ;[INF] 2, 3
+ 1168  1168 001D3                ?L0017:
+ 1169  1169                      ; line   267
+ 1170  1170 001D3                ??bb0B_ProcessVoice:
+ 1171  1171                      ; line   269
+ 1172  1172                      $DGL    0,178
+ 1173  1173 001D3 RE50300                oneb    !_gu8PlayVoice_Count                            ;[INF] 3, 1
+ 1174  1174 001D6                ??eb0B_ProcessVoice:
+ 1175  1175                      ; line   270
+ 1176  1176 001D6                ?L0018:
+ 1177  1177                      ; line   272
+ 1178  1178                      $DGL    0,181
+ 1179  1179 001D6 RF50B00                clrb    !_F_Beep_Sound                                  ;[INF] 3, 1
+ 1180  1180                      ; line   276
+ 1181  1181 001D9                ?L0014:
+ 1182  1182                      ; line   276
+ 1183  1183                      $DGL    0,185
+ 1184  1184 001D9                ??ef_ProcessVoice:
+ 1185  1185 001D9  D7                    ret                                                     ;[INF] 1, 6
+ 1186  1186 001DA                ??ee_ProcessVoice:
+ 1187  1187                      ; line   282
+ 1188  1188 001DA                _SEND_SPI_COMMAND:
+ 1189  1189                      $DGL    1,110
+ 1190  1190 001DA  C7                    push    hl                                              ;[INF] 1, 1
+ 1191  1191 001DB  C1                    push    ax                                              ;[INF] 1, 1
+ 1192  1192 001DC  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+ 1193  1193 001DF                ??bf_SEND_SPI_COMMAND:
+ 1194  1194                      ; line   283
+ 1195  1195                      $DGL    0,2
+ 1196  1196 001DF  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1197  1197 001E0  BB                    movw    [hl],ax ; i                                     ;[INF] 1, 1
+ 1198  1198                      ; line   285
+ 1199  1199                      $DGL    0,4
+ 1200  1200 001E1  712300                clr1    P0.2                                            ;[INF] 3, 2
+ 1201  1201                      ; line   291
+ 1202  1202                      $DGL    0,10
+ 1203  1203 001E4  30C05D                movw    ax,#05DC0H      ; 24000                         ;[INF] 3, 1
+ 1204  1204 001E7 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1205  1205                      ; line   294
+ 1206  1206                      $DGL    0,13
+ 1207  1207 001EB  714300                clr1    P0.4                                            ;[INF] 3, 2
+ 1208  1208                      ; line   297
+ 1209  1209                      $DGL    0,16
+ 1210  1210 001EE                ?L0037:
+ 1211  1211 001EE  AB                    movw    ax,[hl] ; i                                     ;[INF] 1, 1
+ 1212  1212 001EF  441000                cmpw    ax,#010H        ; 16                            ;[INF] 3, 1
+ 1213  1213 001F2  71FE                  or1     CY,a.7                                          ;[INF] 2, 1
+ 1214  1214 001F4  DE4A                  bnc     $?L0038                                         ;[INF] 2, 4
+ 1215  1215                      ; line   298
+ 1216  1216 001F6                ??bb00_SEND_SPI_COMMAND:
+ 1217  1217                      ; line   299
+ 1218  1218                      $DGL    0,18
+ 1219  1219 001F6  714300                clr1    P0.4                                            ;[INF] 3, 2
+ 1220  1220                      ; line   301
+ 1221  1221                      $DGL    0,20
+ 1222  1222 001F9  30A000                movw    ax,#0A0H        ; 160                           ;[INF] 3, 1
+ 1223  1223 001FC RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1224  1224                      ; line   303
+ 1225  1225                      $DGL    0,22
+ 1226  1226 00200 RAF0000                movw    ax,!_COMMAND                                    ;[INF] 3, 1
+ 1227  1227 00203  5C80                  and     a,#080H ; 128                                   ;[INF] 2, 1
+ 1228  1228 00205  F0                    clrb    x                                               ;[INF] 1, 1
+ 1229  1229 00206  6168                  or      a,x                                             ;[INF] 2, 1
+ 1230  1230 00208  DD05                  bz      $?L0039                                         ;[INF] 2, 4
+ 1231  1231                      ; line   304
+ 1232  1232 0020A                ??bb01_SEND_SPI_COMMAND:
+ 1233  1233                      ; line   305
+ 1234  1234                      $DGL    0,24
+ 1235  1235 0020A  713200                set1    P0.3                                            ;[INF] 3, 2
+ 1236  1236 0020D                ??eb01_SEND_SPI_COMMAND:
+ 1237  1237                      ; line   307
+ 1238  1238                      $DGL    0,26
+ 1239  1239 0020D  EF03                  br      $?L0040                                         ;[INF] 2, 3
+ 1240  1240 0020F                ?L0039:
+ 1241  1241                      ; line   308
+ 1242  1242 0020F                ??bb02_SEND_SPI_COMMAND:
+ 1243  1243                      ; line   309
+ 1244  1244                      $DGL    0,28
+ 1245  1245 0020F  713300                clr1    P0.3                                            ;[INF] 3, 2
+ 1246  1246 00212                ??eb02_SEND_SPI_COMMAND:
+ 1247  1247                      ; line   310
+ 1248  1248 00212                ?L0040:
+ 1249  1249                      ; line   312
+ 1250  1250                      $DGL    0,31
+ 1251  1251 00212 RAF0000                movw    ax,!_COMMAND                                    ;[INF] 3, 1
+ 1252  1252 00215  01                    addw    ax,ax                                           ;[INF] 1, 1
+ 1253  1253 00216 RBF0000                movw    !_COMMAND,ax                                    ;[INF] 3, 1
+ 1254  1254                      ; line   314
+ 1255  1255                      $DGL    0,33
+ 1256  1256 00219  30A000                movw    ax,#0A0H        ; 160                           ;[INF] 3, 1
+ 1257  1257 0021C RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1258  1258                      ; line   316
+ 1259  1259                      $DGL    0,35
+ 1260  1260 00220  714200                set1    P0.4                                            ;[INF] 3, 2
+ 1261  1261                      ; line   317
+ 1262  1262                      $DGL    0,36
+ 1263  1263 00223  617900                incw    [hl+0]  ; i                                     ;[INF] 3, 2
+ 1264  1264                      ; line   319
+ 1265  1265                      $DGL    0,38
+ 1266  1266 00226  300800                movw    ax,#08H ; 8                                     ;[INF] 3, 1
+ 1267  1267 00229  614900                cmpw    ax,[hl+0]       ; i                             ;[INF] 3, 1
+ 1268  1268 0022C  DF09                  bnz     $?L0041                                         ;[INF] 2, 4
+ 1269  1269                      ; line   320
+ 1270  1270 0022E                ??bb03_SEND_SPI_COMMAND:
+ 1271  1271                      ; line   321
+ 1272  1272                      $DGL    0,40
+ 1273  1273 0022E  308002                movw    ax,#0280H       ; 640                           ;[INF] 3, 1
+ 1274  1274 00231 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1275  1275 00235                ??eb03_SEND_SPI_COMMAND:
+ 1276  1276                      ; line   323
+ 1277  1277                      $DGL    0,42
+ 1278  1278 00235  EF07                  br      $?L0042                                         ;[INF] 2, 3
+ 1279  1279 00237                ?L0041:
+ 1280  1280                      ; line   324
+ 1281  1281 00237                ??bb04_SEND_SPI_COMMAND:
+ 1282  1282                      ; line   325
+ 1283  1283                      $DGL    0,44
+ 1284  1284 00237  304001                movw    ax,#0140H       ; 320                           ;[INF] 3, 1
+ 1285  1285 0023A RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1286  1286 0023E                ??eb04_SEND_SPI_COMMAND:
+ 1287  1287                      ; line   326
+ 1288  1288 0023E                ?L0042:
+ 1289  1289 0023E                ??eb00_SEND_SPI_COMMAND:
+ 1290  1290                      ; line   327
+ 1291  1291                      $DGL    0,46
+ 1292  1292 0023E  EFAE                  br      $?L0037                                         ;[INF] 2, 3
+ 1293  1293 00240                ?L0038:
+ 1294  1294                      ; line   329
+ 1295  1295                      $DGL    0,48
+ 1296  1296 00240  713300                clr1    P0.3                                            ;[INF] 3, 2
+ 1297  1297                      ; line   330
+ 1298  1298                      $DGL    0,49
+ 1299  1299 00243  300800                movw    ax,#08H ; 8                                     ;[INF] 3, 1
+ 1300  1300 00246 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1301  1301                      ; line   332
+ 1302  1302                      $DGL    0,51
+ 1303  1303 0024A  712200                set1    P0.2                                            ;[INF] 3, 2
+ 1304  1304                      ; line   334
+ 1305  1305                      $DGL    0,53
+ 1306  1306 0024D  304001                movw    ax,#0140H       ; 320                           ;[INF] 3, 1
+ 1307  1307 00250 RFC570200              call    !!_Delay                                        ;[INF] 4, 3
+ 1308  1308                      ; line   335
+ 1309  1309                      $DGL    0,54
+ 1310  1310 00254                ??ef_SEND_SPI_COMMAND:
+ 1311  1311 00254  C0                    pop     ax                                              ;[INF] 1, 1
+ 1312  1312 00255  C6                    pop     hl                                              ;[INF] 1, 1
+ 1313  1313 00256  D7                    ret                                                     ;[INF] 1, 6
+ 1314  1314 00257                ??ee_SEND_SPI_COMMAND:
+ 1315  1315                      ; line   341
+ 1316  1316 00257                _Delay:
+ 1317  1317                      $DGL    1,137
+ 1318  1318 00257  C7                    push    hl                                              ;[INF] 1, 1
+ 1319  1319 00258  C1                    push    ax                                              ;[INF] 1, 1
+ 1320  1320 00259  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+ 1321  1321 0025C                ??bf_Delay:
+ 1322  1322                      ; line   342
+ 1323  1323                      $DGL    0,2
+ 1324  1324 0025C                ?L0045:
+ 1325  1325 0025C  AB                    movw    ax,[hl] ; mu8Time                               ;[INF] 1, 1
+ 1326  1326 0025D  B1                    decw    ax                                              ;[INF] 1, 1
+ 1327  1327 0025E  BB                    movw    [hl],ax ; mu8Time                               ;[INF] 1, 1
+ 1328  1328 0025F  6168                  or      a,x                                             ;[INF] 2, 1
+ 1329  1329 00261  DD03                  bz      $?L0046                                         ;[INF] 2, 4
+ 1330  1330                      ; line   343
+ 1331  1331 00263                ??bb00_Delay:
+ 1332  1332                      ; line   344
+ 1333  1333                      $DGL    0,4
+ 1334  1334 00263  00                    nop                                                     ;[INF] 1, 1
+ 1335  1335 00264                ??eb00_Delay:
+ 1336  1336                      ; line   385
+ 1337  1337                      $DGL    0,45
+ 1338  1338 00264  EFF6                  br      $?L0045                                         ;[INF] 2, 3
+ 1339  1339 00266                ?L0046:
+ 1340  1340                      ; line   386
+ 1341  1341                      $DGL    0,46
+ 1342  1342 00266                ??ef_Delay:
+ 1343  1343 00266  C0                    pop     ax                                              ;[INF] 1, 1
+ 1344  1344 00267  C6                    pop     hl                                              ;[INF] 1, 1
+ 1345  1345 00268  D7                    ret                                                     ;[INF] 1, 6
+ 1346  1346 00269                ??ee_Delay:
+ 1347  1347                      
+ 1348  1348 -----                @@CODE  CSEG    BASE
+ 1349  1349                      
+ 1350  1350 -----                @@BASE  CSEG    BASE
+ 1351  1351                      
+ 1352  1352 -----                @@FIX   DSEG    BASEP
+ 1353  1353                      
+ 1354  1354                              END
+ 1355  1355                      
+ 1356  1356                      
+ 1357  1357                      ; *** Code Information ***
+ 1358  1358                      ;
+ 1359  1359                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+ 1360  1360                      ;       ing_front\Source\Voice_NXD1005.c
+ 1361  1361                      ;
+ 1362  1362                      ; $FUNC Initial_Voice(34)
+ 1363  1363                      ;       void=(void)
+ 1364  1364                      ;       CODE SIZE= 41 bytes, CLOCK_SIZE= 28 clocks, STACK_SIZE= 4 bytes
+ 1365  1365                      ;
+ 1366  1366                      ; $CALL Delay(36)
+ 1367  1367                      ;       void=(unsigned int:ax)
+ 1368  1368                      ;
+ 1369  1369                      ; $CALL Delay(39)
+ 1370  1370                      ;       void=(unsigned int:ax)
+ 1371  1371                      ;
+ 1372  1372                      ; $CALL SEND_SPI_COMMAND(44)
+ 1373  1373                      ;       void=(void)
+ 1374  1374                      ;
+ 1375  1375                      ; $CALL SEND_SPI_COMMAND(48)
+ 1376  1376                      ;       void=(void)
+ 1377  1377                      ;
+ 1378  1378                      ; $FUNC SetVoiceLevel(54)
+ 1379  1379                      ;       void=(unsigned char mu8Val:x)
+ 1380  1380                      ;       CODE SIZE= 20 bytes, CLOCK_SIZE= 16 clocks, STACK_SIZE= 4 bytes
+ 1381  1381                      ;
+ 1382  1382                      ; $FUNC Get_Sound_Type(65)
+ 1383  1383                      ;       bc=(void)
+ 1384  1384                      ;       CODE SIZE= 6 bytes, CLOCK_SIZE= 9 clocks, STACK_SIZE= 0 bytes
+ 1385  1385                      ;
+ 1386  1386                      ; $FUNC VoiceStop(73)
+ 1387  1387                      ;       void=(void)
+ 1388  1388                      ;       CODE SIZE= 11 bytes, CLOCK_SIZE= 11 clocks, STACK_SIZE= 4 bytes
+ 1389  1389                      ;
+ 1390  1390                      ; $CALL SEND_SPI_COMMAND(75)
+ 1391  1391                      ;       void=(void)
+ 1392  1392                      ;
+ 1393  1393                      ; $FUNC Play_Voice(82)
+ 1394  1394                      ;       void=(unsigned int mu16MemoryAddress:ax)
+ 1395  1395                      ;       CODE SIZE= 19 bytes, CLOCK_SIZE= 17 clocks, STACK_SIZE= 8 bytes
+ 1396  1396                      ;
+ 1397  1397                      ; $CALL VoiceStop(85)
+ 1398  1398                      ;       void=(void)
+ 1399  1399                      ;
+ 1400  1400                      ; $FUNC ProcessVoice(92)
+ 1401  1401                      ;       void=(void)
+ 1402  1402                      ;       CODE SIZE= 377 bytes, CLOCK_SIZE= 231 clocks, STACK_SIZE= 4 bytes
+ 1403  1403                      ;
+ 1404  1404                      ; $CALL Delay(168)
+ 1405  1405                      ;       void=(unsigned int:ax)
+ 1406  1406                      ;
+ 1407  1407                      ; $CALL SEND_SPI_COMMAND(170)
+ 1408  1408                      ;       void=(void)
+ 1409  1409                      ;
+ 1410  1410                      ; $CALL Delay(171)
+ 1411  1411                      ;       void=(unsigned int:ax)
+ 1412  1412                      ;
+ 1413  1413                      ; $CALL SEND_SPI_COMMAND(180)
+ 1414  1414                      ;       void=(void)
+ 1415  1415                      ;
+ 1416  1416                      ; $CALL Delay(182)
+ 1417  1417                      ;       void=(unsigned int:ax)
+ 1418  1418                      ;
+ 1419  1419                      ; $CALL SEND_SPI_COMMAND(184)
+ 1420  1420                      ;       void=(void)
+ 1421  1421                      ;
+ 1422  1422                      ; $CALL SEND_SPI_COMMAND(190)
+ 1423  1423                      ;       void=(void)
+ 1424  1424                      ;
+ 1425  1425                      ; $CALL Delay(192)
+ 1426  1426                      ;       void=(unsigned int:ax)
+ 1427  1427                      ;
+ 1428  1428                      ; $CALL SEND_SPI_COMMAND(194)
+ 1429  1429                      ;       void=(void)
+ 1430  1430                      ;
+ 1431  1431                      ; $CALL SEND_SPI_COMMAND(202)
+ 1432  1432                      ;       void=(void)
+ 1433  1433                      ;
+ 1434  1434                      ; $CALL Delay(204)
+ 1435  1435                      ;       void=(unsigned int:ax)
+ 1436  1436                      ;
+ 1437  1437                      ; $CALL SEND_SPI_COMMAND(206)
+ 1438  1438                      ;       void=(void)
+ 1439  1439                      ;
+ 1440  1440                      ; $CALL SEND_SPI_COMMAND(212)
+ 1441  1441                      ;       void=(void)
+ 1442  1442                      ;
+ 1443  1443                      ; $CALL Delay(214)
+ 1444  1444                      ;       void=(unsigned int:ax)
+ 1445  1445                      ;
+ 1446  1446                      ; $CALL SEND_SPI_COMMAND(216)
+ 1447  1447                      ;       void=(void)
+ 1448  1448                      ;
+ 1449  1449                      ; $CALL SEND_SPI_COMMAND(222)
+ 1450  1450                      ;       void=(void)
+ 1451  1451                      ;
+ 1452  1452                      ; $CALL Delay(224)
+ 1453  1453                      ;       void=(unsigned int:ax)
+ 1454  1454                      ;
+ 1455  1455                      ; $CALL SEND_SPI_COMMAND(226)
+ 1456  1456                      ;       void=(void)
+ 1457  1457                      ;
+ 1458  1458                      ; $CALL SEND_SPI_COMMAND(232)
+ 1459  1459                      ;       void=(void)
+ 1460  1460                      ;
+ 1461  1461                      ; $CALL Delay(234)
+ 1462  1462                      ;       void=(unsigned int:ax)
+ 1463  1463                      ;
+ 1464  1464                      ; $CALL SEND_SPI_COMMAND(236)
+ 1465  1465                      ;       void=(void)
+ 1466  1466                      ;
+ 1467  1467                      ; $CALL SEND_SPI_COMMAND(242)
+ 1468  1468                      ;       void=(void)
+ 1469  1469                      ;
+ 1470  1470                      ; $CALL Delay(244)
+ 1471  1471                      ;       void=(unsigned int:ax)
+ 1472  1472                      ;
+ 1473  1473                      ; $CALL SEND_SPI_COMMAND(246)
+ 1474  1474                      ;       void=(void)
+ 1475  1475                      ;
+ 1476  1476                      ; $CALL SEND_SPI_COMMAND(252)
+ 1477  1477                      ;       void=(void)
+ 1478  1478                      ;
+ 1479  1479                      ; $CALL Delay(254)
+ 1480  1480                      ;       void=(unsigned int:ax)
+ 1481  1481                      ;
+ 1482  1482                      ; $CALL SEND_SPI_COMMAND(256)
+ 1483  1483                      ;       void=(void)
+ 1484  1484                      ;
+ 1485  1485                      ; $FUNC SEND_SPI_COMMAND(282)
+ 1486  1486                      ;       void=(void)
+ 1487  1487                      ;       CODE SIZE= 125 bytes, CLOCK_SIZE= 92 clocks, STACK_SIZE= 8 bytes
+ 1488  1488                      ;
+ 1489  1489                      ; $CALL Delay(291)
+ 1490  1490                      ;       void=(unsigned int:ax)
+ 1491  1491                      ;
+ 1492  1492                      ; $CALL Delay(301)
+ 1493  1493                      ;       void=(unsigned int:ax)
+ 1494  1494                      ;
+ 1495  1495                      ; $CALL Delay(314)
+ 1496  1496                      ;       void=(unsigned int:ax)
+ 1497  1497                      ;
+ 1498  1498                      ; $CALL Delay(321)
+ 1499  1499                      ;       void=(unsigned int:ax)
+ 1500  1500                      ;
+ 1501  1501                      ; $CALL Delay(325)
+ 1502  1502                      ;       void=(unsigned int:ax)
+ 1503  1503                      ;
+ 1504  1504                      ; $CALL Delay(330)
+ 1505  1505                      ;       void=(unsigned int:ax)
+ 1506  1506                      ;
+ 1507  1507                      ; $CALL Delay(334)
+ 1508  1508                      ;       void=(unsigned int:ax)
+ 1509  1509                      ;
+ 1510  1510                      ; $FUNC Delay(341)
+ 1511  1511                      ;       void=(unsigned int mu8Time:ax)
+ 1512  1512                      ;       CODE SIZE= 18 bytes, CLOCK_SIZE= 23 clocks, STACK_SIZE= 4 bytes
+ 1513  1513                      
+ 1514  1514                      ; Target chip : R5F100PG
+ 1515  1515                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00014H   @@R_INIT
+00000 00014H   @@INIT
+00000 00016H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 00269H   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+00000 00000H   @@FIX
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

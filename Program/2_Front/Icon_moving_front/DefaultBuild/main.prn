@@ -1,0 +1,960 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\main.asm -_msgoff -iSou
+          rce -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\main.asm
+Obj-file: DefaultBuild\main.rel
+Prn-file: DefaultBuild\main.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:57
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile Source\main.c -oDefaultBuild -_msgoff -nq -i
+    5     5                      ;             . -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no -g2
+    6     6                      ; In-file   : Source\main.c
+    7     7                      ; Asm-file  : DefaultBuild\main.asm
+    8     8                      ; Para-file : 
+    9     9                      
+   10    10                      $PROCESSOR(F100PG)
+   11    11                      $DEBUG
+   12    12                      $NODEBUGA
+   13    13                      $KANJICODE NONE
+   14    14                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   15    15                      
+   16    16                      $DGS    FIL_NAM, .file,         05AH,   0FFFEH, 03FH,   067H,   01H,    00H
+   17    17                      $DGS    AUX_FIL, main.c
+   18    18                      $DGS    MOD_NAM, main,          00H,    0FFFEH, 00H,    077H,   00H,    00H
+   19    19                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@FIX,         U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   36    36                      $DGS    STR_STR, .2fake,        00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   37    37                      $DGS    AUX_TAG, 01H,           028H
+   38    38                      $DGS    BIT_FLD, _b0,           00H,    0FFFFH, 0CH,    012H,   01H,    00H
+   39    39                      $DGS    AUX_BIT, 00H,           01H
+   40    40                      $DGS    BIT_FLD, _b1,           01H,    0FFFFH, 0CH,    012H,   01H,    00H
+   41    41                      $DGS    AUX_BIT, 00H,           01H
+   42    42                      $DGS    BIT_FLD, _b2,           02H,    0FFFFH, 0CH,    012H,   01H,    00H
+   43    43                      $DGS    AUX_BIT, 00H,           01H
+   44    44                      $DGS    BIT_FLD, _b3,           03H,    0FFFFH, 0CH,    012H,   01H,    00H
+   45    45                      $DGS    AUX_BIT, 00H,           01H
+   46    46                      $DGS    BIT_FLD, _b4,           04H,    0FFFFH, 0CH,    012H,   01H,    00H
+   47    47                      $DGS    AUX_BIT, 00H,           01H
+   48    48                      $DGS    BIT_FLD, _b5,           05H,    0FFFFH, 0CH,    012H,   01H,    00H
+   49    49                      $DGS    AUX_BIT, 00H,           01H
+   50    50                      $DGS    BIT_FLD, _b6,           06H,    0FFFFH, 0CH,    012H,   01H,    00H
+   51    51                      $DGS    AUX_BIT, 00H,           01H
+   52    52                      $DGS    BIT_FLD, _b7,           07H,    0FFFFH, 0CH,    012H,   01H,    00H
+   53    53                      $DGS    AUX_BIT, 00H,           01H
+   54    54                      $DGS    END_STR, .eos,          01H,    0FFFFH, 00H,    066H,   01H,    00H
+   55    55                      $DGS    AUX_EOS, 014H,          01H
+   56    56                      $DGS    STR_STR, .4fake,        00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   57    57                      $DGS    AUX_TAG, 01H,           030H
+   58    58                      $DGS    BIT_FLD, _lo,           00H,    0FFFFH, 0CH,    012H,   01H,    00H
+   59    59                      $DGS    AUX_BIT, 00H,           04H
+   60    60                      $DGS    BIT_FLD, _hi,           04H,    0FFFFH, 0CH,    012H,   01H,    00H
+   61    61                      $DGS    AUX_BIT, 00H,           04H
+   62    62                      $DGS    END_STR, .eos,          01H,    0FFFFH, 00H,    066H,   01H,    00H
+   63    63                      $DGS    AUX_EOS, 028H,          01H
+   64    64                      $DGS    UNI_TAG, .5fake,        00H,    0FFFEH, 09H,    0CH,    01H,    00H
+   65    65                      $DGS    AUX_TAG, 01H,           039H
+   66    66                      $DGS    MEB_UNI, _byte,         00H,    0FFFFH, 0CH,    0BH,    00H,    00H
+   67    67                      $DGS    MEB_UNI, _Bit,          00H,    0FFFFH, 08H,    0BH,    01H,    00H
+   68    68                      $DGS    AUX_STR, 014H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   69    69                      $DGS    MEB_UNI, _nibble,       00H,    0FFFFH, 08H,    0BH,    01H,    00H
+   70    70                      $DGS    AUX_STR, 028H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   71    71                      $DGS    END_STR, .eos,          01H,    0FFFFH, 00H,    066H,   01H,    00H
+   72    72                      $DGS    AUX_EOS, 030H,          01H
+   73    73                      $DGS    STR_STR, .13fake,       00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   74    74                      $DGS    AUX_TAG, 06H,           046H
+   75    75                      $DGS    MEB_STR, _First,        00H,    0FFFFH, 0CH,    08H,    00H,    00H
+   76    76                      $DGS    MEB_STR, _Second,       01H,    0FFFFH, 0CH,    08H,    00H,    00H
+   77    77                      $DGS    MEB_STR, _Third,        02H,    0FFFFH, 0CH,    08H,    00H,    00H
+   78    78                      $DGS    MEB_STR, _Level,        03H,    0FFFFH, 09H,    08H,    01H,    00H
+   79    79                      $DGS    AUX_STR, 030H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   80    80                      $DGS    MEB_STR, _OnEdge,       04H,    0FFFFH, 09H,    08H,    01H,    00H
+   81    81                      $DGS    AUX_STR, 030H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   82    82                      $DGS    MEB_STR, _OffEdge,      05H,    0FFFFH, 09H,    08H,    01H,    00H
+   83    83                      $DGS    AUX_STR, 030H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   84    84                      $DGS    END_STR, .eos,          06H,    0FFFFH, 00H,    066H,   01H,    00H
+   85    85                      $DGS    AUX_EOS, 039H,          06H
+   86    86                      $DGS    GLV_SYM, _MainLoop,     U,      U,      01H,    026H,   01H,    02H
+   87    87                      $DGS    AUX_FUN, 00H,           U,      U,      054H,   01H,    00H
+   88    88                      $DGS    BEG_FUN, ??bf_MainLoop, U,      U,      00H,    065H,   01H,    00H
+   89    89                      $DGS    AUX_BEG, 0EH,           00H,    04AH
+   90    90                      $DGS    BEG_BLK, ??bb00_MainLoop,       U,      U,      00H,    064H,   01H,    00H
+   91    91                      $DGS    AUX_BEG, 010H,          00H,    04EH
+   92    92                      $DGS    END_BLK, ??eb00_MainLoop,       U,      U,      00H,    064H,   01H,    00H
+   93    93                      $DGS    AUX_END, 016H
+   94    94                      $DGS    BEG_BLK, ??bb01_MainLoop,       U,      U,      00H,    064H,   01H,    00H
+   95    95                      $DGS    AUX_BEG, 019H,          00H,    00H
+   96    96                      $DGS    END_BLK, ??eb01_MainLoop,       U,      U,      00H,    064H,   01H,    00H
+   97    97                      $DGS    AUX_END, 02FH
+   98    98                      $DGS    END_FUN, ??ef_MainLoop, U,      U,      00H,    065H,   01H,    00H
+   99    99                      $DGS    AUX_END, 030H
+  100   100                      $DGS    GLV_SYM, _RamClear,     U,      U,      01H,    026H,   01H,    02H
+  101   101                      $DGS    AUX_FUN, 00H,           U,      U,      05AH,   01H,    00H
+  102   102                      $DGS    BEG_FUN, ??bf_RamClear, U,      U,      00H,    065H,   01H,    00H
+  103   103                      $DGS    AUX_BEG, 043H,          00H,    05AH
+  104   104                      $DGS    END_FUN, ??ef_RamClear, U,      U,      00H,    065H,   01H,    00H
+  105   105                      $DGS    AUX_END, 0BH
+  106   106                      $DGS    GLV_SYM, _gu8_PWM_Count,        U,      U,      0CH,    026H,   00H,    00H
+  107   107                      $DGS    GLV_SYM, _gu8_OperationStep,    U,      U,      0CH,    026H,   00H,    00H
+  108   108                      $DGS    GLV_SYM, _F_CommunicationCMD,   U,      U,      0CH,    026H,   00H,    00H
+  109   109                      $DGS    GLV_SYM, _gu8_TimerHWWait,      U,      U,      0CH,    026H,   00H,    00H
+  110   110                      $DGS    GLV_SYM, _gu8_TimerBootDisplay, U,      U,      0CH,    026H,   00H,    00H
+  111   111                      $DGS    GLV_SYM, _gu8_TimerVersionDisplay,      U,      U,      0CH,    026H,   00H,    00H
+  112   112                      $DGS    GLV_SYM, _R_WDT_Restart,        U,      U,      01H,    02H,    01H,    02H
+  113   113                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  114   114                      $DGS    GLV_SYM, _R_SAU1_Create,        U,      U,      01H,    02H,    01H,    02H
+  115   115                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  116   116                      $DGS    GLV_SYM, _R_TAU0_Create,        U,      U,      01H,    02H,    01H,    02H
+  117   117                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  118   118                      $DGS    GLV_SYM, _R_TAU0_Channel0_Start,        U,      U,      01H,    02H,    01H,    02H
+  119   119                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  120   120                      $DGS    GLV_SYM, _R_UART2_Start,        U,      U,      01H,    02H,    01H,    02H
+  121   121                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  122   122                      $DGS    GLV_SYM, _Timer_Process,        U,      U,      01H,    02H,    01H,    02H
+  123   123                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  124   124                      $DGS    GLV_SYM, _InputControl, U,      U,      01H,    02H,    01H,    02H
+  125   125                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  126   126                      $DGS    GLV_SYM, _gu8_DigitalInput,     U,      U,      08H,    02H,    01H,    00H
+  127   127                      $DGS    AUX_STR, 039H,          00H,    06H,    00H,    00H,    00H,    00H,    00H
+  128   128                      $DGS    GLV_SYM, _KeyDecide,    U,      U,      01H,    02H,    01H,    02H
+  129   129                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  130   130                      $DGS    GLV_SYM, _Operation,    U,      U,      01H,    02H,    01H,    02H
+  131   131                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  132   132                      $DGS    GLV_SYM, _CommunicationControl, U,      U,      01H,    02H,    01H,    02H
+  133   133                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  134   134                      $DGS    GLV_SYM, _ProcessVoice, U,      U,      01H,    02H,    01H,    02H
+  135   135                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  136   136                      $DGS    GLV_SYM, _Communication_Initialize,     U,      U,      01H,    02H,    01H,    02H
+  137   137                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  138   138                      $DGS    GLV_SYM, _Display_Initialize,   U,      U,      01H,    02H,    01H,    02H
+  139   139                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  140   140                      $DGS    GLV_SYM, _Input_Initialize,     U,      U,      01H,    02H,    01H,    02H
+  141   141                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  142   142                      $DGS    GLV_SYM, _KeyControl_Initialize,        U,      U,      01H,    02H,    01H,    02H
+  143   143                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  144   144                      $DGS    GLV_SYM, _Operation_Initialize, U,      U,      01H,    02H,    01H,    02H
+  145   145                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  146   146                      $DGS    GLV_SYM, _Safety_Initialize,    U,      U,      01H,    02H,    01H,    02H
+  147   147                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  148   148                      $DGS    GLV_SYM, _Timer_Initialize,     U,      U,      01H,    02H,    01H,    02H
+  149   149                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  150   150                      $DGS    GLV_SYM, _Output_Initialize,    U,      U,      01H,    02H,    01H,    02H
+  151   151                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  152   152                      $DGS    GLV_SYM, _Initial_Voice,        U,      U,      01H,    02H,    01H,    02H
+  153   153                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+  154   154                      
+  155   155                              EXTRN   _R_WDT_Restart
+  156   156                              EXTRN   _R_SAU1_Create
+  157   157                              EXTRN   _R_TAU0_Create
+  158   158                              EXTRN   _R_TAU0_Channel0_Start
+  159   159                              EXTRN   _R_UART2_Start
+  160   160                              EXTRN   _Timer_Process
+  161   161                              EXTRN   _InputControl
+  162   162                              EXTRN   _gu8_DigitalInput
+  163   163                              EXTRN   _KeyDecide
+  164   164                              EXTRN   _Operation
+  165   165                              EXTRN   _CommunicationControl
+  166   166                              EXTRN   _ProcessVoice
+  167   167                              EXTRN   _Communication_Initialize
+  168   168                              EXTRN   _Display_Initialize
+  169   169                              EXTRN   _Input_Initialize
+  170   170                              EXTRN   _KeyControl_Initialize
+  171   171                              EXTRN   _Operation_Initialize
+  172   172                              EXTRN   _Safety_Initialize
+  173   173                              EXTRN   _Timer_Initialize
+  174   174                              EXTRN   _Output_Initialize
+  175   175                              EXTRN   _Initial_Voice
+  176   176                              PUBLIC  _gu8_PWM_Count
+  177   177                              PUBLIC  _gu8_OperationStep
+  178   178                              PUBLIC  _F_CommunicationCMD
+  179   179                              PUBLIC  _gu8_TimerHWWait
+  180   180                              PUBLIC  _gu8_TimerBootDisplay
+  181   181                              PUBLIC  _gu8_TimerVersionDisplay
+  182   182                              PUBLIC  _MainLoop
+  183   183                              PUBLIC  _RamClear
+  184   184                      
+  185   185 -----                @@BITS  BSEG
+  186   186                      
+  187   187 -----                @@CNST  CSEG    MIRRORP
+  188   188                      
+  189   189 -----                @@R_INIT        CSEG    UNIT64KP
+  190   190                      
+  191   191 -----                @@INIT  DSEG    BASEP
+  192   192                      
+  193   193 -----                @@FIX   DSEG    BASEP
+  194   194 00000                _gu8_PWM_Count: DS      (1)
+  195   195 00001                _gu8_OperationStep:     DS      (1)
+  196   196 00002                _F_CommunicationCMD:    DS      (1)
+  197   197 00003                        DS      (1)
+  198   198                      
+  199   199 -----                @@DATA  DSEG    BASEP
+  200   200 00000                _gu8_TimerHWWait:       DS      (1)
+  201   201 00001                _gu8_TimerBootDisplay:  DS      (1)
+  202   202 00002                _gu8_TimerVersionDisplay:       DS      (1)
+  203   203 00003                        DS      (1)
+  204   204                      
+  205   205 -----                @@R_INIS        CSEG    UNIT64KP
+  206   206                      
+  207   207 -----                @@INIS  DSEG    SADDRP
+  208   208                      
+  209   209 -----                @@DATS  DSEG    SADDRP
+  210   210                      
+  211   211 -----                @@CNSTL CSEG    PAGE64KP
+  212   212                      
+  213   213 -----                @@RLINIT        CSEG    UNIT64KP
+  214   214                      
+  215   215 -----                @@INITL DSEG    UNIT64KP
+  216   216                      
+  217   217 -----                @@DATAL DSEG    UNIT64KP
+  218   218                      
+  219   219 -----                @@CALT  CSEG    CALLT0
+  220   220                      
+  221   221                      ; line    72
+  222   222                      ; line    73
+  223   223                      ; line    74
+  224   224                      ; line    75
+  225   225                      ; line    76
+  226   226                      ; line    77
+  227   227                      ; line    78
+  228   228                      ; line   161
+  229   229                      ; line   166
+  230   230                      ; line   167
+  231   231                      ; line   211
+  232   232                      ; line   411
+  233   233                      ; line   412
+  234   234                      ; line   413
+  235   235                      ; line    47
+  236   236                      ; line    48
+  237   237                      ; line   386
+  238   238                      ; line   387
+  239   239                      ; line   388
+  240   240                      ; line   389
+  241   241                      ; line   390
+  242   242                      ; line   391
+  243   243                      ; line   392
+  244   244                      ; line   393
+  245   245                      ; line   394
+  246   246                      ; line   395
+  247   247                      ; line     7
+  248   248                      ; line     8
+  249   249                      ; line     9
+  250   250                      ; line    10
+  251   251                      ; line    11
+  252   252                      ; line    12
+  253   253                      ; line    13
+  254   254                      ; line    14
+  255   255                      ; line    15
+  256   256                      ; line    16
+  257   257                      ; line    17
+  258   258                      ; line    28
+  259   259                      ; line    40
+  260   260                      ; line    60
+  261   261                      ; line    66
+  262   262                      ; line    73
+  263   263                      ; line   112
+  264   264                      ; line   160
+  265   265                      ; line   176
+  266   266                      ; line   186
+  267   267                      ; line   192
+  268   268                      ; line   199
+  269   269                      ; line   206
+  270   270                      ; line   218
+  271   271                      ; line   230
+  272   272                      ; line   236
+  273   273                      ; line   256
+  274   274                      ; line   266
+  275   275                      ; line   273
+  276   276                      ; line   279
+  277   277                      ; line   287
+  278   278                      ; line   296
+  279   279                      ; line   304
+  280   280                      ; line    18
+  281   281                      ; line    42
+  282   282                      ; line    46
+  283   283                      ; line   129
+  284   284                      ; line   220
+  285   285                      ; line   247
+  286   286                      ; line   274
+  287   287                      ; line   301
+  288   288                      ; line   302
+  289   289                      ; line   304
+  290   290                      ; line   305
+  291   291                      ; line   307
+  292   292                      ; line   309
+  293   293                      ; line   310
+  294   294                      ; line   311
+  295   295                      ; line   313
+  296   296                      ; line   315
+  297   297                      ; line   316
+  298   298                      ; line   317
+  299   299                      ; line   318
+  300   300                      ; line   320
+  301   301                      ; line   321
+  302   302                      ; line   323
+  303   303                      ; line   364
+  304   304                      ; line   365
+  305   305                      ; line   370
+  306   306                      ; line   375
+  307   307                      ; line   376
+  308   308                      ; line   377
+  309   309                      ; line   378
+  310   310                      ; line   379
+  311   311                      ; line   380
+  312   312                      ; line   382
+  313   313                      ; line    60
+  314   314                      ; line    62
+  315   315                      ; line    63
+  316   316                      ; line    47
+  317   317                      ; line    64
+  318   318                      ; line    67
+  319   319                      ; line    72
+  320   320                      ; line    73
+  321   321                      ; line    74
+  322   322                      ; line    79
+  323   323                      ; line    84
+  324   324                      ; line    85
+  325   325                      ; line    86
+  326   326                      ; line    47
+  327   327                      ; line    49
+  328   328                      ; line   115
+  329   329                      ; line   116
+  330   330                      ; line   118
+  331   331                      ; line   119
+  332   332                      ; line   120
+  333   333                      ; line   121
+  334   334                      ; line   126
+  335   335                      ; line   127
+  336   336                      ; line   128
+  337   337                      ; line   129
+  338   338                      ; line   130
+  339   339                      ; line   131
+  340   340                      ; line   132
+  341   341                      ; line   133
+  342   342                      ; line    71
+  343   343                      ; line    73
+  344   344                      ; line    78
+  345   345                      ; line    79
+  346   346                      ; line    48
+  347   347                      ; line    49
+  348   348                      ; line    50
+  349   349                      ; line    51
+  350   350                      ; line    42
+  351   351                      ; line    43
+  352   352                      ; line    44
+  353   353                      ; line    45
+  354   354                      ; line    47
+  355   355                      ; line    48
+  356   356                      ; line    50
+  357   357                      ; line    51
+  358   358                      ; line    57
+  359   359                      ; line    58
+  360   360                      ; line    59
+  361   361                      ; line    60
+  362   362                      ; line    61
+  363   363                      ; line    62
+  364   364                      ; line    63
+  365   365                      ; line    64
+  366   366                      ; line    65
+  367   367                      ; line    66
+  368   368                      ; line    67
+  369   369                      ; line    65
+  370   370                      ; line    66
+  371   371                      ; line    72
+  372   372                      ; line    73
+  373   373                      ; line    74
+  374   374                      ; line    75
+  375   375                      ; line    79
+  376   376                      ; line    80
+  377   377                      ; line    81
+  378   378                      ; line    83
+  379   379                      ; line    84
+  380   380                      ; line    86
+  381   381                      ; line    87
+  382   382                      ; line    89
+  383   383                      ; line    91
+  384   384                      ; line    92
+  385   385                      ; line    94
+  386   386                      ; line    95
+  387   387                      ; line    96
+  388   388                      ; line    98
+  389   389                      ; line   100
+  390   390                      ; line   101
+  391   391                      ; line   102
+  392   392                      ; line   103
+  393   393                      ; line   104
+  394   394                      ; line   105
+  395   395                      ; line   106
+  396   396                      ; line   107
+  397   397                      ; line   108
+  398   398                      ; line   109
+  399   399                      ; line   110
+  400   400                      ; line   111
+  401   401                      ; line   112
+  402   402                      ; line   113
+  403   403                      ; line   114
+  404   404                      ; line   115
+  405   405                      ; line   116
+  406   406                      ; line   117
+  407   407                      ; line   118
+  408   408                      ; line   119
+  409   409                      ; line   120
+  410   410                      ; line   121
+  411   411                      ; line   122
+  412   412                      ; line   123
+  413   413                      ; line   124
+  414   414                      ; line   125
+  415   415                      ; line   126
+  416   416                      ; line   127
+  417   417                      ; line   128
+  418   418                      ; line   129
+  419   419                      ; line   130
+  420   420                      ; line   131
+  421   421                      ; line   132
+  422   422                      ; line   133
+  423   423                      ; line   134
+  424   424                      ; line   135
+  425   425                      ; line   136
+  426   426                      ; line   139
+  427   427                      ; line   141
+  428   428                      ; line   142
+  429   429                      ; line   145
+  430   430                      ; line   149
+  431   431                      ; line   150
+  432   432                      ; line   151
+  433   433                      ; line   152
+  434   434                      ; line   153
+  435   435                      ; line   154
+  436   436                      ; line   155
+  437   437                      ; line   156
+  438   438                      ; line   157
+  439   439                      ; line   158
+  440   440                      ; line   159
+  441   441                      ; line   160
+  442   442                      ; line   162
+  443   443                      ; line   166
+  444   444                      ; line   208
+  445   445                      ; line   209
+  446   446                      ; line   211
+  447   447                      ; line   212
+  448   448                      ; line   213
+  449   449                      ; line   214
+  450   450                      ; line   215
+  451   451                      ; line   216
+  452   452                      ; line   217
+  453   453                      ; line   218
+  454   454                      ; line   219
+  455   455                      ; line   220
+  456   456                      ; line   221
+  457   457                      ; line   222
+  458   458                      ; line    42
+  459   459                      ; line    47
+  460   460                      ; line    48
+  461   461                      ; line   306
+  462   462                      ; line   308
+  463   463                      ; line   310
+  464   464                      ; line   311
+  465   465                      ; line   312
+  466   466                      ; line   314
+  467   467                      ; line   315
+  468   468                      ; line   319
+  469   469                      ; line   320
+  470   470                      ; line   321
+  471   471                      ; line   325
+  472   472                      ; line   326
+  473   473                      ; line   327
+  474   474                      ; line   330
+  475   475                      ; line   331
+  476   476                      ; line   335
+  477   477                      ; line   337
+  478   478                      ; line   338
+  479   479                      ; line   339
+  480   480                      ; line   340
+  481   481                      ; line   341
+  482   482                      ; line   343
+  483   483                      ; line   345
+  484   484                      ; line   347
+  485   485                      ; line   348
+  486   486                      ; line   349
+  487   487                      ; line   350
+  488   488                      ; line   351
+  489   489                      ; line    13
+  490   490                      ; line    14
+  491   491                      ; line    13
+  492   492                      ; line    14
+  493   493                      ; line    15
+  494   494                      ; line    17
+  495   495                      ; line    18
+  496   496                      ; line    19
+  497   497                      ; line    20
+  498   498                      ; line    21
+  499   499                      ; line    22
+  500   500                      ; line    23
+  501   501                      ; line    24
+  502   502                      ; line    25
+  503   503                      ; line    26
+  504   504                      ; line    27
+  505   505                      ; line    29
+  506   506                      ; line    30
+  507   507                      ; line    31
+  508   508                      ; line    32
+  509   509                      ; line    33
+  510   510                      ; line    34
+  511   511                      ; line    35
+  512   512                      ; line    36
+  513   513                      ; line    37
+  514   514                      ; line    39
+  515   515                      ; line    40
+  516   516                      ; line    41
+  517   517                      ; line    42
+  518   518                      ; line    43
+  519   519                      ; line    44
+  520   520                      ; line    45
+  521   521                      ; line    46
+  522   522                      ; line    47
+  523   523                      ; line    20
+  524   524                      ; line    25
+  525   525                      ; line    29
+  526   526                      ; line    30
+  527   527                      ; line    31
+  528   528                      ; line    32
+  529   529                      ; line    33
+  530   530                      ; line    34
+  531   531                      ; line    35
+  532   532                      ; line    36
+  533   533                      ; line    37
+  534   534                      ; line    38
+  535   535                      ; line    39
+  536   536                      ; line    40
+  537   537                      ; line    41
+  538   538                      ; line    42
+  539   539                      ; line    43
+  540   540                      ; line    45
+  541   541                      ; line    46
+  542   542                      ; line    51
+  543   543                      ; line    52
+  544   544                      ; line    54
+  545   545                      ; line    59
+  546   546                      ; line    60
+  547   547                      ; line    65
+  548   548                      ; line    66
+  549   549                      ; line    67
+  550   550                      ; line    68
+  551   551                      ; line    70
+  552   552                      ; line    71
+  553   553                      ; line    72
+  554   554                      ; line    73
+  555   555                      ; line    74
+  556   556                      ; line    75
+  557   557                      ; line    76
+  558   558                      ; line    78
+  559   559                      ; line    83
+  560   560                      ; line    84
+  561   561                      ; line    89
+  562   562                      ; line    90
+  563   563                      ; line    92
+  564   564                      ; line    93
+  565   565                      ; line    94
+  566   566                      ; line    95
+  567   567                      ; line    96
+  568   568                      ; line    97
+  569   569                      ; line    98
+  570   570                      ; line   100
+  571   571                      ; line   105
+  572   572                      ; line   106
+  573   573                      ; line   111
+  574   574                      ; line   112
+  575   575                      ; line    16
+  576   576                      ; line    18
+  577   577                      ; line    19
+  578   578                      ; line    20
+  579   579                      ; line    21
+  580   580                      ; line    22
+  581   581                      ; line    23
+  582   582                      ; line    24
+  583   583                      ; line    25
+  584   584                      ; line    26
+  585   585                      ; line    27
+  586   586                      ; line    28
+  587   587                      ; line    29
+  588   588                      ; line    30
+  589   589                      ; line    31
+  590   590                      ; line    32
+  591   591                      ; line    33
+  592   592                      ; line    35
+  593   593                      ; line    37
+  594   594                      ; line    38
+  595   595                      ; line    39
+  596   596                      ; line    40
+  597   597                      ; line    43
+  598   598                      ; line    45
+  599   599                      ; line    46
+  600   600                      ; line    47
+  601   601                      ; line    48
+  602   602                      ; line    49
+  603   603                      ; line    50
+  604   604                      ; line    51
+  605   605                      ; line    52
+  606   606                      ; line    53
+  607   607                      ; line    54
+  608   608                      ; line    55
+  609   609                      ; line    56
+  610   610                      ; line    57
+  611   611                      ; line    58
+  612   612                      ; line    59
+  613   613                      ; line    60
+  614   614                      ; line    62
+  615   615                      ; line    64
+  616   616                      ; line    65
+  617   617                      ; line    66
+  618   618                      ; line    69
+  619   619                      ; line    71
+  620   620                      ; line    72
+  621   621                      ; line    73
+  622   622                      ; line    74
+  623   623                      ; line    75
+  624   624                      ; line    76
+  625   625                      ; line    77
+  626   626                      ; line    78
+  627   627                      ; line    79
+  628   628                      ; line    80
+  629   629                      ; line    81
+  630   630                      ; line    82
+  631   631                      ; line    83
+  632   632                      ; line    84
+  633   633                      ; line    85
+  634   634                      ; line    86
+  635   635                      ; line    88
+  636   636                      ; line    90
+  637   637                      ; line    91
+  638   638                      ; line    92
+  639   639                      ; line    13
+  640   640                      ; line    21
+  641   641                      ; line    22
+  642   642                      ; line    23
+  643   643                      ; line    24
+  644   644                      ; line    25
+  645   645                      ; line    26
+  646   646                      ; line    27
+  647   647                      ; line    28
+  648   648                      ; line    29
+  649   649                      ; line    30
+  650   650                      ; line    31
+  651   651                      ; line    32
+  652   652                      ; line    33
+  653   653                      ; line    34
+  654   654                      ; line    35
+  655   655                      ; line    36
+  656   656                      ; line    37
+  657   657                      ; line    38
+  658   658                      ; line    39
+  659   659                      ; line    40
+  660   660                      ; line    41
+  661   661                      ; line    42
+  662   662                      ; line    43
+  663   663                      ; line    44
+  664   664                      ; line    45
+  665   665                      ; line    46
+  666   666                      ; line    47
+  667   667                      ; line    48
+  668   668                      ; line    49
+  669   669                      ; line    50
+  670   670                      ; line    51
+  671   671                      ; line    52
+  672   672                      ; line    53
+  673   673                      ; line    54
+  674   674                      ; line    55
+  675   675                      ; line    56
+  676   676                      ; line    57
+  677   677                      ; line    58
+  678   678                      ; line    59
+  679   679                      ; line    60
+  680   680                      ; line    61
+  681   681                      ; line    62
+  682   682                      ; line    63
+  683   683                      ; line    64
+  684   684                      ; line    65
+  685   685                      ; line    67
+  686   686                      ; line    68
+  687   687                      ; line    69
+  688   688                      ; line    70
+  689   689                      ; line    72
+  690   690                      ; line    73
+  691   691                      ; line    74
+  692   692                      ; line    75
+  693   693                      ; line    14
+  694   694                      
+  695   695 -----                @@CODEL CSEG
+  696   696 00000                _MainLoop:
+  697   697                      $DGL    1,70
+  698   698 00000                ??bf_MainLoop:
+  699   699                      ; line    15
+  700   700                      $DGL    0,2
+  701   701 00000 RFC550000              call    !!_RamClear                                     ;[INF] 4, 3
+  702   702                      ; line    17
+  703   703                      $DGL    0,4
+  704   704 00004 RFC000000              call    !!_R_WDT_Restart                                ;[INF] 4, 3
+  705   705                      ; line    19
+  706   706                      $DGL    0,6
+  707   707 00008 RFC000000              call    !!_R_SAU1_Create                                ;[INF] 4, 3
+  708   708                      ; line    20
+  709   709                      $DGL    0,7
+  710   710 0000C RFC000000              call    !!_R_TAU0_Create                                ;[INF] 4, 3
+  711   711                      ; line    22
+  712   712                      $DGL    0,9
+  713   713 00010 RFC000000              call    !!_R_TAU0_Channel0_Start                        ;[INF] 4, 3
+  714   714                      ; line    23
+  715   715                      $DGL    0,10
+  716   716 00014 RFC000000              call    !!_R_UART2_Start                                ;[INF] 4, 3
+  717   717                      ; line    24
+  718   718                      $DGL    0,11
+  719   719 00018 RFC000000              call    !!_R_WDT_Restart                                ;[INF] 4, 3
+  720   720                      ; line    26
+  721   721                      $DGL    0,13
+  722   722 0001C RCF000032              mov     !_gu8_TimerHWWait,#032H ; 50                    ;[INF] 4, 1
+  723   723                      ; line    28
+  724   724                      $DGL    0,15
+  725   725 00020                ?L0003:
+  726   726 00020 RD50000                cmp0    !_gu8_TimerHWWait                               ;[INF] 3, 1
+  727   727 00023  DD0E                  bz      $?L0004                                         ;[INF] 2, 4
+  728   728                      ; line    29
+  729   729 00025                ??bb00_MainLoop:
+  730   730                      ; line    30
+  731   731                      $DGL    0,17
+  732   732 00025 RFC000000              call    !!_R_WDT_Restart                                ;[INF] 4, 3
+  733   733                      ; line    32
+  734   734                      $DGL    0,19
+  735   735 00029 RFC000000              call    !!_Timer_Process                                ;[INF] 4, 3
+  736   736                      ; line    34
+  737   737                      $DGL    0,21
+  738   738 0002D RFC000000              call    !!_InputControl                                 ;[INF] 4, 3
+  739   739 00031                ??eb00_MainLoop:
+  740   740                      ; line    35
+  741   741                      $DGL    0,22
+  742   742 00031  EFED                  br      $?L0003                                         ;[INF] 2, 3
+  743   743 00033                ?L0004:
+  744   744                      ; line    37
+  745   745 00033                ?L0005:
+  746   746                      ; line    38
+  747   747 00033                ??bb01_MainLoop:
+  748   748                      ; line    39
+  749   749                      $DGL    0,26
+  750   750 00033 RFC000000              call    !!_R_WDT_Restart                                ;[INF] 4, 3
+  751   751                      ; line    41
+  752   752                      $DGL    0,28
+  753   753 00037 RFC000000              call    !!_Timer_Process                                ;[INF] 4, 3
+  754   754                      ; line    44
+  755   755                      $DGL    0,31
+  756   756 0003B RFC000000              call    !!_InputControl                                 ;[INF] 4, 3
+  757   757                      ; line    46
+  758   758                      $DGL    0,33
+  759   759 0003F R300000                movw    ax,#loww (_gu8_DigitalInput)                    ;[INF] 3, 1
+  760   760 00042 RFC000000              call    !!_KeyDecide                                    ;[INF] 4, 3
+  761   761                      ; line    49
+  762   762                      $DGL    0,36
+  763   763 00046 RFC000000              call    !!_Operation                                    ;[INF] 4, 3
+  764   764                      ; line    55
+  765   765                      $DGL    0,42
+  766   766 0004A RFC000000              call    !!_CommunicationControl                         ;[INF] 4, 3
+  767   767                      ; line    59
+  768   768                      $DGL    0,46
+  769   769 0004E RFC000000              call    !!_ProcessVoice                                 ;[INF] 4, 3
+  770   770 00052                ??eb01_MainLoop:
+  771   771                      ; line    60
+  772   772                      $DGL    0,47
+  773   773 00052  EFDF                  br      $?L0005                                         ;[INF] 2, 3
+  774   774 00054                ?L0006:
+  775   775                      ; line    61
+  776   776                      $DGL    0,48
+  777   777 00054                ??ef_MainLoop:
+  778   778 00054  D7                    ret                                                     ;[INF] 1, 6
+  779   779 00055                ??ee_MainLoop:
+  780   780                      ; line    67
+  781   781 00055                _RamClear:
+  782   782                      $DGL    1,84
+  783   783 00055                ??bf_RamClear:
+  784   784                      ; line    68
+  785   785                      $DGL    0,2
+  786   786 00055 RFC000000              call    !!_Communication_Initialize                     ;[INF] 4, 3
+  787   787                      ; line    69
+  788   788                      $DGL    0,3
+  789   789 00059 RFC000000              call    !!_Display_Initialize                           ;[INF] 4, 3
+  790   790                      ; line    70
+  791   791                      $DGL    0,4
+  792   792 0005D RFC000000              call    !!_Input_Initialize                             ;[INF] 4, 3
+  793   793                      ; line    71
+  794   794                      $DGL    0,5
+  795   795 00061 RFC000000              call    !!_KeyControl_Initialize                        ;[INF] 4, 3
+  796   796                      ; line    72
+  797   797                      $DGL    0,6
+  798   798 00065 RFC000000              call    !!_Operation_Initialize                         ;[INF] 4, 3
+  799   799                      ; line    73
+  800   800                      $DGL    0,7
+  801   801 00069 RFC000000              call    !!_Safety_Initialize                            ;[INF] 4, 3
+  802   802                      ; line    74
+  803   803                      $DGL    0,8
+  804   804 0006D RFC000000              call    !!_Timer_Initialize                             ;[INF] 4, 3
+  805   805                      ; line    75
+  806   806                      $DGL    0,9
+  807   807 00071 RFC000000              call    !!_Output_Initialize                            ;[INF] 4, 3
+  808   808                      ; line    76
+  809   809                      $DGL    0,10
+  810   810 00075 RFC000000              call    !!_Initial_Voice                                ;[INF] 4, 3
+  811   811                      ; line    77
+  812   812                      $DGL    0,11
+  813   813 00079                ??ef_RamClear:
+  814   814 00079  D7                    ret                                                     ;[INF] 1, 6
+  815   815 0007A                ??ee_RamClear:
+  816   816                      
+  817   817 -----                @@CODE  CSEG    BASE
+  818   818                      
+  819   819 -----                @@BASE  CSEG    BASE
+  820   820                              END
+  821   821                      
+  822   822                      
+  823   823                      ; *** Code Information ***
+  824   824                      ;
+  825   825                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+  826   826                      ;       ing_front\Source\main.c
+  827   827                      ;
+  828   828                      ; $FUNC MainLoop(14)
+  829   829                      ;       void=(void)
+  830   830                      ;       CODE SIZE= 85 bytes, CLOCK_SIZE= 70 clocks, STACK_SIZE= 4 bytes
+  831   831                      ;
+  832   832                      ; $CALL RamClear(15)
+  833   833                      ;       void=(void)
+  834   834                      ;
+  835   835                      ; $CALL R_WDT_Restart(17)
+  836   836                      ;       void=(void)
+  837   837                      ;
+  838   838                      ; $CALL R_SAU1_Create(19)
+  839   839                      ;       void=(void)
+  840   840                      ;
+  841   841                      ; $CALL R_TAU0_Create(20)
+  842   842                      ;       void=(void)
+  843   843                      ;
+  844   844                      ; $CALL R_TAU0_Channel0_Start(22)
+  845   845                      ;       void=(void)
+  846   846                      ;
+  847   847                      ; $CALL R_UART2_Start(23)
+  848   848                      ;       void=(void)
+  849   849                      ;
+  850   850                      ; $CALL R_WDT_Restart(24)
+  851   851                      ;       void=(void)
+  852   852                      ;
+  853   853                      ; $CALL R_WDT_Restart(30)
+  854   854                      ;       void=(void)
+  855   855                      ;
+  856   856                      ; $CALL Timer_Process(32)
+  857   857                      ;       void=(void)
+  858   858                      ;
+  859   859                      ; $CALL InputControl(34)
+  860   860                      ;       void=(void)
+  861   861                      ;
+  862   862                      ; $CALL R_WDT_Restart(39)
+  863   863                      ;       void=(void)
+  864   864                      ;
+  865   865                      ; $CALL Timer_Process(41)
+  866   866                      ;       void=(void)
+  867   867                      ;
+  868   868                      ; $CALL InputControl(44)
+  869   869                      ;       void=(void)
+  870   870                      ;
+  871   871                      ; $CALL KeyDecide(46)
+  872   872                      ;       void=(pointer:ax)
+  873   873                      ;
+  874   874                      ; $CALL Operation(49)
+  875   875                      ;       void=(void)
+  876   876                      ;
+  877   877                      ; $CALL CommunicationControl(55)
+  878   878                      ;       void=(void)
+  879   879                      ;
+  880   880                      ; $CALL ProcessVoice(59)
+  881   881                      ;       void=(void)
+  882   882                      ;
+  883   883                      ; $FUNC RamClear(67)
+  884   884                      ;       void=(void)
+  885   885                      ;       CODE SIZE= 37 bytes, CLOCK_SIZE= 33 clocks, STACK_SIZE= 4 bytes
+  886   886                      ;
+  887   887                      ; $CALL Communication_Initialize(68)
+  888   888                      ;       void=(void)
+  889   889                      ;
+  890   890                      ; $CALL Display_Initialize(69)
+  891   891                      ;       void=(void)
+  892   892                      ;
+  893   893                      ; $CALL Input_Initialize(70)
+  894   894                      ;       void=(void)
+  895   895                      ;
+  896   896                      ; $CALL KeyControl_Initialize(71)
+  897   897                      ;       void=(void)
+  898   898                      ;
+  899   899                      ; $CALL Operation_Initialize(72)
+  900   900                      ;       void=(void)
+  901   901                      ;
+  902   902                      ; $CALL Safety_Initialize(73)
+  903   903                      ;       void=(void)
+  904   904                      ;
+  905   905                      ; $CALL Timer_Initialize(74)
+  906   906                      ;       void=(void)
+  907   907                      ;
+  908   908                      ; $CALL Output_Initialize(75)
+  909   909                      ;       void=(void)
+  910   910                      ;
+  911   911                      ; $CALL Initial_Voice(76)
+  912   912                      ;       void=(void)
+  913   913                      
+  914   914                      ; Target chip : R5F100PG
+  915   915                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 00004H   @@FIX
+00000 00004H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 0007AH   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

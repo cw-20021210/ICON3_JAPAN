@@ -1,0 +1,230 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\r_cg_port.asm -_msgoff
+          -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\r_cg_port.asm
+Obj-file: DefaultBuild\r_cg_port.rel
+Prn-file: DefaultBuild\r_cg_port.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:54
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile r_cg_port.c -oDefaultBuild -_msgoff -nq -i. 
+    5     5                      ;             -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no -g2
+    6     6                      ; In-file   : r_cg_port.c
+    7     7                      ; Asm-file  : DefaultBuild\r_cg_port.asm
+    8     8                      ; Para-file : 
+    9     9                      
+   10    10                      $PROCESSOR(F100PG)
+   11    11                      $DEBUG
+   12    12                      $NODEBUGA
+   13    13                      $KANJICODE NONE
+   14    14                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   15    15                      
+   16    16                      $DGS    FIL_NAM, .file,         019H,   0FFFEH, 03FH,   067H,   01H,    00H
+   17    17                      $DGS    AUX_FIL, r_cg_port.c
+   18    18                      $DGS    MOD_NAM, r_cg_port,     00H,    0FFFEH, 00H,    077H,   00H,    00H
+   19    19                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    GLV_SYM, _R_PORT_Create,        U,      U,      01H,    026H,   01H,    02H
+   36    36                      $DGS    AUX_FUN, 00H,           U,      U,      019H,   01H,    00H
+   37    37                      $DGS    BEG_FUN, ??bf_R_PORT_Create,    U,      U,      00H,    065H,   01H,    00H
+   38    38                      $DGS    AUX_BEG, 039H,          00H,    019H
+   39    39                      $DGS    END_FUN, ??ef_R_PORT_Create,    U,      U,      00H,    065H,   01H,    00H
+   40    40                      $DGS    AUX_END, 02BH
+   41    41                      
+   42    42                              PUBLIC  _R_PORT_Create
+   43    43                      
+   44    44 -----                @@BITS  BSEG
+   45    45                      
+   46    46 -----                @@CNST  CSEG    MIRRORP
+   47    47                      
+   48    48 -----                @@R_INIT        CSEG    UNIT64KP
+   49    49                      
+   50    50 -----                @@INIT  DSEG    BASEP
+   51    51                      
+   52    52 -----                @@DATA  DSEG    BASEP
+   53    53                      
+   54    54 -----                @@R_INIS        CSEG    UNIT64KP
+   55    55                      
+   56    56 -----                @@INIS  DSEG    SADDRP
+   57    57                      
+   58    58 -----                @@DATS  DSEG    SADDRP
+   59    59                      
+   60    60 -----                @@CNSTL CSEG    PAGE64KP
+   61    61                      
+   62    62 -----                @@RLINIT        CSEG    UNIT64KP
+   63    63                      
+   64    64 -----                @@INITL DSEG    UNIT64KP
+   65    65                      
+   66    66 -----                @@DATAL DSEG    UNIT64KP
+   67    67                      
+   68    68 -----                @@CALT  CSEG    CALLT0
+   69    69                      
+   70    70                      ; line    72
+   71    71                      ; line    73
+   72    72                      ; line    74
+   73    73                      ; line    75
+   74    74                      ; line    76
+   75    75                      ; line    77
+   76    76                      ; line    78
+   77    77                      ; line    57
+   78    78                      
+   79    79 -----                @@CODEL CSEG
+   80    80 00000                _R_PORT_Create:
+   81    81                      $DGL    1,19
+   82    82 00000                ??bf_R_PORT_Create:
+   83    83                      ; line    59
+   84    84                      $DGL    0,3
+   85    85 00000  F400                  clrb    P0                                              ;[INF] 2, 1
+   86    86                      ; line    61
+   87    87                      $DGL    0,5
+   88    88 00002  F401                  clrb    P1                                              ;[INF] 2, 1
+   89    89                      ; line    62
+   90    90                      $DGL    0,6
+   91    91 00004  F403                  clrb    P3                                              ;[INF] 2, 1
+   92    92                      ; line    64
+   93    93                      $DGL    0,8
+   94    94 00006  F404                  clrb    P4                                              ;[INF] 2, 1
+   95    95                      ; line    65
+   96    96                      $DGL    0,9
+   97    97 00008  F405                  clrb    P5                                              ;[INF] 2, 1
+   98    98                      ; line    66
+   99    99                      $DGL    0,10
+  100   100 0000A  F406                  clrb    P6                                              ;[INF] 2, 1
+  101   101                      ; line    67
+  102   102                      $DGL    0,11
+  103   103 0000C  F407                  clrb    P7                                              ;[INF] 2, 1
+  104   104                      ; line    69
+  105   105                      $DGL    0,13
+  106   106 0000E  F408                  clrb    P8                                              ;[INF] 2, 1
+  107   107                      ; line    70
+  108   108                      $DGL    0,14
+  109   109 00010  F40A                  clrb    P10                                             ;[INF] 2, 1
+  110   110                      ; line    71
+  111   111                      $DGL    0,15
+  112   112 00012  F40B                  clrb    P11                                             ;[INF] 2, 1
+  113   113                      ; line    72
+  114   114                      $DGL    0,16
+  115   115 00014  F40D                  clrb    P13                                             ;[INF] 2, 1
+  116   116                      ; line    74
+  117   117                      $DGL    0,18
+  118   118 00016  F40E                  clrb    P14                                             ;[INF] 2, 1
+  119   119                      ; line    75
+  120   120                      $DGL    0,19
+  121   121 00018  E53400                oneb    !PU4                                            ;[INF] 3, 1
+  122   122                      ; line    76
+  123   123                      $DGL    0,20
+  124   124 0001B  CF6000F3              mov     !PMC0,#0F3H     ; 243                           ;[INF] 4, 1
+  125   125                      ; line    77
+  126   126                      $DGL    0,21
+  127   127 0001F  CF760006              mov     !ADPC,#06H      ; 6                             ;[INF] 4, 1
+  128   128                      ; line    79
+  129   129                      $DGL    0,23
+  130   130 00023  CE2080                mov     PM0,#080H       ; 128                           ;[INF] 3, 1
+  131   131                      ; line    81
+  132   132                      $DGL    0,25
+  133   133 00026  CE2118                mov     PM1,#018H       ; 24                            ;[INF] 3, 1
+  134   134                      ; line    83
+  135   135                      $DGL    0,27
+  136   136 00029  CE22FF                mov     PM2,#0FFH       ; 255                           ;[INF] 3, 1
+  137   137                      ; line    84
+  138   138                      $DGL    0,28
+  139   139 0002C  CE23FE                mov     PM3,#0FEH       ; 254                           ;[INF] 3, 1
+  140   140                      ; line    86
+  141   141                      $DGL    0,30
+  142   142 0002F  E524FF                oneb    !PM4                                            ;[INF] 3, 1
+  143   143                      ; line    88
+  144   144                      $DGL    0,32
+  145   145 00032  CE251F                mov     PM5,#01FH       ; 31                            ;[INF] 3, 1
+  146   146                      ; line    90
+  147   147                      $DGL    0,34
+  148   148 00035  CE260F                mov     PM6,#0FH        ; 15                            ;[INF] 3, 1
+  149   149                      ; line    92
+  150   150                      $DGL    0,36
+  151   151 00038  CE273F                mov     PM7,#03FH       ; 63                            ;[INF] 3, 1
+  152   152                      ; line    94
+  153   153                      $DGL    0,38
+  154   154 0003B  F528FF                clrb    !PM8                                            ;[INF] 3, 1
+  155   155                      ; line    95
+  156   156                      $DGL    0,39
+  157   157 0003E  CE2AF9                mov     PM10,#0F9H      ; 249                           ;[INF] 3, 1
+  158   158                      ; line    96
+  159   159                      $DGL    0,40
+  160   160 00041  CE2BFC                mov     PM11,#0FCH      ; 252                           ;[INF] 3, 1
+  161   161                      ; line    98
+  162   162                      $DGL    0,42
+  163   163 00044  CE2E80                mov     PM14,#080H      ; 128                           ;[INF] 3, 1
+  164   164                      ; line    99
+  165   165                      $DGL    0,43
+  166   166 00047                ??ef_R_PORT_Create:
+  167   167 00047  D7                    ret                                                     ;[INF] 1, 6
+  168   168 00048                ??ee_R_PORT_Create:
+  169   169                      
+  170   170 -----                @@CODE  CSEG    BASE
+  171   171                      
+  172   172 -----                @@BASE  CSEG    BASE
+  173   173                              END
+  174   174                      
+  175   175                      
+  176   176                      ; *** Code Information ***
+  177   177                      ;
+  178   178                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+  179   179                      ;       ing_front\r_cg_port.c
+  180   180                      ;
+  181   181                      ; $FUNC R_PORT_Create(57)
+  182   182                      ;       void=(void)
+  183   183                      ;       CODE SIZE= 72 bytes, CLOCK_SIZE= 33 clocks, STACK_SIZE= 0 bytes
+  184   184                      
+  185   185                      ; Target chip : R5F100PG
+  186   186                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 00000H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 00048H   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

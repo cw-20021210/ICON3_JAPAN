@@ -1,0 +1,609 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\r_cg_serial.asm -_msgof
+          f -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\r_cg_serial.asm
+Obj-file: DefaultBuild\r_cg_serial.rel
+Prn-file: DefaultBuild\r_cg_serial.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:55
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile r_cg_serial.c -oDefaultBuild -_msgoff -nq -i
+    5     5                      ;             . -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no -g2
+    6     6                      ; In-file   : r_cg_serial.c
+    7     7                      ; Asm-file  : DefaultBuild\r_cg_serial.asm
+    8     8                      ; Para-file : 
+    9     9                      
+   10    10                      $PROCESSOR(F100PG)
+   11    11                      $DEBUG
+   12    12                      $NODEBUGA
+   13    13                      $KANJICODE NONE
+   14    14                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   15    15                      
+   16    16                      $DGS    FIL_NAM, .file,         04FH,   0FFFEH, 03FH,   067H,   01H,    00H
+   17    17                      $DGS    AUX_FIL, r_cg_serial.c
+   18    18                      $DGS    MOD_NAM, r_cg_serial,   00H,    0FFFEH, 00H,    077H,   00H,    00H
+   19    19                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    GLV_SYM, _R_SAU1_Create,        U,      U,      01H,    026H,   01H,    02H
+   36    36                      $DGS    AUX_FUN, 00H,           U,      U,      019H,   01H,    00H
+   37    37                      $DGS    BEG_FUN, ??bf_R_SAU1_Create,    U,      U,      00H,    065H,   01H,    00H
+   38    38                      $DGS    AUX_BEG, 03EH,          00H,    019H
+   39    39                      $DGS    END_FUN, ??ef_R_SAU1_Create,    U,      U,      00H,    065H,   01H,    00H
+   40    40                      $DGS    AUX_END, 09H
+   41    41                      $DGS    GLV_SYM, _R_UART2_Create,       U,      U,      01H,    026H,   01H,    02H
+   42    42                      $DGS    AUX_FUN, 00H,           U,      U,      01FH,   01H,    00H
+   43    43                      $DGS    BEG_FUN, ??bf_R_UART2_Create,   U,      U,      00H,    065H,   01H,    00H
+   44    44                      $DGS    AUX_BEG, 04FH,          00H,    01FH
+   45    45                      $DGS    END_FUN, ??ef_R_UART2_Create,   U,      U,      00H,    065H,   01H,    00H
+   46    46                      $DGS    AUX_END, 026H
+   47    47                      $DGS    GLV_SYM, _R_UART2_Start,        U,      U,      01H,    026H,   01H,    02H
+   48    48                      $DGS    AUX_FUN, 00H,           U,      U,      025H,   01H,    00H
+   49    49                      $DGS    BEG_FUN, ??bf_R_UART2_Start,    U,      U,      00H,    065H,   01H,    00H
+   50    50                      $DGS    AUX_BEG, 07DH,          00H,    025H
+   51    51                      $DGS    END_FUN, ??ef_R_UART2_Start,    U,      U,      00H,    065H,   01H,    00H
+   52    52                      $DGS    AUX_END, 0BH
+   53    53                      $DGS    GLV_SYM, _R_UART2_Stop, U,      U,      01H,    026H,   01H,    02H
+   54    54                      $DGS    AUX_FUN, 00H,           U,      U,      02BH,   01H,    00H
+   55    55                      $DGS    BEG_FUN, ??bf_R_UART2_Stop,     U,      U,      00H,    065H,   01H,    00H
+   56    56                      $DGS    AUX_BEG, 090H,          00H,    02BH
+   57    57                      $DGS    END_FUN, ??ef_R_UART2_Stop,     U,      U,      00H,    065H,   01H,    00H
+   58    58                      $DGS    AUX_END, 0BH
+   59    59                      $DGS    GLV_SYM, _R_UART2_Receive,      U,      U,      0DH,    026H,   01H,    02H
+   60    60                      $DGS    AUX_FUN, 00H,           U,      U,      03DH,   01H,    00H
+   61    61                      $DGS    BEG_FUN, ??bf_R_UART2_Receive,  U,      U,      00H,    065H,   01H,    00H
+   62    62                      $DGS    AUX_BEG, 0A7H,          04H,    033H
+   63    63                      $DGS    FUN_ARG, _rx_buf,       02H,    0FFFFH, 0500CH, 09H,    01H,    01H
+   64    64                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+   65    65                      $DGS    FUN_ARG, _rx_num,       0AH,    0FFFFH, 0DH,    09H,    00H,    00H
+   66    66                      $DGS    AUT_VAR, _status,       00H,    0FFFFH, 0DH,    01H,    00H,    00H
+   67    67                      $DGS    BEG_BLK, ??bb00_R_UART2_Receive,        U,      U,      00H,    064H,   01H,    00H
+   68    68                      $DGS    AUX_BEG, 05H,           00H,    037H
+   69    69                      $DGS    END_BLK, ??eb00_R_UART2_Receive,        U,      U,      00H,    064H,   01H,    00H
+   70    70                      $DGS    AUX_END, 07H
+   71    71                      $DGS    BEG_BLK, ??bb01_R_UART2_Receive,        U,      U,      00H,    064H,   01H,    00H
+   72    72                      $DGS    AUX_BEG, 09H,           00H,    00H
+   73    73                      $DGS    END_BLK, ??eb01_R_UART2_Receive,        U,      U,      00H,    064H,   01H,    00H
+   74    74                      $DGS    AUX_END, 0DH
+   75    75                      $DGS    END_FUN, ??ef_R_UART2_Receive,  U,      U,      00H,    065H,   01H,    00H
+   76    76                      $DGS    AUX_END, 010H
+   77    77                      $DGS    GLV_SYM, _R_UART2_Send, U,      U,      0DH,    026H,   01H,    02H
+   78    78                      $DGS    AUX_FUN, 00H,           U,      U,      04FH,   01H,    00H
+   79    79                      $DGS    BEG_FUN, ??bf_R_UART2_Send,     U,      U,      00H,    065H,   01H,    00H
+   80    80                      $DGS    AUX_BEG, 0C3H,          04H,    045H
+   81    81                      $DGS    FUN_ARG, _tx_buf,       02H,    0FFFFH, 0500CH, 09H,    01H,    01H
+   82    82                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+   83    83                      $DGS    FUN_ARG, _tx_num,       0AH,    0FFFFH, 0DH,    09H,    00H,    00H
+   84    84                      $DGS    AUT_VAR, _status,       00H,    0FFFFH, 0DH,    01H,    00H,    00H
+   85    85                      $DGS    BEG_BLK, ??bb00_R_UART2_Send,   U,      U,      00H,    064H,   01H,    00H
+   86    86                      $DGS    AUX_BEG, 05H,           00H,    049H
+   87    87                      $DGS    END_BLK, ??eb00_R_UART2_Send,   U,      U,      00H,    064H,   01H,    00H
+   88    88                      $DGS    AUX_END, 07H
+   89    89                      $DGS    BEG_BLK, ??bb01_R_UART2_Send,   U,      U,      00H,    064H,   01H,    00H
+   90    90                      $DGS    AUX_BEG, 09H,           00H,    00H
+   91    91                      $DGS    END_BLK, ??eb01_R_UART2_Send,   U,      U,      00H,    064H,   01H,    00H
+   92    92                      $DGS    AUX_END, 011H
+   93    93                      $DGS    END_FUN, ??ef_R_UART2_Send,     U,      U,      00H,    065H,   01H,    00H
+   94    94                      $DGS    AUX_END, 014H
+   95    95                      $DGS    GLV_SYM, _gp_uart2_tx_address,  U,      U,      0CH,    026H,   01H,    01H
+   96    96                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+   97    97                      $DGS    GLV_SYM, _g_uart2_tx_count,     U,      U,      0100DH, 026H,   00H,    00H
+   98    98                      $DGS    GLV_SYM, _gp_uart2_rx_address,  U,      U,      0CH,    026H,   01H,    01H
+   99    99                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+  100   100                      $DGS    GLV_SYM, _g_uart2_rx_count,     U,      U,      0100DH, 026H,   00H,    00H
+  101   101                      $DGS    GLV_SYM, _g_uart2_rx_length,    U,      U,      0100DH, 026H,   00H,    00H
+  102   102                      
+  103   103                              PUBLIC  _gp_uart2_tx_address
+  104   104                              PUBLIC  _g_uart2_tx_count
+  105   105                              PUBLIC  _gp_uart2_rx_address
+  106   106                              PUBLIC  _g_uart2_rx_count
+  107   107                              PUBLIC  _g_uart2_rx_length
+  108   108                              PUBLIC  _R_SAU1_Create
+  109   109                              PUBLIC  _R_UART2_Create
+  110   110                              PUBLIC  _R_UART2_Start
+  111   111                              PUBLIC  _R_UART2_Stop
+  112   112                              PUBLIC  _R_UART2_Receive
+  113   113                              PUBLIC  _R_UART2_Send
+  114   114                      
+  115   115 -----                @@BITS  BSEG
+  116   116                      
+  117   117 -----                @@CNST  CSEG    MIRRORP
+  118   118                      
+  119   119 -----                @@R_INIT        CSEG    UNIT64KP
+  120   120                      
+  121   121 -----                @@INIT  DSEG    BASEP
+  122   122                      
+  123   123 -----                @@DATA  DSEG    BASEP
+  124   124 00000                _gp_uart2_tx_address:   DS      (2)
+  125   125 00002                _g_uart2_tx_count:      DS      (2)
+  126   126 00004                _gp_uart2_rx_address:   DS      (2)
+  127   127 00006                _g_uart2_rx_count:      DS      (2)
+  128   128 00008                _g_uart2_rx_length:     DS      (2)
+  129   129                      
+  130   130 -----                @@R_INIS        CSEG    UNIT64KP
+  131   131                      
+  132   132 -----                @@INIS  DSEG    SADDRP
+  133   133                      
+  134   134 -----                @@DATS  DSEG    SADDRP
+  135   135                      
+  136   136 -----                @@CNSTL CSEG    PAGE64KP
+  137   137                      
+  138   138 -----                @@RLINIT        CSEG    UNIT64KP
+  139   139                      
+  140   140 -----                @@INITL DSEG    UNIT64KP
+  141   141                      
+  142   142 -----                @@DATAL DSEG    UNIT64KP
+  143   143                      
+  144   144 -----                @@CALT  CSEG    CALLT0
+  145   145                      
+  146   146                      ; line    72
+  147   147                      ; line    73
+  148   148                      ; line    74
+  149   149                      ; line    75
+  150   150                      ; line    76
+  151   151                      ; line    77
+  152   152                      ; line    78
+  153   153                      ; line   392
+  154   154                      ; line   393
+  155   155                      ; line   394
+  156   156                      ; line   395
+  157   157                      ; line    47
+  158   158                      ; line    48
+  159   159                      ; line    49
+  160   160                      ; line    50
+  161   161                      ; line    51
+  162   162                      ; line    62
+  163   163                      
+  164   164 -----                @@CODEL CSEG
+  165   165 00000                _R_SAU1_Create:
+  166   166                      $DGL    1,19
+  167   167 00000                ??bf_R_SAU1_Create:
+  168   168                      ; line    63
+  169   169                      $DGL    0,2
+  170   170 00000  7130F000              set1    !PER0.3                                         ;[INF] 4, 2
+  171   171                      ; line    64
+  172   172                      $DGL    0,3
+  173   173 00004  00                    nop                                                     ;[INF] 1, 1
+  174   174                      ; line    65
+  175   175                      $DGL    0,4
+  176   176 00005  00                    nop                                                     ;[INF] 1, 1
+  177   177                      ; line    66
+  178   178                      $DGL    0,5
+  179   179 00006  00                    nop                                                     ;[INF] 1, 1
+  180   180                      ; line    67
+  181   181                      $DGL    0,6
+  182   182 00007  00                    nop                                                     ;[INF] 1, 1
+  183   183                      ; line    68
+  184   184                      $DGL    0,7
+  185   185 00008  301100                movw    ax,#011H        ; 17                            ;[INF] 3, 1
+  186   186 0000B  BF6601                movw    !SPS1,ax                                        ;[INF] 3, 1
+  187   187                      ; line    69
+  188   188                      $DGL    0,8
+  189   189 0000E RFC130000              call    !!_R_UART2_Create                               ;[INF] 4, 3
+  190   190                      ; line    70
+  191   191                      $DGL    0,9
+  192   192 00012                ??ef_R_SAU1_Create:
+  193   193 00012  D7                    ret                                                     ;[INF] 1, 6
+  194   194 00013                ??ee_R_SAU1_Create:
+  195   195                      ; line    79
+  196   196 00013                _R_UART2_Create:
+  197   197                      $DGL    1,25
+  198   198 00013                ??bf_R_UART2_Create:
+  199   199                      ; line    80
+  200   200                      $DGL    0,2
+  201   201 00013  AF6401                movw    ax,!ST1                                         ;[INF] 3, 1
+  202   202 00016  08                    xch     a,x                                             ;[INF] 1, 1
+  203   203 00017  6C03                  or      a,#03H  ; 3                                     ;[INF] 2, 1
+  204   204 00019  08                    xch     a,x                                             ;[INF] 1, 1
+  205   205 0001A  BF6401                movw    !ST1,ax                                         ;[INF] 3, 1
+  206   206                      ; line    81
+  207   207                      $DGL    0,3
+  208   208 0001D  710AE5                set1    MK0H.0                                          ;[INF] 3, 2
+  209   209                      ; line    82
+  210   210                      $DGL    0,4
+  211   211 00020  710BE1                clr1    IF0H.0                                          ;[INF] 3, 2
+  212   212                      ; line    83
+  213   213                      $DGL    0,5
+  214   214 00023  711AE5                set1    MK0H.1                                          ;[INF] 3, 2
+  215   215                      ; line    84
+  216   216                      $DGL    0,6
+  217   217 00026  711BE1                clr1    IF0H.1                                          ;[INF] 3, 2
+  218   218                      ; line    85
+  219   219                      $DGL    0,7
+  220   220 00029  712AE5                set1    MK0H.2                                          ;[INF] 3, 2
+  221   221                      ; line    86
+  222   222                      $DGL    0,8
+  223   223 0002C  712BE1                clr1    IF0H.2                                          ;[INF] 3, 2
+  224   224                      ; line    88
+  225   225                      $DGL    0,10
+  226   226 0002F  710BED                clr1    PR10H.0                                         ;[INF] 3, 2
+  227   227                      ; line    89
+  228   228                      $DGL    0,11
+  229   229 00032  710BE9                clr1    PR00H.0                                         ;[INF] 3, 2
+  230   230                      ; line    91
+  231   231                      $DGL    0,13
+  232   232 00035  711BED                clr1    PR10H.1                                         ;[INF] 3, 2
+  233   233                      ; line    92
+  234   234                      $DGL    0,14
+  235   235 00038  711BE9                clr1    PR00H.1                                         ;[INF] 3, 2
+  236   236                      ; line    94
+  237   237                      $DGL    0,16
+  238   238 0003B  712AED                set1    PR10H.2                                         ;[INF] 3, 2
+  239   239                      ; line    95
+  240   240                      $DGL    0,17
+  241   241 0003E  712AE9                set1    PR00H.2                                         ;[INF] 3, 2
+  242   242                      ; line    97
+  243   243                      $DGL    0,19
+  244   244 00041  302200                movw    ax,#022H        ; 34                            ;[INF] 3, 1
+  245   245 00044  BF5001                movw    !SMR10,ax                                       ;[INF] 3, 1
+  246   246                      ; line    99
+  247   247                      $DGL    0,21
+  248   248 00047  309780                movw    ax,#08097H      ; -32617                        ;[INF] 3, 1
+  249   249 0004A  BF5801                movw    !SCR10,ax                                       ;[INF] 3, 1
+  250   250                      ; line   100
+  251   251                      $DGL    0,22
+  252   252 0004D  CB4800CE              movw    SDR10,#0CE00H   ; -12800                        ;[INF] 4, 1
+  253   253                      ; line   101
+  254   254                      $DGL    0,23
+  255   255 00051  8F7000                mov     a,!NFEN0                                        ;[INF] 3, 1
+  256   256 00054  6C10                  or      a,#010H ; 16                                    ;[INF] 2, 1
+  257   257 00056  9F7000                mov     !NFEN0,a                                        ;[INF] 3, 1
+  258   258                      ; line   102
+  259   259                      $DGL    0,24
+  260   260 00059  300700                movw    ax,#07H ; 7                                     ;[INF] 3, 1
+  261   261 0005C  BF4A01                movw    !SIR11,ax                                       ;[INF] 3, 1
+  262   262                      ; line   104
+  263   263                      $DGL    0,26
+  264   264 0005F  302201                movw    ax,#0122H       ; 290                           ;[INF] 3, 1
+  265   265 00062  BF5201                movw    !SMR11,ax                                       ;[INF] 3, 1
+  266   266                      ; line   106
+  267   267                      $DGL    0,28
+  268   268 00065  309744                movw    ax,#04497H      ; 17559                         ;[INF] 3, 1
+  269   269 00068  BF5A01                movw    !SCR11,ax                                       ;[INF] 3, 1
+  270   270                      ; line   107
+  271   271                      $DGL    0,29
+  272   272 0006B  CB4A00CE              movw    SDR11,#0CE00H   ; -12800                        ;[INF] 4, 1
+  273   273                      ; line   108
+  274   274                      $DGL    0,30
+  275   275 0006F  AF6801                movw    ax,!SO1                                         ;[INF] 3, 1
+  276   276 00072  08                    xch     a,x                                             ;[INF] 1, 1
+  277   277 00073  6C01                  or      a,#01H  ; 1                                     ;[INF] 2, 1
+  278   278 00075  08                    xch     a,x                                             ;[INF] 1, 1
+  279   279 00076  BF6801                movw    !SO1,ax                                         ;[INF] 3, 1
+  280   280                      ; line   109
+  281   281                      $DGL    0,31
+  282   282 00079  AF7401                movw    ax,!SOL1                                        ;[INF] 3, 1
+  283   283 0007C  BF7401                movw    !SOL1,ax                                        ;[INF] 3, 1
+  284   284                      ; line   110
+  285   285                      $DGL    0,32
+  286   286 0007F  AF6A01                movw    ax,!SOE1                                        ;[INF] 3, 1
+  287   287 00082  08                    xch     a,x                                             ;[INF] 1, 1
+  288   288 00083  6C01                  or      a,#01H  ; 1                                     ;[INF] 2, 1
+  289   289 00085  08                    xch     a,x                                             ;[INF] 1, 1
+  290   290 00086  BF6A01                movw    !SOE1,ax                                        ;[INF] 3, 1
+  291   291                      ; line   112
+  292   292                      $DGL    0,34
+  293   293 00089  8E21                  mov     a,PM1                                           ;[INF] 2, 1
+  294   294 0008B  6C10                  or      a,#010H ; 16                                    ;[INF] 2, 1
+  295   295 0008D  9E21                  mov     PM1,a                                           ;[INF] 2, 1
+  296   296                      ; line   114
+  297   297                      $DGL    0,36
+  298   298 0008F  6A0108                or      P1,#08H ; 8                                     ;[INF] 3, 2
+  299   299                      ; line   115
+  300   300                      $DGL    0,37
+  301   301 00092  8E21                  mov     a,PM1                                           ;[INF] 2, 1
+  302   302 00094  5CF7                  and     a,#0F7H ; 247                                   ;[INF] 2, 1
+  303   303 00096  9E21                  mov     PM1,a                                           ;[INF] 2, 1
+  304   304                      ; line   116
+  305   305                      $DGL    0,38
+  306   306 00098                ??ef_R_UART2_Create:
+  307   307 00098  D7                    ret                                                     ;[INF] 1, 6
+  308   308 00099                ??ee_R_UART2_Create:
+  309   309                      ; line   125
+  310   310 00099                _R_UART2_Start:
+  311   311                      $DGL    1,31
+  312   312 00099                ??bf_R_UART2_Start:
+  313   313                      ; line   126
+  314   314                      $DGL    0,2
+  315   315 00099  AF6801                movw    ax,!SO1                                         ;[INF] 3, 1
+  316   316 0009C  08                    xch     a,x                                             ;[INF] 1, 1
+  317   317 0009D  6C01                  or      a,#01H  ; 1                                     ;[INF] 2, 1
+  318   318 0009F  08                    xch     a,x                                             ;[INF] 1, 1
+  319   319 000A0  BF6801                movw    !SO1,ax                                         ;[INF] 3, 1
+  320   320                      ; line   127
+  321   321                      $DGL    0,3
+  322   322 000A3  AF6A01                movw    ax,!SOE1                                        ;[INF] 3, 1
+  323   323 000A6  08                    xch     a,x                                             ;[INF] 1, 1
+  324   324 000A7  6C01                  or      a,#01H  ; 1                                     ;[INF] 2, 1
+  325   325 000A9  08                    xch     a,x                                             ;[INF] 1, 1
+  326   326 000AA  BF6A01                movw    !SOE1,ax                                        ;[INF] 3, 1
+  327   327                      ; line   128
+  328   328                      $DGL    0,4
+  329   329 000AD  AF6201                movw    ax,!SS1                                         ;[INF] 3, 1
+  330   330 000B0  08                    xch     a,x                                             ;[INF] 1, 1
+  331   331 000B1  6C03                  or      a,#03H  ; 3                                     ;[INF] 2, 1
+  332   332 000B3  08                    xch     a,x                                             ;[INF] 1, 1
+  333   333 000B4  BF6201                movw    !SS1,ax                                         ;[INF] 3, 1
+  334   334                      ; line   129
+  335   335                      $DGL    0,5
+  336   336 000B7  710BE1                clr1    IF0H.0                                          ;[INF] 3, 2
+  337   337                      ; line   130
+  338   338                      $DGL    0,6
+  339   339 000BA  711BE1                clr1    IF0H.1                                          ;[INF] 3, 2
+  340   340                      ; line   131
+  341   341                      $DGL    0,7
+  342   342 000BD  712BE1                clr1    IF0H.2                                          ;[INF] 3, 2
+  343   343                      ; line   132
+  344   344                      $DGL    0,8
+  345   345 000C0  710BE5                clr1    MK0H.0                                          ;[INF] 3, 2
+  346   346                      ; line   133
+  347   347                      $DGL    0,9
+  348   348 000C3  711BE5                clr1    MK0H.1                                          ;[INF] 3, 2
+  349   349                      ; line   134
+  350   350                      $DGL    0,10
+  351   351 000C6  712BE5                clr1    MK0H.2                                          ;[INF] 3, 2
+  352   352                      ; line   135
+  353   353                      $DGL    0,11
+  354   354 000C9                ??ef_R_UART2_Start:
+  355   355 000C9  D7                    ret                                                     ;[INF] 1, 6
+  356   356 000CA                ??ee_R_UART2_Start:
+  357   357                      ; line   144
+  358   358 000CA                _R_UART2_Stop:
+  359   359                      $DGL    1,37
+  360   360 000CA                ??bf_R_UART2_Stop:
+  361   361                      ; line   145
+  362   362                      $DGL    0,2
+  363   363 000CA  710AE5                set1    MK0H.0                                          ;[INF] 3, 2
+  364   364                      ; line   146
+  365   365                      $DGL    0,3
+  366   366 000CD  711AE5                set1    MK0H.1                                          ;[INF] 3, 2
+  367   367                      ; line   147
+  368   368                      $DGL    0,4
+  369   369 000D0  712AE5                set1    MK0H.2                                          ;[INF] 3, 2
+  370   370                      ; line   148
+  371   371                      $DGL    0,5
+  372   372 000D3  AF6401                movw    ax,!ST1                                         ;[INF] 3, 1
+  373   373 000D6  08                    xch     a,x                                             ;[INF] 1, 1
+  374   374 000D7  6C03                  or      a,#03H  ; 3                                     ;[INF] 2, 1
+  375   375 000D9  08                    xch     a,x                                             ;[INF] 1, 1
+  376   376 000DA  BF6401                movw    !ST1,ax                                         ;[INF] 3, 1
+  377   377                      ; line   149
+  378   378                      $DGL    0,6
+  379   379 000DD  AF6A01                movw    ax,!SOE1                                        ;[INF] 3, 1
+  380   380 000E0  08                    xch     a,x                                             ;[INF] 1, 1
+  381   381 000E1  5CFE                  and     a,#0FEH ; 254                                   ;[INF] 2, 1
+  382   382 000E3  08                    xch     a,x                                             ;[INF] 1, 1
+  383   383 000E4  BF6A01                movw    !SOE1,ax                                        ;[INF] 3, 1
+  384   384                      ; line   150
+  385   385                      $DGL    0,7
+  386   386 000E7  710BE1                clr1    IF0H.0                                          ;[INF] 3, 2
+  387   387                      ; line   151
+  388   388                      $DGL    0,8
+  389   389 000EA  711BE1                clr1    IF0H.1                                          ;[INF] 3, 2
+  390   390                      ; line   152
+  391   391                      $DGL    0,9
+  392   392 000ED  712BE1                clr1    IF0H.2                                          ;[INF] 3, 2
+  393   393                      ; line   154
+  394   394                      $DGL    0,11
+  395   395 000F0                ??ef_R_UART2_Stop:
+  396   396 000F0  D7                    ret                                                     ;[INF] 1, 6
+  397   397 000F1                ??ee_R_UART2_Stop:
+  398   398                      ; line   167
+  399   399 000F1                _R_UART2_Receive:
+  400   400                      $DGL    1,43
+  401   401 000F1  C7                    push    hl                                              ;[INF] 1, 1
+  402   402 000F2  C1                    push    ax                                              ;[INF] 1, 1
+  403   403 000F3  C1                    push    ax                                              ;[INF] 1, 1
+  404   404 000F4  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  405   405 000F7                ??bf_R_UART2_Receive:
+  406   406                      ; line   168
+  407   407                      $DGL    0,2
+  408   408 000F7  F6                    clrw    ax                                              ;[INF] 1, 1
+  409   409 000F8  BB                    movw    [hl],ax ; status                                ;[INF] 1, 1
+  410   410                      ; line   170
+  411   411                      $DGL    0,4
+  412   412 000F9  61490A                cmpw    ax,[hl+10]      ; rx_num                        ;[INF] 3, 1
+  413   413 000FC  DF05                  bnz     $?L0011                                         ;[INF] 2, 4
+  414   414                      ; line   171
+  415   415 000FE                ??bb00_R_UART2_Receive:
+  416   416                      ; line   172
+  417   417                      $DGL    0,6
+  418   418 000FE  5081                  mov     x,#081H ; 129                                   ;[INF] 2, 1
+  419   419 00100  BB                    movw    [hl],ax ; status                                ;[INF] 1, 1
+  420   420 00101                ??eb00_R_UART2_Receive:
+  421   421                      ; line   174
+  422   422                      $DGL    0,8
+  423   423 00101  EF0E                  br      $?L0012                                         ;[INF] 2, 3
+  424   424 00103                ?L0011:
+  425   425                      ; line   175
+  426   426 00103                ??bb01_R_UART2_Receive:
+  427   427                      ; line   176
+  428   428                      $DGL    0,10
+  429   429 00103  F6                    clrw    ax                                              ;[INF] 1, 1
+  430   430 00104 RBF0600                movw    !_g_uart2_rx_count,ax                           ;[INF] 3, 1
+  431   431                      ; line   177
+  432   432                      $DGL    0,11
+  433   433 00107  AC0A                  movw    ax,[hl+10]      ; rx_num                        ;[INF] 2, 1
+  434   434 00109 RBF0800                movw    !_g_uart2_rx_length,ax                          ;[INF] 3, 1
+  435   435                      ; line   178
+  436   436                      $DGL    0,12
+  437   437 0010C  AC02                  movw    ax,[hl+2]       ; rx_buf                        ;[INF] 2, 1
+  438   438 0010E RBF0400                movw    !_gp_uart2_rx_address,ax                        ;[INF] 3, 1
+  439   439 00111                ??eb01_R_UART2_Receive:
+  440   440                      ; line   179
+  441   441 00111                ?L0012:
+  442   442                      ; line   181
+  443   443                      $DGL    0,15
+  444   444 00111  AB                    movw    ax,[hl] ; status                                ;[INF] 1, 1
+  445   445 00112  12                    movw    bc,ax                                           ;[INF] 1, 1
+  446   446                      ; line   182
+  447   447 00113                ?L0010:
+  448   448                      ; line   182
+  449   449                      $DGL    0,16
+  450   450 00113                ??ef_R_UART2_Receive:
+  451   451 00113  1004                  addw    sp,#04H                                         ;[INF] 2, 1
+  452   452 00115  C6                    pop     hl                                              ;[INF] 1, 1
+  453   453 00116  D7                    ret                                                     ;[INF] 1, 6
+  454   454 00117                ??ee_R_UART2_Receive:
+  455   455                      ; line   195
+  456   456 00117                _R_UART2_Send:
+  457   457                      $DGL    1,61
+  458   458 00117  C7                    push    hl                                              ;[INF] 1, 1
+  459   459 00118  C1                    push    ax                                              ;[INF] 1, 1
+  460   460 00119  C1                    push    ax                                              ;[INF] 1, 1
+  461   461 0011A  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  462   462 0011D                ??bf_R_UART2_Send:
+  463   463                      ; line   196
+  464   464                      $DGL    0,2
+  465   465 0011D  F6                    clrw    ax                                              ;[INF] 1, 1
+  466   466 0011E  BB                    movw    [hl],ax ; status                                ;[INF] 1, 1
+  467   467                      ; line   198
+  468   468                      $DGL    0,4
+  469   469 0011F  61490A                cmpw    ax,[hl+10]      ; tx_num                        ;[INF] 3, 1
+  470   470 00122  DF05                  bnz     $?L0015                                         ;[INF] 2, 4
+  471   471                      ; line   199
+  472   472 00124                ??bb00_R_UART2_Send:
+  473   473                      ; line   200
+  474   474                      $DGL    0,6
+  475   475 00124  5081                  mov     x,#081H ; 129                                   ;[INF] 2, 1
+  476   476 00126  BB                    movw    [hl],ax ; status                                ;[INF] 1, 1
+  477   477 00127                ??eb00_R_UART2_Send:
+  478   478                      ; line   202
+  479   479                      $DGL    0,8
+  480   480 00127  EF1C                  br      $?L0016                                         ;[INF] 2, 3
+  481   481 00129                ?L0015:
+  482   482                      ; line   203
+  483   483 00129                ??bb01_R_UART2_Send:
+  484   484                      ; line   204
+  485   485                      $DGL    0,10
+  486   486 00129  AC02                  movw    ax,[hl+2]       ; tx_buf                        ;[INF] 2, 1
+  487   487 0012B RBF0000                movw    !_gp_uart2_tx_address,ax                        ;[INF] 3, 1
+  488   488                      ; line   205
+  489   489                      $DGL    0,11
+  490   490 0012E  AC0A                  movw    ax,[hl+10]      ; tx_num                        ;[INF] 2, 1
+  491   491 00130 RBF0200                movw    !_g_uart2_tx_count,ax                           ;[INF] 3, 1
+  492   492                      ; line   206
+  493   493                      $DGL    0,12
+  494   494 00133  710AE5                set1    MK0H.0                                          ;[INF] 3, 2
+  495   495                      ; line   207
+  496   496                      $DGL    0,13
+  497   497 00136 REB0000                movw    de,!_gp_uart2_tx_address                        ;[INF] 3, 1
+  498   498 00139  89                    mov     a,[de]                                          ;[INF] 1, 1
+  499   499 0013A  9E48                  mov     TXD2,a                                          ;[INF] 2, 1
+  500   500                      ; line   208
+  501   501                      $DGL    0,14
+  502   502 0013C RA20000                incw    !_gp_uart2_tx_address                           ;[INF] 3, 2
+  503   503                      ; line   209
+  504   504                      $DGL    0,15
+  505   505 0013F RB20200                decw    !_g_uart2_tx_count                              ;[INF] 3, 2
+  506   506                      ; line   210
+  507   507                      $DGL    0,16
+  508   508 00142  710BE5                clr1    MK0H.0                                          ;[INF] 3, 2
+  509   509 00145                ??eb01_R_UART2_Send:
+  510   510                      ; line   211
+  511   511 00145                ?L0016:
+  512   512                      ; line   213
+  513   513                      $DGL    0,19
+  514   514 00145  AB                    movw    ax,[hl] ; status                                ;[INF] 1, 1
+  515   515 00146  12                    movw    bc,ax                                           ;[INF] 1, 1
+  516   516                      ; line   214
+  517   517 00147                ?L0014:
+  518   518                      ; line   214
+  519   519                      $DGL    0,20
+  520   520 00147                ??ef_R_UART2_Send:
+  521   521 00147  1004                  addw    sp,#04H                                         ;[INF] 2, 1
+  522   522 00149  C6                    pop     hl                                              ;[INF] 1, 1
+  523   523 0014A  D7                    ret                                                     ;[INF] 1, 6
+  524   524 0014B                ??ee_R_UART2_Send:
+  525   525                      
+  526   526 -----                @@CODE  CSEG    BASE
+  527   527                      
+  528   528 -----                @@BASE  CSEG    BASE
+  529   529                              END
+  530   530                      
+  531   531                      
+  532   532                      ; *** Code Information ***
+  533   533                      ;
+  534   534                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+  535   535                      ;       ing_front\r_cg_serial.c
+  536   536                      ;
+  537   537                      ; $FUNC R_SAU1_Create(62)
+  538   538                      ;       void=(void)
+  539   539                      ;       CODE SIZE= 19 bytes, CLOCK_SIZE= 17 clocks, STACK_SIZE= 4 bytes
+  540   540                      ;
+  541   541                      ; $CALL R_UART2_Create(69)
+  542   542                      ;       void=(void)
+  543   543                      ;
+  544   544                      ; $FUNC R_UART2_Create(79)
+  545   545                      ;       void=(void)
+  546   546                      ;       CODE SIZE= 134 bytes, CLOCK_SIZE= 70 clocks, STACK_SIZE= 0 bytes
+  547   547                      ;
+  548   548                      ; $FUNC R_UART2_Start(125)
+  549   549                      ;       void=(void)
+  550   550                      ;       CODE SIZE= 49 bytes, CLOCK_SIZE= 33 clocks, STACK_SIZE= 0 bytes
+  551   551                      ;
+  552   552                      ; $FUNC R_UART2_Stop(144)
+  553   553                      ;       void=(void)
+  554   554                      ;       CODE SIZE= 39 bytes, CLOCK_SIZE= 28 clocks, STACK_SIZE= 0 bytes
+  555   555                      ;
+  556   556                      ; $FUNC R_UART2_Receive(167)
+  557   557                      ;       bc=(pointer rx_buf:ax, unsigned short rx_num:[sp+4])
+  558   558                      ;       CODE SIZE= 38 bytes, CLOCK_SIZE= 32 clocks, STACK_SIZE= 6 bytes
+  559   559                      ;
+  560   560                      ; $FUNC R_UART2_Send(195)
+  561   561                      ;       bc=(pointer tx_buf:ax, unsigned short tx_num:[sp+4])
+  562   562                      ;       CODE SIZE= 52 bytes, CLOCK_SIZE= 41 clocks, STACK_SIZE= 6 bytes
+  563   563                      
+  564   564                      ; Target chip : R5F100PG
+  565   565                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 0000AH   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 0014BH   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

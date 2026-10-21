@@ -1,0 +1,255 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\r_systeminit.asm -_msgo
+          ff -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\r_systeminit.asm
+Obj-file: DefaultBuild\r_systeminit.rel
+Prn-file: DefaultBuild\r_systeminit.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:54
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile r_systeminit.c -oDefaultBuild -_msgoff -nq -
+    5     5                      ;             i. -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no -g2
+    6     6                      ; In-file   : r_systeminit.c
+    7     7                      ; Asm-file  : DefaultBuild\r_systeminit.asm
+    8     8                      ; Para-file : 
+    9     9                      
+   10    10                      $PROCESSOR(F100PG)
+   11    11                      $DEBUG
+   12    12                      $NODEBUGA
+   13    13                      $KANJICODE NONE
+   14    14                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   15    15                      
+   16    16                      $DGS    FIL_NAM, .file,         01FH,   0FFFEH, 03FH,   067H,   01H,    00H
+   17    17                      $DGS    AUX_FIL, r_systeminit.c
+   18    18                      $DGS    MOD_NAM, r_systeminit,  00H,    0FFFEH, 00H,    077H,   00H,    00H
+   19    19                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    GLV_SYM, _R_Systeminit, U,      U,      01H,    026H,   01H,    02H
+   36    36                      $DGS    AUX_FUN, 00H,           U,      U,      019H,   01H,    00H
+   37    37                      $DGS    BEG_FUN, ??bf_R_Systeminit,     U,      U,      00H,    065H,   01H,    00H
+   38    38                      $DGS    AUX_BEG, 03DH,          00H,    019H
+   39    39                      $DGS    END_FUN, ??ef_R_Systeminit,     U,      U,      00H,    065H,   01H,    00H
+   40    40                      $DGS    AUX_END, 0BH
+   41    41                      $DGS    GLV_SYM, _hdwinit,      U,      U,      01H,    026H,   01H,    02H
+   42    42                      $DGS    AUX_FUN, 00H,           U,      U,      01FH,   01H,    00H
+   43    43                      $DGS    BEG_FUN, ??bf_hdwinit,  U,      U,      00H,    065H,   01H,    00H
+   44    44                      $DGS    AUX_BEG, 051H,          00H,    01FH
+   45    45                      $DGS    END_FUN, ??ef_hdwinit,  U,      U,      00H,    065H,   01H,    00H
+   46    46                      $DGS    AUX_END, 04H
+   47    47                      $DGS    GLV_SYM, _R_CGC_Get_ResetSource,        U,      U,      01H,    02H,    01H,    02H
+   48    48                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+   49    49                      $DGS    GLV_SYM, _R_CGC_Create, U,      U,      01H,    02H,    01H,    02H
+   50    50                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+   51    51                      $DGS    GLV_SYM, _R_PORT_Create,        U,      U,      01H,    02H,    01H,    02H
+   52    52                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+   53    53                      $DGS    GLV_SYM, _R_SAU1_Create,        U,      U,      01H,    02H,    01H,    02H
+   54    54                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+   55    55                      $DGS    GLV_SYM, _R_TAU0_Create,        U,      U,      01H,    02H,    01H,    02H
+   56    56                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+   57    57                      $DGS    GLV_SYM, _R_WDT_Create, U,      U,      01H,    02H,    01H,    02H
+   58    58                      $DGS    AUX_FUN, 00H,           U,      U,      00H,    01H,    00H
+   59    59                      
+   60    60                              EXTRN   _R_CGC_Get_ResetSource
+   61    61                              EXTRN   _R_CGC_Create
+   62    62                              EXTRN   _R_PORT_Create
+   63    63                              EXTRN   _R_SAU1_Create
+   64    64                              EXTRN   _R_TAU0_Create
+   65    65                              EXTRN   _R_WDT_Create
+   66    66                              PUBLIC  _R_Systeminit
+   67    67                              PUBLIC  _hdwinit
+   68    68                      
+   69    69 -----                @@BITS  BSEG
+   70    70                      
+   71    71 -----                @@CNST  CSEG    MIRRORP
+   72    72                      
+   73    73 -----                @@R_INIT        CSEG    UNIT64KP
+   74    74                      
+   75    75 -----                @@INIT  DSEG    BASEP
+   76    76                      
+   77    77 -----                @@DATA  DSEG    BASEP
+   78    78                      
+   79    79 -----                @@R_INIS        CSEG    UNIT64KP
+   80    80                      
+   81    81 -----                @@INIS  DSEG    SADDRP
+   82    82                      
+   83    83 -----                @@DATS  DSEG    SADDRP
+   84    84                      
+   85    85 -----                @@CNSTL CSEG    PAGE64KP
+   86    86                      
+   87    87 -----                @@RLINIT        CSEG    UNIT64KP
+   88    88                      
+   89    89 -----                @@INITL DSEG    UNIT64KP
+   90    90                      
+   91    91 -----                @@DATAL DSEG    UNIT64KP
+   92    92                      
+   93    93 -----                @@CALT  CSEG    CALLT0
+   94    94                      
+   95    95                      ; line    72
+   96    96                      ; line    73
+   97    97                      ; line    74
+   98    98                      ; line    75
+   99    99                      ; line    76
+  100   100                      ; line    77
+  101   101                      ; line    78
+  102   102                      ; line   161
+  103   103                      ; line   166
+  104   104                      ; line   167
+  105   105                      ; line   211
+  106   106                      ; line   386
+  107   107                      ; line   387
+  108   108                      ; line   388
+  109   109                      ; line   389
+  110   110                      ; line   390
+  111   111                      ; line   391
+  112   112                      ; line   392
+  113   113                      ; line   393
+  114   114                      ; line   394
+  115   115                      ; line   395
+  116   116                      ; line   411
+  117   117                      ; line   412
+  118   118                      ; line   413
+  119   119                      ; line    47
+  120   120                      ; line    48
+  121   121                      ; line    61
+  122   122                      
+  123   123 -----                @@CODEL CSEG
+  124   124 00000                _R_Systeminit:
+  125   125                      $DGL    1,19
+  126   126 00000                ??bf_R_Systeminit:
+  127   127                      ; line    62
+  128   128                      $DGL    0,2
+  129   129 00000  F57700                clrb    !PIOR                                           ;[INF] 3, 1
+  130   130                      ; line    63
+  131   131                      $DGL    0,3
+  132   132 00003 RFC000000              call    !!_R_CGC_Get_ResetSource                        ;[INF] 4, 3
+  133   133                      ; line    64
+  134   134                      $DGL    0,4
+  135   135 00007 RFC000000              call    !!_R_CGC_Create                                 ;[INF] 4, 3
+  136   136                      ; line    65
+  137   137                      $DGL    0,5
+  138   138 0000B RFC000000              call    !!_R_PORT_Create                                ;[INF] 4, 3
+  139   139                      ; line    66
+  140   140                      $DGL    0,6
+  141   141 0000F RFC000000              call    !!_R_SAU1_Create                                ;[INF] 4, 3
+  142   142                      ; line    67
+  143   143                      $DGL    0,7
+  144   144 00013 RFC000000              call    !!_R_TAU0_Create                                ;[INF] 4, 3
+  145   145                      ; line    68
+  146   146                      $DGL    0,8
+  147   147 00017 RFC000000              call    !!_R_WDT_Create                                 ;[INF] 4, 3
+  148   148                      ; line    70
+  149   149                      $DGL    0,10
+  150   150 0001B  F57800                clrb    !IAWCTL                                         ;[INF] 3, 1
+  151   151                      ; line    71
+  152   152                      $DGL    0,11
+  153   153 0001E                ??ef_R_Systeminit:
+  154   154 0001E  D7                    ret                                                     ;[INF] 1, 6
+  155   155 0001F                ??ee_R_Systeminit:
+  156   156                      ; line    81
+  157   157 0001F                _hdwinit:
+  158   158                      $DGL    1,25
+  159   159 0001F  717BFA                di                                                      ;[INF] 3, 4
+  160   160 00022                ??bf_hdwinit:
+  161   161                      ; line    83
+  162   162                      $DGL    0,3
+  163   163 00022 RFC000000              call    !!_R_Systeminit                                 ;[INF] 4, 3
+  164   164                      ; line    84
+  165   165                      $DGL    0,4
+  166   166 00026                ??ef_hdwinit:
+  167   167 00026  D7                    ret                                                     ;[INF] 1, 6
+  168   168 00027                ??ee_hdwinit:
+  169   169                      
+  170   170 -----                @@CODE  CSEG    BASE
+  171   171                      
+  172   172 -----                @@BASE  CSEG    BASE
+  173   173                              END
+  174   174                      
+  175   175                      
+  176   176                      ; *** Code Information ***
+  177   177                      ;
+  178   178                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+  179   179                      ;       ing_front\r_systeminit.c
+  180   180                      ;
+  181   181                      ; $FUNC R_Systeminit(61)
+  182   182                      ;       void=(void)
+  183   183                      ;       CODE SIZE= 31 bytes, CLOCK_SIZE= 26 clocks, STACK_SIZE= 4 bytes
+  184   184                      ;
+  185   185                      ; $CALL R_CGC_Get_ResetSource(63)
+  186   186                      ;       void=(void)
+  187   187                      ;
+  188   188                      ; $CALL R_CGC_Create(64)
+  189   189                      ;       void=(void)
+  190   190                      ;
+  191   191                      ; $CALL R_PORT_Create(65)
+  192   192                      ;       void=(void)
+  193   193                      ;
+  194   194                      ; $CALL R_SAU1_Create(66)
+  195   195                      ;       void=(void)
+  196   196                      ;
+  197   197                      ; $CALL R_TAU0_Create(67)
+  198   198                      ;       void=(void)
+  199   199                      ;
+  200   200                      ; $CALL R_WDT_Create(68)
+  201   201                      ;       void=(void)
+  202   202                      ;
+  203   203                      ; $FUNC hdwinit(81)
+  204   204                      ;       void=(void)
+  205   205                      ;       CODE SIZE= 8 bytes, CLOCK_SIZE= 13 clocks, STACK_SIZE= 4 bytes
+  206   206                      ;
+  207   207                      ; $CALL R_Systeminit(83)
+  208   208                      ;       void=(void)
+  209   209                      
+  210   210                      ; Target chip : R5F100PG
+  211   211                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 00000H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 00027H   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

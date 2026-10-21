@@ -1,0 +1,584 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\r_cg_serial_user.asm -_
+          msgoff -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\r_cg_serial_user.asm
+Obj-file: DefaultBuild\r_cg_serial_user.rel
+Prn-file: DefaultBuild\r_cg_serial_user.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:56
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile r_cg_serial_user.c -oDefaultBuild -_msgoff -
+    5     5                      ;             nq -i. -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no
+    6     6                      ;              -g2
+    7     7                      ; In-file   : r_cg_serial_user.c
+    8     8                      ; Asm-file  : DefaultBuild\r_cg_serial_user.asm
+    9     9                      ; Para-file : 
+   10    10                      
+   11    11                      $PROCESSOR(F100PG)
+   12    12                      $DEBUG
+   13    13                      $NODEBUGA
+   14    14                      $KANJICODE NONE
+   15    15                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   16    16                      
+   17    17                      $DGS    FIL_NAM, .file,         056H,   0FFFEH, 03FH,   067H,   01H,    00H
+   18    18                      $DGS    AUX_FIL, r_cg_serial_user.c
+   19    19                      $DGS    MOD_NAM, r_cg_serial_user,      00H,    0FFFEH, 00H,    077H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   36    36                      $DGS    SEC_NAM, @@VECT18,      U,      U,      00H,    078H,   00H,    00H
+   37    37                      $DGS    STA_SYM, _r_uart2_interrupt_receive,    U,      U,      0E001H, 03H,    01H,    02H
+   38    38                      $DGS    AUX_FUN, 00H,           U,      U,      027H,   00H,    00H
+   39    39                      $DGS    BEG_FUN, ??bf_r_uart2_interrupt_receive,        U,      U,      00H,    065H,   01H,    00H
+   40    40                      $DGS    AUX_BEG, 041H,          018H,   019H
+   41    41                      $DGS    AUT_VAR, _rx_data,      01H,    0FFFFH, 0CH,    01H,    00H,    00H
+   42    42                      $DGS    BEG_BLK, ??bb00_r_uart2_interrupt_receive,      U,      U,      00H,    064H,   01H,    00H
+   43    43                      $DGS    AUX_BEG, 07H,           00H,    01BH
+   44    44                      $DGS    BEG_BLK, ??bb01_r_uart2_interrupt_receive,      U,      U,      00H,    064H,   01H,    00H
+   45    45                      $DGS    AUX_BEG, 0DH,           00H,    021H
+   46    46                      $DGS    END_BLK, ??eb01_r_uart2_interrupt_receive,      U,      U,      00H,    064H,   01H,    00H
+   47    47                      $DGS    AUX_END, 0FH
+   48    48                      $DGS    END_BLK, ??eb00_r_uart2_interrupt_receive,      U,      U,      00H,    064H,   01H,    00H
+   49    49                      $DGS    AUX_END, 010H
+   50    50                      $DGS    BEG_BLK, ??bb02_r_uart2_interrupt_receive,      U,      U,      00H,    064H,   01H,    00H
+   51    51                      $DGS    AUX_BEG, 012H,          00H,    00H
+   52    52                      $DGS    END_BLK, ??eb02_r_uart2_interrupt_receive,      U,      U,      00H,    064H,   01H,    00H
+   53    53                      $DGS    AUX_END, 014H
+   54    54                      $DGS    END_FUN, ??ef_r_uart2_interrupt_receive,        U,      U,      00H,    065H,   01H,    00H
+   55    55                      $DGS    AUX_END, 015H
+   56    56                      $DGS    STA_SYM, _r_uart2_interrupt_error,      U,      U,      0E001H, 03H,    01H,    02H
+   57    57                      $DGS    AUX_FUN, 00H,           U,      U,      02EH,   00H,    00H
+   58    58                      $DGS    BEG_FUN, ??bf_r_uart2_interrupt_error,  U,      U,      00H,    065H,   01H,    00H
+   59    59                      $DGS    AUX_BEG, 05EH,          018H,   02EH
+   60    60                      $DGS    AUT_VAR, _err_type,     01H,    0FFFFH, 0CH,    01H,    00H,    00H
+   61    61                      $DGS    END_FUN, ??ef_r_uart2_interrupt_error,  U,      U,      00H,    065H,   01H,    00H
+   62    62                      $DGS    AUX_END, 08H
+   63    63                      $DGS    STA_SYM, _r_uart2_interrupt_send,       U,      U,      0E001H, 03H,    01H,    02H
+   64    64                      $DGS    AUX_FUN, 00H,           U,      U,      03CH,   00H,    00H
+   65    65                      $DGS    BEG_FUN, ??bf_r_uart2_interrupt_send,   U,      U,      00H,    065H,   01H,    00H
+   66    66                      $DGS    AUX_BEG, 06EH,          016H,   032H
+   67    67                      $DGS    BEG_BLK, ??bb00_r_uart2_interrupt_send, U,      U,      00H,    064H,   01H,    00H
+   68    68                      $DGS    AUX_BEG, 03H,           00H,    036H
+   69    69                      $DGS    END_BLK, ??eb00_r_uart2_interrupt_send, U,      U,      00H,    064H,   01H,    00H
+   70    70                      $DGS    AUX_END, 07H
+   71    71                      $DGS    BEG_BLK, ??bb01_r_uart2_interrupt_send, U,      U,      00H,    064H,   01H,    00H
+   72    72                      $DGS    AUX_BEG, 09H,           00H,    00H
+   73    73                      $DGS    END_BLK, ??eb01_r_uart2_interrupt_send, U,      U,      00H,    064H,   01H,    00H
+   74    74                      $DGS    AUX_END, 0BH
+   75    75                      $DGS    END_FUN, ??ef_r_uart2_interrupt_send,   U,      U,      00H,    065H,   01H,    00H
+   76    76                      $DGS    AUX_END, 0CH
+   77    77                      $DGS    STA_SYM, _r_uart2_callback_receiveend,  U,      U,      01H,    03H,    01H,    02H
+   78    78                      $DGS    AUX_FUN, 00H,           U,      U,      042H,   01H,    00H
+   79    79                      $DGS    BEG_FUN, ??bf_r_uart2_callback_receiveend,      U,      U,      00H,    065H,   01H,    00H
+   80    80                      $DGS    AUX_BEG, 082H,          00H,    042H
+   81    81                      $DGS    END_FUN, ??ef_r_uart2_callback_receiveend,      U,      U,      00H,    065H,   01H,    00H
+   82    82                      $DGS    AUX_END, 04H
+   83    83                      $DGS    STA_SYM, _r_uart2_callback_softwareoverrun,     U,      U,      01H,    03H,    01H,    02H
+   84    84                      $DGS    AUX_FUN, 00H,           U,      U,      049H,   01H,    00H
+   85    85                      $DGS    BEG_FUN, ??bf_r_uart2_callback_softwareoverrun, U,      U,      00H,    065H,   01H,    00H
+   86    86                      $DGS    AUX_BEG, 08FH,          02H,    049H
+   87    87                      $DGS    FUN_ARG, _rx_data,      00H,    0FFFFH, 0DH,    09H,    00H,    00H
+   88    88                      $DGS    END_FUN, ??ef_r_uart2_callback_softwareoverrun, U,      U,      00H,    065H,   01H,    00H
+   89    89                      $DGS    AUX_END, 04H
+   90    90                      $DGS    STA_SYM, _r_uart2_callback_sendend,     U,      U,      01H,    03H,    01H,    02H
+   91    91                      $DGS    AUX_FUN, 00H,           U,      U,      04FH,   01H,    00H
+   92    92                      $DGS    BEG_FUN, ??bf_r_uart2_callback_sendend, U,      U,      00H,    065H,   01H,    00H
+   93    93                      $DGS    AUX_BEG, 09BH,          00H,    04FH
+   94    94                      $DGS    END_FUN, ??ef_r_uart2_callback_sendend, U,      U,      00H,    065H,   01H,    00H
+   95    95                      $DGS    AUX_END, 04H
+   96    96                      $DGS    STA_SYM, _r_uart2_callback_error,       U,      U,      01H,    03H,    01H,    02H
+   97    97                      $DGS    AUX_FUN, 00H,           U,      U,      056H,   01H,    00H
+   98    98                      $DGS    BEG_FUN, ??bf_r_uart2_callback_error,   U,      U,      00H,    065H,   01H,    00H
+   99    99                      $DGS    AUX_BEG, 0A8H,          02H,    056H
+  100   100                      $DGS    FUN_ARG, _err_type,     00H,    0FFFFH, 0CH,    09H,    00H,    00H
+  101   101                      $DGS    END_FUN, ??ef_r_uart2_callback_error,   U,      U,      00H,    065H,   01H,    00H
+  102   102                      $DGS    AUX_END, 04H
+  103   103                      $DGS    GLV_SYM, _@vect18,      U,      U,      00H,    026H,   00H,    00H
+  104   104                      $DGS    GLV_SYM, _@RTARG6,      U,      U,      00H,    02H,    00H,    00H
+  105   105                      $DGS    GLV_SYM, _@RTARG4,      U,      U,      00H,    02H,    00H,    00H
+  106   106                      $DGS    GLV_SYM, _@RTARG2,      U,      U,      00H,    02H,    00H,    00H
+  107   107                      $DGS    GLV_SYM, _@RTARG0,      U,      U,      00H,    02H,    00H,    00H
+  108   108                      $DGS    GLV_SYM, _@SEGDE,       U,      U,      00H,    02H,    00H,    00H
+  109   109                      $DGS    GLV_SYM, _@SEGAX,       U,      U,      00H,    02H,    00H,    00H
+  110   110                      $DGS    GLV_SYM, _g_uart2_rx_count,     U,      U,      0100DH, 02H,    00H,    00H
+  111   111                      $DGS    GLV_SYM, _g_uart2_rx_length,    U,      U,      0100DH, 02H,    00H,    00H
+  112   112                      $DGS    GLV_SYM, _gp_uart2_rx_address,  U,      U,      0CH,    02H,    01H,    01H
+  113   113                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+  114   114                      $DGS    GLV_SYM, _g_uart2_tx_count,     U,      U,      0100DH, 02H,    00H,    00H
+  115   115                      $DGS    GLV_SYM, _gp_uart2_tx_address,  U,      U,      0CH,    02H,    01H,    01H
+  116   116                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+  117   117                      
+  118   118                              EXTRN   _@RTARG6
+  119   119                              EXTRN   _@RTARG4
+  120   120                              EXTRN   _@RTARG2
+  121   121                              EXTRN   _@RTARG0
+  122   122                              EXTRN   _@SEGDE
+  123   123                              EXTRN   _@SEGAX
+  124   124                              EXTRN   _g_uart2_rx_count
+  125   125                              EXTRN   _g_uart2_rx_length
+  126   126                              EXTRN   _gp_uart2_rx_address
+  127   127                              EXTRN   _g_uart2_tx_count
+  128   128                              EXTRN   _gp_uart2_tx_address
+  129   129                              PUBLIC  _@vect18
+  130   130                      
+  131   131 -----                @@BITS  BSEG
+  132   132                      
+  133   133 -----                @@CNST  CSEG    MIRRORP
+  134   134                      
+  135   135 -----                @@R_INIT        CSEG    UNIT64KP
+  136   136                      
+  137   137 -----                @@INIT  DSEG    BASEP
+  138   138                      
+  139   139 -----                @@DATA  DSEG    BASEP
+  140   140                      
+  141   141 -----                @@R_INIS        CSEG    UNIT64KP
+  142   142                      
+  143   143 -----                @@INIS  DSEG    SADDRP
+  144   144                      
+  145   145 -----                @@DATS  DSEG    SADDRP
+  146   146                      
+  147   147 -----                @@CNSTL CSEG    PAGE64KP
+  148   148                      
+  149   149 -----                @@RLINIT        CSEG    UNIT64KP
+  150   150                      
+  151   151 -----                @@INITL DSEG    UNIT64KP
+  152   152                      
+  153   153 -----                @@DATAL DSEG    UNIT64KP
+  154   154                      
+  155   155 -----                @@CALT  CSEG    CALLT0
+  156   156                      
+  157   157                      ; line    72
+  158   158                      ; line    73
+  159   159                      ; line    74
+  160   160                      ; line    75
+  161   161                      ; line    76
+  162   162                      ; line    77
+  163   163                      ; line    78
+  164   164                      ; line   386
+  165   165                      ; line   387
+  166   166                      ; line   388
+  167   167                      ; line   389
+  168   168                      ; line   390
+  169   169                      ; line   391
+  170   170                      ; line   392
+  171   171                      ; line   393
+  172   172                      ; line   394
+  173   173                      ; line   395
+  174   174                      ; line    50
+  175   175                      ; line    51
+  176   176                      ; line    52
+  177   177                      ; line    53
+  178   178                      ; line    54
+  179   179                      ; line    65
+  180   180                      
+  181   181 -----                @@BASE  CSEG    BASE
+  182   182 00000                _r_uart2_interrupt_receive:
+  183   183                      $DGL    1,20
+  184   184 00000  C1                    push    ax                                              ;[INF] 1, 1
+  185   185 00001  C3                    push    bc                                              ;[INF] 1, 1
+  186   186 00002  C5                    push    de                                              ;[INF] 1, 1
+  187   187 00003  C7                    push    hl                                              ;[INF] 1, 1
+  188   188 00004 RAD00                  movw    ax,_@RTARG6                                     ;[INF] 2, 1
+  189   189 00006  C1                    push    ax                                              ;[INF] 1, 1
+  190   190 00007 RAD00                  movw    ax,_@RTARG4                                     ;[INF] 2, 1
+  191   191 00009  C1                    push    ax                                              ;[INF] 1, 1
+  192   192 0000A RAD00                  movw    ax,_@RTARG2                                     ;[INF] 2, 1
+  193   193 0000C  C1                    push    ax                                              ;[INF] 1, 1
+  194   194 0000D RAD00                  movw    ax,_@RTARG0                                     ;[INF] 2, 1
+  195   195 0000F  C1                    push    ax                                              ;[INF] 1, 1
+  196   196 00010 RAD00                  movw    ax,_@SEGDE                                      ;[INF] 2, 1
+  197   197 00012  C1                    push    ax                                              ;[INF] 1, 1
+  198   198 00013 RAD00                  movw    ax,_@SEGAX                                      ;[INF] 2, 1
+  199   199 00015  C1                    push    ax                                              ;[INF] 1, 1
+  200   200 00016  8EFD                  mov     a,ES                                            ;[INF] 2, 1
+  201   201 00018  70                    mov     x,a                                             ;[INF] 1, 1
+  202   202 00019  8EFC                  mov     a,CS                                            ;[INF] 2, 1
+  203   203 0001B  C1                    push    ax                                              ;[INF] 1, 1
+  204   204 0001C  C1                    push    ax                                              ;[INF] 1, 1
+  205   205 0001D  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  206   206 00020                ??bf_r_uart2_interrupt_receive:
+  207   207                      ; line    68
+  208   208                      $DGL    0,4
+  209   209 00020  8E4A                  mov     a,RXD2                                          ;[INF] 2, 1
+  210   210 00022  9C01                  mov     [hl+1],a        ; rx_data                       ;[INF] 2, 1
+  211   211                      ; line    70
+  212   212                      $DGL    0,6
+  213   213 00024 RAF0000                movw    ax,!_g_uart2_rx_count                           ;[INF] 3, 1
+  214   214 00027 R420000                cmpw    ax,!_g_uart2_rx_length                          ;[INF] 3, 1
+  215   215 0002A  DE1A                  bnc     $?L0003                                         ;[INF] 2, 4
+  216   216                      ; line    71
+  217   217 0002C                ??bb00_r_uart2_interrupt_receive:
+  218   218                      ; line    72
+  219   219                      $DGL    0,8
+  220   220 0002C REB0000                movw    de,!_gp_uart2_rx_address                        ;[INF] 3, 1
+  221   221 0002F  8C01                  mov     a,[hl+1]        ; rx_data                       ;[INF] 2, 1
+  222   222 00031  99                    mov     [de],a                                          ;[INF] 1, 1
+  223   223                      ; line    73
+  224   224                      $DGL    0,9
+  225   225 00032 RA20000                incw    !_gp_uart2_rx_address                           ;[INF] 3, 2
+  226   226                      ; line    74
+  227   227                      $DGL    0,10
+  228   228 00035 RA20000                incw    !_g_uart2_rx_count                              ;[INF] 3, 2
+  229   229                      ; line    76
+  230   230                      $DGL    0,12
+  231   231 00038 RAF0000                movw    ax,!_g_uart2_rx_length                          ;[INF] 3, 1
+  232   232 0003B R420000                cmpw    ax,!_g_uart2_rx_count                           ;[INF] 3, 1
+  233   233 0003E  61F8                  sknz                                                    ;[INF] 2, 1
+  234   234                      ; line    77
+  235   235 00040                ??bb01_r_uart2_interrupt_receive:
+  236   236                      ; line    78
+  237   237                      $DGL    0,14
+  238   238 00040 RFC000000              call    !!_r_uart2_callback_receiveend                  ;[INF] 4, 3
+  239   239 00044                ??eb01_r_uart2_interrupt_receive:
+  240   240                      ; line    79
+  241   241 00044                ?L0005:
+  242   242 00044                ?L0006:
+  243   243 00044                ??eb00_r_uart2_interrupt_receive:
+  244   244                      ; line    81
+  245   245                      $DGL    0,17
+  246   246 00044  EF08                  br      $?L0004                                         ;[INF] 2, 3
+  247   247 00046                ?L0003:
+  248   248                      ; line    82
+  249   249 00046                ??bb02_r_uart2_interrupt_receive:
+  250   250                      ; line    83
+  251   251                      $DGL    0,19
+  252   252 00046  8C01                  mov     a,[hl+1]        ; rx_data                       ;[INF] 2, 1
+  253   253 00048  318E                  shrw    ax,8                                            ;[INF] 2, 1
+  254   254 0004A RFC010000              call    !!_r_uart2_callback_softwareoverrun             ;[INF] 4, 3
+  255   255 0004E                ??eb02_r_uart2_interrupt_receive:
+  256   256                      ; line    84
+  257   257 0004E                ?L0004:
+  258   258                      ; line    85
+  259   259                      $DGL    0,21
+  260   260 0004E                ??ef_r_uart2_interrupt_receive:
+  261   261 0004E  C0                    pop     ax                                              ;[INF] 1, 1
+  262   262 0004F  C0                    pop     ax                                              ;[INF] 1, 1
+  263   263 00050  9EFC                  mov     CS,a                                            ;[INF] 2, 1
+  264   264 00052  60                    mov     a,x                                             ;[INF] 1, 1
+  265   265 00053  9EFD                  mov     ES,a                                            ;[INF] 2, 1
+  266   266 00055  C0                    pop     ax                                              ;[INF] 1, 1
+  267   267 00056 RBD00                  movw    _@SEGAX,ax                                      ;[INF] 2, 1
+  268   268 00058  C0                    pop     ax                                              ;[INF] 1, 1
+  269   269 00059 RBD00                  movw    _@SEGDE,ax                                      ;[INF] 2, 1
+  270   270 0005B  C0                    pop     ax                                              ;[INF] 1, 1
+  271   271 0005C RBD00                  movw    _@RTARG0,ax                                     ;[INF] 2, 1
+  272   272 0005E  C0                    pop     ax                                              ;[INF] 1, 1
+  273   273 0005F RBD00                  movw    _@RTARG2,ax                                     ;[INF] 2, 1
+  274   274 00061  C0                    pop     ax                                              ;[INF] 1, 1
+  275   275 00062 RBD00                  movw    _@RTARG4,ax                                     ;[INF] 2, 1
+  276   276 00064  C0                    pop     ax                                              ;[INF] 1, 1
+  277   277 00065 RBD00                  movw    _@RTARG6,ax                                     ;[INF] 2, 1
+  278   278 00067  C6                    pop     hl                                              ;[INF] 1, 1
+  279   279 00068  C4                    pop     de                                              ;[INF] 1, 1
+  280   280 00069  C2                    pop     bc                                              ;[INF] 1, 1
+  281   281 0006A  C0                    pop     ax                                              ;[INF] 1, 1
+  282   282 0006B  61FC                  reti                                                    ;[INF] 2, 6
+  283   283 0006D                ??ee_r_uart2_interrupt_receive:
+  284   284                      ; line    94
+  285   285 0006D                _r_uart2_interrupt_error:
+  286   286                      $DGL    1,39
+  287   287 0006D  C1                    push    ax                                              ;[INF] 1, 1
+  288   288 0006E  C3                    push    bc                                              ;[INF] 1, 1
+  289   289 0006F  C5                    push    de                                              ;[INF] 1, 1
+  290   290 00070  C7                    push    hl                                              ;[INF] 1, 1
+  291   291 00071 RAD00                  movw    ax,_@RTARG6                                     ;[INF] 2, 1
+  292   292 00073  C1                    push    ax                                              ;[INF] 1, 1
+  293   293 00074 RAD00                  movw    ax,_@RTARG4                                     ;[INF] 2, 1
+  294   294 00076  C1                    push    ax                                              ;[INF] 1, 1
+  295   295 00077 RAD00                  movw    ax,_@RTARG2                                     ;[INF] 2, 1
+  296   296 00079  C1                    push    ax                                              ;[INF] 1, 1
+  297   297 0007A RAD00                  movw    ax,_@RTARG0                                     ;[INF] 2, 1
+  298   298 0007C  C1                    push    ax                                              ;[INF] 1, 1
+  299   299 0007D RAD00                  movw    ax,_@SEGDE                                      ;[INF] 2, 1
+  300   300 0007F  C1                    push    ax                                              ;[INF] 1, 1
+  301   301 00080 RAD00                  movw    ax,_@SEGAX                                      ;[INF] 2, 1
+  302   302 00082  C1                    push    ax                                              ;[INF] 1, 1
+  303   303 00083  8EFD                  mov     a,ES                                            ;[INF] 2, 1
+  304   304 00085  70                    mov     x,a                                             ;[INF] 1, 1
+  305   305 00086  8EFC                  mov     a,CS                                            ;[INF] 2, 1
+  306   306 00088  C1                    push    ax                                              ;[INF] 1, 1
+  307   307 00089  C1                    push    ax                                              ;[INF] 1, 1
+  308   308 0008A  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  309   309 0008D                ??bf_r_uart2_interrupt_error:
+  310   310                      ; line    97
+  311   311                      $DGL    0,4
+  312   312 0008D REB0000                movw    de,!_gp_uart2_rx_address                        ;[INF] 3, 1
+  313   313 00090  8E4A                  mov     a,RXD2                                          ;[INF] 2, 1
+  314   314 00092  99                    mov     [de],a                                          ;[INF] 1, 1
+  315   315                      ; line    98
+  316   316                      $DGL    0,5
+  317   317 00093  AF4201                movw    ax,!SSR11                                       ;[INF] 3, 1
+  318   318 00096  60                    mov     a,x                                             ;[INF] 1, 1
+  319   319 00097  5C07                  and     a,#07H  ; 7                                     ;[INF] 2, 1
+  320   320 00099  9C01                  mov     [hl+1],a        ; err_type                      ;[INF] 2, 1
+  321   321                      ; line    99
+  322   322                      $DGL    0,6
+  323   323 0009B  318E                  shrw    ax,8                                            ;[INF] 2, 1
+  324   324 0009D  BF4A01                movw    !SIR11,ax                                       ;[INF] 3, 1
+  325   325                      ; line   100
+  326   326                      $DGL    0,7
+  327   327 000A0  8C01                  mov     a,[hl+1]        ; err_type                      ;[INF] 2, 1
+  328   328 000A2  318E                  shrw    ax,8                                            ;[INF] 2, 1
+  329   329 000A4 RFC0A0000              call    !!_r_uart2_callback_error                       ;[INF] 4, 3
+  330   330                      ; line   101
+  331   331                      $DGL    0,8
+  332   332 000A8                ??ef_r_uart2_interrupt_error:
+  333   333 000A8  C0                    pop     ax                                              ;[INF] 1, 1
+  334   334 000A9  C0                    pop     ax                                              ;[INF] 1, 1
+  335   335 000AA  9EFC                  mov     CS,a                                            ;[INF] 2, 1
+  336   336 000AC  60                    mov     a,x                                             ;[INF] 1, 1
+  337   337 000AD  9EFD                  mov     ES,a                                            ;[INF] 2, 1
+  338   338 000AF  C0                    pop     ax                                              ;[INF] 1, 1
+  339   339 000B0 RBD00                  movw    _@SEGAX,ax                                      ;[INF] 2, 1
+  340   340 000B2  C0                    pop     ax                                              ;[INF] 1, 1
+  341   341 000B3 RBD00                  movw    _@SEGDE,ax                                      ;[INF] 2, 1
+  342   342 000B5  C0                    pop     ax                                              ;[INF] 1, 1
+  343   343 000B6 RBD00                  movw    _@RTARG0,ax                                     ;[INF] 2, 1
+  344   344 000B8  C0                    pop     ax                                              ;[INF] 1, 1
+  345   345 000B9 RBD00                  movw    _@RTARG2,ax                                     ;[INF] 2, 1
+  346   346 000BB  C0                    pop     ax                                              ;[INF] 1, 1
+  347   347 000BC RBD00                  movw    _@RTARG4,ax                                     ;[INF] 2, 1
+  348   348 000BE  C0                    pop     ax                                              ;[INF] 1, 1
+  349   349 000BF RBD00                  movw    _@RTARG6,ax                                     ;[INF] 2, 1
+  350   350 000C1  C6                    pop     hl                                              ;[INF] 1, 1
+  351   351 000C2  C4                    pop     de                                              ;[INF] 1, 1
+  352   352 000C3  C2                    pop     bc                                              ;[INF] 1, 1
+  353   353 000C4  C0                    pop     ax                                              ;[INF] 1, 1
+  354   354 000C5  61FC                  reti                                                    ;[INF] 2, 6
+  355   355 000C7                ??ee_r_uart2_interrupt_error:
+  356   356                      ; line   110
+  357   357 000C7                _r_uart2_interrupt_send:
+  358   358                      $DGL    1,46
+  359   359 000C7  C1                    push    ax                                              ;[INF] 1, 1
+  360   360 000C8  C3                    push    bc                                              ;[INF] 1, 1
+  361   361 000C9  C5                    push    de                                              ;[INF] 1, 1
+  362   362 000CA  C7                    push    hl                                              ;[INF] 1, 1
+  363   363 000CB RAD00                  movw    ax,_@RTARG6                                     ;[INF] 2, 1
+  364   364 000CD  C1                    push    ax                                              ;[INF] 1, 1
+  365   365 000CE RAD00                  movw    ax,_@RTARG4                                     ;[INF] 2, 1
+  366   366 000D0  C1                    push    ax                                              ;[INF] 1, 1
+  367   367 000D1 RAD00                  movw    ax,_@RTARG2                                     ;[INF] 2, 1
+  368   368 000D3  C1                    push    ax                                              ;[INF] 1, 1
+  369   369 000D4 RAD00                  movw    ax,_@RTARG0                                     ;[INF] 2, 1
+  370   370 000D6  C1                    push    ax                                              ;[INF] 1, 1
+  371   371 000D7 RAD00                  movw    ax,_@SEGDE                                      ;[INF] 2, 1
+  372   372 000D9  C1                    push    ax                                              ;[INF] 1, 1
+  373   373 000DA RAD00                  movw    ax,_@SEGAX                                      ;[INF] 2, 1
+  374   374 000DC  C1                    push    ax                                              ;[INF] 1, 1
+  375   375 000DD  8EFD                  mov     a,ES                                            ;[INF] 2, 1
+  376   376 000DF  70                    mov     x,a                                             ;[INF] 1, 1
+  377   377 000E0  8EFC                  mov     a,CS                                            ;[INF] 2, 1
+  378   378 000E2  C1                    push    ax                                              ;[INF] 1, 1
+  379   379 000E3                ??bf_r_uart2_interrupt_send:
+  380   380                      ; line   111
+  381   381                      $DGL    0,2
+  382   382 000E3  F6                    clrw    ax                                              ;[INF] 1, 1
+  383   383 000E4 R420000                cmpw    ax,!_g_uart2_tx_count                           ;[INF] 3, 1
+  384   384 000E7  DD0E                  bz      $?L0011                                         ;[INF] 2, 4
+  385   385                      ; line   112
+  386   386 000E9                ??bb00_r_uart2_interrupt_send:
+  387   387                      ; line   113
+  388   388                      $DGL    0,4
+  389   389 000E9 REB0000                movw    de,!_gp_uart2_tx_address                        ;[INF] 3, 1
+  390   390 000EC  89                    mov     a,[de]                                          ;[INF] 1, 1
+  391   391 000ED  9E48                  mov     TXD2,a                                          ;[INF] 2, 1
+  392   392                      ; line   114
+  393   393                      $DGL    0,5
+  394   394 000EF RA20000                incw    !_gp_uart2_tx_address                           ;[INF] 3, 2
+  395   395                      ; line   115
+  396   396                      $DGL    0,6
+  397   397 000F2 RB20000                decw    !_g_uart2_tx_count                              ;[INF] 3, 2
+  398   398 000F5                ??eb00_r_uart2_interrupt_send:
+  399   399                      ; line   117
+  400   400                      $DGL    0,8
+  401   401 000F5  EF04                  br      $?L0012                                         ;[INF] 2, 3
+  402   402 000F7                ?L0011:
+  403   403                      ; line   118
+  404   404 000F7                ??bb01_r_uart2_interrupt_send:
+  405   405                      ; line   119
+  406   406                      $DGL    0,10
+  407   407 000F7 RFC090000              call    !!_r_uart2_callback_sendend                     ;[INF] 4, 3
+  408   408 000FB                ??eb01_r_uart2_interrupt_send:
+  409   409                      ; line   120
+  410   410 000FB                ?L0012:
+  411   411                      ; line   121
+  412   412                      $DGL    0,12
+  413   413 000FB                ??ef_r_uart2_interrupt_send:
+  414   414 000FB  C0                    pop     ax                                              ;[INF] 1, 1
+  415   415 000FC  9EFC                  mov     CS,a                                            ;[INF] 2, 1
+  416   416 000FE  60                    mov     a,x                                             ;[INF] 1, 1
+  417   417 000FF  9EFD                  mov     ES,a                                            ;[INF] 2, 1
+  418   418 00101  C0                    pop     ax                                              ;[INF] 1, 1
+  419   419 00102 RBD00                  movw    _@SEGAX,ax                                      ;[INF] 2, 1
+  420   420 00104  C0                    pop     ax                                              ;[INF] 1, 1
+  421   421 00105 RBD00                  movw    _@SEGDE,ax                                      ;[INF] 2, 1
+  422   422 00107  C0                    pop     ax                                              ;[INF] 1, 1
+  423   423 00108 RBD00                  movw    _@RTARG0,ax                                     ;[INF] 2, 1
+  424   424 0010A  C0                    pop     ax                                              ;[INF] 1, 1
+  425   425 0010B RBD00                  movw    _@RTARG2,ax                                     ;[INF] 2, 1
+  426   426 0010D  C0                    pop     ax                                              ;[INF] 1, 1
+  427   427 0010E RBD00                  movw    _@RTARG4,ax                                     ;[INF] 2, 1
+  428   428 00110  C0                    pop     ax                                              ;[INF] 1, 1
+  429   429 00111 RBD00                  movw    _@RTARG6,ax                                     ;[INF] 2, 1
+  430   430 00113  C6                    pop     hl                                              ;[INF] 1, 1
+  431   431 00114  C4                    pop     de                                              ;[INF] 1, 1
+  432   432 00115  C2                    pop     bc                                              ;[INF] 1, 1
+  433   433 00116  C0                    pop     ax                                              ;[INF] 1, 1
+  434   434 00117  61FC                  reti                                                    ;[INF] 2, 6
+  435   435 00119                ??ee_r_uart2_interrupt_send:
+  436   436                      ; line   130
+  437   437                      
+  438   438 -----                @@CODEL CSEG
+  439   439 00000                _r_uart2_callback_receiveend:
+  440   440                      $DGL    1,60
+  441   441 00000                ??bf_r_uart2_callback_receiveend:
+  442   442                      ; line   133
+  443   443                      $DGL    0,4
+  444   444 00000                ??ef_r_uart2_callback_receiveend:
+  445   445 00000  D7                    ret                                                     ;[INF] 1, 6
+  446   446 00001                ??ee_r_uart2_callback_receiveend:
+  447   447                      ; line   143
+  448   448 00001                _r_uart2_callback_softwareoverrun:
+  449   449                      $DGL    1,66
+  450   450 00001  C7                    push    hl                                              ;[INF] 1, 1
+  451   451 00002  C1                    push    ax                                              ;[INF] 1, 1
+  452   452 00003  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  453   453 00006                ??bf_r_uart2_callback_softwareoverrun:
+  454   454                      ; line   146
+  455   455                      $DGL    0,4
+  456   456 00006                ??ef_r_uart2_callback_softwareoverrun:
+  457   457 00006  C0                    pop     ax                                              ;[INF] 1, 1
+  458   458 00007  C6                    pop     hl                                              ;[INF] 1, 1
+  459   459 00008  D7                    ret                                                     ;[INF] 1, 6
+  460   460 00009                ??ee_r_uart2_callback_softwareoverrun:
+  461   461                      ; line   155
+  462   462 00009                _r_uart2_callback_sendend:
+  463   463                      $DGL    1,73
+  464   464 00009                ??bf_r_uart2_callback_sendend:
+  465   465                      ; line   158
+  466   466                      $DGL    0,4
+  467   467 00009                ??ef_r_uart2_callback_sendend:
+  468   468 00009  D7                    ret                                                     ;[INF] 1, 6
+  469   469 0000A                ??ee_r_uart2_callback_sendend:
+  470   470                      ; line   168
+  471   471 0000A                _r_uart2_callback_error:
+  472   472                      $DGL    1,79
+  473   473 0000A  C7                    push    hl                                              ;[INF] 1, 1
+  474   474 0000B  C1                    push    ax                                              ;[INF] 1, 1
+  475   475 0000C  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  476   476 0000F                ??bf_r_uart2_callback_error:
+  477   477                      ; line   171
+  478   478                      $DGL    0,4
+  479   479 0000F                ??ef_r_uart2_callback_error:
+  480   480 0000F  C0                    pop     ax                                              ;[INF] 1, 1
+  481   481 00010  C6                    pop     hl                                              ;[INF] 1, 1
+  482   482 00011  D7                    ret                                                     ;[INF] 1, 6
+  483   483 00012                ??ee_r_uart2_callback_error:
+  484   484                      
+  485   485 -----                @@VECT18        CSEG    AT    0018H
+  486   486 00018                _@vect18:
+  487   487 00018 R6D00                  DW      _r_uart2_interrupt_error
+  488   488                      
+  489   489 -----                @@CODE  CSEG    BASE
+  490   490                              END
+  491   491                      
+  492   492                      
+  493   493                      ; *** Code Information ***
+  494   494                      ;
+  495   495                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+  496   496                      ;       ing_front\r_cg_serial_user.c
+  497   497                      ;
+  498   498                      ; $FUNC r_uart2_interrupt_receive(65)
+  499   499                      ;       void=(void)
+  500   500                      ;       CODE SIZE= 109 bytes, CLOCK_SIZE= 78 clocks, STACK_SIZE= 28 bytes
+  501   501                      ;
+  502   502                      ; $CALL r_uart2_callback_receiveend(78)
+  503   503                      ;       void=(void)
+  504   504                      ;
+  505   505                      ; $CALL r_uart2_callback_softwareoverrun(83)
+  506   506                      ;       void=(unsigned short:ax)
+  507   507                      ;
+  508   508                      ; $FUNC r_uart2_interrupt_error(94)
+  509   509                      ;       void=(void)
+  510   510                      ;       CODE SIZE= 90 bytes, CLOCK_SIZE= 63 clocks, STACK_SIZE= 28 bytes
+  511   511                      ;
+  512   512                      ; $CALL r_uart2_callback_error(100)
+  513   513                      ;       void=(int:ax)
+  514   514                      ;
+  515   515                      ; $FUNC r_uart2_interrupt_send(110)
+  516   516                      ;       void=(void)
+  517   517                      ;       CODE SIZE= 82 bytes, CLOCK_SIZE= 65 clocks, STACK_SIZE= 26 bytes
+  518   518                      ;
+  519   519                      ; $CALL r_uart2_callback_sendend(119)
+  520   520                      ;       void=(void)
+  521   521                      ;
+  522   522                      ; $FUNC r_uart2_callback_receiveend(130)
+  523   523                      ;       void=(void)
+  524   524                      ;       CODE SIZE= 1 bytes, CLOCK_SIZE= 6 clocks, STACK_SIZE= 0 bytes
+  525   525                      ;
+  526   526                      ; $FUNC r_uart2_callback_softwareoverrun(143)
+  527   527                      ;       void=(unsigned short rx_data:ax)
+  528   528                      ;       CODE SIZE= 8 bytes, CLOCK_SIZE= 11 clocks, STACK_SIZE= 4 bytes
+  529   529                      ;
+  530   530                      ; $FUNC r_uart2_callback_sendend(155)
+  531   531                      ;       void=(void)
+  532   532                      ;       CODE SIZE= 1 bytes, CLOCK_SIZE= 6 clocks, STACK_SIZE= 0 bytes
+  533   533                      ;
+  534   534                      ; $FUNC r_uart2_callback_error(168)
+  535   535                      ;       void=(unsigned char err_type:x)
+  536   536                      ;       CODE SIZE= 8 bytes, CLOCK_SIZE= 11 clocks, STACK_SIZE= 4 bytes
+  537   537                      
+  538   538                      ; Target chip : R5F100PG
+  539   539                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 00000H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 00119H   @@BASE
+00000 00012H   @@CODEL
+00018 00002H   @@VECT18
+00000 00000H   @@CODE
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

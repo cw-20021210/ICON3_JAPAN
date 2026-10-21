@@ -1,0 +1,1987 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\keycontrol.asm -_msgoff
+          -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\keycontrol.asm
+Obj-file: DefaultBuild\keycontrol.rel
+Prn-file: DefaultBuild\keycontrol.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:56
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile Source\keycontrol.c -oDefaultBuild -_msgoff 
+    5     5                      ;             -nq -i. -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -n
+    6     6                      ;             o -g2
+    7     7                      ; In-file   : Source\keycontrol.c
+    8     8                      ; Asm-file  : DefaultBuild\keycontrol.asm
+    9     9                      ; Para-file : 
+   10    10                      
+   11    11                      $PROCESSOR(F100PG)
+   12    12                      $DEBUG
+   13    13                      $NODEBUGA
+   14    14                      $KANJICODE NONE
+   15    15                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   16    16                      
+   17    17                      $DGS    FIL_NAM, .file,         015AH,  0FFFEH, 03FH,   067H,   01H,    00H
+   18    18                      $DGS    AUX_FIL, keycontrol.c
+   19    19                      $DGS    MOD_NAM, keycontrol,    00H,    0FFFEH, 00H,    077H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@FIX,         U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   36    36                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   37    37                      $DGS    STR_STR, .2fake,        00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   38    38                      $DGS    AUX_TAG, 01H,           028H
+   39    39                      $DGS    BIT_FLD, _b0,           00H,    0FFFFH, 0CH,    012H,   01H,    00H
+   40    40                      $DGS    AUX_BIT, 00H,           01H
+   41    41                      $DGS    BIT_FLD, _b1,           01H,    0FFFFH, 0CH,    012H,   01H,    00H
+   42    42                      $DGS    AUX_BIT, 00H,           01H
+   43    43                      $DGS    BIT_FLD, _b2,           02H,    0FFFFH, 0CH,    012H,   01H,    00H
+   44    44                      $DGS    AUX_BIT, 00H,           01H
+   45    45                      $DGS    BIT_FLD, _b3,           03H,    0FFFFH, 0CH,    012H,   01H,    00H
+   46    46                      $DGS    AUX_BIT, 00H,           01H
+   47    47                      $DGS    BIT_FLD, _b4,           04H,    0FFFFH, 0CH,    012H,   01H,    00H
+   48    48                      $DGS    AUX_BIT, 00H,           01H
+   49    49                      $DGS    BIT_FLD, _b5,           05H,    0FFFFH, 0CH,    012H,   01H,    00H
+   50    50                      $DGS    AUX_BIT, 00H,           01H
+   51    51                      $DGS    BIT_FLD, _b6,           06H,    0FFFFH, 0CH,    012H,   01H,    00H
+   52    52                      $DGS    AUX_BIT, 00H,           01H
+   53    53                      $DGS    BIT_FLD, _b7,           07H,    0FFFFH, 0CH,    012H,   01H,    00H
+   54    54                      $DGS    AUX_BIT, 00H,           01H
+   55    55                      $DGS    END_STR, .eos,          01H,    0FFFFH, 00H,    066H,   01H,    00H
+   56    56                      $DGS    AUX_EOS, 014H,          01H
+   57    57                      $DGS    STR_STR, .4fake,        00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   58    58                      $DGS    AUX_TAG, 01H,           030H
+   59    59                      $DGS    BIT_FLD, _lo,           00H,    0FFFFH, 0CH,    012H,   01H,    00H
+   60    60                      $DGS    AUX_BIT, 00H,           04H
+   61    61                      $DGS    BIT_FLD, _hi,           04H,    0FFFFH, 0CH,    012H,   01H,    00H
+   62    62                      $DGS    AUX_BIT, 00H,           04H
+   63    63                      $DGS    END_STR, .eos,          01H,    0FFFFH, 00H,    066H,   01H,    00H
+   64    64                      $DGS    AUX_EOS, 028H,          01H
+   65    65                      $DGS    UNI_TAG, .5fake,        00H,    0FFFEH, 09H,    0CH,    01H,    00H
+   66    66                      $DGS    AUX_TAG, 01H,           039H
+   67    67                      $DGS    MEB_UNI, _byte,         00H,    0FFFFH, 0CH,    0BH,    00H,    00H
+   68    68                      $DGS    MEB_UNI, _Bit,          00H,    0FFFFH, 08H,    0BH,    01H,    00H
+   69    69                      $DGS    AUX_STR, 014H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   70    70                      $DGS    MEB_UNI, _nibble,       00H,    0FFFFH, 08H,    0BH,    01H,    00H
+   71    71                      $DGS    AUX_STR, 028H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   72    72                      $DGS    END_STR, .eos,          01H,    0FFFFH, 00H,    066H,   01H,    00H
+   73    73                      $DGS    AUX_EOS, 030H,          01H
+   74    74                      $DGS    STR_STR, .13fake,       00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   75    75                      $DGS    AUX_TAG, 06H,           046H
+   76    76                      $DGS    MEB_STR, _First,        00H,    0FFFFH, 0CH,    08H,    00H,    00H
+   77    77                      $DGS    MEB_STR, _Second,       01H,    0FFFFH, 0CH,    08H,    00H,    00H
+   78    78                      $DGS    MEB_STR, _Third,        02H,    0FFFFH, 0CH,    08H,    00H,    00H
+   79    79                      $DGS    MEB_STR, _Level,        03H,    0FFFFH, 09H,    08H,    01H,    00H
+   80    80                      $DGS    AUX_STR, 030H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   81    81                      $DGS    MEB_STR, _OnEdge,       04H,    0FFFFH, 09H,    08H,    01H,    00H
+   82    82                      $DGS    AUX_STR, 030H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   83    83                      $DGS    MEB_STR, _OffEdge,      05H,    0FFFFH, 09H,    08H,    01H,    00H
+   84    84                      $DGS    AUX_STR, 030H,          00H,    01H,    00H,    00H,    00H,    00H,    00H
+   85    85                      $DGS    END_STR, .eos,          06H,    0FFFFH, 00H,    066H,   01H,    00H
+   86    86                      $DGS    AUX_EOS, 039H,          06H
+   87    87                      $DGS    STR_STR, .3fake,        00H,    0FFFEH, 08H,    0AH,    01H,    00H
+   88    88                      $DGS    AUX_TAG, 02H,           06AH
+   89    89                      $DGS    BIT_FLD, _b0,           00H,    0FFFFH, 0CH,    012H,   01H,    00H
+   90    90                      $DGS    AUX_BIT, 00H,           01H
+   91    91                      $DGS    BIT_FLD, _b1,           01H,    0FFFFH, 0CH,    012H,   01H,    00H
+   92    92                      $DGS    AUX_BIT, 00H,           01H
+   93    93                      $DGS    BIT_FLD, _b2,           02H,    0FFFFH, 0CH,    012H,   01H,    00H
+   94    94                      $DGS    AUX_BIT, 00H,           01H
+   95    95                      $DGS    BIT_FLD, _b3,           03H,    0FFFFH, 0CH,    012H,   01H,    00H
+   96    96                      $DGS    AUX_BIT, 00H,           01H
+   97    97                      $DGS    BIT_FLD, _b4,           04H,    0FFFFH, 0CH,    012H,   01H,    00H
+   98    98                      $DGS    AUX_BIT, 00H,           01H
+   99    99                      $DGS    BIT_FLD, _b5,           05H,    0FFFFH, 0CH,    012H,   01H,    00H
+  100   100                      $DGS    AUX_BIT, 00H,           01H
+  101   101                      $DGS    BIT_FLD, _b6,           06H,    0FFFFH, 0CH,    012H,   01H,    00H
+  102   102                      $DGS    AUX_BIT, 00H,           01H
+  103   103                      $DGS    BIT_FLD, _b7,           07H,    0FFFFH, 0CH,    012H,   01H,    00H
+  104   104                      $DGS    AUX_BIT, 00H,           01H
+  105   105                      $DGS    BIT_FLD, _b8,           08H,    0FFFFH, 0CH,    012H,   01H,    00H
+  106   106                      $DGS    AUX_BIT, 00H,           01H
+  107   107                      $DGS    BIT_FLD, _b9,           09H,    0FFFFH, 0CH,    012H,   01H,    00H
+  108   108                      $DGS    AUX_BIT, 00H,           01H
+  109   109                      $DGS    BIT_FLD, _b10,          0AH,    0FFFFH, 0CH,    012H,   01H,    00H
+  110   110                      $DGS    AUX_BIT, 00H,           01H
+  111   111                      $DGS    BIT_FLD, _b11,          0BH,    0FFFFH, 0CH,    012H,   01H,    00H
+  112   112                      $DGS    AUX_BIT, 00H,           01H
+  113   113                      $DGS    BIT_FLD, _b12,          0CH,    0FFFFH, 0CH,    012H,   01H,    00H
+  114   114                      $DGS    AUX_BIT, 00H,           01H
+  115   115                      $DGS    BIT_FLD, _b13,          0DH,    0FFFFH, 0CH,    012H,   01H,    00H
+  116   116                      $DGS    AUX_BIT, 00H,           01H
+  117   117                      $DGS    BIT_FLD, _b14,          0EH,    0FFFFH, 0CH,    012H,   01H,    00H
+  118   118                      $DGS    AUX_BIT, 00H,           01H
+  119   119                      $DGS    BIT_FLD, _b15,          0FH,    0FFFFH, 0CH,    012H,   01H,    00H
+  120   120                      $DGS    AUX_BIT, 00H,           01H
+  121   121                      $DGS    END_STR, .eos,          02H,    0FFFFH, 00H,    066H,   01H,    00H
+  122   122                      $DGS    AUX_EOS, 046H,          02H
+  123   123                      $DGS    UNI_TAG, .15fake,       00H,    0FFFEH, 09H,    0CH,    01H,    00H
+  124   124                      $DGS    AUX_TAG, 02H,           071H
+  125   125                      $DGS    MEB_UNI, _WORD,         00H,    0FFFFH, 0EH,    0BH,    00H,    00H
+  126   126                      $DGS    MEB_UNI, _BIT,          00H,    0FFFFH, 08H,    0BH,    01H,    00H
+  127   127                      $DGS    AUX_STR, 046H,          00H,    02H,    00H,    00H,    00H,    00H,    00H
+  128   128                      $DGS    END_STR, .eos,          02H,    0FFFFH, 00H,    066H,   01H,    00H
+  129   129                      $DGS    AUX_EOS, 06AH,          02H
+  130   130                      $DGS    STR_STR, .32fake,       00H,    0FFFEH, 08H,    0AH,    01H,    00H
+  131   131                      $DGS    AUX_TAG, 014H,          080H
+  132   132                      $DGS    MEB_STR, _KeyData,      00H,    0FFFFH, 0500CH, 08H,    00H,    00H
+  133   133                      $DGS    MEB_STR, _KeyNum,       02H,    0FFFFH, 0500EH, 08H,    00H,    00H
+  134   134                      $DGS    MEB_STR, _ShortKeyTime, 04H,    0FFFFH, 0500EH, 08H,    00H,    00H
+  135   135                      $DGS    MEB_STR, _ShortKeyType, 06H,    0FFFFH, 0500CH, 08H,    00H,    00H
+  136   136                      $DGS    MEB_STR, _LongKeyTime,  08H,    0FFFFH, 0500EH, 08H,    00H,    00H
+  137   137                      $DGS    MEB_STR, _LongKeyType,  0AH,    0FFFFH, 0500CH, 08H,    00H,    00H
+  138   138                      $DGS    MEB_STR, _VeryLongKeyTime,      0CH,    0FFFFH, 0500EH, 08H,    00H,    00H
+  139   139                      $DGS    MEB_STR, _VeryLongKeyType,      0EH,    0FFFFH, 0500CH, 08H,    00H,    00H
+  140   140                      $DGS    MEB_STR, _FCTLongKeyTime,       010H,   0FFFFH, 0500EH, 08H,    00H,    00H
+  141   141                      $DGS    MEB_STR, _FCTLongKeyType,       012H,   0FFFFH, 0500CH, 08H,    00H,    00H
+  142   142                      $DGS    MEB_STR, _OnBreak,      013H,   0FFFFH, 0500CH, 08H,    00H,    00H
+  143   143                      $DGS    END_STR, .eos,          014H,   0FFFFH, 00H,    066H,   01H,    00H
+  144   144                      $DGS    AUX_EOS, 071H,          014H
+  145   145                      $DGS    GLV_SYM, _KeyControl_Initialize,        U,      U,      01H,    026H,   01H,    02H
+  146   146                      $DGS    AUX_FUN, 00H,           U,      U,      086H,   01H,    00H
+  147   147                      $DGS    BEG_FUN, ??bf_KeyControl_Initialize,    U,      U,      00H,    065H,   01H,    00H
+  148   148                      $DGS    AUX_BEG, 04CH,          00H,    086H
+  149   149                      $DGS    END_FUN, ??ef_KeyControl_Initialize,    U,      U,      00H,    065H,   01H,    00H
+  150   150                      $DGS    AUX_END, 03H
+  151   151                      $DGS    GLV_SYM, _EffluentKey_Decide,   U,      U,      01H,    026H,   01H,    02H
+  152   152                      $DGS    AUX_FUN, 00H,           U,      U,      0A1H,   01H,    00H
+  153   153                      $DGS    BEG_FUN, ??bf_EffluentKey_Decide,       U,      U,      00H,    065H,   01H,    00H
+  154   154                      $DGS    AUX_BEG, 06AH,          00H,    08BH
+  155   155                      $DGS    STA_SYM, _EffluentKey_Step,     ?L0005, U,      0CH,    03H,    00H,    00H
+  156   156                      $DGS    BEG_BLK, ??bb00_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  157   157                      $DGS    AUX_BEG, 07H,           00H,    08DH
+  158   158                      $DGS    BEG_BLK, ??bb01_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  159   159                      $DGS    AUX_BEG, 0AH,           00H,    091H
+  160   160                      $DGS    END_BLK, ??eb01_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  161   161                      $DGS    AUX_END, 0DH
+  162   162                      $DGS    BEG_BLK, ??bb02_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  163   163                      $DGS    AUX_BEG, 011H,          00H,    095H
+  164   164                      $DGS    END_BLK, ??eb02_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  165   165                      $DGS    AUX_END, 013H
+  166   166                      $DGS    BEG_BLK, ??bb03_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  167   167                      $DGS    AUX_BEG, 016H,          00H,    099H
+  168   168                      $DGS    END_BLK, ??eb03_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  169   169                      $DGS    AUX_END, 019H
+  170   170                      $DGS    BEG_BLK, ??bb04_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  171   171                      $DGS    AUX_BEG, 01DH,          00H,    00H
+  172   172                      $DGS    END_BLK, ??eb04_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  173   173                      $DGS    AUX_END, 01FH
+  174   174                      $DGS    END_BLK, ??eb00_EffluentKey_Decide,     U,      U,      00H,    064H,   01H,    00H
+  175   175                      $DGS    AUX_END, 024H
+  176   176                      $DGS    END_FUN, ??ef_EffluentKey_Decide,       U,      U,      00H,    065H,   01H,    00H
+  177   177                      $DGS    AUX_END, 025H
+  178   178                      $DGS    GLV_SYM, _KeyDecide,    U,      U,      01H,    026H,   01H,    02H
+  179   179                      $DGS    AUX_FUN, 00H,           U,      U,      015AH,  01H,    00H
+  180   180                      $DGS    BEG_FUN, ??bf_KeyDecide,        U,      U,      00H,    065H,   01H,    00H
+  181   181                      $DGS    AUX_BEG, 094H,          04H,    0ACH
+  182   182                      $DGS    FUN_ARG, _p,            02H,    0FFFFH, 08H,    09H,    01H,    01H
+  183   183                      $DGS    AUX_STR, 039H,          00H,    02H,    00H,    00H,    00H,    00H,    01H
+  184   184                      $DGS    AUT_VAR, _i,            01H,    0FFFFH, 0CH,    01H,    00H,    00H
+  185   185                      $DGS    AUT_VAR, _data,         00H,    0FFFFH, 0CH,    01H,    00H,    00H
+  186   186                      $DGS    STA_SYM, _buf,          ?L0023, U,      0CH,    03H,    00H,    00H
+  187   187                      $DGS    STA_SYM, _KeyPnt,       ?L0024, U,      08H,    03H,    01H,    01H
+  188   188                      $DGS    AUX_STR, 071H,          00H,    02H,    00H,    00H,    00H,    00H,    01H
+  189   189                      $DGS    BEG_BLK, ??bb00_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  190   190                      $DGS    AUX_BEG, 0DH,           00H,    0AEH
+  191   191                      $DGS    BEG_BLK, ??bb01_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  192   192                      $DGS    AUX_BEG, 012H,          00H,    0B0H
+  193   193                      $DGS    BEG_BLK, ??bb02_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  194   194                      $DGS    AUX_BEG, 014H,          00H,    0B2H
+  195   195                      $DGS    BEG_BLK, ??bb03_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  196   196                      $DGS    AUX_BEG, 016H,          00H,    0B4H
+  197   197                      $DGS    BEG_BLK, ??bb04_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  198   198                      $DGS    AUX_BEG, 018H,          00H,    0B8H
+  199   199                      $DGS    END_BLK, ??eb04_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  200   200                      $DGS    AUX_END, 01AH
+  201   201                      $DGS    BEG_BLK, ??bb05_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  202   202                      $DGS    AUX_BEG, 01EH,          00H,    0BCH
+  203   203                      $DGS    END_BLK, ??eb05_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  204   204                      $DGS    AUX_END, 021H
+  205   205                      $DGS    BEG_BLK, ??bb06_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  206   206                      $DGS    AUX_BEG, 023H,          00H,    0BEH
+  207   207                      $DGS    BEG_BLK, ??bb07_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  208   208                      $DGS    AUX_BEG, 02FH,          00H,    0CAH
+  209   209                      $DGS    END_BLK, ??eb07_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  210   210                      $DGS    AUX_END, 032H
+  211   211                      $DGS    END_BLK, ??eb06_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  212   212                      $DGS    AUX_END, 034H
+  213   213                      $DGS    END_BLK, ??eb03_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  214   214                      $DGS    AUX_END, 035H
+  215   215                      $DGS    END_BLK, ??eb02_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  216   216                      $DGS    AUX_END, 036H
+  217   217                      $DGS    END_BLK, ??eb01_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  218   218                      $DGS    AUX_END, 037H
+  219   219                      $DGS    BEG_BLK, ??bb08_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  220   220                      $DGS    AUX_BEG, 03BH,          00H,    0CCH
+  221   221                      $DGS    BEG_BLK, ??bb09_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  222   222                      $DGS    AUX_BEG, 03FH,          00H,    0CEH
+  223   223                      $DGS    BEG_BLK, ??bb0A_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  224   224                      $DGS    AUX_BEG, 044H,          00H,    0D4H
+  225   225                      $DGS    END_BLK, ??eb0A_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  226   226                      $DGS    AUX_END, 046H
+  227   227                      $DGS    END_BLK, ??eb09_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  228   228                      $DGS    AUX_END, 047H
+  229   229                      $DGS    BEG_BLK, ??bb0B_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  230   230                      $DGS    AUX_BEG, 054H,          00H,    0D8H
+  231   231                      $DGS    END_BLK, ??eb0B_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  232   232                      $DGS    AUX_END, 057H
+  233   233                      $DGS    BEG_BLK, ??bb0C_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  234   234                      $DGS    AUX_BEG, 059H,          00H,    0DCH
+  235   235                      $DGS    END_BLK, ??eb0C_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  236   236                      $DGS    AUX_END, 05CH
+  237   237                      $DGS    BEG_BLK, ??bb0D_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  238   238                      $DGS    AUX_BEG, 05EH,          00H,    0E0H
+  239   239                      $DGS    END_BLK, ??eb0D_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  240   240                      $DGS    AUX_END, 060H
+  241   241                      $DGS    BEG_BLK, ??bb0E_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  242   242                      $DGS    AUX_BEG, 062H,          00H,    0E6H
+  243   243                      $DGS    END_BLK, ??eb0E_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  244   244                      $DGS    AUX_END, 064H
+  245   245                      $DGS    END_BLK, ??eb08_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  246   246                      $DGS    AUX_END, 066H
+  247   247                      $DGS    BEG_BLK, ??bb0F_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  248   248                      $DGS    AUX_BEG, 068H,          00H,    0EAH
+  249   249                      $DGS    END_BLK, ??eb0F_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  250   250                      $DGS    AUX_END, 06BH
+  251   251                      $DGS    BEG_BLK, ??bb10_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  252   252                      $DGS    AUX_BEG, 06DH,          00H,    0EEH
+  253   253                      $DGS    END_BLK, ??eb10_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  254   254                      $DGS    AUX_END, 06FH
+  255   255                      $DGS    BEG_BLK, ??bb11_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  256   256                      $DGS    AUX_BEG, 071H,          00H,    0F2H
+  257   257                      $DGS    END_BLK, ??eb11_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  258   258                      $DGS    AUX_END, 073H
+  259   259                      $DGS    BEG_BLK, ??bb12_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  260   260                      $DGS    AUX_BEG, 077H,          00H,    0F4H
+  261   261                      $DGS    BEG_BLK, ??bb13_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  262   262                      $DGS    AUX_BEG, 079H,          00H,    0F8H
+  263   263                      $DGS    END_BLK, ??eb13_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  264   264                      $DGS    AUX_END, 07DH
+  265   265                      $DGS    BEG_BLK, ??bb14_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  266   266                      $DGS    AUX_BEG, 07FH,          00H,    0FEH
+  267   267                      $DGS    END_BLK, ??eb14_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  268   268                      $DGS    AUX_END, 082H
+  269   269                      $DGS    END_BLK, ??eb12_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  270   270                      $DGS    AUX_END, 083H
+  271   271                      $DGS    BEG_BLK, ??bb15_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  272   272                      $DGS    AUX_BEG, 085H,          00H,    0102H
+  273   273                      $DGS    END_BLK, ??eb15_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  274   274                      $DGS    AUX_END, 089H
+  275   275                      $DGS    BEG_BLK, ??bb16_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  276   276                      $DGS    AUX_BEG, 08BH,          00H,    0106H
+  277   277                      $DGS    END_BLK, ??eb16_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  278   278                      $DGS    AUX_END, 08EH
+  279   279                      $DGS    BEG_BLK, ??bb17_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  280   280                      $DGS    AUX_BEG, 090H,          00H,    010AH
+  281   281                      $DGS    END_BLK, ??eb17_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  282   282                      $DGS    AUX_END, 095H
+  283   283                      $DGS    BEG_BLK, ??bb18_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  284   284                      $DGS    AUX_BEG, 097H,          00H,    010EH
+  285   285                      $DGS    END_BLK, ??eb18_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  286   286                      $DGS    AUX_END, 099H
+  287   287                      $DGS    BEG_BLK, ??bb19_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  288   288                      $DGS    AUX_BEG, 09DH,          00H,    0110H
+  289   289                      $DGS    BEG_BLK, ??bb1A_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  290   290                      $DGS    AUX_BEG, 0A0H,          00H,    0112H
+  291   291                      $DGS    BEG_BLK, ??bb1B_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  292   292                      $DGS    AUX_BEG, 0A2H,          00H,    011AH
+  293   293                      $DGS    END_BLK, ??eb1B_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  294   294                      $DGS    AUX_END, 0A5H
+  295   295                      $DGS    END_BLK, ??eb1A_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  296   296                      $DGS    AUX_END, 0A7H
+  297   297                      $DGS    END_BLK, ??eb19_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  298   298                      $DGS    AUX_END, 0A8H
+  299   299                      $DGS    BEG_BLK, ??bb1C_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  300   300                      $DGS    AUX_BEG, 0AAH,          00H,    011EH
+  301   301                      $DGS    END_BLK, ??eb1C_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  302   302                      $DGS    AUX_END, 0ADH
+  303   303                      $DGS    BEG_BLK, ??bb1D_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  304   304                      $DGS    AUX_BEG, 0AFH,          00H,    0122H
+  305   305                      $DGS    END_BLK, ??eb1D_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  306   306                      $DGS    AUX_END, 0B4H
+  307   307                      $DGS    BEG_BLK, ??bb1E_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  308   308                      $DGS    AUX_BEG, 0B6H,          00H,    0126H
+  309   309                      $DGS    END_BLK, ??eb1E_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  310   310                      $DGS    AUX_END, 0B8H
+  311   311                      $DGS    BEG_BLK, ??bb1F_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  312   312                      $DGS    AUX_BEG, 0BCH,          00H,    0128H
+  313   313                      $DGS    BEG_BLK, ??bb20_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  314   314                      $DGS    AUX_BEG, 0BFH,          00H,    012EH
+  315   315                      $DGS    END_BLK, ??eb20_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  316   316                      $DGS    AUX_END, 0C3H
+  317   317                      $DGS    END_BLK, ??eb1F_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  318   318                      $DGS    AUX_END, 0C4H
+  319   319                      $DGS    BEG_BLK, ??bb21_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  320   320                      $DGS    AUX_BEG, 0C6H,          00H,    0132H
+  321   321                      $DGS    END_BLK, ??eb21_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  322   322                      $DGS    AUX_END, 0CAH
+  323   323                      $DGS    BEG_BLK, ??bb22_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  324   324                      $DGS    AUX_BEG, 0CCH,          00H,    0136H
+  325   325                      $DGS    END_BLK, ??eb22_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  326   326                      $DGS    AUX_END, 0CFH
+  327   327                      $DGS    BEG_BLK, ??bb23_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  328   328                      $DGS    AUX_BEG, 0D1H,          00H,    013AH
+  329   329                      $DGS    END_BLK, ??eb23_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  330   330                      $DGS    AUX_END, 0D6H
+  331   331                      $DGS    BEG_BLK, ??bb24_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  332   332                      $DGS    AUX_BEG, 0D8H,          00H,    013EH
+  333   333                      $DGS    END_BLK, ??eb24_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  334   334                      $DGS    AUX_END, 0DAH
+  335   335                      $DGS    BEG_BLK, ??bb25_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  336   336                      $DGS    AUX_BEG, 0DFH,          00H,    0142H
+  337   337                      $DGS    END_BLK, ??eb25_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  338   338                      $DGS    AUX_END, 0E1H
+  339   339                      $DGS    BEG_BLK, ??bb26_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  340   340                      $DGS    AUX_BEG, 0E5H,          00H,    0144H
+  341   341                      $DGS    BEG_BLK, ??bb27_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  342   342                      $DGS    AUX_BEG, 0E7H,          00H,    0146H
+  343   343                      $DGS    BEG_BLK, ??bb28_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  344   344                      $DGS    AUX_BEG, 0E9H,          00H,    0150H
+  345   345                      $DGS    END_BLK, ??eb28_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  346   346                      $DGS    AUX_END, 0ECH
+  347   347                      $DGS    END_BLK, ??eb27_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  348   348                      $DGS    AUX_END, 0EDH
+  349   349                      $DGS    END_BLK, ??eb26_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  350   350                      $DGS    AUX_END, 0EEH
+  351   351                      $DGS    END_BLK, ??eb00_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  352   352                      $DGS    AUX_END, 0F2H
+  353   353                      $DGS    BEG_BLK, ??bb29_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  354   354                      $DGS    AUX_BEG, 0F7H,          00H,    0154H
+  355   355                      $DGS    END_BLK, ??eb29_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  356   356                      $DGS    AUX_END, 0FAH
+  357   357                      $DGS    BEG_BLK, ??bb2A_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  358   358                      $DGS    AUX_BEG, 0FEH,          00H,    00H
+  359   359                      $DGS    END_BLK, ??eb2A_KeyDecide,      U,      U,      00H,    064H,   01H,    00H
+  360   360                      $DGS    AUX_END, 0100H
+  361   361                      $DGS    END_FUN, ??ef_KeyDecide,        U,      U,      00H,    065H,   01H,    00H
+  362   362                      $DGS    AUX_END, 0101H
+  363   363                      $DGS    GLV_SYM, _gu8_KeyControlStep,   U,      U,      0CH,    026H,   00H,    00H
+  364   364                      $DGS    GLV_SYM, _gu16_ShortKeyArray,   U,      U,      09H,    026H,   01H,    00H
+  365   365                      $DGS    AUX_STR, 06AH,          00H,    02H,    00H,    00H,    00H,    00H,    00H
+  366   366                      $DGS    GLV_SYM, _gu16_TimerKeyDecide,  U,      U,      0EH,    026H,   00H,    00H
+  367   367                      $DGS    GLV_SYM, _gu8_TimerKeyProhibit, U,      U,      0CH,    026H,   00H,    00H
+  368   368                      $DGS    GLV_SYM, _gu8_TimerKeyOnBreak,  U,      U,      0CH,    026H,   00H,    00H
+  369   369                      $DGS    GLV_SYM, _F_VeryLongKey_Rejection,      U,      U,      0CH,    026H,   00H,    00H
+  370   370                      $DGS    GLV_SYM, _F_ShortKeyProhibit,   U,      U,      0CH,    026H,   00H,    00H
+  371   371                      $DGS    GLV_SYM, _gu8_TimerEffluentKey, U,      U,      0CH,    026H,   00H,    00H
+  372   372                      $DGS    GLV_SYM, _KeyArray,     U,      U,      08H,    026H,   01H,    03H
+  373   373                      $DGS    AUX_STR, 071H,          00H,    050H,   04H,    00H,    00H,    00H,    00H
+  374   374                      $DGS    GLV_SYM, _gu8_DigitalInput3,    U,      U,      08H,    02H,    01H,    00H
+  375   375                      $DGS    AUX_STR, 039H,          00H,    06H,    00H,    00H,    00H,    00H,    00H
+  376   376                      $DGS    GLV_SYM, _gu8_KeyOnBreak,       U,      U,      0CH,    02H,    00H,    00H
+  377   377                      $DGS    GLV_SYM, _F_CommunicationCMD,   U,      U,      0CH,    02H,    00H,    00H
+  378   378                      
+  379   379                              EXTRN   _gu8_DigitalInput3
+  380   380                              EXTRN   _gu8_KeyOnBreak
+  381   381                              EXTRN   _F_CommunicationCMD
+  382   382                              PUBLIC  _gu8_KeyControlStep
+  383   383                              PUBLIC  _gu16_ShortKeyArray
+  384   384                              PUBLIC  _gu16_TimerKeyDecide
+  385   385                              PUBLIC  _gu8_TimerKeyProhibit
+  386   386                              PUBLIC  _gu8_TimerKeyOnBreak
+  387   387                              PUBLIC  _F_VeryLongKey_Rejection
+  388   388                              PUBLIC  _F_ShortKeyProhibit
+  389   389                              PUBLIC  _gu8_TimerEffluentKey
+  390   390                              PUBLIC  _KeyArray
+  391   391                              PUBLIC  _KeyControl_Initialize
+  392   392                              PUBLIC  _EffluentKey_Decide
+  393   393                              PUBLIC  _KeyDecide
+  394   394                      
+  395   395 -----                @@BITS  BSEG
+  396   396                      
+  397   397 -----                @@CNST  CSEG    MIRRORP
+  398   398                      
+  399   399 -----                @@R_INIT        CSEG    UNIT64KP
+  400   400 00000  01                    DB      01H     ; 1
+  401   401 00001  00                    DB      (1)
+  402   402 00002  0000                  DW      00H     ; 0
+  403   403 00004  0500                  DW      05H     ; 5
+  404   404 00006  01                    DB      01H     ; 1
+  405   405 00007  00                    DB      (1)
+  406   406 00008  6400                  DW      064H    ; 100
+  407   407 0000A  01                    DB      01H     ; 1
+  408   408 0000B  00                    DB      (1)
+  409   409 0000C  0000                  DW      00H     ; 0
+  410   410 0000E  00                    DB      00H     ; 0
+  411   411 0000F  00                    DB      (1)
+  412   412 00010  0000                  DW      00H     ; 0
+  413   413 00012  00                    DB      00H     ; 0
+  414   414 00013  00                    DB      00H     ; 0
+  415   415 00014  02                    DB      02H     ; 2
+  416   416 00015  00                    DB      (1)
+  417   417 00016  0100                  DW      01H     ; 1
+  418   418 00018  0500                  DW      05H     ; 5
+  419   419 0001A  01                    DB      01H     ; 1
+  420   420 0001B  00                    DB      (1)
+  421   421 0001C  6400                  DW      064H    ; 100
+  422   422 0001E  01                    DB      01H     ; 1
+  423   423 0001F  00                    DB      (1)
+  424   424 00020  0000                  DW      00H     ; 0
+  425   425 00022  00                    DB      00H     ; 0
+  426   426 00023  00                    DB      (1)
+  427   427 00024  0000                  DW      00H     ; 0
+  428   428 00026  00                    DB      00H     ; 0
+  429   429 00027  00                    DB      00H     ; 0
+  430   430 00028  04                    DB      04H     ; 4
+  431   431 00029  00                    DB      (1)
+  432   432 0002A  0200                  DW      02H     ; 2
+  433   433 0002C  0500                  DW      05H     ; 5
+  434   434 0002E  01                    DB      01H     ; 1
+  435   435 0002F  00                    DB      (1)
+  436   436 00030  6400                  DW      064H    ; 100
+  437   437 00032  01                    DB      01H     ; 1
+  438   438 00033  00                    DB      (1)
+  439   439 00034  0000                  DW      00H     ; 0
+  440   440 00036  00                    DB      00H     ; 0
+  441   441 00037  00                    DB      (1)
+  442   442 00038  0000                  DW      00H     ; 0
+  443   443 0003A  00                    DB      00H     ; 0
+  444   444 0003B  00                    DB      00H     ; 0
+  445   445 0003C  08                    DB      08H     ; 8
+  446   446 0003D  00                    DB      (1)
+  447   447 0003E  0300                  DW      03H     ; 3
+  448   448 00040  0500                  DW      05H     ; 5
+  449   449 00042  01                    DB      01H     ; 1
+  450   450 00043  00                    DB      (1)
+  451   451 00044  6400                  DW      064H    ; 100
+  452   452 00046  01                    DB      01H     ; 1
+  453   453 00047  00                    DB      (1)
+  454   454 00048  0000                  DW      00H     ; 0
+  455   455 0004A  00                    DB      00H     ; 0
+  456   456 0004B  00                    DB      (1)
+  457   457 0004C  0000                  DW      00H     ; 0
+  458   458 0004E  00                    DB      00H     ; 0
+  459   459 0004F  00                    DB      00H     ; 0
+  460   460 00050  00                    DB      00H     ; 0
+  461   461 00051  00                    DB      00H     ; 0
+  462   462 00052  0000                  DW      00H     ; 0
+  463   463                      
+  464   464 -----                @@INIT  DSEG    BASEP
+  465   465 00000                _KeyArray:      DS      (80)
+  466   466 00050                ?L0005: DS      (1)
+  467   467 00051                ?L0023: DS      (1)
+  468   468 00052                ?L0024: DS      (2)
+  469   469                      
+  470   470 -----                @@DATA  DSEG    BASEP
+  471   471 00000                _gu8_KeyControlStep:    DS      (1)
+  472   472 00001                        DS      (1)
+  473   473 00002                _gu16_ShortKeyArray:    DS      (2)
+  474   474 00004                _gu16_TimerKeyDecide:   DS      (2)
+  475   475 00006                _gu8_TimerKeyProhibit:  DS      (1)
+  476   476 00007                _gu8_TimerKeyOnBreak:   DS      (1)
+  477   477 00008                _F_VeryLongKey_Rejection:       DS      (1)
+  478   478 00009                _F_ShortKeyProhibit:    DS      (1)
+  479   479 0000A                _gu8_TimerEffluentKey:  DS      (1)
+  480   480 0000B                        DS      (1)
+  481   481                      
+  482   482 -----                @@R_INIS        CSEG    UNIT64KP
+  483   483                      
+  484   484 -----                @@INIS  DSEG    SADDRP
+  485   485                      
+  486   486 -----                @@DATS  DSEG    SADDRP
+  487   487                      
+  488   488 -----                @@CNSTL CSEG    PAGE64KP
+  489   489                      
+  490   490 -----                @@RLINIT        CSEG    UNIT64KP
+  491   491                      
+  492   492 -----                @@INITL DSEG    UNIT64KP
+  493   493                      
+  494   494 -----                @@DATAL DSEG    UNIT64KP
+  495   495                      
+  496   496 -----                @@CALT  CSEG    CALLT0
+  497   497                      
+  498   498                      ; line    72
+  499   499                      ; line    73
+  500   500                      ; line    74
+  501   501                      ; line    75
+  502   502                      ; line    76
+  503   503                      ; line    77
+  504   504                      ; line    78
+  505   505                      ; line   161
+  506   506                      ; line   166
+  507   507                      ; line   167
+  508   508                      ; line   211
+  509   509                      ; line   411
+  510   510                      ; line   412
+  511   511                      ; line   413
+  512   512                      ; line    47
+  513   513                      ; line    48
+  514   514                      ; line   386
+  515   515                      ; line   387
+  516   516                      ; line   388
+  517   517                      ; line   389
+  518   518                      ; line   390
+  519   519                      ; line   391
+  520   520                      ; line   392
+  521   521                      ; line   393
+  522   522                      ; line   394
+  523   523                      ; line   395
+  524   524                      ; line     7
+  525   525                      ; line     8
+  526   526                      ; line     9
+  527   527                      ; line    10
+  528   528                      ; line    11
+  529   529                      ; line    12
+  530   530                      ; line    13
+  531   531                      ; line    14
+  532   532                      ; line    15
+  533   533                      ; line    16
+  534   534                      ; line    17
+  535   535                      ; line    28
+  536   536                      ; line    40
+  537   537                      ; line    60
+  538   538                      ; line    66
+  539   539                      ; line    73
+  540   540                      ; line   112
+  541   541                      ; line   160
+  542   542                      ; line   176
+  543   543                      ; line   186
+  544   544                      ; line   192
+  545   545                      ; line   199
+  546   546                      ; line   206
+  547   547                      ; line   218
+  548   548                      ; line   230
+  549   549                      ; line   236
+  550   550                      ; line   256
+  551   551                      ; line   266
+  552   552                      ; line   273
+  553   553                      ; line   279
+  554   554                      ; line   287
+  555   555                      ; line   296
+  556   556                      ; line   304
+  557   557                      ; line    18
+  558   558                      ; line    42
+  559   559                      ; line    46
+  560   560                      ; line   129
+  561   561                      ; line   220
+  562   562                      ; line   247
+  563   563                      ; line   274
+  564   564                      ; line   301
+  565   565                      ; line   302
+  566   566                      ; line   304
+  567   567                      ; line   305
+  568   568                      ; line   307
+  569   569                      ; line   309
+  570   570                      ; line   310
+  571   571                      ; line   311
+  572   572                      ; line   313
+  573   573                      ; line   315
+  574   574                      ; line   316
+  575   575                      ; line   317
+  576   576                      ; line   318
+  577   577                      ; line   320
+  578   578                      ; line   321
+  579   579                      ; line   323
+  580   580                      ; line   364
+  581   581                      ; line   365
+  582   582                      ; line   370
+  583   583                      ; line   375
+  584   584                      ; line   376
+  585   585                      ; line   377
+  586   586                      ; line   378
+  587   587                      ; line   379
+  588   588                      ; line   380
+  589   589                      ; line   382
+  590   590                      ; line    60
+  591   591                      ; line    62
+  592   592                      ; line    63
+  593   593                      ; line    68
+  594   594                      ; line    69
+  595   595                      ; line    47
+  596   596                      ; line    64
+  597   597                      ; line    67
+  598   598                      ; line    72
+  599   599                      ; line    73
+  600   600                      ; line    74
+  601   601                      ; line    79
+  602   602                      ; line    84
+  603   603                      ; line    85
+  604   604                      ; line    86
+  605   605                      ; line    47
+  606   606                      ; line    49
+  607   607                      ; line   115
+  608   608                      ; line   116
+  609   609                      ; line   118
+  610   610                      ; line   119
+  611   611                      ; line   120
+  612   612                      ; line   121
+  613   613                      ; line   127
+  614   614                      ; line   130
+  615   615                      ; line   131
+  616   616                      ; line   132
+  617   617                      ; line   133
+  618   618                      ; line    71
+  619   619                      ; line    73
+  620   620                      ; line    78
+  621   621                      ; line    79
+  622   622                      ; line    48
+  623   623                      ; line    49
+  624   624                      ; line    50
+  625   625                      ; line    51
+  626   626                      ; line    42
+  627   627                      ; line    43
+  628   628                      ; line    44
+  629   629                      ; line    45
+  630   630                      ; line    47
+  631   631                      ; line    48
+  632   632                      ; line    50
+  633   633                      ; line    51
+  634   634                      ; line    57
+  635   635                      ; line    58
+  636   636                      ; line    59
+  637   637                      ; line    60
+  638   638                      ; line    61
+  639   639                      ; line    62
+  640   640                      ; line    63
+  641   641                      ; line    64
+  642   642                      ; line    65
+  643   643                      ; line    66
+  644   644                      ; line    67
+  645   645                      ; line    65
+  646   646                      ; line    66
+  647   647                      ; line    72
+  648   648                      ; line    73
+  649   649                      ; line    74
+  650   650                      ; line    75
+  651   651                      ; line    79
+  652   652                      ; line    80
+  653   653                      ; line    81
+  654   654                      ; line    83
+  655   655                      ; line    84
+  656   656                      ; line    86
+  657   657                      ; line    87
+  658   658                      ; line    89
+  659   659                      ; line    91
+  660   660                      ; line    92
+  661   661                      ; line    94
+  662   662                      ; line    95
+  663   663                      ; line    96
+  664   664                      ; line    98
+  665   665                      ; line   100
+  666   666                      ; line   101
+  667   667                      ; line   102
+  668   668                      ; line   103
+  669   669                      ; line   104
+  670   670                      ; line   105
+  671   671                      ; line   106
+  672   672                      ; line   107
+  673   673                      ; line   108
+  674   674                      ; line   109
+  675   675                      ; line   110
+  676   676                      ; line   111
+  677   677                      ; line   112
+  678   678                      ; line   113
+  679   679                      ; line   114
+  680   680                      ; line   115
+  681   681                      ; line   116
+  682   682                      ; line   117
+  683   683                      ; line   118
+  684   684                      ; line   119
+  685   685                      ; line   120
+  686   686                      ; line   121
+  687   687                      ; line   122
+  688   688                      ; line   123
+  689   689                      ; line   124
+  690   690                      ; line   125
+  691   691                      ; line   126
+  692   692                      ; line   127
+  693   693                      ; line   128
+  694   694                      ; line   129
+  695   695                      ; line   130
+  696   696                      ; line   131
+  697   697                      ; line   132
+  698   698                      ; line   133
+  699   699                      ; line   134
+  700   700                      ; line   135
+  701   701                      ; line   136
+  702   702                      ; line   139
+  703   703                      ; line   141
+  704   704                      ; line   142
+  705   705                      ; line   145
+  706   706                      ; line   149
+  707   707                      ; line   150
+  708   708                      ; line   151
+  709   709                      ; line   152
+  710   710                      ; line   153
+  711   711                      ; line   154
+  712   712                      ; line   155
+  713   713                      ; line   156
+  714   714                      ; line   157
+  715   715                      ; line   158
+  716   716                      ; line   159
+  717   717                      ; line   160
+  718   718                      ; line   162
+  719   719                      ; line   166
+  720   720                      ; line   208
+  721   721                      ; line   209
+  722   722                      ; line   211
+  723   723                      ; line   212
+  724   724                      ; line   213
+  725   725                      ; line   214
+  726   726                      ; line   215
+  727   727                      ; line   216
+  728   728                      ; line   217
+  729   729                      ; line   218
+  730   730                      ; line   219
+  731   731                      ; line   220
+  732   732                      ; line   221
+  733   733                      ; line   222
+  734   734                      ; line    42
+  735   735                      ; line    47
+  736   736                      ; line    48
+  737   737                      ; line   306
+  738   738                      ; line   308
+  739   739                      ; line   310
+  740   740                      ; line   311
+  741   741                      ; line   312
+  742   742                      ; line   314
+  743   743                      ; line   315
+  744   744                      ; line   319
+  745   745                      ; line   320
+  746   746                      ; line   321
+  747   747                      ; line   325
+  748   748                      ; line   326
+  749   749                      ; line   327
+  750   750                      ; line   330
+  751   751                      ; line   331
+  752   752                      ; line   335
+  753   753                      ; line   337
+  754   754                      ; line   338
+  755   755                      ; line   339
+  756   756                      ; line   340
+  757   757                      ; line   341
+  758   758                      ; line   343
+  759   759                      ; line   345
+  760   760                      ; line   347
+  761   761                      ; line   348
+  762   762                      ; line   349
+  763   763                      ; line   350
+  764   764                      ; line   351
+  765   765                      ; line    13
+  766   766                      ; line    14
+  767   767                      ; line    13
+  768   768                      ; line    14
+  769   769                      ; line    15
+  770   770                      ; line    17
+  771   771                      ; line    18
+  772   772                      ; line    19
+  773   773                      ; line    20
+  774   774                      ; line    21
+  775   775                      ; line    22
+  776   776                      ; line    23
+  777   777                      ; line    24
+  778   778                      ; line    25
+  779   779                      ; line    26
+  780   780                      ; line    27
+  781   781                      ; line    29
+  782   782                      ; line    30
+  783   783                      ; line    31
+  784   784                      ; line    32
+  785   785                      ; line    33
+  786   786                      ; line    34
+  787   787                      ; line    35
+  788   788                      ; line    36
+  789   789                      ; line    37
+  790   790                      ; line    39
+  791   791                      ; line    40
+  792   792                      ; line    41
+  793   793                      ; line    42
+  794   794                      ; line    43
+  795   795                      ; line    44
+  796   796                      ; line    45
+  797   797                      ; line    46
+  798   798                      ; line    47
+  799   799                      ; line    20
+  800   800                      ; line    25
+  801   801                      ; line    29
+  802   802                      ; line    30
+  803   803                      ; line    31
+  804   804                      ; line    32
+  805   805                      ; line    33
+  806   806                      ; line    34
+  807   807                      ; line    35
+  808   808                      ; line    36
+  809   809                      ; line    37
+  810   810                      ; line    38
+  811   811                      ; line    39
+  812   812                      ; line    40
+  813   813                      ; line    41
+  814   814                      ; line    42
+  815   815                      ; line    43
+  816   816                      ; line    45
+  817   817                      ; line    46
+  818   818                      ; line    51
+  819   819                      ; line    52
+  820   820                      ; line    54
+  821   821                      ; line    59
+  822   822                      ; line    60
+  823   823                      ; line    65
+  824   824                      ; line    66
+  825   825                      ; line    67
+  826   826                      ; line    68
+  827   827                      ; line    70
+  828   828                      ; line    71
+  829   829                      ; line    72
+  830   830                      ; line    73
+  831   831                      ; line    74
+  832   832                      ; line    75
+  833   833                      ; line    76
+  834   834                      ; line    78
+  835   835                      ; line    83
+  836   836                      ; line    84
+  837   837                      ; line    89
+  838   838                      ; line    90
+  839   839                      ; line    92
+  840   840                      ; line    93
+  841   841                      ; line    94
+  842   842                      ; line    95
+  843   843                      ; line    96
+  844   844                      ; line    97
+  845   845                      ; line    98
+  846   846                      ; line   100
+  847   847                      ; line   105
+  848   848                      ; line   106
+  849   849                      ; line   111
+  850   850                      ; line   112
+  851   851                      ; line    16
+  852   852                      ; line    18
+  853   853                      ; line    19
+  854   854                      ; line    20
+  855   855                      ; line    21
+  856   856                      ; line    22
+  857   857                      ; line    23
+  858   858                      ; line    24
+  859   859                      ; line    25
+  860   860                      ; line    26
+  861   861                      ; line    27
+  862   862                      ; line    28
+  863   863                      ; line    29
+  864   864                      ; line    30
+  865   865                      ; line    31
+  866   866                      ; line    32
+  867   867                      ; line    33
+  868   868                      ; line    35
+  869   869                      ; line    37
+  870   870                      ; line    38
+  871   871                      ; line    39
+  872   872                      ; line    40
+  873   873                      ; line    43
+  874   874                      ; line    45
+  875   875                      ; line    46
+  876   876                      ; line    47
+  877   877                      ; line    48
+  878   878                      ; line    49
+  879   879                      ; line    50
+  880   880                      ; line    51
+  881   881                      ; line    52
+  882   882                      ; line    53
+  883   883                      ; line    54
+  884   884                      ; line    55
+  885   885                      ; line    56
+  886   886                      ; line    57
+  887   887                      ; line    58
+  888   888                      ; line    59
+  889   889                      ; line    60
+  890   890                      ; line    62
+  891   891                      ; line    64
+  892   892                      ; line    65
+  893   893                      ; line    66
+  894   894                      ; line    69
+  895   895                      ; line    71
+  896   896                      ; line    72
+  897   897                      ; line    73
+  898   898                      ; line    74
+  899   899                      ; line    75
+  900   900                      ; line    76
+  901   901                      ; line    77
+  902   902                      ; line    78
+  903   903                      ; line    79
+  904   904                      ; line    80
+  905   905                      ; line    81
+  906   906                      ; line    82
+  907   907                      ; line    83
+  908   908                      ; line    84
+  909   909                      ; line    85
+  910   910                      ; line    86
+  911   911                      ; line    88
+  912   912                      ; line    90
+  913   913                      ; line    91
+  914   914                      ; line    92
+  915   915                      ; line    13
+  916   916                      ; line    21
+  917   917                      ; line    22
+  918   918                      ; line    23
+  919   919                      ; line    24
+  920   920                      ; line    25
+  921   921                      ; line    26
+  922   922                      ; line    27
+  923   923                      ; line    28
+  924   924                      ; line    29
+  925   925                      ; line    30
+  926   926                      ; line    31
+  927   927                      ; line    32
+  928   928                      ; line    33
+  929   929                      ; line    34
+  930   930                      ; line    35
+  931   931                      ; line    36
+  932   932                      ; line    37
+  933   933                      ; line    38
+  934   934                      ; line    39
+  935   935                      ; line    40
+  936   936                      ; line    41
+  937   937                      ; line    42
+  938   938                      ; line    43
+  939   939                      ; line    44
+  940   940                      ; line    45
+  941   941                      ; line    46
+  942   942                      ; line    47
+  943   943                      ; line    48
+  944   944                      ; line    49
+  945   945                      ; line    50
+  946   946                      ; line    51
+  947   947                      ; line    52
+  948   948                      ; line    53
+  949   949                      ; line    54
+  950   950                      ; line    55
+  951   951                      ; line    56
+  952   952                      ; line    57
+  953   953                      ; line    58
+  954   954                      ; line    59
+  955   955                      ; line    60
+  956   956                      ; line    61
+  957   957                      ; line    62
+  958   958                      ; line    63
+  959   959                      ; line    64
+  960   960                      ; line    65
+  961   961                      ; line    67
+  962   962                      ; line    68
+  963   963                      ; line    69
+  964   964                      ; line    70
+  965   965                      ; line    72
+  966   966                      ; line    73
+  967   967                      ; line    74
+  968   968                      ; line    75
+  969   969                      ; line    21
+  970   970                      ; line    54
+  971   971                      ; line    56
+  972   972                      ; line    57
+  973   973                      ; line    58
+  974   974                      ; line    59
+  975   975                      ; line    76
+  976   976                      
+  977   977 -----                @@CODEL CSEG
+  978   978 00000                _KeyControl_Initialize:
+  979   979                      $DGL    1,128
+  980   980 00000                ??bf_KeyControl_Initialize:
+  981   981                      ; line    77
+  982   982                      $DGL    0,2
+  983   983 00000 RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+  984   984                      ; line    78
+  985   985                      $DGL    0,3
+  986   986 00003                ??ef_KeyControl_Initialize:
+  987   987 00003  D7                    ret                                                     ;[INF] 1, 6
+  988   988 00004                ??ee_KeyControl_Initialize:
+  989   989                      ; line   106
+  990   990 00004                _EffluentKey_Decide:
+  991   991                      $DGL    1,134
+  992   992 00004                ??bf_EffluentKey_Decide:
+  993   993                      ; line   107
+  994   994                      ; line   111
+  995   995                      $DGL    0,6
+  996   996 00004 RD95000                mov     x,!?L0005       ; EffluentKey_Step              ;[INF] 3, 1
+  997   997 00007  F1                    clrb    a                                               ;[INF] 1, 1
+  998   998 00008  240000                subw    ax,#00H ; 0                                     ;[INF] 3, 1
+  999   999 0000B  DD0C                  bz      $?L0007                                         ;[INF] 2, 4
+ 1000  1000 0000D  240100                subw    ax,#01H ; 1                                     ;[INF] 3, 1
+ 1001  1001 00010  DD16                  bz      $?L0008                                         ;[INF] 2, 4
+ 1002  1002 00012  240100                subw    ax,#01H ; 1                                     ;[INF] 3, 1
+ 1003  1003 00015  DD29                  bz      $?L0009                                         ;[INF] 2, 4
+ 1004  1004 00017  EF32                  br      $?L0010                                         ;[INF] 2, 3
+ 1005  1005                      ; line   112
+ 1006  1006 00019                ??bb00_EffluentKey_Decide:
+ 1007  1007                      ; line   113
+ 1008  1008 00019                ?L0007:
+ 1009  1009                      ; line   114
+ 1010  1010                      $DGL    0,9
+ 1011  1011 00019 R8F0400                mov     a,!_gu8_DigitalInput3+4                         ;[INF] 3, 1
+ 1012  1012 0001C  310507                bf      a.0,$?L0013                                     ;[INF] 3, 5
+ 1013  1013                      ; line   115
+ 1014  1014 0001F                ??bb01_EffluentKey_Decide:
+ 1015  1015                      ; line   116
+ 1016  1016                      $DGL    0,11
+ 1017  1017 0001F RE55000                oneb    !?L0005 ; EffluentKey_Step                      ;[INF] 3, 1
+ 1018  1018                      ; line   117
+ 1019  1019                      $DGL    0,12
+ 1020  1020 00022 RCF0A0032              mov     !_gu8_TimerEffluentKey,#032H    ; 50            ;[INF] 4, 1
+ 1021  1021 00026                ??eb01_EffluentKey_Decide:
+ 1022  1022                      ; line   118
+ 1023  1023 00026                ?L0013:
+ 1024  1024 00026                ?L0014:
+ 1025  1025                      ; line   119
+ 1026  1026                      $DGL    0,14
+ 1027  1027 00026  EF26                  br      $?L0006                                         ;[INF] 2, 3
+ 1028  1028                      ; line   120
+ 1029  1029 00028                ?L0008:
+ 1030  1030                      ; line   121
+ 1031  1031                      $DGL    0,16
+ 1032  1032 00028 R8F0300                mov     a,!_gu8_DigitalInput3+3                         ;[INF] 3, 1
+ 1033  1033 0002B  310303                bt      a.0,$?L0015                                     ;[INF] 3, 5
+ 1034  1034                      ; line   122
+ 1035  1035 0002E                ??bb02_EffluentKey_Decide:
+ 1036  1036                      ; line   123
+ 1037  1037                      $DGL    0,18
+ 1038  1038 0002E RF55000                clrb    !?L0005 ; EffluentKey_Step                      ;[INF] 3, 1
+ 1039  1039 00031                ??eb02_EffluentKey_Decide:
+ 1040  1040                      ; line   124
+ 1041  1041 00031                ?L0015:
+ 1042  1042 00031                ?L0016:
+ 1043  1043                      ; line   126
+ 1044  1044                      $DGL    0,21
+ 1045  1045 00031 RD50A00                cmp0    !_gu8_TimerEffluentKey                          ;[INF] 3, 1
+ 1046  1046 00034  DF08                  bnz     $?L0017                                         ;[INF] 2, 4
+ 1047  1047                      ; line   127
+ 1048  1048 00036                ??bb03_EffluentKey_Decide:
+ 1049  1049                      ; line   128
+ 1050  1050                      $DGL    0,23
+ 1051  1051 00036 RCF500002              mov     !?L0005,#02H    ; EffluentKey_Step,2            ;[INF] 4, 1
+ 1052  1052                      ; line   129
+ 1053  1053                      $DGL    0,24
+ 1054  1054 0003A R71400200              set1    !_gu16_ShortKeyArray.4                          ;[INF] 4, 2
+ 1055  1055 0003E                ??eb03_EffluentKey_Decide:
+ 1056  1056                      ; line   130
+ 1057  1057 0003E                ?L0017:
+ 1058  1058 0003E                ?L0018:
+ 1059  1059                      ; line   131
+ 1060  1060                      $DGL    0,26
+ 1061  1061 0003E  EF0E                  br      $?L0006                                         ;[INF] 2, 3
+ 1062  1062                      ; line   132
+ 1063  1063 00040                ?L0009:
+ 1064  1064                      ; line   133
+ 1065  1065                      $DGL    0,28
+ 1066  1066 00040 R8F0300                mov     a,!_gu8_DigitalInput3+3                         ;[INF] 3, 1
+ 1067  1067 00043  310303                bt      a.0,$?L0019                                     ;[INF] 3, 5
+ 1068  1068                      ; line   134
+ 1069  1069 00046                ??bb04_EffluentKey_Decide:
+ 1070  1070                      ; line   135
+ 1071  1071                      $DGL    0,30
+ 1072  1072 00046 RF55000                clrb    !?L0005 ; EffluentKey_Step                      ;[INF] 3, 1
+ 1073  1073 00049                ??eb04_EffluentKey_Decide:
+ 1074  1074                      ; line   136
+ 1075  1075 00049                ?L0019:
+ 1076  1076 00049                ?L0020:
+ 1077  1077                      ; line   137
+ 1078  1078                      $DGL    0,32
+ 1079  1079 00049  EF03                  br      $?L0006                                         ;[INF] 2, 3
+ 1080  1080                      ; line   138
+ 1081  1081 0004B                ?L0010:
+ 1082  1082                      ; line   139
+ 1083  1083                      $DGL    0,34
+ 1084  1084 0004B RF55000                clrb    !?L0005 ; EffluentKey_Step                      ;[INF] 3, 1
+ 1085  1085                      ; line   140
+ 1086  1086 0004E                ??eb00_EffluentKey_Decide:
+ 1087  1087                      ; line   141
+ 1088  1088 0004E                ?L0006:
+ 1089  1089                      ; line   142
+ 1090  1090                      $DGL    0,37
+ 1091  1091 0004E                ??ef_EffluentKey_Decide:
+ 1092  1092 0004E  D7                    ret                                                     ;[INF] 1, 6
+ 1093  1093 0004F                ??ee_EffluentKey_Decide:
+ 1094  1094                      ; line   148
+ 1095  1095 0004F                _KeyDecide:
+ 1096  1096                      $DGL    1,161
+ 1097  1097 0004F  C7                    push    hl                                              ;[INF] 1, 1
+ 1098  1098 00050  C1                    push    ax                                              ;[INF] 1, 1
+ 1099  1099 00051  C1                    push    ax                                              ;[INF] 1, 1
+ 1100  1100 00052  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+ 1101  1101 00055                ??bf_KeyDecide:
+ 1102  1102                      ; line   149
+ 1103  1103                      $DGL    0,2
+ 1104  1104 00055  CC0100                mov     [hl+1],#00H     ; i,0                           ;[INF] 3, 1
+ 1105  1105                      ; line   150
+ 1106  1106                      $DGL    0,3
+ 1107  1107 00058  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1108  1108 0005A  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1109  1109 0005B  8A03                  mov     a,[de+3]                                        ;[INF] 2, 1
+ 1110  1110 0005D  9B                    mov     [hl],a  ; data                                  ;[INF] 1, 1
+ 1111  1111                      ; line   151
+ 1112  1112                      ; line   152
+ 1113  1113                      ; line   159
+ 1114  1114                      $DGL    0,12
+ 1115  1115 0005E RD90000                mov     x,!_gu8_KeyControlStep                          ;[INF] 3, 1
+ 1116  1116 00061  F1                    clrb    a                                               ;[INF] 1, 1
+ 1117  1117 00062  240000                subw    ax,#00H ; 0                                     ;[INF] 3, 1
+ 1118  1118 00065  DD2B                  bz      $?L0026                                         ;[INF] 2, 4
+ 1119  1119 00067  240100                subw    ax,#01H ; 1                                     ;[INF] 3, 1
+ 1120  1120 0006A  61F8                  sknz                                                    ;[INF] 2, 1
+ 1121  1121 0006C  EE9300                br      $!?L0027                                        ;[INF] 3, 3
+ 1122  1122 0006F  240100                subw    ax,#01H ; 1                                     ;[INF] 3, 1
+ 1123  1123 00072  61F8                  sknz                                                    ;[INF] 2, 1
+ 1124  1124 00074  EE2B01                br      $!?L0028                                        ;[INF] 3, 3
+ 1125  1125 00077  240100                subw    ax,#01H ; 1                                     ;[INF] 3, 1
+ 1126  1126 0007A  61F8                  sknz                                                    ;[INF] 2, 1
+ 1127  1127 0007C  EEBE01                br      $!?L0029                                        ;[INF] 3, 3
+ 1128  1128 0007F  240700                subw    ax,#07H ; 7                                     ;[INF] 3, 1
+ 1129  1129 00082  61F8                  sknz                                                    ;[INF] 2, 1
+ 1130  1130 00084  EE0202                br      $!?L0030                                        ;[INF] 3, 3
+ 1131  1131 00087  24F500                subw    ax,#0F5H        ; 245                           ;[INF] 3, 1
+ 1132  1132 0008A  61F8                  sknz                                                    ;[INF] 2, 1
+ 1133  1133 0008C  EE6D02                br      $!?L0031                                        ;[INF] 3, 3
+ 1134  1134 0008F  EE9C02                br      $!?L0032                                        ;[INF] 3, 3
+ 1135  1135                      ; line   160
+ 1136  1136 00092                ??bb00_KeyDecide:
+ 1137  1137                      ; line   161
+ 1138  1138 00092                ?L0026:
+ 1139  1139                      ; line   162
+ 1140  1140                      $DGL    0,15
+ 1141  1141 00092 RCF070064              mov     !_gu8_TimerKeyOnBreak,#064H     ; 100           ;[INF] 4, 1
+ 1142  1142                      ; line   163
+ 1143  1143                      $DGL    0,16
+ 1144  1144 00096 RF50800                clrb    !_F_VeryLongKey_Rejection                       ;[INF] 3, 1
+ 1145  1145                      ; line   164
+ 1146  1146                      $DGL    0,17
+ 1147  1147 00099  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1148  1148 0009A  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1149  1149 0009B  DD62                  bz      $?L0035                                         ;[INF] 2, 4
+ 1150  1150                      ; line   165
+ 1151  1151 0009D                ??bb01_KeyDecide:
+ 1152  1152                      ; line   166
+ 1153  1153                      $DGL    0,19
+ 1154  1154 0009D  CC0100                mov     [hl+1],#00H     ; i,0                           ;[INF] 3, 1
+ 1155  1155 000A0                ?L0037:
+ 1156  1156 000A0  8C01                  mov     a,[hl+1]        ; i                             ;[INF] 2, 1
+ 1157  1157 000A2  4C04                  cmp     a,#04H  ; 4                                     ;[INF] 2, 1
+ 1158  1158 000A4  DE59                  bnc     $?L0038                                         ;[INF] 2, 4
+ 1159  1159                      ; line   167
+ 1160  1160 000A6                ??bb02_KeyDecide:
+ 1161  1161                      ; line   168
+ 1162  1162                      $DGL    0,21
+ 1163  1163 000A6  8C01                  mov     a,[hl+1]        ; i                             ;[INF] 2, 1
+ 1164  1164 000A8  5014                  mov     x,#014H ; 20                                    ;[INF] 2, 1
+ 1165  1165 000AA  D6                    mulu    x                                               ;[INF] 1, 1
+ 1166  1166 000AB  12                    movw    bc,ax                                           ;[INF] 1, 1
+ 1167  1167 000AC R490000                mov     a,_KeyArray[bc]                                 ;[INF] 3, 1
+ 1168  1168 000AF  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1169  1169 000B0  DF48                  bnz     $?L0040                                         ;[INF] 2, 4
+ 1170  1170                      ; line   169
+ 1171  1171 000B2                ??bb03_KeyDecide:
+ 1172  1172                      ; line   170
+ 1173  1173                      $DGL    0,23
+ 1174  1174 000B2 R491300                mov     a,_KeyArray+19[bc]                              ;[INF] 3, 1
+ 1175  1175 000B5  91                    dec     a                                               ;[INF] 1, 1
+ 1176  1176 000B6  DF0A                  bnz     $?L0042                                         ;[INF] 2, 4
+ 1177  1177 000B8 R490000                mov     a,_KeyArray[bc]                                 ;[INF] 3, 1
+ 1178  1178 000BB R4F0000                cmp     a,!_gu8_KeyOnBreak                              ;[INF] 3, 1
+ 1179  1179 000BE  61F8                  sknz                                                    ;[INF] 2, 1
+ 1180  1180                      ; line   171
+ 1181  1181 000C0                ??bb04_KeyDecide:
+ 1182  1182                      ; line   172
+ 1183  1183                      $DGL    0,25
+ 1184  1184 000C0  EF3D                  br      $?L0038                                         ;[INF] 2, 3
+ 1185  1185 000C2                ??eb04_KeyDecide:
+ 1186  1186                      ; line   173
+ 1187  1187 000C2                ?L0042:
+ 1188  1188 000C2                ?L0043:
+ 1189  1189                      ; line   174
+ 1190  1190                      $DGL    0,27
+ 1191  1191 000C2  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1192  1192 000C3 R9F5100                mov     !?L0023,a       ; buf                           ;[INF] 3, 1
+ 1193  1193                      ; line   175
+ 1194  1194                      $DGL    0,28
+ 1195  1195 000C6  8C01                  mov     a,[hl+1]        ; i                             ;[INF] 2, 1
+ 1196  1196 000C8  5014                  mov     x,#014H ; 20                                    ;[INF] 2, 1
+ 1197  1197 000CA  D6                    mulu    x                                               ;[INF] 1, 1
+ 1198  1198 000CB R040000                addw    ax,#loww (_KeyArray)                            ;[INF] 3, 1
+ 1199  1199 000CE RBF5200                movw    !?L0024,ax      ; KeyPnt                        ;[INF] 3, 1
+ 1200  1200                      ; line   176
+ 1201  1201                      $DGL    0,29
+ 1202  1202 000D1  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1203  1203 000D2  AA04                  movw    ax,[de+4]                                       ;[INF] 2, 1
+ 1204  1204 000D4  6168                  or      a,x                                             ;[INF] 2, 1
+ 1205  1205 000D6  DD0D                  bz      $?L0044                                         ;[INF] 2, 4
+ 1206  1206                      ; line   177
+ 1207  1207 000D8                ??bb05_KeyDecide:
+ 1208  1208                      ; line   178
+ 1209  1209                      $DGL    0,31
+ 1210  1210 000D8 RE50000                oneb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1211  1211                      ; line   179
+ 1212  1212                      $DGL    0,32
+ 1213  1213 000DB REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1214  1214 000DE  AA04                  movw    ax,[de+4]                                       ;[INF] 2, 1
+ 1215  1215 000E0 RBF0400                movw    !_gu16_TimerKeyDecide,ax                        ;[INF] 3, 1
+ 1216  1216 000E3                ??eb05_KeyDecide:
+ 1217  1217                      ; line   181
+ 1218  1218                      $DGL    0,34
+ 1219  1219 000E3  EF15                  br      $?L0045                                         ;[INF] 2, 3
+ 1220  1220 000E5                ?L0044:
+ 1221  1221                      ; line   182
+ 1222  1222 000E5                ??bb06_KeyDecide:
+ 1223  1223                      ; line   193
+ 1224  1224                      $DGL    0,46
+ 1225  1225 000E5 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1226  1226 000E8  AA08                  movw    ax,[de+8]                                       ;[INF] 2, 1
+ 1227  1227 000EA  6168                  or      a,x                                             ;[INF] 2, 1
+ 1228  1228 000EC  DD0C                  bz      $?L0046                                         ;[INF] 2, 4
+ 1229  1229                      ; line   194
+ 1230  1230 000EE                ??bb07_KeyDecide:
+ 1231  1231                      ; line   195
+ 1232  1232                      $DGL    0,48
+ 1233  1233 000EE RCF000002              mov     !_gu8_KeyControlStep,#02H       ; 2             ;[INF] 4, 1
+ 1234  1234                      ; line   196
+ 1235  1235                      $DGL    0,49
+ 1236  1236 000F2 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1237  1237 000F5  AA08                  movw    ax,[de+8]                                       ;[INF] 2, 1
+ 1238  1238 000F7 RBF0400                movw    !_gu16_TimerKeyDecide,ax                        ;[INF] 3, 1
+ 1239  1239 000FA                ??eb07_KeyDecide:
+ 1240  1240                      ; line   197
+ 1241  1241 000FA                ?L0046:
+ 1242  1242 000FA                ?L0047:
+ 1243  1243 000FA                ??eb06_KeyDecide:
+ 1244  1244                      ; line   199
+ 1245  1245 000FA                ?L0045:
+ 1246  1246 000FA                ??eb03_KeyDecide:
+ 1247  1247                      ; line   200
+ 1248  1248 000FA                ?L0040:
+ 1249  1249 000FA                ?L0041:
+ 1250  1250 000FA                ??eb02_KeyDecide:
+ 1251  1251                      ; line   201
+ 1252  1252                      $DGL    0,54
+ 1253  1253 000FA                ?L0039:
+ 1254  1254 000FA  615901                inc     [hl+1]  ; i                                     ;[INF] 3, 2
+ 1255  1255 000FD  EFA1                  br      $?L0037                                         ;[INF] 2, 3
+ 1256  1256 000FF                ?L0038:
+ 1257  1257 000FF                ??eb01_KeyDecide:
+ 1258  1258                      ; line   202
+ 1259  1259 000FF                ?L0035:
+ 1260  1260 000FF                ?L0036:
+ 1261  1261                      ; line   203
+ 1262  1262                      $DGL    0,56
+ 1263  1263 000FF  EE2C02                br      $!?L0025                                        ;[INF] 3, 3
+ 1264  1264                      ; line   204
+ 1265  1265 00102                ?L0027:
+ 1266  1266                      ; line   205
+ 1267  1267                      $DGL    0,58
+ 1268  1268 00102  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1269  1269 00103 R420400                cmpw    ax,!_gu16_TimerKeyDecide                        ;[INF] 3, 1
+ 1270  1270 00106  61E8                  skz                                                     ;[INF] 2, 1
+ 1271  1271 00108  EE7D00                br      $!?L0048                                        ;[INF] 3, 3
+ 1272  1272                      ; line   206
+ 1273  1273 0010B                ??bb08_KeyDecide:
+ 1274  1274                      ; line   209
+ 1275  1275                      $DGL    0,62
+ 1276  1276 0010B RD50900                cmp0    !_F_ShortKeyProhibit                            ;[INF] 3, 1
+ 1277  1277 0010E  DF3E                  bnz     $?L0050                                         ;[INF] 2, 4
+ 1278  1278 00110 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1279  1279 00113  8A06                  mov     a,[de+6]                                        ;[INF] 2, 1
+ 1280  1280 00115  91                    dec     a                                               ;[INF] 1, 1
+ 1281  1281 00116  DD12                  bz      $?L0052                                         ;[INF] 2, 4
+ 1282  1282 00118 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1283  1283 0011B  8A06                  mov     a,[de+6]                                        ;[INF] 2, 1
+ 1284  1284 0011D  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1285  1285 0011E  DF2E                  bnz     $?L0050                                         ;[INF] 2, 4
+ 1286  1286 00120  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1287  1287 00122  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1288  1288 00123  8A05                  mov     a,[de+5]                                        ;[INF] 2, 1
+ 1289  1289 00125 R4F5100                cmp     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1290  1290 00128  DF24                  bnz     $?L0050                                         ;[INF] 2, 4
+ 1291  1291 0012A                ?L0052:
+ 1292  1292                      ; line   210
+ 1293  1293 0012A                ??bb09_KeyDecide:
+ 1294  1294                      ; line   211
+ 1295  1295                      $DGL    0,64
+ 1296  1296 0012A REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1297  1297 0012D  8A02                  mov     a,[de+2]                                        ;[INF] 2, 1
+ 1298  1298 0012F  72                    mov     c,a                                             ;[INF] 1, 1
+ 1299  1299 00130  E6                    onew    ax                                              ;[INF] 1, 1
+ 1300  1300 00131  D2                    cmp0    c                                               ;[INF] 1, 1
+ 1301  1301 00132  DD04                  bz      $?L0053                                         ;[INF] 2, 4
+ 1302  1302 00134                ?L0054:
+ 1303  1303 00134  01                    addw    ax,ax                                           ;[INF] 1, 1
+ 1304  1304 00135  92                    dec     c                                               ;[INF] 1, 1
+ 1305  1305 00136  DFFC                  bnz     $?L0054                                         ;[INF] 2, 4
+ 1306  1306 00138                ?L0053:
+ 1307  1307 00138 RBF0200                movw    !_gu16_ShortKeyArray,ax                         ;[INF] 3, 1
+ 1308  1308                      ; line   212
+ 1309  1309                      $DGL    0,65
+ 1310  1310 0013B RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1311  1311                      ; line   213
+ 1312  1312                      $DGL    0,66
+ 1313  1313 0013F RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1314  1314                      ; line   214
+ 1315  1315                      $DGL    0,67
+ 1316  1316 00143 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1317  1317 00146  8A06                  mov     a,[de+6]                                        ;[INF] 2, 1
+ 1318  1318 00148  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1319  1319 00149  61F8                  sknz                                                    ;[INF] 2, 1
+ 1320  1320                      ; line   215
+ 1321  1321 0014B                ??bb0A_KeyDecide:
+ 1322  1322                      ; line   216
+ 1323  1323                      $DGL    0,69
+ 1324  1324 0014B  EEE001                br      $!?L0025                                        ;[INF] 3, 3
+ 1325  1325 0014E                ??eb0A_KeyDecide:
+ 1326  1326                      ; line   217
+ 1327  1327 0014E                ?L0055:
+ 1328  1328 0014E                ?L0056:
+ 1329  1329 0014E                ??eb09_KeyDecide:
+ 1330  1330                      ; line   218
+ 1331  1331 0014E                ?L0050:
+ 1332  1332 0014E                ?L0051:
+ 1333  1333                      ; line   230
+ 1334  1334                      $DGL    0,83
+ 1335  1335 0014E REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1336  1336 00151  AA08                  movw    ax,[de+8]                                       ;[INF] 2, 1
+ 1337  1337 00153  6168                  or      a,x                                             ;[INF] 2, 1
+ 1338  1338 00155  DD18                  bz      $?L0057                                         ;[INF] 2, 4
+ 1339  1339                      ; line   231
+ 1340  1340 00157                ??bb0B_KeyDecide:
+ 1341  1341                      ; line   232
+ 1342  1342                      $DGL    0,85
+ 1343  1343 00157 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1344  1344 0015A  AA08                  movw    ax,[de+8]                                       ;[INF] 2, 1
+ 1345  1345 0015C  12                    movw    bc,ax                                           ;[INF] 1, 1
+ 1346  1346 0015D REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1347  1347 00160  AA04                  movw    ax,[de+4]                                       ;[INF] 2, 1
+ 1348  1348 00162  33                    xchw    ax,bc                                           ;[INF] 1, 1
+ 1349  1349 00163  23                    subw    ax,bc                                           ;[INF] 1, 1
+ 1350  1350 00164  33                    xchw    ax,bc                                           ;[INF] 1, 1
+ 1351  1351 00165  13                    movw    ax,bc                                           ;[INF] 1, 1
+ 1352  1352 00166 RBF0400                movw    !_gu16_TimerKeyDecide,ax                        ;[INF] 3, 1
+ 1353  1353                      ; line   233
+ 1354  1354                      $DGL    0,86
+ 1355  1355 00169 RCF000002              mov     !_gu8_KeyControlStep,#02H       ; 2             ;[INF] 4, 1
+ 1356  1356 0016D                ??eb0B_KeyDecide:
+ 1357  1357                      ; line   235
+ 1358  1358                      $DGL    0,88
+ 1359  1359 0016D  EF17                  br      $?L0058                                         ;[INF] 2, 3
+ 1360  1360 0016F                ?L0057:
+ 1361  1361 0016F  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1362  1362 00170  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1363  1363 00171  DF0A                  bnz     $?L0059                                         ;[INF] 2, 4
+ 1364  1364                      ; line   236
+ 1365  1365 00173                ??bb0C_KeyDecide:
+ 1366  1366                      ; line   237
+ 1367  1367                      $DGL    0,90
+ 1368  1368 00173 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1369  1369                      ; line   238
+ 1370  1370                      $DGL    0,91
+ 1371  1371 00177 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1372  1372 0017B                ??eb0C_KeyDecide:
+ 1373  1373                      ; line   240
+ 1374  1374                      $DGL    0,93
+ 1375  1375 0017B  EF09                  br      $?L0060                                         ;[INF] 2, 3
+ 1376  1376 0017D                ?L0059:
+ 1377  1377 0017D R8F5100                mov     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1378  1378 00180  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1379  1379 00181  61E8                  skz                                                     ;[INF] 2, 1
+ 1380  1380                      ; line   241
+ 1381  1381 00183                ??bb0D_KeyDecide:
+ 1382  1382                      ; line   242
+ 1383  1383                      $DGL    0,95
+ 1384  1384 00183 RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1385  1385 00186                ??eb0D_KeyDecide:
+ 1386  1386                      ; line   244
+ 1387  1387 00186                ?L0061:
+ 1388  1388                      ; line   245
+ 1389  1389 00186                ??bb0E_KeyDecide:
+ 1390  1390 00186                ??eb0E_KeyDecide:
+ 1391  1391                      ; line   247
+ 1392  1392 00186                ?L0062:
+ 1393  1393 00186                ?L0060:
+ 1394  1394 00186                ?L0058:
+ 1395  1395 00186                ??eb08_KeyDecide:
+ 1396  1396                      ; line   250
+ 1397  1397                      $DGL    0,103
+ 1398  1398 00186  EF17                  br      $?L0049                                         ;[INF] 2, 3
+ 1399  1399 00188                ?L0048:
+ 1400  1400 00188  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1401  1401 00189  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1402  1402 0018A  DF0A                  bnz     $?L0063                                         ;[INF] 2, 4
+ 1403  1403                      ; line   251
+ 1404  1404 0018C                ??bb0F_KeyDecide:
+ 1405  1405                      ; line   252
+ 1406  1406                      $DGL    0,105
+ 1407  1407 0018C RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1408  1408                      ; line   253
+ 1409  1409                      $DGL    0,106
+ 1410  1410 00190 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1411  1411 00194                ??eb0F_KeyDecide:
+ 1412  1412                      ; line   255
+ 1413  1413                      $DGL    0,108
+ 1414  1414 00194  EF09                  br      $?L0064                                         ;[INF] 2, 3
+ 1415  1415 00196                ?L0063:
+ 1416  1416 00196 R8F5100                mov     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1417  1417 00199  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1418  1418 0019A  61E8                  skz                                                     ;[INF] 2, 1
+ 1419  1419                      ; line   256
+ 1420  1420 0019C                ??bb10_KeyDecide:
+ 1421  1421                      ; line   257
+ 1422  1422                      $DGL    0,110
+ 1423  1423 0019C RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1424  1424 0019F                ??eb10_KeyDecide:
+ 1425  1425                      ; line   259
+ 1426  1426 0019F                ?L0065:
+ 1427  1427                      ; line   260
+ 1428  1428 0019F                ??bb11_KeyDecide:
+ 1429  1429 0019F                ??eb11_KeyDecide:
+ 1430  1430                      ; line   262
+ 1431  1431 0019F                ?L0066:
+ 1432  1432 0019F                ?L0064:
+ 1433  1433 0019F                ?L0049:
+ 1434  1434                      ; line   263
+ 1435  1435                      $DGL    0,116
+ 1436  1436 0019F  EE8C01                br      $!?L0025                                        ;[INF] 3, 3
+ 1437  1437                      ; line   264
+ 1438  1438 001A2                ?L0028:
+ 1439  1439                      ; line   265
+ 1440  1440                      $DGL    0,118
+ 1441  1441 001A2  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1442  1442 001A3 R420400                cmpw    ax,!_gu16_TimerKeyDecide                        ;[INF] 3, 1
+ 1443  1443 001A6  DF4B                  bnz     $?L0067                                         ;[INF] 2, 4
+ 1444  1444                      ; line   266
+ 1445  1445 001A8                ??bb12_KeyDecide:
+ 1446  1446                      ; line   267
+ 1447  1447                      $DGL    0,120
+ 1448  1448 001A8 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1449  1449 001AB  8A0A                  mov     a,[de+10]                                       ;[INF] 2, 1
+ 1450  1450 001AD  91                    dec     a                                               ;[INF] 1, 1
+ 1451  1451 001AE  DD12                  bz      $?L0071                                         ;[INF] 2, 4
+ 1452  1452 001B0 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1453  1453 001B3  8A0A                  mov     a,[de+10]                                       ;[INF] 2, 1
+ 1454  1454 001B5  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1455  1455 001B6  DF12                  bnz     $?L0069                                         ;[INF] 2, 4
+ 1456  1456 001B8  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1457  1457 001BA  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1458  1458 001BB  8A05                  mov     a,[de+5]                                        ;[INF] 2, 1
+ 1459  1459 001BD R4F5100                cmp     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1460  1460 001C0  DF08                  bnz     $?L0069                                         ;[INF] 2, 4
+ 1461  1461 001C2                ?L0071:
+ 1462  1462                      ; line   268
+ 1463  1463 001C2                ??bb13_KeyDecide:
+ 1464  1464                      ; line   270
+ 1465  1465                      $DGL    0,123
+ 1466  1466 001C2 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1467  1467                      ; line   271
+ 1468  1468                      $DGL    0,124
+ 1469  1469 001C6 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1470  1470 001CA                ??eb13_KeyDecide:
+ 1471  1471                      ; line   272
+ 1472  1472 001CA                ?L0069:
+ 1473  1473 001CA                ?L0070:
+ 1474  1474                      ; line   273
+ 1475  1475                      $DGL    0,126
+ 1476  1476 001CA REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1477  1477 001CD  AA0C                  movw    ax,[de+12]                                      ;[INF] 2, 1
+ 1478  1478 001CF  6168                  or      a,x                                             ;[INF] 2, 1
+ 1479  1479 001D1  DD1E                  bz      $?L0072                                         ;[INF] 2, 4
+ 1480  1480                      ; line   274
+ 1481  1481 001D3                ??bb14_KeyDecide:
+ 1482  1482                      ; line   275
+ 1483  1483                      $DGL    0,128
+ 1484  1484 001D3 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1485  1485 001D6  AA0C                  movw    ax,[de+12]                                      ;[INF] 2, 1
+ 1486  1486 001D8  12                    movw    bc,ax                                           ;[INF] 1, 1
+ 1487  1487 001D9 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1488  1488 001DC  AA08                  movw    ax,[de+8]                                       ;[INF] 2, 1
+ 1489  1489 001DE  33                    xchw    ax,bc                                           ;[INF] 1, 1
+ 1490  1490 001DF  23                    subw    ax,bc                                           ;[INF] 1, 1
+ 1491  1491 001E0  33                    xchw    ax,bc                                           ;[INF] 1, 1
+ 1492  1492 001E1 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1493  1493 001E4  AA04                  movw    ax,[de+4]                                       ;[INF] 2, 1
+ 1494  1494 001E6  33                    xchw    ax,bc                                           ;[INF] 1, 1
+ 1495  1495 001E7  23                    subw    ax,bc                                           ;[INF] 1, 1
+ 1496  1496 001E8  33                    xchw    ax,bc                                           ;[INF] 1, 1
+ 1497  1497 001E9  13                    movw    ax,bc                                           ;[INF] 1, 1
+ 1498  1498 001EA RBF0400                movw    !_gu16_TimerKeyDecide,ax                        ;[INF] 3, 1
+ 1499  1499                      ; line   276
+ 1500  1500                      $DGL    0,129
+ 1501  1501 001ED RCF000003              mov     !_gu8_KeyControlStep,#03H       ; 3             ;[INF] 4, 1
+ 1502  1502 001F1                ??eb14_KeyDecide:
+ 1503  1503                      ; line   277
+ 1504  1504 001F1                ?L0072:
+ 1505  1505 001F1                ?L0073:
+ 1506  1506 001F1                ??eb12_KeyDecide:
+ 1507  1507                      ; line   279
+ 1508  1508                      $DGL    0,132
+ 1509  1509 001F1  EF47                  br      $?L0068                                         ;[INF] 2, 3
+ 1510  1510 001F3                ?L0067:
+ 1511  1511 001F3 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1512  1512 001F6  8A06                  mov     a,[de+6]                                        ;[INF] 2, 1
+ 1513  1513 001F8  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1514  1514 001F9  DF25                  bnz     $?L0074                                         ;[INF] 2, 4
+ 1515  1515 001FB  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1516  1516 001FD  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1517  1517 001FE  8A05                  mov     a,[de+5]                                        ;[INF] 2, 1
+ 1518  1518 00200 R4F5100                cmp     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1519  1519 00203  DF1B                  bnz     $?L0074                                         ;[INF] 2, 4
+ 1520  1520                      ; line   280
+ 1521  1521 00205                ??bb15_KeyDecide:
+ 1522  1522                      ; line   281
+ 1523  1523                      $DGL    0,134
+ 1524  1524 00205 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1525  1525 00208  8A02                  mov     a,[de+2]                                        ;[INF] 2, 1
+ 1526  1526 0020A  72                    mov     c,a                                             ;[INF] 1, 1
+ 1527  1527 0020B  E6                    onew    ax                                              ;[INF] 1, 1
+ 1528  1528 0020C  D2                    cmp0    c                                               ;[INF] 1, 1
+ 1529  1529 0020D  DD04                  bz      $?L0076                                         ;[INF] 2, 4
+ 1530  1530 0020F                ?L0077:
+ 1531  1531 0020F  01                    addw    ax,ax                                           ;[INF] 1, 1
+ 1532  1532 00210  92                    dec     c                                               ;[INF] 1, 1
+ 1533  1533 00211  DFFC                  bnz     $?L0077                                         ;[INF] 2, 4
+ 1534  1534 00213                ?L0076:
+ 1535  1535 00213 RBF0200                movw    !_gu16_ShortKeyArray,ax                         ;[INF] 3, 1
+ 1536  1536                      ; line   282
+ 1537  1537                      $DGL    0,135
+ 1538  1538 00216 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1539  1539                      ; line   283
+ 1540  1540                      $DGL    0,136
+ 1541  1541 0021A RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1542  1542 0021E                ??eb15_KeyDecide:
+ 1543  1543                      ; line   285
+ 1544  1544                      $DGL    0,138
+ 1545  1545 0021E  EF1A                  br      $?L0075                                         ;[INF] 2, 3
+ 1546  1546 00220                ?L0074:
+ 1547  1547 00220  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1548  1548 00221  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1549  1549 00222  DF0A                  bnz     $?L0078                                         ;[INF] 2, 4
+ 1550  1550                      ; line   286
+ 1551  1551 00224                ??bb16_KeyDecide:
+ 1552  1552                      ; line   287
+ 1553  1553                      $DGL    0,140
+ 1554  1554 00224 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1555  1555                      ; line   288
+ 1556  1556                      $DGL    0,141
+ 1557  1557 00228 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1558  1558 0022C                ??eb16_KeyDecide:
+ 1559  1559                      ; line   290
+ 1560  1560                      $DGL    0,143
+ 1561  1561 0022C  EF0C                  br      $?L0079                                         ;[INF] 2, 3
+ 1562  1562 0022E                ?L0078:
+ 1563  1563 0022E R8F5100                mov     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1564  1564 00231  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1565  1565 00232  DD06                  bz      $?L0080                                         ;[INF] 2, 4
+ 1566  1566                      ; line   291
+ 1567  1567 00234                ??bb17_KeyDecide:
+ 1568  1568                      ; line   294
+ 1569  1569                      $DGL    0,147
+ 1570  1570 00234 RE50900                oneb    !_F_ShortKeyProhibit                            ;[INF] 3, 1
+ 1571  1571                      ; line   295
+ 1572  1572                      $DGL    0,148
+ 1573  1573 00237 RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1574  1574 0023A                ??eb17_KeyDecide:
+ 1575  1575                      ; line   297
+ 1576  1576 0023A                ?L0080:
+ 1577  1577                      ; line   298
+ 1578  1578 0023A                ??bb18_KeyDecide:
+ 1579  1579 0023A                ??eb18_KeyDecide:
+ 1580  1580                      ; line   300
+ 1581  1581 0023A                ?L0081:
+ 1582  1582 0023A                ?L0079:
+ 1583  1583 0023A                ?L0075:
+ 1584  1584 0023A                ?L0068:
+ 1585  1585                      ; line   301
+ 1586  1586                      $DGL    0,154
+ 1587  1587 0023A  EEF100                br      $!?L0025                                        ;[INF] 3, 3
+ 1588  1588                      ; line   302
+ 1589  1589 0023D                ?L0029:
+ 1590  1590                      ; line   303
+ 1591  1591                      $DGL    0,156
+ 1592  1592 0023D  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1593  1593 0023E R420400                cmpw    ax,!_gu16_TimerKeyDecide                        ;[INF] 3, 1
+ 1594  1594 00241  DF29                  bnz     $?L0082                                         ;[INF] 2, 4
+ 1595  1595                      ; line   304
+ 1596  1596 00243                ??bb19_KeyDecide:
+ 1597  1597                      ; line   306
+ 1598  1598                      $DGL    0,159
+ 1599  1599 00243 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1600  1600 00246  8A0E                  mov     a,[de+14]                                       ;[INF] 2, 1
+ 1601  1601 00248  91                    dec     a                                               ;[INF] 1, 1
+ 1602  1602 00249  DD12                  bz      $?L0086                                         ;[INF] 2, 4
+ 1603  1603 0024B REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1604  1604 0024E  8A0E                  mov     a,[de+14]                                       ;[INF] 2, 1
+ 1605  1605 00250  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1606  1606 00251  DF17                  bnz     $?L0084                                         ;[INF] 2, 4
+ 1607  1607 00253  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1608  1608 00255  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1609  1609 00256  8A05                  mov     a,[de+5]                                        ;[INF] 2, 1
+ 1610  1610 00258 R4F5100                cmp     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1611  1611 0025B  DF0D                  bnz     $?L0084                                         ;[INF] 2, 4
+ 1612  1612 0025D                ?L0086:
+ 1613  1613                      ; line   307
+ 1614  1614 0025D                ??bb1A_KeyDecide:
+ 1615  1615                      ; line   308
+ 1616  1616                      $DGL    0,161
+ 1617  1617 0025D RD50800                cmp0    !_F_VeryLongKey_Rejection                       ;[INF] 3, 1
+ 1618  1618 00260  61F8                  sknz                                                    ;[INF] 2, 1
+ 1619  1619                      ; line   309
+ 1620  1620 00262                ??bb1B_KeyDecide:
+ 1621  1621                      ; line   311
+ 1622  1622                      $DGL    0,164
+ 1623  1623 00262 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1624  1624 00266                ??eb1B_KeyDecide:
+ 1625  1625                      ; line   312
+ 1626  1626 00266                ?L0087:
+ 1627  1627 00266                ?L0088:
+ 1628  1628                      ; line   313
+ 1629  1629                      $DGL    0,166
+ 1630  1630 00266 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1631  1631 0026A                ??eb1A_KeyDecide:
+ 1632  1632                      ; line   314
+ 1633  1633 0026A                ?L0084:
+ 1634  1634 0026A                ?L0085:
+ 1635  1635 0026A                ??eb19_KeyDecide:
+ 1636  1636                      ; line   316
+ 1637  1637                      $DGL    0,169
+ 1638  1638 0026A  EF1A                  br      $?L0083                                         ;[INF] 2, 3
+ 1639  1639 0026C                ?L0082:
+ 1640  1640 0026C  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1641  1641 0026D  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1642  1642 0026E  DF0A                  bnz     $?L0089                                         ;[INF] 2, 4
+ 1643  1643                      ; line   317
+ 1644  1644 00270                ??bb1C_KeyDecide:
+ 1645  1645                      ; line   318
+ 1646  1646                      $DGL    0,171
+ 1647  1647 00270 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1648  1648                      ; line   319
+ 1649  1649                      $DGL    0,172
+ 1650  1650 00274 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1651  1651 00278                ??eb1C_KeyDecide:
+ 1652  1652                      ; line   321
+ 1653  1653                      $DGL    0,174
+ 1654  1654 00278  EF0C                  br      $?L0090                                         ;[INF] 2, 3
+ 1655  1655 0027A                ?L0089:
+ 1656  1656 0027A R8F5100                mov     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1657  1657 0027D  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1658  1658 0027E  DD06                  bz      $?L0091                                         ;[INF] 2, 4
+ 1659  1659                      ; line   322
+ 1660  1660 00280                ??bb1D_KeyDecide:
+ 1661  1661                      ; line   325
+ 1662  1662                      $DGL    0,178
+ 1663  1663 00280 RE50900                oneb    !_F_ShortKeyProhibit                            ;[INF] 3, 1
+ 1664  1664                      ; line   326
+ 1665  1665                      $DGL    0,179
+ 1666  1666 00283 RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1667  1667 00286                ??eb1D_KeyDecide:
+ 1668  1668                      ; line   328
+ 1669  1669 00286                ?L0091:
+ 1670  1670                      ; line   329
+ 1671  1671 00286                ??bb1E_KeyDecide:
+ 1672  1672 00286                ??eb1E_KeyDecide:
+ 1673  1673                      ; line   331
+ 1674  1674 00286                ?L0092:
+ 1675  1675 00286                ?L0090:
+ 1676  1676 00286                ?L0083:
+ 1677  1677                      ; line   332
+ 1678  1678                      $DGL    0,185
+ 1679  1679 00286  EEA500                br      $!?L0025                                        ;[INF] 3, 3
+ 1680  1680                      ; line   333
+ 1681  1681 00289                ?L0030:
+ 1682  1682                      ; line   334
+ 1683  1683                      $DGL    0,187
+ 1684  1684 00289  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1685  1685 0028A R420400                cmpw    ax,!_gu16_TimerKeyDecide                        ;[INF] 3, 1
+ 1686  1686 0028D  DF24                  bnz     $?L0093                                         ;[INF] 2, 4
+ 1687  1687                      ; line   335
+ 1688  1688 0028F                ??bb1F_KeyDecide:
+ 1689  1689                      ; line   337
+ 1690  1690                      $DGL    0,190
+ 1691  1691 0028F REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1692  1692 00292  8A12                  mov     a,[de+18]                                       ;[INF] 2, 1
+ 1693  1693 00294  91                    dec     a                                               ;[INF] 1, 1
+ 1694  1694 00295  DD12                  bz      $?L0097                                         ;[INF] 2, 4
+ 1695  1695 00297 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1696  1696 0029A  8A12                  mov     a,[de+18]                                       ;[INF] 2, 1
+ 1697  1697 0029C  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1698  1698 0029D  DF12                  bnz     $?L0095                                         ;[INF] 2, 4
+ 1699  1699 0029F  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1700  1700 002A1  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1701  1701 002A2  8A05                  mov     a,[de+5]                                        ;[INF] 2, 1
+ 1702  1702 002A4 R4F5100                cmp     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1703  1703 002A7  DF08                  bnz     $?L0095                                         ;[INF] 2, 4
+ 1704  1704 002A9                ?L0097:
+ 1705  1705                      ; line   338
+ 1706  1706 002A9                ??bb20_KeyDecide:
+ 1707  1707                      ; line   340
+ 1708  1708                      $DGL    0,193
+ 1709  1709 002A9 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1710  1710                      ; line   341
+ 1711  1711                      $DGL    0,194
+ 1712  1712 002AD RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1713  1713 002B1                ??eb20_KeyDecide:
+ 1714  1714                      ; line   342
+ 1715  1715 002B1                ?L0095:
+ 1716  1716 002B1                ?L0096:
+ 1717  1717 002B1                ??eb1F_KeyDecide:
+ 1718  1718                      ; line   344
+ 1719  1719                      $DGL    0,197
+ 1720  1720 002B1  EF47                  br      $?L0094                                         ;[INF] 2, 3
+ 1721  1721 002B3                ?L0093:
+ 1722  1722 002B3 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1723  1723 002B6  8A06                  mov     a,[de+6]                                        ;[INF] 2, 1
+ 1724  1724 002B8  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1725  1725 002B9  DF25                  bnz     $?L0098                                         ;[INF] 2, 4
+ 1726  1726 002BB  AC02                  movw    ax,[hl+2]       ; p                             ;[INF] 2, 1
+ 1727  1727 002BD  14                    movw    de,ax                                           ;[INF] 1, 1
+ 1728  1728 002BE  8A05                  mov     a,[de+5]                                        ;[INF] 2, 1
+ 1729  1729 002C0 R4F5100                cmp     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1730  1730 002C3  DF1B                  bnz     $?L0098                                         ;[INF] 2, 4
+ 1731  1731                      ; line   345
+ 1732  1732 002C5                ??bb21_KeyDecide:
+ 1733  1733                      ; line   346
+ 1734  1734                      $DGL    0,199
+ 1735  1735 002C5 REB5200                movw    de,!?L0024      ; KeyPnt                        ;[INF] 3, 1
+ 1736  1736 002C8  8A02                  mov     a,[de+2]                                        ;[INF] 2, 1
+ 1737  1737 002CA  72                    mov     c,a                                             ;[INF] 1, 1
+ 1738  1738 002CB  E6                    onew    ax                                              ;[INF] 1, 1
+ 1739  1739 002CC  D2                    cmp0    c                                               ;[INF] 1, 1
+ 1740  1740 002CD  DD04                  bz      $?L0100                                         ;[INF] 2, 4
+ 1741  1741 002CF                ?L0101:
+ 1742  1742 002CF  01                    addw    ax,ax                                           ;[INF] 1, 1
+ 1743  1743 002D0  92                    dec     c                                               ;[INF] 1, 1
+ 1744  1744 002D1  DFFC                  bnz     $?L0101                                         ;[INF] 2, 4
+ 1745  1745 002D3                ?L0100:
+ 1746  1746 002D3 RBF0200                movw    !_gu16_ShortKeyArray,ax                         ;[INF] 3, 1
+ 1747  1747                      ; line   347
+ 1748  1748                      $DGL    0,200
+ 1749  1749 002D6 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1750  1750                      ; line   348
+ 1751  1751                      $DGL    0,201
+ 1752  1752 002DA RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1753  1753 002DE                ??eb21_KeyDecide:
+ 1754  1754                      ; line   350
+ 1755  1755                      $DGL    0,203
+ 1756  1756 002DE  EF1A                  br      $?L0099                                         ;[INF] 2, 3
+ 1757  1757 002E0                ?L0098:
+ 1758  1758 002E0  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1759  1759 002E1  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1760  1760 002E2  DF0A                  bnz     $?L0102                                         ;[INF] 2, 4
+ 1761  1761                      ; line   351
+ 1762  1762 002E4                ??bb22_KeyDecide:
+ 1763  1763                      ; line   352
+ 1764  1764                      $DGL    0,205
+ 1765  1765 002E4 RCF060032              mov     !_gu8_TimerKeyProhibit,#032H    ; 50            ;[INF] 4, 1
+ 1766  1766                      ; line   353
+ 1767  1767                      $DGL    0,206
+ 1768  1768 002E8 RCF0000FF              mov     !_gu8_KeyControlStep,#0FFH      ; 255           ;[INF] 4, 1
+ 1769  1769 002EC                ??eb22_KeyDecide:
+ 1770  1770                      ; line   355
+ 1771  1771                      $DGL    0,208
+ 1772  1772 002EC  EF0C                  br      $?L0103                                         ;[INF] 2, 3
+ 1773  1773 002EE                ?L0102:
+ 1774  1774 002EE R8F5100                mov     a,!?L0023       ; buf                           ;[INF] 3, 1
+ 1775  1775 002F1  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1776  1776 002F2  DD06                  bz      $?L0104                                         ;[INF] 2, 4
+ 1777  1777                      ; line   356
+ 1778  1778 002F4                ??bb23_KeyDecide:
+ 1779  1779                      ; line   359
+ 1780  1780                      $DGL    0,212
+ 1781  1781 002F4 RE50900                oneb    !_F_ShortKeyProhibit                            ;[INF] 3, 1
+ 1782  1782                      ; line   360
+ 1783  1783                      $DGL    0,213
+ 1784  1784 002F7 RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1785  1785 002FA                ??eb23_KeyDecide:
+ 1786  1786                      ; line   362
+ 1787  1787 002FA                ?L0104:
+ 1788  1788                      ; line   363
+ 1789  1789 002FA                ??bb24_KeyDecide:
+ 1790  1790 002FA                ??eb24_KeyDecide:
+ 1791  1791                      ; line   365
+ 1792  1792 002FA                ?L0105:
+ 1793  1793 002FA                ?L0103:
+ 1794  1794 002FA                ?L0099:
+ 1795  1795 002FA                ?L0094:
+ 1796  1796                      ; line   366
+ 1797  1797                      $DGL    0,219
+ 1798  1798 002FA  EF32                  br      $?L0025                                         ;[INF] 2, 3
+ 1799  1799                      ; line   367
+ 1800  1800 002FC                ?L0031:
+ 1801  1801                      ; line   368
+ 1802  1802                      $DGL    0,221
+ 1803  1803 002FC RF50900                clrb    !_F_ShortKeyProhibit                            ;[INF] 3, 1
+ 1804  1804                      ; line   369
+ 1805  1805                      $DGL    0,222
+ 1806  1806 002FF  8B                    mov     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1807  1807 00300  D1                    cmp0    a                                               ;[INF] 1, 1
+ 1808  1808 00301  DF08                  bnz     $?L0106                                         ;[INF] 2, 4
+ 1809  1809 00303 RD50600                cmp0    !_gu8_TimerKeyProhibit                          ;[INF] 3, 1
+ 1810  1810 00306  61F8                  sknz                                                    ;[INF] 2, 1
+ 1811  1811                      ; line   370
+ 1812  1812 00308                ??bb25_KeyDecide:
+ 1813  1813                      ; line   371
+ 1814  1814                      $DGL    0,224
+ 1815  1815 00308 RF50000                clrb    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1816  1816 0030B                ??eb25_KeyDecide:
+ 1817  1817                      ; line   372
+ 1818  1818 0030B                ?L0106:
+ 1819  1819 0030B                ?L0107:
+ 1820  1820                      ; line   375
+ 1821  1821                      $DGL    0,228
+ 1822  1822 0030B  CC0100                mov     [hl+1],#00H     ; i,0                           ;[INF] 3, 1
+ 1823  1823 0030E                ?L0108:
+ 1824  1824 0030E  8C01                  mov     a,[hl+1]        ; i                             ;[INF] 2, 1
+ 1825  1825 00310  4C04                  cmp     a,#04H  ; 4                                     ;[INF] 2, 1
+ 1826  1826 00312  DE1A                  bnc     $?L0109                                         ;[INF] 2, 4
+ 1827  1827                      ; line   376
+ 1828  1828 00314                ??bb26_KeyDecide:
+ 1829  1829                      ; line   377
+ 1830  1830                      $DGL    0,230
+ 1831  1831 00314  8C01                  mov     a,[hl+1]        ; i                             ;[INF] 2, 1
+ 1832  1832 00316  5014                  mov     x,#014H ; 20                                    ;[INF] 2, 1
+ 1833  1833 00318  D6                    mulu    x                                               ;[INF] 1, 1
+ 1834  1834 00319  12                    movw    bc,ax                                           ;[INF] 1, 1
+ 1835  1835 0031A R490000                mov     a,_KeyArray[bc]                                 ;[INF] 3, 1
+ 1836  1836 0031D  4D                    cmp     a,[hl]  ; data                                  ;[INF] 1, 1
+ 1837  1837 0031E  DF09                  bnz     $?L0111                                         ;[INF] 2, 4
+ 1838  1838                      ; line   378
+ 1839  1839 00320                ??bb27_KeyDecide:
+ 1840  1840                      ; line   379
+ 1841  1841                      $DGL    0,232
+ 1842  1842 00320 R491300                mov     a,_KeyArray+19[bc]                              ;[INF] 3, 1
+ 1843  1843 00323  91                    dec     a                                               ;[INF] 1, 1
+ 1844  1844 00324  61F8                  sknz                                                    ;[INF] 2, 1
+ 1845  1845 00326 RD50700                cmp0    !_gu8_TimerKeyOnBreak                           ;[INF] 3, 1
+ 1846  1846                      ; line   380
+ 1847  1847 00329                ??bb28_KeyDecide:
+ 1848  1848 00329                ??eb28_KeyDecide:
+ 1849  1849                      ; line   383
+ 1850  1850 00329                ?L0113:
+ 1851  1851 00329                ?L0114:
+ 1852  1852 00329                ??eb27_KeyDecide:
+ 1853  1853                      ; line   384
+ 1854  1854 00329                ?L0111:
+ 1855  1855 00329                ?L0112:
+ 1856  1856 00329                ??eb26_KeyDecide:
+ 1857  1857                      ; line   385
+ 1858  1858                      $DGL    0,238
+ 1859  1859 00329                ?L0110:
+ 1860  1860 00329  615901                inc     [hl+1]  ; i                                     ;[INF] 3, 2
+ 1861  1861 0032C  EFE0                  br      $?L0108                                         ;[INF] 2, 3
+ 1862  1862 0032E                ?L0109:
+ 1863  1863                      ; line   386
+ 1864  1864                      ; line   387
+ 1865  1865 0032E                ?L0032:
+ 1866  1866                      ; line   388
+ 1867  1867 0032E                ??eb00_KeyDecide:
+ 1868  1868                      ; line   389
+ 1869  1869 0032E                ?L0025:
+ 1870  1870                      ; line   391
+ 1871  1871                      $DGL    0,244
+ 1872  1872 0032E RFC040000              call    !!_EffluentKey_Decide                           ;[INF] 4, 3
+ 1873  1873                      ; line   393
+ 1874  1874                      $DGL    0,246
+ 1875  1875 00332 RD50000                cmp0    !_gu8_KeyControlStep                            ;[INF] 3, 1
+ 1876  1876 00335  DF07                  bnz     $?L0115                                         ;[INF] 2, 4
+ 1877  1877                      ; line   394
+ 1878  1878 00337                ??bb29_KeyDecide:
+ 1879  1879                      ; line   395
+ 1880  1880                      $DGL    0,248
+ 1881  1881 00337 RF55100                clrb    !?L0023 ; buf                                   ;[INF] 3, 1
+ 1882  1882                      ; line   396
+ 1883  1883                      $DGL    0,249
+ 1884  1884 0033A  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1885  1885 0033B RBF5200                movw    !?L0024,ax      ; KeyPnt                        ;[INF] 3, 1
+ 1886  1886 0033E                ??eb29_KeyDecide:
+ 1887  1887                      ; line   397
+ 1888  1888 0033E                ?L0115:
+ 1889  1889 0033E                ?L0116:
+ 1890  1890                      ; line   400
+ 1891  1891                      $DGL    0,253
+ 1892  1892 0033E  F6                    clrw    ax                                              ;[INF] 1, 1
+ 1893  1893 0033F R420200                cmpw    ax,!_gu16_ShortKeyArray                         ;[INF] 3, 1
+ 1894  1894 00342  61E8                  skz                                                     ;[INF] 2, 1
+ 1895  1895                      ; line   401
+ 1896  1896 00344                ??bb2A_KeyDecide:
+ 1897  1897                      ; line   402
+ 1898  1898                      $DGL    0,255
+ 1899  1899 00344 RE50000                oneb    !_F_CommunicationCMD                            ;[INF] 3, 1
+ 1900  1900 00347                ??eb2A_KeyDecide:
+ 1901  1901                      ; line   403
+ 1902  1902 00347                ?L0117:
+ 1903  1903 00347                ?L0118:
+ 1904  1904                      ; line   404
+ 1905  1905                      $DGL    0,257
+ 1906  1906 00347                ??ef_KeyDecide:
+ 1907  1907 00347  1004                  addw    sp,#04H                                         ;[INF] 2, 1
+ 1908  1908 00349  C6                    pop     hl                                              ;[INF] 1, 1
+ 1909  1909 0034A  D7                    ret                                                     ;[INF] 1, 6
+ 1910  1910 0034B                ??ee_KeyDecide:
+ 1911  1911                      
+ 1912  1912 -----                @@CODE  CSEG    BASE
+ 1913  1913                      
+ 1914  1914 -----                @@BASE  CSEG    BASE
+ 1915  1915                      
+ 1916  1916 -----                @@FIX   DSEG    BASEP
+ 1917  1917                      
+ 1918  1918                              END
+ 1919  1919                      
+ 1920  1920                      
+ 1921  1921                      ; *** Code Information ***
+ 1922  1922                      ;
+ 1923  1923                      ; $FILE C:\Users\20021210\Documents\GitHub\ICON_MOVING\Program\2_Front\Icon_mov
+ 1924  1924                      ;       ing_front\Source\keycontrol.c
+ 1925  1925                      ;
+ 1926  1926                      ; $FUNC KeyControl_Initialize(76)
+ 1927  1927                      ;       void=(void)
+ 1928  1928                      ;       CODE SIZE= 4 bytes, CLOCK_SIZE= 7 clocks, STACK_SIZE= 0 bytes
+ 1929  1929                      ;
+ 1930  1930                      ; $FUNC EffluentKey_Decide(106)
+ 1931  1931                      ;       void=(void)
+ 1932  1932                      ;       CODE SIZE= 75 bytes, CLOCK_SIZE= 66 clocks, STACK_SIZE= 0 bytes
+ 1933  1933                      ;
+ 1934  1934                      ; $FUNC KeyDecide(148)
+ 1935  1935                      ;       void=(pointer p:ax)
+ 1936  1936                      ;       CODE SIZE= 764 bytes, CLOCK_SIZE= 557 clocks, STACK_SIZE= 10 bytes
+ 1937  1937                      ;
+ 1938  1938                      ; $CALL EffluentKey_Decide(391)
+ 1939  1939                      ;       void=(void)
+ 1940  1940                      
+ 1941  1941                      ; Target chip : R5F100PG
+ 1942  1942                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00054H   @@R_INIT
+00000 00054H   @@INIT
+00000 0000CH   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 0034BH   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+00000 00000H   @@FIX
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

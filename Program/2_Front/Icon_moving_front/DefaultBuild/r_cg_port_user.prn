@@ -1,0 +1,128 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 4 Mar 2026 Page:   1
+
+
+
+Command:  -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\r_cg_port_user.asm -_ms
+          goff -iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\r_cg_port_user.asm
+Obj-file: DefaultBuild\r_cg_port_user.rel
+Prn-file: DefaultBuild\r_cg_port_user.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 4 Mar 2026 Time:20:49:54
+    2     2                      
+    3     3                      ; Command   : -cf100pg -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile r_cg_port_user.c -oDefaultBuild -_msgoff -nq
+    5     5                      ;              -i. -iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no -
+    6     6                      ;             g2
+    7     7                      ; In-file   : r_cg_port_user.c
+    8     8                      ; Asm-file  : DefaultBuild\r_cg_port_user.asm
+    9     9                      ; Para-file : 
+   10    10                      
+   11    11                      $PROCESSOR(F100PG)
+   12    12                      $DEBUG
+   13    13                      $NODEBUGA
+   14    14                      $KANJICODE NONE
+   15    15                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   16    16                      
+   17    17                      $DGS    FIL_NAM, .file,         013H,   0FFFEH, 03FH,   067H,   01H,    00H
+   18    18                      $DGS    AUX_FIL, r_cg_port_user.c
+   19    19                      $DGS    MOD_NAM, r_cg_port_user,        00H,    0FFFEH, 00H,    077H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   36    36                      
+   37    37                      
+   38    38 -----                @@BITS  BSEG
+   39    39                      
+   40    40 -----                @@CNST  CSEG    MIRRORP
+   41    41                      
+   42    42 -----                @@R_INIT        CSEG    UNIT64KP
+   43    43                      
+   44    44 -----                @@INIT  DSEG    BASEP
+   45    45                      
+   46    46 -----                @@DATA  DSEG    BASEP
+   47    47                      
+   48    48 -----                @@R_INIS        CSEG    UNIT64KP
+   49    49                      
+   50    50 -----                @@INIS  DSEG    SADDRP
+   51    51                      
+   52    52 -----                @@DATS  DSEG    SADDRP
+   53    53                      
+   54    54 -----                @@CNSTL CSEG    PAGE64KP
+   55    55                      
+   56    56 -----                @@RLINIT        CSEG    UNIT64KP
+   57    57                      
+   58    58 -----                @@INITL DSEG    UNIT64KP
+   59    59                      
+   60    60 -----                @@DATAL DSEG    UNIT64KP
+   61    61                      
+   62    62 -----                @@CALT  CSEG    CALLT0
+   63    63                      
+   64    64                      ; line    72
+   65    65                      ; line    73
+   66    66                      ; line    74
+   67    67                      ; line    75
+   68    68                      ; line    76
+   69    69                      ; line    77
+   70    70                      ; line    78
+   71    71                      ; line   211
+   72    72                      
+   73    73 -----                @@CODE  CSEG    BASE
+   74    74                      
+   75    75 -----                @@CODEL CSEG
+   76    76                      
+   77    77 -----                @@BASE  CSEG    BASE
+   78    78                              END
+   79    79                      
+   80    80                      
+   81    81                      ; *** Code Information ***
+   82    82                      
+   83    83                      ; Target chip : R5F100PG
+   84    84                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 00000H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 00000H   @@CODE
+00000 00000H   @@CODEL
+00000 00000H   @@BASE
+
+ Target chip : R5F100PG
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

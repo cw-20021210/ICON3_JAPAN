@@ -1,0 +1,313 @@
+
+
+
+78K0R Assembler V1.91                                                                                    Date: 3 Mar 2022 Page:   1
+
+
+
+Command:  -cf100le -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\RL78\Devicefile DefaultBuild\r_cg_adc.asm -_msgoff -
+          iSource -pDefaultBuild -oDefaultBuild -zn
+Para-file:
+In-file:  DefaultBuild\r_cg_adc.asm
+Obj-file: DefaultBuild\r_cg_adc.rel
+Prn-file: DefaultBuild\r_cg_adc.prn
+
+      Assemble list
+
+ ALNO  STNO ADRS   OBJECT   M I  SOURCE STATEMENT
+
+    1     1                      ; 78K0R C Compiler V2.72 Assembler Source        Date: 3 Mar 2022 Time:10:48:34
+    2     2                      
+    3     3                      ; Command   : -cf100le -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\De
+    4     4                      ;             vice\RL78\Devicefile r_cg_adc.c -oDefaultBuild -_msgoff -nq -i. -
+    5     5                      ;             iSource -iSource\include -zpn -mm -mi0 -aDefaultBuild -no -g2
+    6     6                      ; In-file   : r_cg_adc.c
+    7     7                      ; Asm-file  : DefaultBuild\r_cg_adc.asm
+    8     8                      ; Para-file : 
+    9     9                      
+   10    10                      $PROCESSOR(F100LE)
+   11    11                      $DEBUG
+   12    12                      $NODEBUGA
+   13    13                      $KANJICODE NONE
+   14    14                      $TOL_INF        03FH, 0272H, 00H, 04000H, 00H, 00H, 00H
+   15    15                      
+   16    16                      $DGS    FIL_NAM, .file,         039H,   0FFFEH, 03FH,   067H,   01H,    00H
+   17    17                      $DGS    AUX_FIL, r_cg_adc.c
+   18    18                      $DGS    MOD_NAM, r_cg_adc,      00H,    0FFFEH, 00H,    077H,   00H,    00H
+   19    19                      $DGS    SEC_NAM, @@BITS,        U,      U,      00H,    078H,   00H,    00H
+   20    20                      $DGS    SEC_NAM, @@CNST,        U,      U,      00H,    078H,   00H,    00H
+   21    21                      $DGS    SEC_NAM, @@R_INIT,      U,      U,      00H,    078H,   00H,    00H
+   22    22                      $DGS    SEC_NAM, @@INIT,        U,      U,      00H,    078H,   00H,    00H
+   23    23                      $DGS    SEC_NAM, @@DATA,        U,      U,      00H,    078H,   00H,    00H
+   24    24                      $DGS    SEC_NAM, @@R_INIS,      U,      U,      00H,    078H,   00H,    00H
+   25    25                      $DGS    SEC_NAM, @@INIS,        U,      U,      00H,    078H,   00H,    00H
+   26    26                      $DGS    SEC_NAM, @@DATS,        U,      U,      00H,    078H,   00H,    00H
+   27    27                      $DGS    SEC_NAM, @@CNSTL,       U,      U,      00H,    078H,   00H,    00H
+   28    28                      $DGS    SEC_NAM, @@RLINIT,      U,      U,      00H,    078H,   00H,    00H
+   29    29                      $DGS    SEC_NAM, @@INITL,       U,      U,      00H,    078H,   00H,    00H
+   30    30                      $DGS    SEC_NAM, @@DATAL,       U,      U,      00H,    078H,   00H,    00H
+   31    31                      $DGS    SEC_NAM, @@CALT,        U,      U,      00H,    078H,   00H,    00H
+   32    32                      $DGS    SEC_NAM, @@CODE,        U,      U,      00H,    078H,   00H,    00H
+   33    33                      $DGS    SEC_NAM, @@CODEL,       U,      U,      00H,    078H,   00H,    00H
+   34    34                      $DGS    SEC_NAM, @@BASE,        U,      U,      00H,    078H,   00H,    00H
+   35    35                      $DGS    GLV_SYM, _R_ADC_Create, U,      U,      01H,    026H,   01H,    02H
+   36    36                      $DGS    AUX_FUN, 00H,           U,      U,      019H,   01H,    00H
+   37    37                      $DGS    BEG_FUN, ??bf_R_ADC_Create,     U,      U,      00H,    065H,   01H,    00H
+   38    38                      $DGS    AUX_BEG, 039H,          00H,    019H
+   39    39                      $DGS    END_FUN, ??ef_R_ADC_Create,     U,      U,      00H,    065H,   01H,    00H
+   40    40                      $DGS    AUX_END, 0FH
+   41    41                      $DGS    GLV_SYM, _R_ADC_Start,  U,      U,      01H,    026H,   01H,    02H
+   42    42                      $DGS    AUX_FUN, 00H,           U,      U,      01FH,   01H,    00H
+   43    43                      $DGS    BEG_FUN, ??bf_R_ADC_Start,      U,      U,      00H,    065H,   01H,    00H
+   44    44                      $DGS    AUX_BEG, 050H,          00H,    01FH
+   45    45                      $DGS    END_FUN, ??ef_R_ADC_Start,      U,      U,      00H,    065H,   01H,    00H
+   46    46                      $DGS    AUX_END, 03H
+   47    47                      $DGS    GLV_SYM, _R_ADC_Stop,   U,      U,      01H,    026H,   01H,    02H
+   48    48                      $DGS    AUX_FUN, 00H,           U,      U,      025H,   01H,    00H
+   49    49                      $DGS    BEG_FUN, ??bf_R_ADC_Stop,       U,      U,      00H,    065H,   01H,    00H
+   50    50                      $DGS    AUX_BEG, 05BH,          00H,    025H
+   51    51                      $DGS    END_FUN, ??ef_R_ADC_Stop,       U,      U,      00H,    065H,   01H,    00H
+   52    52                      $DGS    AUX_END, 03H
+   53    53                      $DGS    GLV_SYM, _R_ADC_Set_OperationOn,        U,      U,      01H,    026H,   01H,    02H
+   54    54                      $DGS    AUX_FUN, 00H,           U,      U,      02BH,   01H,    00H
+   55    55                      $DGS    BEG_FUN, ??bf_R_ADC_Set_OperationOn,    U,      U,      00H,    065H,   01H,    00H
+   56    56                      $DGS    AUX_BEG, 066H,          00H,    02BH
+   57    57                      $DGS    END_FUN, ??ef_R_ADC_Set_OperationOn,    U,      U,      00H,    065H,   01H,    00H
+   58    58                      $DGS    AUX_END, 03H
+   59    59                      $DGS    GLV_SYM, _R_ADC_Set_OperationOff,       U,      U,      01H,    026H,   01H,    02H
+   60    60                      $DGS    AUX_FUN, 00H,           U,      U,      031H,   01H,    00H
+   61    61                      $DGS    BEG_FUN, ??bf_R_ADC_Set_OperationOff,   U,      U,      00H,    065H,   01H,    00H
+   62    62                      $DGS    AUX_BEG, 071H,          00H,    031H
+   63    63                      $DGS    END_FUN, ??ef_R_ADC_Set_OperationOff,   U,      U,      00H,    065H,   01H,    00H
+   64    64                      $DGS    AUX_END, 03H
+   65    65                      $DGS    GLV_SYM, _R_ADC_Get_Result,     U,      U,      01H,    026H,   01H,    02H
+   66    66                      $DGS    AUX_FUN, 00H,           U,      U,      039H,   01H,    00H
+   67    67                      $DGS    BEG_FUN, ??bf_R_ADC_Get_Result, U,      U,      00H,    065H,   01H,    00H
+   68    68                      $DGS    AUX_BEG, 07DH,          02H,    039H
+   69    69                      $DGS    FUN_ARG, _buffer,       00H,    0FFFFH, 0500DH, 09H,    01H,    01H
+   70    70                      $DGS    AUX_STR, 00H,           00H,    02H,    00H,    00H,    00H,    00H,    01H
+   71    71                      $DGS    END_FUN, ??ef_R_ADC_Get_Result, U,      U,      00H,    065H,   01H,    00H
+   72    72                      $DGS    AUX_END, 03H
+   73    73                      
+   74    74                              PUBLIC  _R_ADC_Create
+   75    75                              PUBLIC  _R_ADC_Start
+   76    76                              PUBLIC  _R_ADC_Stop
+   77    77                              PUBLIC  _R_ADC_Set_OperationOn
+   78    78                              PUBLIC  _R_ADC_Set_OperationOff
+   79    79                              PUBLIC  _R_ADC_Get_Result
+   80    80                      
+   81    81 -----                @@BITS  BSEG
+   82    82                      
+   83    83 -----                @@CNST  CSEG    MIRRORP
+   84    84                      
+   85    85 -----                @@R_INIT        CSEG    UNIT64KP
+   86    86                      
+   87    87 -----                @@INIT  DSEG    BASEP
+   88    88                      
+   89    89 -----                @@DATA  DSEG    BASEP
+   90    90                      
+   91    91 -----                @@R_INIS        CSEG    UNIT64KP
+   92    92                      
+   93    93 -----                @@INIS  DSEG    SADDRP
+   94    94                      
+   95    95 -----                @@DATS  DSEG    SADDRP
+   96    96                      
+   97    97 -----                @@CNSTL CSEG    PAGE64KP
+   98    98                      
+   99    99 -----                @@RLINIT        CSEG    UNIT64KP
+  100   100                      
+  101   101 -----                @@INITL DSEG    UNIT64KP
+  102   102                      
+  103   103 -----                @@DATAL DSEG    UNIT64KP
+  104   104                      
+  105   105 -----                @@CALT  CSEG    CALLT0
+  106   106                      
+  107   107                      ; line    72
+  108   108                      ; line    73
+  109   109                      ; line    74
+  110   110                      ; line    75
+  111   111                      ; line    76
+  112   112                      ; line    77
+  113   113                      ; line    78
+  114   114                      ; line   169
+  115   115                      ; line   175
+  116   116                      ; line    57
+  117   117                      
+  118   118 -----                @@CODEL CSEG
+  119   119 00000                _R_ADC_Create:
+  120   120                      $DGL    1,19
+  121   121 00000                ??bf_R_ADC_Create:
+  122   122                      ; line    58
+  123   123                      $DGL    0,2
+  124   124 00000  7150F000              set1    !PER0.5                                         ;[INF] 4, 2
+  125   125                      ; line    59
+  126   126                      $DGL    0,3
+  127   127 00004  F530FF                clrb    !ADM0                                           ;[INF] 3, 1
+  128   128                      ; line    60
+  129   129                      $DGL    0,4
+  130   130 00007  710AE7                set1    MK1H.0                                          ;[INF] 3, 2
+  131   131                      ; line    61
+  132   132                      $DGL    0,5
+  133   133 0000A  710BE3                clr1    IF1H.0                                          ;[INF] 3, 2
+  134   134                      ; line    64
+  135   135                      $DGL    0,8
+  136   136 0000D  8E22                  mov     a,PM2                                           ;[INF] 2, 1
+  137   137 0000F  6C01                  or      a,#01H  ; 1                                     ;[INF] 2, 1
+  138   138 00011  9E22                  mov     PM2,a                                           ;[INF] 2, 1
+  139   139                      ; line    65
+  140   140                      $DGL    0,9
+  141   141 00013  F530FF                clrb    !ADM0                                           ;[INF] 3, 1
+  142   142                      ; line    66
+  143   143                      $DGL    0,10
+  144   144 00016  CE3220                mov     ADM1,#020H      ; 32                            ;[INF] 3, 1
+  145   145                      ; line    67
+  146   146                      $DGL    0,11
+  147   147 00019  F51000                clrb    !ADM2                                           ;[INF] 3, 1
+  148   148                      ; line    68
+  149   149                      $DGL    0,12
+  150   150 0001C  CF1100FF              mov     !ADUL,#0FFH     ; 255                           ;[INF] 4, 1
+  151   151                      ; line    69
+  152   152                      $DGL    0,13
+  153   153 00020  F51200                clrb    !ADLL                                           ;[INF] 3, 1
+  154   154                      ; line    70
+  155   155                      $DGL    0,14
+  156   156 00023  F531FF                clrb    !ADS                                            ;[INF] 3, 1
+  157   157                      ; line    71
+  158   158                      $DGL    0,15
+  159   159 00026                ??ef_R_ADC_Create:
+  160   160 00026  D7                    ret                                                     ;[INF] 1, 6
+  161   161 00027                ??ee_R_ADC_Create:
+  162   162                      ; line    80
+  163   163 00027                _R_ADC_Start:
+  164   164                      $DGL    1,25
+  165   165 00027                ??bf_R_ADC_Start:
+  166   166                      ; line    81
+  167   167                      $DGL    0,2
+  168   168 00027  717A30                set1    ADM0.7                                          ;[INF] 3, 2
+  169   169                      ; line    82
+  170   170                      $DGL    0,3
+  171   171 0002A                ??ef_R_ADC_Start:
+  172   172 0002A  D7                    ret                                                     ;[INF] 1, 6
+  173   173 0002B                ??ee_R_ADC_Start:
+  174   174                      ; line    91
+  175   175 0002B                _R_ADC_Stop:
+  176   176                      $DGL    1,31
+  177   177 0002B                ??bf_R_ADC_Stop:
+  178   178                      ; line    92
+  179   179                      $DGL    0,2
+  180   180 0002B  717B30                clr1    ADM0.7                                          ;[INF] 3, 2
+  181   181                      ; line    93
+  182   182                      $DGL    0,3
+  183   183 0002E                ??ef_R_ADC_Stop:
+  184   184 0002E  D7                    ret                                                     ;[INF] 1, 6
+  185   185 0002F                ??ee_R_ADC_Stop:
+  186   186                      ; line   102
+  187   187 0002F                _R_ADC_Set_OperationOn:
+  188   188                      $DGL    1,37
+  189   189 0002F                ??bf_R_ADC_Set_OperationOn:
+  190   190                      ; line   103
+  191   191                      $DGL    0,2
+  192   192 0002F  710A30                set1    ADM0.0                                          ;[INF] 3, 2
+  193   193                      ; line   104
+  194   194                      $DGL    0,3
+  195   195 00032                ??ef_R_ADC_Set_OperationOn:
+  196   196 00032  D7                    ret                                                     ;[INF] 1, 6
+  197   197 00033                ??ee_R_ADC_Set_OperationOn:
+  198   198                      ; line   113
+  199   199 00033                _R_ADC_Set_OperationOff:
+  200   200                      $DGL    1,43
+  201   201 00033                ??bf_R_ADC_Set_OperationOff:
+  202   202                      ; line   114
+  203   203                      $DGL    0,2
+  204   204 00033  710B30                clr1    ADM0.0                                          ;[INF] 3, 2
+  205   205                      ; line   115
+  206   206                      $DGL    0,3
+  207   207 00036                ??ef_R_ADC_Set_OperationOff:
+  208   208 00036  D7                    ret                                                     ;[INF] 1, 6
+  209   209 00037                ??ee_R_ADC_Set_OperationOff:
+  210   210                      ; line   125
+  211   211 00037                _R_ADC_Get_Result:
+  212   212                      $DGL    1,49
+  213   213 00037  C7                    push    hl                                              ;[INF] 1, 1
+  214   214 00038  C1                    push    ax                                              ;[INF] 1, 1
+  215   215 00039  FBF8FF                movw    hl,sp                                           ;[INF] 3, 1
+  216   216 0003C                ??bf_R_ADC_Get_Result:
+  217   217                      ; line   126
+  218   218                      $DGL    0,2
+  219   219 0003C  AD1E                  movw    ax,ADCR                                         ;[INF] 2, 1
+  220   220 0003E  316E                  shrw    ax,6                                            ;[INF] 2, 1
+  221   221 00040  12                    movw    bc,ax                                           ;[INF] 1, 1
+  222   222 00041  AB                    movw    ax,[hl] ; buffer                                ;[INF] 1, 1
+  223   223 00042  14                    movw    de,ax                                           ;[INF] 1, 1
+  224   224 00043  13                    movw    ax,bc                                           ;[INF] 1, 1
+  225   225 00044  B9                    movw    [de],ax                                         ;[INF] 1, 1
+  226   226                      ; line   127
+  227   227                      $DGL    0,3
+  228   228 00045                ??ef_R_ADC_Get_Result:
+  229   229 00045  C0                    pop     ax                                              ;[INF] 1, 1
+  230   230 00046  C6                    pop     hl                                              ;[INF] 1, 1
+  231   231 00047  D7                    ret                                                     ;[INF] 1, 6
+  232   232 00048                ??ee_R_ADC_Get_Result:
+  233   233                      
+  234   234 -----                @@CODE  CSEG    BASE
+  235   235                      
+  236   236 -----                @@BASE  CSEG    BASE
+  237   237                              END
+  238   238                      
+  239   239                      
+  240   240                      ; *** Code Information ***
+  241   241                      ;
+  242   242                      ; $FILE D:\1_Project\ICON 2022\Project_Front_NEW\r_cg_adc.c
+  243   243                      ;
+  244   244                      ; $FUNC R_ADC_Create(57)
+  245   245                      ;       void=(void)
+  246   246                      ;       CODE SIZE= 39 bytes, CLOCK_SIZE= 22 clocks, STACK_SIZE= 0 bytes
+  247   247                      ;
+  248   248                      ; $FUNC R_ADC_Start(80)
+  249   249                      ;       void=(void)
+  250   250                      ;       CODE SIZE= 4 bytes, CLOCK_SIZE= 8 clocks, STACK_SIZE= 0 bytes
+  251   251                      ;
+  252   252                      ; $FUNC R_ADC_Stop(91)
+  253   253                      ;       void=(void)
+  254   254                      ;       CODE SIZE= 4 bytes, CLOCK_SIZE= 8 clocks, STACK_SIZE= 0 bytes
+  255   255                      ;
+  256   256                      ; $FUNC R_ADC_Set_OperationOn(102)
+  257   257                      ;       void=(void)
+  258   258                      ;       CODE SIZE= 4 bytes, CLOCK_SIZE= 8 clocks, STACK_SIZE= 0 bytes
+  259   259                      ;
+  260   260                      ; $FUNC R_ADC_Set_OperationOff(113)
+  261   261                      ;       void=(void)
+  262   262                      ;       CODE SIZE= 4 bytes, CLOCK_SIZE= 8 clocks, STACK_SIZE= 0 bytes
+  263   263                      ;
+  264   264                      ; $FUNC R_ADC_Get_Result(125)
+  265   265                      ;       void=(pointer buffer:ax)
+  266   266                      ;       CODE SIZE= 17 bytes, CLOCK_SIZE= 18 clocks, STACK_SIZE= 4 bytes
+  267   267                      
+  268   268                      ; Target chip : R5F100LE
+  269   269                      ; Device file : V1.14 
+
+Segment informations:
+
+ADRS  LEN      NAME
+
+00000 00000H.0 @@BITS
+00000 00000H   @@CNST
+00000 00000H   @@R_INIT
+00000 00000H   @@INIT
+00000 00000H   @@DATA
+00000 00000H   @@R_INIS
+00000 00000H   @@INIS
+00000 00000H   @@DATS
+00000 00000H   @@CNSTL
+00000 00000H   @@RLINIT
+00000 00000H   @@INITL
+00000 00000H   @@DATAL
+00000 00000H   @@CALT
+00000 00048H   @@CODEL
+00000 00000H   @@CODE
+00000 00000H   @@BASE
+
+ Target chip : R5F100LE
+ Device file : V1.14
+Assembly complete,     0 error(s) and     0 warning(s) found. (    0)
+

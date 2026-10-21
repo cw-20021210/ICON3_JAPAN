@@ -1,0 +1,14 @@
+*lmf
+*.HEX
+*.mtud
+*.json
+.cproject
+.project
+*.rel
+.lmf
+*.sym
+*.map
+*.xrf
+Program/1_Main/Flash/Flash.mtsp
+*.mtsp
+*.mtsp
